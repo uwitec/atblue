@@ -57,11 +57,11 @@
         officeNoticeDAO.insert(on);
 
 		//保存附件信息
-		List fileList = fileUpload.uploadFile();
+		List fileList = fileUpload.uploadFile(filePath);
 		for (int i = 0; i < fileList.size(); i++) {
 			Map map = (Map) fileList.get(i);
 			OfficeFile uploadFile = new OfficeFile();
-			uploadFile.setPkid((String) map.get("rename"));
+			uploadFile.setPkid(StringUtil.getUUID());
 			uploadFile.setFkid(noticeid);
 			uploadFile.setLrip(request.getRemoteAddr());
 			uploadFile.setLrr(_user.getRealName());
@@ -97,7 +97,6 @@
 <%	}
      List userList  = dao.getAllUser();
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -116,10 +115,8 @@
 		
 		<script type="text/javascript">
             function _resizeNoPage() {
-                alert(document.body.clientHeight);
                 document.getElementById("scrollDiv").style.width = document.body.clientWidth - 18;
                 document.getElementById("scrollDiv").style.height = document.body.clientHeight - 50;
-                alert(document.getElementById("scrollDiv").style.height);
             }
 
 			function CheckDateTime(object){
@@ -362,6 +359,7 @@
 			            		</tr>
 				            	<%for(int i=0; i<userList.size(); i++){
 				            		CUser u = (CUser)userList.get(i);
+				            		System.out.println(u.getRealName()+"ssssssss");
 				            		if(i==0){	
 				            	%>
 				            	<tr>

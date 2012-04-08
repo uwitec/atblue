@@ -44,10 +44,10 @@
 	<body>
 		<table width="100%" align="center" height="25" border="0"
 			cellpadding="0" cellspacing="0"
-			background="<%=contentPath%>/resource/images/mhead.jpg">
+			background="<%=contentPath%>/images/mhead.jpg">
 			<tr>
 				<td width="3%" align="center">
-					<img src="<%=contentPath%>/resource/images/mlogo.jpg" width="11"
+					<img src="<%=contentPath%>/images/mlogo.jpg" width="11"
 						height="11" alt="">
 				</td>
 				<td width="15%" class="mhead">
@@ -137,11 +137,11 @@
 								<%
 								if(onc!=null && onc.getCheckflag().equals("1")){
 								%>
-									<a href="sign.jsp?noticeid=<%=notice.getNoticeid() %>"><img src="../../resource/images/ok.gif" alt="已签收"  border="0" ></a>
+									<a href="sign.jsp?noticeid=<%=notice.getNoticeid() %>"><img src="<%=contentPath%>/images/ok.gif" alt="已签收"  border="0" ></a>
 								<%}else if(onc!=null && onc.getCheckflag().equals("0")){ %>
-									请点击签收<a href="sign.jsp?noticeid=<%=notice.getNoticeid() %>"><img src="../../resource/images/delete.gif" border="0" alt="未签收"></a>
+									请点击签收<a href="sign.jsp?noticeid=<%=notice.getNoticeid() %>"><img src="<%=contentPath%>/images/delete.gif" border="0" alt="未签收"></a>
 								<%}else{ %>
-									<a href="view.jsp?noticeid=<%=notice.getNoticeid() %>"><img src="../../resource/images/ok.gif" alt="不需要签收"  border="0" ></a>
+									<a href="view.jsp?noticeid=<%=notice.getNoticeid() %>"><img src="<%=contentPath%>/images/ok.gif" alt="不需要签收"  border="0" ></a>
 								<%} %>
 							</td>
 						</tr>
