@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/menu.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
+
 var  contextPath = "<%=request.getContextPath()%>";
 <!--
 function MM_swapImgRestore() { //v3.0
