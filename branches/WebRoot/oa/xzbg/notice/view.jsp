@@ -13,7 +13,6 @@
 	List checkList = officeNoticeCheckDAO.getCheckByNoticeid(noticeid);
 	
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -80,6 +79,7 @@
 				            	<%for(int i=0; i<checkList.size(); i++){
 				            		OfficeNoticeCheck u = (OfficeNoticeCheck)checkList.get(i);
 				            		CUser _tUser = dao.findUserById(u.getCheckman());
+				            		if(_tUser==null) _tUser = new CUser();
 				            		if(i==0){	
 				            	%>
 				            	<tr>
@@ -108,7 +108,7 @@
 				background="<%=contentPath%>/resource/images/mhead.jpg">
 				<tr>
 					<td width="3%" align="center">
-						<img src="<%=contentPath%>/resource/images/mlogo.jpg" width="11"
+						<img src="<%=contentPath%>/images/mlogo.jpg" width="11"
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
@@ -246,8 +246,8 @@
 										<%
 											for(int i=0; i<hasFileList.size(); i++){
 												OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
-											<a href="../../officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
-												<img src="../../resource/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='../resource/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
+											<a href="<%=request.getContextPath()%>/officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
+												<img src="<%=request.getContextPath()%>/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='<%=request.getContextPath()%>/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
 											</a>&nbsp;&nbsp;&nbsp;
 									     <%}%>
 									</td>

@@ -190,7 +190,7 @@ Ext.onReady(function(){
 
     var tb = new Ext.Toolbar('toolbar');
     tb.render('toolbar');
-    tb.addButton({text: '新建',icon: '../images/add.gif',cls: 'x-btn-text-icon',handler:function(){
+    tb.addButton({text: '新建',icon: '<%=contentPath%>/images/add.gif',cls: 'x-btn-text-icon',handler:function(){
         window.location = 'add.jsp';
     }});
 
