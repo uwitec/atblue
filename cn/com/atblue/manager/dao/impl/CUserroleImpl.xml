@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="manager.cuserrole">
+    <typeAlias alias="CUserrole" type="cn.com.atblue.manager.bean.CUserrole"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="id">
+                <![CDATA[id=#id#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="userId">
+                <![CDATA[user_id=#userId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="roleId">
+                <![CDATA[role_id=#roleId#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addCUserrole" parameterClass="CUserrole">
+        <![CDATA[
+            insert into c_userrole(
+                id,user_id,role_id
+            ) values(
+                #id#,#userId#,#roleId#
+            )
+        ]]>
+    </insert>
+
+    <update id="modCUserrole" parameterClass="CUserrole">
+        <![CDATA[
+            update c_userrole
+            set id=#id#,user_id=#userId#,role_id=#roleId#
+            where ID=#id#
+        ]]>
+    </update>
+
+    <delete id="delCUserrole" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from c_userrole
+            where ID=#id#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="CUserrole">
+        <![CDATA[
+            select id as id,user_id as userId,role_id as roleId from c_userrole where ID=#id#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="CUserrole">
+        <![CDATA[
+            select * from c_userrole
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from c_userrole
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

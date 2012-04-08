@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="manager.crelation">
+    <typeAlias alias="CRelation" type="cn.com.atblue.manager.bean.CRelation"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="relationId">
+                <![CDATA[relation_id=#relationId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="resId">
+                <![CDATA[res_id=#resId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="userId">
+                <![CDATA[user_id=#userId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="roleId">
+                <![CDATA[role_id=#roleId#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addCRelation" parameterClass="CRelation">
+        <![CDATA[
+            insert into c_relation(
+                relation_id,res_id,user_id,role_id
+            ) values(
+                #relationId#,#resId#,#userId#,#roleId#
+            )
+        ]]>
+    </insert>
+
+    <update id="modCRelation" parameterClass="CRelation">
+        <![CDATA[
+            update c_relation
+            set relation_id=#relationId#,res_id=#resId#,user_id=#userId#,
+				role_id=#roleId#
+            where RELATION_ID=#relationId#
+        ]]>
+    </update>
+
+    <delete id="delCRelation" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from c_relation
+            where RELATION_ID=#relationId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="CRelation">
+        <![CDATA[
+            select relation_id as relationId,res_id as resId,user_id as userId,role_id as roleId from c_relation where RELATION_ID=#relationId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="CRelation">
+        <![CDATA[
+            select * from c_relation
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from c_relation
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="workflow.wdefinition">
+    <typeAlias alias="WDefinition" type="cn.com.atblue.workflow.bean.WDefinition"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="flowId">
+                <![CDATA[flow_id=#flowId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="createTime">
+                <![CDATA[create_time=#createTime#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="updateTime">
+                <![CDATA[update_time=#updateTime#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="flowFile">
+                <![CDATA[flow_file=#flowFile#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addWDefinition" parameterClass="WDefinition">
+        <![CDATA[
+            insert into w_definition(
+                flow_id,create_time,update_time,flow_file
+            ) values(
+                #flowId#,#createTime#,#updateTime#,#flowFile#
+            )
+        ]]>
+    </insert>
+
+    <update id="modWDefinition" parameterClass="WDefinition">
+        <![CDATA[
+            update w_definition
+            set flow_id=#flowId#,create_time=#createTime#,update_time=#updateTime#,
+				flow_file=#flowFile#
+            where FLOW_ID=#flowId#
+        ]]>
+    </update>
+
+    <delete id="delWDefinition" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from w_definition
+            where FLOW_ID=#flowId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="WDefinition">
+        <![CDATA[
+            select flow_id as flowId,create_time as createTime,update_time as updateTime,flow_file as flowFile from w_definition where FLOW_ID=#flowId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="WDefinition">
+        <![CDATA[
+            select * from w_definition
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from w_definition
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="DefaultConsoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<param name="Threshold" value="debug"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %p %c.%M(%F:%L) %m %n"/>
+		</layout>
+	</appender>
+	<appender name="DefaultFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Threshold" value="info"/>
+		<param name="File" value="c:\ProjectLog.log"/>
+		<param name="Append" value="true"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %p %c.%M(%F:%L) %m %n"/>
+		</layout>
+	</appender>
+	<logger name="org.springframework">
+		<level value="warn"/>
+		<appender-ref ref="DefaultConsoleAppender"/>
+		<appender-ref ref="DefaultFileAppender"/>
+	</logger>
+	<logger name="com.ibatis">
+		<level value="debug"/>
+		<appender-ref ref="DefaultConsoleAppender"/>
+		<appender-ref ref="DefaultFileAppender"/>
+	</logger>
+	<logger name="org.objectweb">
+		<level value="warn"/>
+		<appender-ref ref="DefaultConsoleAppender"/>
+		<appender-ref ref="DefaultFileAppender"/>
+	</logger>
+	<logger name="org.hibernate">
+		<level value="warn"/>
+		<appender-ref ref="DefaultConsoleAppender"/>
+		<appender-ref ref="DefaultFileAppender"/>
+	</logger>
+	<logger name="org.quartz">
+		<level value="warn"/>
+		<appender-ref ref="DefaultConsoleAppender"/>
+		<appender-ref ref="DefaultFileAppender"/>
+	</logger>
+	<root>
+		<level value ="info"/>
+		<appender-ref ref="DefaultConsoleAppender"/>
+		<appender-ref ref="DefaultFileAppender"/>
+	</root>
+</log4j:configuration>

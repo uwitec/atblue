@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd" >
+
+<beans>
+    <bean id="wActivityDAO" class="cn.com.atblue.workflow.dao.impl.WActivityImpl" autowire="byName"/>
+    <bean id="wConnectDAO" class="cn.com.atblue.workflow.dao.impl.WConnectImpl" autowire="byName"/>
+    <bean id="wInstanceDAO" class="cn.com.atblue.workflow.dao.impl.WInstanceImpl" autowire="byName"/>
+    <bean id="wLineDAO" class="cn.com.atblue.workflow.dao.impl.WLineImpl" autowire="byName"/>
+    <bean id="wProcessDAO" class="cn.com.atblue.workflow.dao.impl.WProcessImpl" autowire="byName"/>
+    <bean id="wWorkflowDAO" class="cn.com.atblue.workflow.dao.impl.WWorkflowImpl" autowire="byName"/>
+    <bean id="wDefinitionDAO" class="cn.com.atblue.workflow.dao.impl.WDefinitionImpl" autowire="byName"/>
+
+    <bean id="wDao" class="cn.com.atblue.workflow.dao.impl.WDaoImpl" autowire="byName"/>
+    <bean id="workflow" class="cn.com.atblue.workflow.runtime.Workflow" autowire="byName"/>
+    <bean id="workflowAction" class="cn.com.atblue.workflow.action.WorkflowAction" autowire="byName"/>
+</beans>

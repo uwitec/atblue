@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="workflow.wconnect">
+    <typeAlias alias="WConnect" type="cn.com.atblue.workflow.bean.WConnect"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="connectId">
+                <![CDATA[connect_id=#connectId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="connectName">
+                <![CDATA[connect_name=#connectName#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="connectValue">
+                <![CDATA[connect_value=#connectValue#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="startInstance">
+                <![CDATA[start_instance=#startInstance#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="endInstance">
+                <![CDATA[end_instance=#endInstance#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lineId">
+                <![CDATA[line_id=#lineId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="pendingPerson">
+                <![CDATA[pending_person=#pendingPerson#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="createTime">
+                <![CDATA[create_time=#createTime#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="realPerson">
+                <![CDATA[real_person=#realPerson#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addWConnect" parameterClass="WConnect">
+        <![CDATA[
+            insert into w_connect(
+                connect_id,connect_name,connect_value,start_instance,end_instance,
+				line_id,pending_person,create_time,real_person
+            ) values(
+                #connectId#,#connectName#,#connectValue#,#startInstance#,#endInstance#,
+				#lineId#,#pendingPerson#,#createTime#,#realPerson#
+            )
+        ]]>
+    </insert>
+
+    <update id="modWConnect" parameterClass="WConnect">
+        <![CDATA[
+            update w_connect
+            set connect_id=#connectId#,connect_name=#connectName#,connect_value=#connectValue#,
+				start_instance=#startInstance#,end_instance=#endInstance#,line_id=#lineId#,
+				pending_person=#pendingPerson#,create_time=#createTime#,real_person=#realPerson#
+            where CONNECT_ID=#connectId#
+        ]]>
+    </update>
+
+    <delete id="delWConnect" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from w_connect
+            where CONNECT_ID=#connectId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="WConnect">
+        <![CDATA[
+            select connect_id as connectId,connect_name as connectName,connect_value as connectValue,start_instance as startInstance,end_instance as endInstance,line_id as lineId,pending_person as pendingPerson,create_time as createTime,real_person as realPerson from w_connect where CONNECT_ID=#connectId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="WConnect">
+        <![CDATA[
+            select * from w_connect
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from w_connect
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

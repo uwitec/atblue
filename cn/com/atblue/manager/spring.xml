@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd" >
+
+<beans>
+    <bean id="menuDAO" class="cn.com.atblue.manager.dao.impl.CMenuImpl" autowire="byName"/>
+    <bean id="orgnizationDAO" class="cn.com.atblue.manager.dao.impl.COrgnizationImpl" autowire="byName"/>
+    <bean id="relationDAO" class="cn.com.atblue.manager.dao.impl.CRelationImpl" autowire="byName"/>
+    <bean id="resourceDAO" class="cn.com.atblue.manager.dao.impl.CResourceImpl" autowire="byName"/>
+    <bean id="roleDAO" class="cn.com.atblue.manager.dao.impl.CRoleImpl" autowire="byName"/>
+    <bean id="userDAO" class="cn.com.atblue.manager.dao.impl.CUserImpl" autowire="byName"/>
+    <bean id="userroleDAO" class="cn.com.atblue.manager.dao.impl.CUserroleImpl" autowire="byName"/>
+
+    <bean id="dao" class="cn.com.atblue.manager.dao.impl.DaoImpl" autowire="byName"/>
+
+    <bean id="orgnizationAcion" class="cn.com.atblue.manager.action.OrgnizationAcion" scope="prototype" autowire="byName"/>
+    <bean id="roleAction" class="cn.com.atblue.manager.action.RoleAction" scope="prototype" autowire="byName"/>
+    <bean id="resourceAction" class="cn.com.atblue.manager.action.ResourceAction" scope="prototype" autowire="byName"/>
+    <bean id="personAction" class="cn.com.atblue.manager.action.PersonAction" scope="prototype" autowire="byName"/>
+</beans>

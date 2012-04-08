@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="manager.dao">
+    <typeAlias alias="CUser" type="cn.com.atblue.manager.bean.CUser"/>
+    <typeAlias alias="CResource" type="cn.com.atblue.manager.bean.CResource"/>
+    <typeAlias alias="CMenu" type="cn.com.atblue.manager.bean.CMenu"/>
+    <typeAlias alias="COrgnization" type="cn.com.atblue.manager.bean.COrgnization"/>
+
+    <select id="getAllUser" parameterClass="java.util.HashMap" resultClass="CUser">
+        <![CDATA[
+            SELECT * FROM C_USER T ORDER BY T.USER_NAME
+        ]]>
+    </select>
+    <select id="findUserByName" parameterClass="String" resultClass="CUser">
+        <![CDATA[
+            SELECT USER_ID    AS USERID,
+               ORGNA_ID   AS ORGNAID,
+               USER_NAME  AS USERNAME,
+               PASSWORD   AS PASSWORD,
+               USER_ORDER AS USERORDER,
+               USER_LEVEL AS USERLEVEL,
+               REAL_NAME  AS REALNAME,
+               SEX        AS SEX,
+               AGE        AS AGE,
+               MOBILE     AS MOBILE,
+               PHONE      AS PHONE,
+               EMAIL      AS EMAIL,
+               USER_DESC  AS USERDESC
+          FROM C_USER T
+         WHERE T.USER_NAME LIKE '%$value$%'
+           AND ROWNUM = 1
+        ]]>
+    </select>
+    <select id="findUserByRealName" parameterClass="String" resultClass="CUser">
+        <![CDATA[
+            SELECT T.* FROM C_USER T WHERE T.REAL_NAME LIKE '%$value$%' AND ROWNUM = 1
+        ]]>
+    </select>
+    <select id="findUserById" parameterClass="String" resultClass="CUser">
+        <![CDATA[
+            SELECT T.* FROM C_USER T WHERE T.User_Id = #value#
+        ]]>
+    </select>
+    <select id="findUsersByRole" parameterClass="String" resultClass="CUser">
+        <![CDATA[
+            SELECT T.* FROM C_USER T,C_USERROLE UR
+            WHERE T.USER_ID = UR.USER_ID AND UR.ROLE_ID = #value#
+        ]]>
+    </select>
+    <select id="getUsersByDepId" parameterClass="String" resultClass="CUser">
+        <![CDATA[
+            SELECT T.* FROM C_USER T WHERE T.ORGNA_ID = #value#
+        ]]>
+    </select>
+    <select id="getMenuByParentId" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <![CDATA[
+             SELECT DISTINCT A.*
+              FROM C_RESOURCE A, C_RELATION B
+             WHERE A.RES_ID = B.RES_ID
+               AND (B.USER_ID = #userid# OR
+                   (B.ROLE_ID IN
+                   (SELECT ROLE_ID
+                        FROM C_USERROLE, C_USER
+                       WHERE C_USERROLE.USER_ID = #userid#)))
+               AND PARENT_ID = #parentid#
+             ORDER BY RES_ORDER
+        ]]>
+    </select>
+    <select id="getMenu" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <![CDATA[
+            SELECT T.*, LEVEL
+              FROM (SELECT DISTINCT A.*
+                      FROM U_RESOURCE A, U_RELATION B
+                     WHERE A.RES_ID = B.RES_ID
+                       AND (B.USER_ID = #userid# OR
+                           (B.ROLE_ID IN
+                           (SELECT ROLE_ID
+                                FROM U_USER_ROLE, U_USER
+                               WHERE U_USER_ROLE.USER_ID = #userid#)) OR
+                           B.ROLE_ID IN
+                           (SELECT U_R_ROLE_ID
+                               FROM U_ROLE_PARENT
+                              START WITH ROLE_ID IN
+                                         (SELECT ROLE_ID
+                                            FROM U_USER_ROLE, U_USER
+                                           WHERE U_USER_ROLE.USER_ID = #userid#)
+                             CONNECT BY PRIOR U_R_ROLE_ID = ROLE_ID))) T
+             START WITH RES_ID IN
+                        (SELECT RES_ID FROM U_RESOURCE WHERE PARENT_ID = #root#)
+            CONNECT BY PRIOR RES_ID = PARENT_ID
+             ORDER SIBLINGS BY RES_ORDER
+        ]]>
+    </select>
+
+    <select id="getAllUserManagerMenus" resultClass="CMenu">
+        <![CDATA[
+            SELECT T.* FROM C_MENU T
+       ]]>
+    </select>
+    <select id="getOrgsByParentId" parameterClass="String" resultClass="java.util.HashMap">
+        <![CDATA[
+            SELECT A.*, B.CN
+              FROM C_ORGNIZATION A,
+                   (SELECT T.PARENT_ID, COUNT(T.ORGNA_ID) CN
+                      FROM C_ORGNIZATION T
+                     GROUP BY T.PARENT_ID) B
+             WHERE A.ORGNA_ID = B.PARENT_ID(+)
+               AND A.PARENT_ID = #value#
+             ORDER BY A.ORGNA_ORDER
+       ]]>
+    </select>
+
+    <select id="getAllMenus" resultClass="java.util.HashMap">
+        <![CDATA[
+            SELECT T.*  FROM C_RESOURCE T ORDER BY T.PARENT_ID,T.RES_ORDER
+       ]]>
+    </select>
+    <select id="getPagedUserList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+            SELECT T.*,O.ORGNA_NAME FROM C_USER T,C_ORGNIZATION O
+            WHERE T.ORGNA_ID = O.ORGNA_ID
+       ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="userName">
+                <![CDATA[t.USER_NAME like '%'||#userName#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="orgId">
+                <![CDATA[t.ORGNA_ID=#orgId#]]>
+            </isNotEmpty>
+        </dynamic>
+        ORDER BY O.ORGNA_NAME,T.USER_NAME
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedUserCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            SELECT COUNT(*) CN FROM C_USER T,C_ORGNIZATION O
+            WHERE T.ORGNA_ID = O.ORGNA_ID
+       ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="userName">
+                <![CDATA[t.USER_NAME like '%'||#userName#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="orgId">
+                <![CDATA[t.ORGNA_ID=#orgId#]]>
+            </isNotEmpty>
+        </dynamic>
+    </select>
+
+    <select id="getAllRolesByUser" parameterClass="String" resultClass="java.util.HashMap">
+        <![CDATA[
+           SELECT T.*,
+               (SELECT COUNT(*)
+                  FROM C_USERROLE U
+                 WHERE U.ROLE_ID = T.ROLE_ID
+                   AND U.USER_ID = #value#) CN
+          FROM C_ROLE T
+         ORDER BY T.ROLE_NAME
+       ]]>
+    </select>
+
+    <delete id="deleteUserRole" parameterClass="String">
+        <![CDATA[
+            DELETE FROM C_USERROLE T WHERE T.USER_ID =#value#
+       ]]>
+    </delete>
+
+    <delete id="deleteRoleRes" parameterClass="String">
+        <![CDATA[
+            DELETE FROM C_RELATION T WHERE T.ROLE_ID = #value#
+       ]]>
+    </delete>
+
+    <select id="getSelectOrgTrees" resultClass="java.util.HashMap">
+        <![CDATA[
+            SELECT LPAD(' ', (LEVEL - 1) * 4, '┊  ') || '┣' || ORGNA_NAME ORGNA_NAME,
+                   ORGNA_ID,
+                   ORGNA_ORDER,
+                   ORGNA_MEMO,
+                   PARENT_ID
+              FROM C_ORGNIZATION
+             START WITH ORGNA_ID = '1'
+            CONNECT BY PRIOR ORGNA_ID = PARENT_ID
+       ]]>
+    </select>
+
+    <select id="getResourcesByRole" parameterClass="String" resultClass="java.util.HashMap">
+        <![CDATA[
+            SELECT T.RES_ID FROM C_RELATION T WHERE T.ROLE_ID = #value#
+       ]]>
+    </select>
+
+    <select id="getResList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <![CDATA[
+            SELECT R.* FROM C_RELATION T,C_USERROLE U,C_RESOURCE R
+            WHERE T.ROLE_ID = U.ROLE_ID AND U.USER_ID = #userId#
+            AND T.RES_ID = R.RES_ID AND R.PARENT_ID = #parentId#
+            ORDER BY R.RES_ORDER
+       ]]>
+    </select>
+    <!-- 用户角色判断 -->
+    <select id="getRoleCount"  resultClass="int" parameterClass="java.util.HashMap">
+      select count(*) from C_USERROLE t where  t.user_id=#userid# and role_id=#roleid#
+    </select>
+</sqlMap>

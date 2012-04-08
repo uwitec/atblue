@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<workflow>
+    <name>测试工作流</name>
+    <description>adsfasd</description>
+    <activitys>
+        <activity name="start" desc="" type="1" order="1" role=""/>
+        <activity name="a1" desc="" type="2" order="2" role=""/>
+        <activity name="a2" desc="" type="2" order="3" role=""/>
+        <activity name="a3" desc="" type="2" order="4" role=""/>
+        <activity name="end" desc="" type="9" order="5" role=""/>
+    </activitys>
+    <lines>
+        <line name="l0" from="start" to="a1" varValue="1"/>
+        <line name="l1" from="a1" to="a2"    varValue="1"/>
+        <line name="l2" from="a1" to="a3" varValue="1"/>
+        <line name="l2" from="a3" to="end" varValue="1"/>
+    </lines>
+</workflow>

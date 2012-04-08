@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="manager.cmenu">
+    <typeAlias alias="CMenu" type="cn.com.atblue.manager.bean.CMenu"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="menuid">
+                <![CDATA[menuid=#menuid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="menuname">
+                <![CDATA[menuname=#menuname#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="menuurl">
+                <![CDATA[menuurl=#menuurl#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="menuclass">
+                <![CDATA[menuclass=#menuclass#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="menulevel">
+                <![CDATA[menulevel=#menulevel#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="parent">
+                <![CDATA[parent=#parent#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="target">
+                <![CDATA[target=#target#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addCMenu" parameterClass="CMenu">
+        <![CDATA[
+            insert into c_menu(
+                menuid,menuname,menuurl,menuclass,menulevel,
+				parent,target
+            ) values(
+                #menuid#,#menuname#,#menuurl#,#menuclass#,#menulevel#,
+				#parent#,#target#
+            )
+        ]]>
+    </insert>
+
+    <update id="modCMenu" parameterClass="CMenu">
+        <![CDATA[
+            update c_menu
+            set menuid=#menuid#,menuname=#menuname#,menuurl=#menuurl#,
+				menuclass=#menuclass#,menulevel=#menulevel#,parent=#parent#,
+				target=#target#
+            where MENUID=#menuid#
+        ]]>
+    </update>
+
+    <delete id="delCMenu" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from c_menu
+            where MENUID=#menuid#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="CMenu">
+        <![CDATA[
+            select menuid as menuid,menuname as menuname,menuurl as menuurl,menuclass as menuclass,menulevel as menulevel,parent as parent,target as target from c_menu where MENUID=#menuid#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="CMenu">
+        <![CDATA[
+            select * from c_menu
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from c_menu
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="atblue_manager" extends="struts-default" namespace="/manager" >
+        <action name="orgnization_*" class="orgnizationAcion" method="{1}">
+            <result name="index">/manager/listOrg.jsp</result>
+            <result name="add">/manager/addOrg.jsp</result>
+            <result name="mod">/manager/modOrg.jsp</result>
+            <result name="treeLoader">/manager/ajaxResult.jsp</result>
+        </action>
+        <action name="role_*" class="roleAction" method="{1}">
+            <result name="list">/manager/listRole.jsp</result>
+            <result name="add">/manager/addRole.jsp</result>
+            <result name="mod">/manager/modRole.jsp</result>
+            <result name="url">/manager/modRoleUrl.jsp</result>
+            <result name="del" type="redirect">role_list.d</result>
+            <result name="save" type="redirect">role_list.d</result>
+        </action>
+        <action name="resource_*" class="resourceAction" method="{1}">
+            <result name="list">/manager/listRes.jsp</result>
+            <result name="add">/manager/addRes.jsp</result>
+            <result name="mod">/manager/modRes.jsp</result>
+            <result name="del" type="redirect">resource_list.d</result>
+            <result name="save" type="redirect">resource_list.d</result>
+        </action>
+        <action name="person_*" class="personAction" method="{1}">
+            <result name="list">/manager/listPerson.jsp</result>
+            <result name="add">/manager/addPerson.jsp</result>
+            <result name="mod">/manager/modPerson.jsp</result>
+            <result name="role">/manager/modPersonRole.jsp</result>
+            <result name="del" type="redirect">person_list.d</result>
+            <result name="save" type="redirect">person_list.d</result>
+            <result name="saveRole" type="redirect">person_list.d</result>
+        </action>
+	</package>
+</struts>
