@@ -37,15 +37,4 @@
     -->
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeSealImpl.xml" />
     <sqlMap resource="cn/com/atblue/oa/dao/impl/ODaoImpl.xml" />
-     <!--
-    	公文处理 
-     -->
-     <sqlMap resource="cn/com/atblue/oa/dao/impl/OFFICE_CIRCULATION_CHECK_SqlMap.xml" />
-     <sqlMap resource="cn/com/atblue/oa/dao/impl/OFFICE_CIRCULATION_SqlMap.xml" />
-     <sqlMap resource="cn/com/atblue/oa/dao/impl/OFFICE_DOCUMENTS_CHECK_SqlMap.xml" />
-     <sqlMap resource="cn/com/atblue/oa/dao/impl/OFFICE_DOCUMENTS_SqlMap.xml" />
-     <!--
-     	消息池
-      -->
-       <sqlMap resource="cn/com/atblue/oa/dao/impl/UMessage.xml" />
 </sqlMapConfig>

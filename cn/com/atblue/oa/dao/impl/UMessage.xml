@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UMessage">
+
+    <typeAlias alias="UMessage" type="cn.com.atblue.oa.bean.UMessage"/>
+    <insert id="insert" parameterClass="UMessage">
+        insert into
+        U_MESSAGE (ID, SENDER, RECEIVER, MESSAGE, SENDTIME, RECEIVETIME, FLAG, APPNAME, APPKEY, SENDERID, RECEIVERID, TYPE, URL)
+        values (#id:VARCHAR#, #sender:VARCHAR#, #receiver:VARCHAR#, #message:VARCHAR#, #sendtime:TIMESTAMP#, #receivetime:TIMESTAMP#, #flag:DECIMAL#, #appname:VARCHAR#, #appkey:VARCHAR#, #senderid:VARCHAR#, #receiverid:VARCHAR#, #type:VARCHAR#, #url:VARHCAR#)</insert>
+    <update id="update" parameterClass="UMessage">
+        update
+        U_MESSAGE set ID = #id:VARCHAR#, SENDER = #sender:VARCHAR#, RECEIVER = #receiver:VARCHAR#, MESSAGE = #message:VARCHAR#, SENDTIME = #sendtime:TIMESTAMP#, RECEIVETIME = #receivetime:TIMESTAMP#, FLAG = #flag:DECIMAL#, APPNAME = #appname:VARCHAR#, APPKEY = #appkey:VARCHAR#, SENDERID = #senderid:VARCHAR#, RECEIVERID = #receiverid:VARCHAR#, TYPE=#type:VARCHAR#, URL=#url:VARCHAR# 
+        where ID= #id:VARCHAR#</update>
+    <delete id="delete" parameterClass="UMessage">
+        delete U_MESSAGE where id=#id#
+    </delete>
+    <select id="getByAppkey" parameterClass="string" resultClass="UMessage">
+    	select * from U_MESSAGE where APPKEY = #appkey:VARCHAR#
+    </select>
+    <select id="findById" parameterClass="string" resultClass="UMessage">
+        select ID as "id", SENDER as "sender", RECEIVER as "receiver", MESSAGE as "message", SENDTIME as "sendtime", RECEIVETIME as "receivetime", FLAG as "flag", APPNAME as "appname", APPKEY as "appkey", SENDERID as "senderid", RECEIVERID as "receiverid", TYPE as "type", URL as "url"
+        from U_MESSAGE
+        where id=#id#</select>
+    <select id="findCountByReceiverFlag" parameterClass="map" resultClass="int">
+        select count(id)
+        from U_MESSAGE
+        where (receiverid=#receiverid# or receiver=#receiverid#) and flag=#flag#
+		</select>
+    <select id="findByReceiverFlag" parameterClass="map" resultClass="UMessage">
+    <include refid="basic.pageStart" />
+		<![CDATA[
+        select ID as "id", SENDER as "sender", RECEIVER as "receiver", MESSAGE as "message", SENDTIME as "sendtime", RECEIVETIME as "receivetime", FLAG as "flag", APPNAME as "appname", APPKEY as "appkey", SENDERID as "senderid", RECEIVERID as "receiverid", TYPE as "type", URL as "url"
+        from U_MESSAGE
+        where ( receiverid=#receiverid# or receiver=#receiverid# ) and flag=#flag#
+         ]]>
+		<include refid="basic.pageEnd" />
+		</select>
+	<select id="findCountBySenderFlag" parameterClass="map" resultClass="int">
+        select count(id) from U_MESSAGE
+        where SENDERID=#senderid# and flag=#flag# 
+    </select>
+    <select id="findBySenderFlag" parameterClass="map" resultClass="UMessage">
+    <include refid="basic.pageStart" />
+		<![CDATA[
+        select ID as "id", SENDER as "sender", RECEIVER as "receiver", MESSAGE as "message", SENDTIME as "sendtime", RECEIVETIME as "receivetime", FLAG as "flag", APPNAME as "appname", APPKEY as "appkey", SENDERID as "senderid", RECEIVERID as "receiverid",TYPE as "type", URL as "url"
+        from U_MESSAGE
+        where SENDERID=#senderid# and flag=#flag# 
+         ]]>
+		<include refid="basic.pageEnd" />
+    </select>
+</sqlMap>
