@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="manager.corgnization">
+    <typeAlias alias="COrgnization" type="cn.com.atblue.manager.bean.COrgnization"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="orgnaId">
+                <![CDATA[orgna_id=#orgnaId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="orgnaName">
+                <![CDATA[orgna_name=#orgnaName#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="orgnaOrder">
+                <![CDATA[orgna_order=#orgnaOrder#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="parentId">
+                <![CDATA[parent_id=#parentId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="orgnaMemo">
+                <![CDATA[orgna_memo=#orgnaMemo#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addCOrgnization" parameterClass="COrgnization">
+        <![CDATA[
+            insert into c_orgnization(
+                orgna_id,orgna_name,orgna_order,parent_id,orgna_memo
+            ) values(
+                #orgnaId#,#orgnaName#,#orgnaOrder#,#parentId#,#orgnaMemo#
+            )
+        ]]>
+    </insert>
+
+    <update id="modCOrgnization" parameterClass="COrgnization">
+        <![CDATA[
+            update c_orgnization
+            set orgna_id=#orgnaId#,orgna_name=#orgnaName#,orgna_order=#orgnaOrder#,
+				parent_id=#parentId#,orgna_memo=#orgnaMemo#
+            where ORGNA_ID=#orgnaId#
+        ]]>
+    </update>
+
+    <delete id="delCOrgnization" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from c_orgnization
+            where ORGNA_ID=#orgnaId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="COrgnization">
+        <![CDATA[
+            select orgna_id as orgnaId,orgna_name as orgnaName,orgna_order as orgnaOrder,parent_id as parentId,orgna_memo as orgnaMemo from c_orgnization where ORGNA_ID=#orgnaId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="COrgnization">
+        <![CDATA[
+            select * from c_orgnization
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from c_orgnization
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

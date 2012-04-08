@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin:0px;
+	font-family: "Microsoft YaHei" ! important;
+	font-size:13px;
+	color:#ffffff;
+	text-align:center;
+	cursor:hand;   
+}   
+.menu_choose {
+	background:url(../images/index/banner_menu_ch.jpg);
+	width:91px;
+	background-repeat:no-repeat;
+	cursor:hand;
+	color:#000000;
+	text-align:center;
+	height:23px;
+	font-weight:600;
+}

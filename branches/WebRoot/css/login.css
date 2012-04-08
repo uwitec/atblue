@@ -1,0 +1,10 @@
+/* CSS Document */
+
+body {
+margin:0px;
+margin-top:65px;
+}
+input {
+	border: 1px soild #ededed;
+	height:15px;
+	width:120px;

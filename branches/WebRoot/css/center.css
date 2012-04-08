@@ -1,0 +1,250 @@
+@charset "utf-8";
+
+/* CSS Document */
+body {
+	margin: 0px;
+	font-family: "Microsoft YaHei" ! important;
+	font-size: 12px;
+	color: #000000;
+	background-color: #ffffff;
+	table-layout: fixed;
+}
+.body_form {
+    height:100%;
+    width:100%;
+    padding:5px;
+    background-color:#ffffff;
+    border-left:#64ccf9 solid 6px;
+    border-right:#64ccf9 solid 6px;
+    table-layout:fixed;
+    overflow:hidden;
+}
+
+.choose {
+	background: url(../images/index/choose.jpg);
+	background-repeat: no-repeat;
+	width: 92px;
+	height: 24px;
+	text-align: center;
+	font-weight: 800;
+	cursor: hand;
+	padding-top: 8px;
+}
+
+.unchoose {
+	background: url(../images/index/unchoose.jpg);
+	background-repeat: no-repeat;
+	width: 92px;
+	height: 30px;
+	text-align: center;
+	cursor: hand;
+	padding-top: 2px;
+}
+
+.ch_line {
+	background: url(../images/index/choose_line.jpg);
+}
+
+.ch_body {
+	border: #b1ccdf 1px solid;
+	border-top: 0px;
+	border-bottom: 0px;
+}
+
+.note_txt {
+	font-family: "Microsoft YaHei" ! important;
+	font-size: 14px;
+	line-height: 25px;
+	text-align: left;
+	text-indent: 0.5em;
+}
+
+.note_txt_user {
+	font-family: "Microsoft YaHei" ! important;
+	font-size: 14px;
+	line-height: 25px;
+	text-align: left;
+	text-indent: 0.5em;
+	color: #ff5400;
+	font-weight: 800;
+}
+
+.bt_line {
+	background: url(../images/index/bt_bg.jpg);
+	height: 26px;
+	font-family: "Microsoft YaHei" ! important;
+	font-size: 12px;
+	color: #034278;
+	font-weight: 600;
+	text-indent: 1em;
+}
+
+.head {
+	background: url(../images/index/head.jpg);
+	line-height: 25px;
+	font-weight: 600;
+	text-align: center;
+}
+
+.form {
+	line-height: 21px;
+	text-align: left;
+	padding-left: 8px;
+	border-bottom: #a6a7a9 1px dashed;
+}
+
+.form_menber {
+	line-height: 21px;
+	text-align: right;
+	padding-right: 12px;
+	border-bottom: #a6a7a9 1px dashed;
+}
+
+.tab_line {
+	border-bottom: #a7d1e9 solid 1px;
+	height: 5px;
+}
+
+.fg_line {
+	border-left: #a6a7a9 1px dashed;
+	width: 15px;
+}
+
+.button {
+	background: url(../images/index/button_bg.jpg);
+	height: 21px;
+	border: #8c9194 solid 1px;
+	border-bottom: 0px;
+	border-top: 0px;
+}
+
+.page {
+	background: url(../images/index/page_bg.jpg);
+	border: #bbc5cd solid 1px;
+	font-size: 12px;
+	color: #263a58;
+	height: 25px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.page_ch {
+	font-size: 14px;
+	color: #ff0000;
+}
+
+.tree {
+	border-right: #1e63b1 solid 6px;
+	width: 160px;
+}
+
+.tree_menu1_cl {
+	background: url(../images/index/menu_cl.jpg);
+	background-repeat: no-repeat;
+	height: 28px;
+	color: #1264b0;
+	font-size: 14px;
+	font-weight: bolder;
+	text-indent: 3.5em;
+}
+
+.tree_menu1_op {
+	background: url(../images/index/menu_op.jpg);
+	background-repeat: no-repeat;
+	height: 28px;
+	color: #189127;
+	font-size: 14px;
+	font-weight: bolder;
+	text-indent: 3.5em;
+}
+
+.tree_menu2_choose {
+	background: url(../images/index/menu2_cl.jpg);
+	background-repeat: no-repeat;
+	height: 26px;
+	color: #ef5402;
+	font-size: 14px;
+	text-indent: 3.5em;
+}
+
+.tree_menu2_unchoose {
+	background: url(../images/index/menu2_cl.jpg);
+	background-repeat: no-repeat;
+	height: 26px;
+	color: #2567a4;
+	font-size: 14px;
+	text-indent: 3.5em;
+}
+
+.tree_menu3_choose {
+	background: url(../images/menu3_0p.jpg);
+	background-repeat:no-repeat;
+	height:20px;
+	color:#000000;
+	font-size:12px;
+	text-indent:2.5em;
+	font-weight:600;
+}
+
+.tree_menu3_unchoose {
+	background:url(../images/menu3_cl.jpg);
+	background-repeat:no-repeat;
+	height:20px;
+	color:#2567a4;
+	font-size:12px;
+	text-indent:2.1em;
+}
+
+.help_bt {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:25px;
+	text-align:left;
+	letter-spacing:0.3em;
+	font-weight:bolder;
+	color:#000000;
+	    filter:
+        Dropshadow(offx=1,offy=0,color=white)
+        Dropshadow(offx=0,offy=1,color=white)
+        Dropshadow(offx=0,offy=-1,color=white)
+        Dropshadow(offx=-1,offy=0,color=white);
+
+}
+a:link {
+	TEXT-DECORATION: none
+}
+
+a:visited {
+	TEXT-DECORATION: none
+}
+
+a:active {
+	TEXT-DECORATION: none
+}
+
+a:hover {
+	TEXT-DECORATION: none
+}
+.help_bt {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:25px;
+	text-align:left;
+	letter-spacing:0.3em;
+	font-weight:bolder;
+	color:#000000;
+	    filter:
+        Dropshadow(offx=1,offy=0,color=white)
+        Dropshadow(offx=0,offy=1,color=white)
+        Dropshadow(offx=0,offy=-1,color=white)
+        Dropshadow(offx=-1,offy=0,color=white);
+
+}
+.help_txt {
+	font-family:  Arial, Helvetica, sans-serif;
+	font-size:13px;
+	line-height:18px;
+	text-align:left;
+	font-weight:bolder;
+	color:#063967;
+}

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="workflow.wline">
+    <typeAlias alias="WLine" type="cn.com.atblue.workflow.bean.WLine"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="lineId">
+                <![CDATA[line_id=#lineId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lineName">
+                <![CDATA[line_name=#lineName#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lineVarValue">
+                <![CDATA[line_var_value=#lineVarValue#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="startActivity">
+                <![CDATA[start_activity=#startActivity#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="endActivity">
+                <![CDATA[end_activity=#endActivity#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="counterType">
+                <![CDATA[counter_type=#counterType#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="counterValue">
+                <![CDATA[counter_value=#counterValue#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="flowId">
+                <![CDATA[flow_id=#flowId#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addWLine" parameterClass="WLine">
+        <![CDATA[
+            insert into w_line(
+                line_id,line_name,line_var_value,start_activity,end_activity,
+				counter_type,counter_value,flow_id
+            ) values(
+                #lineId#,#lineName#,#lineVarValue#,#startActivity#,#endActivity#,
+				#counterType#,#counterValue#,#flowId#
+            )
+        ]]>
+    </insert>
+
+    <update id="modWLine" parameterClass="WLine">
+        <![CDATA[
+            update w_line
+            set line_id=#lineId#,line_name=#lineName#,line_var_value=#lineVarValue#,
+				start_activity=#startActivity#,end_activity=#endActivity#,counter_type=#counterType#,
+				counter_value=#counterValue#,flow_id=#flowId#
+            where LINE_ID=#lineId#
+        ]]>
+    </update>
+
+    <delete id="delWLine" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from w_line
+            where LINE_ID=#lineId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="WLine">
+        <![CDATA[
+            select line_id as lineId,line_name as lineName,line_var_value as lineVarValue,start_activity as startActivity,end_activity as endActivity,counter_type as counterType,counter_value as counterValue,flow_id as flowId from w_line where LINE_ID=#lineId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="WLine">
+        <![CDATA[
+            select * from w_line
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from w_line
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

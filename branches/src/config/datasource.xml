@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<context>
+    <datasources>
+		<dbsource>
+			<name>local</name>
+			<driver>oracle.jdbc.driver.OracleDriver</driver>
+			<dbUsername>atblue</dbUsername>
+			<dbPassword>atblue</dbPassword>
+			<dbUrl>jdbc:oracle:thin:@127.0.0.1:1521:orcl</dbUrl>
+			<maxActive>5</maxActive>
+			<maxIdle>2</maxIdle>
+			<maxWait>60000</maxWait>
+			<minIdle>1</minIdle>
+			<initSize>5</initSize>
+		</dbsource>
+    </datasources>
+</context>

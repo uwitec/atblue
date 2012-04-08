@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="workflow.wactivity">
+    <typeAlias alias="WActivity" type="cn.com.atblue.workflow.bean.WActivity"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="activityId">
+                <![CDATA[activity_id=#activityId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="activityName">
+                <![CDATA[activity_name=#activityName#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="activityDesc">
+                <![CDATA[activity_desc=#activityDesc#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="flowId">
+                <![CDATA[flow_id=#flowId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="activityType">
+                <![CDATA[activity_type=#activityType#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="activityOrder">
+                <![CDATA[activity_order=#activityOrder#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="activityRole">
+                <![CDATA[activity_role=#activityRole#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="activitySfxddw">
+                <![CDATA[activity_sfxddw=#activitySfxddw#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addWActivity" parameterClass="WActivity">
+        <![CDATA[
+            insert into w_activity(
+                activity_id,activity_name,activity_desc,flow_id,activity_type,
+				activity_order,activity_role,activity_sfxddw
+            ) values(
+                #activityId#,#activityName#,#activityDesc#,#flowId#,#activityType#,
+				#activityOrder#,#activityRole#,#activitySfxddw#
+            )
+        ]]>
+    </insert>
+
+    <update id="modWActivity" parameterClass="WActivity">
+        <![CDATA[
+            update w_activity
+            set activity_id=#activityId#,activity_name=#activityName#,activity_desc=#activityDesc#,
+				flow_id=#flowId#,activity_type=#activityType#,activity_order=#activityOrder#,
+				activity_role=#activityRole#,activity_sfxddw=#activitySfxddw#
+            where ACTIVITY_ID=#activityId#
+        ]]>
+    </update>
+
+    <delete id="delWActivity" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from w_activity
+            where ACTIVITY_ID=#activityId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="WActivity">
+        <![CDATA[
+            select activity_id as activityId,activity_name as activityName,activity_desc as activityDesc,flow_id as flowId,activity_type as activityType,activity_order as activityOrder,activity_role as activityRole,activity_sfxddw as activitySfxddw from w_activity where ACTIVITY_ID=#activityId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="WActivity">
+        <![CDATA[
+            select * from w_activity
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from w_activity
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="workflow.winstance">
+    <typeAlias alias="WInstance" type="cn.com.atblue.workflow.bean.WInstance"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="instanceId">
+                <![CDATA[instance_id=#instanceId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="createTime">
+                <![CDATA[create_time=#createTime#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="createPerson">
+                <![CDATA[create_person=#createPerson#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="activityId">
+                <![CDATA[activity_id=#activityId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="processId">
+                <![CDATA[process_id=#processId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="instanceStatus">
+                <![CDATA[instance_status=#instanceStatus#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dealPerson">
+                <![CDATA[deal_person=#dealPerson#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dealTime">
+                <![CDATA[deal_time=#dealTime#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addWInstance" parameterClass="WInstance">
+        <![CDATA[
+            insert into w_instance(
+                instance_id,create_time,create_person,activity_id,process_id,
+				instance_status,deal_person,deal_time
+            ) values(
+                #instanceId#,#createTime#,#createPerson#,#activityId#,#processId#,
+				#instanceStatus#,#dealPerson#,#dealTime#
+            )
+        ]]>
+    </insert>
+
+    <update id="modWInstance" parameterClass="WInstance">
+        <![CDATA[
+            update w_instance
+            set instance_id=#instanceId#,create_time=#createTime#,create_person=#createPerson#,
+				activity_id=#activityId#,process_id=#processId#,instance_status=#instanceStatus#,
+				deal_person=#dealPerson#,deal_time=#dealTime#
+            where INSTANCE_ID=#instanceId#
+        ]]>
+    </update>
+
+    <delete id="delWInstance" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from w_instance
+            where INSTANCE_ID=#instanceId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="WInstance">
+        <![CDATA[
+            select instance_id as instanceId,create_time as createTime,create_person as createPerson,activity_id as activityId,process_id as processId,instance_status as instanceStatus,deal_person as dealPerson,deal_time as dealTime from w_instance where INSTANCE_ID=#instanceId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="WInstance">
+        <![CDATA[
+            select * from w_instance
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from w_instance
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>
