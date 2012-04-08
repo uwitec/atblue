@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd" >
+
+<beans>
+    <bean id="loginAction" class="cn.com.atblue.common.action.LoginAction" scope="prototype" autowire="byName"/>
+    <bean id="officeFileDAO" class="cn.com.atblue.oa.dao.impl.OfficeFileDAOImpl" scope="prototype" autowire="byName"/>
+    <bean id="officeNoticeDAO" class="cn.com.atblue.oa.dao.impl.OfficeNoticeDAOImpl" scope="prototype" autowire="byName"/>
+    <bean id="officeNoticeCheckDAO" class="cn.com.atblue.oa.dao.impl.OfficeNoticeCheckDAOImpl" scope="prototype" autowire="byName"/>
+    <bean id="officeCirculationCheckDAO" class="cn.com.atblue.oa.dao.impl.OfficeCirculationCheckDAOImpl" scope="prototype" autowire="byName"/>
+    <bean id="officeCirculationDAO" class="cn.com.atblue.oa.dao.impl.OfficeCirculationDAOImpl" scope="prototype" autowire="byName"/>
+    <bean id="officeDocumentsCheckDAO" class="cn.com.atblue.oa.dao.impl.OfficeDocumentsCheckDAOImpl" scope="prototype" autowire="byName"/>
+    <bean id="officeDocumentsDAO" class="cn.com.atblue.oa.dao.impl.OfficeDocumentsDAOImpl" scope="prototype" autowire="byName"/>
+    <bean id="uMessageDAO" class="cn.com.atblue.oa.dao.impl.UMessageDAOImpl" scope="prototype" autowire="byName"/>
+</beans>
