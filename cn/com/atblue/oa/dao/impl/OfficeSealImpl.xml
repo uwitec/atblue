@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officeseal">
+    <typeAlias alias="OfficeSeal" type="cn.com.atblue.oa.bean.OfficeSeal"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="sealId">
+                <![CDATA[seal_id=#sealId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="userId">
+                <![CDATA[user_id=#userId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sealPwd">
+                <![CDATA[seal_pwd=#sealPwd#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="createPerson">
+                <![CDATA[create_person=#createPerson#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="createTime">
+                <![CDATA[create_time=#createTime#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="createIp">
+                <![CDATA[create_ip=#createIp#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="seal">
+                <![CDATA[seal=#seal#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficeSeal" parameterClass="OfficeSeal">
+        <![CDATA[
+            insert into office_seal(
+                seal_id,user_id,seal_pwd,create_person,create_time,
+				create_ip,seal
+            ) values(
+                #sealId#,#userId#,#sealPwd#,#createPerson#,#createTime#,
+				#createIp#,#seal#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficeSeal" parameterClass="OfficeSeal">
+        <![CDATA[
+            update office_seal
+            set seal_id=#sealId#,user_id=#userId#,seal_pwd=#sealPwd#,
+				create_person=#createPerson#,create_time=#createTime#,create_ip=#createIp#,
+				seal=#seal#
+            where SEAL_ID=#sealId#
+        ]]>
+    </update>
+
+    <delete id="delOfficeSeal" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_seal
+            where SEAL_ID=#sealId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeSeal">
+        <![CDATA[
+            select seal_id as sealId,user_id as userId,seal_pwd as sealPwd,create_person as createPerson,create_time as createTime,create_ip as createIp,seal as seal from office_seal where SEAL_ID=#sealId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficeSeal">
+        <![CDATA[
+            select * from office_seal
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_seal
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>
