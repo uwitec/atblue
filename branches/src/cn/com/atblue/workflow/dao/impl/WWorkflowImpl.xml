@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="workflow.wworkflow">
+    <typeAlias alias="WWorkflow" type="cn.com.atblue.workflow.bean.WWorkflow"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="flowId">
+                <![CDATA[flow_id=#flowId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="flowName">
+                <![CDATA[flow_name=#flowName#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="flowDesc">
+                <![CDATA[flow_desc=#flowDesc#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="createTime">
+                <![CDATA[create_time=#createTime#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="updateTime">
+                <![CDATA[update_time=#updateTime#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="releaseStatus">
+                <![CDATA[release_status=#releaseStatus#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addWWorkflow" parameterClass="WWorkflow">
+        <![CDATA[
+            insert into w_workflow(
+                flow_id,flow_name,flow_desc,create_time,update_time,
+				release_status
+            ) values(
+                #flowId#,#flowName#,#flowDesc#,#createTime#,#updateTime#,
+				#releaseStatus#
+            )
+        ]]>
+    </insert>
+
+    <update id="modWWorkflow" parameterClass="WWorkflow">
+        <![CDATA[
+            update w_workflow
+            set flow_id=#flowId#,flow_name=#flowName#,flow_desc=#flowDesc#,
+				create_time=#createTime#,update_time=#updateTime#,release_status=#releaseStatus#
+            where FLOW_ID=#flowId#
+        ]]>
+    </update>
+
+    <delete id="delWWorkflow" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from w_workflow
+            where FLOW_ID=#flowId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="WWorkflow">
+        <![CDATA[
+            select flow_id as flowId,flow_name as flowName,flow_desc as flowDesc,create_time as createTime,update_time as updateTime,release_status as releaseStatus from w_workflow where FLOW_ID=#flowId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="WWorkflow">
+        <![CDATA[
+            select * from w_workflow
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from w_workflow
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

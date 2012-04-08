@@ -1,0 +1,220 @@
+
+body {
+    /*font-family: helvetica,arial,tahoma,sans-serif;*/
+    font-family:verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+    font-size:13px;
+    color:#555;
+    line-height:20px;
+    background-color:#fff;
+    margin:0;padding:0;border:0;
+}
+
+.msg .x-box-mc {
+    font-size:14px;
+}
+#msg-div {
+    position:absolute;
+    right:20%;
+    top:10px;
+    width:150px;
+    z-index:20000;
+}
+.banner_right {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	padding-left:15px;
+	background-image: url(../images/banner_right.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+.dh_txt {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#ffffff;
+	letter-spacing: 0.2em;
+	text-align:right;
+}
+.foode {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000;
+	background-image: url(../images/fooder.jpg);
+	text-align: center;
+	letter-spacing: 0.1em;
+	height:28px;
+	padding-top:10px;
+}
+
+.clear {
+	clear: both;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+#loading-mask {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 20000;
+	background-color: white;
+}
+
+#loading {
+	position: absolute;
+	left: 45%;
+	top: 40%;
+	padding: 2px;
+	z-index: 20001;
+	height: auto;
+}
+
+#loading a {
+	color: #258;
+}
+
+#loading .loading-indicator {
+	background: white;
+	color: #444;
+	font: bold 13px tahoma, arial, helvetica;
+	padding: 10px;
+	margin: 0;
+	height: auto;
+}
+
+#loading-msg {
+	font: normal 14px arial, tahoma, sans-serif;
+	color: blue;
+	padding-top: 18px;
+}
+
+div button {
+	border: none;
+	cursor: pointer;
+	width: 16px;
+	height: 16px;
+}
+
+#app-header {
+	background: url('../images/f2.gif') repeat-x;
+	height: 60px;
+	width: 100%;
+}
+
+#header-right {
+	width: 260px;
+	float: right;
+}
+
+#setting {
+	float: right;
+	width: 80px;
+	padding-top: 6px;
+	padding-right: 6px;
+}
+
+.moreDiv {
+	width: 100%;
+}
+
+.moreDiv span {
+	float: right;
+	margin-right: 12px;
+}
+
+.moreDiv span a {
+	text-decoration: none;
+	color: blue;
+}
+
+.home-company {
+	background-image: url('../images/home.gif') !important;
+}
+
+.btn-logout {
+	background-image: url('../images/logout.png') !important;
+}
+
+.tipMessage {
+	background-image: url('../images/mail_box.png') !important;
+}
+
+.portal-jq {
+	background-image: url('../images/computer.png') !important;
+}
+
+.portal-jqChart {
+	background-image: url('../images/PieChart1.png') !important;
+}
+
+.portal-cc {
+	background-image: url('../images/drive_web.png') !important;
+}
+
+.portal-ccChart {
+	background-image: url('../images/PieChart3.png') !important;
+}
+
+.portal-xm {
+	background-image: url('../images/chart.gif') !important;
+}
+
+.portal-xmChart {
+	background-image: url('../images/ColumnChart1.png') !important;
+}
+
+.portal-rj {
+	background-image: url('../images/cog.png') !important;
+}
+
+.portal-rjChart {
+	background-image: url('../images/ColumnChart2.png') !important;
+}
+
+.portal-yj {
+	background-image: url('../images/error.png') !important;
+}
+
+.portal-db {
+	background-image: url('../images/startinput.gif') !important;
+}
+
+.portal-gg {
+	background-image: url('../images/Phone_49.gif') !important;
+}
+
+
+.btn-save {
+	background-image: url('../images/save.gif') !important;
+}
+
+.btn-cancel {
+	background-image: url('../images/delete1.gif') !important;
+}
+
+.ext-mb-error {
+	background-image: url('../images/error.png') !important;
+}
+
+.btn-onlineUser {
+	background-image: url('../images/online.png') !important;
+}
+
+.onlineUserWin {
+	background-image: url('../images/onlineUser.png') !important;
+}
+
+.user {
+    background-image:url('../images/user.gif') !important;
+}
+
+.user-girl {
+    background-image:url('../images/user_female.gif') !important;
+}
+
+.x-form-check-wrap,.x-form-radio-wrap{padding:3px 0 0 0;line-height:15px;width:100px;}
+.x-form-check-group .x-form-check-wrap,.x-form-radio-group .x-form-radio-wrap{height:15px;}
+.ext-ie .x-form-check-group .x-form-check-wrap,.ext-ie .x-form-radio-group .x-form-radio-wrap{height:17px;}

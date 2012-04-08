@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.dao">
+    <typeAlias alias="OfficeSeal" type="cn.com.atblue.oa.bean.OfficeSeal"/>
+
+    <select id="getPagedSealList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+            select t.*,c.user_name,c.real_name,o.orgna_name from OFFICE_SEAL t,c_user c,c_orgnization o
+            where t.user_id = c.user_id and c.orgna_id = o.orgna_id
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="realName">
+                <![CDATA[c.real_name like '%'||#realName#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="userName">
+                <![CDATA[c.user_name like '%'||#userName#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="orgnaId">
+                <![CDATA[o.orgna_id=#orgnaId#]]>
+            </isNotEmpty>
+        </dynamic>
+        order by o.orgna_name,c.real_name
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedSealCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) cn from OFFICE_SEAL t,c_user c,c_orgnization o
+            where t.user_id = c.user_id and c.orgna_id = o.orgna_id
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="realName">
+                <![CDATA[c.real_name like '%'||#realName#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="userName">
+                <![CDATA[c.user_name like '%'||#userName#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="orgnaId">
+                <![CDATA[o.orgna_id=#orgnaId#]]>
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    <select id="getAllUserList" resultClass="java.util.HashMap">
+        <![CDATA[
+            select * from C_USER t order by t.real_name
+        ]]>
+    </select>
+    <select id="getSealByUserId" parameterClass="String" resultClass="OfficeSeal">
+        <![CDATA[
+            select seal_id as sealId,user_id as userId,seal_pwd as sealPwd,create_person as createPerson,create_time as createTime,create_ip as createIp,seal as seal
+            from office_seal where user_id=#value# and rownum = 1
+        ]]>
+    </select>
+</sqlMap>

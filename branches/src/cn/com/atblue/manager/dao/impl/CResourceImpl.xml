@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="manager.cresource">
+    <typeAlias alias="CResource" type="cn.com.atblue.manager.bean.CResource"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="resId">
+                <![CDATA[res_id=#resId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="resName">
+                <![CDATA[res_name=#resName#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="resDesc">
+                <![CDATA[res_desc=#resDesc#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="resType">
+                <![CDATA[res_type=#resType#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="resOrder">
+                <![CDATA[res_order=#resOrder#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="resClass">
+                <![CDATA[res_class=#resClass#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="parentId">
+                <![CDATA[parent_id=#parentId#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addCResource" parameterClass="CResource">
+        <![CDATA[
+            insert into c_resource(
+                res_id,res_name,res_desc,res_type,res_order,
+				res_class,parent_id
+            ) values(
+                #resId#,#resName#,#resDesc#,#resType#,#resOrder#,
+				#resClass#,#parentId#
+            )
+        ]]>
+    </insert>
+
+    <update id="modCResource" parameterClass="CResource">
+        <![CDATA[
+            update c_resource
+            set res_id=#resId#,res_name=#resName#,res_desc=#resDesc#,
+				res_type=#resType#,res_order=#resOrder#,res_class=#resClass#,
+				parent_id=#parentId#
+            where RES_ID=#resId#
+        ]]>
+    </update>
+
+    <delete id="delCResource" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from c_resource
+            where RES_ID=#resId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="CResource">
+        <![CDATA[
+            select res_id as resId,res_name as resName,res_desc as resDesc,res_type as resType,res_order as resOrder,res_class as resClass,parent_id as parentId from c_resource where RES_ID=#resId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="CResource">
+        <![CDATA[
+            select * from c_resource
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from c_resource
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

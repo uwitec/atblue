@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="workflow.wdao">
+    <typeAlias alias="WActivity" type="cn.com.atblue.workflow.bean.WActivity"/>
+    <typeAlias alias="WConnect" type="cn.com.atblue.workflow.bean.WConnect"/>
+    <typeAlias alias="WLine" type="cn.com.atblue.workflow.bean.WLine"/>
+    <select id="getAllActivities" parameterClass="String" resultClass="WActivity">
+        <![CDATA[
+            SELECT ACTIVITY_ID     AS ACTIVITYID,
+                   ACTIVITY_NAME   AS ACTIVITYNAME,
+                   ACTIVITY_DESC   AS ACTIVITYDESC,
+                   FLOW_ID         AS FLOWID,
+                   ACTIVITY_TYPE   AS ACTIVITYTYPE,
+                   ACTIVITY_ORDER  AS ACTIVITYORDER,
+                   ACTIVITY_ROLE   AS ACTIVITYROLE,
+                   ACTIVITY_SFXDDW AS ACTIVITYSFXDDW
+              FROM W_ACTIVITY T
+             WHERE T.FLOW_ID = #value#
+        ]]>
+    </select>
+    <select id="getNextActivityId" parameterClass="String" resultClass="String">
+        <![CDATA[
+            SELECT T.END_ACTIVITY FROM W_LINE T WHERE T.START_ACTIVITY = #value#
+        ]]>
+    </select>
+    <select id="getNextInstanceId" parameterClass="String" resultClass="java.util.HashMap">
+        <![CDATA[
+            SELECT I.INSTANCE_ID,T.LINE_ID
+              FROM W_LINE T, W_INSTANCE I
+             WHERE T.END_ACTIVITY = I.ACTIVITY_ID
+               AND T.START_ACTIVITY = #value#
+        ]]>
+    </select>
+    <select id="getConnectByStartAndUserId" parameterClass="java.util.HashMap" resultClass="WConnect">
+        <![CDATA[
+            SELECT CONNECT_ID     AS CONNECTID,
+                   CONNECT_NAME   AS CONNECTNAME,
+                   CONNECT_VALUE  AS CONNECTVALUE,
+                   START_INSTANCE AS STARTINSTANCE,
+                   END_INSTANCE   AS ENDINSTANCE,
+                   LINE_ID        AS LINEID,
+                   PENDING_PERSON AS PENDINGPERSON,
+                   CREATE_TIME    AS CREATETIME
+              FROM W_CONNECT T
+             WHERE T.START_INSTANCE = #startInstanceId# AND T.PENDING_PERSON = #userId# AND ROWNUM =1
+        ]]>
+    </select>
+    <select id="getActivityByInstanceId" parameterClass="String" resultClass="WActivity">
+        <![CDATA[
+            SELECT T.ACTIVITY_ID     AS ACTIVITYID,
+                   T.ACTIVITY_NAME   AS ACTIVITYNAME,
+                   T.ACTIVITY_DESC   AS ACTIVITYDESC,
+                   T.FLOW_ID         AS FLOWID,
+                   T.ACTIVITY_TYPE   AS ACTIVITYTYPE,
+                   T.ACTIVITY_ORDER  AS ACTIVITYORDER,
+                   T.ACTIVITY_ROLE   AS ACTIVITYROLE,
+                   T.ACTIVITY_SFXDDW AS ACTIVITYSFXDDW
+              FROM W_ACTIVITY T, W_INSTANCE W
+             WHERE T.ACTIVITY_ID = W.ACTIVITY_ID
+               AND W.INSTANCE_ID = #value#
+        ]]>
+    </select>
+    <select id="getEndInstanceIDByStartAndVar" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <![CDATA[
+            SELECT T.INSTANCE_ID,L.LINE_ID
+              FROM W_INSTANCE T, W_LINE L
+             WHERE T.ACTIVITY_ID = L.END_ACTIVITY
+               AND L.START_ACTIVITY = #startActivityId#
+               AND L.LINE_VAR_VALUE = #varValue#
+        ]]>
+    </select>
+    <select id="getPagedWorkflowList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+            SELECT T.* FROM w_workflow T
+            WHERE 1=1
+       ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="flowName">
+                <![CDATA[t.flow_name like '%'||#flowName#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+        ORDER BY T.flow_name
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedWorkflowCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            SELECT COUNT(*) CN  FROM w_workflow T
+            WHERE 1=1
+       ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="flowName">
+                <![CDATA[t.flow_name like '%'||#flowName#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+    </select>
+
+    <delete id="deleteActivitiesByFlowId" parameterClass="String">
+        <![CDATA[
+            delete from w_activity
+            where flow_id=#value#
+       ]]>
+    </delete>
+    <delete id="deleteLinesByFlowId" parameterClass="String">
+        <![CDATA[
+            delete from w_line
+            where flow_id=#value#
+       ]]>
+    </delete>
+
+    <select id="getActivitiesByFlowId" parameterClass="String" resultClass="WActivity">
+        <![CDATA[
+            select  activity_id as activityId,activity_name as activityName,activity_desc as activityDesc,flow_id as flowId,activity_type as activityType,activity_order as activityOrder,activity_role as activityRole,activity_sfxddw as activitySfxddw
+             from w_activity
+            where flow_id=#value#
+            order by activity_name
+       ]]>
+    </select>
+
+    <select id="getLinesByFlowId" parameterClass="String" resultClass="WLine">
+        <![CDATA[
+            select * from w_line
+            where flow_id=#value#
+            order by line_name
+       ]]>
+    </select>
+
+    <select id="getStartActivity" parameterClass="String" resultClass="WActivity">
+        <![CDATA[
+            select activity_id as activityId,activity_name as activityName,activity_desc as activityDesc,flow_id as flowId,activity_type as activityType,activity_order as activityOrder,activity_role as activityRole,activity_sfxddw as activitySfxddw
+            from w_activity where t.flow_id = #flowId# and t.activity_type = '1'
+        ]]>
+    </select>
+
+    <select id="getStartLine" parameterClass="String" resultClass="WLine">
+        <![CDATA[
+            select line_id as lineId,line_name as lineName,line_var_value as lineVarValue,start_activity as startActivity,end_activity as endActivity,counter_type as counterType,counter_value as counterValue,flow_id as flowId
+            from w_line where t.start_activity = #value# and rownum = 1
+        ]]>
+    </select>
+
+    <select id="getLine" parameterClass="String" resultClass="WLine">
+        <![CDATA[
+            select line_id as lineId,line_name as lineName,line_var_value as lineVarValue,start_activity as startActivity,end_activity as endActivity,counter_type as counterType,counter_value as counterValue
+            from w_line where t.start_activity = #startActivityId# and t.line_var_value = #varValue# and rownum = 1
+        ]]>
+    </select>
+
+    <select id="getAllRoles"  resultClass="java.util.HashMap">
+        <![CDATA[
+            select * from C_ROLE t order by t.role_order
+        ]]>
+    </select>
+
+    <select id="getActivityIdByName"  parameterClass="String"  resultClass="String">
+        <![CDATA[
+            select t.activity_id from W_ACTIVITY t where t.activity_name = #value#
+        ]]>
+    </select>
+    <select id="getWorkflowIdByName"  parameterClass="String"  resultClass="String">
+    <![CDATA[
+            select t.flow_id from w_workflow t where t.flow_name = #value#  and rownum = 1
+        ]]>
+    </select>
+    <select id="getDefXmlByName"  parameterClass="String"  resultClass="String">
+    <![CDATA[
+            select t.flow_file from W_DEFINITION t,w_workflow w
+            where t.flow_id = w.flow_id and w.flow_name = #value#   and rownum = 1
+        ]]>
+    </select>
+</sqlMap>

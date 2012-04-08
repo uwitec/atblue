@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="workflow.wprocess">
+    <typeAlias alias="WProcess" type="cn.com.atblue.workflow.bean.WProcess"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="processId">
+                <![CDATA[process_id=#processId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="processName">
+                <![CDATA[process_name=#processName#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="flowId">
+                <![CDATA[flow_id=#flowId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="createPerson">
+                <![CDATA[create_person=#createPerson#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="createTime">
+                <![CDATA[create_time=#createTime#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="processStatus">
+                <![CDATA[process_status=#processStatus#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="instanceId">
+                <![CDATA[instance_id=#instanceId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="connectId">
+                <![CDATA[connect_id=#connectId#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addWProcess" parameterClass="WProcess">
+        <![CDATA[
+            insert into w_process(
+                process_id,process_name,flow_id,create_person,create_time,
+				process_status,instance_id,connect_id
+            ) values(
+                #processId#,#processName#,#flowId#,#createPerson#,#createTime#,
+				#processStatus#,#instanceId#,#connectId#
+            )
+        ]]>
+    </insert>
+
+    <update id="modWProcess" parameterClass="WProcess">
+        <![CDATA[
+            update w_process
+            set process_id=#processId#,process_name=#processName#,flow_id=#flowId#,
+				create_person=#createPerson#,create_time=#createTime#,process_status=#processStatus#,
+				instance_id=#instanceId#,connect_id=#connectId#
+            where PROCESS_ID=#processId#
+        ]]>
+    </update>
+
+    <delete id="delWProcess" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from w_process
+            where PROCESS_ID=#processId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="WProcess">
+        <![CDATA[
+            select process_id as processId,process_name as processName,flow_id as flowId,create_person as createPerson,create_time as createTime,process_status as processStatus,instance_id as instanceId,connect_id as connectId from w_process where PROCESS_ID=#processId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="WProcess">
+        <![CDATA[
+            select * from w_process
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from w_process
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>
