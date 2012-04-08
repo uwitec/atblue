@@ -71,6 +71,14 @@
 		<filter-name>struts2</filter-name>
 		<url-pattern>*.action</url-pattern>
 	</filter-mapping>
+		<servlet>
+		<servlet-name>OfficeFile</servlet-name>
+		<servlet-class>cn.com.atblue.common.servlet.OfficeDown</servlet-class>	
+	</servlet>
+		<servlet-mapping>
+		<servlet-name>OfficeFile</servlet-name>
+		<url-pattern>/officeFileDownload</url-pattern>
+	</servlet-mapping>
     <servlet>
         <servlet-name>sealDown</servlet-name>
         <servlet-class>cn.com.atblue.common.servlet.SealDownServlet</servlet-class>
