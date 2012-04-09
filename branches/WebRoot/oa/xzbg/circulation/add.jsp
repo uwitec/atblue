@@ -4,7 +4,7 @@
 <%@page import="java.sql.Date"%>
 <%@ include file="../../../import.jsp"%> 
 <%
-	OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculation");
+	OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculationDAO");
 	OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
 	String nexVal = "";
 	String sql = "select to_char(sysdate,'yyyy-')||lpad(to_number(substr(swh,6))+1,'3','0') val from office_circulation  where substr(swh,0,4)='" + DateUtil.format(DateUtil.getDate(),"yyyy") +"' order by substr(swh,0,4) desc, substr(swh,6) desc";
@@ -80,12 +80,12 @@
 			
 				Status status = null;
 				String tid = "";
-				if(ps!=null && ps.equals("2")){
-					String ld = fileUpload.getParameter("ldps");
-					status = workFlow.startWorkflow("8b6a1ca1-7eef-489c-8ad1-aaa758212d3b",ld);
-				}else{
-					status = workFlow.startWorkflow("8b6a1ca1-7eef-489c-8ad1-aaa758212d3b",nbr);
-				}
+//				if(ps!=null && ps.equals("2")){
+//					String ld = fileUpload.getParameter("ldps");
+//					status = workFlow.startWorkflow("8b6a1ca1-7eef-489c-8ad1-aaa758212d3b",ld);
+//				}else{
+//					status = workFlow.startWorkflow("8b6a1ca1-7eef-489c-8ad1-aaa758212d3b",nbr);
+//				}
 				
 				OfficeCirculationCheck odc = new OfficeCirculationCheck();
 				odc.setPkid(StringUtil.getUUID());
@@ -121,7 +121,6 @@
 	List ldList = dao.findUsersByRole(zyldRole); 
 
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -258,10 +257,10 @@
 			
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
-				background="<%=contentPath%>/resource/images/mhead.jpg">
+				background="<%=contentPath%>/images/mhead.jpg">
 				<tr>
 					<td width="3%" align="center">
-						<img src="<%=contentPath%>/resource/images/mlogo.jpg" width="11"
+						<img src="<%=contentPath%>/images/mlogo.jpg" width="11"
 							height="11">
 					</td>
 					<td width="15%" class="mhead">

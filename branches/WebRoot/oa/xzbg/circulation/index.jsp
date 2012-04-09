@@ -6,7 +6,7 @@
 	<jsp:setProperty name="pageBean" property="*" />
 </jsp:useBean>
 <%
-	OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculation");
+	OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculationDAO");
 	OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
 	//判断权限
 	boolean isRole = dao
@@ -21,7 +21,6 @@
 
 	List list = officeCirculationDAO.getByFreeSql("",pageBean);
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -107,9 +106,9 @@
 						<%
 							for (int i = 0; i < list.size(); i++) {
 								OfficeCirculation document = (OfficeCirculation) list.get(i);
-								WInstance history = workFlow.getHistory(document.getZt());
-								if(history==null) continue;
-								String instanceid = history.getInstanceId();
+//								WInstance history = workFlow.getHistory(document.getZt());
+//								if(history==null) continue;
+//								String instanceid = history.getInstanceId();
 						%>
 						<tr>
 							<td class="NormalDataColumn" align="center">
@@ -130,19 +129,19 @@
 								<%=StringUtil.parseNull(document.getLwdw(),"")%>&nbsp;
 							</td>
 							<td class="NormalDataColumn" align="center">
-								<%if(document.getZt().equals("save")){ %>
-									<span style="color: red">未传阅</span>
-								<%}else if(history.getActivityId().equals("f48aace8-0f9d-47de-a636-53d8c132c7fb")){ %>
-									<span style="color: green">结束</span>
-								<%}else{ %>
-									<span style="color: blue">传阅中</span>
-								<%} %>
+								<%--<%if(document.getZt().equals("save")){ %>--%>
+									<%--<span style="color: red">未传阅</span>--%>
+								<%--<%}else if(history.getActivityId().equals("f48aace8-0f9d-47de-a636-53d8c132c7fb")){ %>--%>
+									<%--<span style="color: green">结束</span>--%>
+								<%--<%}else{ %>--%>
+									<%--<span style="color: blue">传阅中</span>--%>
+								<%--<%} %>--%>
 							</td>
 							<td class="NormalDataColumn" align="center">
 								<%if(document.getZt()==null || document.getZt().equals("save")){ %>
 									<a href="./edit.jsp?pkid=<%=document.getCyid() %>">[编辑]</a>&nbsp;
 								<%} %>
-								<a href="javascript:onDelete('./delete.jsp?pkid=<%=document.getCyid() %>&pid=<%=history==null?"":history.getInstanceId() %>');">[删除]</a>&nbsp;
+								<a href="javascript:onDelete('./delete.jsp?pkid=<%=document.getCyid() %>&pid=');">[删除]</a>&nbsp;
 								<a href="./print.jsp?pkid=<%=document.getCyid() %>">[打印]</a>&nbsp;
 							</td>
 						</tr>
@@ -168,7 +167,7 @@
 		
 		    var tb = new Ext.Toolbar('toolbar');
 		    tb.render('toolbar');
-		    tb.addButton({text: '来文登记',icon: '../images/add.gif',cls: 'x-btn-text-icon',handler:function(){
+		    tb.addButton({text: '来文登记',icon: '<%=request.getContextPath()%>/images/add.gif',cls: 'x-btn-text-icon',handler:function(){
 		        window.location = 'add.jsp';
 		    }});
 			tb.doLayout();
