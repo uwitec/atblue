@@ -9,7 +9,19 @@
 
     <select id="getAllUser" parameterClass="java.util.HashMap" resultClass="CUser">
         <![CDATA[
-            SELECT * FROM C_USER T ORDER BY T.USER_NAME
+            SELECT USER_ID    AS USERID,
+               ORGNA_ID   AS ORGNAID,
+               USER_NAME  AS USERNAME,
+               PASSWORD   AS PASSWORD,
+               USER_ORDER AS USERORDER,
+               USER_LEVEL AS USERLEVEL,
+               REAL_NAME  AS REALNAME,
+               SEX        AS SEX,
+               AGE        AS AGE,
+               MOBILE     AS MOBILE,
+               PHONE      AS PHONE,
+               EMAIL      AS EMAIL,
+               USER_DESC  AS USERDESC FROM C_USER T ORDER BY T.USER_NAME
         ]]>
     </select>
     <select id="findUserByName" parameterClass="String" resultClass="CUser">
