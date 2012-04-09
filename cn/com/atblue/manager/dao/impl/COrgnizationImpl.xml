@@ -57,7 +57,7 @@
 
     <select id="queryForList" parameterClass="java.util.HashMap" resultClass="COrgnization">
         <![CDATA[
-            select * from c_orgnization
+            select orgna_id as orgnaId,orgna_name as orgnaName,orgna_order as orgnaOrder,parent_id as parentId,orgna_memo as orgnaMemo from c_orgnization
         ]]>
         <!--
         <dynamic prepend="where">
