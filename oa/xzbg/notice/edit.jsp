@@ -102,7 +102,6 @@
 
 	List userList = dao.getAllUser();
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -111,7 +110,7 @@
                 type="text/javascript" defer="defer"></script>
         <link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
               type="text/css">
-        <link href="<%=request.getContextPath()%>/js/ext/ /css/ext-all.css" rel="stylesheet" type="text/css">
+        <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
         <script type="text/javascript"
@@ -405,10 +404,10 @@
 			</div>
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
-				background="<%=contentPath%>/resource/images/mhead.jpg">
+				background="<%=contentPath%>/images/mhead.jpg">
 				<tr>
 					<td width="3%" align="center">
-						<img src="<%=contentPath%>/resource/images/mlogo.jpg" width="11"
+						<img src="<%=contentPath%>/images/mlogo.jpg" width="11"
 							height="11">
 					</td>
 					<td width="15%" class="mhead">

@@ -21,7 +21,6 @@
 
 	List list = officeDocumentsDAO.getByFreeSql(sb.toString(),pageBean);
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -163,10 +162,10 @@
 		
 		    var tb = new Ext.Toolbar('toolbar');
 		    tb.render('toolbar');
-		    tb.addButton({text: '发文登记',icon: '../images/add.gif',cls: 'x-btn-text-icon',handler:function(){
+		    tb.addButton({text: '发文登记',icon: '<%=request.getContextPath()%>/images/add.gif',cls: 'x-btn-text-icon',handler:function(){
 		        window.location = 'add.jsp';
 		    }});
-		    tb.addButton({text: '签收统计',icon: '../images/page_find.gif',cls: 'x-btn-text-icon',handler:function(){
+		    tb.addButton({text: '签收统计',icon: '<%=request.getContextPath()%>/images/page_find.gif',cls: 'x-btn-text-icon',handler:function(){
 		        window.location = 'count.jsp';
 		    }});
 			tb.doLayout();

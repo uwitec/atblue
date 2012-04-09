@@ -19,12 +19,11 @@
 		onc.setIp(request.getRemoteAddr());
 		onc.setQm(qm);
 		officeNoticeCheckDAO.updateByPrimaryKey(onc);
-		response.getOutputStream().print("<script>");
-        response.getOutputStream().print("window.location='index_sign.jsp';");
-        response.getOutputStream().print("</script>");
+		out.print("<script>");
+        out.print("window.location='index_sign.jsp';");
+        out.print("</script>");
 	}
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -87,48 +86,13 @@
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">
-			<div id="hello-win" class="x-hidden">
-				<div id="hello-tabs">
-			        <div class="x-tab" title="以下用户需要签收该通知">
-			            <table border="0" width="100%">
-			            		<tr>
-			            			<td colspan="4" align="left">
-			            				<hr width="100%">
-			            			</td>
-			            		</tr>
-				            	<%for(int i=0; i<checkList.size(); i++){
-				            		OfficeNoticeCheck u = (OfficeNoticeCheck)checkList.get(i);
-				            		CUser _tUser = dao.findUserById(u.getCheckman());
-				            		if(i==0){	
-				            	%>
-				            	<tr>
-				            		<td><input type="checkbox" name="ubox" <%if(u.getCheckflag()!=null && u.getCheckflag().equals("1")){ %> checked="checked"<%} %> disabled="disabled"><%=_tUser.getRealName() %></td>
-				            	<%	}else if(i%4==0){ %>
-				            	</tr>
-				            	<tr>
-				            		<td><input type="checkbox" name="ubox" <%if(u.getCheckflag()!=null && u.getCheckflag().equals("1")){%> checked="checked"<%} %> disabled="disabled"><%=_tUser.getRealName() %></td>
-				            	<%	}else{ %>
-				            		<td><input type="checkbox" name="ubox" <%if(u.getCheckflag()!=null && u.getCheckflag().equals("1")){ %> checked="checked"<%} %> disabled="disabled"><%=_tUser.getRealName() %></td>
-				            	<%	} %>
-				            	<%} %>
-				            	<%
-				            	if(checkList.size()%4!=0){
-					            	for(int i=0; i<checkList.size()%4-1; i++){%>
-					            		<td>&nbsp;</td>
-					            	<%}%>
-					            </tr>
-					            <%}%>
-			            </table>
-			        </div>
-	    		</div>
-			</div>
 			<form method="post" name="form1">
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
-				background="<%=contentPath%>/resource/images/mhead.jpg">
+				background="<%=contentPath%>/images/mhead.jpg">
 				<tr>
 					<td width="3%" align="center">
-						<img src="<%=contentPath%>/resource/images/mlogo.jpg" width="11"
+						<img src="<%=contentPath%>/images/mlogo.jpg" width="11"
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
