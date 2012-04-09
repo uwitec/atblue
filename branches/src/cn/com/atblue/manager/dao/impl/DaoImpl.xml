@@ -70,20 +70,22 @@
     </select>
     <select id="findUsersByRole" parameterClass="String" resultClass="CUser">
         <![CDATA[
-            SELECT USER_ID    AS USERID,
-               ORGNA_ID   AS ORGNAID,
-               USER_NAME  AS USERNAME,
-               PASSWORD   AS PASSWORD,
-               USER_ORDER AS USERORDER,
-               USER_LEVEL AS USERLEVEL,
-               REAL_NAME  AS REALNAME,
-               SEX        AS SEX,
-               AGE        AS AGE,
-               MOBILE     AS MOBILE,
-               PHONE      AS PHONE,
-               EMAIL      AS EMAIL,
-               USER_DESC  AS USERDESC FROM C_USER T,C_USERROLE UR
-            WHERE T.USER_ID = UR.USER_ID AND UR.ROLE_ID = #value#
+            SELECT T.USER_ID    AS USERID,
+             T.ORGNA_ID   AS ORGNAID,
+             T.USER_NAME  AS USERNAME,
+             T.PASSWORD   AS PASSWORD,
+             T.USER_ORDER AS USERORDER,
+             T.USER_LEVEL AS USERLEVEL,
+             T.REAL_NAME  AS REALNAME,
+             T.SEX        AS SEX,
+             T.AGE        AS AGE,
+             T.MOBILE     AS MOBILE,
+             T.PHONE      AS PHONE,
+             T.EMAIL      AS EMAIL,
+             T.USER_DESC  AS USERDESC
+        FROM C_USER T, C_USERROLE UR
+       WHERE T.USER_ID = UR.USER_ID
+         AND UR.ROLE_ID = #value#
         ]]>
     </select>
     <select id="getUsersByDepId" parameterClass="String" resultClass="CUser">
