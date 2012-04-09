@@ -51,18 +51,56 @@
     </select>
     <select id="findUserById" parameterClass="String" resultClass="CUser">
         <![CDATA[
-            SELECT T.* FROM C_USER T WHERE T.User_Id = #value#
+            SELECT 
+            USER_ID    AS USERID,
+               ORGNA_ID   AS ORGNAID,
+               USER_NAME  AS USERNAME,
+               PASSWORD   AS PASSWORD,
+               USER_ORDER AS USERORDER,
+               USER_LEVEL AS USERLEVEL,
+               REAL_NAME  AS REALNAME,
+               SEX        AS SEX,
+               AGE        AS AGE,
+               MOBILE     AS MOBILE,
+               PHONE      AS PHONE,
+               EMAIL      AS EMAIL,
+               USER_DESC  AS USERDESC
+             FROM C_USER T WHERE T.User_Id = #value#
         ]]>
     </select>
     <select id="findUsersByRole" parameterClass="String" resultClass="CUser">
         <![CDATA[
-            SELECT T.* FROM C_USER T,C_USERROLE UR
+            SELECT USER_ID    AS USERID,
+               ORGNA_ID   AS ORGNAID,
+               USER_NAME  AS USERNAME,
+               PASSWORD   AS PASSWORD,
+               USER_ORDER AS USERORDER,
+               USER_LEVEL AS USERLEVEL,
+               REAL_NAME  AS REALNAME,
+               SEX        AS SEX,
+               AGE        AS AGE,
+               MOBILE     AS MOBILE,
+               PHONE      AS PHONE,
+               EMAIL      AS EMAIL,
+               USER_DESC  AS USERDESC FROM C_USER T,C_USERROLE UR
             WHERE T.USER_ID = UR.USER_ID AND UR.ROLE_ID = #value#
         ]]>
     </select>
     <select id="getUsersByDepId" parameterClass="String" resultClass="CUser">
         <![CDATA[
-            SELECT T.* FROM C_USER T WHERE T.ORGNA_ID = #value#
+            SELECT USER_ID    AS USERID,
+               ORGNA_ID   AS ORGNAID,
+               USER_NAME  AS USERNAME,
+               PASSWORD   AS PASSWORD,
+               USER_ORDER AS USERORDER,
+               USER_LEVEL AS USERLEVEL,
+               REAL_NAME  AS REALNAME,
+               SEX        AS SEX,
+               AGE        AS AGE,
+               MOBILE     AS MOBILE,
+               PHONE      AS PHONE,
+               EMAIL      AS EMAIL,
+               USER_DESC  AS USERDESC FROM C_USER T WHERE T.ORGNA_ID = #value#
         ]]>
     </select>
     <select id="getMenuByParentId" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
