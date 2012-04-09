@@ -17,7 +17,6 @@
 	
 	List hasFileList = officeFileDAO.getByFk(pkid);
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -249,12 +248,16 @@
 										<td class="NormalDataColumn" align="left">
 											&nbsp;&nbsp;
 											<%
+											out.println(checkList.size()+"------------");
 												for(int i=0; i<checkList.size(); i++){
 													OfficeDocumentsCheck odc = (OfficeDocumentsCheck)checkList.get(i);
 													String _tempUser = "";
 													try{
 														_tempUser = dao.findUserById(odc.getCheckman()).getRealName();
-													}catch(Exception e){}
+														System.out.println(_tempUser+"------------");
+													}catch(Exception e){
+														e.printStackTrace();
+													}
 													if(odc.getCheckflag()==null || odc.getCheckflag().equals("0")){
 														out.print("<span style='color: red'>[" + _tempUser + "]</span>&nbsp;&nbsp;");
 													}

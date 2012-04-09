@@ -67,7 +67,7 @@
 		for (int i = 0; i < fileList.size(); i++) {
 			Map map = (Map) fileList.get(i);
 			OfficeFile uploadFile = new OfficeFile();
-			uploadFile.setPkid((String) map.get("rename"));
+			uploadFile.setPkid(StringUtil.getUUID());
 			uploadFile.setFkid(documentid);
 			uploadFile.setLrip(request.getRemoteAddr());
 			uploadFile.setLrr(_user.getRealName());
@@ -320,13 +320,13 @@
 				            		if(i==0){	
 				            	%>
 				            	<tr>
-				            		<td><input type="checkbox" name="ubox" value="<%=u.getOrgnaId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
+				            		<td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
 				            	<%	}else if(i%6==0){ %>
 				            	</tr>
 				            	<tr>
-				            		<td><input type="checkbox" name="ubox" value="<%=u.getOrgnaId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
+				            		<td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
 				            	<%	}else{ %>
-				            		<td><input type="checkbox" name="ubox" value="<%=u.getOrgnaId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
+				            		<td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
 				            	<%	} %>
 				            	<%} %>
 				            	<%
