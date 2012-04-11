@@ -51,12 +51,6 @@
                     x.src = a[i + 2];
                 }
         }
-        //-->
-        //切换到老版页面
-        function goToOld() {
-            var url = "<%=request.getContextPath()%>/yyxt/index/index_lead2.jsp";
-            window.parent.location = url;
-        }
         function open_pop(path) {
             window.open("<%=request.getContextPath()%>" + path, "", "width=200,height=500,top=" + (screen.availHeight - 240) / 2 + ",left=" + (screen.availWidth - 400) / 2);
         }
@@ -72,7 +66,7 @@
         }
     </script>
 </head>
-<body onload="MM_preloadImages('images/index/dbsy2.jpg','images/index/xxtx2.jpg')">
+<body>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td background="images/index/fooder_bg.gif">
@@ -91,21 +85,6 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
                     <td><img src="images/index/fooder_line.gif" width="2" height="24"/></td>
-                    <td>
-                        <table width="165" border="0" align="center" cellpadding="0" cellspacing="0">
-                            <tr>
-                                <td><a href="#" onclick="showDbsx()" onmouseout="MM_swapImgRestore()"
-                                       onmouseover="MM_swapImage('Image6','','images/index/dbsy2.jpg',1)"><img
-                                        src="images/index/dbsy.jpg" name="Image6" width="80" height="24" border="0"
-                                        id="Image6"/></a></td>
-                                <td>&nbsp;</td>
-                                <td width="80"><a href="#" onclick="messageAlerts();" onmouseout="MM_swapImgRestore()"
-                                                  onmouseover="MM_swapImage('Image7','','images/index/xxtx2.jpg',1)"><img
-                                        src="images/index/xxtx.jpg" name="Image7" width="80" height="24" border="0"
-                                        id="Image7"/></a></td>
-                            </tr>
-                        </table>
-                    </td>
                 </tr>
             </table>
         </td>
