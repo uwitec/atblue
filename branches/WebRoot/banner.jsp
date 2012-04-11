@@ -41,8 +41,8 @@ function MM_swapImage() { //v3.0
 	    <td background="images/index/banner_line.jpg">&nbsp;</td>
 	    <td width="576" background="images/index/banner_right.jpg"><table width="404" border="0" align="center" cellpadding="0" cellspacing="0">
 	      <tr>
+	        <td width="92">&nbsp;</td>
 	        <td width="124"><a href="javascript:parent.location.reload()" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image2','','images/index/banner_sys_home2.png',1)"><img src="images/index/banner_sys_home.png" name="Image2" width="124" height="25" border="0" id="Image2" /></a></td>
-	        <td width="92"><a href="#" onclick="showNotice();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image3','','images/index/banner_sys_noce2.png',1)"><img src="images/index/banner_sys_noce.png" name="Image3" width="92" height="25" border="0" id="Image3" /></a></td>
 	        <td width="67"><a href="#" onclick="showHelp();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image4','','images/index/banner_sys_help2.png',1)"><img src="images/index/banner_sys_help.png" name="Image4" width="67" height="25" border="0" id="Image4" /></a></td>
 	        <td><a href="#" onclick="logout();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image5','','images/index/banner_sys_ex2.png',1)"><img src="images/index/banner_sys_ex.png" name="Image5" width="121" height="25" border="0" id="Image5" /></a></td>
 	      </tr>
