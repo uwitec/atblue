@@ -96,6 +96,18 @@
         <servlet-name>ReportServer</servlet-name>
         <url-pattern>/ReportServer</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>XiorkFlowWorkSpace</servlet-name>
+        <servlet-class>
+            cn.com.atblue.common.servlet.XiorkFlowWorkSpace
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>XiorkFlowWorkSpace</servlet-name>
+        <url-pattern>
+            /js/XiorkFlow/XiorkFlowWorkSpace.js
+        </url-pattern>
+    </servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
 	</welcome-file-list>
