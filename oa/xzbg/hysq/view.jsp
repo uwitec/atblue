@@ -297,7 +297,7 @@
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
 									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										会议名称<span style="color: red">&nbsp;*</span>
+										会议名称
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
@@ -307,7 +307,7 @@
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										申请部门<span style="color: red">&nbsp;*</span>
+										申请部门
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
@@ -316,7 +316,7 @@
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										与会人员<span style="color: red">&nbsp;*</span>
+										与会人员
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
@@ -328,7 +328,7 @@
 
 								<tr>
 									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										申请开始时间<span style="color: red">&nbsp;*</span>
+										申请开始时间
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
@@ -337,7 +337,7 @@
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										申请结束时间<span style="color: red">&nbsp;*</span>
+										申请结束时间
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;

@@ -136,7 +136,7 @@
 							</td>
 							
 							<td class="NormalDataColumn" align="left">
-								<%=StringUtil.parseNull(map.get("SQBM"),"")%>&nbsp;
+								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
 							</td>
 							<td class="NormalDataColumn" align="center">
 								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
@@ -152,8 +152,8 @@
                                 <%=DateUtil.format(eTime.timestampValue(), "yyyy-MM-dd HH:mm")%>
                                 <% }%>
 							</td>
-							<td class="NormalDataColumn" align="center">
-								<%=StringUtil.parseNull(map.get("HYNR"),"")%>
+							<td class="NormalDataColumn" align="left">
+								<%=StringUtil.cutString(StringUtil.parseNull(map.get("HYNR"),""),25)%>
 							</td>
 							<td class="NormalDataColumn" align="center">
 								<%=StringUtil.parseNull(map.get("SQZT"),"")%>
@@ -161,7 +161,7 @@
 							<td class="NormalDataColumn" align="center" nowrap="nowrap">
                                 <%
                                     if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){ %>
-                                     发送给<select><option>adfasfdas</option></select>审批<input type="button" value="提交"/>
+                                     发送给<select><option>adfasfdas</option></select>审批<input type="button" class="button"  style="width:40px" value="提交"/>
                                 <% }else{%>
                                 <a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">[编辑]</a>&nbsp;
                                 <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
