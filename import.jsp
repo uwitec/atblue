@@ -28,6 +28,7 @@
     CUser _user = (CUser)session.getAttribute("cUser");
     Dao dao = (Dao)SpringFactory.instance.getBean("dao");
     ODao oDao = (ODao)SpringFactory.instance.getBean("oDao");
+    Workflow workflow = (Workflow)SpringFactory.instance.getBean("workflow");
     COrgnizationDAO orgnizationDAO = (COrgnizationDAO)SpringFactory.instance.getBean("orgnizationDAO");
     OfficeNoticeDAO officeNoticeDAO = (OfficeNoticeDAO)SpringFactory.instance.getBean("officeNoticeDAO");
     OfficeFileDAO officeFileDAO = (OfficeFileDAO) SpringFactory.instance.getBean("officeFileDAO");
