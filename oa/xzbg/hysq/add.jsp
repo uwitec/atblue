@@ -4,21 +4,14 @@
 <%@ page import="java.util.Map" %>
 <%@ include file="../../../import.jsp"%>
 <%
-
     CUser cUser = (CUser)session.getAttribute("cUser");
     cUser = cUser == null?new CUser():cUser;
     String orgId = cUser.getOrgnaId();
     Map paramMap = new HashMap();
     paramMap.put("orgnaId",orgId);
     COrgnization cOrgnization = orgnizationDAO.queryForBean(paramMap);
-    String sqid = StringUtil.parseNull(request.getParameter("sqid"),"");
-    Map map = new HashMap();
-    map.put("sqid",sqid);
-    OfficeHysq hysq = officeHysqDAO.queryForBean(map);
-    String[] checkman =oDao.getCjhyryBySqid(sqid);
-    hysq = hysq == null?new OfficeHysq():hysq;
+    cOrgnization = cOrgnization == null?new COrgnization():cOrgnization;
 	if (request.getMethod().equals("POST")) {
-        String SQID = StringUtil.parseNull(request.getParameter("SQID"),"");
         String HYMC = StringUtil.parseNull(request.getParameter("HYMC"),"");
         String SQBM = StringUtil.parseNull(request.getParameter("SQBM"),"");
         String HYNR = StringUtil.parseNull(request.getParameter("HYNR"),"");
@@ -26,16 +19,14 @@
         String SQKSSJ = StringUtil.parseNull(request.getParameter("SQKSSJ"),"");
         String SQJSSJ = StringUtil.parseNull(request.getParameter("SQJSSJ"),"");
         String flag = StringUtil.parseNull(request.getParameter("flag"),"");
-        map.put("sqid",SQID);
-        OfficeHysq officeHysq = officeHysqDAO.queryForBean(map);
-        officeHysq.setSqid(SQID);
+        OfficeHysq officeHysq = new  OfficeHysq();
+        officeHysq.setSqid(StringUtil.getUUID());
         officeHysq.setBz(BZ);
         officeHysq.setHymc(HYMC);
         officeHysq.setHynr(HYNR);
         officeHysq.setSqbm(SQBM);
-        officeHysq.setSqsj(new java.util.Date());
-        officeHysq.setSqr(cUser.getUserId());
         officeHysq.setSqzt("已保存");//保存状态
+        officeHysq.setSqsj(new java.util.Date());
         if(cUser != null)
             officeHysq.setSqr(cUser.getUserId());
         if(!StringUtil.isBlankOrEmpty(SQKSSJ)){
@@ -43,17 +34,16 @@
                     "yyyy-MM-dd HH:mm").getTime()));
         }
         if(!StringUtil.isBlankOrEmpty(SQJSSJ)){
-            officeHysq.setSqkssj(new Timestamp(DateUtil.parse(SQJSSJ,
+            officeHysq.setSqjssj(new Timestamp(DateUtil.parse(SQJSSJ,
                     "yyyy-MM-dd HH:mm").getTime()));
         }
         if("startup".equals(flag)){
             officeHysq.setSqzt("已申请");
             //创建流程代码在这里
         }
-        officeHysqDAO.modOfficeHysq(officeHysq);
+        officeHysqDAO.addOfficeHysq(officeHysq);
 		
 		//保存用户
-        oDao.deleteCjhyryBySqid(sqid);
 		String[] ubox = request.getParameterValues("ubox");
 		for(int i=0; i<ubox.length; i++){
             OfficeCjhyry  officeCjhyry = new OfficeCjhyry();
@@ -133,6 +123,7 @@
 					alert("请输入正确的结束时间,例如2009-12-23 15:46");
 					return;
 				}
+
 				document.form1.submit();
 			}
             function startup(){
@@ -272,7 +263,7 @@
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">
-		<form action="edit.jsp" name="form1" method="post">
+		<form action="add.jsp" name="form1" method="post">
             <input type="hidden" name="flag" value=""/>
             <div id="hello-win" class="x-hidden">
                 <div id="hello-tabs">
@@ -291,13 +282,13 @@
                                 if(i==0){
                             %>
                             <tr>
-                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                                <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
                                 <%	}else if(i%6==0){ %>
                             </tr>
                             <tr>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                                <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
                                 <%	}else{ %>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                                <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
                                 <%	} %>
                                 <%} %>
                                 <%
@@ -331,8 +322,8 @@
 											onclick="checkForm();" value="保存">
 										&nbsp;
                                         <input type="button" class="button"
-											onclick="startup();" value="创建流程并启动">
-										&nbsp;
+                                               onclick="startup();" value="创建流程并启动">
+                                        &nbsp;
 										<input type="button" class="button" id="button1"
 											onclick="history.back()" value="返回">
 										&nbsp;
@@ -357,8 +348,7 @@
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
-                                        <input type="hidden" name="SQID" value="<%=StringUtil.parseNull(hysq.getSqid(),"")%>"  style="width:500px"/>
-                                        <input type="text" name="HYMC" value="<%=StringUtil.parseNull(hysq.getHymc(),"")%>"  style="width:500px"/>
+                                        <input type="text" name="HYMC" value=""  style="width:500px"/>
 									</td>
 								</tr>
 								<tr>
@@ -395,7 +385,7 @@
 										&nbsp;&nbsp;
 										<input type="text"
 											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
-											name="SQKSSJ" class="Wdate" style="width: 200px;" value="<%=StringUtil.parseNull(hysq.getSqkssj(),"")%>">
+											name="SQKSSJ" class="Wdate" style="width: 200px;">
 									</td>
 								</tr>
 								<tr>
@@ -406,7 +396,7 @@
 										&nbsp;&nbsp;
 										<input type="text"
 											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
-											name="SQJSSJ" class="Wdate" style="width: 200px;" value="<%=StringUtil.parseNull(hysq.getSqjssj(),"")%>">
+											name="SQJSSJ" class="Wdate" style="width: 200px;">
 									</td>
 								</tr>
 
@@ -415,7 +405,7 @@
 										会议内容及目的
 									</td>
 									<td class="NormalDataColumn" align="left">
-										<textarea cols="80" id="HYNR" name="HYNR" rows="10"><%=StringUtil.parseNull(hysq.getHynr(),"")%></textarea>
+										<textarea cols="80" id="HYNR" name="HYNR" rows="10"></textarea>
 									</td>
 								</tr>
 
@@ -425,7 +415,7 @@
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
-                                        <textarea cols="80"name="BZ" rows="5"><%=StringUtil.parseNull(hysq.getBz(),"")%></textarea>
+                                        <textarea cols="80"name="BZ" rows="5"></textarea>
 									</td>
 								</tr>
 							</table>

@@ -17,56 +17,6 @@
     OfficeHysq hysq = officeHysqDAO.queryForBean(map);
     String[] checkman =oDao.getCjhyryBySqid(sqid);
     hysq = hysq == null?new OfficeHysq():hysq;
-	if (request.getMethod().equals("POST")) {
-        String SQID = StringUtil.parseNull(request.getParameter("SQID"),"");
-        String HYMC = StringUtil.parseNull(request.getParameter("HYMC"),"");
-        String SQBM = StringUtil.parseNull(request.getParameter("SQBM"),"");
-        String HYNR = StringUtil.parseNull(request.getParameter("HYNR"),"");
-        String BZ = StringUtil.parseNull(request.getParameter("BZ"),"");
-        String SQKSSJ = StringUtil.parseNull(request.getParameter("SQKSSJ"),"");
-        String SQJSSJ = StringUtil.parseNull(request.getParameter("SQJSSJ"),"");
-        String flag = StringUtil.parseNull(request.getParameter("flag"),"");
-        map.put("sqid",SQID);
-        OfficeHysq officeHysq = officeHysqDAO.queryForBean(map);
-        officeHysq.setSqid(SQID);
-        officeHysq.setBz(BZ);
-        officeHysq.setHymc(HYMC);
-        officeHysq.setHynr(HYNR);
-        officeHysq.setSqbm(SQBM);
-        officeHysq.setSqsj(new java.util.Date());
-        officeHysq.setSqr(cUser.getUserId());
-        officeHysq.setSqzt("已保存");//保存状态
-        if(cUser != null)
-            officeHysq.setSqr(cUser.getUserId());
-        if(!StringUtil.isBlankOrEmpty(SQKSSJ)){
-            officeHysq.setSqkssj(new Timestamp(DateUtil.parse(SQKSSJ,
-                    "yyyy-MM-dd HH:mm").getTime()));
-        }
-        if(!StringUtil.isBlankOrEmpty(SQJSSJ)){
-            officeHysq.setSqkssj(new Timestamp(DateUtil.parse(SQJSSJ,
-                    "yyyy-MM-dd HH:mm").getTime()));
-        }
-        if("startup".equals(flag)){
-            officeHysq.setSqzt("已申请");
-            //创建流程代码在这里
-        }
-        officeHysqDAO.modOfficeHysq(officeHysq);
-		
-		//保存用户
-        oDao.deleteCjhyryBySqid(sqid);
-		String[] ubox = request.getParameterValues("ubox");
-		for(int i=0; i<ubox.length; i++){
-            OfficeCjhyry  officeCjhyry = new OfficeCjhyry();
-            officeCjhyry.setPkid(StringUtil.getUUID());
-            officeCjhyry.setSqid(officeHysq.getSqid());
-            officeCjhyry.setUserid(ubox[i]);
-            officeCjhyryDAO.addOfficeCjhyry(officeCjhyry);
-		}
-%>
-		<script>
-		    window.location='index.jsp';
-		</script>
-<%	}
      List userList  = dao.getAllUser();
 %>
 <html>
@@ -272,7 +222,7 @@
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">
-		<form action="edit.jsp" name="form1" method="post">
+		<form action="add.jsp" name="form1" method="post">
             <input type="hidden" name="flag" value=""/>
             <div id="hello-win" class="x-hidden">
                 <div id="hello-tabs">
@@ -320,19 +270,13 @@
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
-						新建会议申请
+						查看会议申请
 					</td>
 					<td width="74%" align="left" class="mhead">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
 							<tbody>
 								<tr>
 									<td align="left">
-										<input type="button" class="button" id="button"
-											onclick="checkForm();" value="保存">
-										&nbsp;
-                                        <input type="button" class="button"
-											onclick="startup();" value="创建流程并启动">
-										&nbsp;
 										<input type="button" class="button" id="button1"
 											onclick="history.back()" value="返回">
 										&nbsp;
@@ -358,21 +302,16 @@
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
                                         <input type="hidden" name="SQID" value="<%=StringUtil.parseNull(hysq.getSqid(),"")%>"  style="width:500px"/>
-                                        <input type="text" name="HYMC" value="<%=StringUtil.parseNull(hysq.getHymc(),"")%>"  style="width:500px"/>
+                                        <%=StringUtil.parseNull(hysq.getHymc(),"")%>
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-                                        <%
-                                            Dao mdao = (Dao) SpringFactory.instance.getBean("dao");
-                                            List list = dao.getSelectOrgTrees();
-                                            list = list == null ? new ArrayList() : list;
-                                        %>
 										申请部门<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
-                                        <input type="hidden" name="SQBM" value="<%=StringUtil.parseNull(orgId,"")%>"/><%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%>
+                                        <%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%>
 									</td>
 								</tr>
 								<tr>
@@ -393,9 +332,7 @@
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
-										<input type="text"
-											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
-											name="SQKSSJ" class="Wdate" style="width: 200px;" value="<%=StringUtil.parseNull(hysq.getSqkssj(),"")%>">
+										<%=StringUtil.parseNull(hysq.getSqkssj(),"")%>
 									</td>
 								</tr>
 								<tr>
@@ -404,9 +341,7 @@
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
-										<input type="text"
-											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
-											name="SQJSSJ" class="Wdate" style="width: 200px;" value="<%=StringUtil.parseNull(hysq.getSqjssj(),"")%>">
+										<%=StringUtil.parseNull(hysq.getSqjssj(),"")%>
 									</td>
 								</tr>
 
