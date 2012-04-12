@@ -120,7 +120,9 @@
 
     <select id="getLinesByFlowId" parameterClass="String" resultClass="WLine">
         <![CDATA[
-            select * from w_line
+            select
+              line_id as lineId,line_name as lineName,line_var_value as lineVarValue,start_activity as startActivity,end_activity as endActivity,counter_type as counterType,counter_value as counterValue
+             from w_line
             where flow_id=#value#
             order by line_name
        ]]>
@@ -129,21 +131,21 @@
     <select id="getStartActivity" parameterClass="String" resultClass="WActivity">
         <![CDATA[
             select activity_id as activityId,activity_name as activityName,activity_desc as activityDesc,flow_id as flowId,activity_type as activityType,activity_order as activityOrder,activity_role as activityRole,activity_sfxddw as activitySfxddw
-            from w_activity where t.flow_id = #flowId# and t.activity_type = '1'
+            from w_activity t where t.flow_id = #flowId# and t.activity_type = '1'
         ]]>
     </select>
 
     <select id="getStartLine" parameterClass="String" resultClass="WLine">
         <![CDATA[
             select line_id as lineId,line_name as lineName,line_var_value as lineVarValue,start_activity as startActivity,end_activity as endActivity,counter_type as counterType,counter_value as counterValue,flow_id as flowId
-            from w_line where t.start_activity = #value# and rownum = 1
+            from w_line t  where t.start_activity = #value# and rownum = 1
         ]]>
     </select>
 
-    <select id="getLine" parameterClass="String" resultClass="WLine">
+    <select id="getLine" parameterClass="java.util.HashMap" resultClass="WLine">
         <![CDATA[
             select line_id as lineId,line_name as lineName,line_var_value as lineVarValue,start_activity as startActivity,end_activity as endActivity,counter_type as counterType,counter_value as counterValue
-            from w_line where t.start_activity = #startActivityId# and t.line_var_value = #varValue# and rownum = 1
+            from w_line t where t.start_activity = #startActivityId# and t.line_var_value = #varValue# and rownum = 1
         ]]>
     </select>
 
@@ -167,6 +169,25 @@
     <![CDATA[
             select t.flow_file from W_DEFINITION t,w_workflow w
             where t.flow_id = w.flow_id and w.flow_name = #value#   and rownum = 1
+        ]]>
+    </select>
+    <select id="getNextUserRole"  parameterClass="String"  resultClass="String">
+    <![CDATA[
+           select  a.activity_role from W_CONNECT t,w_instance w,w_activity a
+            where t.end_instance = w.instance_id and w.activity_id = a.activity_id
+            and t.connect_id = #value# and rownum = 1
+        ]]>
+    </select>
+    <select id="getUsersByRoleName"  parameterClass="String"  resultClass="java.util.HashMap">
+    <![CDATA[
+        select c.user_id,c.user_name,c.real_name from C_USERROLE t,c_user c,c_role r
+        where t.user_id = c.user_id and t.role_id = r.role_id and r.role_name= #value#
+        ]]>
+    </select>
+    <select id="getUsersByRoleNameAndOrgId"  parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
+    <![CDATA[
+        SELECT C.USER_ID,C.USER_NAME,C.REAL_NAME FROM C_USERROLE T,C_USER C,C_ROLE R
+        WHERE T.USER_ID = C.USER_ID AND T.ROLE_ID = R.ROLE_ID and c.orgna_id = #orgnaId# and r.role_name=#roleName#
         ]]>
     </select>
 </sqlMap>

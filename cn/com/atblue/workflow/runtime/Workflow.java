@@ -6,6 +6,7 @@ import cn.com.atblue.workflow.dao.*;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,7 +40,7 @@ public class Workflow {
         wProcess.setProcessId(StringUtil.getUUID());
         wProcess.setCreateTime(new Date());
         wProcess.setCreatePerson(userId);
-        wProcess.setProcessStatus("9");
+        wProcess.setProcessStatus("1");
         wProcessDAO.addWProcess(wProcess);
 
         //查找开始活动定义信息
@@ -76,7 +77,7 @@ public class Workflow {
         wConnect.setEndInstance(nextInstance.getInstanceId());
         wConnect.setCreateTime(new Date());
         wConnect.setPendingPerson(userId);
-        wConnect.setRealPerson(userId);
+//        wConnect.setRealPerson(userId);
         wConnectDAO.addWConnect(wConnect);
         wProcess.setInstanceId(wInstance.getInstanceId());
         wProcess.setConnectId(wConnect.getConnectId());
@@ -105,7 +106,7 @@ public class Workflow {
         paramMap.put("processId", processId);
         WProcess wProcess = wProcessDAO.queryForBean(paramMap);
         //流程结束返回null
-        if(wProcess == null || "9".equals(wProcess.getProcessStatus()))return null;
+        if (wProcess == null || "9".equals(wProcess.getProcessStatus())) return null;
         boolean hasInPendingPerson = false;
         boolean hasInRealPerson = false;
         if (wConnect != null) {
@@ -139,16 +140,16 @@ public class Workflow {
         if (hasInPendingPerson && !hasInRealPerson) {
             return connectId;
         }
+        System.out.println("connectId:"+connectId);
         return null;
     }
 
     /**
-     *
      * 如果当前连接实例的待处理人为1个，则4，否则5
      * 4、设置下一个活动实例的状态为9，并设置流程实例中的当前活动实例编码为下一个活动实例的编码，转到6
      * 5、设置下一个活动实例的状态为2，并设置流程实例中的当前活动实例编码为下一个活动实例的编码，
-     *      并设置当前用户到连接实例的实际处理人中。查找当前连接的定义，获取会签类型和会签值字段，
-     *       如果是全部同意，则根据待处理人=实际处理人信息，则到6，如果是部分同意，则根据会签值百分比，判断是否结束该活动
+     * 并设置当前用户到连接实例的实际处理人中。查找当前连接的定义，获取会签类型和会签值字段，
+     * 如果是全部同意，则根据待处理人=实际处理人信息，则到6，如果是部分同意，则根据会签值百分比，判断是否结束该活动
      * 6、设置当前活动实例状态为9，根据当前活动定义的编码、变量值和当前用户查询下一个的连接定义，并创建该连接实例和结束活动实例，设置待处理人为nextuser（可以多人），结束活动实例状态为1
      * 7、如果结束活动实例是结束活动，则修改当前流程实例的状态为结束，设置结束活动为当前活动
      *
@@ -157,7 +158,7 @@ public class Workflow {
      * @param nextUserIds
      * @param varValue
      */
-    public void completeMission(String processId, String connectId, String userId, String[] nextUserIds, String varValue) throws WorkflowException {
+    public String completeMission(String processId, String connectId, String userId, String[] nextUserIds, String varValue) throws WorkflowException {
         //如果当前连接实例的待处理人为1个，则4，否则5
         Map paramMap = new HashMap();
         paramMap.put("connectId", connectId);
@@ -225,8 +226,8 @@ public class Workflow {
                     wInstanceDAO.addWInstance(nextInstance);
                     paramMap.put("activityId", nextLine.getEndActivity());
                     WActivity endActivity = wActivityDAO.queryForBean(paramMap);
-                    if(endActivity != null){
-                        if("9".equals(endActivity.getActivityType())){
+                    if (endActivity != null) {
+                        if ("9".equals(endActivity.getActivityType())) {
                             //如果是结束节点
                             wProcess.setProcessStatus("9");
                             wProcessDAO.modWProcess(wProcess);
@@ -248,13 +249,12 @@ public class Workflow {
                 WLine nextLine = wDao.getLine(curActivityId, varValue);
                 wConnect = new WConnect();
                 wConnect.setConnectId(StringUtil.getUUID());
-                wConnect.setStartInstance(wInstance.getInstanceId());
-                wConnect.setEndInstance(nextInstanceId);
+                wConnect.setStartInstance(nextInstanceId);
+
                 wConnect.setPendingPerson(StringUtil.combineStringArray(nextUserIds, ","));
                 wConnect.setConnectValue(varValue);
                 wConnect.setCreateTime(new Date());
                 wConnect.setLineId(nextLine.getLineId());
-                wConnectDAO.addWConnect(wConnect);
 
                 WInstance nextInstance = new WInstance();
                 nextInstance.setInstanceId(StringUtil.getUUID());
@@ -264,8 +264,8 @@ public class Workflow {
                 nextInstance.setInstanceStatus("1");
                 paramMap.put("activityId", nextLine.getEndActivity());
                 WActivity endActivity = wActivityDAO.queryForBean(paramMap);
-                if(endActivity != null){
-                    if("9".equals(endActivity.getActivityType())){
+                if (endActivity != null) {
+                    if ("9".equals(endActivity.getActivityType())) {
                         //如果是结束节点
                         wProcess.setProcessStatus("9");
                         wProcessDAO.modWProcess(wProcess);
@@ -274,8 +274,12 @@ public class Workflow {
                 }
                 nextInstance.setProcessId(wProcess.getProcessId());
                 wInstanceDAO.addWInstance(nextInstance);
+                wConnect.setEndInstance(nextInstance.getInstanceId());
+                wConnectDAO.addWConnect(wConnect);
             }
         }
+        System.out.println("wConnect.getConnectId():"+wConnect.getConnectId());
+        return wConnect.getConnectId();
     }
 
     public double getPercent(String v1, String v2) {
@@ -295,6 +299,45 @@ public class Workflow {
             }
         }
         return n / s1.length;
+    }
+
+    public String getNextUserSelectOptions(String connectId, String orgnaId) {
+        StringBuffer s = new StringBuffer("");
+        String nextRole = wDao.getNextUserRole(connectId);
+        System.out.println("nextRole:"+nextRole);
+        if (!StringUtil.isBlankOrEmpty(nextRole)) {
+            String[] roles = StringUtil.split(nextRole, "、"); //多个角色用、分割
+            if (roles != null && roles.length > 0) {
+                for (int i = 0; i < roles.length; i++) {
+                    String role = roles[i];
+                    if (role.endsWith("!")) {//角色名称后缀有！的需要显示当前登录用户的组织机构
+                        String r = role.substring(0, role.length() - 1);
+                        if (!StringUtil.isBlankOrEmpty(r)) {
+                            List users = wDao.getUsersByRoleNameAndOrgId(r, orgnaId);
+                            if (users != null && users.size() > 0) {
+                                for (int j = 0; j < users.size(); j++) {
+                                    Map uMap = (Map) users.get(j);
+                                    s.append("<option value=\"" + StringUtil.parseNull(uMap.get("USER_ID"), "") + "\">");
+                                    s.append(StringUtil.parseNull(uMap.get("REAL_NAME"), ""));
+                                    s.append("</option>");
+                                }
+                            }
+                        }
+                    } else {
+                        List users = wDao.getUsersByRoleName(role);
+                        if (users != null && users.size() > 0) {
+                            for (int j = 0; j < users.size(); j++) {
+                                Map uMap = (Map) users.get(j);
+                                s.append("<option value=\"" + StringUtil.parseNull(uMap.get("USER_ID"), "") + "\">");
+                                s.append(StringUtil.parseNull(uMap.get("REAL_NAME"), ""));
+                                s.append("</option>");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return s.toString();
     }
 
     public WActivityDAO getwActivityDAO() {
