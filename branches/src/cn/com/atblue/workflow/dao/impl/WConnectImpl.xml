@@ -9,6 +9,9 @@
             <isNotEmpty prepend=" and " property="connectId">
                 <![CDATA[connect_id=#connectId#]]>
             </isNotEmpty>
+            <isNotEmpty prepend=" and " property="processId">
+                <![CDATA[process_id=#processId#]]>
+            </isNotEmpty>
             <isNotEmpty prepend=" and " property="connectName">
                 <![CDATA[connect_name=#connectName#]]>
             </isNotEmpty>
@@ -38,11 +41,11 @@
     <insert id="addWConnect" parameterClass="WConnect">
         <![CDATA[
             insert into w_connect(
-                connect_id,connect_name,connect_value,start_instance,end_instance,
-				line_id,pending_person,create_time,real_person
+                connect_id,process_id,connect_name,connect_value,start_instance,
+				end_instance,line_id,pending_person,create_time,real_person
             ) values(
-                #connectId#,#connectName#,#connectValue#,#startInstance#,#endInstance#,
-				#lineId#,#pendingPerson#,#createTime#,#realPerson#
+                #connectId#,#processId#,#connectName#,#connectValue#,#startInstance#,
+				#endInstance#,#lineId#,#pendingPerson#,#createTime#,#realPerson#
             )
         ]]>
     </insert>
@@ -50,9 +53,10 @@
     <update id="modWConnect" parameterClass="WConnect">
         <![CDATA[
             update w_connect
-            set connect_id=#connectId#,connect_name=#connectName#,connect_value=#connectValue#,
-				start_instance=#startInstance#,end_instance=#endInstance#,line_id=#lineId#,
-				pending_person=#pendingPerson#,create_time=#createTime#,real_person=#realPerson#
+            set connect_id=#connectId#,process_id=#processId#,connect_name=#connectName#,
+				connect_value=#connectValue#,start_instance=#startInstance#,end_instance=#endInstance#,
+				line_id=#lineId#,pending_person=#pendingPerson#,create_time=#createTime#,
+				real_person=#realPerson#
             where CONNECT_ID=#connectId#
         ]]>
     </update>
@@ -66,7 +70,7 @@
 
     <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="WConnect">
         <![CDATA[
-            select connect_id as connectId,connect_name as connectName,connect_value as connectValue,start_instance as startInstance,end_instance as endInstance,line_id as lineId,pending_person as pendingPerson,create_time as createTime,real_person as realPerson from w_connect where CONNECT_ID=#connectId#
+            select connect_id as connectId,process_id as processId,connect_name as connectName,connect_value as connectValue,start_instance as startInstance,end_instance as endInstance,line_id as lineId,pending_person as pendingPerson,create_time as createTime,real_person as realPerson from w_connect where CONNECT_ID=#connectId#
         ]]>
     </select>
 

@@ -4,11 +4,12 @@ import java.util.Date;
 
 /**
 * 
-* @newtime 2012-04-05 17:29:10
+* @newtime 2012-04-12 23:19:25
 */
 public class WConnect {
 
 private String connectId;
+private String processId;
 private String connectName;
 private String connectValue;
 private String startInstance;
@@ -24,6 +25,14 @@ return this.connectId;
 
 public void setConnectId(String connectId){
 this.connectId=connectId;
+}
+
+public String getProcessId(){
+return this.processId;
+}
+
+public void setProcessId(String processId){
+this.processId=processId;
 }
 
 public String getConnectName(){
