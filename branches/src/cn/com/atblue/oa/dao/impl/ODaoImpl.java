@@ -53,4 +53,26 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         }
         return _temp;
     }
+    public List getWaitPagedHysqList(PageBean pb, Map paramMap){
+        paramMap.put("currentPage", pb.getCurrentPage());
+        paramMap.put("pageSize", pb.getPageSize());
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getWaitPagedHysqList", paramMap);
+    }
+
+    public int getWaitPagedHysqCount(Map paramMap){
+        return (Integer) getSqlMapClientTemplate().queryForObject(
+                "oa.dao.getWaitPagedHysqCount", paramMap);
+    }
+    public List getAlreadyPagedHysqList(PageBean pb, Map paramMap){
+        paramMap.put("currentPage", pb.getCurrentPage());
+        paramMap.put("pageSize", pb.getPageSize());
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getAlreadyPagedHysqList", paramMap);
+    }
+
+    public int getAlreadyPagedHysqCount(Map paramMap){
+        return (Integer) getSqlMapClientTemplate().queryForObject(
+                "oa.dao.getAlreadyPagedHysqCount", paramMap);
+    }
 }

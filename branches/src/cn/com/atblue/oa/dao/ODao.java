@@ -22,4 +22,12 @@ public interface ODao {
     public void deleteCjhyryBySqid(String sqid);
 
     public String[] getCjhyryBySqid(String sqid);
+
+    public List getWaitPagedHysqList(PageBean pb, Map paramMap);
+
+    public int getWaitPagedHysqCount(Map paramMap);
+
+    public List getAlreadyPagedHysqList(PageBean pb, Map paramMap);
+
+    public int getAlreadyPagedHysqCount(Map paramMap);
 }

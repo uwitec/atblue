@@ -14,12 +14,12 @@
     Map paramMap = new HashMap();
     if(!StringUtil.isBlankOrEmpty(hymc))
         paramMap.put("hymc",hymc);
-	paramMap.put("orgnaId", _user.getOrgnaId()==null?"":_user.getOrgnaId());
-	pageBean.setPageSize(pageSize);
+    paramMap.put("userId",cUser.getUserId());
+    pageBean.setPageSize(pageSize);
 
-	int totalRow =oDao.getPagedHysqCount(paramMap);
-	pageBean.setTotalRows(totalRow);
-	List list = oDao.getPagedHysqList(pageBean,paramMap);
+    int totalRow =oDao.getAlreadyPagedHysqCount(paramMap);
+    pageBean.setTotalRows(totalRow);
+    List list = oDao.getAlreadyPagedHysqList(pageBean,paramMap);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -46,15 +46,6 @@
 			}
 			return;
 		}
-        function tj(id){
-            var selUserId = document.all[id+"nextUserId"].value;
-            if(selUserId == null || selUserId == ''){
-                alert("请先选择进行审批的用户！");
-                document.all[id+"nextUserId"].focus();
-                return ;
-            }
-            window.location = "tj.jsp?selUserId="+selUserId;
-        }
 		</script>
 	</head>
 	<body>
@@ -76,9 +67,8 @@
                     <tr>
                         <td align="left">
                             会议名称：
-                            <input name="hymc" size="10" type="text" value="" />&nbsp;
+                            <input name="mc" size="10" type="text" value="" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
-                            <input type="button" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='新增'>
                         </td>
                     </tr>
                     </tbody>
@@ -171,9 +161,9 @@
                                      String options = workFlow.getNextUserSelectOptions(connectId,orgId);
                                 %>
                                      发送给
-                                <select name="<%=StringUtil.parseNull(map.get("SQID"),"")%>nextUserId">
+                                <select name="nextUserId">
                                 <%=StringUtil.parseNull(options,"")%>
-                                </select>审批<input type="button" class="button"  style="width:40px" value="提交" onclick="tj('<%=StringUtil.parseNull(map.get("SQID"),"")%>');"/>
+                                </select>审批<input type="button" class="button"  style="width:40px" value="提交"/>
                                 <% }else{%>
                                 <a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">[编辑]</a>&nbsp;
                                 <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
