@@ -30,4 +30,6 @@ public interface ODao {
     public List getAlreadyPagedHysqList(PageBean pb, Map paramMap);
 
     public int getAlreadyPagedHysqCount(Map paramMap);
+    
+    public List getFlowList(String processId);
 }
