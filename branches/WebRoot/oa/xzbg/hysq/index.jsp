@@ -46,14 +46,14 @@
 			}
 			return;
 		}
-        function tj(id){
+        function tj(sid,cid,id){
             var selUserId = document.all[id+"nextUserId"].value;
             if(selUserId == null || selUserId == ''){
                 alert("请先选择进行审批的用户！");
                 document.all[id+"nextUserId"].focus();
                 return ;
             }
-            window.location = "tj.jsp?selUserId="+selUserId;
+            window.location = "tj.jsp?selUserId="+selUserId+"&connectId="+cid+"&sqId="+sid;
         }
 		</script>
 	</head>
@@ -173,11 +173,13 @@
                                      发送给
                                 <select name="<%=StringUtil.parseNull(map.get("SQID"),"")%>nextUserId">
                                 <%=StringUtil.parseNull(options,"")%>
-                                </select>审批<input type="button" class="button"  style="width:40px" value="提交" onclick="tj('<%=StringUtil.parseNull(map.get("SQID"),"")%>');"/>
-                                <% }else{%>
+                                </select>审批<input type="button" class="button"  style="width:40px" value="提交" onclick="tj('<%=StringUtil.parseNull(map.get("SQID"),"")%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');"/>
+                                <% }else if("已保存".equals(StringUtil.parseNull(map.get("SQZT"),""))){%>
                                 <a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">[编辑]</a>&nbsp;
                                 <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
-                                <%   }
+                                <%   }else{ %>
+                                <a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">[查看流程]</a>
+                                <%  }
                                 %>
 
 							</td>

@@ -15,6 +15,7 @@
 <%@ page import="cn.com.atblue.workflow.bean.*" %>
 <%@ page import="cn.com.atblue.common.bean.PageBean" %>
 <%@ page import="cn.com.atblue.workflow.runtime.*" %>
+<%@ page import="cn.com.atblue.workflow.dao.WConnectDAO" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -29,6 +30,7 @@
     Dao dao = (Dao)SpringFactory.instance.getBean("dao");
     ODao oDao = (ODao)SpringFactory.instance.getBean("oDao");
     Workflow workflow = (Workflow)SpringFactory.instance.getBean("workflow");
+    WConnectDAO wConnectDAO = (WConnectDAO)SpringFactory.instance.getBean("wConnectDAO");
     COrgnizationDAO orgnizationDAO = (COrgnizationDAO)SpringFactory.instance.getBean("orgnizationDAO");
     OfficeNoticeDAO officeNoticeDAO = (OfficeNoticeDAO)SpringFactory.instance.getBean("officeNoticeDAO");
     OfficeFileDAO officeFileDAO = (OfficeFileDAO) SpringFactory.instance.getBean("officeFileDAO");
