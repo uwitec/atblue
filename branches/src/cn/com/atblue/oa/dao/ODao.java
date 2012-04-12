@@ -1,5 +1,6 @@
 package cn.com.atblue.oa.dao;
 
+import cn.com.atblue.common.bean.PageBean;
 import cn.com.atblue.oa.bean.OfficeSeal;
 
 import java.util.List;
@@ -13,4 +14,12 @@ public interface ODao {
     public List getAllUserList();
     
     public OfficeSeal getSealByUserId(String userId);
+
+    public List getPagedHysqList(PageBean pb, Map paramMap);
+
+    public int getPagedHysqCount(Map paramMap);
+    
+    public void deleteCjhyryBySqid(String sqid);
+
+    public String[] getCjhyryBySqid(String sqid);
 }

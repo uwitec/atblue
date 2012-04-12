@@ -27,11 +27,14 @@
      SysConfig sysConfig =(SysConfig)SpringFactory.instance.getBean("propertyConfig"); 
     CUser _user = (CUser)session.getAttribute("cUser");
     Dao dao = (Dao)SpringFactory.instance.getBean("dao");
+    ODao oDao = (ODao)SpringFactory.instance.getBean("oDao");
     COrgnizationDAO orgnizationDAO = (COrgnizationDAO)SpringFactory.instance.getBean("orgnizationDAO");
     OfficeNoticeDAO officeNoticeDAO = (OfficeNoticeDAO)SpringFactory.instance.getBean("officeNoticeDAO");
     OfficeFileDAO officeFileDAO = (OfficeFileDAO) SpringFactory.instance.getBean("officeFileDAO");
     UMessageDAO uMessageDAO = (UMessageDAO) SpringFactory.instance.getBean("uMessageDAO");
     OfficeNoticeCheckDAO officeNoticeCheckDAO = (OfficeNoticeCheckDAO)SpringFactory.instance.getBean("officeNoticeCheckDAO");
+    OfficeHysqDAO officeHysqDAO = (OfficeHysqDAO)SpringFactory.instance.getBean("officeHysqDAO");
+    OfficeCjhyryDAO officeCjhyryDAO = (OfficeCjhyryDAO)SpringFactory.instance.getBean("officeCjhyryDAO");
     String contentPath = request.getContextPath();
     //获取流程
     Workflow workFlow = (Workflow)SpringFactory.instance.getBean("workflow");

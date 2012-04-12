@@ -52,4 +52,47 @@
             from office_seal where user_id=#value# and rownum = 1
         ]]>
     </select>
+
+    <select id="getPagedHysqList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+            select t.* from OFFICE_HYSQ t   where 1=1
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="hymc">
+                <![CDATA[t.HYMC like '%'||#hymc#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="orgnaId">
+                <![CDATA[t.SQBM=#orgnaId#]]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedHysqCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) cn  from OFFICE_HYSQ t   where 1=1
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="hymc">
+                <![CDATA[t.HYMC like '%'||#hymc#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="orgnaId">
+                <![CDATA[t.SQBM=#orgnaId#]]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+    </select>
+
+    <delete id="deleteCjhyryBySqid" parameterClass="String">
+        <![CDATA[
+            delete from OFFICE_CJHYRY t where t.sqid = #value#
+        ]]>
+    </delete>
+
+    <select id="getCjhyryBySqid" parameterClass="String" resultClass="java.util.HashMap">
+        <![CDATA[
+            select t.* from OFFICE_CJHYRY t where t.sqid =  #value#
+        ]]>
+    </select>
 </sqlMap>

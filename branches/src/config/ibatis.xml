@@ -44,6 +44,11 @@
      <sqlMap resource="cn/com/atblue/oa/dao/impl/OFFICE_CIRCULATION_SqlMap.xml" />
      <sqlMap resource="cn/com/atblue/oa/dao/impl/OFFICE_DOCUMENTS_CHECK_SqlMap.xml" />
      <sqlMap resource="cn/com/atblue/oa/dao/impl/OFFICE_DOCUMENTS_SqlMap.xml" />
+    <!--
+     	会议申请
+      -->
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeHysqImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeCjhyryImpl.xml" />
      <!--
      	消息池
       -->
