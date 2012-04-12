@@ -125,6 +125,10 @@ public class WorkflowAction extends BaseAction {
                                     wActivity.setActivityId(StringUtil.getUUID());
                                     wActivity.setActivityName(name);
                                     wActivity.setActivityRole(name);
+                                    if(name.indexOf("!") != -1){
+                                        //该角色需要限定组织
+                                        wActivity.setActivitySfxddw("是");
+                                    }
                                     if ("START_NODE".equals(type)) {
                                         wActivity.setActivityType("1");
                                     } else if ("EndNode".equals(type)) {
@@ -180,6 +184,9 @@ public class WorkflowAction extends BaseAction {
                     wDefinition.setUpdateTime(new Date());
                     wDefinition.setFlowFile(xml);
                     wDefinitionDAO.modWDefinition(wDefinition);
+                    WWorkflow wWorkflow = wWorkflowDAO.queryForBean(map);
+                    wWorkflow.setUpdateTime(new Date());
+                    wWorkflowDAO.modWWorkflow(wWorkflow);
                 }
             } else {
                 //添加
