@@ -7,17 +7,11 @@
 	<jsp:setProperty name="pageBean" property="*" />
 </jsp:useBean>
 <%
-	//判断权限
-    boolean isRole =dao.isRole(_user.getUserId(), officeRole);
-	//查询字符串
-	String queryString = request.getParameter("queryString");
-	queryString = StringUtil.parseNull(queryString, "");
-	queryString = StringUtil.parseISOtoUTF(queryString);
+    CUser cUser = (CUser)session.getAttribute("cUser");
+    cUser = cUser == null?new CUser():cUser;
+    String orgId = cUser.getOrgnaId();
 
 	Map paramMap = new HashMap();
-	if (queryString != null && !queryString.equals("")) {
-		paramMap.put("queryString", queryString);
-	}
 	paramMap.put("orgnaId", _user.getOrgnaId()==null?"":_user.getOrgnaId());
 	pageBean.setPageSize(pageSize);
 
@@ -160,8 +154,15 @@
 							</td>
 							<td class="NormalDataColumn" align="center" nowrap="nowrap">
                                 <%
-                                    if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){ %>
-                                     发送给<select><option>adfasfdas</option></select>审批<input type="button" class="button"  style="width:40px" value="提交"/>
+                                    if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){
+                                    String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
+                                    String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
+                                     String options = workFlow.getNextUserSelectOptions(connectId,orgId);
+                                %>
+                                     发送给
+                                <select name="nextUserId">
+                                <%=StringUtil.parseNull(options,"")%>
+                                </select>审批<input type="button" class="button"  style="width:40px" value="提交"/>
                                 <% }else{%>
                                 <a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">[编辑]</a>&nbsp;
                                 <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
