@@ -140,6 +140,11 @@ function XiorkFlowToolBar(xiorkFlow) {
     this.add(mixButton);
     this.viewerPatternButtonGroup.add(mixButton);
     mixButton.getModel().name = XiorkFlowToolBar.BUTTON_NAME_MIX;
+    var helpButton = new Button("", "返回列表");
+    helpButton.addActionListener(new HelpActionListener());
+    //帮助
+    helpButton.setToolTipText("\u5e2e\u52a9");
+    this.add(helpButton);
 
 }
 XiorkFlowToolBar.prototype = new ToolBar();
