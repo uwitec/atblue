@@ -39,7 +39,8 @@
 			    	名称：
 			    	<input type="text" name="flowName" value="${flowName}" style="width:200px;" class="textinput" />
 			    	&nbsp;&nbsp;<input name="selectBut" type="button" class="button" style="width:50px" onClick="doQuery();" value="查询">
-			    </td>
+                    &nbsp;&nbsp;<input id="lookBut" name="lookBut" type="button" class="button" style="width:50px"  onClick="doAdd();" value="新建">
+                </td>
 			  </tr>
 			</table>
 		</FIELDSET>      
@@ -52,9 +53,7 @@
 			  	<td style="text-align: left">
                       <tags:DataPilot/>
 			  	</td>
-			    <td style="text-align: right">
-			    	<input id="lookBut" name="lookBut" type="button" class="button" style="width:50px"  onClick="doAdd();" value="新建">
-			    </td>
+
 			  </tr>
 			</table>
 		</td>
