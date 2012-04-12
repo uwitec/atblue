@@ -8,6 +8,7 @@
 function HelpActionListener() {
 }
 HelpActionListener.prototype.actionPerformed = function (obj) {
-    window.open(XiorkFlowWorkSpace.BASE_PATH + "doc/index.html");
+    window.location = "workflow_list.d";
+//    window.open(XiorkFlowWorkSpace.BASE_PATH + "doc/index.html");
 };
 
