@@ -14,12 +14,12 @@
     Map paramMap = new HashMap();
     if(!StringUtil.isBlankOrEmpty(hymc))
         paramMap.put("hymc",hymc);
-	paramMap.put("orgnaId", _user.getOrgnaId()==null?"":_user.getOrgnaId());
+	paramMap.put("userId",cUser.getUserId());
 	pageBean.setPageSize(pageSize);
 
-	int totalRow =oDao.getPagedHysqCount(paramMap);
+	int totalRow =oDao.getWaitPagedHysqCount(paramMap);
 	pageBean.setTotalRows(totalRow);
-	List list = oDao.getPagedHysqList(pageBean,paramMap);
+	List list = oDao.getWaitPagedHysqList(pageBean,paramMap);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -46,15 +46,6 @@
 			}
 			return;
 		}
-        function tj(id){
-            var selUserId = document.all[id+"nextUserId"].value;
-            if(selUserId == null || selUserId == ''){
-                alert("请先选择进行审批的用户！");
-                document.all[id+"nextUserId"].focus();
-                return ;
-            }
-            window.location = "tj.jsp?selUserId="+selUserId;
-        }
 		</script>
 	</head>
 	<body>
@@ -68,7 +59,7 @@
                      alt="">
             </td>
             <td width="15%" class="mhead">
-                 会议申请
+                 会议申请待审批
             </td>
             <td align="left" class="mhead">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -78,7 +69,6 @@
                             会议名称：
                             <input name="hymc" size="10" type="text" value="" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
-                            <input type="button" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='新增'>
                         </td>
                     </tr>
                     </tbody>
@@ -118,7 +108,7 @@
 								会议内容
 							</td>
 							<td nowrap="nowrap" class="NormalColumnTitle" width="80">
-								申请状态
+								流程状态
 							</td>
 							<td nowrap="nowrap" class="NormalColumnTitle">
 								操作
@@ -164,22 +154,8 @@
 								<%=StringUtil.parseNull(map.get("SQZT"),"")%>
 							</td>
 							<td class="NormalDataColumn" align="center" nowrap="nowrap">
-                                <%
-                                    if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){
-                                    String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
-                                    String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
-                                     String options = workFlow.getNextUserSelectOptions(connectId,orgId);
-                                %>
-                                     发送给
-                                <select name="<%=StringUtil.parseNull(map.get("SQID"),"")%>nextUserId">
-                                <%=StringUtil.parseNull(options,"")%>
-                                </select>审批<input type="button" class="button"  style="width:40px" value="提交" onclick="tj('<%=StringUtil.parseNull(map.get("SQID"),"")%>');"/>
-                                <% }else{%>
-                                <a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">[编辑]</a>&nbsp;
-                                <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
-                                <%   }
-                                %>
-
+                                <input type="button" class="button" name=""  value="审批" onclick=""/>
+                                &nbsp;
 							</td>
 						</tr>
 						<%
