@@ -5,7 +5,7 @@
 			<name>local</name>
 			<driver>oracle.jdbc.driver.OracleDriver</driver>
 			<dbUsername>atblue</dbUsername>
-			<dbPassword>1</dbPassword>
+			<dbPassword>atblue</dbPassword>
 			<dbUrl>jdbc:oracle:thin:@127.0.0.1:1521:orcl</dbUrl>
 			<maxActive>5</maxActive>
 			<maxIdle>2</maxIdle>
