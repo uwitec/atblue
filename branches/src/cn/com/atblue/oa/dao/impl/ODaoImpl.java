@@ -1,5 +1,6 @@
 package cn.com.atblue.oa.dao.impl;
 
+import cn.com.atblue.common.bean.PageBean;
 import cn.com.atblue.oa.bean.OfficeSeal;
 import cn.com.atblue.oa.dao.ODao;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
@@ -24,5 +25,32 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
 
     public OfficeSeal getSealByUserId(String userId){
         return  (OfficeSeal) this.getSqlMapClientTemplate().queryForObject("oa.dao.getSealByUserId", userId);
+    }
+
+    public List getPagedHysqList(PageBean pb, Map paramMap){
+        paramMap.put("currentPage", pb.getCurrentPage());
+        paramMap.put("pageSize", pb.getPageSize());
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getPagedHysqList", paramMap);
+    }
+
+    public int getPagedHysqCount(Map paramMap){
+        return (Integer) getSqlMapClientTemplate().queryForObject(
+                "oa.dao.getPagedHysqCount", paramMap);
+    }
+
+    public void deleteCjhyryBySqid(String sqid){
+        this.getSqlMapClientTemplate().delete("oa.dao.deleteCjhyryBySqid",sqid);
+    }
+
+    public String[] getCjhyryBySqid(String sqid){
+        List list =  this.getSqlMapClientTemplate().queryForList("oa.dao.getCjhyryBySqid",sqid);
+        String[] _temp = new String[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            Map map = (Map)list.get(i);
+            String str = (String)map.get("USERID");
+            _temp[i] = str;
+        }
+        return _temp;
     }
 }

@@ -46,9 +46,9 @@
     <!-- 代码生成机配置 -->
     <bean id="codeManager" class="cn.com.atblue.common.codegen.CodeManager">
         <property name="outputDir" value="D:\\"/>
-        <property name="prefixOfPackage" value="cn.com.atblue.workflow"/>
-        <property name="prefixOfSqlmap" value="workflow"/>
-        <property name="prefixOfTable" value="W_WORKFLOW"/>
+        <property name="prefixOfPackage" value="cn.com.atblue.oa"/>
+        <property name="prefixOfSqlmap" value="oa"/>
+        <property name="prefixOfTable" value="OFFICE_HYSQ"/>
         <property name="dataSource" ref="internalDataSource"/>
     </bean>
 

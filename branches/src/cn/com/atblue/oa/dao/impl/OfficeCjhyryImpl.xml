@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officecjhyry">
+    <typeAlias alias="OfficeCjhyry" type="cn.com.atblue.oa.bean.OfficeCjhyry"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="pkid">
+                <![CDATA[pkid=#pkid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="userid">
+                <![CDATA[userid=#userid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqid">
+                <![CDATA[sqid=#sqid#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficeCjhyry" parameterClass="OfficeCjhyry">
+        <![CDATA[
+            insert into office_cjhyry(
+                pkid,userid,sqid
+            ) values(
+                #pkid#,#userid#,#sqid#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficeCjhyry" parameterClass="OfficeCjhyry">
+        <![CDATA[
+            update office_cjhyry
+            set pkid=#pkid#,userid=#userid#,sqid=#sqid#
+            where PKID=#pkid#
+        ]]>
+    </update>
+
+    <delete id="delOfficeCjhyry" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_cjhyry
+            where PKID=#pkid#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeCjhyry">
+        <![CDATA[
+            select pkid as pkid,userid as userid,sqid as sqid from office_cjhyry where PKID=#pkid#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficeCjhyry">
+        <![CDATA[
+            select * from office_cjhyry
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_cjhyry
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

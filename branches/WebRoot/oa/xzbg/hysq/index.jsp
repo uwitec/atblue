@@ -8,7 +8,6 @@
 <%
 	//判断权限
     boolean isRole =dao.isRole(_user.getUserId(), officeRole);
-
 	//查询字符串
 	String queryString = request.getParameter("queryString");
 	queryString = StringUtil.parseNull(queryString, "");
@@ -18,15 +17,12 @@
 	if (queryString != null && !queryString.equals("")) {
 		paramMap.put("queryString", queryString);
 	}
-	paramMap.put("department", _user.getOrgnaId()==null?"":_user.getOrgnaId());
+	paramMap.put("orgnaId", _user.getOrgnaId()==null?"":_user.getOrgnaId());
 	pageBean.setPageSize(pageSize);
 
-	int totalRow =officeNoticeDAO
-			.selectAllByDepartment(paramMap);
+	int totalRow =oDao.getPagedHysqCount(paramMap);
 	pageBean.setTotalRows(totalRow);
-
-	List list = officeNoticeDAO
-			.selectAllByDepartment(pageBean, paramMap);
+	List list = oDao.getPagedHysqList(pageBean,paramMap);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -48,7 +44,7 @@
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
 		<script type="text/javascript">
 		function onDelete(url){
-			if(window.confirm("确认删除该通知?")){
+			if(window.confirm("确认删除该会议申请?")){
 				window.location=url;
 			}
 			return;
@@ -56,35 +52,44 @@
 		</script>
 	</head>
 	<body>
-		<table width="100%" align="center" height="25" border="0"
-			cellpadding="0" cellspacing="0"
-			background="<%=contentPath%>/images/mhead.jpg">
-			<tr>
-				<td width="3%" align="center">
-					<img src="<%=contentPath%>/images/mlogo.jpg" width="11"
-						height="11" alt="">
-				</td>
-				<td width="15%" class="mhead">
-					会议申请
-				</td>
-				<td align="left" class="mhead">
-					&nbsp;
-				</td>
-			</tr>
-		</table>
+    <form name="form1" action=""  style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px">
+    <table width="100%" align="center" height="25" border="0"
+           cellpadding="0" cellspacing="0"
+           background="<%=contentPath%>/images/mhead.jpg">
+        <tr>
+            <td width="3%" align="center">
+                <img src="<%=contentPath%>/images/mlogo.jpg" width="11" height="11"
+                     alt="">
+            </td>
+            <td width="15%" class="mhead">
+                 会议申请
+            </td>
+            <td align="left" class="mhead">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td align="left">
+                            会议名称：
+                            <input name="mc" size="10" type="text" value="" />&nbsp;
+                            <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
+                            <input type="button" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='新增'>
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="button" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='修改'>
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="button" class="button"  onclick="window.location = 'add.jsp';" style="width:40px"  value='删除'>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+        </form>
 		<table width="100%" align="center" height="25" border="0"
 			cellpadding="0" cellspacing="0">
 			<tr>
 				<td>
-					<table width="100%" border="0" cellpadding="0" cellspacing="0">
-						<tbody>
-							<tr>
-								<td align="left">
-									<div id="toolbar" style="width: 100%;"></div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+
 					<table width="100%" border="0" align="center" cellpadding="0"
 						cellspacing="0" class="mtabtab" id="mtabtab">
 						<tr>
@@ -92,26 +97,26 @@
 								序号
 							</td>
 							<td nowrap="nowrap" class="NormalColumnTitle">
-								通知标题
+								会议名称
 							</td>
 							
 							<td class="NormalColumnTitle" width="120">
-								签发人
+								申请部门
 							</td>
 							<td class="NormalColumnTitle" width="120">
-								开始时间
+								申请时间
 							</td>
 							<td class="NormalColumnTitle" width="120">
-								结束时间
+								申请开始时间
 							</td>
 							<td class="NormalColumnTitle" width="120">
-								过期时间
+								申请结束时间
 							</td>
 							<td nowrap="nowrap" class="NormalColumnTitle" width="80">
-								类别
+								会议内容
 							</td>
 							<td nowrap="nowrap" class="NormalColumnTitle" width="80">
-								状态
+								申请状态
 							</td>
 							<td nowrap="nowrap" class="NormalColumnTitle" width="120">
 								操作
@@ -119,7 +124,9 @@
 						</tr>
 						<%
 							for (int i = 0; i < list.size(); i++) {
-								OfficeNotice notice = (OfficeNotice) list.get(i);
+								Map map = (Map) list.get(i);
+                                oracle.sql.TIMESTAMP sTime = (oracle.sql.TIMESTAMP)map.get("SQKSSJ");
+                                oracle.sql.TIMESTAMP eTime = (oracle.sql.TIMESTAMP)map.get("SQJSSJ");
 						%>
 						<tr>
 							<td class="NormalDataColumn" align="center">
@@ -127,30 +134,35 @@
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
 							<td class="NormalDataColumn" align="left">
-								<a href="view.jsp?noticeid=<%=notice.getNoticeid() %>"><%=notice.getNotititle()%></a>
+								<a href="view.jsp?noticeid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("HYMC"),"") %></a>
 							</td>
 							
 							<td class="NormalDataColumn" align="center">
-								<%=StringUtil.parseNull(notice.getSubscriber(),"")%>&nbsp;
+								<%=StringUtil.parseNull(map.get("SQBM"),"")%>&nbsp;
 							</td>
 							<td class="NormalDataColumn" align="center">
-								<%=DateUtil.format(notice.getStartime(),"yyyy-MM-dd HH:mm")%>&nbsp;
+								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
 							</td>
 							<td class="NormalDataColumn" align="center">
-								<%=DateUtil.format(notice.getEndtime(),"yyyy-MM-dd HH:mm")%>&nbsp;
+								<%if(sTime != null){ %>
+                                <%=DateUtil.format(sTime,"yyyy-MM-dd HH:mm")%>
+                                <% }%>
+                                    &nbsp;
 							</td>
 							<td class="NormalDataColumn" align="center">
-								<%=DateUtil.format(notice.getEnddate(),"yyyy-MM-dd")%>&nbsp;
+                                <%if(eTime != null){ %>
+                                <%=DateUtil.format(eTime,"yyyy-MM-dd HH:mm")%>
+                                <% }%>
 							</td>
 							<td class="NormalDataColumn" align="center">
-								<%=notice.getIspublic().equals("0") ? "公告" : "通知"%>
+								<%=StringUtil.parseNull(map.get("HYNR"),"")%>
 							</td>
 							<td class="NormalDataColumn" align="center">
-								<%=notice.getStatus().equals("0") ? "草稿" : "已发布"%>
+								<%=StringUtil.parseNull(map.get("SQZT"),"")%>
 							</td>
 							<td class="NormalDataColumn" align="center">
-								<a href="./edit.jsp?noticeid=<%=notice.getNoticeid() %>">[编辑]</a>&nbsp;
-								<a href="javascript:onDelete('./delete.jsp?noticeid=<%=notice.getNoticeid() %>');">[删除]</a>&nbsp;
+								<a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">[编辑]</a>&nbsp;
+								<a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
 							</td>
 						</tr>
 						<%
@@ -166,18 +178,5 @@
 				</td>
 			</tr>
 		</table>
-
 	</body>
-	<script type="text/javascript">
-Ext.onReady(function(){
-    Ext.form.Field.prototype.msgTarget = 'under';
-    var tb = new Ext.Toolbar('toolbar');
-    tb.render('toolbar');
-    tb.addButton({text: '新建',icon: '<%=contentPath%>/images/add.gif',cls: 'x-btn-text-icon',handler:function(){
-        window.location = 'add.jsp';
-    }});
-	tb.doLayout();
-});
-
-</script>
 </html>
