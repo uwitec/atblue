@@ -46,4 +46,10 @@ public interface WDao {
     public String getWorkflowIdByName(String name);
     
     public String getDefXmlByName(String name);
+    
+    public String getNextUserRole(String connectId);
+    
+    public List getUsersByRoleName(String roleName);
+
+    public List getUsersByRoleNameAndOrgId(String roleName,String orgnaId);
 }

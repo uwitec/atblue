@@ -40,6 +40,17 @@
         if("startup".equals(flag)){
             officeHysq.setSqzt("已申请");
             //创建流程代码在这里
+            Status status = workflow.startWorkflow("e9bff47c-2a7b-422b-8d12-6bc5b455df75",cUser.getUserId());
+            //领取第一个业务节点的任务
+            String connectId = workFlow.claimMission(status.getProcessId(),status.getConnectId(),cUser.getUserId());
+            if(!StringUtil.isBlankOrEmpty(connectId)){
+                //有当前用户处理该业务节点
+                connectId = workFlow.completeMission(status.getProcessId(),status.getConnectId(),cUser.getUserId(),new String[]{cUser.getUserId()},"1");
+            }else{
+                //没有下级业务
+            }
+            officeHysq.setProcessId(status.getProcessId());
+            officeHysq.setConnectId(connectId);
         }
         officeHysqDAO.addOfficeHysq(officeHysq);
 		
