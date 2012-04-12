@@ -75,4 +75,9 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         return (Integer) getSqlMapClientTemplate().queryForObject(
                 "oa.dao.getAlreadyPagedHysqCount", paramMap);
     }
+
+    public List getFlowList(String processId){
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getFlowList", processId);
+    }
 }

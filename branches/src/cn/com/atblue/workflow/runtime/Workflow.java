@@ -77,6 +77,7 @@ public class Workflow {
         wConnect.setEndInstance(nextInstance.getInstanceId());
         wConnect.setCreateTime(new Date());
         wConnect.setPendingPerson(userId);
+        wConnect.setProcessId(wProcess.getProcessId());
 //        wConnect.setRealPerson(userId);
         wConnectDAO.addWConnect(wConnect);
         wProcess.setInstanceId(wInstance.getInstanceId());
@@ -214,6 +215,7 @@ public class Workflow {
                     wConnect.setConnectValue(varValue);
                     wConnect.setCreateTime(new Date());
                     wConnect.setLineId(nextLine.getLineId());
+                    wConnect.setProcessId(wProcess.getProcessId());
                     wConnectDAO.addWConnect(wConnect);
 
                     WInstance nextInstance = new WInstance();
@@ -255,7 +257,7 @@ public class Workflow {
                 wConnect.setConnectValue(varValue);
                 wConnect.setCreateTime(new Date());
                 wConnect.setLineId(nextLine.getLineId());
-
+                wConnect.setProcessId(wProcess.getProcessId());
                 WInstance nextInstance = new WInstance();
                 nextInstance.setInstanceId(StringUtil.getUUID());
                 nextInstance.setActivityId(nextLine.getEndActivity());
