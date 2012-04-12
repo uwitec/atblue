@@ -1,3 +1,4 @@
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../../import.jsp"%>
@@ -73,10 +74,6 @@
                             <input name="mc" size="10" type="text" value="" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                             <input type="button" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='新增'>
-                            &nbsp;&nbsp;&nbsp;
-                            <input type="button" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='修改'>
-                            &nbsp;&nbsp;&nbsp;
-                            <input type="button" class="button"  onclick="window.location = 'add.jsp';" style="width:40px"  value='删除'>
                         </td>
                     </tr>
                     </tbody>
@@ -112,13 +109,13 @@
 							<td class="NormalColumnTitle" width="120">
 								申请结束时间
 							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="80">
+							<td nowrap="nowrap" class="NormalColumnTitle" width="200">
 								会议内容
 							</td>
 							<td nowrap="nowrap" class="NormalColumnTitle" width="80">
 								申请状态
 							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="120">
+							<td nowrap="nowrap" class="NormalColumnTitle">
 								操作
 							</td>
 						</tr>
@@ -127,6 +124,7 @@
 								Map map = (Map) list.get(i);
                                 oracle.sql.TIMESTAMP sTime = (oracle.sql.TIMESTAMP)map.get("SQKSSJ");
                                 oracle.sql.TIMESTAMP eTime = (oracle.sql.TIMESTAMP)map.get("SQJSSJ");
+
 						%>
 						<tr>
 							<td class="NormalDataColumn" align="center">
@@ -134,10 +132,10 @@
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
 							<td class="NormalDataColumn" align="left">
-								<a href="view.jsp?noticeid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("HYMC"),"") %></a>
+								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("HYMC"),"") %></a>
 							</td>
 							
-							<td class="NormalDataColumn" align="center">
+							<td class="NormalDataColumn" align="left">
 								<%=StringUtil.parseNull(map.get("SQBM"),"")%>&nbsp;
 							</td>
 							<td class="NormalDataColumn" align="center">
@@ -145,13 +143,13 @@
 							</td>
 							<td class="NormalDataColumn" align="center">
 								<%if(sTime != null){ %>
-                                <%=DateUtil.format(sTime,"yyyy-MM-dd HH:mm")%>
+                                <%=DateUtil.format(sTime.timestampValue(),"yyyy-MM-dd HH:mm")%>
                                 <% }%>
                                     &nbsp;
 							</td>
 							<td class="NormalDataColumn" align="center">
                                 <%if(eTime != null){ %>
-                                <%=DateUtil.format(eTime,"yyyy-MM-dd HH:mm")%>
+                                <%=DateUtil.format(eTime.timestampValue(), "yyyy-MM-dd HH:mm")%>
                                 <% }%>
 							</td>
 							<td class="NormalDataColumn" align="center">
@@ -160,9 +158,16 @@
 							<td class="NormalDataColumn" align="center">
 								<%=StringUtil.parseNull(map.get("SQZT"),"")%>
 							</td>
-							<td class="NormalDataColumn" align="center">
-								<a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">[编辑]</a>&nbsp;
-								<a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
+							<td class="NormalDataColumn" align="center" nowrap="nowrap">
+                                <%
+                                    if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){ %>
+                                     发送给<select><option>adfasfdas</option></select>审批<input type="button" value="提交"/>
+                                <% }else{%>
+                                <a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">[编辑]</a>&nbsp;
+                                <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
+                                <%   }
+                                %>
+
 							</td>
 						</tr>
 						<%
