@@ -56,7 +56,8 @@
     <select id="getPagedHysqList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
         <include refid="basic.pageStart"/>
         <![CDATA[
-            select t.* from OFFICE_HYSQ t   where 1=1
+            select t.*,o.orgna_name from OFFICE_HYSQ t,c_orgnization o
+            where t.sqbm = o.orgna_id
         ]]>
         <dynamic prepend=" and ">
             <isNotEmpty prepend=" and " property="hymc">
@@ -71,7 +72,8 @@
     </select>
     <select id="getPagedHysqCount" parameterClass="java.util.HashMap" resultClass="int">
         <![CDATA[
-            select count(*) cn  from OFFICE_HYSQ t   where 1=1
+            select count(*) cn  from OFFICE_HYSQ t,c_orgnization o
+            where t.sqbm = o.orgna_id
         ]]>
         <dynamic prepend=" and ">
             <isNotEmpty prepend=" and " property="hymc">
