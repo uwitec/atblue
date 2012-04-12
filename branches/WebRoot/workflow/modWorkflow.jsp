@@ -8,8 +8,7 @@
     <title>工作流定义修改</title>
     <link href="<%=request.getContextPath()%>/css/css.css" type="text/css" rel="stylesheet"/>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
-    <script charset="UTF-8" src="<%=request.getContextPath()%>/js/XiorkFlow/js/XiorkFlowWorkSpace.js"
-            language="javascript"></script>
+    <script charset="UTF-8" src="<%=request.getContextPath()%>/js/XiorkFlow/XiorkFlowWorkSpace.js"  language="javascript"></script>
 </head>
 
 <body onload="init()" onselectstart="return false;" style="margin: 0px;overflow: hidden;">
