@@ -325,7 +325,15 @@ public final class StringUtil {
         Document doc = saxBuilder.build(inputStream);
         return doc;
     }
-
+    public static String cutString(String srt, int cut) {
+        String temp = StringUtil.parseNull(srt, "");
+        int len = temp.length();
+        temp = temp.substring(0, Math.min(cut, temp.length()));
+        if (len > cut) {
+            return temp + "...";
+        }
+        return temp;
+    }
     public static void main(String[] args) {
     }
 }
