@@ -3,6 +3,7 @@
 
 <beans>
     <bean id="loginAction" class="cn.com.atblue.common.action.LoginAction" scope="prototype" autowire="byName"/>
+    <bean id="sealAction" class="cn.com.atblue.oa.action.SealAction" scope="prototype" autowire="byName"/>
     <bean id="officeFileDAO" class="cn.com.atblue.oa.dao.impl.OfficeFileDAOImpl" scope="prototype" autowire="byName"/>
     <bean id="officeNoticeDAO" class="cn.com.atblue.oa.dao.impl.OfficeNoticeDAOImpl" scope="prototype" autowire="byName"/>
     <bean id="officeNoticeCheckDAO" class="cn.com.atblue.oa.dao.impl.OfficeNoticeCheckDAOImpl" scope="prototype" autowire="byName"/>
@@ -15,5 +16,6 @@
 
     <bean id="officeHysqDAO" class="cn.com.atblue.oa.dao.impl.OfficeHysqImpl" scope="prototype" autowire="byName"/>
     <bean id="officeCjhyryDAO" class="cn.com.atblue.oa.dao.impl.OfficeCjhyryImpl" scope="prototype" autowire="byName"/>
+    <bean id="officeSealDAO" class="cn.com.atblue.oa.dao.impl.OfficeSealImpl" autowire="byName"/>
 
 </beans>

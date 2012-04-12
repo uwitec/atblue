@@ -9,5 +9,12 @@
             <result name="success">/welcome.jsp</result>
             <result name="failure">/login.jsp</result>
         </action>
+        <action name="seal_*" class="sealAction" method="{1}">
+            <result name="list">/oa/seal/listSeal.jsp</result>
+            <result name="add">/oa/seal/addSeal.jsp</result>
+            <result name="mod">/oa/seal/modSeal.jsp</result>
+            <result name="del" type="redirect">seal_list.d</result>
+            <result name="save" type="redirect">seal_list.d</result>
+        </action>
 	</package>
 </struts>
