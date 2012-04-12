@@ -353,11 +353,6 @@
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-                                        <%
-                                            Dao mdao = (Dao) SpringFactory.instance.getBean("dao");
-                                            List list = dao.getSelectOrgTrees();
-                                            list = list == null ? new ArrayList() : list;
-                                        %>
 										申请部门<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="NormalDataColumn" align="left">
