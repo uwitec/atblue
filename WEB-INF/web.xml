@@ -88,15 +88,6 @@
         <url-pattern>/servlet/sealDown</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ReportServer</servlet-name>
-        <servlet-class>com.fr.web.ReportServlet</servlet-class>
-        <load-on-startup>0</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ReportServer</servlet-name>
-        <url-pattern>/ReportServer</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>XiorkFlowWorkSpace</servlet-name>
         <servlet-class>
             cn.com.atblue.common.servlet.XiorkFlowWorkSpace
