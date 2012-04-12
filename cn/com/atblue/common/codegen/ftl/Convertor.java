@@ -41,8 +41,9 @@ public class Convertor {
                 return "NUMBER(*,0)";
             }
             return "NUMBER(*,*)";
+        }else if("TIMESTAMP(6)".equals(type)){
+            return "TIMESTAMP";
         }
-
         return type;
     }
 

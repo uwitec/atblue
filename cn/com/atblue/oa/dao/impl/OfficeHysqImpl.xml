@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officehysq">
+    <typeAlias alias="OfficeHysq" type="cn.com.atblue.oa.bean.OfficeHysq"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="sqid">
+                <![CDATA[sqid=#sqid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="hymc">
+                <![CDATA[hymc=#hymc#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqbm">
+                <![CDATA[sqbm=#sqbm#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="hynr">
+                <![CDATA[hynr=#hynr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="bz">
+                <![CDATA[bz=#bz#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqsj">
+                <![CDATA[sqsj=#sqsj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqkssj">
+                <![CDATA[sqkssj=#sqkssj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqjssj">
+                <![CDATA[sqjssj=#sqjssj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sjjssj">
+                <![CDATA[sjjssj=#sjjssj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqzt">
+                <![CDATA[sqzt=#sqzt#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="processId">
+                <![CDATA[process_id=#processId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="connectId">
+                <![CDATA[connect_id=#connectId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqr">
+                <![CDATA[sqr=#sqr#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficeHysq" parameterClass="OfficeHysq">
+        <![CDATA[
+            insert into office_hysq(
+                sqid,hymc,sqbm,hynr,bz,
+				sqsj,sqkssj,sqjssj,sjjssj,sqzt,
+				process_id,connect_id,sqr
+            ) values(
+                #sqid#,#hymc#,#sqbm#,#hynr#,#bz#,
+				#sqsj#,#sqkssj#,#sqjssj#,#sjjssj#,#sqzt#,
+				#processId#,#connectId#,#sqr#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficeHysq" parameterClass="OfficeHysq">
+        <![CDATA[
+            update office_hysq
+            set sqid=#sqid#,hymc=#hymc#,sqbm=#sqbm#,
+				hynr=#hynr#,bz=#bz#,sqsj=#sqsj#,
+				sqkssj=#sqkssj#,sqjssj=#sqjssj#,sjjssj=#sjjssj#,
+				sqzt=#sqzt#,process_id=#processId#,connect_id=#connectId#,
+				sqr=#sqr#
+            where SQID=#sqid#
+        ]]>
+    </update>
+
+    <delete id="delOfficeHysq" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_hysq
+            where SQID=#sqid#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeHysq">
+        <![CDATA[
+            select sqid as sqid,hymc as hymc,sqbm as sqbm,hynr as hynr,bz as bz,sqsj as sqsj,sqkssj as sqkssj,sqjssj as sqjssj,sjjssj as sjjssj,sqzt as sqzt,process_id as processId,connect_id as connectId,sqr as sqr from office_hysq where SQID=#sqid#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficeHysq">
+        <![CDATA[
+            select * from office_hysq
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_hysq
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>
