@@ -171,11 +171,16 @@
             where t.flow_id = w.flow_id and w.flow_name = #value#   and rownum = 1
         ]]>
     </select>
-    <select id="getNextUserRole"  parameterClass="String"  resultClass="String">
+    <select id="getNextUserRole"  parameterClass="java.util.HashMap"  resultClass="String">
     <![CDATA[
-           select  a.activity_role from W_CONNECT t,w_instance w,w_activity a
-            where t.end_instance = w.instance_id and w.activity_id = a.activity_id
-            and t.connect_id = #value# and rownum = 1
+           select a.activity_role
+              from W_CONNECT t, w_instance w, w_activity a, w_line l
+             where t.end_instance = w.instance_id
+               and t.connect_id = #connectId#
+               and l.start_activity = w.activity_id
+               and l.line_var_value = #varValue#
+               and l.end_activity = a.activity_id
+               and rownum = 1
         ]]>
     </select>
     <select id="getUsersByRoleName"  parameterClass="String"  resultClass="java.util.HashMap">

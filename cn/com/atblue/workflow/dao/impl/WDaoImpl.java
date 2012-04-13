@@ -103,8 +103,11 @@ public class WDaoImpl extends SqlMapClientDaoSupport implements WDao {
         return (String)this.getSqlMapClientTemplate().queryForObject("workflow.wdao.getDefXmlByName",name);
     }
 
-    public String getNextUserRole(String connectId){
-        return (String)this.getSqlMapClientTemplate().queryForObject("workflow.wdao.getNextUserRole",connectId);
+    public String getNextUserRole(String connectId,String varValue){
+        Map map = new HashMap();
+        map.put("connectId",connectId);
+        map.put("varValue",varValue);
+        return (String)this.getSqlMapClientTemplate().queryForObject("workflow.wdao.getNextUserRole",map);
     }
 
     public List getUsersByRoleName(String roleName){
