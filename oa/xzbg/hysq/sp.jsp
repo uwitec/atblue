@@ -17,67 +17,6 @@
     OfficeHysq hysq = officeHysqDAO.queryForBean(map);
     String[] checkman =oDao.getCjhyryBySqid(sqid);
     hysq = hysq == null?new OfficeHysq():hysq;
-	if (request.getMethod().equals("POST")) {
-        String SQID = StringUtil.parseNull(request.getParameter("SQID"),"");
-        String HYMC = StringUtil.parseNull(request.getParameter("HYMC"),"");
-        String SQBM = StringUtil.parseNull(request.getParameter("SQBM"),"");
-        String HYNR = StringUtil.parseNull(request.getParameter("HYNR"),"");
-        String BZ = StringUtil.parseNull(request.getParameter("BZ"),"");
-        String SQKSSJ = StringUtil.parseNull(request.getParameter("SQKSSJ"),"");
-        String SQJSSJ = StringUtil.parseNull(request.getParameter("SQJSSJ"),"");
-        String flag = StringUtil.parseNull(request.getParameter("flag"),"");
-        map.put("sqid",SQID);
-        OfficeHysq officeHysq = officeHysqDAO.queryForBean(map);
-        officeHysq.setSqid(SQID);
-        officeHysq.setBz(BZ);
-        officeHysq.setHymc(HYMC);
-        officeHysq.setHynr(HYNR);
-        officeHysq.setSqbm(SQBM);
-        officeHysq.setSqsj(new java.util.Date());
-        officeHysq.setSqr(cUser.getUserId());
-        officeHysq.setSqzt("已保存");//保存状态
-        if(cUser != null)
-            officeHysq.setSqr(cUser.getUserId());
-        if(!StringUtil.isBlankOrEmpty(SQKSSJ)){
-            officeHysq.setSqkssj(new Timestamp(DateUtil.parse(SQKSSJ,
-                    "yyyy-MM-dd HH:mm").getTime()));
-        }
-        if(!StringUtil.isBlankOrEmpty(SQJSSJ)){
-            officeHysq.setSqkssj(new Timestamp(DateUtil.parse(SQJSSJ,
-                    "yyyy-MM-dd HH:mm").getTime()));
-        }
-        if("startup".equals(flag)){
-            officeHysq.setSqzt("已申请");
-            //创建流程代码在这里
-            Status status = workflow.startWorkflow("e9bff47c-2a7b-422b-8d12-6bc5b455df75",cUser.getUserId());
-            //领取第一个业务节点的任务
-//            String connectId = workFlow.claimMission(status.getProcessId(),status.getConnectId(),cUser.getUserId());
-//            if(!StringUtil.isBlankOrEmpty(connectId)){
-//                //有当前用户处理该业务节点
-//                connectId = workFlow.completeMission(status.getProcessId(),status.getConnectId(),cUser.getUserId(),new String[]{cUser.getUserId()},"1");
-//            }else{
-//                //没有下级业务
-//            }
-            officeHysq.setProcessId(status.getProcessId());
-            officeHysq.setConnectId(status.getConnectId());
-        }
-        officeHysqDAO.modOfficeHysq(officeHysq);
-		
-		//保存用户
-        oDao.deleteCjhyryBySqid(sqid);
-		String[] ubox = request.getParameterValues("ubox");
-		for(int i=0; i<ubox.length; i++){
-            OfficeCjhyry  officeCjhyry = new OfficeCjhyry();
-            officeCjhyry.setPkid(StringUtil.getUUID());
-            officeCjhyry.setSqid(officeHysq.getSqid());
-            officeCjhyry.setUserid(ubox[i]);
-            officeCjhyryDAO.addOfficeCjhyry(officeCjhyry);
-		}
-%>
-		<script>
-		    window.location='index.jsp';
-		</script>
-<%	}
      List userList  = dao.getAllUser();
 %>
 <html>
@@ -280,10 +219,20 @@
 			        win.show(this);
 			    });
 			});
+            function tj(sid,pid,cid){
+                var v = document.all.agree;
+                var nextUserId = "";
+                if(v[0].checked && v[0].value == '1'){
+                    nextUserId = document.all.agreed.value;
+                }else{
+                    nextUserId = document.all.disagreed.value;
+                }
+               window.location = "tj.jsp?selUserId="+nextUserId+"&connectId="+cid+"&sqId="+sid+"&processId="+pid;
+            }
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">
-		<form action="edit.jsp" name="form1" method="post">
+		<form action="add.jsp" name="form1" method="post">
             <input type="hidden" name="flag" value=""/>
             <div id="hello-win" class="x-hidden">
                 <div id="hello-tabs">
@@ -331,22 +280,53 @@
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
-						新建会议申请
+						查看会议申请
 					</td>
 					<td width="74%" align="left" class="mhead">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
 							<tbody>
 								<tr>
 									<td align="left">
-										<input type="button" class="button" id="button"
-											onclick="checkForm();" value="保存">
-										&nbsp;
+                                        <input type="radio" name="agree" value="1" checked="checked" onclick="document.getElementById('d').style.display='none';document.getElementById('a').style.display='';">同意
+                                        <input type="radio" name="agree" value="0" onclick="document.getElementById('a').style.display='none';document.getElementById('d').style.display='';">不同意
+
+                                        <span id="a">
+                                            <%
+                                            String options = workFlow.getNextUserSelectOptions(StringUtil.parseNull(hysq.getConnectId(),""),orgId,"1");
+                                        %>
+                                            <%if(!StringUtil.isBlankOrEmpty(options)){ %>
+                                            发送给
+                                             <select name="agreed">
+                                            <%=options%>
+                                         </select>  处理！
+                                            <% }else{
+                                            %>
+                                            结束审批！
+                                            <input type="hidden" name="agreed" value=""/>
+                                            <%     }%>
+                                       </span>
+                                        <span id="d"  style="display: none">
+                                            发送给
+                                        <select name="disagreed">
+                                            <%
+                                                options = workFlow.getNextUserSelectOptions(StringUtil.parseNull(hysq.getConnectId(),""),orgId,"-1");
+                                            %>
+                                            <%if(!StringUtil.isBlankOrEmpty(options)){ %>
+                                                    <%=options%>
+                                            <% }else{ 
+                                            Map m = new HashMap();
+                                             m.put("userId",hysq.getSqr()) ;
+                                             CUser u = userDAO.queryForBean(m);
+                                              u = u ==null?new CUser():u;
+                                            %>
+                                               <option value="<%=u.getUserId()%>"><%=u.getRealName()%></option>
+                                            <%     }%>
+                                        </select> 处理！</span>
+
                                         <input type="button" class="button"
-											onclick="startup();" value="创建流程并启动">
-										&nbsp;
-										<input type="button" class="button" id="button1"
-											onclick="history.back()" value="返回">
-										&nbsp;
+                                               onclick="tj('<%=hysq.getSqid()%>','<%=hysq.getProcessId()%>','<%=hysq.getConnectId()%>');" value="提交">
+                                        <input type="button" class="button" id="button1"
+                                               onclick="history.back()" value="返回">
 									</td>
 								</tr>
 							</tbody>
@@ -364,31 +344,26 @@
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
 									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										会议名称<span style="color: red">&nbsp;*</span>
+										会议名称
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
                                         <input type="hidden" name="SQID" value="<%=StringUtil.parseNull(hysq.getSqid(),"")%>"  style="width:500px"/>
-                                        <input type="text" name="HYMC" value="<%=StringUtil.parseNull(hysq.getHymc(),"")%>"  style="width:500px"/>
+                                        <%=StringUtil.parseNull(hysq.getHymc(),"")%>
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-                                        <%
-                                            Dao mdao = (Dao) SpringFactory.instance.getBean("dao");
-                                            List list = dao.getSelectOrgTrees();
-                                            list = list == null ? new ArrayList() : list;
-                                        %>
-										申请部门<span style="color: red">&nbsp;*</span>
+										申请部门
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
-                                        <input type="hidden" name="SQBM" value="<%=StringUtil.parseNull(orgId,"")%>"/><%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%>
+                                        <%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%>
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										与会人员<span style="color: red">&nbsp;*</span>
+										与会人员
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
@@ -400,24 +375,20 @@
 
 								<tr>
 									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										申请开始时间<span style="color: red">&nbsp;*</span>
+										申请开始时间
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
-										<input type="text"
-											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
-											name="SQKSSJ" class="Wdate" style="width: 200px;" value="<%=StringUtil.parseNull(hysq.getSqkssj(),"")%>">
+										<%=StringUtil.parseNull(hysq.getSqkssj(),"")%>
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										申请结束时间<span style="color: red">&nbsp;*</span>
+										申请结束时间
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
-										<input type="text"
-											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
-											name="SQJSSJ" class="Wdate" style="width: 200px;" value="<%=StringUtil.parseNull(hysq.getSqjssj(),"")%>">
+										<%=StringUtil.parseNull(hysq.getSqjssj(),"")%>
 									</td>
 								</tr>
 

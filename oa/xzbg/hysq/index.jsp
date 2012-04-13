@@ -46,14 +46,14 @@
 			}
 			return;
 		}
-        function tj(sid,cid,id){
+        function tj(sid,pid,cid,id){
             var selUserId = document.all[id+"nextUserId"].value;
             if(selUserId == null || selUserId == ''){
                 alert("请先选择进行审批的用户！");
                 document.all[id+"nextUserId"].focus();
                 return ;
             }
-            window.location = "tj.jsp?selUserId="+selUserId+"&connectId="+cid+"&sqId="+sid;
+            window.location = "tj.jsp?selUserId="+selUserId+"&connectId="+cid+"&sqId="+sid+"&processId="+pid;
         }
 		</script>
 	</head>
@@ -168,12 +168,12 @@
                                     if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
-                                     String options = workFlow.getNextUserSelectOptions(connectId,orgId);
+                                     String options = workFlow.getNextUserSelectOptions(connectId,orgId,"1");
                                 %>
                                      发送给
                                 <select name="<%=StringUtil.parseNull(map.get("SQID"),"")%>nextUserId">
                                 <%=StringUtil.parseNull(options,"")%>
-                                </select>审批<input type="button" class="button"  style="width:40px" value="提交" onclick="tj('<%=StringUtil.parseNull(map.get("SQID"),"")%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');"/>
+                                </select>审批<input type="button" class="button"  style="width:40px" value="提交" onclick="tj('<%=StringUtil.parseNull(map.get("SQID"),"")%>','<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');"/>
                                 <% }else if("已保存".equals(StringUtil.parseNull(map.get("SQZT"),""))){%>
                                 <a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">[编辑]</a>&nbsp;
                                 <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;

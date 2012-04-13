@@ -107,9 +107,6 @@
 							<td nowrap="nowrap" class="NormalColumnTitle" width="200">
 								会议内容
 							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="80">
-								申请状态
-							</td>
 							<td nowrap="nowrap" class="NormalColumnTitle">
 								操作
 							</td>
@@ -150,26 +147,8 @@
 							<td class="NormalDataColumn" align="left">
 								<%=StringUtil.cutString(StringUtil.parseNull(map.get("HYNR"),""),25)%>
 							</td>
-							<td class="NormalDataColumn" align="center">
-								<%=StringUtil.parseNull(map.get("SQZT"),"")%>
-							</td>
 							<td class="NormalDataColumn" align="center" nowrap="nowrap">
-                                <%
-                                    if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){
-                                    String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
-                                    String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
-                                     String options = workFlow.getNextUserSelectOptions(connectId,orgId);
-                                %>
-                                     发送给
-                                <select name="nextUserId">
-                                <%=StringUtil.parseNull(options,"")%>
-                                </select>审批<input type="button" class="button"  style="width:40px" value="提交"/>
-                                <% }else{%>
-                                <a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">[编辑]</a>&nbsp;
-                                <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
-                                <%   }
-                                %>
-
+                                <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
 						</tr>
 						<%
