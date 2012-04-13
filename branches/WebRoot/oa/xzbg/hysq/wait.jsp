@@ -151,10 +151,10 @@
 								<%=StringUtil.cutString(StringUtil.parseNull(map.get("HYNR"),""),25)%>
 							</td>
 							<td class="NormalDataColumn" align="center">
-								<%=StringUtil.parseNull(map.get("SQZT"),"")%>
+                                <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
 							<td class="NormalDataColumn" align="center" nowrap="nowrap">
-                                <input type="button" class="button" name=""  value="审批" onclick=""/>
+                                <input type="button" class="button" name=""  value="审批" onclick="window.location='sp.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>';"/>
                                 &nbsp;
 							</td>
 						</tr>
