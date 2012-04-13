@@ -302,11 +302,12 @@ public class Workflow {
         }
         return n / s1.length;
     }
-
-    public String getNextUserSelectOptions(String connectId, String orgnaId,String varValue) {
+   public String getNextRoleName(String connectId, String varValue){
+       return  wDao.getNextUserRole(connectId,varValue);
+   }
+    public String getNextUserSelectOptions(String roleName, String orgnaId) {
         StringBuffer s = new StringBuffer("");
-        String nextRole = wDao.getNextUserRole(connectId,varValue);
-        System.out.println("nextRole:"+nextRole);
+        String nextRole = roleName;
         if (!StringUtil.isBlankOrEmpty(nextRole)) {
             String[] roles = StringUtil.split(nextRole, "、"); //多个角色用、分割
             if (roles != null && roles.length > 0) {
