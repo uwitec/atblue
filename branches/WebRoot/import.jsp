@@ -38,6 +38,7 @@
     OfficeNoticeCheckDAO officeNoticeCheckDAO = (OfficeNoticeCheckDAO)SpringFactory.instance.getBean("officeNoticeCheckDAO");
     OfficeHysqDAO officeHysqDAO = (OfficeHysqDAO)SpringFactory.instance.getBean("officeHysqDAO");
     OfficeCjhyryDAO officeCjhyryDAO = (OfficeCjhyryDAO)SpringFactory.instance.getBean("officeCjhyryDAO");
+    CUserDAO userDAO = (CUserDAO)SpringFactory.instance.getBean("userDAO");
     String contentPath = request.getContextPath();
     //获取流程
     Workflow workFlow = (Workflow)SpringFactory.instance.getBean("workflow");
