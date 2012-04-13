@@ -5,6 +5,7 @@
     String connectId = StringUtil.parseNull(request.getParameter("connectId"), "");
     String processId = StringUtil.parseNull(request.getParameter("processId"), "");
     String sqId = StringUtil.parseNull(request.getParameter("sqId"), "");
+    String varValue = StringUtil.parseNull(request.getParameter("varValue"), "1");
     CUser cUser = (CUser) session.getAttribute("cUser");
     cUser = cUser == null ? new CUser() : cUser;
     Map map = new HashMap();
@@ -14,7 +15,7 @@
     OfficeHysq officeHysq = officeHysqDAO.queryForBean(map);
     connectId = workFlow.claimMission(processId, connectId, cUser.getUserId());
     if (!StringUtil.isBlankOrEmpty(connectId)) {
-        connectId = workFlow.completeMission(processId, connectId, cUser.getUserId(), new String[]{selUserId}, "1");
+        connectId = workFlow.completeMission(processId, connectId, cUser.getUserId(), new String[]{selUserId}, varValue);
     }
     if (officeHysq != null) {
         officeHysq.setConnectId(connectId);
