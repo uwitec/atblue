@@ -50,7 +50,7 @@
 	</head>
 	<body>
     <form name="form1" action=""  style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px">
-    <table width="100%" align="center" height="25" border="0"
+        <table width="100%" align="center" height="25" border="0"
            cellpadding="0" cellspacing="0"
            background="<%=contentPath%>/images/mhead.jpg">
         <tr>
@@ -67,7 +67,7 @@
                     <tr>
                         <td align="left">
                             会议名称：
-                            <input name="mc" size="10" type="text" value="" />&nbsp;
+                            <input name="hymc" size="10" type="text" value="" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                         </td>
                     </tr>

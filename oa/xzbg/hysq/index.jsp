@@ -168,9 +168,10 @@
                                     if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
-                                     String options = workFlow.getNextUserSelectOptions(connectId,orgId,"1");
+                                     String nextRole = workFlow.getNextRoleName(connectId,"1");
+                                     String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                 %>
-                                     发送给
+                                     发送给&nbsp;<%=nextRole%>
                                 <select name="<%=StringUtil.parseNull(map.get("SQID"),"")%>nextUserId">
                                 <%=StringUtil.parseNull(options,"")%>
                                 </select>审批<input type="button" class="button"  style="width:40px" value="提交" onclick="tj('<%=StringUtil.parseNull(map.get("SQID"),"")%>','<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');"/>
