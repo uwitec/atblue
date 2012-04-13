@@ -75,7 +75,7 @@
                     <tr>
                         <td align="left">
                             会议名称：
-                            <input name="hymc" size="10" type="text" value="" />&nbsp;
+                            <input name="hymc" size="10" type="text" value="<%=hymc%>" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                             <input type="button" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='新增'>
                         </td>
@@ -160,7 +160,15 @@
 								<%=StringUtil.cutString(StringUtil.parseNull(map.get("HYNR"),""),25)%>
 							</td>
 							<td class="NormalDataColumn" align="center">
-								<%=StringUtil.parseNull(map.get("SQZT"),"")%>
+								<%String sqzt = StringUtil.parseNull(map.get("SQZT"),"");
+                                     if("已完成".equals(sqzt)){ %>
+                                        <font color="green"><%=sqzt%></font>
+                                <%}else if("正在审批".equals(sqzt)) { %>
+                                        <font color="red"><%=sqzt%></font>
+                                <%}else{  %>
+                                        <%=sqzt%>
+                                <% }
+                                %>&nbsp;
 							</td>
 							<td class="NormalDataColumn" align="center" nowrap="nowrap">
                                 <%
