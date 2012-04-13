@@ -131,7 +131,7 @@ public class WorkflowAction extends BaseAction {
                                     }
                                     if ("START_NODE".equals(type)) {
                                         wActivity.setActivityType("1");
-                                    } else if ("EndNode".equals(type)) {
+                                    } else if ("END_NODE".equals(type)) {
                                         wActivity.setActivityType("9");
                                     } else {
                                         wActivity.setActivityType("2");
