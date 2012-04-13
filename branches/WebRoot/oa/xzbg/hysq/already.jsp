@@ -67,7 +67,7 @@
                     <tr>
                         <td align="left">
                             会议名称：
-                            <input name="hymc" size="10" type="text" value="" />&nbsp;
+                            <input name="hymc" size="10" type="text" value="<%=hymc%>" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                         </td>
                     </tr>
