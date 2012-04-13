@@ -85,13 +85,13 @@
                        <td style="text-align: center" nowrap>
                            <%
                                 String status = StringUtil.parseNull(request.getAttribute("RELEASE_STATUS"),"");
-                               if("尚未发布".equals(status)){
+//                               if("尚未发布".equals(status)){
                            %>
                            <input  type="button" class="button" onClick="doEdit('${FLOW_NAME}');" value="修改">
                            <input  type="button" class="button" onClick="doDelete('${FLOW_ID}');" value="删除">
                            <input  type="button" class="button" onClick="doRelease('${FLOW_ID}');" value="发布">
-                           <%   }
-                           %>
+                           <%--<%   }--%>
+                           <%--%>--%>
 
                            &nbsp;</td>
                    </tr>
