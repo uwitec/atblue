@@ -137,11 +137,10 @@
 		function setParentChecked(node,ck_obj){
 			for(var i=0;i<urlTree.aNodes.length;i++){
 				var nodes = urlTree.aNodes[i];
-				
-				if(node.pid == nodes.id && nodes.id > 0){
+				if(node.pid == nodes.id){
 					if(ck_obj.checked){
 						var ck_parent = document.getElementById('ck_'+nodes.id);
-						ck_parent.checked = "checked";
+                        if(ck_parent)ck_parent.checked = "checked";
 						//递归下去
 						var node_ = nodes;
 						setParentChecked(node_,ck_parent);
