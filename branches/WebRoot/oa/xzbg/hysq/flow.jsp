@@ -31,11 +31,34 @@
 
 	</head>
 	<body>
+    <table width="60%" align="center" height="25" border="0"
+           cellpadding="0" cellspacing="0"
+           background="<%=contentPath%>/images/mhead.jpg">
+        <tr>
+            <td width="3%" align="center">
+                <img src="<%=contentPath%>/images/mlogo.jpg" width="11" height="11"
+                     alt="">
+            </td>
+            <td width="15%" class="mhead">
+                流程处理状态
+            </td>
+            <td align="left" class="mhead">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td align="left">
+                            <input type="button" class="button" onclick="window.history.go(-1);" style="width:40px"  value='返回'>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
 		<table width="60%" align="center" height="25" border="0"
 			cellpadding="0" cellspacing="0">
 			<tr>
 				<td>
-
 					<table width="100%" border="0" align="center" cellpadding="0"
 						cellspacing="0" class="mtabtab" id="mtabtab">
 						<tr>

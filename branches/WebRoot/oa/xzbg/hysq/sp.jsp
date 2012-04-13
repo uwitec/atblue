@@ -39,14 +39,14 @@
             function _resizeNoPage() {
                 document.getElementById("scrollDiv").style.width = document.body.clientWidth - 18;
                 document.getElementById("scrollDiv").style.height = document.body.clientHeight - 50;
-            }
-
 			function CheckDateTime(object){
 			   var rr=/^(?:19|20)[0-9][0-9]-(?:(?:0[1-9])|(?:1[0-2]))-(?:(?:[0-2][1-9])|(?:[1-3][0-1])) (?:(?:[0-2][0-3])|(?:[0-1][0-9])):[0-5][0-9]$/
 			   if(!rr.test(object.value)){
 			    	object.focus();
 			 		return false;
 			   }
+            }
+
 			   return true;
 			}
 			function CheckDate(object){
@@ -287,15 +287,17 @@
 							<tbody>
 								<tr>
 									<td align="left">
+                                        <input type="button" name="sign" value="签字"/>&nbsp;&nbsp;&nbsp;
                                         <input type="radio" name="agree" value="1" checked="checked" onclick="document.getElementById('d').style.display='none';document.getElementById('a').style.display='';">同意
                                         <input type="radio" name="agree" value="0" onclick="document.getElementById('a').style.display='none';document.getElementById('d').style.display='';">不同意
 
                                         <span id="a">
                                             <%
-                                            String options = workFlow.getNextUserSelectOptions(StringUtil.parseNull(hysq.getConnectId(),""),orgId,"1");
+                                                String nextRole = workFlow.getNextRoleName(StringUtil.parseNull(hysq.getConnectId(),""),"1");
+                                                String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                         %>
-                                            <%if(!StringUtil.isBlankOrEmpty(options)){ %>
-                                            发送给
+                                            <%if(!"结束".equals(nextRole)){ %>
+                                            发送给&nbsp; <%=nextRole%>
                                              <select name="agreed">
                                             <%=options%>
                                          </select>  处理！
@@ -309,9 +311,10 @@
                                             发送给
                                         <select name="disagreed">
                                             <%
-                                                options = workFlow.getNextUserSelectOptions(StringUtil.parseNull(hysq.getConnectId(),""),orgId,"-1");
+                                                nextRole = workFlow.getNextRoleName(StringUtil.parseNull(hysq.getConnectId(),""),"-1");
+                                                options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                             %>
-                                            <%if(!StringUtil.isBlankOrEmpty(options)){ %>
+                                            <%if(!"会议申请".equals(nextRole)){ %>
                                                     <%=options%>
                                             <% }else{ 
                                             Map m = new HashMap();
