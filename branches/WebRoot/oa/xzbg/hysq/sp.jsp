@@ -222,12 +222,15 @@
             function tj(sid,pid,cid){
                 var v = document.all.agree;
                 var nextUserId = "";
+                var varValue = "";
                 if(v[0].checked && v[0].value == '1'){
                     nextUserId = document.all.agreed.value;
+                    varValue = "1";
                 }else{
                     nextUserId = document.all.disagreed.value;
+                    varValue = "-1";
                 }
-               window.location = "tj.jsp?selUserId="+nextUserId+"&connectId="+cid+"&sqId="+sid+"&processId="+pid;
+               window.location = "tj.jsp?selUserId="+nextUserId+"&connectId="+cid+"&sqId="+sid+"&processId="+pid+"&varValue="+varValue;
             }
 		</script>
 	</head>
@@ -287,7 +290,7 @@
 							<tbody>
 								<tr>
 									<td align="left">
-                                        <input type="button" name="sign" value="签字"/>&nbsp;&nbsp;&nbsp;
+                                        <input type="button" name="sign" class="button" value="签字"/>&nbsp;&nbsp;&nbsp;
                                         <input type="radio" name="agree" value="1" checked="checked" onclick="document.getElementById('d').style.display='none';document.getElementById('a').style.display='';">同意
                                         <input type="radio" name="agree" value="0" onclick="document.getElementById('a').style.display='none';document.getElementById('d').style.display='';">不同意
 
@@ -370,7 +373,7 @@
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
-										<button id="mb3">
+										<button id="mb3" class="button">
 											参加人
 										</button>
 									</td>

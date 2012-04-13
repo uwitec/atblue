@@ -41,19 +41,10 @@
             officeHysq.setSqzt("已申请");
             //创建流程代码在这里
             Status status = workflow.startWorkflow("d1325ed3-9ffd-4c21-91ae-399db5a02a08",cUser.getUserId());
-            //领取第一个业务节点的任务
-//            String connectId = workFlow.claimMission(status.getProcessId(),status.getConnectId(),cUser.getUserId());
-//            if(!StringUtil.isBlankOrEmpty(connectId)){
-//                //有当前用户处理该业务节点
-//                connectId = workFlow.completeMission(status.getProcessId(),status.getConnectId(),cUser.getUserId(),new String[]{cUser.getUserId()},"1");
-//            }else{
-//                //没有下级业务
-//            }
             officeHysq.setProcessId(status.getProcessId());
             officeHysq.setConnectId(status.getConnectId());
         }
         officeHysqDAO.addOfficeHysq(officeHysq);
-		
 		//保存用户
 		String[] ubox = request.getParameterValues("ubox");
 		for(int i=0; i<ubox.length; i++){
@@ -253,7 +244,8 @@
 			                    autoTabs:true,
 			                    activeTab:0,
 //			                    deferredRender:false,
-			                    border:false
+			                    border:false ,
+                                defaults:{autoScroll: true}
 			                }),
 			                buttons: [{
 			                    text:'确定',
@@ -376,7 +368,7 @@
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
-										<button id="mb3">
+										<button id="mb3" class="button">
 											参加人
 										</button>
 									</td>
