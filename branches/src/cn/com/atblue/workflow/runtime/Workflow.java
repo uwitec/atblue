@@ -303,9 +303,9 @@ public class Workflow {
         return n / s1.length;
     }
 
-    public String getNextUserSelectOptions(String connectId, String orgnaId) {
+    public String getNextUserSelectOptions(String connectId, String orgnaId,String varValue) {
         StringBuffer s = new StringBuffer("");
-        String nextRole = wDao.getNextUserRole(connectId);
+        String nextRole = wDao.getNextUserRole(connectId,varValue);
         System.out.println("nextRole:"+nextRole);
         if (!StringUtil.isBlankOrEmpty(nextRole)) {
             String[] roles = StringUtil.split(nextRole, "、"); //多个角色用、分割

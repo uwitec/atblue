@@ -47,7 +47,7 @@ public interface WDao {
     
     public String getDefXmlByName(String name);
     
-    public String getNextUserRole(String connectId);
+    public String getNextUserRole(String connectId,String varValue);
     
     public List getUsersByRoleName(String roleName);
 
