@@ -59,7 +59,7 @@
                      alt="">
             </td>
             <td width="15%" class="mhead">
-                 会议申请
+                 会议申请已审批
             </td>
             <td align="left" class="mhead">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
