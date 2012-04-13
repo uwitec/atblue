@@ -50,19 +50,10 @@
             officeHysq.setSqzt("已申请");
             //创建流程代码在这里
             Status status = workflow.startWorkflow("d1325ed3-9ffd-4c21-91ae-399db5a02a08",cUser.getUserId());
-            //领取第一个业务节点的任务
-//            String connectId = workFlow.claimMission(status.getProcessId(),status.getConnectId(),cUser.getUserId());
-//            if(!StringUtil.isBlankOrEmpty(connectId)){
-//                //有当前用户处理该业务节点
-//                connectId = workFlow.completeMission(status.getProcessId(),status.getConnectId(),cUser.getUserId(),new String[]{cUser.getUserId()},"1");
-//            }else{
-//                //没有下级业务
-//            }
             officeHysq.setProcessId(status.getProcessId());
             officeHysq.setConnectId(status.getConnectId());
         }
         officeHysqDAO.modOfficeHysq(officeHysq);
-		
 		//保存用户
         oDao.deleteCjhyryBySqid(sqid);
 		String[] ubox = request.getParameterValues("ubox");
@@ -262,6 +253,7 @@
 			                    autoTabs:true,
 			                    activeTab:0,
 //			                    deferredRender:false,
+                                defaults:{autoScroll: true},
 			                    border:false
 			                }),
 			                buttons: [{
@@ -330,7 +322,7 @@
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
-						新建会议申请
+						修改会议申请
 					</td>
 					<td width="74%" align="left" class="mhead">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -391,7 +383,7 @@
 									</td>
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
-										<button id="mb3">
+										<button id="mb3" class="button">
 											参加人
 										</button>
 									</td>
