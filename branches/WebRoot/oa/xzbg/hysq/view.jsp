@@ -237,7 +237,6 @@
                             </tr>
                             <%for(int i=0; i<userList.size(); i++){
                                 CUser u = (CUser)userList.get(i);
-                                System.out.println(u.getRealName()+"ssssssss");
                                 if(i==0){
                             %>
                             <tr>

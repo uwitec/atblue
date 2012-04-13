@@ -49,7 +49,7 @@
         if("startup".equals(flag)){
             officeHysq.setSqzt("已申请");
             //创建流程代码在这里
-            Status status = workflow.startWorkflow("e9bff47c-2a7b-422b-8d12-6bc5b455df75",cUser.getUserId());
+            Status status = workflow.startWorkflow("9f68b3fc-a977-4f70-be33-df5ec0eed4b4",cUser.getUserId());
             //领取第一个业务节点的任务
 //            String connectId = workFlow.claimMission(status.getProcessId(),status.getConnectId(),cUser.getUserId());
 //            if(!StringUtil.isBlankOrEmpty(connectId)){
@@ -298,7 +298,6 @@
                             </tr>
                             <%for(int i=0; i<userList.size(); i++){
                                 CUser u = (CUser)userList.get(i);
-                                System.out.println(u.getRealName()+"ssssssss");
                                 if(i==0){
                             %>
                             <tr>
