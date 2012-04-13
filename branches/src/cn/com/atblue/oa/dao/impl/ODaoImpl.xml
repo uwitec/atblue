@@ -100,20 +100,39 @@
 
     <select id="getFlowList" parameterClass="String" resultClass="java.util.HashMap">
         <![CDATA[
-            select sa.activity_name sactivity_name,t.pending_person,ea.activity_name,t.real_person from W_CONNECT t,w_instance s,w_instance e,w_activity sa,w_activity ea
-            where t.start_instance = s.instance_id and t.end_instance = e.instance_id
-            and s.activity_id = sa.activity_id and e.activity_id = ea.activity_id
-            and t.process_id = #value#
-            order by t.create_time
+            select sa.activity_name sactivity_name,
+         t.pending_person,
+         ea.activity_name,
+         t.real_person,
+         c1.real_name,
+         c2.real_name real_name2
+    from W_CONNECT  t,
+         w_instance s,
+         w_instance e,
+         w_activity sa,
+         w_activity ea,
+         c_user c1,
+         c_user c2
+   where t.start_instance = s.instance_id
+     and t.end_instance = e.instance_id
+     and s.activity_id = sa.activity_id
+     and e.activity_id = ea.activity_id
+     and t.pending_person = c1.user_id(+)
+     and t.real_person = c2.user_id(+)
+     and t.process_id = #value#
+   order by t.create_time
         ]]>
     </select>
 
     <select id="getWaitPagedHysqList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
         <include refid="basic.pageStart"/>
         <![CDATA[
-        select t.* from OFFICE_HYSQ t,w_connect c,w_process p
-        where t.connect_id = c.connect_id and t.process_id = p.process_id
-        and p.process_status = '1'
+        select t.*, o.orgna_name
+  from OFFICE_HYSQ t, w_connect c, w_process p, c_orgnization o
+ where t.connect_id = c.connect_id
+   and t.process_id = p.process_id
+   and t.sqbm = o.orgna_id
+   and p.process_status = '1'
         ]]>
         <dynamic prepend=" and ">
             <isNotEmpty prepend=" and " property="userId">
@@ -128,9 +147,12 @@
     </select>
     <select id="getWaitPagedHysqCount" parameterClass="java.util.HashMap" resultClass="int">
         <![CDATA[
-        select count(*) from OFFICE_HYSQ t,w_connect c,w_process p
-        where t.connect_id = c.connect_id and t.process_id = p.process_id
-        and p.process_status = '1'
+        select count(*)
+  from OFFICE_HYSQ t, w_connect c, w_process p, c_orgnization o
+ where t.connect_id = c.connect_id
+   and t.process_id = p.process_id
+   and t.sqbm = o.orgna_id
+   and p.process_status = '1'
         ]]>
         <dynamic prepend=" and ">
             <isNotEmpty prepend=" and " property="userId">
