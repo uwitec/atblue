@@ -234,6 +234,7 @@
               FROM C_ORGNIZATION
              START WITH ORGNA_ID = '1'
             CONNECT BY PRIOR ORGNA_ID = PARENT_ID
+            order by ORGNA_ORDER
        ]]>
     </select>
 

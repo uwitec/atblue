@@ -63,6 +63,7 @@
             </isNotEmpty>
         </dynamic>
         -->
+        order by ROLE_ORDER
     </select>
 
     <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
