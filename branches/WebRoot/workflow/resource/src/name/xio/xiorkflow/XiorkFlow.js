@@ -32,7 +32,7 @@ function XiorkFlow(ui) {
     //
     this.statusPanel = new StatusLabel();
     //欢迎使用工作流定制系统
-    this.statusPanel.setText("欢迎使用工作流定制系统. Victorysoft. OADD. 2008");
+    this.statusPanel.setText("欢迎使用工作流定制系统. ");
     this.add(this.statusPanel);
 
 	//
