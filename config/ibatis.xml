@@ -49,6 +49,10 @@
       -->
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeHysqImpl.xml" />
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeCjhyryImpl.xml" />
+    <!--
+     	用印申请
+      -->
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeYysqImpl.xml" />
      <!--
      	消息池
       -->
