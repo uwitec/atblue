@@ -105,7 +105,7 @@
 			</div>
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
-				background="<%=contentPath%>/resource/images/mhead.jpg">
+				background="<%=contentPath%>/images/mhead.jpg">
 				<tr>
 					<td width="3%" align="center">
 						<img src="<%=contentPath%>/images/mlogo.jpg" width="11"

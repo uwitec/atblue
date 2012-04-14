@@ -39,6 +39,7 @@
     UMessageDAO uMessageDAO = (UMessageDAO) SpringFactory.instance.getBean("uMessageDAO");
     OfficeNoticeCheckDAO officeNoticeCheckDAO = (OfficeNoticeCheckDAO)SpringFactory.instance.getBean("officeNoticeCheckDAO");
     OfficeHysqDAO officeHysqDAO = (OfficeHysqDAO)SpringFactory.instance.getBean("officeHysqDAO");
+    OfficeYysqDAO officeYysqDAO = (OfficeYysqDAO)SpringFactory.instance.getBean("officeYysqDAO");
     OfficeCjhyryDAO officeCjhyryDAO = (OfficeCjhyryDAO)SpringFactory.instance.getBean("officeCjhyryDAO");
     CUserDAO userDAO = (CUserDAO)SpringFactory.instance.getBean("userDAO");
     String contentPath = request.getContextPath();

@@ -203,4 +203,115 @@
         </dynamic>
         order by t.sqsj desc
     </select>
+
+    <select id="getPagedYysqList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+            select t.*,o.orgna_name from OFFICE_YYSQ t,c_orgnization o
+            where t.yybm = o.orgna_id
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="yymc">
+                <![CDATA[t.YYMC like '%'||#yymc#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="orgnaId">
+                <![CDATA[t.YYBM=#orgnaId#]]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedYysqCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) cn  from OFFICE_YYSQ t,c_orgnization o
+            where t.yybm = o.orgna_id
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="yymc">
+                <![CDATA[t.YYMC like '%'||#yymc#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="orgnaId">
+                <![CDATA[t.YYBM=#orgnaId#]]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+    </select>
+    <select id="getWaitPagedYysqList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+        select t.*, o.orgna_name
+  from OFFICE_YYSQ t, w_connect c, w_process p, c_orgnization o
+ where t.connect_id = c.connect_id
+   and t.process_id = p.process_id
+   and t.YYBM = o.orgna_id
+   and p.process_status = '1'
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="userId">
+                <![CDATA[c.pending_person like '%'||#userId#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="yymc">
+                <![CDATA[t.YYMC like '%'||#yymc#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getWaitPagedYysqCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+        select count(*)
+  from OFFICE_YYSQ t, w_connect c, w_process p, c_orgnization o
+ where t.connect_id = c.connect_id
+   and t.process_id = p.process_id
+   and t.YYBM = o.orgna_id
+   and p.process_status = '1'
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="userId">
+                <![CDATA[c.pending_person like '%'||#userId#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="yymc">
+                <![CDATA[t.YYMC like '%'||#yymc#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+    </select>
+    <select id="getAlreadyPagedYysqList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+      select t.*
+        from OFFICE_YYSQ t,
+             (select c.process_id, count(*) cn
+                from w_connect c
+               where c.real_person like  '%'||#userId#||'%'
+               group by c.process_id) d
+       where t.process_id = d.process_id
+         and d.cn > 0
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="yymc">
+                <![CDATA[t.YYMC like '%'||#yymc#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getAlreadyPagedYysqCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+      select count(*)
+        from OFFICE_YYSQ t,
+             (select c.process_id, count(*) cn
+                from w_connect c
+               where c.real_person like  '%'||#userId#||'%'
+               group by c.process_id) d
+       where t.process_id = d.process_id
+         and d.cn > 0
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="yymc">
+                <![CDATA[t.YYMC like '%'||#yymc#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+    </select>
 </sqlMap>

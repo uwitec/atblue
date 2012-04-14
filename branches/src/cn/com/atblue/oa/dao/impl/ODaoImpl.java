@@ -80,4 +80,40 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         return getSqlMapClientTemplate().queryForList(
                 "oa.dao.getFlowList", processId);
     }
+
+    public List getPagedYysqList(PageBean pb, Map paramMap){
+        paramMap.put("currentPage", pb.getCurrentPage());
+        paramMap.put("pageSize", pb.getPageSize());
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getPagedYysqList", paramMap);
+    }
+
+    public int getPagedYysqCount(Map paramMap){
+        return (Integer) getSqlMapClientTemplate().queryForObject(
+                "oa.dao.getPagedYysqCount", paramMap);
+    }
+
+    public List getWaitPagedYysqList(PageBean pb, Map paramMap){
+        paramMap.put("currentPage", pb.getCurrentPage());
+        paramMap.put("pageSize", pb.getPageSize());
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getWaitPagedYysqList", paramMap);
+    }
+
+    public int getWaitPagedYysqCount(Map paramMap){
+        return (Integer) getSqlMapClientTemplate().queryForObject(
+                "oa.dao.getWaitPagedYysqCount", paramMap);
+    }
+
+    public List getAlreadyPagedYysqList(PageBean pb, Map paramMap){
+        paramMap.put("currentPage", pb.getCurrentPage());
+        paramMap.put("pageSize", pb.getPageSize());
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getAlreadyPagedYysqList", paramMap);
+    }
+
+    public int getAlreadyPagedYysqCount(Map paramMap){
+        return (Integer) getSqlMapClientTemplate().queryForObject(
+                "oa.dao.getAlreadyPagedYysqCount", paramMap);
+    }
 }
