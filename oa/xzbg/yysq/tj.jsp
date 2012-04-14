@@ -30,8 +30,8 @@
         officeYysqDAO.modOfficeYysq(officeYysq);
     }
     if("1".equals(type)){
-        response.sendRedirect("tabs.jsp");
-    }else{
         response.sendRedirect("wait.jsp");
+    }else{
+        response.sendRedirect("index.jsp");
     }
 %>
