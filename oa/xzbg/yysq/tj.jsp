@@ -5,6 +5,7 @@
     String connectId = StringUtil.parseNull(request.getParameter("connectId"), "");
     String processId = StringUtil.parseNull(request.getParameter("processId"), "");
     String sqId = StringUtil.parseNull(request.getParameter("sqId"), "");
+    String type = StringUtil.parseNull(request.getParameter("type"), "");
     String varValue = StringUtil.parseNull(request.getParameter("varValue"), "1");
     CUser cUser = (CUser) session.getAttribute("cUser");
     cUser = cUser == null ? new CUser() : cUser;
@@ -28,5 +29,9 @@
         }
         officeYysqDAO.modOfficeYysq(officeYysq);
     }
-    response.sendRedirect("index.jsp");
+    if("1".equals(type)){
+        response.sendRedirect("tabs.jsp");
+    }else{
+        response.sendRedirect("index.jsp");
+    }
 %>
