@@ -230,7 +230,7 @@
                     nextUserId = document.all.disagreed.value;
                     varValue = "-1";
                 }
-               window.location = "tj.jsp?selUserId="+nextUserId+"&connectId="+cid+"&sqId="+sid+"&processId="+pid+"&varValue="+varValue;
+               window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&sqId="+sid+"&processId="+pid+"&varValue="+varValue;
             }
 		</script>
 	</head>
