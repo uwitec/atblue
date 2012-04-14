@@ -32,4 +32,16 @@ public interface ODao {
     public int getAlreadyPagedHysqCount(Map paramMap);
     
     public List getFlowList(String processId);
+
+    public List getPagedYysqList(PageBean pb, Map paramMap);
+
+    public int getPagedYysqCount(Map paramMap);
+
+    public List getWaitPagedYysqList(PageBean pb, Map paramMap);
+
+    public int getWaitPagedYysqCount(Map paramMap);
+
+    public List getAlreadyPagedYysqList(PageBean pb, Map paramMap);
+
+    public int getAlreadyPagedYysqCount(Map paramMap);
 }
