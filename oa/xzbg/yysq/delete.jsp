@@ -7,5 +7,5 @@
         map.put("sqid",sqid);
         officeYysqDAO.delOfficeYysq(map);
     }
-    response.sendRedirect("index.jsp");
+    response.sendRedirect("list.jsp");
 %>

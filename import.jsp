@@ -40,6 +40,9 @@
     OfficeNoticeCheckDAO officeNoticeCheckDAO = (OfficeNoticeCheckDAO)SpringFactory.instance.getBean("officeNoticeCheckDAO");
     OfficeHysqDAO officeHysqDAO = (OfficeHysqDAO)SpringFactory.instance.getBean("officeHysqDAO");
     OfficeYysqDAO officeYysqDAO = (OfficeYysqDAO)SpringFactory.instance.getBean("officeYysqDAO");
+    OfficeQpdFormDAO officeQpdFormDAO = (OfficeQpdFormDAO)SpringFactory.instance.getBean("officeQpdFormDAO");
+    OfficeQpdDAO officeQpdDAO = (OfficeQpdDAO)SpringFactory.instance.getBean("officeQpdDAO");
+    OfficeQpdyjDAO officeQpdyjDAO = (OfficeQpdyjDAO)SpringFactory.instance.getBean("officeQpdyjDAO");
     OfficeCjhyryDAO officeCjhyryDAO = (OfficeCjhyryDAO)SpringFactory.instance.getBean("officeCjhyryDAO");
     CUserDAO userDAO = (CUserDAO)SpringFactory.instance.getBean("userDAO");
     String contentPath = request.getContextPath();

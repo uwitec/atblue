@@ -32,7 +32,7 @@
     if("1".equals(type)){
         response.sendRedirect("wait.jsp");
     }else{
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("list.jsp");
     }
 
 %>
