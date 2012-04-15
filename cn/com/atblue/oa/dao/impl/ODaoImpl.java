@@ -5,6 +5,7 @@ import cn.com.atblue.oa.bean.OfficeSeal;
 import cn.com.atblue.oa.dao.ODao;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,15 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
     @Override
     public int getPagedSealCount(Map paramMap) {
         return (Integer) this.getSqlMapClientTemplate().queryForObject("oa.dao.getPagedSealCount", paramMap);
+    }
+    @Override
+    public List getPagedQpdList(Map paramMap) {
+        return this.getSqlMapClientTemplate().queryForList("oa.dao.getPagedQpdList", paramMap);
+    }
+
+    @Override
+    public int getPagedQpdCount(Map paramMap) {
+        return (Integer) this.getSqlMapClientTemplate().queryForObject("oa.dao.getPagedQpdCount", paramMap);
     }
 
     public List getAllUserList(){
@@ -115,5 +125,34 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
     public int getAlreadyPagedYysqCount(Map paramMap){
         return (Integer) getSqlMapClientTemplate().queryForObject(
                 "oa.dao.getAlreadyPagedYysqCount", paramMap);
+    }
+
+    public List getAllQpdFormItemsByFormId(String formId){
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getAllQpdFormItemsByFormId", formId);
+    }
+
+    public List getAllQpdFormItemsByFormId2(String formId,String processId){
+        Map map = new HashMap();
+        map.put("formId",formId);
+        map.put("processId",processId);
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getAllQpdFormItemsByFormId2", map);
+    }
+
+    public void deleteAllQpdFormItemsByFormId(String formId){
+        this.getSqlMapClientTemplate().delete("oa.dao.deleteAllQpdFormItemsByFormId",formId);
+    }
+
+    public String getFormItemIdByConnectId(String connectId){
+        return (String)this.getSqlMapClientTemplate().queryForObject("oa.dao.getFormItemIdByConnectId",connectId);
+    }
+
+    public String getSignDataByProcessId(String processId){
+        return (String)this.getSqlMapClientTemplate().queryForObject("oa.dao.getSignDataByProcessId",processId);
+    }
+
+    public void deleteAllQpdYjsByProcessId(String processId){
+        this.getSqlMapClientTemplate().delete("oa.dao.deleteAllQpdYjsByProcessId",processId);
     }
 }

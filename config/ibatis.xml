@@ -53,6 +53,14 @@
      	用印申请
       -->
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeYysqImpl.xml" />
+
+    <!--
+     	签批单
+      -->
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeQpdImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeQpdyjImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeQpdFormImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeQpdFormitemImpl.xml" />
      <!--
      	消息池
       -->

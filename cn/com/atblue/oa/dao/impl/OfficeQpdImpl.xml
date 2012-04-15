@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officeqpd">
+    <typeAlias alias="OfficeQpd" type="cn.com.atblue.oa.bean.OfficeQpd"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="processid">
+                <![CDATA[processid=#processid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="formId">
+                <![CDATA[form_id=#formId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="signdata">
+                <![CDATA[signdata=#signdata#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lrr">
+                <![CDATA[lrr=#lrr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lrsj">
+                <![CDATA[lrsj=#lrsj#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficeQpd" parameterClass="OfficeQpd">
+        <![CDATA[
+            insert into office_qpd(
+                processid,form_id,signdata,lrr,lrsj
+            ) values(
+                #processid#,#formId#,#signdata#,#lrr#,#lrsj#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficeQpd" parameterClass="OfficeQpd">
+        <![CDATA[
+            update office_qpd
+            set processid=#processid#,form_id=#formId#,signdata=#signdata#,
+				lrr=#lrr#,lrsj=#lrsj#
+            where PROCESSID=#processid#
+        ]]>
+    </update>
+
+    <delete id="delOfficeQpd" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_qpd
+            where PROCESSID=#processid#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeQpd">
+        <![CDATA[
+            select processid as processid,form_id as formId,signdata as signdata,lrr as lrr,lrsj as lrsj from office_qpd where PROCESSID=#processid#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficeQpd">
+        <![CDATA[
+            select * from office_qpd
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_qpd
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>
