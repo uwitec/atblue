@@ -41,6 +41,29 @@
             </isNotEmpty>
         </dynamic>
     </select>
+    <select id="getPagedQpdList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+            select * from OFFICE_QPD_FORM t
+        ]]>
+        <dynamic prepend=" where ">
+            <isNotEmpty prepend=" and " property="formName">
+                <![CDATA[t.FORM_NAME like '%'||#formName#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.lrsj desc
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedQpdCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+           select count(*) from OFFICE_QPD_FORM t
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="formName">
+                <![CDATA[t.FORM_NAME like '%'||#formName#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+    </select>
     <select id="getAllUserList" resultClass="java.util.HashMap">
         <![CDATA[
             select * from C_USER t order by t.real_name
@@ -313,5 +336,44 @@
             </isNotEmpty>
         </dynamic>
         order by t.sqsj desc
+    </select>
+    <select id="getAllQpdFormItemsByFormId" parameterClass="String" resultClass="java.util.HashMap">
+        <![CDATA[
+        select * from OFFICE_QPD_FORMITEM t where t.form_id = #value# order by px
+        ]]>
+    </select>
+    <select id="getAllQpdFormItemsByFormId2" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+    <![CDATA[
+    select t.*, a.spyj
+  from OFFICE_QPD_FORMITEM t,
+       (select p.form_item_id, p.spyj
+          from OFFICE_QPDYJ p
+         where p.processid = #processId#)a
+ where t.form_item_id = a.form_item_id(+)
+   and t.form_id = #formId#
+ order by t.px
+        ]]>
+    </select>
+    <delete id="deleteAllQpdFormItemsByFormId" parameterClass="String">
+        <![CDATA[
+        delete  from OFFICE_QPD_FORMITEM t where t.form_id = #value#
+        ]]>
+    </delete>
+    <delete id="deleteAllQpdYjsByProcessId" parameterClass="String">
+        <![CDATA[
+        delete from OFFICE_QPDYJ t where t.processid  = #value#
+        ]]>
+    </delete>
+    <select id="getFormItemIdByConnectId" parameterClass="String" resultClass="String">
+        <![CDATA[
+          select t.form_item_id from OFFICE_QPD_FORMITEM t,w_connect c,w_instance i,w_activity a
+        where c.connect_id = #value#  and c.end_instance = i.instance_id and i.activity_id = a.activity_id
+        and a.activity_name = t.form_item_name and rownum = 1
+        ]]>
+    </select>
+    <select id="getSignDataByProcessId" parameterClass="String" resultClass="String">
+        <![CDATA[
+        select t.signdata from OFFICE_QPD t where t.processid = #value#
+        ]]>
     </select>
 </sqlMap>

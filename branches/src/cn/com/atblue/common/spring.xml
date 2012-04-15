@@ -48,7 +48,7 @@
         <property name="outputDir" value="D:\\"/>
         <property name="prefixOfPackage" value="cn.com.atblue.oa"/>
         <property name="prefixOfSqlmap" value="oa"/>
-        <property name="prefixOfTable" value="OFFICE_YYSQ"/>
+        <property name="prefixOfTable" value="OFFICE_QPDYJ"/>
         <property name="dataSource" ref="internalDataSource"/>
     </bean>
 

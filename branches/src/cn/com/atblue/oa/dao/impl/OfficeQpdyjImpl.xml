@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officeqpdyj">
+    <typeAlias alias="OfficeQpdyj" type="cn.com.atblue.oa.bean.OfficeQpdyj"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="processid">
+                <![CDATA[processid=#processid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="formItemId">
+                <![CDATA[form_item_id=#formItemId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="spyj">
+                <![CDATA[spyj=#spyj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lrr">
+                <![CDATA[lrr=#lrr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lrsj">
+                <![CDATA[lrsj=#lrsj#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficeQpdyj" parameterClass="OfficeQpdyj">
+        <![CDATA[
+            insert into office_qpdyj(
+                processid,form_item_id,spyj,lrr,lrsj
+            ) values(
+                #processid#,#formItemId#,#spyj#,#lrr#,#lrsj#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficeQpdyj" parameterClass="OfficeQpdyj">
+        <![CDATA[
+            update office_qpdyj
+            set processid=#processid#,form_item_id=#formItemId#,spyj=#spyj#,
+				lrr=#lrr#,lrsj=#lrsj#
+            where PROCESSID=#processid#
+        ]]>
+    </update>
+
+    <delete id="delOfficeQpdyj" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_qpdyj
+            where PROCESSID=#processid#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeQpdyj">
+        <![CDATA[
+            select processid as processid,form_item_id as formItemId,spyj as spyj,lrr as lrr,lrsj as lrsj from office_qpdyj where PROCESSID=#processid#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficeQpdyj">
+        <![CDATA[
+            select * from office_qpdyj
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_qpdyj
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

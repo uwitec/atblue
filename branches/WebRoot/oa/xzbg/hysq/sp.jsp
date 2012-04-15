@@ -18,6 +18,8 @@
     String[] checkman =oDao.getCjhyryBySqid(sqid);
     hysq = hysq == null?new OfficeHysq():hysq;
      List userList  = dao.getAllUser();
+    String connectId = StringUtil.parseNull(hysq.getConnectId(),"");
+    String processId = StringUtil.parseNull(hysq.getProcessId(),"");
 %>
 <html>
 	<head>
@@ -232,6 +234,22 @@
                 }
                window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&sqId="+sid+"&processId="+pid+"&varValue="+varValue;
             }
+            function qz(){
+                window
+                        .open(
+                        "qpd.jsp?formId=3af46d80-8665-4587-9ca0-a94ece84750d&connectId=<%=connectId%>&processId=<%=processId%>",
+                        "mywindow",
+                        "height="
+                                + 500
+                                + ",width="
+                                + 700
+                                + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="
+                                + 0
+                                + ",left="
+                                + 0
+                                + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
+            }
+
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">
@@ -283,14 +301,14 @@
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
-						查看会议申请
+						会议申请审批
 					</td>
 					<td width="74%" align="left" class="mhead">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
 							<tbody>
 								<tr>
 									<td align="left">
-                                        <input type="button" name="sign" class="button" value="签字"/>&nbsp;&nbsp;&nbsp;
+                                        <input type="button" name="sign" class="button" value="签字" onclick="qz();"/>&nbsp;&nbsp;&nbsp;
                                         <input type="radio" name="agree" value="1" checked="checked" onclick="document.getElementById('d').style.display='none';document.getElementById('a').style.display='';">同意
                                         <input type="radio" name="agree" value="0" onclick="document.getElementById('a').style.display='none';document.getElementById('d').style.display='';">不同意
 
