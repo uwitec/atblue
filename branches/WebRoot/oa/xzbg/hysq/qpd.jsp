@@ -76,21 +76,11 @@
 	-->
 	</style>
 	<script type="text/javascript">
-function setRead() {
-	<%--if(${state==1 }) {--%>
-		<%--return;--%>
-	<%--}--%>
-	<%--if('${qpcx }'!=null){--%>
-		<%--var spyj = 'spyj'+'${qpcx }';--%>
-		<%--var tmp = document.getElementById(spyj);--%>
-		<%--tmp.readOnly= false;--%>
-	<%--}--%>
-}
 	// --- 为控件设置要签名的数据
 function SetStore() {
 	var str;
 	var separator = "::";  // 分隔符
-	str="";
+    str="";
 	document.all.DWebSignSeal.SetSignData("-");
 	document.all.DWebSignSeal.SetSignData("+DATA:" + str);
 }
@@ -128,21 +118,23 @@ function sumbitForm() {
         alert("请安装签章工具后再处理");
         return false;
     }
-    window.opener.location.reload(); 
+    document.form1.submit();
 	return true;
 }
 	</script>
   </head>
-  <body onload="LoadSignData(),setRead()"  onload="setRead()">
+  <body onload="LoadSignData()">
   	<form name="form1" method="post" action="">
 	<input type="hidden" name="processId" value="<%=processId%>">
 	<input type="hidden" name="connectId" value="<%=connectId%>">
 	<input type="hidden" name="formId" value="<%=formId%>">
+	<input type="hidden" name="yj" value="">
   	<table width="580" border="0" align="center" cellspacing="1">
 	  <tr>
 	    <td >
 	      <input name="button" type="button" class="button" value="盖章" onClick="addSealB()"/>
 	      <input name="submit" type="submit" class="button" value="保存并关闭" onClick="return sumbitForm()">
+	      <input name="submit" type="submit" class="button" value="关闭" onClick="window.close();">
 		  <!-- SignData隐藏域，用于将所有加密的数据提交到表单保存页面 -->
 		  <input type="hidden" id="signdata" name="signdata"/>
 		  <table border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#ECE9D8" bgcolor="#FFFFFF">
@@ -163,7 +155,7 @@ function sumbitForm() {
                   <%
                     for(int i=0;i<dataList.size();i++){
                         Map beanMap = (Map)dataList.get(i);    
-                        formItemId = StringUtil.parseNull(beanMap.get("FORM_ITEM_ID"),"");
+                        String id = StringUtil.parseNull(beanMap.get("FORM_ITEM_ID"),"");
                   %>
                       <tr>
                           <td >
@@ -173,15 +165,19 @@ function sumbitForm() {
                                           <span class="STYLE9"><%=StringUtil.parseNull(beanMap.get("FORM_ITEM_TITLE"),"")%>：</span><br>
                                           <input type="hidden" name="nodeName" value="<%=StringUtil.parseNull(beanMap.get("FORM_ITEM_NAME"),"")%>"/>
                                           <input type="hidden" name="nodeId" value="<%=StringUtil.parseNull(beanMap.get("FORM_ITEM_ID"),"")%>"/>
-                                          <textarea  name="spyj" cols="80" rows="6" class="TAcss"  width="100%"><%=StringUtil.parseNull(beanMap.get("SPYJ"),"")%></textarea>
+                                          <textarea  name="spyj"
+                                                     <%if(!id.equals(formItemId)){%>
+                                                           readonly="readonly"
+                                                  <%}%>
+                                                     cols="80" rows="6" class="TAcss"  width="100%"><%=StringUtil.parseNull(beanMap.get("SPYJ"),"")%></textarea>
                                       </td>
                                   </tr>
                                   <tr>
                                       <td width="128" height="70"><span class="STYLE9">签字：</span> </td>
-                                      <td width="159" height="70" id="shr<%=formItemId%>"></td>
+                                      <td width="159" height="70" id="shr<%=id%>"></td>
                                       <td width="80" height="70"><span class="STYLE9">日期：</span> </td>
                                       <td width="200" height="70"><span class="STYLE51">
-                          &nbsp;
+                          &nbsp;  <%=StringUtil.parseNull(beanMap.get("LRSJ"),DateUtil.format(new java.util.Date()))%>
 						  </span> </td>
                                   </tr>
                               </table></td>
