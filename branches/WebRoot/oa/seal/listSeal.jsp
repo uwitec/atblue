@@ -23,9 +23,7 @@
             }
         }
         function addSealB(userid){
-            var sealURL='<%="http://127.0.0.1/"+request.getContextPath()+"/servlet/sealDown?userId="%>'+userid;
-            <%--var sealURL='<%="http://"+request.getLocalAddr()+":"+request.getLocalPort()--%>
-    	        <%--+"/"+request.getContextPath()+"/servlet/sealDown?userid="%>'+userid;--%>
+            var sealURL='<%="http://127.0.0.1:"+request.getLocalPort()+"/"+request.getContextPath()+"/servlet/sealDown?userId="%>'+userid;
             document.all.DWebSignSeal.DelSeal("");
             document.all.DWebSignSeal.SetPosition(60,-40,"seal");
             document.all.DWebSignSeal.AddSeal(sealURL, "");

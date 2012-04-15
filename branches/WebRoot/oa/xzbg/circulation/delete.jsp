@@ -22,6 +22,6 @@
 		officeFileDAO.deleteByPrimaryKey(of.getPkid());
 	}
 	out.print("<script>");
-	out.print("window.location='index.jsp';");
+	out.print("window.location='list.jsp';");
 	out.print("</script>");
 %>

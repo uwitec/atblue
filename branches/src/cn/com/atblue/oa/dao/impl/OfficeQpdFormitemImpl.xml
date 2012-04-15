@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officeqpdformitem">
+    <typeAlias alias="OfficeQpdFormitem" type="cn.com.atblue.oa.bean.OfficeQpdFormitem"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="formItemId">
+                <![CDATA[form_item_id=#formItemId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="formId">
+                <![CDATA[form_id=#formId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="formItemName">
+                <![CDATA[form_item_name=#formItemName#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="formItemTitle">
+                <![CDATA[form_item_title=#formItemTitle#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lrr">
+                <![CDATA[lrr=#lrr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lrsj">
+                <![CDATA[lrsj=#lrsj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="px">
+                <![CDATA[px=#px#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficeQpdFormitem" parameterClass="OfficeQpdFormitem">
+        <![CDATA[
+            insert into office_qpd_formitem(
+                form_item_id,form_id,form_item_name,form_item_title,lrr,
+				lrsj,px
+            ) values(
+                #formItemId#,#formId#,#formItemName#,#formItemTitle#,#lrr#,
+				#lrsj#,#px#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficeQpdFormitem" parameterClass="OfficeQpdFormitem">
+        <![CDATA[
+            update office_qpd_formitem
+            set form_item_id=#formItemId#,form_id=#formId#,form_item_name=#formItemName#,
+				form_item_title=#formItemTitle#,lrr=#lrr#,lrsj=#lrsj#,
+				px=#px#
+            where FORM_ITEM_ID=#formItemId#
+        ]]>
+    </update>
+
+    <delete id="delOfficeQpdFormitem" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_qpd_formitem
+            where FORM_ITEM_ID=#formItemId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeQpdFormitem">
+        <![CDATA[
+            select form_item_id as formItemId,form_id as formId,form_item_name as formItemName,form_item_title as formItemTitle,lrr as lrr,lrsj as lrsj,px as px from office_qpd_formitem where FORM_ITEM_ID=#formItemId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficeQpdFormitem">
+        <![CDATA[
+            select * from office_qpd_formitem
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_qpd_formitem
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

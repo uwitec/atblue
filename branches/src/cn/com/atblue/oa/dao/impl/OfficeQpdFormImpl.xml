@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officeqpdform">
+    <typeAlias alias="OfficeQpdForm" type="cn.com.atblue.oa.bean.OfficeQpdForm"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="formId">
+                <![CDATA[form_id=#formId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="formName">
+                <![CDATA[form_name=#formName#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="formTitle">
+                <![CDATA[form_title=#formTitle#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lrr">
+                <![CDATA[lrr=#lrr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lrsj">
+                <![CDATA[lrsj=#lrsj#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficeQpdForm" parameterClass="OfficeQpdForm">
+        <![CDATA[
+            insert into office_qpd_form(
+                form_id,form_name,form_title,lrr,lrsj
+            ) values(
+                #formId#,#formName#,#formTitle#,#lrr#,#lrsj#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficeQpdForm" parameterClass="OfficeQpdForm">
+        <![CDATA[
+            update office_qpd_form
+            set form_id=#formId#,form_name=#formName#,form_title=#formTitle#,
+				lrr=#lrr#,lrsj=#lrsj#
+            where FORM_ID=#formId#
+        ]]>
+    </update>
+
+    <delete id="delOfficeQpdForm" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_qpd_form
+            where FORM_ID=#formId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeQpdForm">
+        <![CDATA[
+            select form_id as formId,form_name as formName,form_title as formTitle,lrr as lrr,lrsj as lrsj from office_qpd_form where FORM_ID=#formId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficeQpdForm">
+        <![CDATA[
+            select * from office_qpd_form
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_qpd_form
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

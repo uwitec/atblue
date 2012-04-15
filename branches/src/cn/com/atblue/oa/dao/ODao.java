@@ -44,4 +44,21 @@ public interface ODao {
     public List getAlreadyPagedYysqList(PageBean pb, Map paramMap);
 
     public int getAlreadyPagedYysqCount(Map paramMap);
+
+    public List getPagedQpdList(Map paramMap);
+
+    public int getPagedQpdCount(Map paramMap);
+    
+    public List getAllQpdFormItemsByFormId(String formId);
+
+    public List getAllQpdFormItemsByFormId2(String formId,String processId);
+
+    public void deleteAllQpdFormItemsByFormId(String formId);
+    
+    public String getFormItemIdByConnectId(String connectId);
+    
+    public String getSignDataByProcessId(String processId);
+
+    public void deleteAllQpdYjsByProcessId(String processId);
+
 }
