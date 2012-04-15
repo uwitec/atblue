@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@page import="java.sql.Date"%>
-<%@ include file="../../../import.jsp" %>
+<%@ include file="../../import.jsp" %>
 <%
     CUser cUser = (CUser)session.getAttribute("cUser");
     cUser = cUser == null?new CUser():cUser;
@@ -16,46 +16,6 @@
     String formItemId = oDao.getFormItemIdByConnectId(connectId);
     String signdata =   oDao.getSignDataByProcessId(processId);
     signdata = StringUtil.parseNull(signdata,"");
-    String[] nodeName  = request.getParameterValues("nodeName");
-    String[] nodeId  = request.getParameterValues("nodeId");
-    String[] spyj  = request.getParameterValues("spyj");
-    if (request.getMethod().equals("POST")) {
-          if(nodeId != null && nodeId.length > 0){
-              signdata  = StringUtil.parseNull(request.getParameter("signdata"),"");
-              map.put("processid", processId);
-              OfficeQpd officeQpd = officeQpdDAO.queryForBean(map);
-              if(officeQpd == null){
-                  officeQpd = new  OfficeQpd();
-                  officeQpd.setProcessid(processId);
-                  officeQpd.setFormId(formId);
-                  officeQpd.setSigndata(signdata);
-                  officeQpd.setLrr(cUser.getUserId());
-                  officeQpd.setLrsj(new java.util.Date());
-                  officeQpdDAO.addOfficeQpd(officeQpd);
-              }else{
-                  officeQpd.setSigndata(signdata);
-                  officeQpd.setFormId(formId);
-                  officeQpd.setLrr(cUser.getUserId());
-                  officeQpd.setLrsj(new java.util.Date());
-                  officeQpdDAO.modOfficeQpd(officeQpd);
-              }
-              oDao.deleteAllQpdYjsByProcessId(processId);
-              OfficeQpdyj officeQpdyj = null;
-              for(int i=0; i<nodeId.length;i++){
-                  officeQpdyj = new  OfficeQpdyj();
-                  officeQpdyj.setProcessid(processId);
-                  officeQpdyj.setFormItemId(nodeId[i]);
-                  officeQpdyj.setSpyj(spyj[i]);
-                  officeQpdyj.setLrr(cUser.getUserId());
-                  officeQpdyj.setLrsj(new java.util.Date());
-                  officeQpdyjDAO.addOfficeQpdyj(officeQpdyj);
-              }
-          }
-%>
-<script type="text/javascript">
-    window.close();
-</script>
-<%   }
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -128,12 +88,9 @@ function sumbitForm() {
 	<input type="hidden" name="processId" value="<%=processId%>">
 	<input type="hidden" name="connectId" value="<%=connectId%>">
 	<input type="hidden" name="formId" value="<%=formId%>">
-	<input type="hidden" name="yj" value="">
   	<table width="580" border="0" align="center" cellspacing="1">
 	  <tr>
 	    <td >
-	      <input name="button" type="button" class="button" value="盖章" onClick="addSealB()"/>
-	      <input name="submit" type="submit" class="button" value="保存并关闭" onClick="return sumbitForm()">
 	      <input name="submit" type="submit" class="button" value="关闭" onClick="window.close();">
 		  <!-- SignData隐藏域，用于将所有加密的数据提交到表单保存页面 -->
 		  <input type="hidden" id="signdata" name="signdata"/>

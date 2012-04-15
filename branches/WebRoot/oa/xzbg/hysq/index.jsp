@@ -54,6 +54,21 @@
             }
             window.location = "tj.jsp?selUserId="+selUserId+"&connectId="+cid+"&sqId="+sid+"&processId="+pid;
         }
+        function qz(processId,connectId){
+            window
+                    .open(
+                    "<%=request.getContextPath()%>/oa/qpd/view.jsp?formId=3af46d80-8665-4587-9ca0-a94ece84750d&connectId="+connectId+"&processId="+processId,
+                    "mywindow",
+                    "height="
+                            + 500
+                            + ",width="
+                            + 700
+                            + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="
+                            + 0
+                            + ",left="
+                            + 0
+                            + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
+        }
 		</script>
 	</head>
 	<body>
@@ -128,7 +143,6 @@
 								Map map = (Map) list.get(i);
                                 oracle.sql.TIMESTAMP sTime = (oracle.sql.TIMESTAMP)map.get("SQKSSJ");
                                 oracle.sql.TIMESTAMP eTime = (oracle.sql.TIMESTAMP)map.get("SQJSSJ");
-
 						%>
 						<tr>
 							<td class="NormalDataColumn" align="center">
@@ -172,9 +186,9 @@
 							</td>
 							<td class="NormalDataColumn" align="center" nowrap="nowrap">
                                 <%
-                                    if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
+                                    if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){
                                      String nextRole = workFlow.getNextRoleName(connectId,"1");
                                      String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                 %>
@@ -186,7 +200,8 @@
                                 <a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">[编辑]</a>&nbsp;
                                 <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
                                 <%   }else{ %>
-                                <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
+                                <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>&nbsp;
+                                <a href="#" onclick="qz('<%=processId%>','<%=connectId%>');">[查看签字]</a>
                                 <%  }
                                 %>
 
