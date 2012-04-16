@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officemail">
+    <typeAlias alias="OfficeMail" type="cn.com.atblue.oa.bean.OfficeMail"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="mailId">
+                <![CDATA[mail_id=#mailId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="mailZt">
+                <![CDATA[mail_zt=#mailZt#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="mailNr">
+                <![CDATA[mail_nr=#mailNr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sendTime">
+                <![CDATA[send_time=#sendTime#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sendPerson">
+                <![CDATA[send_person=#sendPerson#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="mailStatus">
+                <![CDATA[mail_status=#mailStatus#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficeMail" parameterClass="OfficeMail">
+        <![CDATA[
+            insert into office_mail(
+                mail_id,mail_zt,mail_nr,send_time,send_person,
+				mail_status
+            ) values(
+                #mailId#,#mailZt#,#mailNr#,#sendTime#,#sendPerson#,
+				#mailStatus#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficeMail" parameterClass="OfficeMail">
+        <![CDATA[
+            update office_mail
+            set mail_id=#mailId#,mail_zt=#mailZt#,mail_nr=#mailNr#,
+				send_time=#sendTime#,send_person=#sendPerson#,mail_status=#mailStatus#
+            where MAIL_ID=#mailId#
+        ]]>
+    </update>
+
+    <delete id="delOfficeMail" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_mail
+            where MAIL_ID=#mailId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeMail">
+        <![CDATA[
+            select mail_id as mailId,mail_zt as mailZt,mail_nr as mailNr,send_time as sendTime,send_person as sendPerson,mail_status as mailStatus from office_mail where MAIL_ID=#mailId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficeMail">
+        <![CDATA[
+            select * from office_mail
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_mail
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

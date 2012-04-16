@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officemailsjr">
+    <typeAlias alias="OfficeMailSjr" type="cn.com.atblue.oa.bean.OfficeMailSjr"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="pkId">
+                <![CDATA[pk_id=#pkId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="mailId">
+                <![CDATA[mail_id=#mailId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="userId">
+                <![CDATA[user_id=#userId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sffs">
+                <![CDATA[sffs=#sffs#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficeMailSjr" parameterClass="OfficeMailSjr">
+        <![CDATA[
+            insert into office_mail_sjr(
+                pk_id,mail_id,user_id,sffs
+            ) values(
+                #pkId#,#mailId#,#userId#,#sffs#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficeMailSjr" parameterClass="OfficeMailSjr">
+        <![CDATA[
+            update office_mail_sjr
+            set pk_id=#pkId#,mail_id=#mailId#,user_id=#userId#,
+				sffs=#sffs#
+            where PK_ID=#pkId#
+        ]]>
+    </update>
+
+    <delete id="delOfficeMailSjr" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_mail_sjr
+            where PK_ID=#pkId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeMailSjr">
+        <![CDATA[
+            select pk_id as pkId,mail_id as mailId,user_id as userId,sffs as sffs from office_mail_sjr where PK_ID=#pkId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficeMailSjr">
+        <![CDATA[
+            select * from office_mail_sjr
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_mail_sjr
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

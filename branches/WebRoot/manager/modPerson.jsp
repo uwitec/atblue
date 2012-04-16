@@ -60,7 +60,7 @@
                     <tr>
                         <td class="tdadd">性别：</td>
                         <td  class="tdadd"colspan="2"><select name="user.sex">
-                            <s:if test="user.sex== '1'">
+                            <s:if test="user.sex == 1">
                                 <option value="1" selected>男</option>
                                 <option value="2">女</option>
                             </s:if>

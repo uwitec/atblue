@@ -39,7 +39,7 @@
     <title>用户列表</title>
 </head>
 <body>
-<form name="person_list" method="post" action="person_list.d" onsubmit="formTrim();">
+<form name="person_list" method="post" action="person_list.d">
     <table width="100%" border="0" cellpadding="0" cellspacing="0" class="">
         <tr>
             <td>
@@ -69,10 +69,10 @@
                         <td class="tdadd"><input name="userName" type="text" id="userName" value=""/></td>
                         <td class="tdadd">所属机构述：</td>
                         <td class="tdadd">
-                            <select name="orgId" id="orgId" style="width:160px;" value="">
+                            <select name="orgId"  style="width:160px;">
                                 <option value="">请选择</option>
                                 <s:iterator value="orgTreeList">
-                                    <option value="${ORGNA_ID}">${ORGNA_NAME}</option>
+                                    <option value="${ORGNA_ID}" <s:if test="orgId == ORGNA_ID">selected</s:if>>${ORGNA_NAME}</option>
                                 </s:iterator>
                             </select>
                         </td>
@@ -128,9 +128,7 @@
         </tr>
     </table>
     <script>
-
         function queryPagination() {
-            document.forms[0].pages.value = 1;
             document.forms[0].submit();
         }
         function popUpAdd1() {

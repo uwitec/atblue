@@ -61,6 +61,11 @@
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeQpdyjImpl.xml" />
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeQpdFormImpl.xml" />
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeQpdFormitemImpl.xml" />
+    <!--
+     	邮件
+      -->
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeMailImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeMailSjrImpl.xml" />
      <!--
      	消息池
       -->
