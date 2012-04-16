@@ -23,5 +23,13 @@
             <result name="del" type="redirect">qpd_list.d</result>
             <result name="save" type="redirect">qpd_list.d</result>
         </action>
+        <action name="mail_*" class="mailAction" method="{1}">
+            <result name="list">/oa/mail/list.jsp</result>
+            <result name="add">/oa/mail/add.jsp</result>
+            <result name="mod">/oa/mail/mod.jsp</result>
+            <result name="del" type="redirect">mail_list.d</result>
+            <result name="save" type="redirect">mail_list.d</result>
+            <result name="send" type="redirect">mail_list.d</result>
+        </action>
 	</package>
 </struts>

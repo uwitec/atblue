@@ -29,6 +29,16 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         return (Integer) this.getSqlMapClientTemplate().queryForObject("oa.dao.getPagedQpdCount", paramMap);
     }
 
+    @Override
+    public List getPagedMailList(Map paramMap) {
+        return this.getSqlMapClientTemplate().queryForList("oa.dao.getPagedMailList", paramMap);
+    }
+
+    @Override
+    public int getPagedMailCount(Map paramMap) {
+        return (Integer) this.getSqlMapClientTemplate().queryForObject("oa.dao.getPagedMailCount", paramMap);
+    }
+
     public List getAllUserList(){
         return  this.getSqlMapClientTemplate().queryForList("oa.dao.getAllUserList");
     }
@@ -63,6 +73,23 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         }
         return _temp;
     }
+
+    public String[] getMailSjrByMailId(String mailId){
+        List list =  this.getSqlMapClientTemplate().queryForList("oa.dao.getMailSjrByMailId",mailId);
+        String[] _temp = new String[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            Map map = (Map)list.get(i);
+            String str = (String)map.get("USER_ID");
+            _temp[i] = str;
+        }
+        return _temp;
+    }
+
+    public List getMailSjrsByMailId(String mailId){
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getMailSjrsByMailId", mailId);
+    }
+
     public List getWaitPagedHysqList(PageBean pb, Map paramMap){
         paramMap.put("currentPage", pb.getCurrentPage());
         paramMap.put("pageSize", pb.getPageSize());
@@ -144,6 +171,10 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         this.getSqlMapClientTemplate().delete("oa.dao.deleteAllQpdFormItemsByFormId",formId);
     }
 
+    public void deleteAllMailJsrByMailId(String mailId){
+        this.getSqlMapClientTemplate().delete("oa.dao.deleteAllMailJsrByMailId",mailId);
+    }
+
     public String getFormItemIdByConnectId(String connectId){
         return (String)this.getSqlMapClientTemplate().queryForObject("oa.dao.getFormItemIdByConnectId",connectId);
     }
@@ -154,5 +185,12 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
 
     public void deleteAllQpdYjsByProcessId(String processId){
         this.getSqlMapClientTemplate().delete("oa.dao.deleteAllQpdYjsByProcessId",processId);
+    }
+
+    public void updateMailJsrSfjs(String mailId,String userId){
+        Map map = new HashMap();
+        map.put("mailId",mailId);
+        map.put("userId",userId);
+        this.getSqlMapClientTemplate().update("oa.dao.updateMailJsrSfjs",map);
     }
 }

@@ -35,9 +35,9 @@ public class PersonAction extends BaseAction {
             map.put("userName",userName);
         int cn = dao.getPagedUserCount(map);
         this.getPagination().setRowCount(cn);
-        this.getParams().put("currentPage", this.getPagination().getPage());
-        this.getParams().put("pageSize", this.getPagination().getPageSize());
-        this.dataList = dao.getPagedUserList(this.getParams());
+        map.put("currentPage", this.getPagination().getPage());
+        map.put("pageSize", this.getPagination().getPageSize());
+        this.dataList = dao.getPagedUserList(map);
         this.orgTreeList = dao.getSelectOrgTrees();
         return "list";
     }
