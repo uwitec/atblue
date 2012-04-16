@@ -58,9 +58,51 @@
         <![CDATA[
            select count(*) from OFFICE_QPD_FORM t
         ]]>
-        <dynamic prepend=" and ">
+        <dynamic prepend=" where ">
             <isNotEmpty prepend=" and " property="formName">
                 <![CDATA[t.FORM_NAME like '%'||#formName#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    <select id="getPagedMailList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+              select t.*,
+                     c.real_name,
+                     (case
+                       when t.mail_status = '1' then
+                        '已保存'
+                       when t.mail_status = '2' then
+                        '已发送'
+                     end) status,
+                     func_getMailJsrByMailId(t.mail_id) jsr,
+                     (select count(s.user_id)
+                        from office_mail_sjr s
+                       where s.mail_id = t.mail_id) zs,
+                     (select count(s.user_id)
+                        from office_mail_sjr s
+                       where s.mail_id = t.mail_id
+                         and s.sffs = '1') cgs
+                from OFFICE_MAIL t, c_user c
+               where t.send_person = c.user_id
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="mailZt">
+                <![CDATA[t.MAIL_ZT like '%'||#mailZt#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.send_time desc
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedMailCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) cn
+           from OFFICE_MAIL t,c_user c
+          where t.send_person = c.user_id
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="mailZt">
+                <![CDATA[t.MAIL_ZT like '%'||#mailZt#||'%']]>
             </isNotEmpty>
         </dynamic>
     </select>
@@ -118,6 +160,12 @@
     <select id="getCjhyryBySqid" parameterClass="String" resultClass="java.util.HashMap">
         <![CDATA[
             select t.* from OFFICE_CJHYRY t where t.sqid =  #value#
+        ]]>
+    </select>
+
+    <select id="getMailSjrByMailId" parameterClass="String" resultClass="java.util.HashMap">
+        <![CDATA[
+            select * from OFFICE_MAIL_SJR t where t.mail_id =  #value#
         ]]>
     </select>
 
@@ -359,6 +407,11 @@
         delete  from OFFICE_QPD_FORMITEM t where t.form_id = #value#
         ]]>
     </delete>
+    <delete id="deleteAllMailJsrByMailId" parameterClass="String">
+        <![CDATA[
+        delete from OFFICE_MAIL_SJR t where t.mail_id =  #value#
+        ]]>
+    </delete>
     <delete id="deleteAllQpdYjsByProcessId" parameterClass="String">
         <![CDATA[
         delete from OFFICE_QPDYJ t where t.processid  = #value#
@@ -376,4 +429,15 @@
         select t.signdata from OFFICE_QPD t where t.processid = #value#
         ]]>
     </select>
+    <select id="getMailSjrsByMailId" parameterClass="String" resultClass="java.util.HashMap">
+        <![CDATA[
+        select c.user_id,c.email from OFFICE_MAIL_SJR t,c_user c
+        where t.user_id = c.user_id and t.mail_id =  #value#
+        ]]>
+    </select>
+    <update id="updateMailJsrSfjs" parameterClass="java.util.HashMap">
+        <![CDATA[
+       update OFFICE_MAIL_SJR t set t.sffs = '1' where t.mail_id = #mailId# and t.user_id = #userId#
+        ]]>
+    </update>
 </sqlMap>

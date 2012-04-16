@@ -23,6 +23,10 @@ public interface ODao {
 
     public String[] getCjhyryBySqid(String sqid);
 
+    public String[] getMailSjrByMailId(String mailId);
+
+    public List getMailSjrsByMailId(String mailId);
+
     public List getWaitPagedHysqList(PageBean pb, Map paramMap);
 
     public int getWaitPagedHysqCount(Map paramMap);
@@ -60,5 +64,13 @@ public interface ODao {
     public String getSignDataByProcessId(String processId);
 
     public void deleteAllQpdYjsByProcessId(String processId);
+
+    public List getPagedMailList(Map paramMap);
+
+    public int getPagedMailCount(Map paramMap);
+
+    public void deleteAllMailJsrByMailId(String mailId);
+    
+    public void updateMailJsrSfjs(String mailId,String userId);
 
 }
