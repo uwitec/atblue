@@ -73,4 +73,7 @@ public interface ODao {
     
     public void updateMailJsrSfjs(String mailId,String userId);
 
+    public void deleteAllSms();
+
+    public void updateSmsHis(String flag,String phone,String date);
 }

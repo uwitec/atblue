@@ -29,6 +29,9 @@
             <value>local</value>
         </constructor-arg>
     </bean>
+    <!-- 任务调度工厂 -->
+    <bean id="jobsFactory" class="cn.com.atblue.common.job.JobsFactory" init-method="initAddStart">
+    </bean>
     <!-- Ibatis配置 -->
     <bean id="sqlMapClientFactory"
           class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
@@ -56,10 +59,10 @@
         <property name="outputDir" value="D:\\"/>
         <property name="prefixOfPackage" value="cn.com.atblue.oa"/>
         <property name="prefixOfSqlmap" value="oa"/>
-        <property name="prefixOfTable" value="OFFICE_MAIL"/>
+        <property name="prefixOfTable" value="OFFICE_SMS"/>
         <property name="dataSource" ref="internalDataSource"/>
     </bean>
-
+    <!-- 邮件配置 -->
     <bean id="mailSender"
           class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host">
@@ -81,6 +84,18 @@
         </property>
         <property name="port">
             <value>${port}</value>
+        </property>
+    </bean>
+    <!-- 短信配置 -->
+    <bean id="smsHandler" class="cn.com.atblue.common.sms.SMSHandler">
+        <property name="comPort">
+            <value>${comPort}</value>
+        </property>
+        <property name="baudRate">
+            <value>${baudRate}</value>
+        </property>
+        <property name="manufacturer">
+            <value>${manufacturer}</value>
         </property>
     </bean>
 
