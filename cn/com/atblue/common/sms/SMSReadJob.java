@@ -2,8 +2,6 @@ package cn.com.atblue.common.sms;
 
 import cn.com.atblue.common.util.DateUtil;
 import cn.com.atblue.oa.dao.ODao;
-import cn.com.atblue.oa.dao.OfficeSmsDAO;
-import cn.com.atblue.oa.dao.OfficeSmsHisDAO;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
