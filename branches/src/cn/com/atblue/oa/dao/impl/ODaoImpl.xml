@@ -417,6 +417,11 @@
         delete from OFFICE_QPDYJ t where t.processid  = #value#
         ]]>
     </delete>
+    <delete id="deleteAllSms">
+        <![CDATA[
+        delete from OFFICE_SMS t
+        ]]>
+    </delete>
     <select id="getFormItemIdByConnectId" parameterClass="String" resultClass="String">
         <![CDATA[
           select t.form_item_id from OFFICE_QPD_FORMITEM t,w_connect c,w_instance i,w_activity a
@@ -438,6 +443,13 @@
     <update id="updateMailJsrSfjs" parameterClass="java.util.HashMap">
         <![CDATA[
        update OFFICE_MAIL_SJR t set t.sffs = '1' where t.mail_id = #mailId# and t.user_id = #userId#
+        ]]>
+    </update>
+    <update id="updateSmsHis" parameterClass="java.util.HashMap">
+        <![CDATA[
+       update office_sms_his t set t.sfqs = '1',read_time = to_date(#date#,'yyyy-mm-dd')
+        where t.sfqs = '0' and t.module_flag = #flag# and t.phone = #phone#
+        and t.create_time <= to_date(#date#,'yyyy-mm-dd')
         ]]>
     </update>
 </sqlMap>
