@@ -31,5 +31,13 @@
             <result name="save" type="redirect">mail_list.d</result>
             <result name="send" type="redirect">mail_list.d</result>
         </action>
+        <action name="sms_*" class="smsAction" method="{1}">
+            <result name="list">/oa/sms/list.jsp</result>
+            <result name="add">/oa/sms/add.jsp</result>
+            <result name="mod">/oa/sms/mod.jsp</result>
+            <result name="del" type="redirect">sms_list.d</result>
+            <result name="save" type="redirect">sms_list.d</result>
+            <result name="send" type="redirect">sms_list.d</result>
+        </action>
 	</package>
 </struts>

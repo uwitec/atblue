@@ -106,6 +106,31 @@
             </isNotEmpty>
         </dynamic>
     </select>
+    <select id="getPagedSmsList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+        select t.*,u.real_name,o.orgna_name from OFFICE_SMS_NOTICE t,c_user u,c_orgnization o
+        where t.fsr = u.user_id and t.fsbm = o.orgna_id
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="dxnr">
+                <![CDATA[t.DXNR like '%'||#dxnr#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.CJSJ desc
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedSmsCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+           select count(*) cn from OFFICE_SMS_NOTICE t,c_user u,c_orgnization o
+        where t.fsr = u.user_id and t.fsbm = o.orgna_id
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="dxnr">
+                <![CDATA[t.DXNR like '%'||#dxnr#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+    </select>
     <select id="getAllUserList" resultClass="java.util.HashMap">
         <![CDATA[
             select * from C_USER t order by t.real_name
@@ -166,6 +191,11 @@
     <select id="getMailSjrByMailId" parameterClass="String" resultClass="java.util.HashMap">
         <![CDATA[
             select * from OFFICE_MAIL_SJR t where t.mail_id =  #value#
+        ]]>
+    </select>
+    <select id="getPersonsByTzid" parameterClass="String" resultClass="java.util.HashMap">
+        <![CDATA[
+            select * from OFFICE_SMS_PERSON t where t.tzid= #value#
         ]]>
     </select>
 
@@ -417,6 +447,11 @@
         delete from OFFICE_QPDYJ t where t.processid  = #value#
         ]]>
     </delete>
+    <delete id="deleteSmsPersonsById" parameterClass="int">
+        <![CDATA[
+        delete from OFFICE_SMS_PERSON t where t.tzid = #value#
+        ]]>
+    </delete>
     <delete id="deleteAllSms">
         <![CDATA[
         delete from OFFICE_SMS t
@@ -452,4 +487,9 @@
         and t.create_time <= to_date(#date#,'yyyy-mm-dd')
         ]]>
     </update>
+    <select id="getSmsSequence" resultClass="int">
+        <![CDATA[
+       select seq_sms.nextval from dual
+        ]]>
+    </select>
 </sqlMap>

@@ -39,6 +39,14 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         return (Integer) this.getSqlMapClientTemplate().queryForObject("oa.dao.getPagedMailCount", paramMap);
     }
 
+    public List getPagedSmsList(Map paramMap){
+        return this.getSqlMapClientTemplate().queryForList("oa.dao.getPagedSmsList", paramMap);
+    }
+
+    public int getPagedSmsCount(Map paramMap){
+        return (Integer) this.getSqlMapClientTemplate().queryForObject("oa.dao.getPagedSmsCount", paramMap);
+    }
+
     public List getAllUserList(){
         return  this.getSqlMapClientTemplate().queryForList("oa.dao.getAllUserList");
     }
@@ -84,6 +92,16 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         }
         return _temp;
     }
+    public String[] getPersonsByTzid(String tzid){
+        List list =  this.getSqlMapClientTemplate().queryForList("oa.dao.getPersonsByTzid",tzid);
+        String[] _temp = new String[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            Map map = (Map)list.get(i);
+            String str = (String)map.get("USER_ID");
+            _temp[i] = str;
+        }
+        return _temp;
+    }
 
     public List getMailSjrsByMailId(String mailId){
         return getSqlMapClientTemplate().queryForList(
@@ -116,6 +134,11 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
     public List getFlowList(String processId){
         return getSqlMapClientTemplate().queryForList(
                 "oa.dao.getFlowList", processId);
+    }
+
+    public int getSmsSequence(){
+        return  (Integer) getSqlMapClientTemplate().queryForObject(
+                "oa.dao.getSmsSequence");
     }
 
     public List getPagedYysqList(PageBean pb, Map paramMap){
@@ -173,6 +196,10 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
 
     public void deleteAllMailJsrByMailId(String mailId){
         this.getSqlMapClientTemplate().delete("oa.dao.deleteAllMailJsrByMailId",mailId);
+    }
+
+    public void deleteSmsPersonsById(int id){
+        this.getSqlMapClientTemplate().delete("oa.dao.deleteSmsPersonsById",id);
     }
 
     public void deleteAllSms(){
