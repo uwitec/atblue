@@ -129,6 +129,7 @@ public class SmsAction extends BaseAction {
             Map map = new HashMap();
             map.put("tzid", tzid);
             officeSmsNoticeDAO.delOfficeSmsNotice(map);
+            oDao.deleteSmsPersonsById(Integer.valueOf(tzid));
         }
         return "del";
     }
