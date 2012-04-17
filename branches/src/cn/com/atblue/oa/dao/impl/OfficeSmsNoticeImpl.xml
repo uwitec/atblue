@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officesmsnotice">
+    <typeAlias alias="OfficeSmsNotice" type="cn.com.atblue.oa.bean.OfficeSmsNotice"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="tzid">
+                <![CDATA[tzid=#tzid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dxnr">
+                <![CDATA[dxnr=#dxnr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fsr">
+                <![CDATA[fsr=#fsr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fsbm">
+                <![CDATA[fsbm=#fsbm#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="cjsj">
+                <![CDATA[cjsj=#cjsj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="zt">
+                <![CDATA[zt=#zt#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficeSmsNotice" parameterClass="OfficeSmsNotice">
+        <![CDATA[
+            insert into office_sms_notice(
+                tzid,dxnr,fsr,fsbm,cjsj,
+				zt
+            ) values(
+                #tzid#,#dxnr#,#fsr#,#fsbm#,#cjsj#,
+				#zt#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficeSmsNotice" parameterClass="OfficeSmsNotice">
+        <![CDATA[
+            update office_sms_notice
+            set tzid=#tzid#,dxnr=#dxnr#,fsr=#fsr#,
+				fsbm=#fsbm#,cjsj=#cjsj#,zt=#zt#
+            where TZID=#tzid#
+        ]]>
+    </update>
+
+    <delete id="delOfficeSmsNotice" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_sms_notice
+            where TZID=#tzid#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeSmsNotice">
+        <![CDATA[
+            select tzid as tzid,dxnr as dxnr,fsr as fsr,fsbm as fsbm,cjsj as cjsj,zt as zt from office_sms_notice where TZID=#tzid#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficeSmsNotice">
+        <![CDATA[
+            select tzid as tzid,dxnr as dxnr,fsr as fsr,fsbm as fsbm,cjsj as cjsj,zt as zt from office_sms_notice
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_sms_notice
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>
