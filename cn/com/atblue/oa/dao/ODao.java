@@ -76,4 +76,14 @@ public interface ODao {
     public void deleteAllSms();
 
     public void updateSmsHis(String flag,String phone,String date);
+
+    public List getPagedSmsList(Map paramMap);
+
+    public int getPagedSmsCount(Map paramMap);
+    
+    public int getSmsSequence();
+    
+    public void deleteSmsPersonsById(int id);
+    
+    public String[] getPersonsByTzid(String tzid);
 }
