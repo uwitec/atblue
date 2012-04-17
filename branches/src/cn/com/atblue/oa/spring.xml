@@ -28,4 +28,7 @@
     <bean id="officeMailDAO" class="cn.com.atblue.oa.dao.impl.OfficeMailImpl" autowire="byName"/>
     <bean id="officeMailSjrDAO" class="cn.com.atblue.oa.dao.impl.OfficeMailSjrImpl" autowire="byName"/>
 
+    <bean id="officeSmsNoticeDAO" class="cn.com.atblue.oa.dao.impl.OfficeSmsNoticeImpl" autowire="byName"/>
+    <bean id="officeSmsPersonDAO" class="cn.com.atblue.oa.dao.impl.OfficeSmsPersonImpl" autowire="byName"/>
+
 </beans>

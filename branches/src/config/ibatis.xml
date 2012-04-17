@@ -69,6 +69,8 @@
      <!--
      	消息池
       -->
-       <sqlMap resource="cn/com/atblue/oa/dao/impl/UMessage.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/UMessage.xml" />
 
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeSmsNoticeImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeSmsPersonImpl.xml" />
 </sqlMapConfig>
