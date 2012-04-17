@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officesms">
+    <typeAlias alias="OfficeSms" type="cn.com.atblue.oa.bean.OfficeSms"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="pkId">
+                <![CDATA[pk_id=#pkId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="userId">
+                <![CDATA[user_id=#userId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="userName">
+                <![CDATA[user_name=#userName#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="phone">
+                <![CDATA[phone=#phone#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="smsContent">
+                <![CDATA[sms_content=#smsContent#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="moduleFlag">
+                <![CDATA[module_flag=#moduleFlag#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="createTime">
+                <![CDATA[create_time=#createTime#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficeSms" parameterClass="OfficeSms">
+        <![CDATA[
+            insert into office_sms(
+                pk_id,user_id,user_name,phone,sms_content,
+				module_flag,create_time
+            ) values(
+                #pkId#,#userId#,#userName#,#phone#,#smsContent#,
+				#moduleFlag#,#createTime#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficeSms" parameterClass="OfficeSms">
+        <![CDATA[
+            update office_sms
+            set pk_id=#pkId#,user_id=#userId#,user_name=#userName#,
+				phone=#phone#,sms_content=#smsContent#,module_flag=#moduleFlag#,
+				create_time=#createTime#
+            where PK_ID=#pkId#
+        ]]>
+    </update>
+
+    <delete id="delOfficeSms" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_sms
+            where PK_ID=#pkId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeSms">
+        <![CDATA[
+            select pk_id as pkId,user_id as userId,user_name as userName,phone as phone,sms_content as smsContent,module_flag as moduleFlag,create_time as createTime from office_sms where PK_ID=#pkId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficeSms">
+        <![CDATA[
+            select pk_id as pkId,user_id as userId,user_name as userName,phone as phone,sms_content as smsContent,module_flag as moduleFlag,create_time as createTime from office_sms
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_sms
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

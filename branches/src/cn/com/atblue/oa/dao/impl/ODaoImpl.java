@@ -175,6 +175,10 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         this.getSqlMapClientTemplate().delete("oa.dao.deleteAllMailJsrByMailId",mailId);
     }
 
+    public void deleteAllSms(){
+        this.getSqlMapClientTemplate().delete("oa.dao.deleteAllSms");
+    }
+
     public String getFormItemIdByConnectId(String connectId){
         return (String)this.getSqlMapClientTemplate().queryForObject("oa.dao.getFormItemIdByConnectId",connectId);
     }
@@ -192,5 +196,13 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         map.put("mailId",mailId);
         map.put("userId",userId);
         this.getSqlMapClientTemplate().update("oa.dao.updateMailJsrSfjs",map);
+    }
+
+    public void updateSmsHis(String flag,String phone,String date){
+        Map map = new HashMap();
+        map.put("flag",flag);
+        map.put("phone",phone);
+        map.put("date",date);
+        this.getSqlMapClientTemplate().update("oa.dao.updateSmsHis",map);
     }
 }

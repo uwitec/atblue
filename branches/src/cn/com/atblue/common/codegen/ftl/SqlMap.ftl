@@ -46,7 +46,7 @@
 
     <select id="queryForList" parameterClass="java.util.HashMap" resultClass="${className}">
         <![CDATA[
-            select * from ${tableName}
+            select ${columnColListStr} from ${tableName}
         ]]>
         <!--
         <dynamic prepend="where">
