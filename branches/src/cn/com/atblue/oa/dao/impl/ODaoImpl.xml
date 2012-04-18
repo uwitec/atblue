@@ -67,24 +67,25 @@
     <select id="getPagedMailList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
         <include refid="basic.pageStart"/>
         <![CDATA[
-              select t.*,
-                     c.real_name,
-                     (case
-                       when t.mail_status = '1' then
-                        '已保存'
-                       when t.mail_status = '2' then
-                        '已发送'
-                     end) status,
-                     func_getMailJsrByMailId(t.mail_id) jsr,
-                     (select count(s.user_id)
-                        from office_mail_sjr s
-                       where s.mail_id = t.mail_id) zs,
-                     (select count(s.user_id)
-                        from office_mail_sjr s
-                       where s.mail_id = t.mail_id
-                         and s.sffs = '1') cgs
-                from OFFICE_MAIL t, c_user c
-               where t.send_person = c.user_id
+            select t.*,
+                   c.real_name,
+                   (case
+                     when t.mail_status = '1' then
+                      '已保存'
+                     when t.mail_status = '2' then
+                      '已发送'
+                   end) status,
+                   func_getMailJsrByMailId(t.mail_id,'0') sbr,
+                   func_getMailJsrByMailId(t.mail_id,'r') cgr,
+                   (select count(s.user_id)
+                      from office_mail_sjr s
+                     where s.mail_id = t.mail_id and s.sffs = '0') sbs,
+                   (select count(s.user_id)
+                      from office_mail_sjr s
+                     where s.mail_id = t.mail_id
+                       and s.sffs = '1') cgs
+              from OFFICE_MAIL t, c_user c
+             where t.send_person = c.user_id
         ]]>
         <dynamic prepend=" and ">
             <isNotEmpty prepend=" and " property="mailZt">
@@ -477,7 +478,7 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
     </select>
     <select id="getMailSjrsByMailId" parameterClass="String" resultClass="java.util.HashMap">
         <![CDATA[
-        select c.user_id,c.email from OFFICE_MAIL_SJR t,c_user c
+        select t.sffs,c.user_id,c.email from OFFICE_MAIL_SJR t,c_user c
         where t.user_id = c.user_id and t.mail_id =  #value#
         ]]>
     </select>
