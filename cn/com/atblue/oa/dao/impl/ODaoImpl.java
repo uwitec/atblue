@@ -108,6 +108,11 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
                 "oa.dao.getMailSjrsByMailId", mailId);
     }
 
+    public List getSmsPersonsByTzId(String tzId){
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getSmsPersonsByTzId", tzId);
+    }
+
     public List getWaitPagedHysqList(PageBean pb, Map paramMap){
         paramMap.put("currentPage", pb.getCurrentPage());
         paramMap.put("pageSize", pb.getPageSize());
@@ -225,11 +230,10 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         this.getSqlMapClientTemplate().update("oa.dao.updateMailJsrSfjs",map);
     }
 
-    public void updateSmsHis(String flag,String phone,String date){
+    public void updateSmsPersons(int tzId,String userId){
         Map map = new HashMap();
-        map.put("flag",flag);
-        map.put("phone",phone);
-        map.put("date",date);
-        this.getSqlMapClientTemplate().update("oa.dao.updateSmsHis",map);
+        map.put("tzId",tzId);
+        map.put("userId",userId);
+        this.getSqlMapClientTemplate().update("oa.dao.updateSmsPersons",map);
     }
 }
