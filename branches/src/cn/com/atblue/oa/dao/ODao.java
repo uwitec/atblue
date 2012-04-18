@@ -27,6 +27,8 @@ public interface ODao {
 
     public List getMailSjrsByMailId(String mailId);
 
+    public List getSmsPersonsByTzId(String tzId);
+
     public List getWaitPagedHysqList(PageBean pb, Map paramMap);
 
     public int getWaitPagedHysqCount(Map paramMap);
@@ -73,9 +75,9 @@ public interface ODao {
     
     public void updateMailJsrSfjs(String mailId,String userId);
 
-    public void deleteAllSms();
+    public void updateSmsPersons(int tzId,String userId);
 
-    public void updateSmsHis(String flag,String phone,String date);
+    public void deleteAllSms();
 
     public List getPagedSmsList(Map paramMap);
 

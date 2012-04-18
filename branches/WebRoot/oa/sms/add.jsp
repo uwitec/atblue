@@ -25,8 +25,6 @@
 <script type="text/javascript" charset="GB2312"
         src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
 <script type="text/javascript"
-        src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
-<script type="text/javascript"
         src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
 
@@ -65,33 +63,18 @@
             alert("请选择签收用户.");
             return;
         }
+        if(document.all["bean.dxnr"].value == ''){
+            alert("请录入短信内容!");
+            return ;
+        }
+        if(document.all["bean.dxnr"].value.length >= 50){
+            alert("短信内容已超出50字限制，请更正!");
+            return ;
+        }
         document.form1.submit();
     }
 </script>
 <script type="text/javascript" defer="defer">
-    CKEDITOR.replace( 'dxnr',
-            {
-                skin : 'office2003'
-            });
-
-    //隐藏不需要的工具按钮
-    CKEDITOR.editorConfig = function( config )
-    {
-        config.toolbar = 'MyToolbar';
-        config.toolbar_MyToolbar =
-                [
-                    ['NewPage','Preview'],
-                    ['Cut','Copy','Paste','PasteText','PasteFromWord','-'],
-                    ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
-                    ['Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
-                    '/',
-                    ['Styles','Format'],
-                    ['Bold','Italic','Strike'],
-                    ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
-                    ['Link','Unlink','Anchor'],
-                    ['Maximize','-','About']
-                ];
-    };
 
     function publicSelect(obj){
         if(obj.value=="1"){
@@ -258,7 +241,19 @@
                             </td>
                             <td class="NormalDataColumn" align="left">
                                 &nbsp;&nbsp;
-                                <textarea cols="80" id="dxnr"  name="bean.dxnr" rows="10"></textarea>
+                                <textarea cols="80" id="dxnr"  name="bean.dxnr" rows="10"  onkeyup="textCounter(this, 50, this.form.remLen)"></textarea>
+                                (限50个字)现在剩余:
+                                <input name="remLen" value="50" readonly="readonly" type="text" size="4" maxlength="4" style="background-color: eaffe0; border: 0; color: red" >
+                                <script>
+                                    document.all.remLen.value = (50-document.all["bean.dxnr"].value.length);
+                                //统计审核字数
+                                function textCounter(field, maxlimit, remLen){
+                                    if (field.value.length > maxlimit)
+                                        field.value = field.value.substring(0, maxlimit);
+                                    else
+                                        document.all.remLen.value = maxlimit - field.value.length;
+                                }
+                                </script>
                             </td>
                         </tr>
                         <tr>
