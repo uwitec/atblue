@@ -225,16 +225,19 @@ public class Workflow {
                     nextInstance.setCreateTime(new Date());
                     nextInstance.setInstanceStatus("1");
                     nextInstance.setProcessId(wProcess.getProcessId());
-                    wInstanceDAO.addWInstance(nextInstance);
                     paramMap.put("activityId", nextLine.getEndActivity());
                     WActivity endActivity = wActivityDAO.queryForBean(paramMap);
                     if (endActivity != null) {
                         if ("9".equals(endActivity.getActivityType())) {
-                            //如果是结束节点
                             wProcess.setProcessStatus("9");
                             wProcessDAO.modWProcess(wProcess);
+                            nextInstance.setInstanceStatus("9");
                         }
                     }
+                    nextInstance.setProcessId(wProcess.getProcessId());
+                    wInstanceDAO.addWInstance(nextInstance);
+                    wConnect.setEndInstance(nextInstance.getInstanceId());
+                    wConnectDAO.addWConnect(wConnect);
                 }
             } else {
                 String nextInstanceId = wConnect.getEndInstance();
