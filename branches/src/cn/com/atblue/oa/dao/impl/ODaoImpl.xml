@@ -108,9 +108,15 @@
     </select>
     <select id="getPagedSmsList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
         <include refid="basic.pageStart"/>
-        <![CDATA[
-        select t.*,u.real_name,o.orgna_name from OFFICE_SMS_NOTICE t,c_user u,c_orgnization o
-        where t.fsr = u.user_id and t.fsbm = o.orgna_id
+            <![CDATA[
+select t.*, u.real_name, o.orgna_name,
+(select count(*) from office_sms_person p where p.tzid=t.tzid and p.sfqs = '0') wqs,
+(select count(*) from office_sms_person p where p.tzid=t.tzid and p.sfqs = '1') yqs,
+func_getSmsPersonsByTzId(t.tzid,'1') yqsry,
+func_getSmsPersonsByTzId(t.tzid,'0') wqsry
+  from OFFICE_SMS_NOTICE t, c_user u, c_orgnization o
+ where t.fsr = u.user_id
+   and t.fsbm = o.orgna_id
         ]]>
         <dynamic prepend=" and ">
             <isNotEmpty prepend=" and " property="dxnr">
@@ -475,16 +481,24 @@
         where t.user_id = c.user_id and t.mail_id =  #value#
         ]]>
     </select>
+    <select id="getSmsPersonsByTzId" parameterClass="String" resultClass="java.util.HashMap">
+        <![CDATA[
+          select c.user_id, c.mobile, c.real_name,t.SFQS
+            from Office_Sms_Person t, c_user c
+           where t.user_id = c.user_id
+             and t.tzid = #value#
+           order by c.real_name
+        ]]>
+    </select>
     <update id="updateMailJsrSfjs" parameterClass="java.util.HashMap">
         <![CDATA[
        update OFFICE_MAIL_SJR t set t.sffs = '1' where t.mail_id = #mailId# and t.user_id = #userId#
         ]]>
     </update>
-    <update id="updateSmsHis" parameterClass="java.util.HashMap">
+    <update id="updateSmsPersons" parameterClass="java.util.HashMap">
         <![CDATA[
-       update office_sms_his t set t.sfqs = '1',read_time = to_date(#date#,'yyyy-mm-dd')
-        where t.sfqs = '0' and t.module_flag = #flag# and t.phone = #phone#
-        and t.create_time <= to_date(#date#,'yyyy-mm-dd')
+        update OFFICE_SMS_PERSON t set t.sfqs = '1',t.read_time=sysdate
+        where t.tzid =#tzId# and t.user_id = #userId#
         ]]>
     </update>
     <select id="getSmsSequence" resultClass="int">

@@ -40,7 +40,7 @@
             return;
         }
         function onSend(url){
-            if(window.confirm("确认发送该短信通知?")){
+            if(window.confirm("确认发送该短信通知?\n短信发送操作可能比较耗时，请耐心等待！")){
                 window.location=url;
             }
             return;
@@ -140,6 +140,9 @@
                         状态
                     </td>
                     <td nowrap="nowrap" class="NormalColumnTitle" width="8%">
+                        已签收/未签收
+                    </td>
+                    <td nowrap="nowrap" class="NormalColumnTitle" width="8%">
                         操作
                     </td>
                 </tr>
@@ -160,6 +163,9 @@
                                 ${ZT}&nbsp;
                         </td>
                         <td class="NormalDataColumn" style="text-align: center" nowrap>
+                                <a href="#" title="${YQSRY}">${YQS}</a>/<a href="#" title="${WQSRY}">${WQS}</a>&nbsp;
+                        </td>
+                        <td class="NormalDataColumn" style="text-align: center" nowrap>
                             <%
                                 String  ZT = StringUtil.parseNull(request.getAttribute("ZT"),"");
                                 if(!"已发送".equals(ZT)){%>
@@ -167,8 +173,7 @@
                             <a href="javascript:onDelete('./sms_del.d?tzid=${TZID}');">[删除]</a>&nbsp;
                             <a href="javascript:onSend('./sms_send.d?tzid=${TZID}');">[发送]</a>&nbsp;
                             <% }else{  %>
-                                总发送${ZS}&nbsp;成功${CGS}&nbsp;
-                            &nbsp;&nbsp;
+                            <a href="javascript:onSend('./sms_send.d?tzid=${TZID}');">[发送]</a>&nbsp;
                             <%   }
                             %>
                         </td>

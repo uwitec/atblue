@@ -1,5 +1,7 @@
 package cn.com.atblue.oa.action;
 
+import cn.com.atblue.common.SpringFactory;
+import cn.com.atblue.common.sms.SMSHandler;
 import cn.com.atblue.common.util.StringUtil;
 import cn.com.atblue.manager.bean.CUser;
 import cn.com.atblue.manager.dao.CUserDAO;
@@ -10,6 +12,7 @@ import cn.com.atblue.oa.dao.ODao;
 import cn.com.atblue.oa.dao.OfficeSmsNoticeDAO;
 import cn.com.atblue.oa.dao.OfficeSmsPersonDAO;
 import com.opensymphony.xwork2.ActionContext;
+import org.smslib.OutboundMessage;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -132,6 +135,42 @@ public class SmsAction extends BaseAction {
             oDao.deleteSmsPersonsById(Integer.valueOf(tzid));
         }
         return "del";
+    }
+
+    public String send() {
+        if (!StringUtil.isBlankOrEmpty(tzid)) {
+            Map map = new HashMap();
+            map.put("tzid", tzid);
+            this.bean = officeSmsNoticeDAO.queryForBean(map);
+            List uList = oDao.getSmsPersonsByTzId(tzid);
+            if (uList != null && uList.size() > 0) {
+                SMSHandler smsHandler = (SMSHandler) SpringFactory.instance.getBean("smsHandler");
+                smsHandler.init();
+                smsHandler.start();
+                for (int i = 0; i < uList.size(); i++) {
+                    map = (Map) uList.get(i);
+                    String uid = StringUtil.parseNull(map.get("USER_ID"), "");
+                    String name = StringUtil.parseNull(map.get("REAL_NAME"), "");
+                    String mobile = StringUtil.parseNull(map.get("MOBILE"), "");
+                    String sfqs = StringUtil.parseNull(map.get("SFQS"), "");
+                    if ("0".equals(sfqs)) {
+                        if (!StringUtil.isBlankOrEmpty(mobile)) {
+                            OutboundMessage message = new OutboundMessage("尊敬的"+name+"您好:\n"+mobile, bean.getDxnr() + "\n请发送数字" + bean.getTzid() + "以签收!");
+                            smsHandler.sendSMS(message);
+                            try {
+                                oDao.updateSmsPersons(bean.getTzid(), uid);
+                            } catch (Exception e) {
+
+                            }
+                        }
+                        this.bean.setZt("已发送");
+                        officeSmsNoticeDAO.modOfficeSmsNotice(bean);
+                    }
+                }
+                smsHandler.destroy();
+            }
+        }
+        return "send";
     }
 
     public ODao getoDao() {
