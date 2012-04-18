@@ -244,7 +244,7 @@
                             </td>
                             <td class="NormalDataColumn" align="left">
                                 &nbsp;&nbsp;
-                                <textarea cols="80" id="dxnr"  name="bean.dxnr" rows="10"  onkeyup="textCounter(this, 50, this.form.remLen)">${bean.dxnr}</textarea>
+                                <textarea cols="80" id="dxnr"  name="bean.dxnr" rows="2"  onkeyup="textCounter(this, 50, this.form.remLen)">${bean.dxnr}</textarea>
                                 (限200个字)现在剩余:
                                 <input name="remLen" value="50" readonly="readonly" type="text" size="4" maxlength="4" style="background-color: eaffe0; border: 0; color: red" >
                                 <script>
