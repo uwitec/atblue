@@ -1,6 +1,5 @@
 package cn.com.atblue.oa.action;
 
-import cn.com.atblue.common.SpringFactory;
 import cn.com.atblue.common.SysConfig;
 import cn.com.atblue.common.util.StringUtil;
 import cn.com.atblue.manager.bean.CUser;
@@ -50,28 +49,31 @@ public class MailAction extends BaseAction {
         return "add";
     }
 
-    public String send(){
+    public String send() {
         if (!StringUtil.isBlankOrEmpty(mailId)) {
             Map map = new HashMap();
             map.put("mailId", mailId);
             this.bean = officeMailDAO.queryForBean(map);
             List uList = oDao.getMailSjrsByMailId(mailId);
-            if(uList != null && uList.size() > 0){
-                for(int i=0; i<uList.size(); i++){
-                    map = (Map)uList.get(i);
-                    String uid = StringUtil.parseNull(map.get("USER_ID"),"");
-                    String email = StringUtil.parseNull(map.get("EMAIL"),"");
-                    if(!StringUtil.isBlankOrEmpty(email)){
-                        SimpleMailMessage mail = new SimpleMailMessage();
-                        mail.setTo(email);
-                        mail.setFrom(propertyConfig.getProperty("sendmail"));// 发送者
-                        mail.setSubject(bean.getMailZt());// 主题
-                        mail.setText(bean.getMailNr());// 邮件内容
-                        try {
-                            mailSender.send(mail);
-                            oDao.updateMailJsrSfjs(bean.getMailId(), uid);
-                        } catch (Exception e) {
+            if (uList != null && uList.size() > 0) {
+                for (int i = 0; i < uList.size(); i++) {
+                    map = (Map) uList.get(i);
+                    String uid = StringUtil.parseNull(map.get("USER_ID"), "");
+                    String email = StringUtil.parseNull(map.get("EMAIL"), "");
+                    String sffs = StringUtil.parseNull(map.get("SFFS"), "");
+                    if (!"1".equals(sffs)) {
+                        if (!StringUtil.isBlankOrEmpty(email)) {
+                            SimpleMailMessage mail = new SimpleMailMessage();
+                            mail.setTo(email);
+                            mail.setFrom(propertyConfig.getProperty("sendmail"));// 发送者
+                            mail.setSubject(bean.getMailZt());// 主题
+                            mail.setText(bean.getMailNr());// 邮件内容
+                            try {
+                                mailSender.send(mail);
+                                oDao.updateMailJsrSfjs(bean.getMailId(), uid);
+                            } catch (Exception e) {
 
+                            }
                         }
                     }
                     this.bean.setMailStatus("已发送");
@@ -110,6 +112,7 @@ public class MailAction extends BaseAction {
                             officeMailSjr.setPkId(StringUtil.getUUID());
                             officeMailSjr.setUserId(uid);
                             officeMailSjr.setMailId(bean.getMailId());
+                            officeMailSjr.setSffs("0");
                             officeMailSjrDAO.addOfficeMailSjr(officeMailSjr);
                         }
                     }
@@ -133,6 +136,7 @@ public class MailAction extends BaseAction {
                             officeMailSjr.setPkId(StringUtil.getUUID());
                             officeMailSjr.setUserId(uid);
                             officeMailSjr.setMailId(bean.getMailId());
+                            officeMailSjr.setSffs("0");
                             officeMailSjrDAO.addOfficeMailSjr(officeMailSjr);
                         }
                     }

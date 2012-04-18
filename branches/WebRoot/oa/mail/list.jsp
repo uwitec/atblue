@@ -144,6 +144,9 @@
                         状态
                     </td>
                     <td nowrap="nowrap" class="NormalColumnTitle" width="8%">
+                        已签收/未签收
+                    </td>
+                    <td nowrap="nowrap" class="NormalColumnTitle" width="8%">
                         操作
                     </td>
                 </tr>
@@ -168,6 +171,9 @@
                                 ${MAIL_STATUS}&nbsp;
                         </td>
                         <td class="NormalDataColumn" style="text-align: center" nowrap>
+                            <a href="#" title="${CGR}">${CGS}</a>/<a href="#" title="${SBR}">${SBS}</a>&nbsp;
+                        </td>
+                        <td class="NormalDataColumn" style="text-align: center" nowrap>
                             <%
                                 String  MAIL_STATUS = StringUtil.parseNull(request.getAttribute("MAIL_STATUS"),"");
                                 if(!"已发送".equals(MAIL_STATUS)){%>
@@ -175,8 +181,7 @@
                             <a href="javascript:onDelete('./mail_del.d?mailId=${MAIL_ID}');">[删除]</a>&nbsp;
                             <a href="javascript:onSend('./mail_send.d?mailId=${MAIL_ID}');">[发送]</a>&nbsp;
                             <% }else{  %>
-                                总发送${ZS}&nbsp;成功${CGS}&nbsp;
-                            &nbsp;&nbsp;
+                            <a href="javascript:onSend('./mail_send.d?mailId=${MAIL_ID}');">[再次发送]</a>&nbsp;
                             <%   }
                             %>
                         </td>
