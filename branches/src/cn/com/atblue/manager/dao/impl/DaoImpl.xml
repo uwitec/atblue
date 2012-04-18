@@ -246,10 +246,15 @@
 
     <select id="getResList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
         <![CDATA[
-            SELECT R.* FROM C_RELATION T,C_USERROLE U,C_RESOURCE R
-            WHERE T.ROLE_ID = U.ROLE_ID AND U.USER_ID = #userId#
-            AND T.RES_ID = R.RES_ID AND R.PARENT_ID = #parentId#
-            ORDER BY R.RES_ORDER
+            SELECT R.*
+              FROM C_RESOURCE R,
+                   (select distinct t.res_id
+                      from C_RELATION T, C_USERROLE U
+                     where T.ROLE_ID = U.ROLE_ID
+                       and U.USER_ID = #userId#) P
+             WHERE P.RES_ID = R.RES_ID
+               AND R.PARENT_ID = #parentId#
+             ORDER BY R.RES_ORDER
        ]]>
     </select>
     <!-- 用户角色判断 -->
