@@ -316,7 +316,7 @@ public class Workflow {
             if (roles != null && roles.length > 0) {
                 for (int i = 0; i < roles.length; i++) {
                     String role = roles[i];
-                    if (role.endsWith("!")) {//角色名称后缀有！的需要显示当前登录用户的组织机构
+                    if (role.endsWith("!")) {//角色名称后缀有！的需要限制当前登录用户的组织机构
                         String r = role.substring(0, role.length() - 1);
                         if (!StringUtil.isBlankOrEmpty(r)) {
                             List users = wDao.getUsersByRoleNameAndOrgId(r, orgnaId);
