@@ -86,6 +86,7 @@ public class OfficeCirculation {
     private String zt;
     private String fs;
     private String swh;
+    private String dxtx;
 
     public String getZt() {
 		return zt;
@@ -349,5 +350,13 @@ public class OfficeCirculation {
 
 	public void setSwh(String swh) {
 		this.swh = swh;
+	}
+
+	public String getDxtx() {
+		return dxtx;
+	}
+
+	public void setDxtx(String dxtx) {
+		this.dxtx = dxtx;
 	}
 }
