@@ -30,16 +30,30 @@
             <isNotEmpty prepend=" and " property="sfqs">
                 <![CDATA[sfqs=#sfqs#]]>
             </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sffs">
+                <![CDATA[sffs=#sffs#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="tzlb">
+                <![CDATA[tzlb=#tzlb#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqId">
+                <![CDATA[sq_id=#sqId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dxnr">
+                <![CDATA[dxnr=#dxnr#]]>
+            </isNotEmpty>
         </dynamic>
     </sql>
     <insert id="addOfficeSmsPerson" parameterClass="OfficeSmsPerson">
         <![CDATA[
             insert into office_sms_person(
                 pk_id,tzid,user_id,user_name,phone,
-				create_time,read_time,sfqs
+				create_time,read_time,sfqs,sffs,tzlb,
+				sq_id,dxnr
             ) values(
                 #pkId#,#tzid#,#userId#,#userName#,#phone#,
-				#createTime#,#readTime#,#sfqs#
+				#createTime#,#readTime#,#sfqs#,#sffs#,#tzlb#,
+				#sqId#,#dxnr#
             )
         ]]>
     </insert>
@@ -49,7 +63,8 @@
             update office_sms_person
             set pk_id=#pkId#,tzid=#tzid#,user_id=#userId#,
 				user_name=#userName#,phone=#phone#,create_time=#createTime#,
-				read_time=#readTime#,sfqs=#sfqs#
+				read_time=#readTime#,sfqs=#sfqs#,sffs=#sffs#,
+				tzlb=#tzlb#,sq_id=#sqId#,dxnr=#dxnr#
             where PK_ID=#pkId#
         ]]>
     </update>
@@ -63,13 +78,13 @@
 
     <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeSmsPerson">
         <![CDATA[
-            select pk_id as pkId,tzid as tzid,user_id as userId,user_name as userName,phone as phone,create_time as createTime,read_time as readTime,sfqs as sfqs from office_sms_person where PK_ID=#pkId#
+            select pk_id as pkId,tzid as tzid,user_id as userId,user_name as userName,phone as phone,create_time as createTime,read_time as readTime,sfqs as sfqs,sffs as sffs,tzlb as tzlb,sq_id as sqId,dxnr as dxnr from office_sms_person where PK_ID=#pkId#
         ]]>
     </select>
 
     <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficeSmsPerson">
         <![CDATA[
-            select pk_id as pkId,tzid as tzid,user_id as userId,user_name as userName,phone as phone,create_time as createTime,read_time as readTime,sfqs as sfqs from office_sms_person
+            select pk_id as pkId,tzid as tzid,user_id as userId,user_name as userName,phone as phone,create_time as createTime,read_time as readTime,sfqs as sfqs,sffs as sffs,tzlb as tzlb,sq_id as sqId,dxnr as dxnr from office_sms_person
         ]]>
         <!--
         <dynamic prepend="where">
