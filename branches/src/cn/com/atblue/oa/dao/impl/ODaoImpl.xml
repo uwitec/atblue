@@ -3,6 +3,7 @@
 
 <sqlMap namespace="oa.dao">
     <typeAlias alias="OfficeSeal" type="cn.com.atblue.oa.bean.OfficeSeal"/>
+    <typeAlias alias="OfficeSmsPerson" type="cn.com.atblue.oa.bean.OfficeSmsPerson"/>
 
     <select id="getPagedSealList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
         <include refid="basic.pageStart"/>
@@ -505,6 +506,14 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
     <select id="getSmsSequence" resultClass="int">
         <![CDATA[
        select seq_sms.nextval from dual
+        ]]>
+    </select>
+
+    <select id="getSmsPersonsList" resultClass="OfficeSmsPerson">
+        <![CDATA[
+       select
+        pk_id as pkId,tzid as tzid,user_id as userId,user_name as userName,phone as phone,create_time as createTime,read_time as readTime,sfqs as sfqs,sffs as sffs,tzlb as tzlb,sq_id as sqId,dxnr as dxnr
+        from OFFICE_SMS_PERSON t where t.sffs = '0' l
         ]]>
     </select>
 </sqlMap>
