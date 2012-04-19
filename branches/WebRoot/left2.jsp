@@ -85,7 +85,8 @@
                 click: function(n) {
                     if (n.id.indexOf("#") != -1) {
                         var s = n.id.split("#");
-                        if (s[1] != '/')window.open('<%=request.getContextPath() %>'+s[1], 'mainFrame');
+                        var p = "main.jsp?text="+encodeURIComponent(encodeURIComponent(n.text))+"p="+'<%=request.getContextPath() %>'+s[1];
+                        if (s[1] != '/')window.open(p, 'mainFrame');
                     }
                 }
             }
