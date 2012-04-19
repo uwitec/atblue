@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>『黄河钻井三公司OA系统』</title>
 </head>
-<frameset rows="62,23,*,24" cols="*" framespacing="0" frameborder="no" border="0" id="conFrame" name="conFrame">
+<frameset rows="62,30,*,24" cols="*" framespacing="0" frameborder="no" border="0" id="conFrame" name="conFrame">
   <frame src="banner.jsp?url=" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" />
   <frame src="menu.jsp?url=" name="menuFrame" scrolling="No" noresize="noresize" id="menuFrame" />
   <frame src="center.jsp" name="contentFrame" id="contentFrame" height="100%" width="100%"/>
