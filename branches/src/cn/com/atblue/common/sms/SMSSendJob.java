@@ -10,9 +10,7 @@ import org.quartz.JobExecutionException;
 import org.smslib.OutboundMessage;
 import org.springframework.beans.factory.BeanFactory;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 定时短信发送任务
@@ -23,30 +21,31 @@ public class SMSSendJob implements Job {
         BeanFactory beanFactory = (BeanFactory) jobExecutionContext.getJobDetail().getJobDataMap().get("beanFactory");
         SMSHandler smsHandler = (SMSHandler) beanFactory.getBean("smsHandler");
         ODao oDao = (ODao) beanFactory.getBean("oDao");
+        OfficeSmsPersonDAO officeSmsPersonDAO = (OfficeSmsPersonDAO) beanFactory.getBean("officeSmsPersonDAO");
 
         List list = oDao.getSmsPersonsList();
         if (list != null && list.size() > 0) {
             smsHandler.init();
             smsHandler.start();
             for (int i = 0; i < list.size(); i++) {
-//                OfficeSmsPerson map = list.get(i);
-//                String USER_NAME = StringUtil.parseNull(map.get("USER_NAME"), "");
-//                String DXNR = StringUtil.parseNull(map.get("DXNR"), "");
-//                String PHONE = StringUtil.parseNull(map.get("PHONE"), "");
-//                String TZID = StringUtil.parseNull(map.get("TZID"), "");
-//                StringBuffer s = new StringBuffer();
-//                s.append("尊敬的" + USER_NAME + "您好：");
-//                s.append("OA系统有[").append(DXNR).append("]等待您签收！");
-//                s.append("请发短信返回数字").append(TZID).append("进行签收！");
-//                if (!StringUtil.isBlankOrEmpty(PHONE)) {
-//                    OutboundMessage message = new OutboundMessage(PHONE, DXNR);
-//                    smsHandler.sendSMS(message);
-//                }
+                OfficeSmsPerson bean = (OfficeSmsPerson) list.get(i);
+                String USER_NAME = StringUtil.parseNull(bean.getUserName(), "");
+                String DXNR = StringUtil.parseNull(bean.getDxnr(), "");
+                String PHONE = StringUtil.parseNull(bean.getPhone(), "");
+                String TZID = StringUtil.parseNull(bean.getTzid(), "");
+                StringBuffer s = new StringBuffer();
+                s.append("尊敬的" + USER_NAME + "您好：");
+                s.append("OA系统有[").append(DXNR).append("]等待您签收！");
+                s.append("请发短信返回数字").append(TZID).append("进行签收！");
+                if (!StringUtil.isBlankOrEmpty(PHONE)) {
+                    OutboundMessage message = new OutboundMessage(PHONE, DXNR);
+                    smsHandler.sendSMS(message);
+                    bean.setSffs("1");
+                    officeSmsPersonDAO.modOfficeSmsPerson(bean);
+                }
+
             }
-//            oDao.deleteAllSms();
             smsHandler.destroy();
         }
-        System.out.println("测试任务!");
     }
-
 }
