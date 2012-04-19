@@ -237,6 +237,13 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         this.getSqlMapClientTemplate().update("oa.dao.updateSmsPersons",map);
     }
 
+    public void updateSmsPerson(String tzId,String phone){
+        Map map = new HashMap();
+        map.put("tzId",tzId);
+        map.put("phone",phone);
+        this.getSqlMapClientTemplate().update("oa.dao.updateSmsPerson",map);
+    }
+
     public List getSmsPersonsList(){
         return getSqlMapClientTemplate().queryForList(
                 "oa.dao.getSmsPersonsList");
