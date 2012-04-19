@@ -53,6 +53,14 @@
      	用印申请
       -->
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeYysqImpl.xml" />
+     <!--
+     	文件审批
+      -->
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeWjspImpl.xml" />
+    <!--
+     	请销假
+      -->
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeHolidayImpl.xml" />
 
     <!--
      	签批单

@@ -26,6 +26,7 @@
     <result column="CJRQ" property="cjrq" jdbcType="DATE" />
     <result column="CJR" property="cjr" jdbcType="VARCHAR" />
     <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="DXTX" property="dxtx" jdbcType="VARCHAR" />
   </resultMap>
   
   <select id="getByFreeSql" parameterClass="java.util.HashMap" resultClass="cn.com.atblue.oa.bean.OfficeDocuments">
@@ -62,7 +63,7 @@
       This element was generated on Sun Feb 21 17:24:15 CST 2010.
     -->
     select DOCUMENTID, QFRQ, WJBH, MMCD, QFR, NGBM, BT, HJSX, GYFS, ZTC, LB, BZ, ZS, CS, CB, FS,
-      FWJB, CJRQ, CJR, STATUS
+      FWJB, CJRQ, CJR, STATUS,DXTX
     from OFFICE_DOCUMENTS
     where DOCUMENTID = #documentid:VARCHAR#
   </select>
@@ -80,11 +81,11 @@
       This element was generated on Sun Feb 21 17:24:15 CST 2010.
     -->
     insert into OFFICE_DOCUMENTS (DOCUMENTID, QFRQ, WJBH, MMCD, QFR, NGBM, BT, HJSX, GYFS, ZTC, LB,
-      BZ, ZS, CS, CB, FS, FWJB, CJRQ, CJR, STATUS)
+      BZ, ZS, CS, CB, FS, FWJB, CJRQ, CJR, STATUS,DXTX)
     values (#documentid:VARCHAR#, #qfrq:DATE#, #wjbh:VARCHAR#, #mmcd:VARCHAR#, #qfr:VARCHAR#,
       #ngbm:VARCHAR#, #bt:VARCHAR#, #hjsx:VARCHAR#, #gyfs:INTEGER#, #ztc:VARCHAR#, #lb:VARCHAR#,
       #bz:VARCHAR#, #zs:VARCHAR#, #cs:VARCHAR#, #cb:VARCHAR#, #fs:INTEGER#, #fwjb:VARCHAR#,
-      #cjrq:DATE#, #cjr:VARCHAR#, #status:INTEGER#)
+      #cjrq:DATE#, #cjr:VARCHAR#, #status:INTEGER#, #dxtx:VARCHAR#)
   </insert>
   <update id="abatorgenerated_updateByPrimaryKey" parameterClass="cn.com.atblue.oa.bean.OfficeDocuments" >
     <!--
@@ -110,7 +111,8 @@
       FWJB = #fwjb:VARCHAR#,
       CJRQ = #cjrq:DATE#,
       CJR = #cjr:VARCHAR#,
-      STATUS = #status:INTEGER#
+      STATUS = #status:INTEGER#,
+      DXTX = #dxtx:VARCHAR#
     where DOCUMENTID = #documentid:VARCHAR#
   </update>
   <update id="abatorgenerated_updateByPrimaryKeySelective" parameterClass="cn.com.atblue.oa.bean.OfficeDocuments" >
@@ -176,6 +178,9 @@
       </isNotNull>
       <isNotNull prepend="," property="status" >
         STATUS = #status:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="dxtx" >
+        DXTX = #dxtx:VARCHAR#
       </isNotNull>
     </dynamic>
     where DOCUMENTID = #documentid:VARCHAR#

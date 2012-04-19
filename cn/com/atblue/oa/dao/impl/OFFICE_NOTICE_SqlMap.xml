@@ -19,6 +19,7 @@
     <result column="MUSTSIGN" jdbcType="VARCHAR" property="mustsign" />
     <result column="ISPUBLIC" jdbcType="VARCHAR" property="ispublic" />
     <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="DXTX" property="dxtx" jdbcType="VARCHAR" />
   </resultMap> 
   <select id="getExpiredNotice" parameterClass="java.util.HashMap" resultClass="cn.com.atblue.oa.bean.OfficeNotice">
 	  <include refid="basic.pageStart" />
@@ -96,7 +97,7 @@
       This element was generated on Wed Dec 23 09:49:51 CST 2009.
     -->
     select NOTICEID, NOTITITLE, NOTIUNIT, SUBSCRIBER, STARTIME, ENDTIME, ENDDATE, NOTE, RLSDATE, IP,
-      MUSTSIGN, ISPUBLIC, STATUS, CONTENT
+      MUSTSIGN, ISPUBLIC, STATUS, CONTENT,DXTX
     from OFFICE_NOTICE
     where NOTICEID = #noticeid:VARCHAR#
   </select>
@@ -114,10 +115,10 @@
       This element was generated on Wed Dec 23 09:49:51 CST 2009.
     -->
     insert into OFFICE_NOTICE (NOTICEID, NOTITITLE, NOTIUNIT, SUBSCRIBER, STARTIME, ENDTIME,
-      ENDDATE, NOTE, RLSDATE, IP, MUSTSIGN, ISPUBLIC, STATUS, CONTENT)
+      ENDDATE, NOTE, RLSDATE, IP, MUSTSIGN, ISPUBLIC, STATUS, CONTENT,DXTX)
     values (#noticeid:VARCHAR#, #notititle:VARCHAR#, #notiunit:VARCHAR#, #subscriber:VARCHAR#,
       #startime:TIMESTAMP#, #endtime:TIMESTAMP#, #enddate:DATE#, #note:VARCHAR#, #rlsdate:TIMESTAMP#, #ip:VARCHAR#,
-      #mustsign:VARCHAR#, #ispublic:VARCHAR#, #status:VARCHAR#, #content:CLOB#)
+      #mustsign:VARCHAR#, #ispublic:VARCHAR#, #status:VARCHAR#, #content:CLOB#, #dxtx:VARCHAR#)
   </insert>
   <insert id="ibatorgenerated_insertSelective" parameterClass="cn.com.atblue.oa.bean.OfficeNotice">
     <!--
@@ -168,6 +169,9 @@
       <isNotNull prepend="," property="content">
         CONTENT
       </isNotNull>
+      <isNotNull prepend="," property="dxtx">
+        DXTX
+      </isNotNull>
       )
     </dynamic>
     values
@@ -213,6 +217,9 @@
       </isNotNull>
       <isNotNull prepend="," property="content">
         #content:CLOB#
+      </isNotNull>
+      <isNotNull prepend="," property="dxtx">
+        #dxtx:VARCHAR#
       </isNotNull>
       )
     </dynamic>
@@ -263,6 +270,9 @@
       <isNotNull prepend="," property="content">
         CONTENT = #content:CLOB#
       </isNotNull>
+      <isNotNull prepend="," property="status">
+        DXTX = #dxtx:VARCHAR#
+      </isNotNull>
     </dynamic>
     where NOTICEID = #noticeid:VARCHAR#
   </update>
@@ -284,7 +294,8 @@
       MUSTSIGN = #mustsign:VARCHAR#,
       ISPUBLIC = #ispublic:VARCHAR#,
       STATUS = #status:VARCHAR#,
-      CONTENT = #content:CLOB#
+      CONTENT = #content:CLOB#,
+      DXTX = #dxtx:VARCHAR#
     where NOTICEID = #noticeid:VARCHAR#
   </update>
   <update id="ibatorgenerated_updateByPrimaryKey" parameterClass="cn.com.atblue.oa.bean.OfficeNotice">
@@ -304,7 +315,8 @@
       IP = #ip:VARCHAR#,
       MUSTSIGN = #mustsign:VARCHAR#,
       ISPUBLIC = #ispublic:VARCHAR#,
-      STATUS = #status:VARCHAR#
+      STATUS = #status:VARCHAR#,
+      DXTX = #dxtx:VARCHAR#
     where NOTICEID = #noticeid:VARCHAR#
   </update>
 </sqlMap>
