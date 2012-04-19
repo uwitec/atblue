@@ -18,6 +18,7 @@
     <bean id="oDao" class="cn.com.atblue.oa.dao.impl.ODaoImpl" scope="prototype" autowire="byName"/>
 
     <bean id="officeHysqDAO" class="cn.com.atblue.oa.dao.impl.OfficeHysqImpl" scope="prototype" autowire="byName"/>
+    <bean id="officeWjspDAO" class="cn.com.atblue.oa.dao.impl.OfficeWjspImpl" scope="prototype" autowire="byName"/>
     <bean id="officeYysqDAO" class="cn.com.atblue.oa.dao.impl.OfficeYysqImpl" scope="prototype" autowire="byName"/>
     <bean id="officeQpdDAO" class="cn.com.atblue.oa.dao.impl.OfficeQpdImpl" scope="prototype" autowire="byName"/>
     <bean id="officeQpdyjDAO" class="cn.com.atblue.oa.dao.impl.OfficeQpdyjImpl" scope="prototype" autowire="byName"/>
