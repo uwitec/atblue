@@ -89,6 +89,10 @@ public class SmsAction extends BaseAction {
                             officeSmsPerson.setUserId(uid);
                             officeSmsPerson.setUserName(u.getRealName());
                             officeSmsPerson.setSfqs("0");
+                            officeSmsPerson.setSffs("0");
+                            officeSmsPerson.setDxnr(bean.getDxnr());
+                            officeSmsPerson.setTzlb("F");
+                            officeSmsPerson.setPkId(bean.getTzid().toString());
                             officeSmsPersonDAO.addOfficeSmsPerson(officeSmsPerson);
                         }
                     }
@@ -118,6 +122,10 @@ public class SmsAction extends BaseAction {
                             officeSmsPerson.setUserId(uid);
                             officeSmsPerson.setUserName(u.getRealName());
                             officeSmsPerson.setSfqs("0");
+                            officeSmsPerson.setSffs("0");
+                            officeSmsPerson.setDxnr(bean.getDxnr());
+                            officeSmsPerson.setTzlb("F");
+                            officeSmsPerson.setPkId(bean.getTzid().toString());
                             officeSmsPersonDAO.addOfficeSmsPerson(officeSmsPerson);
                         }
                     }
