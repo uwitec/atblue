@@ -1,0 +1,76 @@
+body {
+	margin: 0px;
+}
+.txt_choose {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #001c58;
+	background-image: url(index_13.jpg);
+	text-align: center;
+}
+.txt_unchoose {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #001c58;
+	text-align: center;
+}
+.tab_main {
+	background-color: #FFFFFF;
+	border-right: 1px solid #c0dcf1;
+	border-left: 1px solid #c0dcf1;
+}
+.txt_main {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #001c58;
+}
+.choose {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 29px;
+	font-weight: bold;
+	background-image: url(index_34.jpg);
+	text-align: center;
+	height: 29px;
+	width: 112px;
+}
+.unchoose {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 29px;
+	background-image: url(index_36.jpg);
+	text-align: center;
+	height: 29px;
+	width: 112px;
+}
+.head {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	background-image: url(index_42.jpg);
+	text-align: center;
+	height: 26px;
+	border-bottom: 1px solid #01a0fe;
+	border-right: 1px solid #01a0fe;
+	line-height: 26px;
+}
+.form {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	height: 24px;
+	border-bottom: 1px solid #01a0fe;
+	border-right: 1px solid #01a0fe;
+	line-height: 24px;
+	text-indent: 20px;
+}
+.tab_bg {
+	border-top: 1px solid #01a0fe;
+	border-left: 1px solid #01a0fe;
+}
+.txt_bottom {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	text-align: center;
+}
