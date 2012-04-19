@@ -39,6 +39,7 @@
     UMessageDAO uMessageDAO = (UMessageDAO) SpringFactory.instance.getBean("uMessageDAO");
     OfficeNoticeCheckDAO officeNoticeCheckDAO = (OfficeNoticeCheckDAO)SpringFactory.instance.getBean("officeNoticeCheckDAO");
     OfficeHysqDAO officeHysqDAO = (OfficeHysqDAO)SpringFactory.instance.getBean("officeHysqDAO");
+    OfficeWjspDAO officeWjspDAO = (OfficeWjspDAO)SpringFactory.instance.getBean("officeWjspDAO");
     OfficeYysqDAO officeYysqDAO = (OfficeYysqDAO)SpringFactory.instance.getBean("officeYysqDAO");
     OfficeQpdFormDAO officeQpdFormDAO = (OfficeQpdFormDAO)SpringFactory.instance.getBean("officeQpdFormDAO");
     OfficeQpdDAO officeQpdDAO = (OfficeQpdDAO)SpringFactory.instance.getBean("officeQpdDAO");
