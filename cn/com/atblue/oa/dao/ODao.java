@@ -77,6 +77,8 @@ public interface ODao {
 
     public void updateSmsPersons(int tzId,String userId);
 
+    public void updateSmsPerson(String tzId,String phone);
+
     public void deleteAllSms();
 
     public List getPagedSmsList(Map paramMap);
