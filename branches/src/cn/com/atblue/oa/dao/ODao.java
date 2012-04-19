@@ -88,4 +88,6 @@ public interface ODao {
     public void deleteSmsPersonsById(int id);
     
     public String[] getPersonsByTzid(String tzid);
+    
+    public List getSmsPersonsList();
 }
