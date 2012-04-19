@@ -11,12 +11,13 @@ public class OfficeHoliday {
 private String holidayid;
 private String xm;
 private String dw;
+private String wcsy;
 private Date kssj;
 private Date jssj;
 private String wcdd;
 private String sqzt;
-private String process_id;
-private String connect_id;
+private String processId;
+private String connectId;
 private String dxtx;
 public String getHolidayid() {
 	return holidayid;
@@ -60,23 +61,29 @@ public String getSqzt() {
 public void setSqzt(String sqzt) {
 	this.sqzt = sqzt;
 }
-public String getProcess_id() {
-	return process_id;
-}
-public void setProcess_id(String process_id) {
-	this.process_id = process_id;
-}
-public String getConnect_id() {
-	return connect_id;
-}
-public void setConnect_id(String connect_id) {
-	this.connect_id = connect_id;
-}
 public String getDxtx() {
 	return dxtx;
 }
 public void setDxtx(String dxtx) {
 	this.dxtx = dxtx;
+}
+public String getWcsy() {
+	return wcsy;
+}
+public void setWcsy(String wcsy) {
+	this.wcsy = wcsy;
+}
+public String getProcessId() {
+	return processId;
+}
+public void setProcessId(String processId) {
+	this.processId = processId;
+}
+public String getConnectId() {
+	return connectId;
+}
+public void setConnectId(String connectId) {
+	this.connectId = connectId;
 }
 
 }

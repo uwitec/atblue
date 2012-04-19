@@ -46,7 +46,7 @@
             insert into OFFICE_HOLIDAY(
                 holidayid,xm,dw,kssj,jssj,wcdd,wcsy,sqzt,process_id,connect_id,dxtx
             ) values(
-               #holidayid#,#xm#,#dw#,#kssj#,#jssj#,#wcdd#,#wcsy#,#sqzt#,#process_id#,#connect_id#,#dxtx#
+               #holidayid#,#xm#,#dw#,#kssj#,#jssj#,#wcdd#,#wcsy#,#sqzt#,#processId#,#connectId#,#dxtx#
             )
         ]]>
     </insert>
