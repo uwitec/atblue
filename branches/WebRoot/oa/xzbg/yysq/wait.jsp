@@ -28,9 +28,8 @@
 		<title>Insert title here</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
-        <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
+        <%--<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">--%>
         <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
-        <link href="<%=contentPath%>/css/office.css" rel="stylesheet" type="text/css">
         <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -88,7 +87,7 @@
 							<td nowrap="nowrap" class="head" width="40">
 								序号
 							</td>
-							<td nowrap="nowrap" class="head">
+							<td nowrap="nowrap" class="head" width="120">
 								用印名称
 							</td>
 							<td class="head" width="120">
@@ -118,34 +117,34 @@
 								Map map = (Map) list.get(i);
 						%>
 						<tr>
-							<td class="form" align="center">
+							<td class="form" style="text-align: center" nowrap="nowrap">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td class="form" align="left">
+							<td class="form" style="text-align: left" nowrap="nowrap">
 								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("YYMC"),"") %></a>
 							</td>
 							
-							<td class="form" align="left">
+							<td class="form" style="text-align: left" nowrap="nowrap">
 								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
 							</td>
-							<td class="form" align="center">
+							<td class="form" style="text-align: center" nowrap="nowrap">
 								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
 							</td>
-                            <td class="form" align="center">
+                            <td class="form" style="text-align: center" nowrap="nowrap">
                                 <%=StringUtil.parseNull(map.get("YYKSSJ"),"")%>
                                 &nbsp;
                             </td>
-                            <td class="form" align="center">
+                            <td class="form" style="text-align: center" nowrap="nowrap">
                                 <%=StringUtil.parseNull(map.get("YYJSSJ"),"")%>
                             </td>
-							<td class="form" align="left">
+							<td class="form" style="text-align: left" nowrap="nowrap">
 								<%=StringUtil.cutString(StringUtil.parseNull(map.get("YYSY"),""),25)%>
 							</td>
-							<td class="form" align="center" nowrap="nowrap">
+							<td class="form" style="text-align: center" nowrap="nowrap">
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
-							<td class="form" align="center" nowrap="nowrap">
+							<td class="form" style="text-align: center" nowrap="nowrap">
                                 <input type="button" class="button" name="" style="width:60px"  value="审批" onclick="window.location='sp.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>';"/>
                                 &nbsp;
 							</td>
