@@ -12,7 +12,7 @@
 %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link href="<%=request.getContextPath() %>/css/css.css" type="text/css" rel="stylesheet"/>
+<link href="<%=request.getContextPath() %>/images/css.css" type="text/css" rel="stylesheet"/>
 <title>新增签批表单</title>
 </head>  
 <body>
@@ -34,14 +34,14 @@
 		</LEGEND>
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="record" style="BORDER-COLLAPSE: collapse">
       <tr>
-        <td class="record_head" width="20%">表单名称：</td>
-        <td class="record_td" colspan="2">
+        <td class="head_left" width="20%">表单名称：</td>
+        <td class="head_right" colspan="2">
            <input name="bean.formName" type="text" class="textinput" style="width: 200px"/><span style="color: red;">*</span>
        </td>
       </tr>  
       <tr>
-        <td class="record_head">表单标题：</td>
-        <td class="record_td" colspan="2"><input name="bean.formTitle" style="width: 200px" type="text" class="textinput"/><span style="color: red;">*</span></td>
+        <td class="head_left">表单标题：</td>
+        <td class="head_right" colspan="2"><input name="bean.formTitle" style="width: 200px" type="text" class="textinput"/><span style="color: red;">*</span></td>
         </tr>
     </table>
     </FIELDSET>
@@ -67,10 +67,10 @@
 			</table>
 			<table width="100%" border="0" cellpadding="0" cellspacing="0" id="tab_id" class="mtabtab" style="BORDER-COLLAPSE: collapse">
 				<tr id="tr_head">
-					<th >表单项名称</th>
-					<th >表单项标题</th>
-					<th width="8%">排序</th>
-					<th width="5%" nowrap="">操作</th>
+					<th class="head">表单项名称</th>
+					<th class="head">表单项标题</th>
+					<th class="head" width="8%">排序</th>
+					<th class="head" width="5%" nowrap="">操作</th>
 				</tr>
 			</table>			
 		</FIELDSET>		
@@ -116,23 +116,23 @@ function insertRowToTable() {
 	var ln =0;
 	ln = trs.length;
 	var trRow=tab.insertRow(ln);
-	trRow.className = "form_th";
+	trRow.className = "form";
 	trRow.id=ln;
 	var cell1=trRow.insertCell(0);
-	cell1.className = "form_th";
+	cell1.className = "form";
 	cell1.style.textAlign="center";
 	cell1.innerHTML="<input name='formItemIds' type='hidden' /><input name='formItemNames' type='text' id='formItemNames' class='textinput' style='width:100%'/>";
     var cell2=trRow.insertCell(1);
-	cell2.className = "form_th";
+	cell2.className = "form";
 	cell2.style.textAlign="center";
 	cell2.innerHTML="<input name='formItemTitles' type='text' id='formItemTitles' style='width:100%' class='textinput'/>";
 	var cell3=trRow.insertCell(2);
-	cell3.className = "form_th";
+	cell3.className = "form";
 	cell3.style.textAlign="center";
 	cell3.innerHTML="<input name='pxs' type='text' style='width:100%' class='textinput'/>";
 	var cell4=trRow.insertCell(3);
     cell4.style.textAlign="center";
-    cell4.className = "form_th";
+    cell4.className = "form";
     cell4.innerHTML="<input class='button' name='del' type='button' id='del' value='删除' onClick='deleteRowToTable(this)'/>";
 }
 
