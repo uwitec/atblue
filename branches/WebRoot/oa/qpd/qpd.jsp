@@ -173,10 +173,10 @@ function sumbitForm() {
                                       </td>
                                   </tr>
                                   <tr>
-                                      <td width="128" height="70"><span class="STYLE9">签字：</span> </td>
-                                      <td width="159" height="70" id="shr<%=id%>"></td>
-                                      <td width="80" height="70"><span class="STYLE9">日期：</span> </td>
-                                      <td width="200" height="70"><span class="STYLE51">
+                                      <td width="128" height="70" class="head_left"><span class="STYLE9">签字：</span> </td>
+                                      <td width="159" height="70" id="shr<%=id%>" class="head_right"></td>
+                                      <td width="80" height="70" class="head_left"><span class="STYLE9">日期：</span> </td>
+                                      <td width="200" height="70" class="head_right"><span class="STYLE51">
                           &nbsp;  <%=StringUtil.parseNull(beanMap.get("LRSJ"),DateUtil.format(new java.util.Date()))%>
 						  </span> </td>
                                   </tr>

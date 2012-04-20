@@ -3,7 +3,7 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
 <head>
-<link href="<%=request.getContextPath() %>/css/css.css" type="text/css" rel="stylesheet"/>
+<link href="<%=request.getContextPath() %>/images/css.css" type="text/css" rel="stylesheet"/>
 <title>签批单表单列表</title>
 </head>
 <body>        
@@ -44,10 +44,10 @@
 			</tr>
 			<s:iterator value="dataList" status="status" >
 				<tr onclick="setSelected(this,'tab_id','tr_head','${FORM_ID}')">
-					<td class="form_th" nowrap style="text-align: center; width: 50px;"><s:property value="#status.index+1"/></td>
-					<td class="form_th" nowrap style="text-align: left">${FORM_NAME}</td>
-					<td class="form_th" nowrap style="text-align: left">${FORM_TITLE}</td>
-					<td class="form_th" nowrap style="text-align: left">${LRSJ}</td>
+					<td class="form" nowrap style="text-align: center; width: 50px;"><s:property value="#status.index+1"/></td>
+					<td class="form" nowrap style="text-align: left">${FORM_NAME}</td>
+					<td class="form" nowrap style="text-align: left">${FORM_TITLE}</td>
+					<td class="form" nowrap style="text-align: left">${LRSJ}</td>
 				</tr>
 			</s:iterator>
 		</table>
