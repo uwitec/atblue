@@ -19,69 +19,63 @@
 </head>
 <body>
 <form action="<%=request.getContextPath()%>/login.d" name="form1" method="post">
-    <table width="680" border="0" align="center" cellpadding="0" cellspacing="0">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <table width="618" height="307" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
-            <td height="400" valign="bottom" background="images/login33.jpg">
-                <table width="32%" border="0" align="right" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td>
-                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <td valign="top" background="images/login.jpg"><table width="618" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td height="128">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><table width="618" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="412">&nbsp;</td>
+                            <td><table width="182" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td width="33%"><input type="text" name="userName" id="userName" value=""
-                                                           onkeydown="keyNext(event)" tabindex="100"/></td>
-                                    <td width="67%" rowspan="3">
-                                        <table width="55" border="0" cellspacing="0" cellpadding="0">
-                                            <tr>
-                                                <td><img src="images/trans.gif" width="53" height="45" border="0"
-                                                         usemap="#Map3"/></td>
-                                            </tr>
-                                        </table>
-                                    </td>
+                                    <td><table width="182" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="40" class="txt_main">”√ªß£∫</td>
+                                            <td><input name="userName" id="userName" value=""
+                                                       onkeydown="keyNext(event)" tabindex="100"></td>
+                                        </tr>
+                                    </table></td>
+                                </tr>
+                                <tr>
+                                    <td height="5"></td>
+                                </tr>
+                                <tr>
+                                    <td><table width="182" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="40" class="txt_main">√‹¬Î£∫</td>
+                                            <td><input type="password" name="password" id="password" value=""
+                                                       onkeydown="keyDown(event)" tabindex="101"></td>
+                                        </tr>
+                                    </table></td>
                                 </tr>
                                 <tr>
                                     <td height="12"></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="password" name="password" id="password" value=""
-                                               onkeydown="keyDown(event)" tabindex="101"/></td>
+                                    <td align="center"><table width="120" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="55"><img src="images/dl.jpg" width="55" height="21"  style="cursor:pointer"
+                                                                onClick="doLogin();" tabindex="103"></td>
+                                            <td>&nbsp;</td>
+                                            <td width="55"><img src="images/qx.jpg" width="55" height="21" style="cursor:pointer"
+                                                                onClick="doClear();" tabindex="104"></td>
+                                        </tr>
+                                    </table></td>
                                 </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="45">
-                            <img src="images/login1.jpg" width="55" height="20" style="cursor:pointer"
-                                 onClick="doLogin();" tabindex="103">
-                            <img src="images/login2.jpg" width="55" height="20" style="cursor:pointer"
-                                 onClick="doClear();" tabindex="104">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td width="20%"><img src="images/trans.gif" width="85" height="25" border="0"
-                                                         usemap="#Map"/></td>
-                                    <td width="46%"><img src="images/trans.gif" width="85" height="25" border="0"
-                                                         usemap="#Map2"/></td>
-                                    <td width="34%">&nbsp;</td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="90">&nbsp;</td>
-                    </tr>
-                </table>
-            </td>
+                            </table></td>
+                        </tr>
+                    </table></td>
+                </tr>
+            </table></td>
         </tr>
     </table>
-
-    <map name="Map3" id="Map3">
-        <area shape="rect" coords="2,2,54,41" href="#"/>
-    </map>
-
 </form>
 <script type="text/javascript">
     document.form1.userName.focus();
