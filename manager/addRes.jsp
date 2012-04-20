@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <link href="<%=request.getContextPath() %>/manager/css.css" type="text/css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath() %>/images/css.css" type="text/css" rel="stylesheet"/>
     <link href="<%=request.getContextPath() %>/css/css.css" rel="stylesheet" type="text/css">
     <title>新增菜单基本信息</title>
 </head>
@@ -14,25 +14,25 @@
             <td>
                 <table width="100%" border="1" cellspacing="0" class="tablett" style="BORDER-COLLAPSE: collapse">
                     <tr>
-                        <td class="tdadd">父节点名称：</td>
-                        <td class="tdadd"><input name="parName" type="text" id="parName" value="${resource.resName}"
+                        <td class="head_left">父节点名称：</td>
+                        <td class="head_right"><input name="parName" type="text" id="parName" value="${resource.resName}"
                                                  disabled></td>
                     </tr>
                     <tr>
-                        <td class="tdadd">菜单名称：</td>
-                        <td class="tdadd"><input name="resource.resName" type="text" id="resName"/>
+                        <td class="head_left">菜单名称：</td>
+                        <td class="head_right"><input name="resource.resName" type="text" id="resName"/>
                             <input name="resource.resType" type="hidden" value="URL"/>
                         </td>
                     </tr>
 
                     <tr>
-                        <td class="tdadd">菜单描述：</td>
-                        <td class="tdadd"><textarea name="resource.resDesc" cols="50" rows="5" id="resDesc">/</textarea>
+                        <td class="head_left">菜单描述：</td>
+                        <td class="head_right"><textarea name="resource.resDesc" cols="50" rows="5" id="resDesc">/</textarea>
                         </td>
                     </tr>
                     <tr>
-                        <td class="tdadd">菜单排序：</td>
-                        <td class="tdadd"><input name="resource.resOrder" type="text" id="resOrder"/></textarea>
+                        <td class="head_left">菜单排序：</td>
+                        <td class="head_right"><input name="resource.resOrder" type="text" id="resOrder"/></textarea>
                         </td>
                     </tr>
 

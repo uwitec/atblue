@@ -63,12 +63,12 @@
         </tr>
         <tr>
             <td>
-                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="form_th">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td class="tdadd">用户姓名：</td>
-                        <td class="tdadd"><input name="userName" type="text" id="userName" value=""/></td>
-                        <td class="tdadd">所属机构述：</td>
-                        <td class="tdadd">
+                        <td class="head_left">用户姓名：</td>
+                        <td class="head_right"><input name="userName" type="text" id="userName" value=""/></td>
+                        <td class="head_left">所属机构述：</td>
+                        <td class="head_right">
                             <select name="orgId"  style="width:160px;">
                                 <option value="">请选择</option>
                                 <s:iterator value="orgTreeList">

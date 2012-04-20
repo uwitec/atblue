@@ -2,7 +2,7 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <link href="<%=request.getContextPath() %>/manager/css.css" type="text/css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath() %>/images/css.css" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath() %>/css/css.css" rel="stylesheet" type="text/css">
     <title>修改角色基本信息</title>
 </head>
@@ -15,16 +15,16 @@
             <td>
                 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablett" style="BORDER-COLLAPSE: collapse">
                     <tr>
-                        <td class="tdadd">角色名称：</td>
-                        <td class="tdadd"><input name="role.roleName" type="text" id="roleName"  value="${role.roleName}"/></td>
+                        <td class="head_left">角色名称：</td>
+                        <td class="head_right"><input name="role.roleName" type="text" id="roleName"  value="${role.roleName}"/></td>
                     </tr>
                     <tr>
-                        <td class="tdadd">角色描述：</td>
-                        <td class="tdadd"><textarea name="role.roleDesc" cols="50" rows="5" id="roleDesc">${role.roleDesc}</textarea></td>
+                        <td class="head_left">角色描述：</td>
+                        <td class="head_right"><textarea name="role.roleDesc" cols="50" rows="5" id="roleDesc">${role.roleDesc}</textarea></td>
                     </tr>
                     <tr>
-                        <td class="tdadd">排列序号：</td>
-                        <td class="tdadd"><input name="role.roleOrder" type="text" id="roleOrder" value="${role.roleOrder}"/>
+                        <td class="head_left">排列序号：</td>
+                        <td class="head_right"><input name="role.roleOrder" type="text" id="roleOrder" value="${role.roleOrder}"/>
                         </td>
                     </tr>
 

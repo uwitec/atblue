@@ -2,7 +2,7 @@
 <html>
 <head>
 <link rel="StyleSheet" href="css/css.css" type="text/css" />
-<link href="<%=request.getContextPath()%>/manager/css.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet" type="text/css">
 <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet" type="text/css">
 <title>新增组织机构基本信息</title>
 </head>
@@ -16,22 +16,22 @@
 		
 		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablett" style="BORDER-COLLAPSE: collapse">
 		  <tr>
-				<td class="tdadd">父节点名称：</td>
-				<td class="tdadd"><input name="parName" type="text" id="parName" value="${parentOrgnization.orgnaName}" disabled />
+				<td class="head_left">父节点名称：</td>
+				<td class="head_right"><input name="parName" type="text" id="parName" value="${parentOrgnization.orgnaName}" disabled />
                     <input name="orgnization.parentId" type="hidden" id="parentId" value="${parentOrgnization.parentId}"/>
                 </td>
 			</tr>
 			<tr>
-				<td class="tdadd">组织机构名称：</td>
-				<td class="tdadd"><input name="orgnization.orgnaName" type="text" id="orgnaName" /></td>
+				<td class="head_left">组织机构名称：</td>
+				<td class="head_right"><input name="orgnization.orgnaName" type="text" id="orgnaName" /></td>
 			</tr>
 			<tr>
-			  <td class="tdadd">顺序：</td>
-			  <td class="tdadd"><input name="orgnization.orgnaOrder" type="text" id="orgnaOrder" /></td>
+			  <td class="head_left">顺序：</td>
+			  <td class="head_right"><input name="orgnization.orgnaOrder" type="text" id="orgnaOrder" /></td>
 		  </tr>
             <tr>
-            <td class="tdadd">描述：</td>
-            <td class="tdadd">
+            <td class="head_left">描述：</td>
+            <td class="head_right">
                 <textarea rows="4" cols="40" name="orgnization.orgnaMemo"></textarea>
             </td>
         </tr>

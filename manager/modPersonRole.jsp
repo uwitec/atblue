@@ -2,7 +2,7 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
 <head>
-<link href="<%=request.getContextPath() %>/manager/css.css" type="text/css" rel="stylesheet"/>
+<link href="<%=request.getContextPath() %>/images/css.css" type="text/css" rel="stylesheet"/>
 <link href="<%=request.getContextPath() %>/css/css.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="scripts/dtree.js"></script>
 <title>选择角色模块</title>
@@ -31,7 +31,7 @@
 		<tr>
             <s:iterator value="dataList" status="stat">
                 <tr>
-                    <td class="form_th"  style="text-align: center; width: 50px;">
+                    <td class="form"  style="text-align: center; width: 50px;">
                         <s:if test="CN > 0">
                             <input name="roleIds" type="checkbox" checked="checked" value="${ROLE_ID}">
                         </s:if>
@@ -39,9 +39,9 @@
                             <input name="roleIds" type="checkbox" value="${ROLE_ID}">
                         </s:else>
                     </td>
-                    <td class="form_th"  style="text-align: center;">&nbsp;${ROLE_NAME}</td>
-                    <td class="form_th"  style="text-align: center;">&nbsp;${ROLE_DESC}</td>
-                    <td class="form_th"  style="text-align: center;">&nbsp;${ROLE_ORDER}</td>
+                    <td class="form"  style="text-align: center;">&nbsp;${ROLE_NAME}</td>
+                    <td class="form"  style="text-align: center;">&nbsp;${ROLE_DESC}</td>
+                    <td class="form"  style="text-align: center;">&nbsp;${ROLE_ORDER}</td>
                 </tr>
             </s:iterator>
 		</table>
