@@ -4,8 +4,8 @@
 <%@ page import="java.util.List" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link href="<%=request.getContextPath() %>/manager/css.css" type="text/css" rel="stylesheet"/>
-<link href="<%=request.getContextPath() %>/css/css.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath() %>/css/css.css" type="text/css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath() %>/images/css.css" type="text/css" rel="stylesheet"/>
 <style type="text/CSS">
 body {font:normal 12px Verdana}
 a#tip {position:relative;left:30px; font-weight:bold;}
@@ -25,20 +25,20 @@ a#tip:hover #tip_info {display:block;border:1px solid #F96;background:#FFEFEF;pa
     <td>
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablett" style="BORDER-COLLAPSE: collapse">
       <tr>
-        <td class="tdadd" width="20%">登录帐户：</td>
-        <td class="tdadd" colspan="2"><input name="user.userName" type="text" id="userName" /><span style="color: red;">*</span></td>
+        <td class="head_left" width="20%">登录帐户：</td>
+        <td class="head_right" colspan="2"><input name="user.userName" type="text" id="userName" /><span style="color: red;">*</span></td>
         </tr>  
       <tr>
-        <td class="tdadd">登录密码：</td>
-        <td class="tdadd" colspan="2"><input name="user.password" type="password" id="password" /><span style="color: red;">*</span></td>
+        <td class="head_left">登录密码：</td>
+        <td class="head_right" colspan="2"><input name="user.password" type="password" id="password" /><span style="color: red;">*</span></td>
         </tr>
       <tr>
-        <td class="tdadd">人员名称：</td>
-        <td class="tdadd" colspan="2"><input name="user.realName" type="text" id="realName" /><span style="color: red;">*</span></td>
+        <td class="head_left">人员名称：</td>
+        <td class="head_right" colspan="2"><input name="user.realName" type="text" id="realName" /><span style="color: red;">*</span></td>
         </tr>
       <tr>
-        <td class="tdadd">所属部门：</td>
-        <td class="tdadd" colspan="2">
+        <td class="head_left">所属部门：</td>
+        <td class="head_right" colspan="2">
         	<select name="user.orgnaId" style="width: 200px;">
                 <option value="">请选择</option>
                 <s:iterator value="orgTreeList">
@@ -48,32 +48,32 @@ a#tip:hover #tip_info {display:block;border:1px solid #F96;background:#FFEFEF;pa
         </td>
       </tr>
       <tr>
-        <td class="tdadd">人员描述：</td>
-        <td class="tdadd" colspan="2"><textarea name="user.userDesc" cols="50" rows="3" id="userDesc"></textarea></td>
+        <td class="head_left">人员描述：</td>
+        <td class="head_right" colspan="2"><textarea name="user.userDesc" cols="50" rows="3" id="userDesc"></textarea></td>
         </tr>
       <tr>
-        <td class="tdadd">性别：</td>
-        <td  class="tdadd"colspan="2"><select name="user.sex"><option value="1">男</option><option value="2">女</option></select></td>
+        <td class="head_left">性别：</td>
+        <td  class="head_right"colspan="2"><select name="user.sex"><option value="1">男</option><option value="2">女</option></select></td>
         </tr>
         <tr>
-        <td class="tdadd">手机：</td>
-        <td  class="tdadd"colspan="2"><input name="user.mobile" type="text" id="mobile" value=""/></td>
+        <td class="head_left">手机：</td>
+        <td  class="head_right"colspan="2"><input name="user.mobile" type="text" id="mobile" value=""/></td>
         </tr>
         <tr>
-        <td class="tdadd">办公室电话：</td>
-        <td  class="tdadd"colspan="2"><input name="user.phone" type="text" id="mobile" value=""/></td>
+        <td class="head_left">办公室电话：</td>
+        <td  class="head_right"colspan="2"><input name="user.phone" type="text" id="mobile" value=""/></td>
         </tr>
         <tr>
-        <td class="tdadd">住宅电话：</td>
-        <td  class="tdadd"colspan="2"><input name="user.homePhone" type="text" id="mobile" value=""/></td>
+        <td class="head_left">住宅电话：</td>
+        <td  class="head_right"colspan="2"><input name="user.homePhone" type="text" id="mobile" value=""/></td>
         </tr>
         <tr>
-        <td class="tdadd">邮箱：</td>
-        <td  class="tdadd"colspan="2"><input name="user.email" type="text" id="email" value=""/></td>
+        <td class="head_left">邮箱：</td>
+        <td  class="head_right"colspan="2"><input name="user.email" type="text" id="email" value=""/></td>
         </tr>
         <tr>
-        <td class="tdadd">排列序号：</td>
-        <td  class="tdadd"colspan="2"><input name="user.userOrder" type="text" id="userOrder" value=""/></td>
+        <td class="head_left">排列序号：</td>
+        <td  class="head_right"colspan="2"><input name="user.userOrder" type="text" id="userOrder" value=""/></td>
         </tr>
     </table>
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="bgdh">

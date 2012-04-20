@@ -8,74 +8,76 @@
         cookie.setMaxAge(0);
     }
 %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <title>『登录黄河钻井三公司OA系统』</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <link href="images/css.css" rel="stylesheet" type="text/css">
-</head>
-<body>
+    <style type="text/css">
+        <!--
+        body {
+            background-color: #eaf7ff;
+        }
+        -->
+    </style></head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <form action="<%=request.getContextPath()%>/login.d" name="form1" method="post">
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <table width="618" height="307" border="0" align="center" cellpadding="0" cellspacing="0">
-        <tr>
-            <td valign="top" background="images/login.jpg"><table width="618" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td height="128">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td><table width="618" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td width="412">&nbsp;</td>
-                            <td><table width="182" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td><table width="182" border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                            <td width="40" class="txt_main">用户：</td>
-                                            <td><input name="userName" id="userName" value=""
-                                                       onkeydown="keyNext(event)" tabindex="100"></td>
-                                        </tr>
-                                    </table></td>
-                                </tr>
-                                <tr>
-                                    <td height="5"></td>
-                                </tr>
-                                <tr>
-                                    <td><table width="182" border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                            <td width="40" class="txt_main">密码：</td>
-                                            <td><input type="password" name="password" id="password" value=""
-                                                       onkeydown="keyDown(event)" tabindex="101"></td>
-                                        </tr>
-                                    </table></td>
-                                </tr>
-                                <tr>
-                                    <td height="12"></td>
-                                </tr>
-                                <tr>
-                                    <td align="center"><table width="120" border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                            <td width="55"><img src="images/dl.jpg" width="55" height="21"  style="cursor:pointer"
-                                                                onClick="doLogin();" tabindex="103"></td>
-                                            <td>&nbsp;</td>
-                                            <td width="55"><img src="images/qx.jpg" width="55" height="21" style="cursor:pointer"
-                                                                onClick="doClear();" tabindex="104"></td>
-                                        </tr>
-                                    </table></td>
-                                </tr>
-                            </table></td>
-                        </tr>
-                    </table></td>
-                </tr>
-            </table></td>
-        </tr>
-    </table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="618" height="307" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+        <td valign="top" background="images/login.jpg"><table width="618" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td height="128">&nbsp;</td>
+            </tr>
+            <tr>
+                <td><table width="618" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="412">&nbsp;</td>
+                        <td><table width="182" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td><table width="182" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td width="40" class="txt_main">用户：</td>
+                                        <td><input name="userName" type="text" class="tab_login" onkeydown="keyNext(event)" tabindex="100"></td>
+                                    </tr>
+                                </table></td>
+                            </tr>
+                            <tr>
+                                <td height="5"></td>
+                            </tr>
+                            <tr>
+                                <td><table width="182" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td width="40" class="txt_main">密码：</td>
+                                        <td><input name="password" type="password" class="tab_login"  onkeydown="keyDown(event)" tabindex="101"></td>
+                                    </tr>
+                                </table></td>
+                            </tr>
+                            <tr>
+                                <td height="12"></td>
+                            </tr>
+                            <tr>
+                                <td align="center"><table width="120" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td width="55"><img src="images/dl.jpg" width="55" height="21" style="cursor:pointer"
+                                                            onClick="doLogin();" tabindex="103"></td>
+                                        <td>&nbsp;</td>
+                                        <td width="55"><img src="images/qx.jpg" width="55" height="21" style="cursor:pointer"
+                                                            onClick="doClear();" tabindex="104"></td>
+                                    </tr>
+                                </table></td>
+                            </tr>
+                        </table></td>
+                    </tr>
+                </table></td>
+            </tr>
+        </table></td>
+    </tr>
+</table>
 </form>
 <script type="text/javascript">
     document.form1.userName.focus();

@@ -5,6 +5,7 @@
 <link rel="StyleSheet" href="css/css.css" type="text/css" />
 <link rel="StyleSheet" href="style/dtree.css" type="text/css" />
 <link href="<%=request.getContextPath() %>/css/css.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath() %>/images/css.css" rel="stylesheet" type="text/css">
     <script>
         //选中的行变量
         var selectedId = null;
@@ -57,7 +58,7 @@
             <input class="button" name="popUpMod" type="button" id="popUpMod" value="修改角色" onclick="popUpMod();" style="width:100px;"/>
             <input class="button" name="popUpDel" type="button" id="popUpDel" value="删除角色" onclick="processDel();" style="width:100px;"/>
             <input class="button" name="popUpUrl" type="button" id="popUpUrl" value="URL访问权限" onclick="popUpUrl();" style="width:100px;"/>
-	    <input class="button" name="popUpUser" type="button" id="popUpUser" value="所属人员" onclick="popUpUser();" style="width:100px;"/>
+	    <%--<input class="button" name="popUpUser" type="button" id="popUpUser" value="所属人员" onclick="popUpUser();" style="width:100px;"/>--%>
             </div></td>
         <td width="">
           <div align="left">
@@ -76,17 +77,17 @@
     <td>
     <table width="100%" border="0" cellpadding="0" id="tab_id" cellpadding="0" cellspacing="0" class="mtabtab" style="BORDER-COLLAPSE: collapse">
       <tr id="tr_head">
-        <th>序号</th>
-        <th>角色名称</th>
-        <th>角色描述</th>
-        <th>角色标识</th>
+        <th class="head">序号</th>
+        <th class="head">角色名称</th>
+        <th class="head">角色描述</th>
+        <th class="head">角色标识</th>
       </tr>
       <s:iterator value="dataList" status="stat">
       <tr onclick="setSelected(this,'tab_id','tr_head','${ROLE_ID}')" >
-        <td class="form_th"  style="text-align: center; width: 50px;">&nbsp;<s:property value="#stat.index+1"/></td>
-        <td class="form_th"  style="text-align: left;">&nbsp;${ROLE_NAME}</td>
-        <td class="form_th"  style="text-align: left;">&nbsp;${ROLE_DESC}</td>
-        <td class="form_th"  style="text-align: right;">&nbsp;${ROLE_ORDER}</td>
+        <td class="form"  style="text-align: center; width: 50px;">&nbsp;<s:property value="#stat.index+1"/></td>
+        <td class="form"  style="text-align: left;">&nbsp;${ROLE_NAME}</td>
+        <td class="form"  style="text-align: left;">&nbsp;${ROLE_DESC}</td>
+        <td class="form"  style="text-align: right;">&nbsp;${ROLE_ORDER}</td>
       </tr>
       </s:iterator>
     </table></td>

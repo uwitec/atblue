@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link href="<%=request.getContextPath() %>/manager/css.css" type="text/css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath() %>/css/css.css" rel="stylesheet" type="text/css">
 <link href="<%=request.getContextPath() %>/css/css.css" rel="stylesheet" type="text/css">
 <title>修改菜单基本信息</title>
 </head>
@@ -18,17 +18,17 @@
 
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tablett" style="BORDER-COLLAPSE: collapse">
 		  <tr>
-			  <td class="tdadd">菜单名称：</td>
-			  <td class="tdadd"><input name="resource.resName" type="text" id="resName" value="${resource.resName}"/></td>
+			  <td class="head_left">菜单名称：</td>
+			  <td class="head_right"><input name="resource.resName" type="text" id="resName" value="${resource.resName}"/></td>
 		  </tr>
 			
 		  <tr>
-			  <td class="tdadd">菜单描述：</td>
-			  <td class="tdadd"><textarea name="resource.resDesc" cols="50" rows="5" id="resDesc" >${resource.resDesc}</textarea></td>
+			  <td class="head_left">菜单描述：</td>
+			  <td class="head_right"><textarea name="resource.resDesc" cols="50" rows="5" id="resDesc" >${resource.resDesc}</textarea></td>
 		  </tr>
           <tr>
-                <td class="tdadd">菜单排序：</td>
-                <td class="tdadd"><input name="resource.resOrder" type="text" id="resOrder" value="${resource.resOrder}"/>
+                <td class="head_left">菜单排序：</td>
+                <td class="head_right"><input name="resource.resOrder" type="text" id="resOrder" value="${resource.resOrder}"/>
                 </td>
           </tr>
 		</table>
