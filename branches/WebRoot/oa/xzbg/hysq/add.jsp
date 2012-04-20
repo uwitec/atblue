@@ -65,8 +65,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title></title>
-		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-			type="text/css">
+		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
+		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -345,29 +345,26 @@
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										会议名称<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" style="text-align: left">
                                         <input type="text" name="HYMC" value=""  style="width:500px"/>
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										申请部门<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" style="text-align: left">
                                         <input type="hidden" name="SQBM" value="<%=StringUtil.parseNull(orgId,"")%>"/><%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%>
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										与会人员<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" style="text-align: left">
 										<button id="mb3" class="button">
 											参加人
 										</button>
@@ -375,22 +372,20 @@
 								</tr>
 
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										申请开始时间<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" style="text-align: left">
 										<input type="text"
 											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
 											name="SQKSSJ" class="Wdate" style="width: 200px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										申请结束时间<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" style="text-align: left">
 										<input type="text"
 											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
 											name="SQJSSJ" class="Wdate" style="width: 200px;">
@@ -398,20 +393,19 @@
 								</tr>
 
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										会议内容及目的
 									</td>
-									<td class="NormalDataColumn" align="left">
+									<td class="head_right" style="text-align: left">
 										<textarea cols="80" id="HYNR" name="HYNR" rows="10"></textarea>
 									</td>
 								</tr>
 
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										备注
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" style="text-align: left">
                                         <textarea cols="80"name="BZ" rows="5"></textarea>
 									</td>
 								</tr>
@@ -419,7 +413,6 @@
 						</div>
 					</td>
 				</tr>
-
 			</table>
 		</form>
 	</body>

@@ -27,9 +27,8 @@
 		<title>Insert title here</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
-        <link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-              type="text/css">
-        <link href="<%=contentPath%>/css/office.css" rel="stylesheet" type="text/css">
+        <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet" type="text/css">
         <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -105,36 +104,35 @@
 			cellpadding="0" cellspacing="0">
 			<tr>
 				<td>
-
 					<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" class="mtabtab" id="mtabtab">
+						cellspacing="0" id="mtabtab">
 						<tr>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="40">
+							<td nowrap="nowrap" class="head" width="2%">
 								序号
 							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle">
+							<td nowrap="nowrap" class="head">
 								会议名称
 							</td>
 							
-							<td class="NormalColumnTitle" width="120">
+							<td class="head">
 								申请部门
 							</td>
-							<td class="NormalColumnTitle" width="120">
+							<td class="head">
 								申请时间
 							</td>
-							<td class="NormalColumnTitle" width="120">
+							<td class="head">
 								申请开始时间
 							</td>
-							<td class="NormalColumnTitle" width="120">
+							<td class="head">
 								申请结束时间
 							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="200">
+							<td nowrap="nowrap" class="head">
 								会议内容
 							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="80">
+							<td nowrap="nowrap" class="head">
 								申请状态
 							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle">
+							<td nowrap="nowrap" class="head" width="3%">
 								操作
 							</td>
 						</tr>
@@ -145,35 +143,35 @@
                                 oracle.sql.TIMESTAMP eTime = (oracle.sql.TIMESTAMP)map.get("SQJSSJ");
 						%>
 						<tr>
-							<td class="NormalDataColumn" align="center">
+							<td class="form" align="center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td class="NormalDataColumn" align="left" nowrap="nowrap">
+							<td class="form" align="left">
 								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("HYMC"),"") %></a>
 							</td>
 							
-							<td class="NormalDataColumn" align="left">
+							<td class="form" align="left">
 								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td class="form" align="center">
 								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td class="form" align="center">
 								<%if(sTime != null){ %>
                                 <%=DateUtil.format(sTime.timestampValue(),"yyyy-MM-dd HH:mm")%>
                                 <% }%>
                                     &nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td class="form" align="center">
                                 <%if(eTime != null){ %>
                                 <%=DateUtil.format(eTime.timestampValue(), "yyyy-MM-dd HH:mm")%>
                                 <% }%>
 							</td>
-							<td class="NormalDataColumn" align="left">
+							<td class="form" align="left">
 								<%=StringUtil.cutString(StringUtil.parseNull(map.get("HYNR"),""),25)%>
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td class="form" align="center">
 								<%String sqzt = StringUtil.parseNull(map.get("SQZT"),"");
                                      if("已完成".equals(sqzt)){ %>
                                         <font color="green"><%=sqzt%></font>
@@ -184,7 +182,7 @@
                                 <% }
                                 %>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center" nowrap="nowrap">
+							<td class="form" align="center" nowrap="nowrap">
                                 <%
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
@@ -204,13 +202,11 @@
                                 <a href="#" onclick="qz('<%=processId%>','<%=connectId%>');">[查看签字]</a>
                                 <%  }
                                 %>
-
 							</td>
 						</tr>
 						<%
 							}
 						%>
-
 					</table>
 				</td>
 			</tr>
