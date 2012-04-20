@@ -15,7 +15,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <title>『登录黄河钻井三公司OA系统』</title>
-    <link href="css/login.css" rel="stylesheet" type="text/css">
+    <link href="images/css.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <form action="<%=request.getContextPath()%>/login.d" name="form1" method="post">
