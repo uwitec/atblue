@@ -28,9 +28,8 @@
 		<title>Insert title here</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
-        <link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-              type="text/css">
-        <link href="<%=contentPath%>/css/office.css" rel="stylesheet" type="text/css">
+        <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
+        <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
         <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -85,28 +84,28 @@
 					<table width="100%" border="0" align="center" cellpadding="0"
 						cellspacing="0" class="mtabtab" id="mtabtab">
 						<tr>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="40">
+							<td nowrap="nowrap" class="head" width="40">
 								序号
 							</td>
-                            <td nowrap="nowrap" class="NormalColumnTitle">
+                            <td nowrap="nowrap" class="head">
                                 用印名称
                             </td>
-                            <td class="NormalColumnTitle" width="120">
+                            <td class="head" width="120">
                                 用印部门
                             </td>
-                            <td class="NormalColumnTitle" width="120">
+                            <td class="head" width="120">
                                 申请时间
                             </td>
-                            <td class="NormalColumnTitle" width="120">
+                            <td class="head" width="120">
                                 用印开始时间
                             </td>
-                            <td class="NormalColumnTitle" width="120">
+                            <td class="head" width="120">
                                 用印结束时间
                             </td>
-                            <td nowrap="nowrap" class="NormalColumnTitle" width="200">
+                            <td nowrap="nowrap" class="head" width="200">
                                 用印事由
                             </td>
-							<td nowrap="nowrap" class="NormalColumnTitle">
+							<td nowrap="nowrap" class="head">
 								操作
 							</td>
 						</tr>
@@ -115,31 +114,31 @@
 								Map map = (Map) list.get(i);
 						%>
 						<tr>
-							<td class="NormalDataColumn" align="center">
+							<td class="form" align="center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-                            <td class="NormalDataColumn" align="left">
+                            <td class="form" align="left">
                                 <a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("YYMC"),"") %></a>
                             </td>
 
-                            <td class="NormalDataColumn" align="left">
+                            <td class="form" align="left">
                                 <%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
                             </td>
-                            <td class="NormalDataColumn" align="center">
+                            <td class="form" align="center">
                                 <%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
                             </td>
-                            <td class="NormalDataColumn" align="center">
+                            <td class="form" align="center">
                                 <%=StringUtil.parseNull(map.get("YYKSSJ"),"")%>
                                 &nbsp;
                             </td>
-                            <td class="NormalDataColumn" align="center">
+                            <td class="form" align="center">
                                 <%=StringUtil.parseNull(map.get("YYJSSJ"),"")%>
                             </td>
-                            <td class="NormalDataColumn" align="left">
+                            <td class="form" align="left">
                                 <%=StringUtil.cutString(StringUtil.parseNull(map.get("YYSY"),""),25)%>
                             </td>
-							<td class="NormalDataColumn" align="center" nowrap="nowrap">
+							<td class="form" align="center" nowrap="nowrap">
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
 						</tr>

@@ -10,7 +10,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>用印申请审批</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/js/ext/resources/css/ext-all.css" />
-    <link id="theme" rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/ext/resources/css/xtheme-gray.css" />
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/ext/adapter/ext/ext-base.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/ext/ext-all.js"></script>
 </head>
