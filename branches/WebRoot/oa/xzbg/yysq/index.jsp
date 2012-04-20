@@ -28,7 +28,6 @@
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
         <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
-        <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
         <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -84,14 +83,13 @@
 			cellpadding="0" cellspacing="0">
 			<tr>
 				<td>
-
 					<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" class="mtabtab" id="mtabtab">
+						cellspacing="0" id="mtabtab">
 						<tr>
-							<td nowrap="nowrap" class="head" width="40">
+							<td nowrap="nowrap" class="head" width="4%">
 								序号
 							</td>
-							<td nowrap="nowrap" class="head">
+							<td nowrap="nowrap" class="head" width="120">
 								用印名称
 							</td>
 							
@@ -122,15 +120,15 @@
 								Map map = (Map) list.get(i);
 						%>
 						<tr>
-							<td class="form" align="center">
+							<td class="form" style="text-align: center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td class="form" align="left" nowrap="nowrap">
+							<td class="form" nowrap="nowrap" style="text-align: left">
 								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("YYMC"),"") %></a>
 							</td>
 							
-							<td class="form" align="left">
+							<td class="form" style="text-align: left">
 								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
 							</td>
 							<td class="form" align="center">
@@ -143,7 +141,7 @@
 							<td class="form" align="center">
                                 <%=StringUtil.parseNull(map.get("YYJSSJ"),"")%>
 							</td>
-							<td class="form" align="left">
+							<td class="form" style="text-align: left">
 								<%=StringUtil.cutString(StringUtil.parseNull(map.get("YYSY"),""),25)%>
 							</td>
 							<td class="form" align="center">
