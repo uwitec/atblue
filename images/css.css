@@ -20,12 +20,6 @@ body {
 	border-right: 1px solid #c0dcf1;
 	border-left: 1px solid #c0dcf1;
 }
-.tab_main2 {
-    background-color: #FFFFFF;
-    border-right: 1px solid #c0dcf1;
-    border-left: 1px solid #c0dcf1;
-    border-bottom: 1px solid #c0dcf1;
-}
 .txt_main {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
@@ -79,4 +73,50 @@ body {
 	font-size: 12px;
 	color: #FFFFFF;
 	text-align: center;
+}
+.tab_home {
+	border-right: 1px solid #c0dcf1;
+	border-bottom: 1px solid #c0dcf1;
+	border-left: 1px solid #c0dcf1;
+	background-color: #FFFFFF;
+}
+.txt_home {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.head_left {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background-color: #e7f4fd;
+	text-align: right;
+	border-right: 1px solid #01a0fe;
+	border-bottom: 1px solid #01a0fe;
+	padding-right: 5px;
+}
+.head_right {
+	border-right: 1px solid #01a0fe;
+	border-bottom: 1px solid #01a0fe;
+	padding-left: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.tab_rr {
+	border-top: 1px solid #01a0fe;
+	border-left: 1px solid #01a0fe;
+}
+.tab_wbk {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	height: 23px;
+	width: 180px;
+	border: 1px solid #dcdcdc;
+	line-height: 23px;
+}
+.tab_login {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	height: 23px;
+	width: 140px;
+	border: 1px solid #dcdcdc;
+	line-height: 23px;
 }
