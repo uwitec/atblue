@@ -22,7 +22,7 @@
            title="leftFrame" frameborder="0" scrolling="auto"/>
     <frame src="middle.html" name="middleFrame" scrolling="No" noresize="noresize" id="middleFrame"
            title="middleFrame"/>
-    <frame src="" name="mainFrame" id="mainFrame" title="mainFrame" scrolling="auto"/>
+    <frame src="" name="mainFrame" id="mainFrame" title="mainFrame" scrolling="no"/>
 </frameset>
 <noframes>
     <body>
