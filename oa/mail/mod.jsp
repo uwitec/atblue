@@ -264,7 +264,6 @@
                                 邮件主题<span style="color: red">&nbsp;*</span>
                             </td>
                             <td class="head_right" align="left">
-                                &nbsp;&nbsp;
                                 <input type="text" name="bean.mailZt" value="${bean.mailZt}"  style="width:500px"/>
                             </td>
                         </tr>
@@ -273,7 +272,6 @@
                                 收件人<span style="color: red">&nbsp;*</span>
                             </td>
                             <td class="head_right" align="left">
-                                &nbsp;&nbsp;
                                 <button id="mb3" class="button">
                                     选择
                                 </button>
