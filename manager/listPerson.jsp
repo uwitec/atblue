@@ -7,7 +7,7 @@
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
     <link href="<%=request.getContextPath() %>/css/css.css" type="text/css" rel="stylesheet"/>
-    <link href="<%=request.getContextPath() %>/manager/css.css" type="text/css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath() %>/images/css.css" type="text/css" rel="stylesheet"/>
     <script>
         //选中的行变量
         var selectedId = null;
@@ -107,12 +107,12 @@
                     </tr>
                     <s:iterator value="dataList" status="stat">
                         <tr onclick="setSelected(this,'tab_id','tr_head','${USER_ID}')">
-                            <td class="form_th" nowrap style="text-align: center; width: 50px;"><s:property
+                            <td class="form" nowrap style="text-align: center; width: 50px;"><s:property
                                     value="#stat.index+1"/></td>
-                            <td class="form_th" nowrap style="text-align: left">&nbsp;${USER_NAME}</td>
-                            <td class="form_th" nowrap style="text-align: left">&nbsp;${REAL_NAME}</td>
-                            <td class="form_th" nowrap style="text-align: left">&nbsp;${ORGNA_NAME}</td>
-                            <td class="form_th" nowrap style="text-align: left" width="150px;">&nbsp;${USER_DESC}</td>
+                            <td class="form" nowrap style="text-align: left">&nbsp;${USER_NAME}</td>
+                            <td class="form" nowrap style="text-align: left">&nbsp;${REAL_NAME}</td>
+                            <td class="form" nowrap style="text-align: left">&nbsp;${ORGNA_NAME}</td>
+                            <td class="form" nowrap style="text-align: left" width="150px;">&nbsp;${USER_DESC}</td>
                         </tr>
                     </s:iterator>
                 </table>
