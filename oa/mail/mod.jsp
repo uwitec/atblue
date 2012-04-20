@@ -17,7 +17,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title></title>
-    <link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
+    <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"
           type="text/css">
     <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" charset="GB2312"
@@ -260,19 +260,19 @@
                     <table width="100%" border="0" align="center" cellpadding="0"
                            cellspacing="0" class="mtabtab" id="mtabtab">
                         <tr>
-                            <td nowrap="nowrap" width="120" class="NormalColumnTitle">
+                            <td nowrap="nowrap" width="120" class="head_left">
                                 邮件主题<span style="color: red">&nbsp;*</span>
                             </td>
-                            <td class="NormalDataColumn" align="left">
+                            <td class="head_right" align="left">
                                 &nbsp;&nbsp;
                                 <input type="text" name="bean.mailZt" value="${bean.mailZt}"  style="width:500px"/>
                             </td>
                         </tr>
                         <tr>
-                            <td nowrap="nowrap" width="120" class="NormalColumnTitle">
+                            <td nowrap="nowrap" width="120" class="head_left">
                                 收件人<span style="color: red">&nbsp;*</span>
                             </td>
-                            <td class="NormalDataColumn" align="left">
+                            <td class="head_right" align="left">
                                 &nbsp;&nbsp;
                                 <button id="mb3" class="button">
                                     选择
@@ -280,10 +280,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td nowrap="nowrap" width="120" class="NormalColumnTitle">
+                            <td nowrap="nowrap" width="120" class="head_left">
                                 邮件正文
                             </td>
-                            <td class="NormalDataColumn" align="left">
+                            <td class="head_right" align="left">
                                 <textarea cols="80" id="mailNr" name="bean.mailNr" rows="10">${bean.mailNr}</textarea>
                             </td>
                         </tr>
