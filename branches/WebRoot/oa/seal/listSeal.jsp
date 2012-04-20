@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>电子签章维护列表</title>
-    <link href="<%=request.getContextPath()%>/css/css.css" type="text/css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath()%>/images/css.css" type="text/css" rel="stylesheet"/>
     <script type="text/javascript">
         function SetStore() {
             var separator = "::";  // 分隔符
@@ -96,23 +96,23 @@
             <td>
                 <table width="100%" id="tab_id" align="center" cellpadding="0" cellspacing="0" class="mtabtab">
                     <tr class="form_th">
-                        <th width="2%" nowrap="nowrap">序号</th>
-                        <th>用户姓名</th>
-                        <th>用户名</th>
-                        <th>用户单位</th>
-                        <th>查看印章</th>
+                        <th width="2%" nowrap="nowrap" class="head">序号</th>
+                        <th class="head">用户姓名</th>
+                        <th class="head">用户名</th>
+                        <th class="head">用户单位</th>
+                        <th class="head">查看印章</th>
                     </tr>
                     <s:iterator value="dataList" status="status">
                         <tr onclick="setSelected(this,'tab_id','tr_head','${SEAL_ID}')">
-                            <td style="text-align: center" nowrap>
+                            <td class="form" style="text-align: center" nowrap>
                                 <s:property value="#status.index+1"/>
                             </td>
-                            <td style="text-align: left" nowrap>${REAL_NAME}&nbsp;</td>
-                            <td style="text-align: left" nowrap>${USER_NAME}&nbsp;</td>
-                            <td style="text-align: left" nowrap>
+                            <td class="form" style="text-align: left" nowrap>${REAL_NAME}&nbsp;</td>
+                            <td class="form" style="text-align: left" nowrap>${USER_NAME}&nbsp;</td>
+                            <td class="form" style="text-align: left" nowrap>
                                     ${ORGNA_NAME}&nbsp;
                             </td>
-                            <td style="text-align: center" nowrap>
+                            <td class="form" style="text-align: center" nowrap>
                                 <input type="button" class="button" value="查看印章" onClick="addSealB('${USER_ID}')"/>&nbsp;</td>
                         </tr>
                     </s:iterator>
