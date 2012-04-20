@@ -120,7 +120,7 @@
 								Map map = (Map) list.get(i);
 						%>
 						<tr>
-							<td class="form" style="text-align: center">
+							<td class="form" style="text-align: center;border-left: 1px solid #01a0fe;" >
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
