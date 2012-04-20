@@ -22,8 +22,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title></title>
-		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-			type="text/css">
+		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet" type="text/css">
+		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet" type="text/css">
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -33,7 +33,6 @@
 			src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
 
-		
 		<script type="text/javascript">
             function _resizeNoPage() {
                 document.getElementById("scrollDiv").style.width = document.body.clientWidth - 18;
@@ -217,66 +216,60 @@
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
                                 <tr>
-                                    <td nowrap="nowrap" width="120" class="NormalColumnTitle">
+                                    <td nowrap="nowrap" width="120" class="head_left">
                                         用印名称
                                     </td>
-                                    <td class="NormalDataColumn" align="left">
-                                        &nbsp;&nbsp;
+                                    <td class="head_right" style="text-align: left">
                                         <%=StringUtil.parseNull(yysq.getYymc(),"")%>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td nowrap="nowrap" width="120" class="NormalColumnTitle">
+                                    <td nowrap="nowrap" width="120" class="head_left">
                                         用印部门
                                     </td>
-                                    <td class="NormalDataColumn" align="left">
-                                        &nbsp;&nbsp;
+                                    <td class="head_right" style="text-align: left">
                                         <%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td nowrap="nowrap" width="120" class="NormalColumnTitle">
+                                    <td nowrap="nowrap" width="120" class="head_left">
                                         份数<span style="color: red">&nbsp;*</span>
                                     </td>
-                                    <td class="NormalDataColumn" align="left">
-                                        &nbsp;&nbsp;
+                                    <td class="head_right" style="text-align: left">
                                         <%=StringUtil.parseNull(yysq.getFs(),"")%>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td nowrap="nowrap" width="120" class="NormalColumnTitle">
+                                    <td nowrap="nowrap" width="120" class="head_left">
                                         用印开始时间<span style="color: red">&nbsp;*</span>
                                     </td>
-                                    <td class="NormalDataColumn" align="left">
-                                        &nbsp;&nbsp;
+                                    <td class="head_right" style="text-align: left">
                                         <%=StringUtil.parseNull(yysq.getYykssj(),"")%>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td nowrap="nowrap" width="120" class="NormalColumnTitle">
+                                    <td nowrap="nowrap" width="120" class="head_left">
                                         用印结束时间<span style="color: red">&nbsp;*</span>
                                     </td>
-                                    <td class="NormalDataColumn" align="left">
-                                        &nbsp;&nbsp;
+                                    <td class="head_right" style="text-align: left">
                                         <%=StringUtil.parseNull(yysq.getYyjssj(),"")%>
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td nowrap="nowrap" width="120" class="NormalColumnTitle">
+                                    <td nowrap="nowrap" width="120" class="head_left">
                                         用印事由
                                     </td>
-                                    <td class="NormalDataColumn" align="left">
+                                    <td class="head_right" style="text-align: left">
                                         <textarea cols="80" id="YYSY" name="YYSY" rows="10"><%=StringUtil.parseNull(yysq.getYysy(),"")%></textarea>
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td nowrap="nowrap" width="120" class="NormalColumnTitle">
+                                    <td nowrap="nowrap" width="120" class="head_left">
                                         备注
                                     </td>
-                                    <td class="NormalDataColumn" align="left">
-                                        &nbsp;&nbsp;
+                                    <td class="head_right" style="text-align: left">
                                         <textarea cols="80" name="BZ" rows="5"><%=StringUtil.parseNull(yysq.getBz(),"")%></textarea>
                                     </td>
                                 </tr>
