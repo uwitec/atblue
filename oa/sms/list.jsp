@@ -21,9 +21,8 @@
     <title>邮件列表</title>
     <script src="<%=request.getContextPath()%>/js/common.js"
             type="text/javascript" defer="defer"></script>
-    <link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
+    <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"
           type="text/css">
-    <link href="<%=contentPath%>/css/office.css" rel="stylesheet" type="text/css">
     <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" charset="GB2312"
             src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -121,51 +120,51 @@
             <table width="100%" border="0" align="center" cellpadding="0"  id="tab_id" name="tab_id"
                    cellspacing="0" class="mtabtab" id="mtabtab">
                 <tr>
-                    <td nowrap="nowrap" class="NormalColumnTitle" width="40">
+                    <td nowrap="nowrap" class="head" width="40">
                         序号
                     </td>
-                    <td nowrap="nowrap" class="NormalColumnTitle">
+                    <td nowrap="nowrap" class="head">
                         短信内容
                     </td>
-                    <td class="NormalColumnTitle" width="30%">
+                    <td class="head" width="30%">
                         发送部门
                     </td>
-                    <td class="NormalColumnTitle" width="120">
+                    <td class="head" width="120">
                         发送人
                     </td>
-                    <td class="NormalColumnTitle" width="120">
+                    <td class="head" width="120">
                         创建时间
                     </td>
-                    <td nowrap="nowrap" class="NormalColumnTitle" width="8%">
+                    <td nowrap="nowrap" class="head" width="8%">
                         状态
                     </td>
-                    <td nowrap="nowrap" class="NormalColumnTitle" width="8%">
+                    <td nowrap="nowrap" class="head" width="8%">
                         已签收/未签收
                     </td>
-                    <td nowrap="nowrap" class="NormalColumnTitle" width="8%">
+                    <td nowrap="nowrap" class="head" width="8%">
                         操作
                     </td>
                 </tr>
                 <s:iterator value="dataList" status="status">
                     <tr onclick="setSelected(this,'tab_id','tr_head','${TZID}')">
-                        <td class="NormalDataColumn" style="text-align: center" nowrap>
+                        <td class="form" style="text-align: center" nowrap>
                             <s:property value="#status.index+1"/>
                         </td>
-                        <td class="NormalDataColumn" style="text-align: left" nowrap>${DXNR}&nbsp;</td>
-                        <td class="NormalDataColumn" style="text-align: left" nowrap>
+                        <td class="form" style="text-align: left" nowrap>${DXNR}&nbsp;</td>
+                        <td class="form" style="text-align: left" nowrap>
                             ${ORGNA_NAME}
                             &nbsp;</td>
-                        <td class="NormalDataColumn" style="text-align: left" nowrap>${REAL_NAME}&nbsp;</td>
-                        <td class="NormalDataColumn" style="text-align: left" nowrap>
+                        <td class="form" style="text-align: left" nowrap>${REAL_NAME}&nbsp;</td>
+                        <td class="form" style="text-align: left" nowrap>
                                 ${CJSJ}&nbsp;
                         </td>
-                        <td class="NormalDataColumn" style="text-align: center" nowrap>
+                        <td class="form" style="text-align: center" nowrap>
                                 ${ZT}&nbsp;
                         </td>
-                        <td class="NormalDataColumn" style="text-align: center" nowrap>
+                        <td class="form" style="text-align: center" nowrap>
                                 <a href="#" title="${YQSRY}">${YQS}</a>/<a href="#" title="${WQSRY}">${WQS}</a>&nbsp;
                         </td>
-                        <td class="NormalDataColumn" style="text-align: center" nowrap>
+                        <td class="form" style="text-align: center" nowrap>
                             <%
                                 String  ZT = StringUtil.parseNull(request.getAttribute("ZT"),"");
                                 if(!"已发送".equals(ZT)){%>
