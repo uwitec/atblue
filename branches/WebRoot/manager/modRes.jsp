@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link href="<%=request.getContextPath() %>/css/css.css" rel="stylesheet" type="text/css">
-<link href="<%=request.getContextPath() %>/css/css.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath() %>/images/css.css" rel="stylesheet" type="text/css">
 <title>修改菜单基本信息</title>
 </head>
 <body>

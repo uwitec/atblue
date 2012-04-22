@@ -38,7 +38,7 @@
     </script>
     <title>用户列表</title>
 </head>
-<body>
+<body >
 <form name="person_list" method="post" action="person_list.d">
     <table width="100%" border="0" cellpadding="0" cellspacing="0" class="">
         <tr>
