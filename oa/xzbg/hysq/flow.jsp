@@ -25,7 +25,6 @@
 		<title>Insert title here</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
-        <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
         <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
 	</head>
 	<body>
@@ -78,7 +77,7 @@
 								Map map = (Map) list.get(i);
 						%>
 						<tr>
-							<td class="form"  align="center">
+							<td class="form"  style="text-align: center;border-left: 1px solid #01a0fe;">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
@@ -89,7 +88,7 @@
 							<td class="form" align="left">
 								<%=StringUtil.parseNull(map.get("REAL_NAME"),"")%>&nbsp;
 							</td>
-							<td class="form" align="center">
+							<td class="form" align="left">
                                 <%=StringUtil.parseNull(map.get("REAL_NAME2"),"")%>
                                     &nbsp;
 							</td>
