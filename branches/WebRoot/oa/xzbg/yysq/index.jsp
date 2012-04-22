@@ -27,6 +27,7 @@
 		<title>Insert title here</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
+        <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet" type="text/css">
         <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
         <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
@@ -86,7 +87,7 @@
 					<table width="100%" border="0" align="center" cellpadding="0"
 						cellspacing="0" id="mtabtab">
 						<tr>
-							<td nowrap="nowrap" class="head" width="4%">
+							<td nowrap="nowrap" class="head" width="2%">
 								序号
 							</td>
 							<td nowrap="nowrap" class="head" width="120">

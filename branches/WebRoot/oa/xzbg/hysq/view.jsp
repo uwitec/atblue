@@ -316,7 +316,7 @@
 										与会人员
 									</td>
 									<td class="head_right" style="text-align: left">
-										<button id="mb3">
+										<button id="mb3" class="button">
 											参加人
 										</button>
 									</td>

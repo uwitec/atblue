@@ -25,10 +25,7 @@
 		<title>Insert title here</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
-        <link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"  type="text/css">
         <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
-        <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
-        <link href="<%=contentPath%>/css/office.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
     <table width="60%" align="center" height="25" border="0"
@@ -60,9 +57,9 @@
 			<tr>
 				<td>
 					<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" class="mtabtab" id="mtabtab">
+						cellspacing="0" id="mtabtab">
 						<tr>
-							<td nowrap="nowrap" class="head" width="40">
+							<td nowrap="nowrap" class="head" width="2%">
 								序号
 							</td>
 							<td nowrap="nowrap" class="head">
@@ -80,7 +77,7 @@
 								Map map = (Map) list.get(i);
 						%>
 						<tr>
-							<td class="form" align="center">
+							<td class="form" align="center" style="text-align: center;border-left: 1px solid #01a0fe;">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
