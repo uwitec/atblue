@@ -16,7 +16,7 @@
             <tr>
                 <td><table width="162" border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                        <td width="63"><img src="images/index_04.jpg" width="63" height="54" alt="" style="cursor: hand"></td>
+                        <td width="63"><img src="images/index_04.jpg" width="63" height="54" alt="" style="cursor: hand" onclick="goIndex();"></td>
                         <td>&nbsp;</td>
                         <td width="63"><img src="images/index_06.jpg" width="63" height="54" alt="" onclick="logout();" style="cursor: hand"></td>
                         <td width="26"></td>
@@ -39,5 +39,8 @@
 	        window.location.href = "<%=request.getContextPath()%>/login.jsp";
 	    }
 	}
+    function goIndex(){
+        window.open("index.jsp","contentFrame");
+    }
 </script>
 </html>
