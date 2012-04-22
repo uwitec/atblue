@@ -15,10 +15,39 @@ private String wcsy;
 private Date kssj;
 private Date jssj;
 private String wcdd;
+private String sqr;
 private String sqzt;
 private String processId;
 private String connectId;
 private String dxtx;
+private String bz;
+private Date xjsj;
+private String xjdj;
+private String roleflag;
+public String getBz() {
+	return bz;
+}
+public void setBz(String bz) {
+	this.bz = bz;
+}
+public Date getXjsj() {
+	return xjsj;
+}
+public void setXjsj(Date xjsj) {
+	this.xjsj = xjsj;
+}
+public String getXjdj() {
+	return xjdj;
+}
+public void setXjdj(String xjdj) {
+	this.xjdj = xjdj;
+}
+public String getRoleflag() {
+	return roleflag;
+}
+public void setRoleflag(String roleflag) {
+	this.roleflag = roleflag;
+}
 public String getHolidayid() {
 	return holidayid;
 }
@@ -84,6 +113,12 @@ public String getConnectId() {
 }
 public void setConnectId(String connectId) {
 	this.connectId = connectId;
+}
+public String getSqr() {
+	return sqr;
+}
+public void setSqr(String sqr) {
+	this.sqr = sqr;
 }
 
 }
