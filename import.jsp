@@ -17,6 +17,7 @@
 <%@ page import="cn.com.atblue.workflow.runtime.*" %>
 <%@ page import="cn.com.atblue.workflow.dao.WConnectDAO" %>
 <%@ page import="cn.com.atblue.workflow.dao.WProcessDAO" %>
+<%@page import="cn.com.atblue.workflow.dao.WDao"%>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -32,6 +33,7 @@
     ODao oDao = (ODao)SpringFactory.instance.getBean("oDao");
     Workflow workflow = (Workflow)SpringFactory.instance.getBean("workflow");
     WProcessDAO wProcessDAO = (WProcessDAO)SpringFactory.instance.getBean("wProcessDAO");
+    WDao wDao = (WDao)SpringFactory.instance.getBean("wDao"); 
     WConnectDAO wConnectDAO = (WConnectDAO)SpringFactory.instance.getBean("wConnectDAO");
     COrgnizationDAO orgnizationDAO = (COrgnizationDAO)SpringFactory.instance.getBean("orgnizationDAO");
     OfficeNoticeDAO officeNoticeDAO = (OfficeNoticeDAO)SpringFactory.instance.getBean("officeNoticeDAO");
@@ -40,6 +42,7 @@
     OfficeNoticeCheckDAO officeNoticeCheckDAO = (OfficeNoticeCheckDAO)SpringFactory.instance.getBean("officeNoticeCheckDAO");
     OfficeHysqDAO officeHysqDAO = (OfficeHysqDAO)SpringFactory.instance.getBean("officeHysqDAO");
     OfficeWjspDAO officeWjspDAO = (OfficeWjspDAO)SpringFactory.instance.getBean("officeWjspDAO");
+    OfficeHolidayDAO officeHolidayDAO = (OfficeHolidayDAO)SpringFactory.instance.getBean("officeHolidayDAO");
     OfficeYysqDAO officeYysqDAO = (OfficeYysqDAO)SpringFactory.instance.getBean("officeYysqDAO");
     OfficeQpdFormDAO officeQpdFormDAO = (OfficeQpdFormDAO)SpringFactory.instance.getBean("officeQpdFormDAO");
     OfficeQpdDAO officeQpdDAO = (OfficeQpdDAO)SpringFactory.instance.getBean("officeQpdDAO");
