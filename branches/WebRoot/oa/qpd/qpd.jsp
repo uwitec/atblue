@@ -11,9 +11,9 @@
     map.put("formId", formId);
     OfficeQpdForm bean = officeQpdFormDAO.queryForBean(map);
     List dataList = oDao.getAllQpdFormItemsByFormId2(formId,processId);
-    bean = bean == null?new OfficeQpdForm():bean;
-    dataList = dataList == null?new ArrayList():dataList;
-    String formItemId = oDao.getFormItemIdByConnectId(connectId);
+    bean = bean == null?new OfficeQpdForm():bean; 
+    dataList = dataList == null?new ArrayList():dataList; 
+     String formItemId = oDao.getFormItemIdByConnectId(connectId,formId);
     String signdata =   oDao.getSignDataByProcessId(processId);
     signdata = StringUtil.parseNull(signdata,"");
     String[] nodeName  = request.getParameterValues("nodeName");
@@ -103,7 +103,6 @@ function addSealB(){
     var shr = 'shr<%=StringUtil.parseNull(formItemId,"")%>';
 	document.all.DWebSignSeal.SetPosition(-140,-35,shr);
     var sealURL='<%="http://127.0.0.1:"+request.getLocalPort()+request.getContextPath()+"/servlet/sealDown?userId="+cUser.getUserId()%>';
-    alert(sealURL);
     document.all.DWebSignSeal.AddSeal(sealURL, "");
 }
 function sumbitForm() {
@@ -166,7 +165,9 @@ function sumbitForm() {
                                           <input type="hidden" name="nodeName" value="<%=StringUtil.parseNull(beanMap.get("FORM_ITEM_NAME"),"")%>"/>
                                           <input type="hidden" name="nodeId" value="<%=StringUtil.parseNull(beanMap.get("FORM_ITEM_ID"),"")%>"/>
                                           <textarea  name="spyj"
-                                                     <%if(!id.equals(formItemId)){%>
+                                                     <%
+                                                     System.out.println(id+"::"+formItemId);
+                                                     if(!id.equals(formItemId)){%>
                                                            readonly="readonly"
                                                   <%}%>
                                                      cols="80" rows="6" class="TAcss"  width="100%"><%=StringUtil.parseNull(beanMap.get("SPYJ"),"")%></textarea>
