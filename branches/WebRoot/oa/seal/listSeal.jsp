@@ -34,7 +34,7 @@
 <form action="seal_list.d" method="post">
     <input type="hidden" name="flowId" value="${flowId}"/>
     <input type="hidden" name="sealId" value=""/>
-    <table cellpadding="0" cellspacing="0" align="center" width="80%">
+    <table cellpadding="0" cellspacing="0" align="center" width="100%">
         <tr>
             <td>
                 <FIELDSET style="HEIGHT: 0px; OVERFLOW: visible" class=GroupBox>
@@ -104,7 +104,7 @@
                     </tr>
                     <s:iterator value="dataList" status="status">
                         <tr onclick="setSelected(this,'tab_id','tr_head','${SEAL_ID}')">
-                            <td class="form" style="text-align: center" nowrap>
+                            <td class="form" style="text-align: center;border-left: 1px solid #01a0fe;" nowrap>
                                 <s:property value="#status.index+1"/>
                             </td>
                             <td class="form" style="text-align: left" nowrap>${REAL_NAME}&nbsp;</td>
@@ -120,7 +120,7 @@
             </td>
         </tr>
     </table>
-    <table id="itable" align="center" width="80%" border="1" cellpadding="0" cellspacing="0" bordercolorlight="#A5CAFE" bordercolordark="#FFFFFF">
+    <table id="itable" align="center" width="100%" border="1" cellpadding="0" cellspacing="0" bordercolorlight="#A5CAFE" bordercolordark="#FFFFFF">
         <tr>
             <td align="right" nowrap="nowrap"><div align="center">预览签名</div></td>
         </tr>

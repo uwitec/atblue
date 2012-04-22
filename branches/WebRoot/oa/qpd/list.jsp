@@ -8,7 +8,7 @@
 </head>
 <body>        
 <form name="listQpd" method="post" action="" onsubmit="formTrim();">
-<table width="60%" border="0" cellpadding="0" cellspacing="0" class="" align="center">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="" align="center">
 	<tr>
 		<td>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="bgdh">
@@ -26,9 +26,9 @@
 		<td>
 			<table width="100%" border="0" cellpadding="0" cellspacing="0" class="form_th" >
 				<tr>
-					<td class="tdadd">表单名称：</td>
-					<td class="tdadd"><input type="text" name="formName" value="${formName}"/></td>
-					<td align="right"><input class="button" name="query" style="width:40px"  type="button" value="查询" onclick="doQuery();"></td>
+					<td class="head_left">表单名称：</td>
+					<td class="head_right"><input type="text" name="formName" value="${formName}"/>
+                        <input class="button" name="query" style="width:40px"  type="button" value="查询" onclick="doQuery();"></td>
 				</tr>
 			</table>
 		</td>
@@ -44,7 +44,7 @@
 			</tr>
 			<s:iterator value="dataList" status="status" >
 				<tr onclick="setSelected(this,'tab_id','tr_head','${FORM_ID}')">
-					<td class="form" nowrap style="text-align: center; width: 50px;"><s:property value="#status.index+1"/></td>
+					<td class="form" nowrap style="text-align: center;border-left: 1px solid #01a0fe;"><s:property value="#status.index+1"/></td>
 					<td class="form" nowrap style="text-align: left">${FORM_NAME}</td>
 					<td class="form" nowrap style="text-align: left">${FORM_TITLE}</td>
 					<td class="form" nowrap style="text-align: left">${LRSJ}</td>
