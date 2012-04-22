@@ -26,8 +26,9 @@
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
         <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
+        <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
 	</head>
-	<body>
+	<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
     <table width="60%" align="center" height="25" border="0"
            cellpadding="0" cellspacing="0"
            background="<%=contentPath%>/images/mhead.jpg">
