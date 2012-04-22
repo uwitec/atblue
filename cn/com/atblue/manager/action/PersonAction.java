@@ -89,7 +89,11 @@ public class PersonAction extends BaseAction {
         if (user != null) {
             if ("save".equals(action)) {
                 if (!StringUtil.isBlankOrEmpty(userId)) {
-                    user.setPassword(StringUtil.MD5Encode(user.getPassword()));
+                    Map map = new HashMap();
+                    map.put("userId", userId);
+                    CUser u = userDAO.queryForBean(map);
+                    if(u != null && u.getPassword() != user.getPassword())
+                        user.setPassword(StringUtil.MD5Encode(user.getPassword()));
                     userDAO.modCUser(user);
                 }
             } else if ("add".equals(action)) {
