@@ -46,13 +46,13 @@
 CUser cUser = (CUser)session.getAttribute("cUser");
 cUser = cUser == null?new CUser():cUser;
 %>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#eaf7ff">
     <tr>
         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td width="18"><img src="images/index_10.jpg" width="18" height="31" alt="" ></td>
-                <td align="center" background="images/index_11.jpg"><table width="60%" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
+                <td align="left" background="images/index_11.jpg"><table border="0" cellspacing="0" cellpadding="0">
+                    <tr align="left">
                         <%=MenuUtil.getPageMenus2(cUser.getUserId(),"0",request.getContextPath())%>
                     </tr>
                 </table></td>
