@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="images/css.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td width="794"><img src="images/index_01.jpg" width="794" height="63" alt=""></td>

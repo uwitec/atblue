@@ -41,7 +41,7 @@
         }
     </script>
 </head>
-<body>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <%
 CUser cUser = (CUser)session.getAttribute("cUser");
 cUser = cUser == null?new CUser():cUser;
