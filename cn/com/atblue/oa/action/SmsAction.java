@@ -152,9 +152,6 @@ public class SmsAction extends BaseAction {
             this.bean = officeSmsNoticeDAO.queryForBean(map);
             List uList = oDao.getSmsPersonsByTzId(tzid);
             if (uList != null && uList.size() > 0) {
-                SMSHandler smsHandler = (SMSHandler) SpringFactory.instance.getBean("smsHandler");
-                smsHandler.init();
-                smsHandler.start();
                 for (int i = 0; i < uList.size(); i++) {
                     map = (Map) uList.get(i);
                     String uid = StringUtil.parseNull(map.get("USER_ID"), "");
@@ -162,20 +159,10 @@ public class SmsAction extends BaseAction {
                     String mobile = StringUtil.parseNull(map.get("MOBILE"), "");
                     String sfqs = StringUtil.parseNull(map.get("SFQS"), "");
                     if ("0".equals(sfqs)) {
-                        if (!StringUtil.isBlankOrEmpty(mobile)) {
-                            OutboundMessage message = new OutboundMessage("尊敬的"+name+"您好:\n"+mobile, bean.getDxnr() + "\n请发送数字" + bean.getTzid() + "以签收!");
-                            smsHandler.sendSMS(message);
-                            try {
-                                oDao.updateSmsPersons(bean.getTzid(), uid);
-                            } catch (Exception e) {
-
-                            }
-                        }
                         this.bean.setZt("已发送");
                         officeSmsNoticeDAO.modOfficeSmsNotice(bean);
                     }
                 }
-                smsHandler.destroy();
             }
         }
         return "send";
