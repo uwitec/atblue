@@ -143,7 +143,7 @@
                                 <%=StringUtil.parseNull(map.get("YYJSSJ"),"")%>
 							</td>
 							<td class="form" style="text-align: left">
-								<%=StringUtil.cutString(StringUtil.parseNull(map.get("YYSY"),""),25)%>
+								<%=StringUtil.cutString(StringUtil.parseNull(map.get("YYSY"),"&nbsp;"),25)%>
 							</td>
 							<td class="form" align="center">
 								<%String sqzt = StringUtil.parseNull(map.get("SQZT"),"");

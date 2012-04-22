@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
-<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
+<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"
       type="text/css">
 <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" charset="GB2312"
@@ -25,7 +25,7 @@
         System.out.println(params);
     %>
 </head>
-<body onresize="_resize(90)" onload="_resize(90)">
+<body onresize="_resize(90)" onload="_resize(90)" bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <form name="form1" action=""  method="post" style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px">
     <table width="100%" height="25" border="0" cellpadding="0"
            cellspacing="0"
