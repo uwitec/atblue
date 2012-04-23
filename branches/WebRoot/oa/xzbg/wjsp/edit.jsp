@@ -267,7 +267,6 @@
 										签发日期
 									</td>
 									<td class="head_right" style="text-align: left">
-										&nbsp;&nbsp;
 										<input type="text" name="qfrq" class="Wdate" onClick="WdatePicker()" value="<%=DateUtil.format(wjsp.getQfrq(),"yyyy-MM-dd") %>">
 									</td>
 								</tr>
@@ -275,8 +274,7 @@
 									<td nowrap="nowrap" width="120" class="head_left">
 										拟稿部门
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" style="text-align: left">
 										<select name="ngbm" style="width: 200px;">
 											<%for(int i=0;i<departmentList.size(); i++){ 
 												COrgnization dep = (COrgnization)departmentList.get(i);%>
@@ -286,7 +284,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										备注
 									</td>
 									<td class="head_right" style="text-align: left">
@@ -296,36 +294,35 @@
 								</tr>
 								<%if(hasFileList!=null && hasFileList.size()>0){ %>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										已有附件
 									</td>
-									<td class="NormalDataColumn" align="left" id="hasFile">
-										&nbsp;&nbsp;
+									<td class="head_right" style="text-align: left">
 										<%
 											for(int i=0; i<hasFileList.size(); i++){
 												OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
 											<a href="../../officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
 												<img src="<%=request.getContextPath()%>/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='<%=request.getContextPath()%>/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
 											</a>&nbsp;&nbsp;&nbsp;
-											<a href="javascript:delFile('<%=beanFile.getPkid() %>','<%=documentid %>')">[删除]</a></br>&nbsp;&nbsp;
+											<a href="javascript:delFile('<%=beanFile.getPkid() %>','<%=documentid %>')">[删除]</a></br>
 									     <%}%>
 									</td>
 								</tr>
 								<%} %>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										附件&nbsp;
 									</td>
-									<td class="NormalDataColumn" align="left" id="fileTd">
+									<td class="head_right" style="text-align: left">
 										1.&nbsp;&nbsp;
 										<input type="file" name="file_1" style="width: 400px;">
 									</td>
 								</tr>
 							</table>
-							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"
+							<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0"
                        				class="mtabtab" id="attachTab">
 				               <tr>
-				               		<td class="NormalDataColumn" width="100%" nowrap colspan="3">其他附件：<input type="button" name="b_bc" class="button" value="添加" onclick="doAddAttachRow('attachTab');"></td>
+				               		<td class="head_right" width="100%" nowrap colspan="3" style="text-align: left">其他附件：<input type="button" name="b_bc" class="button" value="添加" onclick="doAddAttachRow('attachTab');"></td>
 				               </tr>
          					</table>
 						</div>
