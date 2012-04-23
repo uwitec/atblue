@@ -61,7 +61,7 @@
 <html>
   <head>
 	<link href="style.css" rel="stylesheet" type="text/css">
-      <link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
+      <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"
             type="text/css">
 	<style type="text/css">
 	<!--
@@ -101,7 +101,7 @@ function addSealB(){
 	qz = 1;
     SetStore();
     var shr = 'shr<%=StringUtil.parseNull(formItemId,"")%>';
-	document.all.DWebSignSeal.SetPosition(-140,-35,shr);
+	document.all.DWebSignSeal.SetPosition(-10,-20,shr);
     var sealURL='<%="http://127.0.0.1:"+request.getLocalPort()+request.getContextPath()+"/servlet/sealDown?userId="+cUser.getUserId()%>';
     document.all.DWebSignSeal.AddSeal(sealURL, "");
 }
@@ -175,7 +175,7 @@ function sumbitForm() {
                                   </tr>
                                   <tr>
                                       <td width="128" height="70" class="head_left"><span class="STYLE9">签字：</span> </td>
-                                      <td width="159" height="70" id="shr<%=id%>" class="head_right"></td>
+                                      <td width="159" height="70" id="shr<%=id%>" class="head_right">&nbsp;</td>
                                       <td width="80" height="70" class="head_left"><span class="STYLE9">日期：</span> </td>
                                       <td width="200" height="70" class="head_right"><span class="STYLE51">
                           &nbsp;  <%=StringUtil.parseNull(beanMap.get("LRSJ"),DateUtil.format(new java.util.Date()))%>
