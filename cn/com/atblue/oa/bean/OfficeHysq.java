@@ -22,6 +22,7 @@ private String sqzt;
 private String processId;
 private String connectId;
 private String sqr;
+private String dxtx;
 
 public String getSqid(){
 return this.sqid;
@@ -125,5 +126,13 @@ return this.sqr;
 
 public void setSqr(String sqr){
 this.sqr=sqr;
+}
+
+public String getDxtx() {
+	return dxtx;
+}
+
+public void setDxtx(String dxtx) {
+	this.dxtx = dxtx;
 }
 }
