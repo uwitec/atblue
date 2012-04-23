@@ -37,6 +37,7 @@
         <script type="text/javascript"
                 src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 		<script type="text/javascript">
 		function onDelete(url){
 			if(window.confirm("确认删除该会议申请?")){
@@ -105,7 +106,7 @@
 			<tr>
 				<td>
 					<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" id="mtabtab" class="mtabtab">
+						cellspacing="0" id="tab_id" class="mtabtab">
 						<tr>
 							<td nowrap="nowrap" class="head" width="2%">
 								序号
@@ -142,7 +143,7 @@
                                 oracle.sql.TIMESTAMP sTime = (oracle.sql.TIMESTAMP)map.get("SQKSSJ");
                                 oracle.sql.TIMESTAMP eTime = (oracle.sql.TIMESTAMP)map.get("SQJSSJ");
 						%>
-						<tr>
+						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("SQID"),"") %>')">
 							<td  style="text-align: center;border-left: 1px solid #01a0fe;">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
