@@ -465,10 +465,10 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
         delete from OFFICE_SMS t
         ]]>
     </delete>
-    <select id="getFormItemIdByConnectId" parameterClass="String" resultClass="String">
+    <select id="getFormItemIdByConnectId" parameterClass="java.util.HashMap" resultClass="String">
         <![CDATA[
           select t.form_item_id from OFFICE_QPD_FORMITEM t,w_connect c,w_instance i,w_activity a
-        where c.connect_id = #value#  and c.end_instance = i.instance_id and i.activity_id = a.activity_id
+        where c.connect_id = #connectId# and form_id=#formId#  and c.end_instance = i.instance_id and i.activity_id = a.activity_id
         and a.activity_name = t.form_item_name and rownum = 1
         ]]>
     </select>
@@ -503,12 +503,7 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
         where t.tzid =#tzId# and t.user_id = #userId#
         ]]>
     </update>
-    <update id="updateSmsPerson" parameterClass="java.util.HashMap">
-        <![CDATA[
-        update OFFICE_SMS_PERSON t set t.sfqs = '1',t.read_time=sysdate
-        where t.tzid =#tzId# and t.user_id = #userId#
-        ]]>
-    </update>
+
     <select id="getSmsSequence" resultClass="int">
         <![CDATA[
        select seq_sms.nextval from dual

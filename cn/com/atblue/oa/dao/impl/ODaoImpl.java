@@ -211,8 +211,11 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         this.getSqlMapClientTemplate().delete("oa.dao.deleteAllSms");
     }
 
-    public String getFormItemIdByConnectId(String connectId){
-        return (String)this.getSqlMapClientTemplate().queryForObject("oa.dao.getFormItemIdByConnectId",connectId);
+    public String getFormItemIdByConnectId(String connectId,String formId){
+    	Map map = new HashMap();
+    	map.put("connectId", connectId);
+    	map.put("formId", formId);
+        return (String)this.getSqlMapClientTemplate().queryForObject("oa.dao.getFormItemIdByConnectId",map);
     }
 
     public String getSignDataByProcessId(String processId){
