@@ -114,31 +114,31 @@
 								Map map = (Map) list.get(i);
 						%>
 						<tr>
-							<td class="form" align="center">
+							<td  align="center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-                            <td class="form" align="left">
+                            <td  align="left">
                                 <a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("YYMC"),"") %></a>
                             </td>
 
-                            <td class="form" align="left">
+                            <td  align="left">
                                 <%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
                             </td>
-                            <td class="form" align="center">
+                            <td  align="center">
                                 <%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
                             </td>
-                            <td class="form" align="center">
+                            <td  align="center">
                                 <%=StringUtil.parseNull(map.get("YYKSSJ"),"")%>
                                 &nbsp;
                             </td>
-                            <td class="form" align="center">
+                            <td  align="center">
                                 <%=StringUtil.parseNull(map.get("YYJSSJ"),"")%>
                             </td>
-                            <td class="form" align="left">
+                            <td  align="left">
                                 <%=StringUtil.cutString(StringUtil.parseNull(map.get("YYSY"),""),25)%>
                             </td>
-							<td class="form" align="center" nowrap="nowrap">
+							<td  align="center" nowrap="nowrap">
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
 						</tr>

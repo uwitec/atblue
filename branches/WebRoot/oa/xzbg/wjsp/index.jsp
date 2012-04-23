@@ -26,9 +26,8 @@
 		<title>Insert title here</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
-        <link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-              type="text/css">
-        <link href="<%=contentPath%>/css/office.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
         <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -107,34 +106,34 @@
 				<table width="100%" border="0" align="center" cellpadding="0"
 						cellspacing="0" class="mtabtab" id="mtabtab">
 						<tr>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="40">
+							<td nowrap="nowrap" class="head" width="40">
 								序号
 							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle">
+							<td nowrap="nowrap" class="head">
 								文件标题
 							</td>
-							<td class="NormalColumnTitle" width="120">
+							<td class="head" width="120">
 								发文类别
 							</td>
-							<td class="NormalColumnTitle" width="120">
+							<td class="head" width="120">
 								文件编号
 							</td>
-							<td class="NormalColumnTitle" width="120">
+							<td class="head" width="120">
 								密级
 							</td>
-							<td class="NormalColumnTitle" width="120">
+							<td class="head" width="120">
 								缓急时限
 							</td>
-							<td class="NormalColumnTitle" width="120">
+							<td class="head" width="120">
 								签发日期
 							</td>
-							<td class="NormalColumnTitle" width="120">
+							<td class="head" width="120">
 								拟稿部门
 							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="200">
+							<td nowrap="nowrap" class="head" width="200">
 								备注
 							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle">
+							<td nowrap="nowrap" class="head">
 								操作
 							</td>
 						</tr>
