@@ -101,8 +101,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title></title>
-		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-			type="text/css">
+		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
+		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -421,11 +421,10 @@
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										通知/公告<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="radio" name="isPublic" value="1"
 											checked="checked" onclick="publicSelect(this);">
 										通知&nbsp;
@@ -435,11 +434,10 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										通知状态<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="radio" name="status" value="1" checked="checked">
 										发布&nbsp;
 										<input type="radio" name="status" value="0">
@@ -447,97 +445,90 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										是否需要签收<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="radio" name="mustSign" value="1"
 											checked="checked" onclick="mustSignSelect(this);">
 										需签收&nbsp;
 										<input type="radio" name="mustSign" value="0" onclick="mustSignSelect(this);">
 										不需签收&nbsp;
-										<button id="mb3">
+										<button id="mb3" class="button">
 											签收人
 										</button>
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										通知标题<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="notititle" class="inputStyle"
 											style="width: 400px;">
 									</td>
 								</tr>
 
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										开始时间<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text"
 											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
 											name="starttime" class="Wdate" style="width: 200px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										结束时间<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text"
 											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
 											name="endtime" class="Wdate" style="width: 200px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										过期时间<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="enddate" class="Wdate" onClick="WdatePicker()">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										正文
 									</td>
-									<td class="NormalDataColumn" align="left">
+									<td class="head_right" align="left" style="text-align: left">
 										<textarea cols="80" id="editor" name="editor" rows="10"></textarea>
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										签发人
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="subscriber" class="inputStyle"
 											value="<%=_user.getRealName()%>" style="width: 100px;">
 									</td>
 								</tr>
 
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										备注
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="bz" class="inputStyle"
 											style="width: 200px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										附件&nbsp;
 									</td>
-									<td class="NormalDataColumn" align="left" id="fileTd">
+									<td class="head_right" align="left" id="fileTd" style="text-align: left">
 										1.&nbsp;&nbsp;
 										<input type="file" name="file_1" style="width: 400px;">
 									</td>
@@ -546,7 +537,7 @@
 						<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"
                        				class="mtabtab" id="attachTab">
 				               <tr>
-				               		<td class="NormalDataColumn" width="100%" nowrap colspan="3">其他附件：<input type="button" name="b_bc" class="button" value="添加" onclick="doAddAttachRow('attachTab');"></td>
+				               		<td class="head_right" width="100%" nowrap colspan="3" style="text-align: left">其他附件：<input type="button" name="b_bc" class="button" value="添加" onclick="doAddAttachRow('attachTab');"></td>
 				               </tr>
          				</table>
 						</div>

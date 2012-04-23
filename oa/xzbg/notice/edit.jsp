@@ -108,8 +108,8 @@
 		<title></title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
-        <link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-              type="text/css">
+        <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
+        <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
         <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -440,11 +440,10 @@
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										通知/公告<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left"  style="text-align: left">
 										<input type="radio" name="isPublic" value="1"
 											onclick="publicSelect(this);" <%if(on.getIspublic().equals("1")){ %>checked="checked" <%} %>>
 										通知&nbsp;
@@ -454,11 +453,10 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left" >
 										通知状态<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left"  style="text-align: left">
 										<input type="radio" name="status" value="1" checked="checked" <%if(on.getStatus().equals("1")){ %> checked="checked"<%} %>>
 										发布&nbsp;
 										<input type="radio" name="status" value="0" <%if(on.getStatus().equals("0")){ %> checked="checked"<%} %>>
@@ -466,115 +464,107 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										是否需要签收<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left"  style="text-align: left">
 										<input type="radio" name="mustSign" value="1"
 											checked="checked" onclick="mustSignSelect(this);" <%if(on.getMustsign().equals("1")){ %> checked="checked"<%} %>>
 										需签收&nbsp;
 										<input type="radio" name="mustSign" value="0" <%if(on.getMustsign().equals("0")){ %> checked="checked"<%} %> onclick="mustSignSelect(this);" <%if(on.getIspublic().equals("0")){ %> disabled="disabled"<%} %>>
 										不需签收&nbsp;
-										<button id="mb3" <%if(on.getIspublic().equals("0")){ %> disabled="disabled"<%} %>>
+										<button id="mb3" <%if(on.getIspublic().equals("0")){ %> disabled="disabled"<%} %> class="button">
 											签收人
 										</button>
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										通知标题<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left"  style="text-align: left">
 										<input type="text" name="notititle" class="inputStyle"
 											style="width: 400px;" value="<%=on.getNotititle() %>">
 									</td>
 								</tr>
 
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										开始时间<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left"  style="text-align: left">
 										<input type="text"
 											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
 											name="starttime" value="<%=DateUtil.format(on.getStartime(),"yyyy-MM-dd HH:mm") %>" class="Wdate" style="width: 200px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										结束时间<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left"  style="text-align: left">
 										<input type="text"
 											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
 											name="endtime" value="<%=DateUtil.format(on.getEndtime(),"yyyy-MM-dd HH:mm") %>" class="Wdate" style="width: 200px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										过期时间<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left"  style="text-align: left">
 										<input type="text" name="enddate" value="<%=DateUtil.format(on.getEnddate(),"yyyy-MM-dd") %>" class="Wdate" onClick="WdatePicker()">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										正文
 									</td>
-									<td class="NormalDataColumn" align="left">
+									<td class="head_right" align="left"  style="text-align: left">
 										<textarea cols="80" id="editor" name="editor" rows="10"><%=on.getContent() %></textarea>
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										签发人
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left"  style="text-align: left">
 										<input type="text" name="subscriber" class="inputStyle"
 											style="width: 100px;" value="<%=StringUtil.parseNull(on.getSubscriber(),"") %>">
 									</td>
 								</tr>
 
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										备注
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left"  style="text-align: left">
 										<input type="text" name="bz" class="inputStyle"
 											style="width: 200px;" value="<%=StringUtil.parseNull(on.getNote(),"") %>">
 									</td>
 								</tr>
 								<%if(hasFileList!=null && hasFileList.size()>0){ %>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										已有附件
 									</td>
-									<td class="NormalDataColumn" align="left" id="hasFile">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" id="hasFile"  style="text-align: left">
 										<%
 											for(int i=0; i<hasFileList.size(); i++){
 												OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
-											<a href="../../officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
-												<img src="../../resource/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='../resource/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
+											<a href="<%=request.getContextPath()%>/officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
+												<img src="<%=request.getContextPath()%>/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='<%=request.getContextPath()%>/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
 											</a>&nbsp;&nbsp;&nbsp;
-											<a href="javascript:delFile('<%=beanFile.getPkid() %>','<%=noticeid %>')">[删除]</a></br>&nbsp;&nbsp;
+											<a href="javascript:delFile('<%=beanFile.getPkid() %>','<%=noticeid %>')">[删除]</a></br>
 									     <%}%>
 									</td>
 								</tr>
 								<%} %>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										附件&nbsp;
 									</td>
-									<td class="NormalDataColumn" align="left" id="fileTd">
+									<td class="head_right" align="left" id="fileTd"  style="text-align: left">
 										1.&nbsp;&nbsp;
 										<input type="file" name="file_1" style="width: 400px;">
 									</td>
@@ -583,7 +573,7 @@
 							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"
                        				class="mtabtab" id="attachTab">
 				               <tr>
-				               		<td class="NormalDataColumn" width="100%" nowrap colspan="3">其他附件：<input type="button" name="b_bc" class="button" value="添加" onclick="doAddAttachRow('attachTab');"></td>
+				               		<td class="head_right" width="100%" nowrap colspan="3" style="text-align: left">其他附件：<input type="button" name="b_bc" class="button" value="添加" onclick="doAddAttachRow('attachTab');"></td>
 				               </tr>
          				</table>
 						</div>

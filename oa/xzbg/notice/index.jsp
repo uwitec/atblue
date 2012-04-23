@@ -35,17 +35,13 @@
 		<title>Insert title here</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
-        <link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-              type="text/css">
-        <link href="<%=contentPath%>/css/office.css" rel="stylesheet" type="text/css">
-        <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
         <script type="text/javascript"
                 src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
-        <script type="text/javascript"
-                src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
-        <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 		<script type="text/javascript">
 		function onDelete(url){
 			if(window.confirm("确认删除该通知?")){
@@ -69,6 +65,7 @@
 				</td>
 				<td align="left" class="mhead">
 					&nbsp;
+                    <input type="button" class="button" value="新增" onclick="window.location = 'add.jsp';"/>
 				</td>
 			</tr>
 		</table>
@@ -76,94 +73,70 @@
 			cellpadding="0" cellspacing="0">
 			<tr>
 				<td>
-					<div id="header">
-						<ul>
-							<li id="selected">
-								<a href="#">通知管理</a>
-							</li>
-							<li>
-								<a href="currentNotice.jsp">当前通知</a>
-							</li>
-							<li>
-								<a href="expiredNotice.jsp">过期通知</a>
-							</li>
-						</ul>
-
-					</div>
-					
-					<table width="100%" border="0" cellpadding="0" cellspacing="0">
-						<tbody>
-							<tr>
-								<td align="left">
-									<div id="toolbar" style="width: 100%;"></div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
 					<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" class="mtabtab" id="mtabtab">
+						cellspacing="0" class="mtabtab" id="tab_id">
 						<tr>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="40">
+							<th nowrap="nowrap"  width="40">
 								序号
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle">
+							</th>
+							<th nowrap="nowrap" >
 								通知标题
-							</td>
+							</th>
 							
-							<td class="NormalColumnTitle" width="120">
+							<th  width="120">
 								签发人
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								开始时间
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								结束时间
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								过期时间
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="80">
+							</th>
+							<th nowrap="nowrap"  width="80">
 								类别
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="80">
+							</th>
+							<th nowrap="nowrap"  width="80">
 								状态
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="120">
+							</th>
+							<th nowrap="nowrap"  width="120">
 								操作
-							</td>
+							</th>
 						</tr>
 						<%
 							for (int i = 0; i < list.size(); i++) {
 								OfficeNotice notice = (OfficeNotice) list.get(i);
 						%>
-						<tr>
-							<td class="NormalDataColumn" align="center">
+						<tr onclick="setSelected(this,'tab_id','tr_head','<%=notice.getNoticeid()%>')">
+							<td  align="center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td class="NormalDataColumn" align="left">
+							<td  align="left" style="text-align: left">
 								<a href="view.jsp?noticeid=<%=notice.getNoticeid() %>"><%=notice.getNotititle()%></a>
 							</td>
 							
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=StringUtil.parseNull(notice.getSubscriber(),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=DateUtil.format(notice.getStartime(),"yyyy-MM-dd HH:mm")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=DateUtil.format(notice.getEndtime(),"yyyy-MM-dd HH:mm")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=DateUtil.format(notice.getEnddate(),"yyyy-MM-dd")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=notice.getIspublic().equals("0") ? "公告" : "通知"%>
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=notice.getStatus().equals("0") ? "草稿" : "已发布"%>
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<a href="./edit.jsp?noticeid=<%=notice.getNoticeid() %>">[编辑]</a>&nbsp;
 								<a href="javascript:onDelete('./delete.jsp?noticeid=<%=notice.getNoticeid() %>');">[删除]</a>&nbsp;
 							</td>
@@ -171,7 +144,6 @@
 						<%
 							}
 						%>
-
 					</table>
 				</td>
 			</tr>
@@ -181,21 +153,5 @@
 				</td>
 			</tr>
 		</table>
-
 	</body>
-	<script type="text/javascript">
-Ext.onReady(function(){
-
-    Ext.form.Field.prototype.msgTarget = 'under';
-
-    var tb = new Ext.Toolbar('toolbar');
-    tb.render('toolbar');
-    tb.addButton({text: '新建',icon: '<%=contentPath%>/images/add.gif',cls: 'x-btn-text-icon',handler:function(){
-        window.location = 'add.jsp';
-    }});
-
-	tb.doLayout();
-});
-
-</script>
 </html>
