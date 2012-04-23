@@ -107,36 +107,36 @@
 				<table width="100%" border="0" align="center" cellpadding="0"
 						cellspacing="0" class="mtabtab" id="tab_id">
 						<tr>
-							<td nowrap="nowrap" class="head" width="40">
+							<th nowrap="nowrap"  width="40">
 								序号
-							</td>
-							<td nowrap="nowrap" class="head">
+							</th>
+							<th nowrap="nowrap" >
 								文件标题
-							</td>
-							<td class="head" width="120">
+							</th>
+							<th  width="120">
 								发文类别
-							</td>
-							<td class="head" width="120">
+							</th>
+							<th  width="120">
 								文件编号
-							</td>
-							<td class="head" width="120">
+							</th>
+							<th  width="120">
 								密级
-							</td>
-							<td class="head" width="120">
+							</th>
+							<th  width="120">
 								缓急时限
-							</td>
-							<td class="head" width="120">
+							</th>
+							<th  width="120">
 								签发日期
-							</td>
-							<td class="head" width="120">
+							</th>
+							<th  width="120">
 								拟稿部门
-							</td>
-							<td nowrap="nowrap" class="head" width="200">
+							</th>
+							<th nowrap="nowrap"  width="200">
 								备注
-							</td>
-							<td nowrap="nowrap" class="head">
+							</th>
+							<th nowrap="nowrap" >
 								操作
-							</td>
+							</th>
 						</tr>
 						<%
 							for (int i = 0; i < list.size(); i++) {

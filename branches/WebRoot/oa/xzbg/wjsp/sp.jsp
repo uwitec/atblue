@@ -335,7 +335,7 @@
 									</td>
 									<td class="head_right" style="text-align: left">
                                         <input type="hidden" name="documentid" value="<%=StringUtil.parseNull(wjsp.getDocumentid(),"")%>"  style="width:500px"/>
-                                        <%=StringUtil.parseNull(wjsp.getBt(),"")%>
+                                        <%=StringUtil.parseNull(wjsp.getBt(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
@@ -343,7 +343,7 @@
 										发文类型
 									</td>
 									<td class="head_right" style="text-align: left">
-                                        <%=StringUtil.parseNull(wjsp.getLb(),"")%>
+                                        <%=StringUtil.parseNull(wjsp.getLb(),"")%> &nbsp;
 									</td>
 								</tr>
 								<tr>
@@ -351,7 +351,7 @@
 										文件编号
 									</td>
 									<td class="head_right" style="text-align: left">
-										 <%=StringUtil.parseNull(wjsp.getWjbh(),"")%>
+										 <%=StringUtil.parseNull(wjsp.getWjbh(),"")%> &nbsp;
 									</td>
 								</tr>
 								<tr>
@@ -359,7 +359,7 @@
 										密级
 									</td>
 									<td class="head_right" style="text-align: left">
-										 <%=StringUtil.parseNull(wjsp.getMmcd(),"")%>
+										 <%=StringUtil.parseNull(wjsp.getMmcd(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
@@ -367,7 +367,7 @@
 										缓急时限
 									</td>
 									<td class="head_right" style="text-align: left">
-										 <%=StringUtil.parseNull(wjsp.getHjsx(),"")%>
+										 <%=StringUtil.parseNull(wjsp.getHjsx(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
@@ -375,25 +375,23 @@
 										签发日期
 									</td>
 									<td class="head_right" style="text-align: left">
-										&nbsp;&nbsp;
-										 <%=StringUtil.parseNull(wjsp.getQfrq(),"")%>
+										 <%=StringUtil.parseNull(wjsp.getQfrq(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
 										拟稿部门
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										 <%=StringUtil.parseNull(wjsp.getNgbm(),"")%>
+									<td class="head_right" style="text-align: left">
+										 <%=StringUtil.parseNull(wjsp.getNgbm(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										备注
 									</td>
 									<td class="head_right" style="text-align: left">
-                                        <%=StringUtil.parseNull(wjsp.getBz(),"")%>
+                                        <%=StringUtil.parseNull(wjsp.getBz(),"")%>&nbsp;
 									</td>
 								</tr>
 							</table>

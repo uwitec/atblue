@@ -23,8 +23,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title></title>
-		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-			type="text/css">
+		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"	type="text/css">
+		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"	type="text/css">
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -244,8 +244,8 @@
 											onclick="history.back()" value="返回">
 										&nbsp;
 									</td>
-									<td>
-									<input type="checkbox" name="checked" id="checked" value="" <%if(!"0".equals(wjsp.getDxtx())){ %>checked<%}%>>短信提醒
+									<td align="left">
+									    <input type="checkbox" name="checked" id="checked" value="" <%if(!"0".equals(wjsp.getDxtx())){ %>checked<%}%>>短信提醒
 									</td>
 								</tr>
 							</tbody>
@@ -262,85 +262,75 @@
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										文件标题
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
                                         <input type="hidden" name="documentid" value="<%=StringUtil.parseNull(wjsp.getDocumentid(),"")%>"  style="width:500px"/>
-                                        <%=StringUtil.parseNull(wjsp.getBt(),"")%>
-                                        	
+                                        <%=StringUtil.parseNull(wjsp.getBt(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										发文类型
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-                                        <%=StringUtil.parseNull(wjsp.getLb(),"")%>
+									<td class="head_right" align="left" style="text-align: left">
+                                        <%=StringUtil.parseNull(wjsp.getLb(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										文件编号
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										 <%=StringUtil.parseNull(wjsp.getWjbh(),"")%>
+									<td class="head_right" align="left" style="text-align: left">
+										 <%=StringUtil.parseNull(wjsp.getWjbh(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										密级
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										 <%=StringUtil.parseNull(wjsp.getMmcd(),"")%>
+									<td class="head_right" align="left" style="text-align: left">
+										 <%=StringUtil.parseNull(wjsp.getMmcd(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										缓急时限
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										 <%=StringUtil.parseNull(wjsp.getHjsx(),"")%>
+									<td class="head_right" align="left" style="text-align: left">
+										 <%=StringUtil.parseNull(wjsp.getHjsx(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										签发日期
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										 <%=StringUtil.parseNull(wjsp.getQfrq(),"")%>
+									<td class="head_right" align="left" style="text-align: left">
+										 <%=StringUtil.parseNull(wjsp.getQfrq(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										拟稿部门
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										 <%=StringUtil.parseNull(wjsp.getNgbm(),"")%>
+									<td class="head_right" align="left" style="text-align: left">
+										 <%=StringUtil.parseNull(wjsp.getNgbm(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										备注
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-                                       <%=StringUtil.parseNull(wjsp.getBz(),"")%>
+									<td class="head_right" align="left" style="text-align: left">
+                                       <%=StringUtil.parseNull(wjsp.getBz(),"")%>&nbsp;
 									</td>
 										<%if(hasFileList!=null && hasFileList.size()>0){ %>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										已有附件
 									</td>
-									<td class="NormalDataColumn" align="left" id="hasFile">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" id="hasFile" style="text-align: left">
 										<%
 											for(int i=0; i<hasFileList.size(); i++){
 												OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
