@@ -36,6 +36,7 @@
         <script type="text/javascript"
                 src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 		<script type="text/javascript">
 		function onDelete(url){
 			if(window.confirm("确认删除该会议申请?")){
@@ -104,7 +105,7 @@
 			<tr>
 				<td>
 				<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" class="mtabtab" id="mtabtab">
+						cellspacing="0" class="mtabtab" id="tab_id">
 						<tr>
 							<td nowrap="nowrap" class="head" width="40">
 								序号
@@ -142,18 +143,18 @@
 								Map map = (Map) list.get(i);
 
 						%>
-						<tr>
+						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("DOCUMENTID"),"") %>')">
 							<td class="NormalDataColumn" align="center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td class="NormalDataColumn" align="left">
+							<td class="NormalDataColumn" style="text-align: left"  nowrap="nowrap">
 								<a href="view.jsp?documentid=<%=StringUtil.parseNull(map.get("DOCUMENTID"),"") %>"><%=StringUtil.parseNull(map.get("BT"),"") %></a>
 							</td>
 							<td class="NormalDataColumn" align="center">
 								<%=StringUtil.parseNull(map.get("LB"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td class="NormalDataColumn" style="text-align: left">
 								<%=StringUtil.parseNull(map.get("WJBH"),"")%>&nbsp;
 							</td>
 							<td class="NormalDataColumn" align="center">
@@ -168,7 +169,7 @@
 							<td class="NormalDataColumn" align="left">
 								<%=StringUtil.parseNull(map.get("NGBM"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="left">
+							<td class="NormalDataColumn" style="text-align: left">
 								<%=StringUtil.parseNull(map.get("BZ"),"")%>&nbsp;
 							</td>
 							<td class="NormalDataColumn" align="center" nowrap="nowrap">
