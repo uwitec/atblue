@@ -9,23 +9,26 @@
             <isNotEmpty prepend=" and " property="holidayid">
                 <![CDATA[holidayid=#holidayid#]]>
             </isNotEmpty>
-            <isNotEmpty prepend=" and " property="bt">
+            <isNotEmpty prepend=" and " property="xm">
                 <![CDATA[xm=#xm#]]>
             </isNotEmpty>
-            <isNotEmpty prepend=" and " property="lb">
+            <isNotEmpty prepend=" and " property="dw">
                 <![CDATA[dw=#dw#]]>
             </isNotEmpty>
-            <isNotEmpty prepend=" and " property="wjbh">
+            <isNotEmpty prepend=" and " property="kssj">
                 <![CDATA[kssj=#kssj#]]>
             </isNotEmpty>
-            <isNotEmpty prepend=" and " property="mmcd">
+            <isNotEmpty prepend=" and " property="jssj">
                 <![CDATA[jssj=#jssj#]]>
             </isNotEmpty>
-            <isNotEmpty prepend=" and " property="hjsx">
+            <isNotEmpty prepend=" and " property="wcdd">
                 <![CDATA[wcdd=#wcdd#]]>
             </isNotEmpty>
-            <isNotEmpty prepend=" and " property="kssj">
+            <isNotEmpty prepend=" and " property="wcsy">
                 <![CDATA[wcsy=#wcsy#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqr">
+                <![CDATA[sqr=#sqr#]]>
             </isNotEmpty>
             <isNotEmpty prepend=" and " property="sqzt">
                 <![CDATA[sqzt=#sqzt#]]>
@@ -36,17 +39,29 @@
             <isNotEmpty prepend=" and " property="connectId">
                 <![CDATA[connect_id=#connectId#]]>
             </isNotEmpty>
-            <isNotEmpty prepend=" and " property="sqr">
+            <isNotEmpty prepend=" and " property="dxtx">
                 <![CDATA[dxtx=#dxtx#]]>
+            </isNotEmpty>
+             <isNotEmpty prepend=" and " property="bz">
+                <![CDATA[bz=#bz#]]>
+            </isNotEmpty>
+             <isNotEmpty prepend=" and " property="xjsj">
+                <![CDATA[xjsj=#xjsj#]]>
+            </isNotEmpty>
+             <isNotEmpty prepend=" and " property="xjdj">
+                <![CDATA[xjdj=#xjdj#]]>
+            </isNotEmpty>
+             <isNotEmpty prepend=" and " property="roleflag">
+                <![CDATA[roleflag=#roleflag#]]>
             </isNotEmpty>
         </dynamic>
     </sql>
     <insert id="addOfficeHoliday" parameterClass="OfficeHoliday">
         <![CDATA[
             insert into OFFICE_HOLIDAY(
-                holidayid,xm,dw,kssj,jssj,wcdd,wcsy,sqzt,process_id,connect_id,dxtx
+                holidayid,xm,dw,kssj,jssj,wcdd,wcsy,sqr,sqzt,process_id,connect_id,dxtx,bz,xjsj,xjdj,roleflag
             ) values(
-               #holidayid#,#xm#,#dw#,#kssj#,#jssj#,#wcdd#,#wcsy#,#sqzt#,#processId#,#connectId#,#dxtx#
+               #holidayid#,#xm#,#dw#,#kssj#,#jssj#,#wcdd#,#wcsy#,#sqr#,#sqzt#,#processId#,#connectId#,#dxtx#,#bz#,#xjsj#,#xjdj#,#roleflag#
             )
         ]]>
     </insert>
@@ -56,7 +71,8 @@
             update OFFICE_HOLIDAY
             set holidayid=#holidayid#,xm=#xm#,dw=#dw#,
 				kssj=#kssj#,jssj=#jssj#,wcdd=#wcdd#,
-				wcsy=#wcsy#,sqzt=#sqzt#,process_id=#processId#,connect_id=#connectId#,dxtx=#dxtx#
+				wcsy=#wcsy#,sqr=#sqr#,sqzt=#sqzt#,process_id=#processId#,connect_id=#connectId#,dxtx=#dxtx#,
+				bz=#bz#,xjsj=#xjsj#,xjdj=#xjdj#,roleflag=#roleflag#
             where holidayid=#holidayid#
         ]]>
     </update>
@@ -70,7 +86,7 @@
 
     <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeHoliday">
         <![CDATA[
-            select holidayid,xm,dw,kssj,jssj,wcdd,wcsy,sqzt,process_id as processid,connect_id as connectid,sqr,dxtx from OFFICE_HOLIDAY where holidayid=#holidayid#
+            select holidayid,xm,dw,kssj,jssj,wcdd,wcsy,sqzt,process_id as processid,connect_id as connectid,sqr,dxtx,bz,xjsj,xjdj,roleflag from OFFICE_HOLIDAY where holidayid=#holidayid#
         ]]>
     </select>
 
@@ -103,7 +119,7 @@
         <include refid="basic.pageStart"/>
         <![CDATA[
             select t.* from OFFICE_HOLIDAY t
-            where 1=1
+            where 1=1 and roleflag=#roleflag# and sqr=#sqr#
         ]]>
         order by t.kssj desc
         <include refid="basic.pageEnd"/>
@@ -111,7 +127,7 @@
     <select id="getPagedCount" parameterClass="java.util.HashMap" resultClass="int">
         <![CDATA[
             select count(*) cn  from OFFICE_HOLIDAY t
-            where 1=1
+            where 1=1 and roleflag=#roleflag#  and sqr=#sqr#
         ]]>
         order by t.kssj desc
     </select>
@@ -140,7 +156,7 @@
   from OFFICE_HOLIDAY t, w_connect c, w_process p, c_orgnization o
  where t.connect_id = c.connect_id
    and t.process_id = p.process_id
-   and t.ngbm = o.orgna_name
+   and t.dw = o.orgna_name
    and p.process_status = '1'
         ]]>
         <dynamic prepend=" and ">
