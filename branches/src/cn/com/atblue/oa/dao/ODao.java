@@ -92,4 +92,6 @@ public interface ODao {
     public String[] getPersonsByTzid(String tzid);
     
     public List getSmsPersonsList();
+    
+    public List getLatestAnnounce(int cn);
 }

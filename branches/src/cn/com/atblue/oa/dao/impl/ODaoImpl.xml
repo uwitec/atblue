@@ -517,4 +517,11 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
         from OFFICE_SMS_PERSON t where t.sffs = '0' l
         ]]>
     </select>
+
+    <select id="getLatestAnnounce" resultClass="java.util.HashMap" parameterClass="int">
+    <![CDATA[
+        select * from (select t.* from OFFICE_NOTICE t where t.ispublic = '0'
+        and t.enddate >= sysdate order by t.rlsdate desc) where rownum <= #value#
+        ]]>
+</select>
 </sqlMap>
