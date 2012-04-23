@@ -61,7 +61,7 @@
         }
         function qz(processId,connectId,holidayid){
             window.open(
-                    "./ybgbqpd.jsp?formId=<%=formId%>&curRole=<%=curRole%>&connectId="+connectId+"&processId="+processId+"&holidayid="+holidayid,
+                    "<%=request.getContextPath()%>/oa/qpd/view.jsp?formId=<%=formId%>&curRole=<%=curRole%>&connectId="+connectId+"&processId="+processId+"&holidayid="+holidayid,
                     "mywindow",
                     "height="
                             + 500
