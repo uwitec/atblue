@@ -10,15 +10,16 @@
     CUser cUser = (CUser)session.getAttribute("cUser");
     cUser = cUser == null?new CUser():cUser;
     String orgId = cUser.getOrgnaId();
-    String bt = StringUtil.parseNull(request.getParameter("bt"),"");
+    String hymc = StringUtil.parseNull(request.getParameter("hymc"),"");
     Map paramMap = new HashMap();
-    if(!StringUtil.isBlankOrEmpty(bt))
-    paramMap.put("bt",bt);
+    if(!StringUtil.isBlankOrEmpty(hymc))
+        paramMap.put("hymc",hymc);
+	paramMap.put("orgnaId", _user.getOrgnaId()==null?"":_user.getOrgnaId());
 	pageBean.setPageSize(pageSize);
 
-	int totalRow =officeWjspDAO.getPagedCount(paramMap); 
-	pageBean.setTotalRows(totalRow); 
-	List list = officeWjspDAO.getPagedList(pageBean,paramMap);
+	int totalRow =oDao.getPagedHysqCount(paramMap);
+	pageBean.setTotalRows(totalRow);
+	List list = oDao.getPagedHysqList(pageBean,paramMap);
 %>
 <html>
 	<head>
@@ -26,9 +27,8 @@
 		<title>Insert title here</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
-        <link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-              type="text/css">
-        <link href="<%=contentPath%>/css/office.css" rel="stylesheet" type="text/css">
+        <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet" type="text/css">
         <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -51,12 +51,12 @@
                 document.all[id+"nextUserId"].focus();
                 return ;
             }
-            window.location = "tj.jsp?selUserId="+selUserId+"&connectId="+cid+"&documentid="+sid+"&processId="+pid;
+            window.location = "tj.jsp?selUserId="+selUserId+"&connectId="+cid+"&sqId="+sid+"&processId="+pid;
         }
         function qz(processId,connectId){
             window
                     .open(
-                    "<%=request.getContextPath()%>/oa/qpd/view.jsp?formId=75f575c1-9b50-4f88-930c-418fd3d0fbec&connectId="+connectId+"&processId="+processId,
+                    "<%=request.getContextPath()%>/oa/qpd/view.jsp?formId=3af46d80-8665-4587-9ca0-a94ece84750d&connectId="+connectId+"&processId="+processId,
                     "mywindow",
                     "height="
                             + 500
@@ -81,15 +81,15 @@
                      alt="">
             </td>
             <td width="15%" class="mhead">
-                 文件审批
+                 会议申请
             </td>
             <td align="left" class="mhead">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                     <tbody>
                     <tr>
                         <td align="left">
-                            文件标题：
-                            <input name="bt" size="10" type="text" value="<%=bt%>" />&nbsp;
+                            会议名称：
+                            <input name="hymc" size="10" type="text" value="<%=hymc%>" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                             <input type="button" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='新增'>
                         </td>
@@ -104,76 +104,86 @@
 			cellpadding="0" cellspacing="0">
 			<tr>
 				<td>
-				<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" class="mtabtab" id="mtabtab">
+					<table width="100%" border="0" align="center" cellpadding="0"
+						cellspacing="0" id="mtabtab">
 						<tr>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="40">
+							<td nowrap="nowrap" class="head" width="2%">
 								序号
 							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle">
-								文件标题
+							<td nowrap="nowrap" class="head">
+								会议名称
 							</td>
-							<td class="NormalColumnTitle" width="120">
-								发文类别
+							
+							<td class="head">
+								申请部门
 							</td>
-							<td class="NormalColumnTitle" width="120">
-								文件编号
+							<td class="head">
+								申请时间
 							</td>
-							<td class="NormalColumnTitle" width="120">
-								密级
+							<td class="head">
+								申请开始时间
 							</td>
-							<td class="NormalColumnTitle" width="120">
-								缓急时限
+							<td class="head">
+								申请结束时间
 							</td>
-							<td class="NormalColumnTitle" width="120">
-								签发日期
+							<td nowrap="nowrap" class="head">
+								会议内容
 							</td>
-							<td class="NormalColumnTitle" width="120">
-								拟稿部门
+							<td nowrap="nowrap" class="head">
+								申请状态
 							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="200">
-								备注
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle">
+							<td nowrap="nowrap" class="head" width="3%">
 								操作
 							</td>
 						</tr>
 						<%
 							for (int i = 0; i < list.size(); i++) {
 								Map map = (Map) list.get(i);
-
+                                oracle.sql.TIMESTAMP sTime = (oracle.sql.TIMESTAMP)map.get("SQKSSJ");
+                                oracle.sql.TIMESTAMP eTime = (oracle.sql.TIMESTAMP)map.get("SQJSSJ");
 						%>
 						<tr>
-							<td class="NormalDataColumn" align="center">
+							<td class="form" style="text-align: center;border-left: 1px solid #01a0fe;">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td class="NormalDataColumn" align="left">
-								<a href="view.jsp?documentid=<%=StringUtil.parseNull(map.get("DOCUMENTID"),"") %>"><%=StringUtil.parseNull(map.get("BT"),"") %></a>
+							<td class="form" align="left">
+								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("HYMC"),"") %></a>
 							</td>
-							<td class="NormalDataColumn" align="center">
-								<%=StringUtil.parseNull(map.get("LB"),"")%>&nbsp;
+							
+							<td class="form" align="left">
+								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
-								<%=StringUtil.parseNull(map.get("WJBH"),"")%>&nbsp;
+							<td class="form" align="center">
+								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
-                                <%=StringUtil.parseNull(map.get("MMCD"),"")%>&nbsp;
+							<td class="form" align="center">
+								<%if(sTime != null){ %>
+                                <%=DateUtil.format(sTime.timestampValue(),"yyyy-MM-dd HH:mm")%>
+                                <% }%>
+                                    &nbsp;
 							</td>
-							<td class="NormalDataColumn" align="left">
-								<%=StringUtil.parseNull(map.get("HJSX"),"")%>&nbsp;
+							<td class="form" align="center">
+                                <%if(eTime != null){ %>
+                                <%=DateUtil.format(eTime.timestampValue(), "yyyy-MM-dd HH:mm")%>
+                                <% }%>
 							</td>
-							<td class="NormalDataColumn" align="left">
-								<%=StringUtil.parseNull(map.get("QFRQ"),"")%>&nbsp;
+							<td class="form" align="left">
+								<%=StringUtil.cutString(StringUtil.parseNull(map.get("HYNR"),""),25)%>
 							</td>
-							<td class="NormalDataColumn" align="left">
-								<%=StringUtil.parseNull(map.get("NGBM"),"")%>&nbsp;
+							<td class="form" align="center">
+								<%String sqzt = StringUtil.parseNull(map.get("SQZT"),"");
+                                     if("已完成".equals(sqzt)){ %>
+                                        <font color="green"><%=sqzt%></font>
+                                <%}else if("正在审批".equals(sqzt)) { %>
+                                        <font color="red"><%=sqzt%></font>
+                                <%}else{  %>
+                                        <%=sqzt%>
+                                <% }
+                                %>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="left">
-								<%=StringUtil.parseNull(map.get("BZ"),"")%>&nbsp;
-							</td>
-							<td class="NormalDataColumn" align="center" nowrap="nowrap">
-                                 <%
+							<td class="form" align="center" nowrap="nowrap">
+                                <%
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
                                     if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){
@@ -181,12 +191,12 @@
                                      String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                 %>
                                      发送给&nbsp;<%=nextRole%>
-                                <select name="<%=StringUtil.parseNull(map.get("DOCUMENTID"),"")%>nextUserId">
+                                <select name="<%=StringUtil.parseNull(map.get("SQID"),"")%>nextUserId">
                                 <%=StringUtil.parseNull(options,"")%>
-                                </select>审批<input type="button" class="button"  style="width:40px" value="提交" onclick="tj('<%=StringUtil.parseNull(map.get("DOCUMENTID"),"")%>','<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("DOCUMENTID"),"")%>');"/>
+                                </select>审批<input type="button" class="button"  style="width:40px" value="提交" onclick="tj('<%=StringUtil.parseNull(map.get("SQID"),"")%>','<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');"/>
                                 <% }else if("已保存".equals(StringUtil.parseNull(map.get("SQZT"),""))){%>
-                                <a href="./edit.jsp?documentid=<%=StringUtil.parseNull(map.get("DOCUMENTID"),"")%>">[编辑]</a>&nbsp;
-                                <a href="javascript:onDelete('./delete.jsp?documentid=<%=StringUtil.parseNull(map.get("DOCUMENTID"),"")%>');">[删除]</a>&nbsp;
+                                <a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">[编辑]</a>&nbsp;
+                                <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
                                 <%   }else{ %>
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>&nbsp;
                                 <a href="#" onclick="qz('<%=processId%>','<%=connectId%>');">[查看签字]</a>
@@ -197,7 +207,6 @@
 						<%
 							}
 						%>
-
 					</table>
 				</td>
 			</tr>

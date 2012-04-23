@@ -85,7 +85,7 @@
 			<tr>
 				<td>
 					<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" id="mtabtab">
+						cellspacing="0" id="mtabtab" class="mtabtab">
 						<tr>
 							<td nowrap="nowrap" class="head" width="2%">
 								序号
@@ -121,31 +121,31 @@
 								Map map = (Map) list.get(i);
 						%>
 						<tr>
-							<td class="form" style="text-align: center;border-left: 1px solid #01a0fe;" >
+							<td  style="text-align: center;border-left: 1px solid #01a0fe;" >
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td class="form" nowrap="nowrap" style="text-align: left">
+							<td  nowrap="nowrap" style="text-align: left">
 								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("YYMC"),"") %></a>
 							</td>
 							
-							<td class="form" style="text-align: left">
+							<td  style="text-align: left">
 								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
 							</td>
-							<td class="form" align="center">
+							<td  align="center">
 								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
 							</td>
-							<td class="form" align="center">
+							<td  align="center">
                                 <%=StringUtil.parseNull(map.get("YYKSSJ"),"")%>
                                     &nbsp;
 							</td>
-							<td class="form" align="center">
+							<td  align="center">
                                 <%=StringUtil.parseNull(map.get("YYJSSJ"),"")%>
 							</td>
-							<td class="form" style="text-align: left">
+							<td  style="text-align: left">
 								<%=StringUtil.cutString(StringUtil.parseNull(map.get("YYSY"),"&nbsp;"),25)%>
 							</td>
-							<td class="form" align="center">
+							<td  align="center">
 								<%String sqzt = StringUtil.parseNull(map.get("SQZT"),"");
                                      if("已完成".equals(sqzt)){ %>
                                         <font color="green"><%=sqzt%></font>
@@ -156,7 +156,7 @@
                                 <% }
                                 %>&nbsp;
 							</td>
-							<td class="form" align="center" nowrap="nowrap">
+							<td  align="center" nowrap="nowrap">
                                 <%
                                     if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
