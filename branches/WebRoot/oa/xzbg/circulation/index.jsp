@@ -25,10 +25,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
-		<script src="<%=contentPath%>/js/common.js"
-			type="text/javascript" defer="defer"></script>
-		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-			type="text/css">
+        <script src="<%=request.getContextPath()%>/js/common.js"
+                type="text/javascript" defer="defer"></script>
+        <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -61,6 +61,7 @@
 				</td>
 				<td align="left" class="mhead">
 					&nbsp;
+                    <input type="button" value="来文登记" onclick="window.location = 'add.jsp';" class="button"/>
 				</td>
 			</tr>
 		</table>
@@ -68,40 +69,31 @@
 			cellpadding="0" cellspacing="0">
 			<tr>
 				<td>
-					<table width="100%" border="0" cellpadding="0" cellspacing="0">
-						<tbody>
-							<tr>
-								<td align="left">
-									<div id="toolbar" style="width: 100%;"></div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
 					<table width="100%" border="0" align="center" cellpadding="0"
 						cellspacing="0" class="mtabtab" id="mtabtab">
 						<tr>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="40">
+							<th nowrap="nowrap"  width="40">
 								序号
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="220">
+							</th>
+							<th nowrap="nowrap"  width="220">
 								文件编号
-							</td>
+							</th>
 							
-							<td class="NormalColumnTitle">
+							<th >
 								文件名称
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								来文时间
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								来文单位
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								状态
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								操作
-							</td>
+							</th>
 						</tr>
 						<%
 							for (int i = 0; i < list.size(); i++) {
@@ -111,24 +103,24 @@
 //								String instanceid = history.getInstanceId();
 						%>
 						<tr>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<a href="view.jsp?pkid=<%=document.getCyid() %>"><%=document.getWjbh()%></a>
 							</td>
 							
-							<td class="NormalDataColumn" align="center">
+							<td  align="center" style="text-align: left">
 								<%=document.getWjmc()%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=DateUtil.format(document.getLwsj(),"yyyy-MM-dd")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=StringUtil.parseNull(document.getLwdw(),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%--<%if(document.getZt().equals("save")){ %>--%>
 									<%--<span style="color: red">未传阅</span>--%>
 								<%--<%}else if(history.getActivityId().equals("f48aace8-0f9d-47de-a636-53d8c132c7fb")){ %>--%>
@@ -137,7 +129,7 @@
 									<%--<span style="color: blue">传阅中</span>--%>
 								<%--<%} %>--%>
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%if(document.getZt()==null || document.getZt().equals("save")){ %>
 									<a href="./edit.jsp?pkid=<%=document.getCyid() %>">[编辑]</a>&nbsp;
 								<%} %>
@@ -148,7 +140,6 @@
 						<%
 							}
 						%>
-
 					</table>
 				</td>
 			</tr>
@@ -158,19 +149,5 @@
 				</td>
 			</tr>
 		</table>
-
 	</body>
-	<script type="text/javascript">
-		Ext.onReady(function(){
-		
-		    Ext.form.Field.prototype.msgTarget = 'under';
-		
-		    var tb = new Ext.Toolbar('toolbar');
-		    tb.render('toolbar');
-		    tb.addButton({text: '来文登记',icon: '<%=request.getContextPath()%>/images/add.gif',cls: 'x-btn-text-icon',handler:function(){
-		        window.location = 'add.jsp';
-		    }});
-			tb.doLayout();
-		});
-	</script>
 </html>
