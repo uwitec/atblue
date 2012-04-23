@@ -11,20 +11,20 @@
     Map paramMap = new HashMap();
     paramMap.put("orgnaId",orgId);
     COrgnization cOrgnization = orgnizationDAO.queryForBean(paramMap);
-    String sqid = StringUtil.parseNull(request.getParameter("sqid"),"");
+    String documentid = StringUtil.parseNull(request.getParameter("documentid"),"");
     Map map = new HashMap();
-    map.put("sqid",sqid);
-    OfficeHysq hysq = officeHysqDAO.queryForBean(map);
-    String[] checkman =oDao.getCjhyryBySqid(sqid);
-    hysq = hysq == null?new OfficeHysq():hysq;
+    map.put("documentid",documentid);
+    OfficeWjsp wjsp = officeWjspDAO.queryForBean(map);
+    wjsp = wjsp == null?new OfficeWjsp():wjsp;
      List userList  = dao.getAllUser();
+     List hasFileList = officeFileDAO.getByFk(documentid);
 %>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title></title>
-		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet" type="text/css">
-		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet" type="text/css">
+		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
+			type="text/css">
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -224,42 +224,6 @@
 	<body onload="_resizeNoPage();">
 		<form action="add.jsp" name="form1" method="post">
             <input type="hidden" name="flag" value=""/>
-            <div id="hello-win" class="x-hidden">
-                <div id="hello-tabs">
-                    <div class="x-tab" title="请选择签收用户">
-                        <table border="0" width="100%">
-                            <tr>
-                                <td colspan="6" align="left">
-                                    <input type="checkbox" name="allBox" onclick="checkAll(this);">全选&nbsp;
-                                    <input type="checkbox" name="allBox" onclick="checkUnAll();">反选&nbsp;
-                                    <hr width="100%">
-                                </td>
-                            </tr>
-                            <%for(int i=0; i<userList.size(); i++){
-                                CUser u = (CUser)userList.get(i);
-                                if(i==0){
-                            %>
-                            <tr>
-                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else if(i%6==0){ %>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else{ %>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	} %>
-                                <%} %>
-                                <%
-                                    if(userList.size()%6!=0){
-                                        for(int i=0; i<userList.size()%6-1; i++){%>
-                                <td>&nbsp;</td>
-                                <%}%>
-                            </tr>
-                            <%}%>
-                        </table>
-                    </div>
-                </div>
-            </div>
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
 				background="<%=request.getContextPath()%>/images/mhead.jpg">
@@ -269,7 +233,7 @@
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
-						查看会议申请
+						查看文件审批
 					</td>
 					<td width="74%" align="left" class="mhead">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -279,6 +243,9 @@
 										<input type="button" class="button" id="button1"
 											onclick="history.back()" value="返回">
 										&nbsp;
+									</td>
+									<td>
+									<input type="checkbox" name="checked" id="checked" value="" <%if(!"0".equals(wjsp.getDxtx())){ %>checked<%}%>>短信提醒
 									</td>
 								</tr>
 							</tbody>
@@ -295,66 +262,95 @@
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
-									<td nowrap="nowrap" width="120" class="head_left">
-										会议名称
+									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+										文件标题
 									</td>
-									<td class="head_right" style="text-align: left">
-                                        <input type="hidden" name="SQID" value="<%=StringUtil.parseNull(hysq.getSqid(),"")%>"  style="width:500px"/>
-                                        <%=StringUtil.parseNull(hysq.getHymc(),"")%>
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="head_left">
-										申请部门
-									</td>
-									<td class="head_right" style="text-align: left">
-                                        <%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%>
+									<td class="NormalDataColumn" align="left">
+										&nbsp;&nbsp;
+                                        <input type="hidden" name="documentid" value="<%=StringUtil.parseNull(wjsp.getDocumentid(),"")%>"  style="width:500px"/>
+                                        <%=StringUtil.parseNull(wjsp.getBt(),"")%>
+                                        	
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="head_left">
-										与会人员
+									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+										发文类型
 									</td>
-									<td class="head_right" style="text-align: left">
-										<button id="mb3" class="button">
-											参加人
-										</button>
-									</td>
-								</tr>
-
-								<tr>
-									<td nowrap="nowrap" width="120" class="head_left">
-										申请开始时间
-									</td>
-									<td class="head_right" style="text-align: left">
-										<%=StringUtil.parseNull(hysq.getSqkssj(),"")%>
+									<td class="NormalDataColumn" align="left">
+										&nbsp;&nbsp;
+                                        <%=StringUtil.parseNull(wjsp.getLb(),"")%>
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="head_left">
-										申请结束时间
+									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+										文件编号
 									</td>
-									<td class="head_right" style="text-align: left">
-										<%=StringUtil.parseNull(hysq.getSqjssj(),"")%>
-									</td>
-								</tr>
-
-								<tr>
-									<td nowrap="nowrap" width="120" class="head_left">
-										会议内容及目的
-									</td>
-									<td class="head_right" style="text-align: left">
-										<textarea cols="80" id="HYNR" name="HYNR" rows="10"><%=StringUtil.parseNull(hysq.getHynr(),"")%></textarea>
+									<td class="NormalDataColumn" align="left">
+										&nbsp;&nbsp;
+										 <%=StringUtil.parseNull(wjsp.getWjbh(),"")%>
 									</td>
 								</tr>
-
 								<tr>
-									<td nowrap="nowrap" width="120" class="head_left">
+									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+										密级
+									</td>
+									<td class="NormalDataColumn" align="left">
+										&nbsp;&nbsp;
+										 <%=StringUtil.parseNull(wjsp.getMmcd(),"")%>
+									</td>
+								</tr>
+								<tr>
+									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+										缓急时限
+									</td>
+									<td class="NormalDataColumn" align="left">
+										&nbsp;&nbsp;
+										 <%=StringUtil.parseNull(wjsp.getHjsx(),"")%>
+									</td>
+								</tr>
+								<tr>
+									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+										签发日期
+									</td>
+									<td class="NormalDataColumn" align="left">
+										&nbsp;&nbsp;
+										 <%=StringUtil.parseNull(wjsp.getQfrq(),"")%>
+									</td>
+								</tr>
+								<tr>
+									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+										拟稿部门
+									</td>
+									<td class="NormalDataColumn" align="left">
+										&nbsp;&nbsp;
+										 <%=StringUtil.parseNull(wjsp.getNgbm(),"")%>
+									</td>
+								</tr>
+								<tr>
+									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
 										备注
 									</td>
-									<td class="head_right" style="text-align: left">
-                                        <textarea cols="80"name="BZ" rows="5"><%=StringUtil.parseNull(hysq.getBz(),"")%></textarea>
+									<td class="NormalDataColumn" align="left">
+										&nbsp;&nbsp;
+                                       <%=StringUtil.parseNull(wjsp.getBz(),"")%>
 									</td>
+										<%if(hasFileList!=null && hasFileList.size()>0){ %>
+								<tr>
+									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+										已有附件
+									</td>
+									<td class="NormalDataColumn" align="left" id="hasFile">
+										&nbsp;&nbsp;
+										<%
+											for(int i=0; i<hasFileList.size(); i++){
+												OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
+											<a href="<%=request.getContextPath()%>/officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
+												<img src="<%=request.getContextPath()%>/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='<%=request.getContextPath()%>/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
+											</a>&nbsp;&nbsp;&nbsp;
+									     <%}%>
+									</td>
+								</tr>
+								<%} %>
 								</tr>
 							</table>
 						</div>

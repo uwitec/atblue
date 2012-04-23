@@ -11,15 +11,15 @@
     Map paramMap = new HashMap();
     paramMap.put("orgnaId",orgId);
     COrgnization cOrgnization = orgnizationDAO.queryForBean(paramMap);
-    String sqid = StringUtil.parseNull(request.getParameter("sqid"),"");
+    String documentid = StringUtil.parseNull(request.getParameter("documentid"),"");
     Map map = new HashMap();
-    map.put("sqid",sqid);
-    OfficeHysq hysq = officeHysqDAO.queryForBean(map);
-    String[] checkman =oDao.getCjhyryBySqid(sqid);
-    hysq = hysq == null?new OfficeHysq():hysq;
+    map.put("documentid",documentid);
+    OfficeWjsp wjsp = officeWjspDAO.queryForBean(map);
+    wjsp = wjsp == null?new OfficeWjsp():wjsp;
      List userList  = dao.getAllUser();
-    String connectId = StringUtil.parseNull(hysq.getConnectId(),"");
-    String processId = StringUtil.parseNull(hysq.getProcessId(),"");
+    String connectId = StringUtil.parseNull(wjsp.getConnectId(),"");
+    System.out.println(connectId);
+    String processId = StringUtil.parseNull(wjsp.getProcessId(),"");
 %>
 <html>
 	<head>
@@ -232,12 +232,12 @@
                     nextUserId = document.all.disagreed.value;
                     varValue = "-1";
                 }
-               window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&sqId="+sid+"&processId="+pid+"&varValue="+varValue;
+               window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&documentid="+sid+"&processId="+pid+"&varValue="+varValue;
             }
             function qz(){
                 window
                         .open(
-                        "<%=request.getContextPath()%>/oa/qpd/qpd.jsp?formId=3af46d80-8665-4587-9ca0-a94ece84750d&connectId=<%=connectId%>&processId=<%=processId%>",
+                        "<%=request.getContextPath()%>/oa/qpd/qpd.jsp?formId=75f575c1-9b50-4f88-930c-418fd3d0fbec&connectId=<%=connectId%>&processId=<%=processId%>",
                         "mywindow",
                         "height="
                                 + 500
@@ -255,43 +255,6 @@
 	<body onload="_resizeNoPage();">
 		<form action="add.jsp" name="form1" method="post">
             <input type="hidden" name="flag" value=""/>
-            <div id="hello-win" class="x-hidden">
-                <div id="hello-tabs">
-                    <div class="x-tab" title="请选择签收用户">
-                        <table border="0" width="100%">
-                            <tr>
-                                <td colspan="6" align="left">
-                                    <input type="checkbox" name="allBox" onclick="checkAll(this);">全选&nbsp;
-                                    <input type="checkbox" name="allBox" onclick="checkUnAll();">反选&nbsp;
-                                    <hr width="100%">
-                                </td>
-                            </tr>
-                            <%for(int i=0; i<userList.size(); i++){
-                                CUser u = (CUser)userList.get(i);
-                                System.out.println(u.getRealName()+"ssssssss");
-                                if(i==0){
-                            %>
-                            <tr>
-                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else if(i%6==0){ %>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else{ %>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	} %>
-                                <%} %>
-                                <%
-                                    if(userList.size()%6!=0){
-                                        for(int i=0; i<userList.size()%6-1; i++){%>
-                                <td>&nbsp;</td>
-                                <%}%>
-                            </tr>
-                            <%}%>
-                        </table>
-                    </div>
-                </div>
-            </div>
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
 				background="<%=request.getContextPath()%>/images/mhead.jpg">
@@ -301,7 +264,7 @@
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
-						会议申请审批
+						文件审批
 					</td>
 					<td width="74%" align="left" class="mhead">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -314,7 +277,7 @@
 
                                         <span id="a">
                                             <%
-                                                String nextRole = workFlow.getNextRoleName(StringUtil.parseNull(hysq.getConnectId(),""),"1");
+                                                String nextRole = workFlow.getNextRoleName(StringUtil.parseNull(wjsp.getConnectId(),""),"1");
                                                 String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                         %>
                                             <%if(!"结束".equals(nextRole)){ %>
@@ -332,14 +295,14 @@
                                             发送给
                                         <select name="disagreed">
                                             <%
-                                                nextRole = workFlow.getNextRoleName(StringUtil.parseNull(hysq.getConnectId(),""),"-1");
+                                                nextRole = workFlow.getNextRoleName(StringUtil.parseNull(wjsp.getConnectId(),""),"-1");
                                                 options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                             %>
-                                            <%if(!"会议申请".equals(nextRole)){ %>
+                                            <%if(!"发起单位".equals(nextRole)){ %>
                                                     <%=options%>
                                             <% }else{ 
                                             Map m = new HashMap();
-                                             m.put("userId",hysq.getSqr()) ;
+                                             m.put("userId",wjsp.getSqr()) ;
                                              CUser u = userDAO.queryForBean(m);
                                               u = u ==null?new CUser():u;
                                             %>
@@ -348,7 +311,7 @@
                                         </select> 处理！</span>
 
                                         <input type="button" class="button"
-                                               onclick="tj('<%=hysq.getSqid()%>','<%=hysq.getProcessId()%>','<%=hysq.getConnectId()%>');" value="提交">
+                                               onclick="tj('<%=wjsp.getDocumentid()%>','<%=wjsp.getProcessId()%>','<%=wjsp.getConnectId()%>');" value="提交">
                                         <input type="button" class="button" id="button1"
                                                onclick="history.back()" value="返回">
 									</td>
@@ -368,61 +331,69 @@
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										会议名称
+										文件标题
 									</td>
 									<td class="head_right" style="text-align: left">
-                                        <input type="hidden" name="SQID" value="<%=StringUtil.parseNull(hysq.getSqid(),"")%>"  style="width:500px"/>
-                                        <%=StringUtil.parseNull(hysq.getHymc(),"")%>
+                                        <input type="hidden" name="documentid" value="<%=StringUtil.parseNull(wjsp.getDocumentid(),"")%>"  style="width:500px"/>
+                                        <%=StringUtil.parseNull(wjsp.getBt(),"")%>
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										申请部门
+										发文类型
 									</td>
 									<td class="head_right" style="text-align: left">
-                                        <%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%>
+                                        <%=StringUtil.parseNull(wjsp.getLb(),"")%>
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										与会人员
+										文件编号
 									</td>
 									<td class="head_right" style="text-align: left">
-										<button id="mb3" class="button">
-											参加人
-										</button>
+										 <%=StringUtil.parseNull(wjsp.getWjbh(),"")%>
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										申请开始时间
+										密级
 									</td>
 									<td class="head_right" style="text-align: left">
-										<%=StringUtil.parseNull(hysq.getSqkssj(),"")%>
+										 <%=StringUtil.parseNull(wjsp.getMmcd(),"")%>
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										申请结束时间
+										缓急时限
 									</td>
 									<td class="head_right" style="text-align: left">
-										<%=StringUtil.parseNull(hysq.getSqjssj(),"")%>
+										 <%=StringUtil.parseNull(wjsp.getHjsx(),"")%>
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										会议内容及目的
+										签发日期
 									</td>
 									<td class="head_right" style="text-align: left">
-										<textarea cols="80" id="HYNR" name="HYNR" rows="10"><%=StringUtil.parseNull(hysq.getHynr(),"")%></textarea>
+										&nbsp;&nbsp;
+										 <%=StringUtil.parseNull(wjsp.getQfrq(),"")%>
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
+										拟稿部门
+									</td>
+									<td class="NormalDataColumn" align="left">
+										&nbsp;&nbsp;
+										 <%=StringUtil.parseNull(wjsp.getNgbm(),"")%>
+									</td>
+								</tr>
+								<tr>
+									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
 										备注
 									</td>
 									<td class="head_right" style="text-align: left">
-                                        <textarea cols="80"name="BZ" rows="5"><%=StringUtil.parseNull(hysq.getBz(),"")%></textarea>
+                                        <%=StringUtil.parseNull(wjsp.getBz(),"")%>
 									</td>
 								</tr>
 							</table>
