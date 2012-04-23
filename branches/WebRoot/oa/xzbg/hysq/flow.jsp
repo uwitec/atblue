@@ -25,6 +25,7 @@
 		<title>Insert title here</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
+        <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
         <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
 	</head>
 	<body>
@@ -57,38 +58,38 @@
 			<tr>
 				<td>
 					<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" id="mtabtab">
-						<tr>
-							<td nowrap="nowrap" class="head" width="2%">
+						cellspacing="0" id="mtabtab" class="mtabtab">
+						<tr class="form_th">
+							<th nowrap="nowrap" width="2%">
 								序号
-							</td>
-							<td nowrap="nowrap" class="head">
+							</th>
+							<th nowrap="nowrap">
 								审批节点
-							</td>
-							<td class="head">
+							</th>
+							<th>
 								待处理人
-							</td>
-							<td class="head">
+							</th>
+							<th>
 								实际处理人
-							</td>
+							</th>
 						</tr>
 						<%
 							for (int i = 0; i < list.size(); i++) {
 								Map map = (Map) list.get(i);
 						%>
 						<tr>
-							<td class="form"  style="text-align: center;border-left: 1px solid #01a0fe;">
+							<td   style="text-align: center;border-left: 1px solid #01a0fe;">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td class="form" align="left">
+							<td  align="left">
 								<%=StringUtil.parseNull(map.get("ACTIVITY_NAME"),"") %>&nbsp;
 							</td>
 							
-							<td class="form" align="left">
+							<td  align="left">
 								<%=StringUtil.parseNull(map.get("REAL_NAME"),"")%>&nbsp;
 							</td>
-							<td class="form" align="left">
+							<td  align="left">
                                 <%=StringUtil.parseNull(map.get("REAL_NAME2"),"")%>
                                     &nbsp;
 							</td>

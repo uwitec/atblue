@@ -177,6 +177,18 @@
                         return ;
                     }
                 }
+                var row = t.parentElement.parentElement;
+                var index = row.rowIndex;
+                //通过Ajax删除附件记录
+                document.getElementById("attachTab").deleteRow(row.rowIndex);
+                var rows = document.getElementById("attachTab").rows;
+                var len = rows.length;
+                for(var i=1; i<len; i++){
+                    var r = rows[i];
+                    var c = r.cells[0];
+                    c.innerText = i;
+                }
+            }
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">

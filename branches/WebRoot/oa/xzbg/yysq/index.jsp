@@ -87,35 +87,35 @@
 				<td>
 					<table width="100%" border="0" align="center" cellpadding="0"
 						cellspacing="0" id="tab_id" class="mtabtab">
-						<tr>
-							<td nowrap="nowrap" class="head" width="2%">
+						<tr class="form_th">
+							<th nowrap="nowrap"  width="2%">
 								序号
-							</td>
-							<td nowrap="nowrap" class="head" width="120">
+							</th>
+							<th nowrap="nowrap"  width="120">
 								用印名称
-							</td>
+							</th>
 							
-							<td class="head" width="120">
+							<th  width="120">
 								用印部门
-							</td>
-							<td class="head" width="120">
+							</th>
+							<th  width="120">
 								申请时间
-							</td>
-							<td class="head" width="120">
+							</th>
+							<th  width="120">
 								用印开始时间
-							</td>
-							<td class="head" width="120">
+							</th>
+							<th  width="120">
 								用印结束时间
-							</td>
-							<td nowrap="nowrap" class="head" width="200">
+							</th>
+							<th nowrap="nowrap"  width="200">
 								用印事由
-							</td>
-							<td nowrap="nowrap" class="head" width="80">
+							</th>
+							<th nowrap="nowrap"  width="80">
 								申请状态
-							</td>
-							<td nowrap="nowrap" class="head">
+							</th>
+							<th nowrap="nowrap" >
 								操作
-							</td>
+							</th>
 						</tr>
 						<%
 							for (int i = 0; i < list.size(); i++) {
