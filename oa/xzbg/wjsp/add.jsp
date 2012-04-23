@@ -326,8 +326,7 @@
 										备注
 									</td>
 									<td class="head_right" style="text-align: left">
-										<input type="text" name="bz" class="inputStyle"
-											style="width: 400px;">
+                                        <textarea rows="4" cols="40" name="bz"></textarea>
 									</td>
 								</tr>
 								<tr>
