@@ -251,4 +251,9 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         return getSqlMapClientTemplate().queryForList(
                 "oa.dao.getSmsPersonsList");
     }
+
+    public List getLatestAnnounce(int cn){
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getLatestAnnounce",cn);
+    }
 }
