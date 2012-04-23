@@ -11,71 +11,58 @@
     Map paramMap = new HashMap();
     paramMap.put("orgnaId",orgId);
     COrgnization cOrgnization = orgnizationDAO.queryForBean(paramMap);
-    String documentid = StringUtil.parseNull(request.getParameter("documentid"),"");
-    Map map1 = new HashMap();
-    map1.put("documentid",documentid);
-    OfficeWjsp wjsp = officeWjspDAO.queryForBean(map1);
-    List hasFileList = officeFileDAO.getByFk(documentid);
-    wjsp = wjsp == null?new OfficeWjsp():wjsp;
+    String sqid = StringUtil.parseNull(request.getParameter("sqid"),"");
+    Map map = new HashMap();
+    map.put("sqid",sqid);
+    OfficeHysq hysq = officeHysqDAO.queryForBean(map);
+    String[] checkman =oDao.getCjhyryBySqid(sqid);
+    hysq = hysq == null?new OfficeHysq():hysq;
 	if (request.getMethod().equals("POST")) {
-        FileUploadUtil fileUpload = new FileUploadUtil(request);
-        String bt = StringUtil.parseNull(fileUpload.getParameter("bt"),"");
-        documentid = StringUtil.parseNull(fileUpload.getParameter("documentid"),"");
-        String lb = StringUtil.parseNull(fileUpload.getParameter("lb"),"");
-        String wjbh = StringUtil.parseNull(fileUpload.getParameter("wjbh"),"");
-        String mmcd = StringUtil.parseNull(fileUpload.getParameter("mmcd"),"");
-        String hjsx = StringUtil.parseNull(fileUpload.getParameter("hjsx"),"");
-        String ngbm = StringUtil.parseNull(fileUpload.getParameter("ngbm"),"");
-        String bz = StringUtil.parseNull(fileUpload.getParameter("bz"),"");
-        String qfrq = StringUtil.parseNull(fileUpload.getParameter("qfrq"),"");
-        String flag = StringUtil.parseNull(fileUpload.getParameter("flag"),"");
-        String dxtx = StringUtil.parseNull(fileUpload.getParameter("dxtx"),"");
-        wjsp.setDocumentid(documentid);
-        wjsp.setBz(bz);
-        wjsp.setBt(bt);
-        wjsp.setLb(lb);
-        wjsp.setHjsx(hjsx);
-        wjsp.setMmcd(mmcd);
-        wjsp.setNgbm(ngbm);
-        wjsp.setWjbh(wjbh);
-        wjsp.setSqzt("已保存");//保存状态
-         wjsp.setDxtx(dxtx);
-        wjsp.setQfrq(new java.util.Date());
+        String SQID = StringUtil.parseNull(request.getParameter("SQID"),"");
+        String HYMC = StringUtil.parseNull(request.getParameter("HYMC"),"");
+        String SQBM = StringUtil.parseNull(request.getParameter("SQBM"),"");
+        String HYNR = StringUtil.parseNull(request.getParameter("HYNR"),"");
+        String BZ = StringUtil.parseNull(request.getParameter("BZ"),"");
+        String SQKSSJ = StringUtil.parseNull(request.getParameter("SQKSSJ"),"");
+        String SQJSSJ = StringUtil.parseNull(request.getParameter("SQJSSJ"),"");
+        String flag = StringUtil.parseNull(request.getParameter("flag"),"");
+        map.put("sqid",SQID);
+        OfficeHysq officeHysq = officeHysqDAO.queryForBean(map);
+        officeHysq.setSqid(SQID);
+        officeHysq.setBz(BZ);
+        officeHysq.setHymc(HYMC);
+        officeHysq.setHynr(HYNR);
+        officeHysq.setSqbm(SQBM);
+        officeHysq.setSqsj(new java.util.Date());
+        officeHysq.setSqr(cUser.getUserId());
+        officeHysq.setSqzt("已保存");//保存状态
         if(cUser != null)
-            wjsp.setSqr(cUser.getUserId());
+            officeHysq.setSqr(cUser.getUserId());
+        if(!StringUtil.isBlankOrEmpty(SQKSSJ)){
+            officeHysq.setSqkssj(new Timestamp(DateUtil.parse(SQKSSJ,
+                    "yyyy-MM-dd HH:mm").getTime()));
+        }
+        if(!StringUtil.isBlankOrEmpty(SQJSSJ)){
+            officeHysq.setSqkssj(new Timestamp(DateUtil.parse(SQJSSJ,
+                    "yyyy-MM-dd HH:mm").getTime()));
+        }
         if("startup".equals(flag)){
-            wjsp.setSqzt("已申请");
+            officeHysq.setSqzt("已申请");
             //创建流程代码在这里
-            Status status = workflow.startWorkflow("297abec3-fa04-4a32-b67b-3ef36368aa38",cUser.getUserId());
-            wjsp.setProcessId(status.getProcessId());
-            wjsp.setConnectId(status.getConnectId());
+            Status status = workflow.startWorkflow("d1325ed3-9ffd-4c21-91ae-399db5a02a08",cUser.getUserId());
+            officeHysq.setProcessId(status.getProcessId());
+            officeHysq.setConnectId(status.getConnectId());
         }
-        try{
-        	officeWjspDAO.modOfficeWjsp(wjsp);
-        }catch(Exception e){
-        	e.printStackTrace();
-        }
-        
-        //保存附件信息
-		List fileList = fileUpload.uploadFile(filePath);
-		for (int i = 0; i < fileList.size(); i++) {
-			Map map = (Map) fileList.get(i);
-			OfficeFile uploadFile = new OfficeFile();
-			uploadFile.setPkid(StringUtil.getUUID());
-			uploadFile.setFkid(documentid);
-			uploadFile.setLrip(request.getRemoteAddr());
-			uploadFile.setLrr(_user.getRealName());
-			uploadFile.setLrsj(DateUtil.getDateTime());
-			try {
-				uploadFile.setWjcc(new BigDecimal((Long) map
-						.get("fileSize")));
-			} catch (Exception e) {
-			}
-			uploadFile.setWjlj((String) map.get("fullPath"));
-			uploadFile.setWjm((String) map.get("realName"));
-			uploadFile.setWjlx((String) map.get("fileType"));
-			uploadFile.setXzcs(new Integer(0));
-			officeFileDAO.insert(uploadFile);
+        officeHysqDAO.modOfficeHysq(officeHysq);
+		//保存用户
+        oDao.deleteCjhyryBySqid(sqid);
+		String[] ubox = request.getParameterValues("ubox");
+		for(int i=0; i<ubox.length; i++){
+            OfficeCjhyry  officeCjhyry = new OfficeCjhyry();
+            officeCjhyry.setPkid(StringUtil.getUUID());
+            officeCjhyry.setSqid(officeHysq.getSqid());
+            officeCjhyry.setUserid(ubox[i]);
+            officeCjhyryDAO.addOfficeCjhyry(officeCjhyry);
 		}
 %>
 		<script>
@@ -83,7 +70,6 @@
 		</script>
 <%	}
      List userList  = dao.getAllUser();
-     List departmentList = orgnizationDAO.queryForList(null);
 %>
 <html>
 	<head>
@@ -125,39 +111,208 @@
 			}		
 
 			function checkForm(){
-                 if(document.form1.bt.value==""){
-                    document.form1.bt.focus();
-                    alert("请输入文件标题！");
+                var has = false;
+                for (var i = 0; i < document.form1.ubox.length; i++) {
+                    if (document.form1.ubox[i].checked) {
+                        has = true;
+                        break;
+                    }
+                }
+                if (!has) {
+                    alert("请选择签收用户.");
                     return;
                 }
-                if(document.getElementById("checked").checked){
-                	 document.all.dxtx.value="1";
-                }else if(!document.getElementById("checked").checked){
-                	document.all.dxtx.value="0";
-                }
-                document.form1.submit();
+				if(document.form1.HYMC.value==""){
+					document.form1.HYMC.focus();
+					alert("请输入会议名称");
+					return;
+				}
+				if(!CheckDateTime(document.form1.SQKSSJ)){
+					alert("请输入正确的开始时间,例如2009-12-23 15:46");
+					return;
+				}
+				if(!CheckDateTime(document.form1.SQJSSJ)){
+					alert("请输入正确的结束时间,例如2009-12-23 15:46");
+					return;
+				}
+				document.form1.submit();
 			}
             function startup(){
-               if(document.form1.bt.value==""){
-                    document.form1.bt.focus();
-                    alert("请输入文件标题！");
+                var has = false;
+                for (var i = 0; i < document.form1.ubox.length; i++) {
+                    if (document.form1.ubox[i].checked) {
+                        has = true;
+                        break;
+                    }
+                }
+                if (!has) {
+                    alert("请选择签收用户.");
                     return;
                 }
-                if(document.getElementById("checked").checked){
-                	 document.all.dxtx.value="1";
-                }else if(!document.getElementById("checked").checked){
-                	document.all.dxtx.value="0";
+                if(document.form1.HYMC.value==""){
+                    document.form1.HYMC.focus();
+                    alert("请输入会议名称");
+                    return;
+                }
+                if(!CheckDateTime(document.form1.SQKSSJ)){
+                    alert("请输入正确的开始时间,例如2009-12-23 15:46");
+                    return;
+                }
+                if(!CheckDateTime(document.form1.SQJSSJ)){
+                    alert("请输入正确的结束时间,例如2009-12-23 15:46");
+                    return;
                 }
                 document.all.flag.value="startup";
                 document.form1.submit();
             }
 		</script>
+		<script type="text/javascript" defer="defer">
+		CKEDITOR.replace( 'HYNR',
+		{
+			skin : 'office2003'
+		});
+
+		//隐藏不需要的工具按钮
+		CKEDITOR.editorConfig = function( config )
+		{
+		    config.toolbar = 'MyToolbar';
+		    config.toolbar_MyToolbar =
+		    [
+		        ['NewPage','Preview'],
+		        ['Cut','Copy','Paste','PasteText','PasteFromWord','-'],
+		        ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+		        ['Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+		        '/',
+		        ['Styles','Format'],
+		        ['Bold','Italic','Strike'],
+		        ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+		        ['Link','Unlink','Anchor'],
+		        ['Maximize','-','About']
+		    ];
+		};
+		
+		function publicSelect(obj){
+			if(obj.value=="1"){
+				var bDisabled = document.form1.mustSign;
+				for(var i=0; i<bDisabled.length; i++){
+					document.form1.mustSign[i].disabled = false;
+				}
+				document.form1.mustSign[0].checked = true;
+				document.form1.mustSign[1].checked = false;
+				document.form1.mb3.disabled = false;
+			}else{
+				var bDisabled = document.form1.mustSign;
+				for(var i=0; i<bDisabled.length; i++){
+					document.form1.mustSign[i].disabled = true;
+				}
+				document.form1.mustSign[1].checked = true;
+				document.form1.mustSign[0].checked = false;
+				document.form1.mb3.disabled = true;
+			}
+		}
+		
+		function checkAll(obj){
+			for(var i=0; i<document.form1.ubox.length; i++){
+				document.form1.ubox[i].checked=obj.checked;
+			}
+		}
+		
+		function checkUnAll(){
+			for(var i=0; i<document.form1.ubox.length; i++){
+				document.form1.ubox[i].checked=!document.form1.ubox[i].checked;
+			}
+		}
+		
+		function mustSignSelect(obj){
+			if(obj.value=="1"){
+				document.form1.mb3.disabled = false;
+			}else{
+				document.form1.mb3.disabled = true;
+			}
+		}
+		</script>
+		<script type="text/javascript">
+			Ext.onReady(function(){
+			    var win;
+			    var button = Ext.get('mb3');
+			
+			    button.on('click', function(){
+			        // create the window on the first click and reuse on subsequent clicks
+			        if(!win){
+			            win = new Ext.Window({
+			                applyTo:'hello-win',
+			                layout:'fit',
+			                width:500,
+			                height:400,
+			                closeAction:'hide',
+			                plain: true,
+							pageX:100, 
+							pageY:100,
+							items: new Ext.TabPanel({
+			                    applyTo: 'hello-tabs',
+			                    autoTabs:true,
+			                    activeTab:0,
+//			                    deferredRender:false,
+                                defaults:{autoScroll: true},
+			                    border:false
+			                }),
+			                buttons: [{
+			                    text:'确定',
+			                    handler: function(){
+			                        win.hide();
+			                    }
+			                },{
+			                    text: '关闭',
+			                    handler: function(){
+			                        win.hide();
+			                    }
+			                }]
+			            });
+			        }
+			        win.show(this);
+			    });
+			});
+		</script>
 	</head>
 	<body onload="_resizeNoPage();">
-		<form action="edit.jsp" name="form1" method="post" enctype="multipart/form-data">
+		<form action="edit.jsp" name="form1" method="post">
             <input type="hidden" name="flag" value=""/>
-            <input type="hidden" name="dxtx" value=""/>
-            <input type="hidden" name="documentid" value="<%=documentid%>"/>
+            <div id="hello-win" class="x-hidden">
+                <div id="hello-tabs">
+                    <div class="x-tab" title="请选择签收用户">
+                        <table border="0" width="100%">
+                            <tr>
+                                <td colspan="6" align="left">
+                                    <input type="checkbox" name="allBox" onclick="checkAll(this);">全选&nbsp;
+                                    <input type="checkbox" name="allBox" onclick="checkUnAll();">反选&nbsp;
+                                    <hr width="100%">
+                                </td>
+                            </tr>
+                            <%for(int i=0; i<userList.size(); i++){
+                                CUser u = (CUser)userList.get(i);
+                                if(i==0){
+                            %>
+                            <tr>
+                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                                <%	}else if(i%6==0){ %>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                                <%	}else{ %>
+                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                                <%	} %>
+                                <%} %>
+                                <%
+                                    if(userList.size()%6!=0){
+                                        for(int i=0; i<userList.size()%6-1; i++){%>
+                                <td>&nbsp;</td>
+                                <%}%>
+                            </tr>
+                            <%}%>
+                        </table>
+                    </div>
+                </div>
+            </div>
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
 				background="<%=request.getContextPath()%>/images/mhead.jpg">
@@ -167,7 +322,7 @@
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
-						修改文件审批
+						修改会议申请
 					</td>
 					<td width="74%" align="left" class="mhead">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -200,134 +355,76 @@
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										文件标题<span style="color: red">&nbsp;*</span>
+										会议名称<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
-										<input type="text" name="bt" class="inputStyle" value="<%=wjsp.getBt()%>"
-											style="width: 200px;" maxlength="20">
-											<input type="checkbox" name="checked" id="checked" value="" <%if(!"0".equals(wjsp.getDxtx())){ %>checked<%}%>>短信提醒
+                                        <input type="hidden" name="SQID" value="<%=StringUtil.parseNull(hysq.getSqid(),"")%>"  style="width:500px"/>
+                                        <input type="text" name="HYMC" value="<%=StringUtil.parseNull(hysq.getHymc(),"")%>"  style="width:500px"/>
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										发文类型<span style="color: red">&nbsp;*</span>
+                                        <%
+                                            Dao mdao = (Dao) SpringFactory.instance.getBean("dao");
+                                            List list = dao.getSelectOrgTrees();
+                                            list = list == null ? new ArrayList() : list;
+                                        %>
+										申请部门<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
-										<select name="lb" onchange="lbz(this)" style="width: 200px;">
-			                            	<option value="" selected>请选择 </option>
-			                                <option value="公司文件" <%if("公司文件".equals(wjsp.getLb())){out.println("selected");}%>>公司文件</option>
-			                                <option value="党委文件" <%if("党委文件".equals(wjsp.getLb())){out.println("selected");}%>>党委文件</option>
-			                                <option value="办公室文件" <%if("办公室文件".equals(wjsp.getLb())){out.println("selected");}%>>办公室文件</option>
-			                                <option value="会议纪要" <%if("会议纪要".equals(wjsp.getLb())){out.println("selected");}%>>会议纪要</option>
-			                                <option value="领导讲话" <%if("领导讲话".equals(wjsp.getLb())){out.println("selected");}%>>领导讲话</option>
-			                                <option value="督查通报" <%if("督查通报".equals(wjsp.getLb())){out.println("selected");}%>>督查通报</option>
-			                                <option value="调研报告" <%if("调研报告".equals(wjsp.getLb())){out.println("selected");}%>>调研报告</option>
-			                                <option value="各委员会文件" <%if("各委员会文件".equals(wjsp.getLb())){out.println("selected");}%>>各委员会文件</option>
-			                                <option value="其它" <%if("其它".equals(wjsp.getLb())){out.println("selected");}%>>其它</option>
-		                            	</select> 
+                                        <input type="hidden" name="SQBM" value="<%=StringUtil.parseNull(orgId,"")%>"/><%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%>
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										文件编号<span style="color: red">&nbsp;*</span>
+										与会人员<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
-										<input type="text" name="wjbh" class="inputStyle" value="<%=wjsp.getWjbh()%>"
-											style="width: 300px;">
+										<button id="mb3" class="button">
+											参加人
+										</button>
+									</td>
+								</tr>
+
+								<tr>
+									<td nowrap="nowrap" width="120" class="head_left">
+										申请开始时间<span style="color: red">&nbsp;*</span>
+									</td>
+									<td class="head_right" style="text-align: left">
+										<input type="text"
+											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
+											name="SQKSSJ" class="Wdate" style="width: 200px;" value="<%=StringUtil.parseNull(hysq.getSqkssj(),"")%>">
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										密级
+										申请结束时间<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
-										<select name="mmcd" style="width: 100px;">
-			                                <option value="无" <%if("无".equals(wjsp.getMmcd())){out.println("selected");}%>>无</option>
-			                                <option value="秘密" <%if("秘密".equals(wjsp.getMmcd())){out.println("selected");}%>>秘密</option>
-			                                <option value="机密" <%if("机密".equals(wjsp.getMmcd())){out.println("selected");}%>>机密</option>
-			                                <option value="绝密" <%if("绝密".equals(wjsp.getMmcd())){out.println("selected");}%>>绝密</option>
-		                            	</select>
+										<input type="text"
+											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
+											name="SQJSSJ" class="Wdate" style="width: 200px;" value="<%=StringUtil.parseNull(hysq.getSqjssj(),"")%>">
 									</td>
 								</tr>
+
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										缓急时限
+										会议内容及目的
 									</td>
 									<td class="head_right" style="text-align: left">
-										<select id="hjsx" name="hjsx" style="width: 100px;">
-			                                <option value="无" <%if("无".equals(wjsp.getHjsx())){out.println("selected");}%>>无</option>
-			                                <option value="平急" <%if("平急".equals(wjsp.getHjsx())){out.println("selected");}%>>平急</option>
-			                                <option value="紧急" <%if("紧急".equals(wjsp.getHjsx())){out.println("selected");}%>>紧急</option>
-			                                <option value="特急" <%if("特急".equals(wjsp.getHjsx())){out.println("selected");}%>>特急</option>
-		                            	</select>
+										<textarea cols="80" id="HYNR" name="HYNR" rows="10"><%=StringUtil.parseNull(hysq.getHynr(),"")%></textarea>
 									</td>
 								</tr>
+
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										签发日期
-									</td>
-									<td class="head_right" style="text-align: left">
-										&nbsp;&nbsp;
-										<input type="text" name="qfrq" class="Wdate" onClick="WdatePicker()" value="<%=DateUtil.format(wjsp.getQfrq(),"yyyy-MM-dd") %>">
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="head_left">
-										拟稿部门
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<select name="ngbm" style="width: 200px;">
-											<%for(int i=0;i<departmentList.size(); i++){ 
-												COrgnization dep = (COrgnization)departmentList.get(i);%>
-											<option value="<%=dep.getOrgnaName() %>" <%if(dep.getOrgnaName().equals(wjsp.getNgbm())){out.println("selected");} %>><%=dep.getOrgnaName() %></option>
-											<%} %>
-										</select> 
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
 										备注
 									</td>
 									<td class="head_right" style="text-align: left">
-										<input type="text" name="bz" class="inputStyle" value="<%=wjsp.getBz()%>"
-											style="width: 400px;">
-									</td>
-								</tr>
-								<%if(hasFileList!=null && hasFileList.size()>0){ %>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										已有附件
-									</td>
-									<td class="NormalDataColumn" align="left" id="hasFile">
-										&nbsp;&nbsp;
-										<%
-											for(int i=0; i<hasFileList.size(); i++){
-												OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
-											<a href="../../officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
-												<img src="<%=request.getContextPath()%>/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='<%=request.getContextPath()%>/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
-											</a>&nbsp;&nbsp;&nbsp;
-											<a href="javascript:delFile('<%=beanFile.getPkid() %>','<%=documentid %>')">[删除]</a></br>&nbsp;&nbsp;
-									     <%}%>
-									</td>
-								</tr>
-								<%} %>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										附件&nbsp;
-									</td>
-									<td class="NormalDataColumn" align="left" id="fileTd">
-										1.&nbsp;&nbsp;
-										<input type="file" name="file_1" style="width: 400px;">
+                                        <textarea cols="80"name="BZ" rows="5"><%=StringUtil.parseNull(hysq.getBz(),"")%></textarea>
 									</td>
 								</tr>
 							</table>
-							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"
-                       				class="mtabtab" id="attachTab">
-				               <tr>
-				               		<td class="NormalDataColumn" width="100%" nowrap colspan="3">其他附件：<input type="button" name="b_bc" class="button" value="添加" onclick="doAddAttachRow('attachTab');"></td>
-				               </tr>
-         					</table>
 						</div>
 					</td>
 				</tr>

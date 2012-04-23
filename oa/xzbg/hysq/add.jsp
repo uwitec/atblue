@@ -12,61 +12,47 @@
     COrgnization cOrgnization = orgnizationDAO.queryForBean(paramMap);
     cOrgnization = cOrgnization == null?new COrgnization():cOrgnization;
 	if (request.getMethod().equals("POST")) {
-		FileUploadUtil fileUpload = new FileUploadUtil(request);
-        String bt = StringUtil.parseNull(fileUpload.getParameter("bt"),"");
-        String lb = StringUtil.parseNull(fileUpload.getParameter("lb"),"");
-        String wjbh = StringUtil.parseNull(fileUpload.getParameter("wjbh"),"");
-        String mmcd = StringUtil.parseNull(fileUpload.getParameter("mmcd"),"");
-        String hjsx = StringUtil.parseNull(fileUpload.getParameter("hjsx"),"");
-        String ngbm = StringUtil.parseNull(fileUpload.getParameter("ngbm"),"");
-        String bz = StringUtil.parseNull(fileUpload.getParameter("bz"),"");
-        String qfrq = StringUtil.parseNull(fileUpload.getParameter("qfrq"),"");
-        String flag = StringUtil.parseNull(fileUpload.getParameter("flag"),"");
-        String dxtx = StringUtil.parseNull(fileUpload.getParameter("dxtx"),"");
-        OfficeWjsp officeWjsp = new  OfficeWjsp();
-        String documentid = StringUtil.getUUID();
-        officeWjsp.setDocumentid(documentid);
-        officeWjsp.setBz(bz);
-        officeWjsp.setBt(bt);
-        officeWjsp.setLb(lb);
-        officeWjsp.setHjsx(hjsx);
-        officeWjsp.setMmcd(mmcd);
-        officeWjsp.setNgbm(ngbm);
-        officeWjsp.setWjbh(wjbh);
-        officeWjsp.setSqzt("已保存");//保存状态
-        officeWjsp.setDxtx(dxtx);
-        officeWjsp.setQfrq(new java.util.Date());
+        String HYMC = StringUtil.parseNull(request.getParameter("HYMC"),"");
+        String SQBM = StringUtil.parseNull(request.getParameter("SQBM"),"");
+        String HYNR = StringUtil.parseNull(request.getParameter("HYNR"),"");
+        String BZ = StringUtil.parseNull(request.getParameter("BZ"),"");
+        String SQKSSJ = StringUtil.parseNull(request.getParameter("SQKSSJ"),"");
+        String SQJSSJ = StringUtil.parseNull(request.getParameter("SQJSSJ"),"");
+        String flag = StringUtil.parseNull(request.getParameter("flag"),"");
+        OfficeHysq officeHysq = new  OfficeHysq();
+        officeHysq.setSqid(StringUtil.getUUID());
+        officeHysq.setBz(BZ);
+        officeHysq.setHymc(HYMC);
+        officeHysq.setHynr(HYNR);
+        officeHysq.setSqbm(SQBM);
+        officeHysq.setSqzt("已保存");//保存状态
+        officeHysq.setSqsj(new java.util.Date());
         if(cUser != null)
-            officeWjsp.setSqr(cUser.getUserId());
-        if("startup".equals(flag)){
-            officeWjsp.setSqzt("已申请");
-            //创建流程代码在这里
-            Status status = workflow.startWorkflow("297abec3-fa04-4a32-b67b-3ef36368aa38",cUser.getUserId());
-            officeWjsp.setProcessId(status.getProcessId());
-            officeWjsp.setConnectId(status.getConnectId());
+            officeHysq.setSqr(cUser.getUserId());
+        if(!StringUtil.isBlankOrEmpty(SQKSSJ)){
+            officeHysq.setSqkssj(new Timestamp(DateUtil.parse(SQKSSJ,
+                    "yyyy-MM-dd HH:mm").getTime()));
         }
-        officeWjspDAO.addOfficeWjsp(officeWjsp);
-        
-        //保存附件信息
-		List fileList = fileUpload.uploadFile(filePath);
-		for (int i = 0; i < fileList.size(); i++) {
-			Map map = (Map) fileList.get(i);
-			OfficeFile uploadFile = new OfficeFile();
-			uploadFile.setPkid(StringUtil.getUUID());
-			uploadFile.setFkid(documentid);
-			uploadFile.setLrip(request.getRemoteAddr());
-			uploadFile.setLrr(_user.getRealName());
-			uploadFile.setLrsj(DateUtil.getDateTime());
-			try {
-				uploadFile.setWjcc(new BigDecimal((Long) map
-						.get("fileSize")));
-			} catch (Exception e) {
-			}
-			uploadFile.setWjlj((String) map.get("fullPath"));
-			uploadFile.setWjm((String) map.get("realName"));
-			uploadFile.setWjlx((String) map.get("fileType"));
-			uploadFile.setXzcs(new Integer(0));
-			officeFileDAO.insert(uploadFile);
+        if(!StringUtil.isBlankOrEmpty(SQJSSJ)){
+            officeHysq.setSqjssj(new Timestamp(DateUtil.parse(SQJSSJ,
+                    "yyyy-MM-dd HH:mm").getTime()));
+        }
+        if("startup".equals(flag)){
+            officeHysq.setSqzt("已申请");
+            //创建流程代码在这里
+            Status status = workflow.startWorkflow("d1325ed3-9ffd-4c21-91ae-399db5a02a08",cUser.getUserId());
+            officeHysq.setProcessId(status.getProcessId());
+            officeHysq.setConnectId(status.getConnectId());
+        }
+        officeHysqDAO.addOfficeHysq(officeHysq);
+		//保存用户
+		String[] ubox = request.getParameterValues("ubox");
+		for(int i=0; i<ubox.length; i++){
+            OfficeCjhyry  officeCjhyry = new OfficeCjhyry();
+            officeCjhyry.setPkid(StringUtil.getUUID());
+            officeCjhyry.setSqid(officeHysq.getSqid());
+            officeCjhyry.setUserid(ubox[i]);
+            officeCjhyryDAO.addOfficeCjhyry(officeCjhyry);
 		}
 %>
 		<script>
@@ -74,7 +60,6 @@
 		</script>
 <%	}
      List userList  = dao.getAllUser();
-     List departmentList = orgnizationDAO.queryForList(null);
 %>
 <html>
 	<head>
@@ -116,38 +101,209 @@
 			}		
 
 			function checkForm(){
-                 if(document.form1.bt.value==""){
-                    document.form1.bt.focus();
-                    alert("请输入文件标题！");
+                var has = false;
+                for (var i = 0; i < document.form1.ubox.length; i++) {
+                    if (document.form1.ubox[i].checked) {
+                        has = true;
+                        break;
+                    }
+                }
+                if (!has) {
+                    alert("请选择签收用户.");
                     return;
                 }
-                if(document.getElementById("checked").checked){
-                	 document.all.dxtx.value="1";
-                }else if(!document.getElementById("checked").checked){
-                	document.all.dxtx.value="0";
-                }
-                document.form1.submit();
+				if(document.form1.HYMC.value==""){
+					document.form1.HYMC.focus();
+					alert("请输入会议名称");
+					return;
+				}
+				if(!CheckDateTime(document.form1.SQKSSJ)){
+					alert("请输入正确的开始时间,例如2009-12-23 15:46");
+					return;
+				}
+				if(!CheckDateTime(document.form1.SQJSSJ)){
+					alert("请输入正确的结束时间,例如2009-12-23 15:46");
+					return;
+				}
+
+				document.form1.submit();
 			}
             function startup(){
-               if(document.form1.bt.value==""){
-                    document.form1.bt.focus();
-                    alert("请输入文件标题！");
+                var has = false;
+                for (var i = 0; i < document.form1.ubox.length; i++) {
+                    if (document.form1.ubox[i].checked) {
+                        has = true;
+                        break;
+                    }
+                }
+                if (!has) {
+                    alert("请选择签收用户.");
                     return;
                 }
-                if(document.getElementById("checked").checked){
-                	 document.all.dxtx.value="1";
-                }else if(!document.getElementById("checked").checked){
-                	document.all.dxtx.value="0";
+                if(document.form1.HYMC.value==""){
+                    document.form1.HYMC.focus();
+                    alert("请输入会议名称");
+                    return;
+                }
+                if(!CheckDateTime(document.form1.SQKSSJ)){
+                    alert("请输入正确的开始时间,例如2009-12-23 15:46");
+                    return;
+                }
+                if(!CheckDateTime(document.form1.SQJSSJ)){
+                    alert("请输入正确的结束时间,例如2009-12-23 15:46");
+                    return;
                 }
                 document.all.flag.value="startup";
                 document.form1.submit();
             }
 		</script>
+		<script type="text/javascript" defer="defer">
+		CKEDITOR.replace( 'HYNR',
+		{
+			skin : 'office2003'
+		});
+
+		//隐藏不需要的工具按钮
+		CKEDITOR.editorConfig = function( config )
+		{
+		    config.toolbar = 'MyToolbar';
+		    config.toolbar_MyToolbar =
+		    [
+		        ['NewPage','Preview'],
+		        ['Cut','Copy','Paste','PasteText','PasteFromWord','-'],
+		        ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+		        ['Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+		        '/',
+		        ['Styles','Format'],
+		        ['Bold','Italic','Strike'],
+		        ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+		        ['Link','Unlink','Anchor'],
+		        ['Maximize','-','About']
+		    ];
+		};
+		
+		function publicSelect(obj){
+			if(obj.value=="1"){
+				var bDisabled = document.form1.mustSign;
+				for(var i=0; i<bDisabled.length; i++){
+					document.form1.mustSign[i].disabled = false;
+				}
+				document.form1.mustSign[0].checked = true;
+				document.form1.mustSign[1].checked = false;
+				document.form1.mb3.disabled = false;
+			}else{
+				var bDisabled = document.form1.mustSign;
+				for(var i=0; i<bDisabled.length; i++){
+					document.form1.mustSign[i].disabled = true;
+				}
+				document.form1.mustSign[1].checked = true;
+				document.form1.mustSign[0].checked = false;
+				document.form1.mb3.disabled = true;
+			}
+		}
+		
+		function checkAll(obj){
+			for(var i=0; i<document.form1.ubox.length; i++){
+				document.form1.ubox[i].checked=obj.checked;
+			}
+		}
+		
+		function checkUnAll(){
+			for(var i=0; i<document.form1.ubox.length; i++){
+				document.form1.ubox[i].checked=!document.form1.ubox[i].checked;
+			}
+		}
+		
+		function mustSignSelect(obj){
+			if(obj.value=="1"){
+				document.form1.mb3.disabled = false;
+			}else{
+				document.form1.mb3.disabled = true;
+			}
+		}
+		</script>
+		<script type="text/javascript">
+			Ext.onReady(function(){
+			    var win;
+			    var button = Ext.get('mb3');
+			
+			    button.on('click', function(){
+			        // create the window on the first click and reuse on subsequent clicks
+			        if(!win){
+			            win = new Ext.Window({
+			                applyTo:'hello-win',
+			                layout:'fit',
+			                width:500,
+			                height:400,
+			                closeAction:'hide',
+			                plain: true,
+							pageX:100, 
+							pageY:100,
+							items: new Ext.TabPanel({
+			                    applyTo: 'hello-tabs',
+			                    autoTabs:true,
+			                    activeTab:0,
+//			                    deferredRender:false,
+			                    border:false ,
+                                defaults:{autoScroll: true}
+			                }),
+			                buttons: [{
+			                    text:'确定',
+			                    handler: function(){
+			                        win.hide();
+			                    }
+			                },{
+			                    text: '关闭',
+			                    handler: function(){
+			                        win.hide();
+			                    }
+			                }]
+			            });
+			        }
+			        win.show(this);
+			    });
+			});
+		</script>
 	</head>
 	<body onload="_resizeNoPage();">
-		<form action="add.jsp" name="form1" method="post" enctype="multipart/form-data">
+		<form action="add.jsp" name="form1" method="post">
             <input type="hidden" name="flag" value=""/>
-            <input type="hidden" name="dxtx" value=""/>
+            <div id="hello-win" class="x-hidden">
+                <div id="hello-tabs">
+                    <div class="x-tab" title="请选择签收用户">
+                        <table border="0" width="100%">
+                            <tr>
+                                <td colspan="6" align="left">
+                                    <input type="checkbox" name="allBox" onclick="checkAll(this);">全选&nbsp;
+                                    <input type="checkbox" name="allBox" onclick="checkUnAll();">反选&nbsp;
+                                    <hr width="100%">
+                                </td>
+                            </tr>
+                            <%for(int i=0; i<userList.size(); i++){
+                                CUser u = (CUser)userList.get(i);
+                                if(i==0){
+                            %>
+                            <tr>
+                                <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                                <%	}else if(i%6==0){ %>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                                <%	}else{ %>
+                                <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                                <%	} %>
+                                <%} %>
+                                <%
+                                    if(userList.size()%6!=0){
+                                        for(int i=0; i<userList.size()%6-1; i++){%>
+                                <td>&nbsp;</td>
+                                <%}%>
+                            </tr>
+                            <%}%>
+                        </table>
+                    </div>
+                </div>
+            </div>
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
 				background="<%=request.getContextPath()%>/images/mhead.jpg">
@@ -157,7 +313,7 @@
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
-						新建文件审批
+						新建会议申请
 					</td>
 					<td width="74%" align="left" class="mhead">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -173,7 +329,6 @@
 										<input type="button" class="button" id="button1"
 											onclick="history.back()" value="返回">
 										&nbsp;
-										
 									</td>
 								</tr>
 							</tbody>
@@ -191,116 +346,70 @@
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										文件标题<span style="color: red">&nbsp;*</span>
+										会议名称<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
-										<input type="text" name="bt" class="inputStyle"
-											style="width: 200px;" maxlength="20">
-											<input type="checkbox" name="checked" id="checked" value="1" checked>短信提醒
+                                        <input type="text" name="HYMC" value=""  style="width:500px"/>
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										发文类型<span style="color: red">&nbsp;*</span>
+										申请部门<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
-										<select name="lb" onchange="lbz(this)" style="width: 200px;">
-			                            	<option value="" selected>请选择 </option>
-			                                <option value="公司文件">公司文件</option>
-			                                <option value="党委文件">党委文件</option>
-			                                <option value="办公室文件">办公室文件</option>
-			                                <option value="会议纪要">会议纪要</option>
-			                                <option value="领导讲话">领导讲话</option>
-			                                <option value="督查通报">督查通报</option>
-			                                <option value="调研报告">调研报告</option>
-			                                <option value="各委员会文件">各委员会文件</option>
-			                                <option value="其它">其它</option>
-		                            	</select> 
+                                        <input type="hidden" name="SQBM" value="<%=StringUtil.parseNull(orgId,"")%>"/><%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%>
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										文件编号<span style="color: red">&nbsp;*</span>
+										与会人员<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
-										<input type="text" name="wjbh" class="inputStyle"
-											style="width: 300px;">
+										<button id="mb3" class="button">
+											参加人
+										</button>
+									</td>
+								</tr>
+
+								<tr>
+									<td nowrap="nowrap" width="120" class="head_left">
+										申请开始时间<span style="color: red">&nbsp;*</span>
+									</td>
+									<td class="head_right" style="text-align: left">
+										<input type="text"
+											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
+											name="SQKSSJ" class="Wdate" style="width: 200px;">
 									</td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										密级
+										申请结束时间<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
-										<select name="mmcd" style="width: 100px;">
-			                                <option value="无">无</option>
-			                                <option value="秘密">秘密</option>
-			                                <option value="机密">机密</option>
-			                                <option value="绝密">绝密</option>
-		                            	</select>
+										<input type="text"
+											onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"
+											name="SQJSSJ" class="Wdate" style="width: 200px;">
 									</td>
 								</tr>
+
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										缓急时限
+										会议内容及目的
 									</td>
 									<td class="head_right" style="text-align: left">
-										<select id="hjsx" name="hjsx" style="width: 100px;">
-			                                <option value="无">无</option>
-			                                <option value="平急">平急</option>
-			                                <option value="紧急">紧急</option>
-			                                <option value="特急">特急</option>
-		                            	</select>
+										<textarea cols="80" id="HYNR" name="HYNR" rows="10"></textarea>
 									</td>
 								</tr>
+
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										签发日期
-									</td>
-									<td class="head_right" style="text-align: left">
-										&nbsp;&nbsp;
-										<input type="text" name="qfrq" class="Wdate" onClick="WdatePicker()" value="<%=DateUtil.format(DateUtil.getDate(),"yyyy-MM-dd") %>">
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="head_left">
-										拟稿部门
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<select name="ngbm" style="width: 200px;">
-											<%for(int i=0;i<departmentList.size(); i++){ 
-												COrgnization dep = (COrgnization)departmentList.get(i);%>
-											<option value="<%=dep.getOrgnaName() %>"><%=dep.getOrgnaName() %></option>
-											<%} %>
-										</select> 
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
 										备注
 									</td>
 									<td class="head_right" style="text-align: left">
-										<input type="text" name="bz" class="inputStyle"
-											style="width: 400px;">
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										附件&nbsp;
-									</td>
-									<td class="NormalDataColumn" align="left" id="fileTd">
-										1.&nbsp;&nbsp;
-										<input type="file" name="file_1" style="width: 400px;">
+                                        <textarea cols="80"name="BZ" rows="5"></textarea>
 									</td>
 								</tr>
 							</table>
-							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"
-                       				class="mtabtab" id="attachTab">
-				               <tr>
-				               		<td class="NormalDataColumn" width="100%" nowrap colspan="3">其他附件：<input type="button" name="b_bc" class="button" value="添加" onclick="doAddAttachRow('attachTab');"></td>
-				               </tr>
-         					</table>
 						</div>
 					</td>
 				</tr>

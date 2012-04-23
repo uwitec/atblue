@@ -1,11 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ include file="../../../import.jsp"%>
 <%
-	String documentid = request.getParameter("documentid");
-    if(!StringUtil.isBlankOrEmpty(documentid)){
+	String sqid = request.getParameter("sqid");
+    if(!StringUtil.isBlankOrEmpty(sqid)){
         Map map = new HashMap();
-        map.put("documentid",documentid);
-        officeWjspDAO.delOfficeWjsp(map);
+        map.put("sqid",sqid);
+        officeHysqDAO.delOfficeHysq(map);
     }
     response.sendRedirect("list.jsp");
 %>
