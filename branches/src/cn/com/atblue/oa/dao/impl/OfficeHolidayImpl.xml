@@ -120,6 +120,8 @@
         <![CDATA[
             select t.* from OFFICE_HOLIDAY t
             where 1=1 and roleflag=#roleflag# and sqr=#sqr#
+            and kssj between to_date(#kssj#,'yyyy-mm-dd') and to_date(#jssj#,'yyyy-mm-dd')
+            and jssj between to_date(#kssj#,'yyyy-mm-dd') and to_date(#jssj#,'yyyy-mm-dd')
         ]]>
         order by t.kssj desc
         <include refid="basic.pageEnd"/>
@@ -128,6 +130,8 @@
         <![CDATA[
             select count(*) cn  from OFFICE_HOLIDAY t
             where 1=1 and roleflag=#roleflag#  and sqr=#sqr#
+            and kssj between to_date(#kssj#,'yyyy-mm-dd') and to_date(#jssj#,'yyyy-mm-dd')
+            and jssj between to_date(#kssj#,'yyyy-mm-dd') and to_date(#jssj#,'yyyy-mm-dd')
         ]]>
         order by t.kssj desc
     </select>

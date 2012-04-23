@@ -21,6 +21,7 @@ private String processId;
 private String connectId;
 private String yyr;
 private Double fs;
+private String dxtx;
 
 public String getSqid(){
 return this.sqid;
@@ -124,5 +125,13 @@ return this.fs;
 
 public void setFs(Double fs){
 this.fs=fs;
+}
+
+public String getDxtx() {
+	return dxtx;
+}
+
+public void setDxtx(String dxtx) {
+	this.dxtx = dxtx;
 }
 }
