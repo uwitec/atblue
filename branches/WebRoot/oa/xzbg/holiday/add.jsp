@@ -58,8 +58,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title></title>
-		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-			type="text/css">
+		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
+		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -169,22 +169,20 @@
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										姓名<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="xm" class="inputStyle"
 											style="width: 200px;" value="<%=cUser.getRealName() %>" maxlength="20">
 											<input type="checkbox" name="checked" id="checked" value="1" checked>短信提醒
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										部门
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<select name="dw" style="width: 200px;">
 											<%for(int i=0;i<departmentList.size(); i++){ 
 												COrgnization dep = (COrgnization)departmentList.get(i);%>
@@ -194,42 +192,37 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										外出时间
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="kssj" class="Wdate" onClick="WdatePicker()" value="<%=DateUtil.format(DateUtil.getDate(),"yyyy-MM-dd") %>">
 										至
 										<input type="text" name="jssj" class="Wdate" onClick="WdatePicker()" value="<%=DateUtil.format(DateUtil.getDate(),"yyyy-MM-dd") %>">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										外出地点<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<input type="text" name="wcdd" class="inputStyle"
-											style="width: 300px;">
+									<td class="head_right" align="left" style="text-align: left">
+                                        <textarea rows="4" cols="40" name="wcdd"></textarea>
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										外出事由
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<textarea rows="4" cols="30" name="wcsy"></textarea>
+									<td class="head_right" align="left" style="text-align: left">
+										<textarea rows="4" cols="40" name="wcsy"></textarea>
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										备注
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<textarea rows="4" cols="30" name="bz"></textarea>
+									<td class="head_right" align="left" style="text-align: left">
+										<textarea rows="4" cols="40" name="bz"></textarea>
 									</td>
 								</tr>
 							</table>

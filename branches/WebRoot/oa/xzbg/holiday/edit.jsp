@@ -66,8 +66,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title></title>
-		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-			type="text/css">
+		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet" type="text/css">
+		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet" type="text/css">
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -76,8 +76,6 @@
 		<script type="text/javascript"
 			src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
-
-		
 		<script type="text/javascript">
             function _resizeNoPage() {
                 document.getElementById("scrollDiv").style.width = document.body.clientWidth - 18;
@@ -177,63 +175,56 @@
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										姓名<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="xm" class="inputStyle"
 											style="width: 200px;" value="<%=holiday.getXm() %>" maxlength="20">
 											<input type="checkbox" name="checked" id="checked" value="1" checked>短信提醒
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										部门
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="dw" class="inputStyle"
 											style="width: 200px;" value="<%=holiday.getDw() %>" maxlength="20">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										外出时间
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="kssj" class="Wdate" onClick="WdatePicker()" value="<%=DateUtil.format(holiday.getKssj(),"yyyy-MM-dd") %>">
 										至
 										<input type="text" name="jssj" class="Wdate" onClick="WdatePicker()" value="<%=DateUtil.format(holiday.getJssj(),"yyyy-MM-dd") %>">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										外出地点<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<input type="text" name="wcdd" class="inputStyle" value="<%=holiday.getWcdd() %>"
-											style="width: 300px;">
+									<td class="head_right" align="left" style="text-align: left">
+                                        <textarea rows="4" cols="40" name="wcdd"><%=holiday.getWcdd() %></textarea>
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										外出事由
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<textarea rows="4" cols="30" name="wcsy"><%=holiday.getWcsy() %></textarea>
+									<td class="head_right" align="left" style="text-align: left">
+										<textarea rows="4" cols="40" name="wcsy"><%=holiday.getWcsy() %></textarea>
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										备注
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<textarea rows="4" cols="30" name="bz"><%=holiday.getBz() %></textarea>
+									<td class="head_right" align="left" style="text-align: left">
+										<textarea rows="4" cols="40" name="bz"><%=holiday.getBz() %></textarea>
 									</td>
 								</tr>
 							</table>
