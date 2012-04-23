@@ -335,8 +335,7 @@
 										备注
 									</td>
 									<td class="head_right" style="text-align: left">
-										<input type="text" name="bz" class="inputStyle" value="<%=wjsp.getBz()%>"
-											style="width: 400px;">
+                                        <textarea rows="4" cols="40" name="bz"><%=wjsp.getBz()%></textarea>
 									</td>
 								</tr>
 								<%if(hasFileList!=null && hasFileList.size()>0){ %>

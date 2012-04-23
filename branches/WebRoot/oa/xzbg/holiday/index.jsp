@@ -33,9 +33,8 @@
 		<title>Insert title here</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
-        <link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-              type="text/css">
-        <link href="<%=contentPath%>/css/office.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
         <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -110,56 +109,56 @@
 			<tr>
 				<td>
 				<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" class="mtabtab" id="mtabtab">
-						<tr>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="40">
+						cellspacing="0" class="mtabtab" id="tab_id">
+						<tr class="form_th">
+							<th nowrap="nowrap"  width="40">
 								序号
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="120">
+							</th>
+							<th nowrap="nowrap"  width="120">
 								姓名
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								单位
-							</td>
-							<td class="NormalColumnTitle" width="200">
+							</th>
+							<th  width="200">
 								外出时间
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								外出地点
-							</td>
-							<td class="NormalColumnTitle" width="200">
+							</th>
+							<th  width="200">
 								外出事由
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle">
+							</th>
+							<th nowrap="nowrap" >
 								操作
-							</td>
+							</th>
 						</tr>
 						<%
 							for (int i = 0; i < list.size(); i++) {
 								Map map = (Map) list.get(i);
 
 						%>
-						<tr>
-							<td class="NormalDataColumn" align="center">
+						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"") %>')">
+							<td  align="center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center" style="text-align: left">
 								<a href="view.jsp?holidayid=<%=StringUtil.parseNull(map.get("HOLIDAYID"),"") %>"><%=StringUtil.parseNull(map.get("XM"),"") %></a>
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=StringUtil.parseNull(map.get("DW"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=map.get("KSSJ")+"至"+map.get("JSSJ")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="left">
+							<td  align="left" style="text-align: left">
                                 <%=StringUtil.parseNull(map.get("WCDD"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="left">
+							<td  align="left" style="text-align: left">
 								<%=StringUtil.parseNull(map.get("WCSY"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center" nowrap="nowrap">
+							<td  align="center" nowrap="nowrap">
                                  <%
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
