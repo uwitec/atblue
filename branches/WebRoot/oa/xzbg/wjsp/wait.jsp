@@ -28,9 +28,8 @@
 		<title>Insert title here</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
-        <link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-              type="text/css">
-        <link href="<%=contentPath%>/css/office.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
         <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -39,6 +38,7 @@
         <script type="text/javascript"
                 src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 		<script type="text/javascript">
 		function onDelete(url){
 			if(window.confirm("确认删除该会议申请?")){
@@ -81,83 +81,81 @@
 			cellpadding="0" cellspacing="0">
 			<tr>
 				<td>
-
-					
 					<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" class="mtabtab" id="mtabtab">
+						cellspacing="0" class="mtabtab" id="tab_id">
 						<tr>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="40">
+							<th nowrap="nowrap"  width="40">
 								序号
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle">
+							</th>
+							<th nowrap="nowrap" >
 								文件标题
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								发文类别
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								文件编号
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								密级
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								缓急时限
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								签发日期
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								拟稿部门
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="200">
+							</th>
+							<th nowrap="nowrap"  width="200">
 								备注
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="80">
+							</th>
+							<th nowrap="nowrap"  width="80">
 								流程状态
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle">
+							</th>
+							<th nowrap="nowrap" >
 								操作
-							</td>
+							</th>
 						</tr>
 						<%
 							for (int i = 0; i < list.size(); i++) {
 								Map map = (Map) list.get(i);
 
 						%>
-						<tr>
-							<td class="NormalDataColumn" align="center">
+						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("DOCUMENTID"),"") %>')">
+							<td  align="center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td class="NormalDataColumn" align="left">
+							<td  align="left" style="text-align: left">
 								<a href="view.jsp?documentid=<%=StringUtil.parseNull(map.get("DOCUMENTID"),"") %>"><%=StringUtil.parseNull(map.get("BT"),"") %></a>
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=StringUtil.parseNull(map.get("LB"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center" style="text-align: left">
 								<%=StringUtil.parseNull(map.get("WJBH"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
                                 <%=StringUtil.parseNull(map.get("MMCD"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="left">
+							<td  align="left">
 								<%=StringUtil.parseNull(map.get("HJSX"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="left">
+							<td  align="left">
 								<%=StringUtil.parseNull(map.get("QFRQ"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="left">
+							<td  align="left">
 								<%=StringUtil.parseNull(map.get("NGBM"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="left">
+							<td  align="left" style="text-align: left">
 								<%=StringUtil.parseNull(map.get("BZ"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center" nowrap="nowrap">
+							<td  align="center" nowrap="nowrap">
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
-							<td class="NormalDataColumn" align="center" nowrap="nowrap">
+							<td  nowrap="nowrap" style="text-align: center">
                                 <input type="button" class="button" name=""  value="审批" onclick="window.location='sp.jsp?documentid=<%=StringUtil.parseNull(map.get("DOCUMENTID"),"") %>';"/>
                                 &nbsp;
 							</td>
@@ -165,7 +163,6 @@
 						<%
 							}
 						%>
-
 					</table>
 				</td>
 			</tr>
