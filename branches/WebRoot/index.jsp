@@ -113,7 +113,7 @@
            </tr>
       <tr>
           <td>
-          <td><table width="494" border="0" cellspacing="0" cellpadding="0">
+          <td valign="top"><table width="494" border="0" cellspacing="0" cellpadding="0">
               <tr>
                   <td><table width="494" border="0" cellspacing="0" cellpadding="0">
                       <tr>
@@ -154,7 +154,7 @@
               </tr>
           </table></td>
           <td width="6">&nbsp;</td>
-          <td><table width="494" border="0" cellspacing="0" cellpadding="0">
+          <td valign="top"><table width="494" border="0" cellspacing="0" cellpadding="0">
               <tr>
                   <td><table width="494" border="0" cellspacing="0" cellpadding="0">
                       <tr>
@@ -167,7 +167,7 @@
                           </table></td>
                       </tr>
                       <tr>
-                          <td height="140" align="center" class="tab_main" valign="top"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                          <td align="center" class="tab_main" valign="top"><table width="95%" border="0" cellspacing="0" cellpadding="0">
                               <%
                                   for(int i=0; i<list2.size();i++){
                                       Map map = (Map)list2.get(i);
