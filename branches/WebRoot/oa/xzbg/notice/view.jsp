@@ -19,8 +19,8 @@
 		<title></title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
-        <link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-              type="text/css">
+        <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
         <link href="<%=request.getContextPath()%>/js/ext/ /css/ext-all.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -139,110 +139,106 @@
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										通知/公告
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<%if(on.getIspublic().equals("1")){ %>
 										通知
 										<%}else{ %>
 										公告
-										<%} %>
+										<%} %>&nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										通知状态
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<%if(on.getStatus().equals("1")){ %>
 										发布
 										<%}else{ %>
 										草稿
-										<%} %>
+										<%} %>&nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										是否需要签收
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<%if(on.getMustsign().equals("1")){ %>
 										<span id="mb3" style="cursor: pointer;">需签收</span>
 										<%}else{ %>
 										不需签收
-										<%} %>
+										<%} %> &nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										通知标题
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;<%=on.getNotititle() %>
+									<td class="head_right" align="left" style="text-align: left">
+										<%=on.getNotititle() %>&nbsp;&nbsp;
 									</td>
 								</tr>
 
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										开始时间
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;<%=DateUtil.format(on.getStartime(),"yyyy-MM-dd HH:mm") %>
+									<td class="head_right" align="left" style="text-align: left">
+										<%=DateUtil.format(on.getStartime(),"yyyy-MM-dd HH:mm") %>&nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										结束时间
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;<%=DateUtil.format(on.getEndtime(),"yyyy-MM-dd HH:mm") %>
+									<td class="head_right" align="left" style="text-align: left">
+										<%=DateUtil.format(on.getEndtime(),"yyyy-MM-dd HH:mm") %>&nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										过期时间
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;<%=DateUtil.format(on.getEnddate(),"yyyy-MM-dd") %>
+									<td class="head_right" align="left" style="text-align: left">
+										<%=DateUtil.format(on.getEnddate(),"yyyy-MM-dd") %>&nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										正文
 									</td>
-									<td class="NormalDataColumn" align="left">
-										<%=on.getContent() %>
+									<td class="head_right" align="left" style="text-align: left">
+										<%=on.getContent() %>&nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										签发人
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(on.getSubscriber(),"") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=StringUtil.parseNull(on.getSubscriber(),"") %>&nbsp;&nbsp;
 									</td>
 								</tr>
 
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										备注
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;<%=StringUtil.parseNull(on.getNote(),"")  %>
+									<td class="head_right" align="left" style="text-align: left">
+										<%=StringUtil.parseNull(on.getNote(),"")  %>&nbsp;&nbsp;
 									</td>
 								</tr>
 								<%if(hasFileList!=null && hasFileList.size()>0){ %>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										已有附件
 									</td>
-									<td class="NormalDataColumn" align="left" id="hasFile">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" id="hasFile" style="text-align: left">
 										<%
 											for(int i=0; i<hasFileList.size(); i++){
 												OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
@@ -253,7 +249,6 @@
 									</td>
 								</tr>
 								<%} %>
-								
 							</table>
 						</div>
 					</td>

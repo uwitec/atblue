@@ -476,7 +476,7 @@ style='font-size:18.0pt;font-family:华文中宋'><%=title %><span lang=EN-US><o
 <table align="center">
 	<tr>
 	<td>
-		<input name="button" type="button" class="button" value="打印" onClick="addSealB()"/>
+		<input name="button" type="button" class="button" value="打印" onClick="window.print()"/>
 	      <input name="submit" type="submit" class="button" value="关闭" onClick="window.close();">
 		  <!-- SignData隐藏域，用于将所有加密的数据提交到表单保存页面 -->
 		  <input type="hidden" id="signdata" name="signdata"/>
