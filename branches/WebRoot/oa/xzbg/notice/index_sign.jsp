@@ -27,11 +27,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
-        <script src="<%=contentPath%>/js/common.js"
+        <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
-        <link href="<%=contentPath%>/css/xzbg-css.css" rel="stylesheet"
-              type="text/css">
-        <link href="<%=contentPath%>/css/office.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript">
 		function onDelete(url){
 			if(window.confirm("确认删除该文件?")){
@@ -62,78 +61,65 @@
 			cellpadding="0" cellspacing="0">
 			<tr>
 				<td>
-					<div id="header">
-						<ul>
-							<li id="selected">
-								<a href="#">当前通知</a>
-							</li>
-							<li>
-								<a href="index_expired.jsp">过期通知</a>
-							</li>
-						</ul>
-
-					</div>
-					
-					
 					<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" class="mtabtab" id="mtabtab">
+						cellspacing="0" class="mtabtab" id="tab_id">
 						<tr>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="40">
+							<th nowrap="nowrap"  width="40">
 								序号
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle">
+							</th>
+							<th nowrap="nowrap" >
 								通知标题
-							</td>
+							</th>
 							
-							<td class="NormalColumnTitle" width="120">
+							<th  width="120">
 								签发人
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								开始时间
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								结束时间
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								过期时间
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="80">
+							</th>
+							<th nowrap="nowrap"  width="80">
 								类别
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="80">
+							</th>
+							<th nowrap="nowrap"  width="80">
 								状态
-							</td>
+							</th>
 						</tr>
 						<%
 							for (int i = 0; i < list.size(); i++) {
 								OfficeNotice notice = (OfficeNotice) list.get(i);
 								OfficeNoticeCheck onc = officeNoticeCheckDAO.getCheckByNoticeidUserid(_user.getUserId(), notice.getNoticeid());
 						%>
-						<tr>
-							<td class="NormalDataColumn" align="center">
+						<tr onclick="setSelected(this,'tab_id','tr_head','<%=notice.getNoticeid()%>')">
+							<td  align="center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td class="NormalDataColumn" align="left">
+							<td  align="left" style="text-align: left">
 								<a href="view.jsp?noticeid=<%=notice.getNoticeid() %>"><%=notice.getNotititle()%></a>
 							</td>
 							
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=StringUtil.parseNull(notice.getSubscriber(),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=DateUtil.format(notice.getStartime(),"yyyy-MM-dd HH:mm")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=DateUtil.format(notice.getEndtime(),"yyyy-MM-dd HH:mm")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=DateUtil.format(notice.getEnddate(),"yyyy-MM-dd")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=notice.getIspublic().equals("0") ? "公告" : "通知"%>
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%
 								if(onc!=null && onc.getCheckflag().equals("1")){
 								%>
@@ -148,7 +134,6 @@
 						<%
 							}
 						%>
-
 					</table>
 				</td>
 			</tr>
@@ -158,6 +143,5 @@
 				</td>
 			</tr>
 		</table>
-
 	</body>
 </html>
