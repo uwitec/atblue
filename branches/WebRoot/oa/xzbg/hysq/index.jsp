@@ -107,35 +107,35 @@
 				<td>
 					<table width="100%" border="0" align="center" cellpadding="0"
 						cellspacing="0" id="tab_id" class="mtabtab">
-						<tr>
-							<td nowrap="nowrap" class="head" width="2%">
+						<tr class="form_th">
+							<th nowrap="nowrap" width="2%">
 								序号
-							</td>
-							<td nowrap="nowrap" class="head">
+							</th>
+							<th nowrap="nowrap" >
 								会议名称
-							</td>
+							</th>
 							
-							<td class="head">
+							<th >
 								申请部门
-							</td>
-							<td class="head">
+							</th>
+							<th >
 								申请时间
-							</td>
-							<td class="head">
+							</th>
+							<th >
 								申请开始时间
-							</td>
-							<td class="head">
+							</th>
+							<th >
 								申请结束时间
-							</td>
-							<td nowrap="nowrap" class="head">
+							</th>
+							<th nowrap="nowrap" >
 								会议内容
-							</td>
-							<td nowrap="nowrap" class="head">
+							</th>
+							<th nowrap="nowrap" >
 								申请状态
-							</td>
-							<td nowrap="nowrap" class="head" width="3%">
+							</th>
+							<th nowrap="nowrap" width="3%">
 								操作
-							</td>
+							</th>
 						</tr>
 						<%
 							for (int i = 0; i < list.size(); i++) {

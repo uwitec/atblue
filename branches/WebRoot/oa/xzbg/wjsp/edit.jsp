@@ -151,6 +151,53 @@
                 document.all.flag.value="startup";
                 document.form1.submit();
             }
+            function doAddAttachRow(tid){
+                var tbl = document.getElementById(tid);
+                var rows = tbl.rows;
+                var len = rows.length;
+                var newTr = tbl.insertRow();
+                var newTd = newTr.insertCell(0);
+                newTd.align="center";
+                newTd.className="NormalDataColumn";
+                newTd.appendChild(document.createTextNode(len));
+                newTd = newTr.insertCell(1);
+                newTd.className="NormalDataColumn";
+                newTd.appendChild(document.createTextNode("文件："));
+                var node = document.createElement("input");
+
+                node.type = "file";
+                node.size = "60";
+                node.name = "fjlist";
+                newTd.appendChild(node);
+                newTd = newTr.insertCell(2);
+                newTd.align="center";
+                newTd.className="NormalDataColumn";
+                var node = document.createElement("a");
+                node.href="javascript:void(0)";
+                node.onclick= function (){
+                    doDeleteRow(this);
+                };
+                node.appendChild(document.createTextNode("[删除]"));
+                newTd.appendChild(node);
+            }
+            function doDeleteRow(t,uuid){
+                if( uuid != undefined && uuid != null && uuid != ''){
+                    if(!confirm("确定要删除此附件信息么?")){
+                        return ;
+                    }
+                }
+                var row = t.parentElement.parentElement;
+                var index = row.rowIndex;
+                //通过Ajax删除附件记录
+                document.getElementById("attachTab").deleteRow(row.rowIndex);
+                var rows = document.getElementById("attachTab").rows;
+                var len = rows.length;
+                for(var i=1; i<len; i++){
+                    var r = rows[i];
+                    var c = r.cells[0];
+                    c.innerText = i;
+                }
+            }
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">

@@ -83,32 +83,32 @@
 
 					<table width="100%" border="0" align="center" cellpadding="0"
 						cellspacing="0" class="mtabtab" id="mtabtab">
-						<tr>
-							<td nowrap="nowrap" class="head" width="40">
+						<tr class="form_th">
+							<td nowrap="nowrap"  width="40">
 								序号
 							</td>
-							<td nowrap="nowrap" class="head" width="120">
+							<td nowrap="nowrap"  width="120">
 								用印名称
 							</td>
-							<td class="head" width="120">
+							<td  width="120">
                                 用印部门
 							</td>
-							<td class="head" width="120">
+							<td  width="120">
 								申请时间
 							</td>
-							<td class="head" width="120">
+							<td  width="120">
                                 用印开始时间
 							</td>
-							<td class="head" width="120">
+							<td  width="120">
                                 用印结束时间
 							</td>
-							<td nowrap="head" class="head" width="200">
+							<td nowrap="head"  width="200">
                                 用印事由
 							</td>
-							<td nowrap="head" class="head">
+							<td nowrap="head" >
 								流程状态
 							</td>
-							<td nowrap="head" class="head">
+							<td nowrap="head" >
 								操作
 							</td>
 						</tr>
