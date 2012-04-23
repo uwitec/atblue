@@ -20,6 +20,7 @@
         String YYJSSJ = StringUtil.parseNull(request.getParameter("YYJSSJ"),"");
         String FS = StringUtil.parseNull(request.getParameter("FS"),"");
         String flag = StringUtil.parseNull(request.getParameter("flag"),"");
+        String dxtx = StringUtil.parseNull(request.getParameter("dxtx"),"");
         OfficeYysq officeYysq = new  OfficeYysq();
         officeYysq.setSqid(StringUtil.getUUID());
         officeYysq.setBz(BZ);
@@ -27,6 +28,7 @@
         officeYysq.setYybm(YYBM);
         officeYysq.setYysy(YYSY);
         officeYysq.setSqzt("已保存");
+        officeYysq.setDxtx(dxtx);
         officeYysq.setSqsj(new java.util.Date());
         if(!StringUtil.isBlankOrEmpty(FS)){
             officeYysq.setFs(Double.valueOf(FS));
@@ -105,7 +107,11 @@
 					alert("请输入正确的结束时间,例如2009-12-23 15:46");
 					return;
 				}
-
+				if(document.getElementById("checked").checked){
+                	 document.all.dxtx.value="1";
+                }else if(!document.getElementById("checked").checked){
+                	document.all.dxtx.value="0";
+                }
 				document.form1.submit();
 			}
             function startup(){
@@ -121,6 +127,11 @@
                 if(!CheckDate(document.form1.YYJSSJ)){
                     alert("请输入正确的结束时间,例如2009-12-23");
                     return;
+                }
+                 if(document.getElementById("checked").checked){
+                	 document.all.dxtx.value="1";
+                }else if(!document.getElementById("checked").checked){
+                	document.all.dxtx.value="0";
                 }
                 document.all.flag.value="startup";
                 document.form1.submit();
@@ -195,6 +206,7 @@
 	<body onload="_resizeNoPage();">
 		<form action="add.jsp" name="form1" method="post">
             <input type="hidden" name="flag" value=""/>
+            <input type="hidden" name="dxtx" value=""/>
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
 				background="<%=request.getContextPath()%>/images/mhead.jpg">
