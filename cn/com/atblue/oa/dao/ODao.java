@@ -61,7 +61,7 @@ public interface ODao {
 
     public void deleteAllQpdFormItemsByFormId(String formId);
     
-    public String getFormItemIdByConnectId(String connectId);
+    public String getFormItemIdByConnectId(String connectId,String formId);
     
     public String getSignDataByProcessId(String processId);
 
