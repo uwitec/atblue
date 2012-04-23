@@ -26,6 +26,7 @@
         String SQKSSJ = StringUtil.parseNull(request.getParameter("SQKSSJ"),"");
         String SQJSSJ = StringUtil.parseNull(request.getParameter("SQJSSJ"),"");
         String flag = StringUtil.parseNull(request.getParameter("flag"),"");
+        String dxtx = StringUtil.parseNull(request.getParameter("dxtx"),"");
         map.put("sqid",SQID);
         OfficeHysq officeHysq = officeHysqDAO.queryForBean(map);
         officeHysq.setSqid(SQID);
@@ -35,6 +36,7 @@
         officeHysq.setSqbm(SQBM);
         officeHysq.setSqsj(new java.util.Date());
         officeHysq.setSqr(cUser.getUserId());
+        officeHysq.setDxtx(dxtx);
         officeHysq.setSqzt("已保存");//保存状态
         if(cUser != null)
             officeHysq.setSqr(cUser.getUserId());
@@ -135,6 +137,11 @@
 					alert("请输入正确的结束时间,例如2009-12-23 15:46");
 					return;
 				}
+				 if(document.getElementById("checked").checked){
+                	 document.all.dxtx.value="1";
+                }else if(!document.getElementById("checked").checked){
+                	document.all.dxtx.value="0";
+                }
 				document.form1.submit();
 			}
             function startup(){
@@ -161,6 +168,11 @@
                 if(!CheckDateTime(document.form1.SQJSSJ)){
                     alert("请输入正确的结束时间,例如2009-12-23 15:46");
                     return;
+                }
+                 if(document.getElementById("checked").checked){
+                	 document.all.dxtx.value="1";
+                }else if(!document.getElementById("checked").checked){
+                	document.all.dxtx.value="0";
                 }
                 document.all.flag.value="startup";
                 document.form1.submit();
@@ -276,6 +288,7 @@
 	</head>
 	<body onload="_resizeNoPage();">
 		<form action="edit.jsp" name="form1" method="post">
+			<input type="hidden" name="dxtx" value=""/>
             <input type="hidden" name="flag" value=""/>
             <div id="hello-win" class="x-hidden">
                 <div id="hello-tabs">
@@ -360,6 +373,7 @@
 									<td class="head_right" style="text-align: left">
                                         <input type="hidden" name="SQID" value="<%=StringUtil.parseNull(hysq.getSqid(),"")%>"  style="width:500px"/>
                                         <input type="text" name="HYMC" value="<%=StringUtil.parseNull(hysq.getHymc(),"")%>"  style="width:500px"/>
+                                        <input type="checkbox" name="checked" id="checked" value="1" checked>短信提醒
 									</td>
 								</tr>
 								<tr>

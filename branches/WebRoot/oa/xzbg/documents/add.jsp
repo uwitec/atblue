@@ -27,6 +27,7 @@
 		String sfjj = fileUpload.getParameter("sfjj");
 		String bz = fileUpload.getParameter("bz");
 		String act = fileUpload.getParameter("act");
+		 String dxtx = StringUtil.parseNull(fileUpload.getParameter("dxtx"),"");
 
 		String documentid = StringUtil.getUUID();
 		OfficeDocuments document = new OfficeDocuments();
@@ -36,6 +37,7 @@
 		document.setBt(bt);
 		document.setMmcd(mmcd);
 		document.setQfr(qfr);
+		document.setDxtx(dxtx);
 		try{
 			document.setQfrq(DateUtil.parse(qfrq));
 		}catch(Exception e){}
@@ -164,6 +166,11 @@
 						return;
 					}
 				}
+				if(document.getElementById("checked").checked){
+                	 document.all.dxtx.value="1";
+                }else if(!document.getElementById("checked").checked){
+                	document.all.dxtx.value="0";
+                }
 				document.form1.submit();
 			}
 			
@@ -303,6 +310,7 @@
 	<body onload="_resizeNoPage();">
 		<form action="add.jsp" name="form1" method="post"
 			enctype="multipart/form-data">
+			<input type="hidden" name="dxtx" value=""/>
 			<input type="hidden" name="act" value="">
 			<div id="hello-win" class="x-hidden">
 				<div id="hello-tabs">
@@ -388,6 +396,7 @@
 										&nbsp;&nbsp;
 										<input type="text" name="bt" class="inputStyle"
 											style="width: 400px;">
+											<input type="checkbox" name="checked" id="checked" value="1" checked>短信提醒
 									</td>
 								</tr>
 								<tr>

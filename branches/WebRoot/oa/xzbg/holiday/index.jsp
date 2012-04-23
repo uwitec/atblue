@@ -9,11 +9,15 @@
 <%
     CUser cUser = (CUser)session.getAttribute("cUser");
     String curRole = request.getParameter("curRole");
+    String kssj = request.getParameter("kssj")==null?DateUtil.format(DateUtil.addDate(DateUtil.getDate(),-20),"yyyy-MM-dd"):request.getParameter("kssj");
+    String jssj = request.getParameter("jssj")==null?DateUtil.format(DateUtil.addDate(DateUtil.getDate(),0),"yyyy-MM-dd"):request.getParameter("jssj");
     cUser = cUser == null?new CUser():cUser;
     String orgId = cUser.getOrgnaId();
     Map paramMap = new HashMap();
     paramMap.put("roleflag",curRole);
     paramMap.put("sqr",cUser.getUserId());
+    paramMap.put("kssj",kssj);
+    paramMap.put("jssj",jssj);
 	pageBean.setPageSize(pageSize);
 	int totalRow =officeHolidayDAO.getPagedCount(paramMap); 
 	pageBean.setTotalRows(totalRow); 
@@ -94,6 +98,10 @@
                     <tbody>
                     <tr>
                         <td align="left">
+                        外出时间
+                        <input type="text" name="kssj" class="Wdate" onClick="WdatePicker()" value="<%=kssj %>">
+						至
+						<input type="text" name="jssj" class="Wdate" onClick="WdatePicker()" value="<%=jssj%>">
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                             <input type="button" class="button" onclick="window.location = 'add.jsp?curRole=<%=curRole%>';" style="width:40px"  value='新增'>
                         </td>

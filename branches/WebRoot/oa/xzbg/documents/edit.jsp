@@ -29,6 +29,7 @@
 		String sfjj = fileUpload.getParameter("sfjj");
 		String bz = fileUpload.getParameter("bz");
 		String act = fileUpload.getParameter("act");
+		String dxtx = StringUtil.parseNull(fileUpload.getParameter("dxtx"),"");
 
 		
 		document.setLb(lb);
@@ -36,6 +37,7 @@
 		document.setBt(bt);
 		document.setMmcd(mmcd);
 		document.setQfr(qfr);
+		document.setDxtx(dxtx);
 		try{
 			document.setQfrq(DateUtil.parse(qfrq));
 		}catch(Exception e){}
@@ -111,7 +113,6 @@
 	List hasFileList = officeFileDAO.getByFk(pkid);
 	List departmentList = orgnizationDAO.queryForList(null);
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -164,7 +165,11 @@
 						return;
 					}
 				}
-				
+				if(document.getElementById("checked").checked){
+                	 document.all.dxtx.value="1";
+                }else if(!document.getElementById("checked").checked){
+                	document.all.dxtx.value="0";
+                }
 				document.form1.submit();
 			}
 			
@@ -273,6 +278,7 @@
 	<body onload="_resizeNoPage();">
 		<form name="form1" method="post"
 			enctype="multipart/form-data">
+			<input type="hidden" name="dxtx" value=""/>
 			<input type="hidden" name="pkid" value="<%=pkid %>">
 			<input type="hidden" name="act" value="">
 			<div id="hello-win" class="x-hidden">
@@ -358,7 +364,7 @@
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
 										<input type="text" name="bt" class="inputStyle" value="<%=StringUtil.parseNull(document.getBt(),"") %>"
-											style="width: 400px;">
+											style="width: 400px;"><input type="checkbox" name="checked" id="checked" value="1" checked>短信提醒
 									</td>
 								</tr>
 								<tr>
@@ -524,7 +530,7 @@
 											for(int i=0; i<hasFileList.size(); i++){
 												OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
 											<a href="../../officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
-												<img src="../../resource/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='../resource/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
+												<img src="<%=request.getContextPath()%>/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='<%=request.getContextPath()%>/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
 											</a>&nbsp;&nbsp;&nbsp;
 											<a href="javascript:delFile('<%=beanFile.getPkid() %>','<%=pkid %>')">[删除]</a></br>&nbsp;&nbsp;
 									     <%}%>
@@ -534,7 +540,7 @@
 								<tr>
 									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
 										附件&nbsp;
-										<img src="<%=contentPath%>/resource/images/add.gif"
+										<img src="<%=contentPath%>/images/add.gif"
 											style="cursor: pointer;" alt="增加电子版" onclick="addFile();">
 									</td>
 									<td class="NormalDataColumn" align="left" id="fileTd">

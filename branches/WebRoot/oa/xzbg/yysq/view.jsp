@@ -201,6 +201,9 @@
 											onclick="history.back()" value="返回">
 										&nbsp;
 									</td>
+									<td>
+									<input type="checkbox" name="checked" id="checked" value="" <%if(!"0".equals(yysq.getDxtx())){ %>checked<%}%>>短信提醒
+									</td>
 								</tr>
 							</tbody>
 						</table>

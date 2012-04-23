@@ -597,12 +597,7 @@ style='font-size:18.0pt;font-family:华文中宋'><%=title %><span lang=EN-US><o
   <p class=MsoNormal style='tab-stops:61.5pt'><span lang=EN-US
   style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='text-indent:60.0pt;mso-char-indent-count:5.0;
-  tab-stops:61.5pt'><span style='font-size:12.0pt;font-family:仿宋_GB2312'>批准人：<span
-  lang=EN-US><span
-  style='mso-spacerun:yes' id="shr<%=id%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  </span></span><%=StringUtil.parseNull(beanMap.get("LRSJ"),DateUtil.format(new java.util.Date()))%>
-  <p class=MsoNormal style='text-indent:60.0pt;mso-char-indent-count:5.0;
-  tab-stops:61.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;</o:p></span></p>
+  tab-stops:61.5pt'><table style='font-size:12.0pt;font-family:仿宋_GB2312' align="right"><tr><td>批准人：</td><td id="shr<%=id%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><%=StringUtil.parseNull(beanMap.get("LRSJ"),DateUtil.format(new java.util.Date()))%></td></tr></table>
   </td>
  </tr>
  <%} %>
@@ -644,6 +639,12 @@ style='font-size:18.0pt;font-family:华文中宋'><%=title %><span lang=EN-US><o
   style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;</o:p></span></p>
   </td>
  </tr>
+ <tr class=MsoNormal>
+ <td colspan="6" style='font-size:12.0pt;font-family:仿宋_GB2312'>说明：１、本表按照公司一般干部请销假制度填写、报批；</td>
+ </tr>
+  <tr class=MsoNormal>
+ <td colspan="6" style='font-size:12.0pt;font-family:仿宋_GB2312'>２、本表一式二份，经部门领导和分管领导审批后，一份交公司人力资源（组织）办公室备案，一份作为差旅费报销凭证交由财务部门保存。</td>
+ </tr>
  <![if !supportMisalignedColumns]>
  <tr height=0>
   <td width=91 style='border:none'></td>
@@ -655,17 +656,6 @@ style='font-size:18.0pt;font-family:华文中宋'><%=title %><span lang=EN-US><o
  </tr>
  <![endif]>
 </table>
-
-<p class=MsoNormal style='line-height:175%;tab-stops:61.5pt;'><span
-style='font-family:仿宋_GB2312;mso-ascii-font-family:"Times New Roman"'>说明：１、本表按照公司一般干部请销假制度填写、报批；</span><span
-lang=EN-US style='mso-fareast-font-family:仿宋_GB2312'><o:p></o:p></span></p>
-
-<p class=MsoNormal style='margin-left:52.5pt;text-indent:-52.5pt;mso-char-indent-count:
--5.0;line-height:175%;tab-stops:61.5pt'><span lang=EN-US style='mso-fareast-font-family:
-仿宋_GB2312'><span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span></span><span style='font-family:仿宋_GB2312;mso-ascii-font-family:"Times New Roman"'>２、本表一式二份，经部门领导和分管领导审批后，一份交公司人力资源（组织）办公室备案，一份作为差旅费报销凭证交由财务部门保存。</span><span
-lang=EN-US style='mso-fareast-font-family:仿宋_GB2312'><o:p></o:p></span></p>
-
 </div>
 </form>
 <!-- ---------装载控件---------------->
