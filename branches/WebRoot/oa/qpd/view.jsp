@@ -61,7 +61,7 @@ function addSealB(){
 	qz = 1;
     SetStore();
     var shr = 'shr<%=StringUtil.parseNull(formItemId,"")%>';
-	document.all.DWebSignSeal.SetPosition(-140,-35,shr);
+	document.all.DWebSignSeal.SetPosition(-10,-20,shr);
     var sealURL='<%="http://127.0.0.1:"+request.getLocalPort()+"/"+request.getContextPath()+"servlet/sealDown?userId="+cUser.getUserId()%>';
     document.all.DWebSignSeal.AddSeal(sealURL, "");
 }
