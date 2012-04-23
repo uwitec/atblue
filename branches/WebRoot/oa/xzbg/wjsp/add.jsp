@@ -142,6 +142,41 @@
                 document.all.flag.value="startup";
                 document.form1.submit();
             }
+            function doAddAttachRow(tid){
+                var tbl = document.getElementById(tid);
+                var rows = tbl.rows;
+                var len = rows.length;
+                var newTr = tbl.insertRow();
+                var newTd = newTr.insertCell(0);
+                newTd.align="center";
+                newTd.className="NormalDataColumn";
+                newTd.appendChild(document.createTextNode(len));
+                newTd = newTr.insertCell(1);
+                newTd.className="NormalDataColumn";
+                newTd.appendChild(document.createTextNode("文件："));
+                var node = document.createElement("input");
+
+                node.type = "file";
+                node.size = "60";
+                node.name = "fjlist";
+                newTd.appendChild(node);
+                newTd = newTr.insertCell(2);
+                newTd.align="center";
+                newTd.className="NormalDataColumn";
+                var node = document.createElement("a");
+                node.href="javascript:void(0)";
+                node.onclick= function (){
+                    doDeleteRow(this);
+                };
+                node.appendChild(document.createTextNode("[删除]"));
+                newTd.appendChild(node);
+            }
+            function doDeleteRow(t,uuid){
+                if( uuid != undefined && uuid != null && uuid != ''){
+                    if(!confirm("确定要删除此附件信息么?")){
+                        return ;
+                    }
+                }
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">
@@ -186,7 +221,7 @@
 					<td>
 						<%--固定表头DIV--%>
 						<div id="scrollDiv"
-							style="width: 1000px; overflow: auto; cursor: default; display: inline; position: absolute; height: 200px;">
+							style="width: 1000px; overflow: auto; cursor: default; display: inline; position: absolute; height: 500px;">
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
@@ -258,7 +293,6 @@
 										签发日期
 									</td>
 									<td class="head_right" style="text-align: left">
-										&nbsp;&nbsp;
 										<input type="text" name="qfrq" class="Wdate" onClick="WdatePicker()" value="<%=DateUtil.format(DateUtil.getDate(),"yyyy-MM-dd") %>">
 									</td>
 								</tr>
@@ -266,8 +300,7 @@
 									<td nowrap="nowrap" width="120" class="head_left">
 										拟稿部门
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" style="text-align: left">
 										<select name="ngbm" style="width: 200px;">
 											<%for(int i=0;i<departmentList.size(); i++){ 
 												COrgnization dep = (COrgnization)departmentList.get(i);%>
@@ -277,7 +310,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										备注
 									</td>
 									<td class="head_right" style="text-align: left">
@@ -286,19 +319,19 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										附件&nbsp;
 									</td>
-									<td class="NormalDataColumn" align="left" id="fileTd">
+									<td class="head_right" style="text-align: left" id="fileTd">
 										1.&nbsp;&nbsp;
 										<input type="file" name="file_1" style="width: 400px;">
 									</td>
 								</tr>
 							</table>
-							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"
+							<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0"
                        				class="mtabtab" id="attachTab">
 				               <tr>
-				               		<td class="NormalDataColumn" width="100%" nowrap colspan="3">其他附件：<input type="button" name="b_bc" class="button" value="添加" onclick="doAddAttachRow('attachTab');"></td>
+				               		<td class="head_right" width="100%" nowrap colspan="3" style="text-align: left">其他附件：<input type="button" name="b_bc" class="button" value="添加" onclick="doAddAttachRow('attachTab');"></td>
 				               </tr>
          					</table>
 						</div>
