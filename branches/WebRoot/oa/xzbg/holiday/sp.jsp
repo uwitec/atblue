@@ -32,8 +32,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title></title>
-		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-			type="text/css">
+		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
+		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -43,7 +43,6 @@
 			src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
 
-		
 		<script type="text/javascript">
             function _resizeNoPage() {
                 document.getElementById("scrollDiv").style.width = document.body.clientWidth - 18;
@@ -236,50 +235,45 @@
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
 							<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										姓名<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=holiday.getXm() %>
+									<td class="head_right" align="left" style="text-align: left">
+										<%=holiday.getXm() %>&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										部门
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=holiday.getDw() %>
+									<td class="head_right" align="left" style="text-align: left">
+										<%=holiday.getDw() %> &nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										外出时间
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=DateUtil.format(holiday.getKssj(),"yyyy年MM月dd日") %>
+									<td class="head_right" align="left" style="text-align: left">
+										<%=DateUtil.format(holiday.getKssj(),"yyyy年MM月dd日") %>&nbsp;
 										至
-										<%=DateUtil.format(holiday.getJssj(),"yyyy年MM月dd日") %>
+										<%=DateUtil.format(holiday.getJssj(),"yyyy年MM月dd日") %>&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										外出地点<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=holiday.getWcdd() %>
+									<td class="head_right" align="left" style="text-align: left">
+										<%=holiday.getWcdd() %>&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										外出事由
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=holiday.getWcsy() %>
+									<td class="head_right" align="left" style="text-align: left">
+										<%=holiday.getWcsy() %>&nbsp;
 									</td>
 								</tr>
 							</table>
