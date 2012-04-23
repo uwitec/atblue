@@ -6,6 +6,8 @@
 <%
 	OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculationDAO");
 	OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
+		String orgId = _user.getOrgnaId();
+	String options = workFlow.getNextUserSelectOptions("副经理",orgId);
 	String nexVal = "";
 	String sql = "select to_char(sysdate,'yyyy-')||lpad(to_number(substr(swh,6))+1,'3','0') val from office_circulation  where substr(swh,0,4)='" + DateUtil.format(DateUtil.getDate(),"yyyy") +"' order by substr(swh,0,4) desc, substr(swh,6) desc";
 	sql ="SELECT * FROM (SELECT A.*, rownum r FROM (" + sql;
@@ -31,6 +33,7 @@
 		String act = fileUpload.getParameter("act");
 		String fs = fileUpload.getParameter("fs");
 		String swh = fileUpload.getParameter("swh");
+		String dxtx = fileUpload.getParameter("dxtx");
 
 		String documentid = StringUtil.getUUID();
 		
@@ -48,10 +51,11 @@
 		document.setZt(act);
 		document.setFs(fs);
 		document.setSwh(swh);
+		document.setDxtx(dxtx);
 		officeCirculationDAO.insert(document);
 		
 		//保存附件信息 
-		List fileList = fileUpload.uploadFile();
+		List fileList = fileUpload.uploadFile(filePath);
 		for (int i = 0; i < fileList.size(); i++) {
 			Map map = (Map) fileList.get(i);
 			OfficeFile uploadFile = new OfficeFile();
@@ -79,21 +83,12 @@
 				String ps = fileUpload.getParameter("ps");
 			
 				Status status = null;
-				String tid = "";
-//				if(ps!=null && ps.equals("2")){
-//					String ld = fileUpload.getParameter("ldps");
-//					status = workFlow.startWorkflow("8b6a1ca1-7eef-489c-8ad1-aaa758212d3b",ld);
-//				}else{
-//					status = workFlow.startWorkflow("8b6a1ca1-7eef-489c-8ad1-aaa758212d3b",nbr);
-//				}
 				
 				OfficeCirculationCheck odc = new OfficeCirculationCheck();
 				odc.setPkid(StringUtil.getUUID());
 				odc.setCheckflag("0");
 				odc.setCheckman(nbr);
 				odc.setCyid(documentid);
-				odc.setTaskid(tid);
-				document.setZt(tid);
 				officeCirculationDAO.updateByPrimaryKey(document);
 				officeCirculationCheckDAO.insert(odc);
 				
@@ -103,7 +98,7 @@
 				um.setAppname("文件传阅");
 				um.setFlag(0);
 				um.setId(StringUtil.getUUID());
-				um.setUrl("/office/circulation/sp.jsp?pkid="+document.getCyid()+"&taskid="+tid);
+				um.setUrl("/office/circulation/sp.jsp?pkid="+document.getCyid());
 				um.setMessage("[" + DateUtil.format(document.getLrsj(),"yyyy-MM-dd") + "]&nbsp;传阅文件" + document.getWjbh() + "需要审批。");
 				um.setReceiver(nbr);
 				um.setReceiverid(nbr);
@@ -165,13 +160,15 @@
 						return;
 					}
 				}
+				if(document.getElementById("checked").checked){
+                	 document.all.dxtx.value="1";
+                }else if(!document.getElementById("checked").checked){
+                	document.all.dxtx.value="0";
+                }
 				document.form1.submit();
 			}
 			
-			/****************
-			 * 生成多个附件
-			 * chivasju
-			 ****************/
+			
 			var fileCount = 1;
 			function addFile(){
 				fileCount++;
@@ -254,6 +251,7 @@
 		<form action="add.jsp" name="form1" method="post"
 			enctype="multipart/form-data">
 			<input type="hidden" name="act" value="">
+			<input type="hidden" name="dxtx" value=""/>
 			
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
@@ -309,7 +307,7 @@
 									</td>
 									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="lwdw" class="inputStyle"
-											style="width: 200px;">
+											style="width: 200px;"><input type="checkbox" name="checked" id="checked" value="1" checked>短信提醒
 									</td>
 								</tr>
 								
@@ -352,29 +350,11 @@
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										领导批示
-									</td>
-									<td class="head_right" align="left" style="text-align: left">
-										<input type="radio" name="ps" value="2" onclick="selLdps();">
-										<select name="ldps" style="width: 100px;" disabled="disabled">
-											<%for(int i=0; i<ldList.size(); i++){
-												CUser tempUser = (CUser)ldList.get(i);%>
-				                                <option value="<%=tempUser.getUserId() %>"><%=tempUser.getRealName() %></option>
-				                            <%} %>
-		                            	</select>
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="head_left">
 										部门经理
 									</td>
 									<td class="head_right" align="left" style="text-align: left">
-										<input type="radio" name="ps" value="1" checked="checked"  onclick="selNbr();">
 										<select name="nbr" style="width: 100px;">
-											<%for(int i=0; i<userList.size(); i++){
-												CUser tempUser = (CUser)userList.get(i);%>
-				                                <option value="<%=tempUser.getUserId() %>"><%=tempUser.getRealName() %></option>
-				                            <%} %>
+											<%=options%>
 		                            	</select>
 									</td>
 								</tr>

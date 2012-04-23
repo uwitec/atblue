@@ -99,7 +99,7 @@
 							<th nowrap="nowrap"  width="80">
 								流程状态
 							</th>
-							<th nowrap="nowrap" >
+							<th nowrap="nowrap" width="80">
 								操作
 							</th>
 						</tr>

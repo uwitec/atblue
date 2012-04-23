@@ -280,6 +280,9 @@
 											onclick="history.back()" value="返回">
 										&nbsp;
 									</td>
+									<td align="left">
+									    <input type="checkbox" name="checked" id="checked" value="" <%if(!"0".equals(wjsp.getDxtx())){ %>checked<%}%>>短信提醒
+									</td>
 								</tr>
 							</tbody>
 						</table>

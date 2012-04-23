@@ -6,15 +6,16 @@
 	<jsp:setProperty name="pageBean" property="*" />
 </jsp:useBean>
 <%
-	OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculation");
+	OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculationDAO");
 	OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
 	//判断权限
-	Map paramMap = new HashMap(); 
-	pageBean.setPageSize(pageSize); 
-	int totalRow = workFlow.getTaskListByUserCount(cyFlow,_user.getUserId());
+	
+	Map paramMap = new HashMap();
+	pageBean.setPageSize(pageSize);
+	int totalRow = officeCirculationDAO.getBeanByNbrCount(_user.getUserId());
 	pageBean.setTotalRows(totalRow);
 
-	List list = workFlow.getTaskListByVersiongroup(cyFlow,_user.getUserId(),pageBean); 
+	List list = officeCirculationDAO.getBeanByNbr(_user.getUserId(),pageBean);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -90,9 +91,7 @@
 						</tr>
 						<%
 							for (int i = 0; i < list.size(); i++) {
-								WTask task = (WTask)list.get(i);
-								String instanceid = task.getInstanceId();
-								OfficeCirculation document = officeCirculationDAO.selectByPrimaryKey(instanceid);
+								OfficeCirculation document = (OfficeCirculation)list.get(i);
 								
 						%>
 						<tr>
@@ -101,7 +100,7 @@
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
 							<td class="NormalDataColumn" align="center">
-								<a href="view.jsp?pkid=<%=document.getCyid() %>&instanceid=<%=instanceid%>"><%=document.getWjbh()%></a>
+								<a href="view.jsp?pkid=<%=document.getCyid() %>"><%=document.getWjbh()%></a>
 							</td>
 							
 							<td class="NormalDataColumn" align="center">
@@ -124,10 +123,8 @@
 							</td>
 							<td class="NormalDataColumn" align="center">
 								<%if(document.getZt()!=null && !document.getZt().equals("9")){ %>
-									<a href="./sp.jsp?pkid=<%=document.getCyid() %>&taskid=<%=instanceid %>">[处理]</a>&nbsp;
+									<a href="./sp.jsp?pkid=<%=document.getCyid() %>">[处理]</a>&nbsp;
 								<%} %>
-								<a href="#" onclick="workflow('<%=instanceid%>')">[查看流程]</a>&nbsp;
-								<a href="./print.jsp?pkid=<%=document.getCyid() %>">[打印]</a>&nbsp;
 							</td>
 						</tr>
 						<%

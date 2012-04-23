@@ -4,18 +4,12 @@
 <%@page import="java.sql.Date"%>
 <%@ include file="../../../import.jsp"%>
 <%
-OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculation");
+OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculationDAO");
 	OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
 	String pkid = request.getParameter("pkid");
-	String taskid = request.getParameter("taskid");
-	
-	WInstance history = workFlow.getHistory(taskid);
 	
 	List hasFileList = officeFileDAO.getByFk(pkid);
 	OfficeCirculation document = officeCirculationDAO.selectByPrimaryKey(pkid); 
-	
-	List userList = dao.findUsersByRole(zyldRole); 
-	
 	List allUserList = dao.getAllUser();
 	
 	
@@ -34,26 +28,9 @@ OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.
 		String ldps = request.getParameter("ldps");
 		String clyj = request.getParameter("clyj");
 		String zyld = request.getParameter("zyld");
-
-		if(history.getActivityId().equals("d1c43204-1c5b-431a-bf39-3ea473e8a996")){
-			document.setNbyj(nbyj);
-			officeCirculationDAO.updateByPrimaryKey(document);
-			//workFlow.completeMission(taskid, document.getLrr(),_user.getUserId());
-			
-			
-		}else if(history.getActivityId().equals("710e8674-f4e8-4be2-8287-bc375495bee1")){
-			document.setLdps(ldps);
-			officeCirculationDAO.updateByPrimaryKey(document);
-			//workFlow.completTask(taskid, document.getLrr(),_user.getUserId());
-		}else if(history.getActivityId().equals("f48aace8-0f9d-47de-a636-53d8c132c7fb")){ 
-			document.setClyj(clyj);
-			//document.setZt("9");
-			officeCirculationDAO.updateByPrimaryKey(document);
-			//WorkFlow.completTask(taskid, document.getLrr(),_user.getUserId());
-		}else if(history.getActivityId().equals("34394f47-30ee-4663-b4a6-5b176a46b447")){ 
-			//workFlow.completTask(taskid, zyld,_user.getUserId());
-		}else if(history.getActivityId().equals("971b59e4-5c8b-4707-854e-d71a50ab9023")){
-			String[] ubox = request.getParameterValues("ubox");
+		document.setClyj(clyj);
+		officeCirculationDAO.updateByPrimaryKey(document);
+		String[] ubox = request.getParameterValues("ubox");
 			StringBuilder sb = new StringBuilder("");
 			for(int i=0; i<ubox.length; i++){
 				if(i==0){
@@ -62,11 +39,6 @@ OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.
 					sb.append("&").append(ubox[i]);
 				}
 			} 
-			//workFlow.completTask(taskid, sb.toString(),_user.getUserId());
-		}else if(history.getActivityId().equals("71e96656-d121-4553-96c0-0fe85a422a65")){
-			//workFlow.completTask(taskid, document.getLrr(),_user.getUserId());
-		}
-		
 		out.print("<script>");
 		out.print("window.location='check_index.jsp';");
 		out.print("</script>");
@@ -109,7 +81,6 @@ OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.
 			
 			
 		</script>
-		<%if(history.getActivityId().equals("971b59e4-5c8b-4707-854e-d71a50ab9023")){ %>
 		<script type="text/javascript">
 			Ext.onReady(function(){
 			    var win;
@@ -158,7 +129,6 @@ OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.
 			    });
 			});
 		</script>
-		<%} %>
 	</head>
 	<body onload="_resizeNoPage();">
 		<form  name="form1" method="post">
@@ -286,61 +256,12 @@ OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.
 											for(int i=0; i<hasFileList.size(); i++){
 												OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
 											<a href="../../officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
-												<img src="../../resource/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='../../resource/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
+												<img src="<%=contentPath%>/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='<%=contentPath%>/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
 											</a>&nbsp;&nbsp;&nbsp;
 									     <%}%>
 									</td>
 								</tr>
 								<%} %>
-								
-								<%if(history.getActivityId().equals("d1c43204-1c5b-431a-bf39-3ea473e8a996")){ %>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										拟办意见
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<textarea rows="5" name="nbyj" cols="50"></textarea>
-									</td>
-								</tr>
-								<%}else if(history.getActivityId().equals("710e8674-f4e8-4be2-8287-bc375495bee1")){ %>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										拟办意见
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.replace(StringUtil.parseNull(document.getNbyj(),""),"\n","</br>&nbsp;&nbsp;") %>
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										领导批示
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<textarea rows="5" name="ldps" cols="50"></textarea>
-									</td>
-								</tr>
-								<%}else if(history.getActivityId().equals("f48aace8-0f9d-47de-a636-53d8c132c7fb")){ %>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										领导批示
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.replace(StringUtil.parseNull(document.getLdps(),""),"\n","</br>&nbsp;&nbsp;") %>
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										拟办意见
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.replace(StringUtil.parseNull(document.getNbyj(),""),"\n","</br>&nbsp;&nbsp;") %>
-									</td>
-								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
 										处理意见
@@ -348,49 +269,6 @@ OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.
 									<td class="NormalDataColumn" align="left">
 										&nbsp;&nbsp;
 										<textarea rows="5" name="clyj" cols="50"></textarea>
-									</td>
-								</tr>
-								<%}else if(history.getActivityId().equals("34394f47-30ee-4663-b4a6-5b176a46b447")){ %>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										拟办意见
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.replace(StringUtil.parseNull(document.getNbyj(),""),"\n","</br>&nbsp;&nbsp;") %>
-									</td>
-								</tr>	
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										批示领导
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<select name="zyld" style="width: 100px;">
-										<%for(int i=0; i<userList.size(); i++){
-											CUser tempUser = (CUser)userList.get(i);%>
-			                                <option value="<%=tempUser.getUserId() %>"><%=tempUser.getRealName() %></option>
-			                            <%} %>
-		                            	</select>
-									</td>
-								</tr>			
-								<%}else if(history.getActivityId().equals("971b59e4-5c8b-4707-854e-d71a50ab9023")){ %>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										领导批示
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.replace(StringUtil.parseNull(document.getLdps(),""),"\n","</br>&nbsp;&nbsp;") %>
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										拟办意见
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.replace(StringUtil.parseNull(document.getNbyj(),""),"\n","</br>&nbsp;&nbsp;") %>
 									</td>
 								</tr>
 								<tr>
@@ -402,35 +280,6 @@ OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.
 										<input id="mb3" type="text" name="checkman" style="width: 400px;" readonly="readonly" class="inputStyle">
 									</td>
 								</tr>
-								<%}else if(history.getActivityId().equals("71e96656-d121-4553-96c0-0fe85a422a65")){ %>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										领导批示
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.replace(StringUtil.parseNull(document.getLdps(),""),"\n","</br>&nbsp;&nbsp;") %>
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										拟办意见
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.replace(StringUtil.parseNull(document.getNbyj(),""),"\n","</br>&nbsp;&nbsp;") %>
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										阅文签名
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<input id="sign" value="<%=_user.getRealName()+" "+ DateUtil.format(DateUtil.getDate(),"yyyy年MM月dd日") %>" type="text" name="sign" style="width: 200px;" readonly="readonly" class="inputStyle">
-									</td>
-								</tr>
-								<%} %>
 							</table>
 						</div>
 					</td>
