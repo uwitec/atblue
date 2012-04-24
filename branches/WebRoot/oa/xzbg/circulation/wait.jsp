@@ -117,7 +117,7 @@
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
 							<td  style="text-align: left" nowrap="nowrap">
-								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("CYID"),"") %>"><%=StringUtil.parseNull(map.get("WJBH"),"") %></a>
+								<a href="view.jsp?pkid=<%=StringUtil.parseNull(map.get("CYID"),"") %>"><%=StringUtil.parseNull(map.get("WJBH"),"") %></a>
 							</td>
 							
 							<td  style="text-align: left" nowrap="nowrap">

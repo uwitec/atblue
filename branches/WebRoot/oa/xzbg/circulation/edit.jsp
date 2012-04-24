@@ -12,7 +12,8 @@
 	OfficeCirculation document = officeCirculationDAO.selectByPrimaryKey(pkid);
 	List hasFileList = officeFileDAO.getByFk(pkid);
     List checkList = oDao.getOfficeCirculationCheckList(pkid);
-    String[] checkmans = null;
+    String[] checkmans = new String[1];
+    checkmans[0] = "";
     String checkman = "";
     if(checkList != null && checkList.size() > 0){
         checkmans = new String[checkList.size()];
@@ -132,7 +133,7 @@
 		out.print("</script>");
 	}
 
-	List userList = dao.findUsersByRole(bgsldRole);
+    List userList  = dao.getAllUser();
 	List ldList = dao.findUsersByRole(zyldRole); 
 %>
 <html>
@@ -298,7 +299,8 @@
                                 autoTabs:true,
                                 activeTab:0,
                                 deferredRender:false,
-                                border:false
+                                border:false,
+                                defaults:{autoScroll: true}
                             }),
                             buttons: [{
                                 text:'确定',

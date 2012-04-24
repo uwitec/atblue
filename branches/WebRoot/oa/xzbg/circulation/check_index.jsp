@@ -24,8 +24,8 @@
 		<title>Insert title here</title>
 		<script src="<%=contentPath%>/js/common.js"
 			type="text/javascript" defer="defer"></script>
-		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-			type="text/css">
+        <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -65,29 +65,29 @@
 					<table width="100%" border="0" align="center" cellpadding="0"
 						cellspacing="0" class="mtabtab" id="mtabtab">
 						<tr>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="40">
+							<th nowrap="nowrap"  width="40">
 								序号
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="220">
+							</th>
+							<th nowrap="nowrap"  width="220">
 								文件编号
-							</td>
-							
-							<td class="NormalColumnTitle">
+							</th>
+
+							<th >
 								文件名称
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								来文时间
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								来文单位
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="5%" nowrap="nowrap">
 								状态
-							</td>
-							
-							<td class="NormalColumnTitle" width="120">
+							</th>
+
+							<th  width="5%" nowrap="nowrap">
 								操作
-							</td>
+							</th>
 						</tr>
 						<%
 							for (int i = 0; i < list.size(); i++) {
@@ -95,24 +95,24 @@
 								
 						%>
 						<tr>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center" style="text-align: left">
 								<a href="view.jsp?pkid=<%=document.getCyid() %>"><%=document.getWjbh()%></a>
 							</td>
 							
-							<td class="NormalDataColumn" align="center">
+							<td  align="center" style="text-align: left">
 								<%=document.getWjmc()%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=DateUtil.format(document.getLwsj(),"yyyy-MM-dd")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=StringUtil.parseNull(document.getLwdw(),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center" nowrap="nowrap">
 								<%if(document.getZt().equals("save")){ %>
 									<span style="color: red">未传阅</span>
 								<%}else if(document.getZt().equals("9")){ %>
@@ -121,7 +121,7 @@
 									<span style="color: blue">传阅中</span>
 								<%} %>
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center" nowrap="nowrap">
 								<%if(document.getZt()!=null && !document.getZt().equals("9")){ %>
 									<a href="./sp.jsp?pkid=<%=document.getCyid() %>">[处理]</a>&nbsp;
 								<%} %>

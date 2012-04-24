@@ -172,14 +172,16 @@
    <select id="getBeanByNbr" parameterClass="java.util.HashMap" resultClass="cn.com.atblue.oa.bean.OfficeCirculation">
   	 <include refid="basic.pageStart" />
 	  	<![CDATA[
-	  		select a.* from OFFICE_CIRCULATION a,Office_Circulation_Check b where a.cyid=b.cyid and b.checkman =#checkman#
+	  		select a.* from OFFICE_CIRCULATION a,Office_Circulation_Check b
+	  		where a.cyid=b.cyid and b.checkman =#checkman#  and a.zt = '正在传阅中'
 	  	]]>
 	  <include refid="basic.pageEnd" />
   </select>
   
   <select id="getBeanByNbrCount" parameterClass="java.lang.String" resultClass="java.lang.Integer">
   	<![CDATA[
-  		select count(*) from OFFICE_CIRCULATION a,Office_Circulation_Check b where a.cyid=b.cyid and b.checkman =#checkman#
+  		select count(*) from OFFICE_CIRCULATION a,Office_Circulation_Check b
+  		where a.cyid=b.cyid and b.checkman =#checkman#  and a.zt = '正在传阅中'
   	]]>
   </select>
 </sqlMap>
