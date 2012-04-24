@@ -6,12 +6,13 @@
 <%
     CUser cUser = (CUser)session.getAttribute("cUser");
     cUser = cUser == null?new CUser():cUser;
-    String orgId = cUser.getOrgnaId();
     OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculationDAO");
     OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
     String pkid = request.getParameter("pkid");
+    String act = request.getParameter("act");
     List checkList = oDao.getOfficeCirculationCheckList(pkid);
-    String[] checkmans = null;
+    String[] checkmans = new String[1];
+    checkmans[0] = "";
     String checkman = "";
     if(checkList != null && checkList.size() > 0){
         checkmans = new String[checkList.size()];
@@ -31,8 +32,10 @@
     List hasFileList = officeFileDAO.getByFk(pkid);
 //    OfficeCirculationCheck officeCirculationCheck = officeCirculationCheckDAO.selectByPrimaryCyid(pkid);
 //    if(officeCirculationCheck==null) officeCirculationCheck = new OfficeCirculationCheck();
-    List userList = dao.getAllUser();
-
+    List userList  = dao.getAllUser();
+    if("sign".equals(act)){
+          oDao.updateOfficeCirculationCheck(pkid,cUser.getUserId());
+    }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -52,33 +55,9 @@
             src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
 
-
     <script type="text/javascript">
         function checkForm(act){
-
-            document.form1.act.value=act;
-
-            if(document.form1.lwdw.value==""){
-                document.form1.lwdw.focus();
-                alert("请输入来文单位");
-                return;
-            }
-            if(document.form1.wjbh.value==""){
-                document.form1.wjbh.focus();
-                alert("请输入文件编号");
-                return;
-            }
-            if(document.form1.wjmc.value==""){
-                document.form1.wjmc.focus();
-                alert("请选择文件名称");
-                return;
-            }
-
-            if(act=='pub'){
-                if(!window.confirm("确认传阅【" + document.form1.wjmc.value + "】文件？")){
-                    return;
-                }
-            }
+            document.all.act.value = "sign";
             document.form1.submit();
         }
 
@@ -115,27 +94,6 @@
                 ajax.send(null);
             }
         }
-    </script>
-
-    <script type="text/javascript">
-        function lbz(obj){
-            document.form1.wjbh.value=obj.value;
-        }
-    </script>
-    <script type="text/javascript">
-        function tj(sid,pid,cid){
-            var v = document.all.agree;
-            var nextUserId = "";
-            var varValue = "";
-            if(v[0].checked && v[0].value == '1'){
-                nextUserId = document.all.agreed.value;
-                varValue = "1";
-            }else{
-                nextUserId = document.all.disagreed.value;
-                varValue = "-1";
-            }
-            window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&pkId="+sid+"&processId="+pid+"&varValue="+varValue;
-        }
         Ext.onReady(function(){
             var win;
             var button = Ext.get('checkman');
@@ -153,13 +111,13 @@
                         pageX:100,
                         pageY:100,
                         items: new Ext.TabPanel({
-                                applyTo: 'hello-tabs',
-                                autoTabs:true,
-                                activeTab:0,
-                                deferredRender:false,
-                                border:false,
-                                defaults:{autoScroll: true}
-                            }),
+                            applyTo: 'hello-tabs',
+                            autoTabs:true,
+                            activeTab:0,
+                            deferredRender:false,
+                            border:false,
+                            defaults:{autoScroll: true}
+                        }),
                         buttons: [{
                             text:'确定',
                             handler: function(){
@@ -184,11 +142,17 @@
             });
         });
     </script>
+
+    <script type="text/javascript">
+        function lbz(obj){
+            document.form1.wjbh.value=obj.value;
+        }
+    </script>
 </head>
 <body onload="_resizeNoPage();">
-<form name="form1" method="post"
-      enctype="multipart/form-data">
+<form name="form1" method="post">
     <input type="hidden" name="act" value="">
+    <input type="hidden" name="pkid" value="<%=pkid%>">
     <div id="hello-win" class="x-hidden">
         <div id="hello-tabs">
             <div class="x-tab" title="请选择签收用户">
@@ -241,48 +205,10 @@
                     <tbody>
                     <tr>
                         <td align="left">
-                            <input type="button" name="sign" class="button" value="签字"/>&nbsp;&nbsp;&nbsp;
-                            <input type="radio" name="agree" value="1" checked="checked" onclick="document.getElementById('d').style.display='none';document.getElementById('a').style.display='';">同意
-                            <input type="radio" name="agree" value="0" onclick="document.getElementById('a').style.display='none';document.getElementById('d').style.display='';">不同意
-
-                                        <span id="a">
-                                            <%
-                                                String nextRole = workFlow.getNextRoleName(StringUtil.parseNull(document.getConnectId(),""),"1");
-                                                String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
-                                            %>
-                                            <%if(!"结束".equals(nextRole)){ %>
-                                            发送给&nbsp; <%=nextRole%>
-                                             <select name="agreed">
-                                                 <%=options%>
-                                             </select>  处理！
-                                            <% }else{
-                                            %>
-                                            结束审批！
-                                            <input type="hidden" name="agreed" value=""/>
-                                            <%     }%>
-                                       </span>
-                                        <span id="d"  style="display: none">
-                                            发送给
-                                        <select name="disagreed">
-                                            <%
-                                                nextRole = workFlow.getNextRoleName(StringUtil.parseNull(document.getConnectId(),""),"-1");
-                                                options = workFlow.getNextUserSelectOptions(nextRole,orgId);
-                                            %>
-                                            <%if(!"来文传阅".equals(nextRole)){ %>
-                                            <%=options%>
-                                            <% }else{
-                                                Map m = new HashMap();
-                                                m.put("userId",document.getLrr()) ;
-                                                CUser u = userDAO.queryForBean(m);
-                                                u = u ==null?new CUser():u;
-                                            %>
-                                            <option value="<%=u.getUserId()%>"><%=u.getRealName()%></option>
-                                            <%     }%>
-                                        </select> 处理！</span>
-
-                            <input type="button" class="button"
-                                   onclick="tj('<%=document.getCyid()%>','<%=document.getProcessId()%>','<%=document.getConnectId()%>');" value="提交">
-                            <input type="button" class="button" id="button1"
+                            &nbsp;
+                            <input type="button" class="button" id="button"
+                                   onclick="checkForm();" value="传阅"> &nbsp;
+                            <input type="button" class="button" id="button"
                                    onclick="history.back()" value="返回">
                             &nbsp;
                         </td>
@@ -305,8 +231,7 @@
                                 来文时间
                             </td>
                             <td class="head_right" align="left" style="text-align: left">
-
-                                <%=DateUtil.format(document.getLwsj(),"yyyy-MM-dd") %> &nbsp;&nbsp;
+                                <%=StringUtil.parseNull(document.getLwsj(),"") %> &nbsp;&nbsp;
                             </td>
                         </tr>
                         <tr>
@@ -314,11 +239,9 @@
                                 来文单位
                             </td>
                             <td class="head_right" align="left" style="text-align: left">
-
                                 <%=StringUtil.parseNull(document.getLwdw(),"") %> &nbsp;&nbsp;
                             </td>
                         </tr>
-
                         <tr>
                             <td nowrap="nowrap" width="120" class="head_left">
                                 文件编号
@@ -348,44 +271,6 @@
                                 &nbsp;
                             </td>
                         </tr>
-                        <%--<tr>--%>
-                            <%--<td nowrap="nowrap" width="120" class="head_left">--%>
-                                <%--办公室负责人--%>
-                            <%--</td>--%>
-                            <%--<td class="head_right" align="left" style="text-align: left">--%>
-
-                                <%--<%if(officeCirculationCheck.getCheckman()==null){out.println("&nbsp;");}else{ %>--%>
-                                <%--<%=dao.findUserById(officeCirculationCheck.getCheckman()).getRealName()%>--%>
-                                <%--<%} %> &nbsp;&nbsp;--%>
-                            <%--</td>--%>
-                        <%--</tr>--%>
-                        <%--<tr>--%>
-                            <%--<td nowrap="nowrap" width="120" class="head_left">--%>
-                                <%--领导批示--%>
-                            <%--</td>--%>
-                            <%--<td class="head_right" align="left" style="text-align: left">--%>
-
-                                <%--<%=StringUtil.replace(StringUtil.parseNull(document.getLdps(),""),"\n","</br>&nbsp;&nbsp;") %>&nbsp;&nbsp;--%>
-                            <%--</td>--%>
-                        <%--</tr>--%>
-                        <%--<tr>--%>
-                            <%--<td nowrap="nowrap" width="120" class="head_left">--%>
-                                <%--拟办意见--%>
-                            <%--</td>--%>
-                            <%--<td class="head_right" align="left" style="text-align: left">--%>
-
-                                <%--<%=StringUtil.replace(StringUtil.parseNull(document.getNbyj(),""),"\n","</br>&nbsp;&nbsp;") %>&nbsp;&nbsp;--%>
-                            <%--</td>--%>
-                        <%--</tr>--%>
-                        <%--<tr>--%>
-                            <%--<td nowrap="nowrap" width="120" class="head_left">--%>
-                                <%--处理意见--%>
-                            <%--</td>--%>
-                            <%--<td class="head_right" align="left" style="text-align: left">--%>
-
-                                <%--<%=StringUtil.replace(StringUtil.parseNull(document.getClyj(),""),"\n","</br>&nbsp;&nbsp;") %>&nbsp;&nbsp;--%>
-                            <%--</td>--%>
-                        <%--</tr>--%>
                         <%if(hasFileList!=null && hasFileList.size()>0){ %>
                         <tr>
                             <td nowrap="nowrap" width="120" class="head_left">

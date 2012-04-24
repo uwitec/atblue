@@ -110,4 +110,8 @@ public interface ODao {
     public List getOfficeCirculationCheckList(String documentid);
 
     public void delOfficeCirculationCheck(String checkman, String pkid);
+
+    public List getLatestNotice(String userid, int cn);
+
+    public void updateOfficeCirculationCheck(String checkman, String pkid);
 }
