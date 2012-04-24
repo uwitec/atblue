@@ -10,12 +10,18 @@
     OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculationDAO");
     OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
     String pkid = request.getParameter("pkid");
-    //String instanceid = request.getParameter("instanceid");
-//	List list = WorkFlow.getInstanceHistory(instanceid);
-    //for(int i=0;i<list.size();i++){
-//		FlwHistory bean = (FlwHistory)list.get(i);
-//		out.println(bean.getFinishman());
-//	}
+    List checkList = oDao.getOfficeCirculationCheckList(pkid);
+    String[] checkmans = null;
+    String checkman = "";
+    if(checkList != null && checkList.size() > 0){
+        checkmans = new String[checkList.size()];
+        for(int i=0; i<checkList.size(); i++){
+            Map map = (Map)checkList.get(i);
+            String name = StringUtil.parseNull(map.get("REAL_NAME"),"");
+            checkman = checkman + name +";";
+            checkmans[i] = StringUtil.parseNull(map.get("CHECKMAN"),"");
+        }
+    }
     OfficeCirculation document = null;
     try{
         document = officeCirculationDAO.selectByPrimaryKey(pkid);
@@ -130,12 +136,94 @@
             }
             window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&pkId="+sid+"&processId="+pid+"&varValue="+varValue;
         }
+        Ext.onReady(function(){
+            var win;
+            var button = Ext.get('checkman');
+
+            button.on('click', function(){
+                // create the window on the first click and reuse on subsequent clicks
+                if(!win){
+                    win = new Ext.Window({
+                        applyTo:'hello-win',
+                        layout:'fit',
+                        width:500,
+                        height:400,
+                        closeAction:'hide',
+                        plain: true,
+                        pageX:100,
+                        pageY:100,
+                        items: new Ext.TabPanel({
+                            applyTo: 'hello-tabs',
+                            autoTabs:true,
+                            activeTab:0,
+                            deferredRender:false,
+                            border:false
+                        }),
+                        buttons: [{
+                            text:'确定',
+                            handler: function(){
+                                document.form1.checkman.value = "";
+                                for(var i=0; i<document.form1.ubox.length; i++){
+                                    if(document.form1.ubox[i].checked){
+                                        document.form1.checkman.value+=document.form1.ubox[i].title + ";";
+                                    }
+                                    //document.form1.ubox[i].checked=obj.checked;
+                                }
+                                win.hide();
+                            }
+                        },{
+                            text: '关闭',
+                            handler: function(){
+                                win.hide();
+                            }
+                        }]
+                    });
+                }
+                win.show(this);
+            });
+        });
     </script>
 </head>
 <body onload="_resizeNoPage();">
 <form name="form1" method="post"
       enctype="multipart/form-data">
     <input type="hidden" name="act" value="">
+    <div id="hello-win" class="x-hidden">
+        <div id="hello-tabs">
+            <div class="x-tab" title="请选择签收用户">
+                <table border="0" width="100%">
+                    <tr>
+                        <td colspan="6" align="left">
+                            <input type="checkbox" name="allBox" onclick="checkAll(this);">全选&nbsp;
+                            <input type="checkbox" name="allBox" onclick="checkUnAll();">反选&nbsp;
+                            <hr width="100%">
+                        </td>
+                    </tr>
+                    <%for(int i=0; i<userList.size(); i++){
+                        CUser u = (CUser)userList.get(i);
+                        if(i==0){
+                    %>
+                    <tr>
+                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
+                        <%	}else if(i%6==0){ %>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
+                        <%	}else{ %>
+                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
+                        <%	} %>
+                        <%} %>
+                        <%
+                            if(userList.size()%6!=0){
+                                for(int i=0; i<userList.size()%6-1; i++){%>
+                        <td>&nbsp;</td>
+                        <%}%>
+                    </tr>
+                    <%}%>
+                </table>
+            </div>
+        </div>
+    </div>
     <table width="100%" height="25" border="0" cellpadding="0"
            cellspacing="0"
            background="<%=contentPath%>/images/mhead.jpg">
@@ -247,6 +335,16 @@
                             <td class="head_right" align="left" style="text-align: left">
 
                                 <%=StringUtil.parseNull(document.getWjmc(),"") %> &nbsp;&nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap" width="120" class="head_left">
+                                传阅人<span style="color: red">&nbsp;*</span>
+                            </td>
+                            <td class="head_right" align="left" style="text-align: left">
+                                <input type="text" name="checkman" readonly="readonly" class="inputStyle"
+                                       style="width: 400px;" value="<%=checkman%>">
+                                &nbsp;
                             </td>
                         </tr>
                         <%--<tr>--%>
