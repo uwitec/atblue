@@ -85,36 +85,45 @@
 			officeFileDAO.insert(
 					uploadFile);
 		}
-		
-		//保存用户
-		if(act!=null && act.equals("pub")){
-			
-				String ps = fileUpload.getParameter("ps");
-			
-				Status status = null;
-				
-				OfficeCirculationCheck odc = new OfficeCirculationCheck();
-				odc.setPkid(StringUtil.getUUID());
-				odc.setCheckflag("0");
-				odc.setCheckman(nbr);
-				odc.setCyid(documentid);
-				officeCirculationDAO.updateByPrimaryKey(document);
-				officeCirculationCheckDAO.insert(odc);
-				
-				//抛入消息池
-				UMessage um = new UMessage(); 
-				um.setAppkey(document.getCyid());
-				um.setAppname("文件传阅");
-				um.setFlag(0);
-				um.setId(StringUtil.getUUID());
-				um.setUrl("/office/circulation/sp.jsp?pkid="+document.getCyid());
-				um.setMessage("[" + DateUtil.format(document.getLrsj(),"yyyy-MM-dd") + "]&nbsp;传阅文件" + document.getWjbh() + "需要审批。");
-				um.setReceiver(nbr);
-				um.setReceiverid(nbr);
-				um.setSender(_user.getUserId());
-				um.setSendtime(DateUtil.getDateTime());
-				uMessageDAO.insert(um);
-		}
+        String[] ubox = fileUpload.getParameters("ubox");
+        for(int i=0; i<ubox.length; i++){
+            OfficeCirculationCheck odc = new OfficeCirculationCheck();
+            odc.setPkid(StringUtil.getUUID());
+            odc.setCheckflag("0");
+            odc.setCheckman(ubox[i]);
+            odc.setCyid(documentid);
+            officeCirculationCheckDAO.insert(odc);
+        }
+//
+//		//保存用户
+//		if(act!=null && act.equals("pub")){
+//
+//				String ps = fileUpload.getParameter("ps");
+//
+//				Status status = null;
+//
+//				OfficeCirculationCheck odc = new OfficeCirculationCheck();
+//				odc.setPkid(StringUtil.getUUID());
+//				odc.setCheckflag("0");
+//				odc.setCheckman(nbr);
+//				odc.setCyid(documentid);
+//				officeCirculationDAO.updateByPrimaryKey(document);
+//				officeCirculationCheckDAO.insert(odc);
+//
+//				//抛入消息池
+//				UMessage um = new UMessage();
+//				um.setAppkey(document.getCyid());
+//				um.setAppname("文件传阅");
+//				um.setFlag(0);
+//				um.setId(StringUtil.getUUID());
+//				um.setUrl("/office/circulation/sp.jsp?pkid="+document.getCyid());
+//				um.setMessage("[" + DateUtil.format(document.getLrsj(),"yyyy-MM-dd") + "]&nbsp;传阅文件" + document.getWjbh() + "需要审批。");
+//				um.setReceiver(nbr);
+//				um.setReceiverid(nbr);
+//				um.setSender(_user.getUserId());
+//				um.setSendtime(DateUtil.getDateTime());
+//				uMessageDAO.insert(um);
+//		}
 		
 		out.print("<script>");
 		out.print("window.location='index.jsp';");
@@ -145,7 +154,17 @@
 		
 		<script type="text/javascript">
 			function checkForm(act){
-				
+                var has = false;
+                for(var i=0; i<document.form1.ubox.length; i++){
+                    if(document.form1.ubox[i].checked){
+                        has = true;
+                        break;
+                    }
+                }
+                if(!has){
+                    alert("请选择签收用户.");
+                    return;
+                }
 				document.form1.act.value=act;
 				
 				if(document.form1.lwdw.value==""){
@@ -254,6 +273,52 @@
 	    		c.innerText = i;
 	    	}
 	    }
+            Ext.onReady(function(){
+                var win;
+                var button = Ext.get('checkman');
+
+                button.on('click', function(){
+                    // create the window on the first click and reuse on subsequent clicks
+                    if(!win){
+                        win = new Ext.Window({
+                            applyTo:'hello-win',
+                            layout:'fit',
+                            width:500,
+                            height:400,
+                            closeAction:'hide',
+                            plain: true,
+                            pageX:100,
+                            pageY:100,
+                            items: new Ext.TabPanel({
+                                applyTo: 'hello-tabs',
+                                autoTabs:true,
+                                activeTab:0,
+                                deferredRender:false,
+                                border:false
+                            }),
+                            buttons: [{
+                                text:'确定',
+                                handler: function(){
+                                    document.form1.checkman.value = "";
+                                    for(var i=0; i<document.form1.ubox.length; i++){
+                                        if(document.form1.ubox[i].checked){
+                                            document.form1.checkman.value+=document.form1.ubox[i].title + ";";
+                                        }
+                                        //document.form1.ubox[i].checked=obj.checked;
+                                    }
+                                    win.hide();
+                                }
+                            },{
+                                text: '关闭',
+                                handler: function(){
+                                    win.hide();
+                                }
+                            }]
+                        });
+                    }
+                    win.show(this);
+                });
+            });
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">
@@ -261,7 +326,42 @@
 			enctype="multipart/form-data">
 			<input type="hidden" name="act" value="">
 			<input type="hidden" name="dxtx" value=""/>
-			
+            <div id="hello-win" class="x-hidden">
+                <div id="hello-tabs">
+                    <div class="x-tab" title="请选择签收用户">
+                        <table border="0" width="100%">
+                            <tr>
+                                <td colspan="6" align="left">
+                                    <input type="checkbox" name="allBox" onclick="checkAll(this);">全选&nbsp;
+                                    <input type="checkbox" name="allBox" onclick="checkUnAll();">反选&nbsp;
+                                    <hr width="100%">
+                                </td>
+                            </tr>
+                            <%for(int i=0; i<userList.size(); i++){
+                                CUser u = (CUser)userList.get(i);
+                                if(i==0){
+                            %>
+                            <tr>
+                                <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
+                                <%	}else if(i%6==0){ %>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
+                                <%	}else{ %>
+                                <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
+                                <%	} %>
+                                <%} %>
+                                <%
+                                    if(userList.size()%6!=0){
+                                        for(int i=0; i<userList.size()%6-1; i++){%>
+                                <td>&nbsp;</td>
+                                <%}%>
+                            </tr>
+                            <%}%>
+                        </table>
+                    </div>
+                </div>
+            </div>
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
 				background="<%=contentPath%>/images/mhead.jpg">
@@ -357,6 +457,16 @@
 											style="width: 200px;" value="<%=nexVal %>">
 									</td>
 								</tr>
+                                <tr>
+                                    <td nowrap="nowrap" width="120" class="head_left">
+                                        传阅人<span style="color: red">&nbsp;*</span>
+                                    </td>
+                                    <td class="head_right" align="left" style="text-align: left">
+                                        <input type="text" name="checkman" readonly="readonly" class="inputStyle"
+                                               style="width: 400px;">
+                                        &nbsp;
+                                    </td>
+                                </tr>
 								<%--<tr>--%>
 									<%--<td nowrap="nowrap" width="120" class="head_left">--%>
 										<%--部门经理--%>

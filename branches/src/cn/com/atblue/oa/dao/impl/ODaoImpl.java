@@ -238,6 +238,13 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         this.getSqlMapClientTemplate().delete("oa.dao.delOfficeDocumentsCheck",map);
     }
 
+    public void delOfficeCirculationCheck(String checkman, String pkid){
+        Map map = new HashMap();
+        map.put("checkman", checkman);
+        map.put("pkid", pkid);
+        this.getSqlMapClientTemplate().delete("oa.dao.delOfficeCirculationCheck",map);
+    }
+
     public void deleteAllSms(){
         this.getSqlMapClientTemplate().delete("oa.dao.deleteAllSms");
     }
@@ -291,5 +298,10 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
     public List getOfficeDocumentsCheckList(String documentid){
         return getSqlMapClientTemplate().queryForList(
                 "oa.dao.getOfficeDocumentsCheckList",documentid);
+    }
+
+    public List getOfficeCirculationCheckList(String documentid){
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getOfficeCirculationCheckList",documentid);
     }
 }
