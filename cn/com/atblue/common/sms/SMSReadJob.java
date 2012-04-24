@@ -27,7 +27,7 @@ public class SMSReadJob implements Job {
                 String phone = message.getOriginator();
                 String text = message.getText();
                 if (!StringUtil.isBlankOrEmpty(text)) {
-                    oDao.updateSmsPerson(text,phone);
+                    oDao.updateSmsPerson(text,phone.substring(2));
                 }
             }
         }
