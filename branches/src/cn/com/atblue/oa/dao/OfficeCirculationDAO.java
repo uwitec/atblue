@@ -57,6 +57,6 @@ public interface OfficeCirculationDAO {
 	List getMapByFreeSql(String sql);
 
 	int getMapByFreeSqlCount(String sql);
-	public List getBeanByNbr(String checkman, PageBean pb);
-	public int getBeanByNbrCount(String checkman);
+	public List getBeanByNbr(String cn, String checkman, PageBean pb);
+	public int getBeanByNbrCount(String cn, String checkman);
 }

@@ -3,6 +3,8 @@ package cn.com.atblue.oa.dao.impl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import cn.com.atblue.oa.bean.OfficeDocumentsCheck;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
 import cn.com.atblue.common.bean.PageBean;
@@ -113,4 +115,16 @@ public class OfficeCirculationCheckDAOImpl extends SqlMapClientDaoSupport implem
         OfficeCirculationCheck record = (OfficeCirculationCheck) getSqlMapClientTemplate().queryForObject("OFFICE_CIRCULATION_CHECK.abatorgenerated_selectByPrimaryCyid", key);
         return record;
 	}
+
+    public OfficeCirculationCheck selectByPkidCheckMan(String pkid, String checkman){
+        Map map = new HashMap();
+        map.put("pkid",pkid);
+        map.put("checkman", checkman);
+
+        List list = getSqlMapClientTemplate().queryForList("OFFICE_CIRCULATION_CHECK.selectByPkidCheckMan",map);
+        if(list!=null && list.size()>0){
+            return (OfficeCirculationCheck)list.get(0);
+        }
+        return null;
+    }
 }

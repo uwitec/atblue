@@ -4,6 +4,7 @@ import java.util.List;
 
 import cn.com.atblue.common.bean.PageBean;
 import cn.com.atblue.oa.bean.OfficeCirculationCheck;
+import cn.com.atblue.oa.bean.OfficeDocumentsCheck;
 
 public interface OfficeCirculationCheckDAO {
     /**
@@ -55,4 +56,6 @@ public interface OfficeCirculationCheckDAO {
 	List getMapByFreeSql(String sql, PageBean pb);
 
 	int getMapByFreeSqlCount(String sql);
+
+    OfficeCirculationCheck selectByPkidCheckMan(String pkid, String checkman);
 }
