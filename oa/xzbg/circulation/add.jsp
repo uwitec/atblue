@@ -130,9 +130,9 @@
 		out.print("</script>");
 	}
 
-	List userList = dao.findUsersByRole(bmjlRole);
-	List ldList = dao.findUsersByRole(zyldRole); 
-
+    List userList  = dao.getAllUser();
+	List ldList = dao.findUsersByRole(zyldRole);
+    userList = userList == null?new ArrayList():userList;
 %>
 <html>
 	<head>
@@ -294,7 +294,8 @@
                                 autoTabs:true,
                                 activeTab:0,
                                 deferredRender:false,
-                                border:false
+                                border:false,
+                                defaults:{autoScroll: true}
                             }),
                             buttons: [{
                                 text:'确定',
