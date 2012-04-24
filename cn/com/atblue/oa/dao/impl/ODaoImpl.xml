@@ -460,6 +460,12 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
         delete from OFFICE_SMS_PERSON t where t.tzid = #value#
         ]]>
     </delete>
+    <delete id="delOfficeDocumentsCheck" parameterClass="java.util.HashMap">
+        <![CDATA[
+        delete from OFFICE_DOCUMENTS_CHECK t where t.documentid=#documentid#
+        and t.checkman = #checkman#
+        ]]>
+    </delete>
     <delete id="deleteAllSms">
         <![CDATA[
         delete from OFFICE_SMS t
@@ -522,6 +528,14 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
     <![CDATA[
         select * from (select t.* from OFFICE_NOTICE t where t.ispublic = '0'
         and t.enddate >= sysdate order by t.rlsdate desc) where rownum <= #value#
+        ]]>
+</select>
+
+    <select id="getOfficeDocumentsCheckList" resultClass="java.util.HashMap" parameterClass="String">
+    <![CDATA[
+        select t.checkman,c.real_name,t.checkflag from OFFICE_DOCUMENTS_CHECK t,c_user c
+    where t.documentid=#value# and t.checkman = c.user_id
+    order by c.real_name
         ]]>
 </select>
 </sqlMap>
