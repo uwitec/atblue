@@ -106,4 +106,8 @@ public interface ODao {
     public void delOfficeDocumentsCheck(String checkman, String documentid);
     
     public List getOfficeDocumentsCheckList(String documentid);
+
+    public List getOfficeCirculationCheckList(String documentid);
+
+    public void delOfficeCirculationCheck(String checkman, String pkid);
 }
