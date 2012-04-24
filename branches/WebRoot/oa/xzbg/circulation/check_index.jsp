@@ -63,7 +63,7 @@
 				<td>
 					
 					<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" class="mtabtab" id="mtabtab">
+						cellspacing="0" class="mtabtab" id="tab_id">
 						<tr>
 							<th nowrap="nowrap"  width="40">
 								序号
@@ -94,7 +94,7 @@
 								OfficeCirculation document = (OfficeCirculation)list.get(i);
 								
 						%>
-						<tr>
+						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(document.getCyid(),"") %>')">
 							<td  align="center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
@@ -123,7 +123,7 @@
 							</td>
 							<td  align="center" nowrap="nowrap">
 								<%if(document.getZt()!=null && !document.getZt().equals("9")){ %>
-									<a href="./sp.jsp?pkid=<%=document.getCyid() %>">[处理]</a>&nbsp;
+									<a href="./sign.jsp?pkid=<%=document.getCyid() %>">[处理]</a>&nbsp;
 								<%} %>
 							</td>
 						</tr>
