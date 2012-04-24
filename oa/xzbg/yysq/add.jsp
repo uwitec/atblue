@@ -96,15 +96,7 @@
 			function checkForm(){
 				if(document.form1.YYMC.value==""){
 					document.form1.YYMC.focus();
-					alert("请输入会议名称");
-					return;
-				}
-				if(!CheckDate(document.form1.YYKSSJ)){
-					alert("请输入正确的开始时间,例如2009-12-23 15:46");
-					return;
-				}
-				if(!CheckDate(document.form1.YYJSSJ)){
-					alert("请输入正确的结束时间,例如2009-12-23 15:46");
+					alert("请输入用印名称");
 					return;
 				}
 				if(document.getElementById("checked").checked){
@@ -117,15 +109,7 @@
             function startup(){
                 if(document.form1.YYMC.value==""){
                     document.form1.YYMC.focus();
-                    alert("请输入会议名称");
-                    return;
-                }
-                if(!CheckDate(document.form1.YYKSSJ)){
-                    alert("请输入正确的开始时间,例如2009-12-23");
-                    return;
-                }
-                if(!CheckDate(document.form1.YYJSSJ)){
-                    alert("请输入正确的结束时间,例如2009-12-23");
+                    alert("请输入用印名称");
                     return;
                 }
                  if(document.getElementById("checked").checked){
@@ -253,6 +237,7 @@
 									</td>
 									<td class="head_right" style="text-align: left">
                                         <input type="text" name="YYMC" value=""  style="width:500px"/>
+                                        <input type="checkbox" name="checked" id="checked" value="1" checked>短信提醒
 									</td>
 								</tr>
 								<tr>
