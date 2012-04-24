@@ -4,8 +4,8 @@
 <%@page import="java.sql.Date"%>
 <%@ include file="../../../import.jsp"%>
 <%
-OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculation");
-	OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
+    OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculationDAO");
+    OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
 	String pkid = request.getParameter("pkid");
 	//String instanceid = request.getParameter("instanceid");
 //	List list = WorkFlow.getInstanceHistory(instanceid);
@@ -13,7 +13,12 @@ OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.
 //		FlwHistory bean = (FlwHistory)list.get(i);
 //		out.println(bean.getFinishman());
 //	}
-	OfficeCirculation document = officeCirculationDAO.selectByPrimaryKey(pkid);
+    OfficeCirculation document = null;
+    try{
+	    document = officeCirculationDAO.selectByPrimaryKey(pkid);
+    }catch(Exception e){
+        e.printStackTrace();
+    }
 	List hasFileList = officeFileDAO.getByFk(pkid);
 	OfficeCirculationCheck officeCirculationCheck = officeCirculationCheckDAO.selectByPrimaryCyid(pkid);
 	if(officeCirculationCheck==null) officeCirculationCheck = new OfficeCirculationCheck();
@@ -27,8 +32,8 @@ OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.
 		<title></title>
 		<script src="<%=contentPath%>/js/common.js"
 			type="text/javascript" defer="defer"></script>
-		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-			type="text/css">
+        <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -80,9 +85,9 @@ OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.
 				var tableRows  = fileTable.getElementsByTagName("tr");
     			var objTR = fileTable.insertRow();
     			var objTD = objTR.insertCell(); 
-    			objTD.innerHTML = "<td nowrap='nowrap' width='120' class='NormalColumnTitle'>&nbsp;</td>";
+    			objTD.innerHTML = "<td nowrap='nowrap' width='120' class='head_left'>&nbsp;</td>";
     			objTD = objTR.insertCell(); 
-    			objTD.innerHTML += "<td class='NormalDataColumn' align='left'>"
+    			objTD.innerHTML += "<td class='head_right' align='left'>"
     			objTD.innerHTML += fileCount +  ".&nbsp;&nbsp;&nbsp;<input type='file' name='file_" + fileCount + "' style='width: 400px;'></td>";
 			}
 			function delFile(pkid, fkid){
@@ -149,95 +154,95 @@ OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										来文时间
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=DateUtil.format(document.getLwsj(),"yyyy-MM-dd") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=DateUtil.format(document.getLwsj(),"yyyy-MM-dd") %> &nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										来文单位
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(document.getLwdw(),"") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=StringUtil.parseNull(document.getLwdw(),"") %> &nbsp;&nbsp;
 									</td>
 								</tr>
 								
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										文件编号
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(document.getWjbh(),"") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=StringUtil.parseNull(document.getWjbh(),"") %> &nbsp;&nbsp;
 									</td>
 								</tr>
 
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										文件名称
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(document.getWjmc(),"") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=StringUtil.parseNull(document.getWjmc(),"") %> &nbsp;&nbsp;
 									</td>
 								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										办公室负责人
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%if(officeCirculationCheck.getCheckman()==null){out.println("&nbsp;");}else{ %>
-										<%=dao.findUserById(officeCirculationCheck.getCheckman()).getRealName()%>
-										<%} %>
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										领导批示
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.replace(StringUtil.parseNull(document.getLdps(),""),"\n","</br>&nbsp;&nbsp;") %>
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										拟办意见
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.replace(StringUtil.parseNull(document.getNbyj(),""),"\n","</br>&nbsp;&nbsp;") %>
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										处理意见
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.replace(StringUtil.parseNull(document.getClyj(),""),"\n","</br>&nbsp;&nbsp;") %>
-									</td>
-								</tr>
+								<%--<tr>--%>
+									<%--<td nowrap="nowrap" width="120" class="head_left">--%>
+										<%--办公室负责人--%>
+									<%--</td>--%>
+									<%--<td class="head_right" align="left" style="text-align: left">--%>
+
+										<%--<%if(officeCirculationCheck.getCheckman()==null){out.println("&nbsp;");}else{ %>--%>
+										<%--<%=dao.findUserById(officeCirculationCheck.getCheckman()).getRealName()%>--%>
+										<%--<%} %> &nbsp;&nbsp;--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td nowrap="nowrap" width="120" class="head_left">--%>
+										<%--领导批示--%>
+									<%--</td>--%>
+									<%--<td class="head_right" align="left" style="text-align: left">--%>
+
+										<%--<%=StringUtil.replace(StringUtil.parseNull(document.getLdps(),""),"\n","</br>&nbsp;&nbsp;") %>&nbsp;&nbsp;--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td nowrap="nowrap" width="120" class="head_left">--%>
+										<%--拟办意见--%>
+									<%--</td>--%>
+									<%--<td class="head_right" align="left" style="text-align: left">--%>
+
+										<%--<%=StringUtil.replace(StringUtil.parseNull(document.getNbyj(),""),"\n","</br>&nbsp;&nbsp;") %>&nbsp;&nbsp;--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td nowrap="nowrap" width="120" class="head_left">--%>
+										<%--处理意见--%>
+									<%--</td>--%>
+									<%--<td class="head_right" align="left" style="text-align: left">--%>
+
+										<%--<%=StringUtil.replace(StringUtil.parseNull(document.getClyj(),""),"\n","</br>&nbsp;&nbsp;") %>&nbsp;&nbsp;--%>
+									<%--</td>--%>
+								<%--</tr>--%>
 								<%if(hasFileList!=null && hasFileList.size()>0){ %>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										已有附件
 									</td>
-									<td class="NormalDataColumn" align="left" id="hasFile">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" id="hasFile" style="text-align: left">
+
 										<%
 											for(int i=0; i<hasFileList.size(); i++){
 												OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
-											<a href="../../officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
-												<img src="../../resource/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='../resource/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
+											<a href="<%=request.getContextPath()%>/officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
+												<img src="<%=request.getContextPath()%>/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='<%=request.getContextPath()%>/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
 											</a>&nbsp;&nbsp;&nbsp;
-									     <%}%>
+									     <%}%>&nbsp;&nbsp;
 									</td>
 								</tr>
 								<%} %>

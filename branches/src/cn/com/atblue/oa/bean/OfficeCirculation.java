@@ -87,6 +87,8 @@ public class OfficeCirculation {
     private String fs;
     private String swh;
     private String dxtx;
+    private String processId;
+    private String connectId;
 
     public String getZt() {
 		return zt;
@@ -359,4 +361,20 @@ public class OfficeCirculation {
 	public void setDxtx(String dxtx) {
 		this.dxtx = dxtx;
 	}
+
+    public String getProcessId() {
+        return processId;
+    }
+
+    public void setProcessId(String processId) {
+        this.processId = processId;
+    }
+
+    public String getConnectId() {
+        return connectId;
+    }
+
+    public void setConnectId(String connectId) {
+        this.connectId = connectId;
+    }
 }

@@ -77,7 +77,7 @@
                         cUser = cUser == null?new CUser():cUser;
                         String orgnaName = StringUtil.parseNull(session.getAttribute("orgnaName"),"");
                     %>
-                    <td>当前用户：<%=orgnaName%>&nbsp;&nbsp;<%=cUser.getRealName()%>&nbsp;&nbsp;</td>
+                    <td>当前用户：<%=orgnaName%>&nbsp;&nbsp;<%=cUser.getUserId()%><%=cUser.getRealName()%>&nbsp;&nbsp;</td>
                     <td></td>
                     <td><img src="images/index/fooder_line.gif" width="2" height="24"/></td>
                     <td align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
