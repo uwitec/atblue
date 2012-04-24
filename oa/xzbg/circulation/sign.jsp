@@ -35,6 +35,9 @@
     List userList  = dao.getAllUser();
     if("sign".equals(act)){
           oDao.updateOfficeCirculationCheck(pkid,cUser.getUserId());
+        out.print("<script>");
+        out.print("window.location='check_index.jsp';");
+        out.print("</script>");
     }
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -56,7 +59,7 @@
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
 
     <script type="text/javascript">
-        function checkForm(act){
+        function checkForm(){
             document.all.act.value = "sign";
             document.form1.submit();
         }
