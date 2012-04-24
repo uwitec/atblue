@@ -8,6 +8,18 @@
 	OfficeDocumentsCheckDAO officeDocumentsCheckDAO = (OfficeDocumentsCheckDAO)SpringFactory.instance.getBean("officeDocumentsCheckDAO");
 	String pkid = request.getParameter("pkid");
 	OfficeDocuments document = officeDocumentsDAO.selectByPrimaryKey(pkid);
+    List checkList = oDao.getOfficeDocumentsCheckList(pkid);
+    String[] checkmans = null;
+    String checkman = "";
+    if(checkList != null && checkList.size() > 0){
+        checkmans = new String[checkList.size()];
+           for(int i=0; i<checkList.size(); i++){
+               Map map = (Map)checkList.get(i);
+               String name = StringUtil.parseNull(map.get("REAL_NAME"),"");
+               checkman = checkman + name +";";
+               checkmans[i] = StringUtil.parseNull(map.get("CHECKMAN"),"");
+           }
+    }
 	
 	if (request.getMethod().equals("POST")) {
 
@@ -88,21 +100,22 @@
 		}
 		
 		//保存用户
-		if(act!=null && act.equals("pub")){
+//		if(act!=null && act.equals("pub")){
+
 			String[] ubox = fileUpload.getParameters("ubox");
 			
 			for(int i=0; i<ubox.length; i++){
-				OfficeDocumentsCheck odc = new OfficeDocumentsCheck();
-				odc.setChekid(StringUtil.getUUID());
-				odc.setCheckflag("0");
-				odc.setCheckman(ubox[i]);
-				odc.setDocumentid(pkid);
-				
-				officeDocumentsCheckDAO.insert(odc);
-				
-				
+                if(!StringUtil.isBlankOrEmpty(ubox[i])){
+                    oDao.delOfficeDocumentsCheck(ubox[i],pkid);
+                    OfficeDocumentsCheck odc = new OfficeDocumentsCheck();
+                    odc.setChekid(StringUtil.getUUID());
+                    odc.setCheckflag("0");
+                    odc.setCheckman(ubox[i]);
+                    odc.setDocumentid(pkid);
+                    officeDocumentsCheckDAO.insert(odc);
+                }
 			}
-		}
+//		}
 		
 		out.print("<script>");
 		out.print("window.location='manager.jsp';");
@@ -119,8 +132,8 @@
 		<title></title>
 		<script src="<%=contentPath%>/js/common.js"
 			type="text/javascript" defer="defer"></script>
-		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-			type="text/css">
+        <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"	type="text/css">
+        <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"	type="text/css">
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -132,7 +145,7 @@
 		<script type="text/javascript">
 			function checkForm(act){
 				document.form1.act.value=act;
-				if(act=='pub'){
+//				if(act=='pub'){
 					var has = false;
 					for(var i=0; i<document.form1.ubox.length; i++){
 						if(document.form1.ubox[i].checked){
@@ -144,7 +157,7 @@
 						alert("请选择签收用户.");
 						return;
 					}
-				}
+//				}
 				if(document.form1.wjbh.value==""){
 					document.form1.wjbh.focus();
 					alert("请输入文件编号");
@@ -185,9 +198,9 @@
 				var tableRows  = fileTable.getElementsByTagName("tr");
     			var objTR = fileTable.insertRow();
     			var objTD = objTR.insertCell(); 
-    			objTD.innerHTML = "<td nowrap='nowrap' width='120' class='NormalColumnTitle'>&nbsp;</td>";
+    			objTD.innerHTML = "<td nowrap='nowrap' width='120' class='head_left'>&nbsp;</td>";
     			objTD = objTR.insertCell(); 
-    			objTD.innerHTML += "<td class='NormalDataColumn' align='left'>"
+    			objTD.innerHTML += "<td class='head_right' align='left'>"
     			objTD.innerHTML += fileCount +  ".&nbsp;&nbsp;&nbsp;<input type='file' name='file_" + fileCount + "' style='width: 400px;'></td>";
 			}
 		</script>
@@ -297,13 +310,13 @@
 				            		if(i==0){	
 				            	%>
 				            	<tr>
-				            		<td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
+				            		<td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>   value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
 				            	<%	}else if(i%6==0){ %>
 				            	</tr>
 				            	<tr>
-				            		<td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
+				            		<td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
 				            	<%	}else{ %>
-				            		<td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
+				            		<td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
 				            	<%	} %>
 				            	<%} %>
 				            	<%
@@ -358,21 +371,19 @@
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										文件标题<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="bt" class="inputStyle" value="<%=StringUtil.parseNull(document.getBt(),"") %>"
 											style="width: 400px;"><input type="checkbox" name="checked" id="checked" value="1" checked>短信提醒
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										发文类型<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<select name="lb" onchange="lbz(this)" style="width: 200px;">
 			                            	<option value="" <%if(document.getLb()==null || document.getLb().equals("")){ %>selected<%} %>>请选择 </option>
 			                                <option value="公司文件" <%if(document.getLb().equals("公司文件")){ %>selected<%} %>>公司文件</option>
@@ -388,21 +399,19 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										文件编号<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="wjbh" class="inputStyle" value="<%=StringUtil.parseNull(document.getWjbh(),"") %>"
 											style="width: 300px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										密级
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<select name="mmcd" style="width: 100px;">
 			                                <option value="无" <%if(document.getMmcd()!=null && document.getMmcd().equals("无")){ %>selected<%} %>>无</option>
 			                                <option value="秘密" <%if(document.getMmcd()!=null && document.getMmcd().equals("秘密")){ %>selected<%} %>>秘密</option>
@@ -412,11 +421,10 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										缓急时限
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<select id="hjsx" name="hjsx" style="width: 100px;">
 			                                <option value="无" <%if(document.getHjsx()!=null && document.getHjsx().equals("无")){ %>selected<%} %>>无</option>
 			                                <option value="平急" <%if(document.getHjsx()!=null && document.getHjsx().equals("平急")){ %>selected<%} %>>平急</option>
@@ -426,41 +434,37 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										签收人<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="checkman" readonly="readonly" class="inputStyle"
-											style="width: 200px;">
+											style="width: 200px;" value="<%=checkman%>">
 										&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										签发人
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="qfr" class="inputStyle" value="<%=StringUtil.parseNull(document.getQfr(),"") %>"
 											style="width: 200px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										签发日期
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="qfrq" class="Wdate" onClick="WdatePicker()" value="<%=DateUtil.format(document.getQfrq(),"yyyy-MM-dd") %>">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										拟稿部门
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<select name="ngbm" style="width: 200px;">
 											<%for(int i=0;i<departmentList.size(); i++){
 												COrgnization dep = (COrgnization)departmentList.get(i);%>
@@ -470,62 +474,56 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										共印份数
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="gyfs" class="inputStyle" value="<%=StringUtil.parseNull(document.getGyfs(),"") %>"
 											style="width: 30px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										主送
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="zs" class="inputStyle" value="<%=StringUtil.parseNull(document.getZs(),"") %>"
 											style="width: 300px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										抄送
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="cs" class="inputStyle" value="<%=StringUtil.parseNull(document.getCs(),"") %>"
 											style="width: 300px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										抄报
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="cb" class="inputStyle" value="<%=StringUtil.parseNull(document.getCb(),"") %>"
 											style="width: 300px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										备注
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="bz" class="inputStyle" value="<%=StringUtil.parseNull(document.getBz(),"") %>"
 											style="width: 400px;">
 									</td>
 								</tr>
 								<%if(hasFileList!=null && hasFileList.size()>0){ %>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										已有附件
 									</td>
-									<td class="NormalDataColumn" align="left" id="hasFile">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" id="hasFile" style="text-align: left">
 										<%
 											for(int i=0; i<hasFileList.size(); i++){
 												OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
@@ -538,12 +536,12 @@
 								</tr>
 								<%} %>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										附件&nbsp;
 										<img src="<%=contentPath%>/images/add.gif"
 											style="cursor: pointer;" alt="增加电子版" onclick="addFile();">
 									</td>
-									<td class="NormalDataColumn" align="left" id="fileTd">
+									<td class="head_right" align="left" id="fileTd" style="text-align: left">
 										1.&nbsp;&nbsp;
 										<input type="file" name="file_1" style="width: 400px;">
 									</td>

@@ -27,16 +27,10 @@
 		<title>Insert title here</title>
 		<script src="<%=contentPath%>/js/common.js"
 			type="text/javascript" defer="defer"></script>
-		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-			type="text/css">
-		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
+		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"	type="text/css">
+		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"	type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
-		<script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
 		<script type="text/javascript">
 		function onDelete(url){
 			if(window.confirm("确认删除该公文?")){
@@ -60,6 +54,9 @@
 				</td>
 				<td align="left" class="mhead">
 					&nbsp;
+                    <input type="button" value="发文登记" class="button" onclick="window.location = 'add.jsp';"/>
+                    &nbsp;
+                    <input type="button" value="签收统计" class="button" onclick="window.location = 'count.jsp';"/>
 				</td>
 			</tr>
 		</table>
@@ -67,71 +64,62 @@
 			cellpadding="0" cellspacing="0">
 			<tr>
 				<td>
-					<table width="100%" border="0" cellpadding="0" cellspacing="0">
-						<tbody>
-							<tr>
-								<td align="left">
-									<div id="toolbar" style="width: 100%;"></div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
 					<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" class="mtabtab" id="mtabtab">
+						cellspacing="0" class="mtabtab" id="tab_id">
 						<tr>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="40">
+							<th nowrap="nowrap"  width="40">
 								序号
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="220">
+							</th>
+							<th nowrap="nowrap"  width="220">
 								文件编号
-							</td>
+							</th>
 							
-							<td class="NormalColumnTitle">
+							<th >
 								标题
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								发文类型
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								签发日期
-							</td>
-							<td class="NormalColumnTitle" width="120">
+							</th>
+							<th  width="120">
 								状态
-							</td>
-							<td nowrap="nowrap" class="NormalColumnTitle" width="120">
+							</th>
+							<th nowrap="nowrap"  width="120">
 								操作
-							</td>
+							</th>
 						</tr>
 						<%
 							for (int i = 0; i < list.size(); i++) {
 								OfficeDocuments document = (OfficeDocuments) list.get(i);
 						%>
-						<tr>
-							<td class="NormalDataColumn" align="center">
+						<tr onclick="setSelected(this,'tab_id','tr_head','<%=document.getDocumentid()%>')">
+							<td  align="center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center" style="text-align: left">
 								<a href="view.jsp?pkid=<%=document.getDocumentid() %>"><%=document.getWjbh()%></a>
 							</td>
 							
-							<td class="NormalDataColumn" align="center">
+							<td  align="center" style="text-align: left">
 								<%=document.getBt()%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=document.getLb()%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%=DateUtil.format(document.getQfrq(),"yyyy-MM-dd")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%if(document.getStatus()==null || document.getStatus().intValue()==0){ %>
 									<span style="color: red">草稿</span>
 								<%}else{ %>
 									<span style="color: blue">已发放</span>
 								<%} %>
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td  align="center">
 								<%if(document.getStatus()!=null && document.getStatus().intValue()==1){ %>
 									<a href="javascript:alert('该文件已发放，不能进行修改。');">[编辑]</a>&nbsp;
 								<%}else{ %>
@@ -155,20 +143,4 @@
 		</table>
 
 	</body>
-	<script type="text/javascript">
-		Ext.onReady(function(){
-		
-		    Ext.form.Field.prototype.msgTarget = 'under';
-		
-		    var tb = new Ext.Toolbar('toolbar');
-		    tb.render('toolbar');
-		    tb.addButton({text: '发文登记',icon: '<%=request.getContextPath()%>/images/add.gif',cls: 'x-btn-text-icon',handler:function(){
-		        window.location = 'add.jsp';
-		    }});
-		    tb.addButton({text: '签收统计',icon: '<%=request.getContextPath()%>/images/page_find.gif',cls: 'x-btn-text-icon',handler:function(){
-		        window.location = 'count.jsp';
-		    }});
-			tb.doLayout();
-		});
-	</script>
 </html>
