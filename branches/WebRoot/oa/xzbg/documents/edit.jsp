@@ -9,7 +9,8 @@
 	String pkid = request.getParameter("pkid");
 	OfficeDocuments document = officeDocumentsDAO.selectByPrimaryKey(pkid);
     List checkList = oDao.getOfficeDocumentsCheckList(pkid);
-    String[] checkmans = null;
+    String[] checkmans = new String[1];
+    checkmans[0] = "";
     String checkman = "";
     if(checkList != null && checkList.size() > 0){
         checkmans = new String[checkList.size()];
@@ -257,7 +258,8 @@
 			                    autoTabs:true,
 			                    activeTab:0,
 			                    deferredRender:false,
-			                    border:false
+			                    border:false,
+                                defaults:{autoScroll: true}
 			                }),
 			                buttons: [{
 			                    text:'确定',
