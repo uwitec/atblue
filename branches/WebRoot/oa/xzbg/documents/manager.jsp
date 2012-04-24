@@ -15,7 +15,7 @@
 	Map paramMap = new HashMap();
 	pageBean.setPageSize(pageSize);
 	StringBuilder sb = new StringBuilder();
-	sb.append(" where cjr='"+_user.getUserId()+"' order by cjrq desc");
+//	sb.append(" where cjr='"+_user.getUserId()+"' order by cjrq desc");
 	int totalRow = officeDocumentsDAO.getByFreeSqlCount(sb.toString());
 	pageBean.setTotalRows(totalRow);
 
