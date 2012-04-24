@@ -77,6 +77,11 @@
                             + 0
                             + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
         }
+        function xj(id,role){
+            if(confirm("确定要进行销假？")){
+                window.location = "xj.jsp?holidayid="+id+"&curRole="+role;
+            }
+        }
 		</script>
 	</head>
 	<body>
@@ -137,6 +142,9 @@
 							<th  width="200">
 								外出事由
 							</th>
+                            <th nowrap="nowrap" >
+                                状态
+                            </th>
 							<th nowrap="nowrap" >
 								操作
 							</th>
@@ -166,6 +174,17 @@
 							<td  align="left" style="text-align: left">
 								<%=StringUtil.parseNull(map.get("WCSY"),"")%>&nbsp;
 							</td>
+                            <td  align="center" nowrap="nowrap">
+                                <%String sqzt = StringUtil.parseNull(map.get("SQZT"),"");
+                                    if("已完成".equals(sqzt)){ %>
+                                <font color="green"><%=sqzt%></font>
+                                <%}else if("正在审批".equals(sqzt)) { %>
+                                <font color="red"><%=sqzt%></font>
+                                <%}else{  %>
+                                <%=sqzt%>
+                                <% }
+                                %>&nbsp;
+                            </td>
 							<td  align="center" nowrap="nowrap">
                                  <%
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
@@ -181,10 +200,13 @@
                                 <% }else if("已保存".equals(StringUtil.parseNull(map.get("SQZT"),""))){%>
                                 <a href="./edit.jsp?holidayid=<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>&curRole=<%=curRole%>">[编辑]</a>&nbsp;
                                 <a href="javascript:onDelete('./delete.jsp?holidayid=<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>');">[删除]</a>&nbsp;
-                                <%   }else{ %>
+                                <%   }else if("已完成".equals(StringUtil.parseNull(map.get("SQZT"),""))){ %>
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>&nbsp;
                                 <a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>');">[签批单]</a>
-                                <a href="#" onclick="javascript:window.location='view.jsp?holidayid=<%=StringUtil.parseNull(map.get("HOLIDAYID"),"") %>&curRole=<%=curRole%>'">[销假登记]</a>
+                                <a href="#" onclick="xj('<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>','<%=curRole%>');">[销假登记]</a>
+                                <%    }else{ %>
+                                <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>&nbsp;
+                                <a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>');">[签批单]</a>
                                 <%  }
                                 %>
 							</td>
