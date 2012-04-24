@@ -4,10 +4,12 @@
 <%@page import="java.sql.Date"%>
 <%@ include file="../../../import.jsp"%> 
 <%
+    CUser cUser = (CUser)session.getAttribute("cUser");
+    cUser = cUser == null?new CUser():cUser;
 	OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculationDAO");
 	OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
 		String orgId = _user.getOrgnaId();
-	String options = workFlow.getNextUserSelectOptions("副经理",orgId);
+//	String options = workFlow.getNextUserSelectOptions("副经理",orgId);
 	String nexVal = "";
 	String sql = "select to_char(sysdate,'yyyy-')||lpad(to_number(substr(swh,6))+1,'3','0') val from office_circulation  where substr(swh,0,4)='" + DateUtil.format(DateUtil.getDate(),"yyyy") +"' order by substr(swh,0,4) desc, substr(swh,6) desc";
 	sql ="SELECT * FROM (SELECT A.*, rownum r FROM (" + sql;
@@ -48,10 +50,17 @@
 		document.setWjmc(wjmc);
 		document.setLrr(_user.getUserId());
 		document.setLrsj(DateUtil.getDateTime());
-		document.setZt(act);
+		document.setZt("已保存");
 		document.setFs(fs);
 		document.setSwh(swh);
 		document.setDxtx(dxtx);
+        if("startup".equals(act)){
+            document.setZt("已申请");
+            //创建流程代码在这里
+            Status status = workflow.startWorkflow("debd1b0c-875d-4cc8-8169-58aa168f721d",cUser.getUserId());
+            document.setProcessId(status.getProcessId());
+            document.setConnectId(status.getConnectId());
+        }
 		officeCirculationDAO.insert(document);
 		
 		//保存附件信息 
@@ -108,7 +117,7 @@
 		}
 		
 		out.print("<script>");
-		out.print("window.location='list.jsp';");
+		out.print("window.location='index.jsp';");
 		out.print("</script>");
 	}
 
@@ -269,11 +278,11 @@
 							<tbody>
 								<tr>
 									<td align="left">
-										<input type="button" class="button" id="button"
-											onclick="checkForm('pub');" value="开始传阅">
+                                        <input type="button" class="button" id="button"
+                                               onclick="checkForm('save');" value="保存">
 										&nbsp;
-										<input type="button" class="button" id="button"
-											onclick="checkForm('save');" value="保存">
+                                        <input type="button" class="button" id="button"
+                                               onclick="checkForm('startup');" value="创建并启动流程">
 										&nbsp;
 										<input type="button" class="button" id="button"
 											onclick="window.location='index.jsp'" value="返回">
@@ -348,16 +357,16 @@
 											style="width: 200px;" value="<%=nexVal %>">
 									</td>
 								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="head_left">
-										部门经理
-									</td>
-									<td class="head_right" align="left" style="text-align: left">
-										<select name="nbr" style="width: 100px;">
-											<%=options%>
-		                            	</select>
-									</td>
-								</tr>
+								<%--<tr>--%>
+									<%--<td nowrap="nowrap" width="120" class="head_left">--%>
+										<%--部门经理--%>
+									<%--</td>--%>
+									<%--<td class="head_right" align="left" style="text-align: left">--%>
+										<%--<select name="nbr" style="width: 100px;">--%>
+											<%--<%=options%>--%>
+		                            	<%--</select>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
 										附件&nbsp;

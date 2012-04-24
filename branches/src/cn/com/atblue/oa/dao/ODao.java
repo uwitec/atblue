@@ -47,6 +47,14 @@ public interface ODao {
 
     public int getWaitPagedYysqCount(Map paramMap);
 
+    public List getWaitPagedOfficeCirculationList(PageBean pb, Map paramMap);
+
+    public int getWaitPagedOfficeCirculationCount(Map paramMap);
+
+    public List getAlreadyPagedOfficeCirculationList(PageBean pb, Map paramMap);
+
+    public int getAlreadyPagedOfficeCirculationCount(Map paramMap);
+
     public List getAlreadyPagedYysqList(PageBean pb, Map paramMap);
 
     public int getAlreadyPagedYysqCount(Map paramMap);

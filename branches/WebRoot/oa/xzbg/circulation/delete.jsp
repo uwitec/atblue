@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../../import.jsp"%>
 <%
-	OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculation");
-	OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
+    OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculationDAO");
+    OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
 	String pkid  = request.getParameter("pkid");
 	officeCirculationDAO.deleteByPrimaryKey(pkid);
 	

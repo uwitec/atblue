@@ -1,12 +1,13 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="java.sql.Date"%>
 <%@ include file="../../../import.jsp"%>
 <%
-	OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculation");
-	OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
+    CUser cUser = (CUser)session.getAttribute("cUser");
+    cUser = cUser == null?new CUser():cUser;
+    OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculationDAO");
+    OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
 	String pkid = request.getParameter("pkid");
 	OfficeCirculation document = officeCirculationDAO.selectByPrimaryKey(pkid);
 	List hasFileList = officeFileDAO.getByFk(pkid);
@@ -33,9 +34,16 @@
 		document.setWjmc(wjmc);
 		document.setLrr(_user.getUserId());
 		document.setLrsj(DateUtil.getDateTime());
-		document.setZt(act);
+        document.setZt("已保存");
 		document.setFs(fs);
 		document.setSwh(swh);
+        if("startup".equals(act)){
+            document.setZt("已申请");
+            //创建流程代码在这里
+            Status status = workflow.startWorkflow("debd1b0c-875d-4cc8-8169-58aa168f721d",cUser.getUserId());
+            document.setProcessId(status.getProcessId());
+            document.setConnectId(status.getConnectId());
+        }
 		officeCirculationDAO.updateByPrimaryKey(document);
 		
 		//保存附件信息
@@ -100,22 +108,21 @@
 		}
 		
 		out.print("<script>");
-		out.print("window.location='list.jsp';");
+		out.print("window.location='index.jsp';");
 		out.print("</script>");
 	}
 
 	List userList = dao.findUsersByRole(bgsldRole);
 	List ldList = dao.findUsersByRole(zyldRole); 
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title></title>
 		<script src="<%=contentPath%>/js/common.js"
 			type="text/javascript" defer="defer"></script>
-		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-			type="text/css">
+        <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -166,9 +173,9 @@
 				var tableRows  = fileTable.getElementsByTagName("tr");
     			var objTR = fileTable.insertRow();
     			var objTD = objTR.insertCell(); 
-    			objTD.innerHTML = "<td nowrap='nowrap' width='120' class='NormalColumnTitle'>&nbsp;</td>";
+    			objTD.innerHTML = "<td nowrap='nowrap' width='120' class='head_left'>&nbsp;</td>";
     			objTD = objTR.insertCell(); 
-    			objTD.innerHTML += "<td class='NormalDataColumn' align='left'>"
+    			objTD.innerHTML += "<td class='head_right' align='left'>"
     			objTD.innerHTML += fileCount +  ".&nbsp;&nbsp;&nbsp;<input type='file' name='file_" + fileCount + "' style='width: 400px;'></td>";
 			}
 			function delFile(pkid, fkid){
@@ -210,10 +217,10 @@
 	    	var newTr = tbl.insertRow();
 	    	var newTd = newTr.insertCell(0);
 	    	newTd.align="center";
-	    	newTd.className="NormalDataColumn";
+	    	newTd.className="head_right";
 	    	newTd.appendChild(document.createTextNode(len));
 	    	newTd = newTr.insertCell(1);
-	    	newTd.className="NormalDataColumn";
+	    	newTd.className="head_right";
 	    	newTd.appendChild(document.createTextNode("文件："));
 	    	var node = document.createElement("input");
 	    	
@@ -223,7 +230,7 @@
 	    	newTd.appendChild(node);
 	    	newTd = newTr.insertCell(2);
 	    	newTd.align="center";
-	    	newTd.className="NormalDataColumn";
+	    	newTd.className="head_right";
 	    	var node = document.createElement("a");
 	    	node.href="javascript:void(0)";
 	    	node.onclick= function (){
@@ -258,10 +265,10 @@
 			<input type="hidden" name="act" value="">
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
-				background="<%=contentPath%>/resource/images/mhead.jpg">
+				background="<%=contentPath%>/images/mhead.jpg">
 				<tr>
 					<td width="3%" align="center">
-						<img src="<%=contentPath%>/resource/images/mlogo.jpg" width="11"
+						<img src="<%=contentPath%>/images/mlogo.jpg" width="11"
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
@@ -272,11 +279,11 @@
 							<tbody>
 								<tr>
 									<td align="left">
-										<input type="button" class="button" id="button"
-											onclick="checkForm('pub');" value="开始传阅">
+                                        <input type="button" class="button" id="button"
+                                               onclick="checkForm('save');" value="保存">
 										&nbsp;
-										<input type="button" class="button" id="button"
-											onclick="checkForm('save');" value="保存">
+                                        <input type="button" class="button" id="button"
+                                               onclick="checkForm('startup');" value="创建并启动流程">
 										&nbsp;
 										<input type="button" class="button" id="button"
 											onclick="window.location='index.jsp';" value="返回">
@@ -297,119 +304,83 @@
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										来文时间
+									<td nowrap="nowrap" width="120" class="head_left">
+										来文时间 <span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="lwsj" class="Wdate" onClick="WdatePicker()" value="<%=DateUtil.format(document.getLwsj(),"yyyy-MM-dd") %>">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										来文单位
+									<td nowrap="nowrap" width="120" class="head_left">
+										来文单位 <span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="lwdw" class="inputStyle" value="<%=StringUtil.parseNull(document.getLwdw(),"") %>"
 											style="width: 200px;">
 									</td>
 								</tr>
 								
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										文件编号
+									<td nowrap="nowrap" width="120" class="head_left">
+										文件编号<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="wjbh" class="inputStyle" value="<%=StringUtil.parseNull(document.getWjbh(),"") %>"
 											style="width: 300px;">
 									</td>
 								</tr>
 
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										文件名称
+									<td nowrap="nowrap" width="120" class="head_left">
+										文件名称<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="wjmc" class="inputStyle" value="<%=StringUtil.parseNull(document.getWjmc(),"") %>"
 											style="width: 400px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										份数
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="fs" class="inputStyle" value="<%=StringUtil.parseNull(document.getFs(),"") %>"
 											style="width: 50px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										收文号
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="swh" class="inputStyle" value="<%=StringUtil.parseNull(document.getSwh(),"") %>"
 											style="width: 200px;">
 									</td>
 								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										领导批示
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<input type="radio" name="ps" value="2" onclick="selLdps();">
-										<select name="ldps" style="width: 100px;" disabled="disabled">
-											<%for(int i=0; i<ldList.size(); i++){
-												CUser tempUser = (CUser)ldList.get(i);%>
-				                                <option value="<%=tempUser.getUserId() %>"><%=tempUser.getRealName() %></option>
-				                            <%} %>
-		                            	</select>
-									</td>
-								</tr>
-								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
-										办公室负责人
-									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<input type="radio" name="ps" value="1" checked="checked"  onclick="selNbr();">
-										<select name="nbr" style="width: 100px;">
-											<%for(int i=0; i<userList.size(); i++){
-												CUser tempUser = (CUser)userList.get(i);%>
-				                                <option value="<%=tempUser.getUserId() %>"><%=tempUser.getRealName() %></option>
-				                            <%} %>
-		                            	</select>
-									</td>
-								</tr>
 								<%if(hasFileList!=null && hasFileList.size()>0){ %>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										已有附件
 									</td>
-									<td class="NormalDataColumn" align="left" id="hasFile">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" id="hasFile" style="text-align: left">
+
 										<%
 											for(int i=0; i<hasFileList.size(); i++){
 												OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
-											<a href="../../officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
-												<img src="../../resource/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='../resource/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
+											<a href="<%=request.getContextPath()%>/officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
+												<img src="<%=request.getContextPath()%>/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='<%=request.getContextPath()%>/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
 											</a>&nbsp;&nbsp;&nbsp;
 											<a href="javascript:delFile('<%=beanFile.getPkid() %>','<%=pkid %>')">[删除]</a></br>&nbsp;&nbsp;
-									     <%}%>
+									     <%}%> &nbsp;&nbsp;
 									</td>
 								</tr>
 								<%} %>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										附件&nbsp;
 									</td>
-									<td class="NormalDataColumn" align="left" id="fileTd">
+									<td class="head_right" align="left" id="fileTd" style="text-align: left">
 										1.&nbsp;&nbsp;
 										<input type="file" name="file_1" style="width: 400px;">
 									</td>
@@ -418,7 +389,7 @@
 							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"
                        				class="mtabtab" id="attachTab">
 				               <tr>
-				               		<td class="NormalDataColumn" width="100%" nowrap colspan="3">其他附件：<input type="button" name="b_bc" class="button" value="添加" onclick="doAddAttachRow('attachTab');"></td>
+				               		<td class="head_right" width="100%" nowrap colspan="3" style="text-align: left">其他附件：<input type="button" name="b_bc" class="button" value="添加" onclick="doAddAttachRow('attachTab');"></td>
 				               </tr>
          				</table>
 						</div>

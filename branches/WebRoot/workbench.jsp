@@ -8,7 +8,7 @@
 <frameset rows="62,30,*,24" cols="*" framespacing="0" frameborder="no" border="0" id="conFrame" name="conFrame">
   <frame src="banner.jsp?url=" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" />
   <frame src="menu.jsp?url=" name="menuFrame" scrolling="No" noresize="noresize" id="menuFrame" />
-  <frame src="center.jsp" name="contentFrame" id="contentFrame" height="100%" width="100%"/>
+  <frame src="index.jsp" name="contentFrame" id="contentFrame" height="100%" width="100%"/>
   <frame src="bottom.jsp" name="bottomFrame" scrolling="No" noresize="noresize" id="bottomFrame" />
 </frameset>
 <noframes>
