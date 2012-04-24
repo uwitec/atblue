@@ -34,11 +34,11 @@
                 }
             }
         }
-        window.onload = function () {
-            //加载完成，触发首菜单
-            var obj = document.getElementById("fw0");
-        	if (obj)obj.onclick();
-        }
+//        window.onload = function () {
+//            //加载完成，触发首菜单
+//            var obj = document.getElementById("fw0");
+//        	if (obj)obj.onclick();
+//        }
     </script>
 </head>
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">

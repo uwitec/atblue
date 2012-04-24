@@ -6,6 +6,9 @@
 	<jsp:setProperty name="pageBean" property="*" />
 </jsp:useBean>
 <%
+    CUser cUser = (CUser)session.getAttribute("cUser");
+    cUser = cUser == null?new CUser():cUser;
+    String orgId = cUser.getOrgnaId();
 	OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculationDAO");
 	OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
 	//判断权限
@@ -44,6 +47,30 @@
 				}
 				return;
 			}
+            function tj(sid,pid,cid,id){
+                var selUserId = document.all[id+"nextUserId"].value;
+                if(selUserId == null || selUserId == ''){
+                    alert("请先选择进行审批的用户！");
+                    document.all[id+"nextUserId"].focus();
+                    return ;
+                }
+                window.location = "tj.jsp?selUserId="+selUserId+"&connectId="+cid+"&pkId="+sid+"&processId="+pid;
+            }
+            function qz(processId,connectId){
+                window
+                        .open(
+                        "<%=request.getContextPath()%>/oa/qpd/view.jsp?formId=5d97f266-6a7b-4deb-9aae-b7f056b280a4&connectId="+connectId+"&processId="+processId,
+                        "mywindow",
+                        "height="
+                                + 500
+                                + ",width="
+                                + 700
+                                + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="
+                                + 0
+                                + ",left="
+                                + 0
+                                + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
+            }
 		</script>
 		
 	</head>
@@ -70,7 +97,7 @@
 			<tr>
 				<td>
 					<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" class="mtabtab" id="mtabtab">
+						cellspacing="0" class="mtabtab" id="tab_id">
 						<tr>
 							<th nowrap="nowrap"  width="40">
 								序号
@@ -91,7 +118,7 @@
 							<th  width="120">
 								状态
 							</th>
-							<th  width="120">
+							<th  width="3%">
 								操作
 							</th>
 						</tr>
@@ -102,16 +129,16 @@
 //								if(history==null) continue;
 //								String instanceid = history.getInstanceId();
 						%>
-						<tr>
+						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(document.getCyid(),"") %>')">
 							<td  align="center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td  align="center">
+							<td  align="center" style="text-align: left">
 								<a href="view.jsp?pkid=<%=document.getCyid() %>"><%=document.getWjbh()%></a>
 							</td>
 							
-							<td  align="center" style="text-align: left">
+							<td  align="center" style="text-align: left" style="text-align: left">
 								<%=document.getWjmc()%>&nbsp;
 							</td>
 							<td  align="center">
@@ -121,20 +148,40 @@
 								<%=StringUtil.parseNull(document.getLwdw(),"")%>&nbsp;
 							</td>
 							<td  align="center">
-								<%--<%if(document.getZt().equals("save")){ %>--%>
-									<%--<span style="color: red">未传阅</span>--%>
-								<%--<%}else if(history.getActivityId().equals("f48aace8-0f9d-47de-a636-53d8c132c7fb")){ %>--%>
-									<%--<span style="color: green">结束</span>--%>
-								<%--<%}else{ %>--%>
-									<%--<span style="color: blue">传阅中</span>--%>
-								<%--<%} %>--%>
+                                <%String sqzt = StringUtil.parseNull(document.getZt(),"");
+                                    if("已完成".equals(sqzt)){ %>
+                                <font color="green"><%=sqzt%></font>
+                                <%}else if("正在审批".equals(sqzt)) { %>
+                                <font color="red"><%=sqzt%></font>
+                                <%}else{  %>
+                                <%=sqzt%>
+                                <% }
+                                %>&nbsp;
 							</td>
-							<td  align="center">
-								<%if(document.getZt()==null || document.getZt().equals("save")){ %>
-									<a href="./edit.jsp?pkid=<%=document.getCyid() %>">[编辑]</a>&nbsp;
-								<%} %>
-								<a href="javascript:onDelete('./delete.jsp?pkid=<%=document.getCyid() %>&pid=');">[删除]</a>&nbsp;
-								<a href="./print.jsp?pkid=<%=document.getCyid() %>">[打印]</a>&nbsp;
+							<td  align="center" nowrap="nowrap">
+                                <%
+                                    if("已申请".equals(StringUtil.parseNull(document.getZt(),""))){
+                                        String processId = StringUtil.parseNull(document.getProcessId(),"");
+                                        String connectId = StringUtil.parseNull(document.getConnectId(),"");
+                                        String nextRole = workFlow.getNextRoleName(connectId,"1");
+                                        String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
+                                %>
+                                发送给&nbsp;<%=nextRole%>
+                                <select name="<%=StringUtil.parseNull(document.getCyid(),"")%>nextUserId">
+                                    <%=StringUtil.parseNull(options,"")%>
+                                </select>审批<input type="button" class="button"  style="width:40px" value="提交" onclick="tj('<%=StringUtil.parseNull(document.getCyid(),"")%>','<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(document.getCyid(),"")%>');"/>
+                                <% }else if("已保存".equals(StringUtil.parseNull(document.getZt(),""))){%>
+                                <a href="./edit.jsp?pkid=<%=StringUtil.parseNull(document.getCyid(),"")%>">[编辑]</a>&nbsp;
+                                <a href="javascript:onDelete('./delete.jsp?pkid=<%=StringUtil.parseNull(document.getCyid(),"")%>');">[删除]</a>&nbsp;
+                                <%   }else{ %>
+                                <a href="./flow.jsp?processId=<%=StringUtil.parseNull(document.getProcessId(),"")%>">[查看流程]</a>
+                                <a href="#" onclick="qz('<%=document.getProcessId()%>','<%=document.getConnectId()%>');">[查看签字]</a>
+                                <%  }
+                                %>
+                                <%sqzt = StringUtil.parseNull(document.getZt(),"");
+                                    if("已完成".equals(sqzt)){ %>
+                                <a href="#" onclick="qz('<%=document.getProcessId()%>','<%=document.getConnectId()%>');">[开始传阅]</a>
+                                <%}%>&nbsp;
 							</td>
 						</tr>
 						<%
