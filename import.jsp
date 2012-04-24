@@ -37,6 +37,7 @@
     WConnectDAO wConnectDAO = (WConnectDAO)SpringFactory.instance.getBean("wConnectDAO");
     COrgnizationDAO orgnizationDAO = (COrgnizationDAO)SpringFactory.instance.getBean("orgnizationDAO");
     OfficeNoticeDAO officeNoticeDAO = (OfficeNoticeDAO)SpringFactory.instance.getBean("officeNoticeDAO");
+    OfficeSmsPersonDAO officeSmsPersonDAO = (OfficeSmsPersonDAO)SpringFactory.instance.getBean("officeSmsPersonDAO");
     OfficeFileDAO officeFileDAO = (OfficeFileDAO) SpringFactory.instance.getBean("officeFileDAO");
     UMessageDAO uMessageDAO = (UMessageDAO) SpringFactory.instance.getBean("uMessageDAO");
     OfficeNoticeCheckDAO officeNoticeCheckDAO = (OfficeNoticeCheckDAO)SpringFactory.instance.getBean("officeNoticeCheckDAO");
