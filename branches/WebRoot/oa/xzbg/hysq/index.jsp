@@ -108,7 +108,7 @@
 					<table width="100%" border="0" align="center" cellpadding="0"
 						cellspacing="0" id="tab_id" class="mtabtab">
 						<tr class="form_th">
-							<th nowrap="nowrap" width="2%">
+							<th nowrap="nowrap" width="40">
 								序号
 							</th>
 							<th nowrap="nowrap" >
@@ -127,7 +127,7 @@
 							<th >
 								申请结束时间
 							</th>
-							<th nowrap="nowrap" >
+							<th nowrap="nowrap" width="200">
 								会议内容
 							</th>
 							<th nowrap="nowrap" >
@@ -144,15 +144,15 @@
                                 oracle.sql.TIMESTAMP eTime = (oracle.sql.TIMESTAMP)map.get("SQJSSJ");
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("SQID"),"") %>')">
-							<td  style="text-align: center;border-left: 1px solid #01a0fe;">
+							<td  style="text-align: center;border-left: 1px solid #01a0fe;" nowrap="nowrap">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td  align="left">
+							<td  align="left" style="text-align: left">
 								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("HYMC"),"") %></a>
 							</td>
 							
-							<td  align="left">
+							<td  align="left" style="text-align: left">
 								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
 							</td>
 							<td  align="center">
@@ -169,7 +169,7 @@
                                 <%=DateUtil.format(eTime.timestampValue(), "yyyy-MM-dd HH:mm")%>
                                 <% }%>
 							</td>
-							<td  align="left">
+							<td  align="left" title="<%=StringUtil.parseNull(map.get("HYNR"),"")%>"  style="text-align: left">
 								<%=StringUtil.cutString(StringUtil.parseNull(map.get("HYNR"),""),25)%>
 							</td>
 							<td  align="center">
