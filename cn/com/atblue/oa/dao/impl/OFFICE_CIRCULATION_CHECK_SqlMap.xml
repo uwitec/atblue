@@ -14,7 +14,11 @@
     <result column="SIGN" property="sign" jdbcType="VARCHAR" />
     <result column="TASKID" property="taskid" jdbcType="VARCHAR" />
   </resultMap>
-  
+    <select id="selectByPkidCheckMan" parameterClass="java.util.HashMap" resultClass="cn.com.atblue.oa.bean.OfficeCirculationCheck">
+        <![CDATA[
+        select * from OFFICE_CIRCULATION_CHECK t where t.pkid = #pkid:VARHCAR# and t.checkman = #checkman:VARCHAR# and rownum = 1
+  	]]>
+    </select>
    <select id="getByFreeSql" parameterClass="java.util.HashMap" resultClass="cn.com.atblue.oa.bean.OfficeCirculationCheck">
   	 <include refid="basic.pageStart" />
 	  	<![CDATA[
