@@ -249,7 +249,7 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         Map map = new HashMap();
         map.put("checkman", checkman);
         map.put("pkid", pkid);
-        this.getSqlMapClientTemplate().delete("oa.dao.updateOfficeCirculationCheck",map);
+        this.getSqlMapClientTemplate().update("oa.dao.updateOfficeCirculationCheck",map);
     }
 
     public void deleteAllSms(){

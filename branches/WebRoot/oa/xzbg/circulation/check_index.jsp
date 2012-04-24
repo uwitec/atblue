@@ -127,9 +127,9 @@
                                 %>
                                 <a href="sign.jsp?pkid=<%=document.getCyid() %>"><img src="<%=contentPath%>/images/ok.gif" alt="已签收"  border="0" ></a>
                                 <%}else if(onc!=null && onc.getCheckflag().equals("0")){ %>
-                                请点击签收<a href="sign.jsp?noticeid=<%=document.getCyid()  %>"><img src="<%=contentPath%>/images/delete.gif" border="0" alt="未签收"></a>
+                                请点击传阅<a href="sign.jsp?pkid=<%=document.getCyid()  %>"><img src="<%=contentPath%>/images/delete.gif" border="0" alt="未签收"></a>
                                 <%}else{ %>
-                                <a href="view.jsp?noticeid=<%=document.getCyid()  %>"><img src="<%=contentPath%>/images/ok.gif" alt="不需要签收"  border="0" ></a>
+                                <a href="view.jsp?pkid=<%=document.getCyid()  %>"><img src="<%=contentPath%>/images/ok.gif" alt="不需要签收"  border="0" ></a>
                                 <%} %>
 							</td>
 						</tr>
