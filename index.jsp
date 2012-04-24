@@ -71,7 +71,7 @@
                                <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
                                <td class="txt_home">
                                    <a href="<%=request.getContextPath()%>/oa/xzbg/notice/view.jsp?noticeid=<%=StringUtil.parseNull(map.get("NOTICEID"),"")%>">
-                                   <%=StringUtil.parseNull(map.get("NOTITITLE"),"")%></a>
+                                   <%=StringUtil.cutString(StringUtil.parseNull(map.get("NOTITITLE"),""),30)%></a>
                                </td>
                                <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
                            </tr>
@@ -104,7 +104,7 @@
                                <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
                                <td class="txt_home">
                                    <a href="<%=request.getContextPath()%>/oa/xzbg/notice/sign.jsp?noticeid=<%=StringUtil.parseNull(map.get("NOTICEID"),"")%>">
-                                   <%=StringUtil.parseNull(map.get("NOTITITLE"),"")%></a></td>
+                                   <%=StringUtil.cutString(StringUtil.parseNull(map.get("NOTITITLE"),""),30)%></a></td>
                                <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
                            </tr>
                            <% }
@@ -141,7 +141,7 @@
                           <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
                           <td class="txt_home">
                               <a href="<%=request.getContextPath()%>/oa/xzbg/documents/signView.jsp?pkid=<%=document.getDocumentid() %>">
-                                  <%=StringUtil.parseNull(document.getBt(),"")%></a></td>
+                                  <%=StringUtil.cutString(StringUtil.parseNull(document.getBt(),""),30)%></a></td>
                           <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
                       </tr>
                       <% }
@@ -173,7 +173,7 @@
                                   <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
                                   <td class="txt_home">
                                       <a href="<%=request.getContextPath()%>/oa/xzbg/wjsp/sp.jsp?documentid=<%=StringUtil.parseNull(map.get("DOCUMENTID"),"") %>">
-                                      【文件审批】<%=StringUtil.parseNull(map.get("BT"),"")%></a></td>
+                                      【文件审批】<%=StringUtil.cutString(StringUtil.parseNull(map.get("BT"),""),23)%></a></td>
                                   <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
                               </tr>
                               <% }
@@ -187,7 +187,7 @@
                                   <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
                                   <td class="txt_home">
                                       <a href="<%=request.getContextPath()%>/oa/xzbg/hysq/sp.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>">
-                                      【会议申请】<%=StringUtil.parseNull(map.get("HYMC"),"")%></a></td>
+                                      【会议申请】<%=StringUtil.cutString(StringUtil.parseNull(map.get("HYMC"),""),23)%></a></td>
                                   <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
                               </tr>
                               <% }
@@ -201,7 +201,7 @@
                                   <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
                                   <td class="txt_home">
                                       <a href="<%=request.getContextPath()%>/oa/xzbg/yysq/sp.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>">
-                                          【用印申请】<%=StringUtil.parseNull(map.get("YYMC"),"")%></a>
+                                          【用印申请】<%=StringUtil.cutString(StringUtil.parseNull(map.get("YYMC"),""),23)%></a>
                                       </td>
                                   <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
                               </tr>
@@ -216,7 +216,7 @@
                                   <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
                                   <td class="txt_home">
                                       <a href="<%=request.getContextPath()%>/oa/xzbg/holiday/sp.jsp?holidayid=<%=StringUtil.parseNull(map.get("HOLIDAYID"),"") %>">
-                                          【请假申请】<%=StringUtil.parseNull(map.get("XM"),"")%></a>
+                                          【请假申请】<%=StringUtil.cutString(StringUtil.parseNull(map.get("XM"),""),23)%></a>
                                   </td>
                                   <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
                               </tr>
