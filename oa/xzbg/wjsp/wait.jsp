@@ -128,7 +128,7 @@
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td  align="left" style="text-align: left">
+							<td  align="left" style="text-align: left" nowrap="nowrap">
 								<a href="view.jsp?documentid=<%=StringUtil.parseNull(map.get("DOCUMENTID"),"") %>"><%=StringUtil.parseNull(map.get("BT"),"") %></a>
 							</td>
 							<td  align="center">
