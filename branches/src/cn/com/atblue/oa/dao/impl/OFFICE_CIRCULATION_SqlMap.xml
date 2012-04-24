@@ -173,15 +173,15 @@
   	 <include refid="basic.pageStart" />
 	  	<![CDATA[
 	  		select a.* from OFFICE_CIRCULATION a,Office_Circulation_Check b
-	  		where a.cyid=b.cyid and b.checkman =#checkman#  and a.zt = '正在传阅中'
+	  		where a.cyid=b.cyid and b.checkman =#checkman#  and a.zt = '正在传阅中'  and b.CHECKFLAG = #cn#
 	  	]]>
 	  <include refid="basic.pageEnd" />
   </select>
   
-  <select id="getBeanByNbrCount" parameterClass="java.lang.String" resultClass="java.lang.Integer">
+  <select id="getBeanByNbrCount" parameterClass="java.util.HashMap" resultClass="java.lang.Integer">
   	<![CDATA[
   		select count(*) from OFFICE_CIRCULATION a,Office_Circulation_Check b
-  		where a.cyid=b.cyid and b.checkman =#checkman#  and a.zt = '正在传阅中'
+  		where a.cyid=b.cyid and b.checkman =#checkman#  and a.zt = '正在传阅中'  and b.CHECKFLAG = #cn#
   	]]>
   </select>
 </sqlMap>

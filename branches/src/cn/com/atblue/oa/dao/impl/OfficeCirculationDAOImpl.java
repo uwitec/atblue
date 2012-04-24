@@ -120,17 +120,21 @@ public class OfficeCirculationDAOImpl extends SqlMapClientDaoSupport implements 
 				"OFFICE_CIRCULATION.getBySqlCount", sql);
 	}
 	
-    public List getBeanByNbr(String checkman, PageBean pb) {
+    public List getBeanByNbr(String cn,String checkman, PageBean pb) {
 		Map map = new HashMap();
 		map.put("currentPage", pb.getCurrentPage());
 		map.put("pageSize", pb.getPageSize());
 		map.put("checkman", checkman);
+		map.put("cn", cn);
 		return getSqlMapClientTemplate().queryForList(
 				"OFFICE_CIRCULATION.getBeanByNbr", map);
 	}
 
-	public int getBeanByNbrCount(String checkman) {
+	public int getBeanByNbrCount(String cn, String checkman) {
+        Map map = new HashMap();
+        map.put("checkman", checkman);
+        map.put("cn", cn);
 		return (Integer) getSqlMapClientTemplate().queryForObject(
-				"OFFICE_CIRCULATION.getBeanByNbrCount", checkman);
+				"OFFICE_CIRCULATION.getBeanByNbrCount", map);
 	}
 }

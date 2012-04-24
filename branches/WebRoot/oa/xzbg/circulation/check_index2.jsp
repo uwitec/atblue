@@ -12,10 +12,10 @@
 	
 	Map paramMap = new HashMap();
 	pageBean.setPageSize(pageSize);
-	int totalRow = officeCirculationDAO.getBeanByNbrCount("0",_user.getUserId());
+	int totalRow = officeCirculationDAO.getBeanByNbrCount("1",_user.getUserId());
 	pageBean.setTotalRows(totalRow);
 
-	List list = officeCirculationDAO.getBeanByNbr("0",_user.getUserId(),pageBean);
+	List list = officeCirculationDAO.getBeanByNbr("1",_user.getUserId(),pageBean);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -26,14 +26,8 @@
 			type="text/javascript" defer="defer"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
         <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
-		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
-		<script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
 		<script>
 		function workflow(id){
         	window.open("workflow.jsp?instanceid="+id,"newWindow","height=700,width=1000,top=0,left=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no, status=no");
