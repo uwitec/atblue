@@ -8,7 +8,8 @@
     OfficeCirculationCheckDAO officeCirculationCheckDAO = (OfficeCirculationCheckDAO)SpringFactory.instance.getBean("officeCirculationCheckDAO");
 	String pkid = request.getParameter("pkid");
     List checkList = oDao.getOfficeCirculationCheckList(pkid);
-    String[] checkmans = null;
+    String[] checkmans = new String[1];
+    checkmans[0] = "";
     String checkman = "";
     if(checkList != null && checkList.size() > 0){
         checkmans = new String[checkList.size()];
@@ -28,8 +29,7 @@
 	List hasFileList = officeFileDAO.getByFk(pkid);
 	OfficeCirculationCheck officeCirculationCheck = officeCirculationCheckDAO.selectByPrimaryCyid(pkid);
 	if(officeCirculationCheck==null) officeCirculationCheck = new OfficeCirculationCheck();
-	List userList = dao.findUsersByRole(bgsldRole);
-
+    List userList  = dao.getAllUser();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -133,7 +133,8 @@
                                 autoTabs:true,
                                 activeTab:0,
                                 deferredRender:false,
-                                border:false
+                                border:false,
+                                defaults:{autoScroll: true}
                             }),
                             buttons: [{
                                 text:'确定',
@@ -246,8 +247,7 @@
 										来文时间
 									</td>
 									<td class="head_right" align="left" style="text-align: left">
-
-										<%=DateUtil.format(document.getLwsj(),"yyyy-MM-dd") %> &nbsp;&nbsp;
+										<%=StringUtil.parseNull(document.getLwsj(),"") %> &nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
@@ -255,11 +255,9 @@
 										来文单位
 									</td>
 									<td class="head_right" align="left" style="text-align: left">
-
 										<%=StringUtil.parseNull(document.getLwdw(),"") %> &nbsp;&nbsp;
 									</td>
 								</tr>
-								
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
 										文件编号

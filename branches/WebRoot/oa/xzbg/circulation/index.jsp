@@ -71,6 +71,11 @@
                                 + 0
                                 + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
             }
+            function cy(id){
+                if(confirm("确定要传阅该文件？")){
+                    window.location = "chuanyue.jsp?pkid="+id;
+                }
+            }
 		</script>
 		
 	</head>
@@ -179,8 +184,8 @@
                                 <%  }
                                 %>
                                 <%sqzt = StringUtil.parseNull(document.getZt(),"");
-                                    if("已完成".equals(sqzt)){ %>
-                                <a href="#" onclick="qz('<%=document.getProcessId()%>','<%=document.getConnectId()%>');">[开始传阅]</a>
+                                    if("已完成".equals(sqzt) && !"正在传阅中".equals(sqzt)){ %>
+                                <a href="#" onclick="cy('<%=StringUtil.parseNull(document.getCyid(),"")%>');">[开始传阅]</a>
                                 <%}%>&nbsp;
 							</td>
 						</tr>
