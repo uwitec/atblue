@@ -34,7 +34,7 @@
 //    if(officeCirculationCheck==null) officeCirculationCheck = new OfficeCirculationCheck();
     List userList  = dao.getAllUser();
     if("sign".equals(act)){
-          oDao.updateOfficeCirculationCheck(pkid,cUser.getUserId());
+        oDao.updateOfficeCirculationCheck(cUser.getUserId(),pkid);
         out.print("<script>");
         out.print("window.location='check_index.jsp';");
         out.print("</script>");
@@ -154,7 +154,7 @@
 </head>
 <body onload="_resizeNoPage();">
 <form name="form1" method="post">
-    <input type="hidden" name="act" value="">
+    <input type="hidden" name="act" value="sign">
     <input type="hidden" name="pkid" value="<%=pkid%>">
     <div id="hello-win" class="x-hidden">
         <div id="hello-tabs">
