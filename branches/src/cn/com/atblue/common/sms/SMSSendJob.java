@@ -27,20 +27,22 @@ public class SMSSendJob implements Job {
         if (list != null && list.size() > 0) {
             smsHandler.init();
             smsHandler.start();
+            System.out.println("短信猫已经启动！");
             for (int i = 0; i < list.size(); i++) {
                 OfficeSmsPerson bean = (OfficeSmsPerson) list.get(i);
                 String USER_NAME = StringUtil.parseNull(bean.getUserName(), "");
                 String DXNR = StringUtil.parseNull(bean.getDxnr(), "");
                 String PHONE = StringUtil.parseNull(bean.getPhone(), "");
                 String TZID = StringUtil.parseNull(bean.getTzid(), "");
-                StringBuffer s = new StringBuffer();
-                s.append("尊敬的" + USER_NAME + "您好：");
-                s.append("OA系统有[").append(DXNR).append("]等待您签收！");
-                s.append("请发短信返回数字").append(TZID).append("进行签收！");
+//                StringBuffer s = new StringBuffer();
+//                s.append("尊敬的" + USER_NAME + "您好：");
+//                s.append("OA系统有[").append(DXNR).append("]等待您签收！");
+//                s.append("请发短信返回数字").append(TZID).append("进行签收！");
                 if (!StringUtil.isBlankOrEmpty(PHONE)) {
                     OutboundMessage message = new OutboundMessage(PHONE, DXNR);
                     smsHandler.sendSMS(message);
                     bean.setSffs("1");
+                    System.out.println("短息发送成功："+message);
                     officeSmsPersonDAO.modOfficeSmsPerson(bean);
                 }
 
