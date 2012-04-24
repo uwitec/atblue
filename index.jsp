@@ -10,8 +10,7 @@
     PageBean pageBean = new PageBean();
     pageBean.setPageSize(5);
     pageBean.setTotalRows(5);
-    List list = officeNoticeDAO
-            .getNowNotice(_user.getUserId(), pageBean);
+    List list = oDao.getLatestNotice(cUser.getUserId(),5);
     list = list == null ? new ArrayList() : list;
     Map paramMap = new HashMap();
     paramMap.put("userId", cUser.getUserId());
@@ -98,14 +97,14 @@
                        <td height="140" align="center" class="tab_main" valign="top"><table width="95%" border="0" cellspacing="0" cellpadding="0">
                            <%
                                for(int i=0; i<list.size();i++){
-                                   OfficeNotice map = (OfficeNotice)list.get(i);
-                                   java.util.Date date = (java.util.Date)map.getRlsdate();
+                                   Map map = (Map)list.get(i);
+                                   java.util.Date date = (java.util.Date)map.get("RLSDATE");
                            %>
                            <tr >
                                <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
                                <td class="txt_home">
-                                   <a href="<%=request.getContextPath()%>/oa/xzbg/notice/view.jsp?noticeid=<%=StringUtil.parseNull(map.getNoticeid(),"")%>">
-                                   <%=StringUtil.parseNull(map.getNotititle(),"")%></a></td>
+                                   <a href="<%=request.getContextPath()%>/oa/xzbg/notice/sign.jsp?noticeid=<%=StringUtil.parseNull(map.get("NOTICEID"),"")%>">
+                                   <%=StringUtil.parseNull(map.get("NOTITITLE"),"")%></a></td>
                                <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
                            </tr>
                            <% }

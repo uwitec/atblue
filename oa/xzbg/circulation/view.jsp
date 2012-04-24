@@ -27,8 +27,8 @@
         e.printStackTrace();
     }
 	List hasFileList = officeFileDAO.getByFk(pkid);
-	OfficeCirculationCheck officeCirculationCheck = officeCirculationCheckDAO.selectByPrimaryCyid(pkid);
-	if(officeCirculationCheck==null) officeCirculationCheck = new OfficeCirculationCheck();
+//	OfficeCirculationCheck officeCirculationCheck = officeCirculationCheckDAO.selectByPrimaryCyid(pkid);
+//	if(officeCirculationCheck==null) officeCirculationCheck = new OfficeCirculationCheck();
     List userList  = dao.getAllUser();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
