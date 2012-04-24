@@ -538,4 +538,79 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
     order by c.real_name
         ]]>
 </select>
+
+    <select id="getWaitPagedOfficeCirculationList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+    select t.*
+  from Office_Circulation t, w_connect c, w_process p
+ where t.connect_id = c.connect_id
+   and t.process_id = p.process_id
+   and p.process_status = '1'
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="userId">
+                <![CDATA[c.pending_person like '%'||#userId#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="wjmc">
+                <![CDATA[t.WJMC like '%'||#wjmc#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.LRSJ desc
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getWaitPagedOfficeCirculationCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+         select count(*) cn
+  from Office_Circulation t, w_connect c, w_process p
+ where t.connect_id = c.connect_id
+   and t.process_id = p.process_id
+   and p.process_status = '1'
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="userId">
+                <![CDATA[c.pending_person like '%'||#userId#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="wjmc">
+                <![CDATA[t.WJMC like '%'||#wjmc#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    <select id="getAlreadyPagedOfficeCirculationList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+      select t.*
+        from Office_Circulation t,
+             (select c.process_id, count(*) cn
+                from w_connect c
+               where c.real_person like  '%'||#userId#||'%'
+               group by c.process_id) d
+       where t.process_id = d.process_id
+         and d.cn > 0
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="wjmc">
+                <![CDATA[t.WJMC like '%'||#wjmc#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.LRSJ desc
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getAlreadyPagedOfficeCirculationCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+      select count(*)
+        from Office_Circulation t,
+             (select c.process_id, count(*) cn
+                from w_connect c
+               where c.real_person like  '%'||#userId#||'%'
+               group by c.process_id) d
+       where t.process_id = d.process_id
+         and d.cn > 0
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="wjmc">
+                <![CDATA[t.WJMC like '%'||#wjmc#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+    </select>
 </sqlMap>
