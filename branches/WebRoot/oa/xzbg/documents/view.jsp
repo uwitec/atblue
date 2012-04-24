@@ -22,8 +22,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title></title>
 			<script src="<%=contentPath%>/js/common.js" type="text/javascript" defer="defer"></script>
-		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-			type="text/css">
+        <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"	type="text/css">
+        <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"	type="text/css">
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -79,177 +79,176 @@
 								
 								
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										发文类型
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=document.getLb() %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=document.getLb() %> &nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										文件编号
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=document.getWjbh() %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=document.getWjbh() %>&nbsp;&nbsp;
 									</td>
 								</tr>
 
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										文件标题
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=document.getBt() %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=document.getBt() %>&nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										密级
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(document.getMmcd(),"") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=StringUtil.parseNull(document.getMmcd(),"") %>&nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										签发人
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(document.getQfr(),"") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=StringUtil.parseNull(document.getQfr(),"") %>&nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										签发日期
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(document.getQfrq(),"") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=StringUtil.parseNull(document.getQfrq(),"") %>&nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										拟稿部门
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(document.getNgbm(),"") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=StringUtil.parseNull(document.getNgbm(),"") %> &nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										缓急时限
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(document.getHjsx(),"") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=StringUtil.parseNull(document.getHjsx(),"") %>&nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										共印份数
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(document.getGyfs(),"") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=StringUtil.parseNull(document.getGyfs(),"") %>&nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										主题词
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(document.getZtc(),"") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=StringUtil.parseNull(document.getZtc(),"") %>&nbsp;&nbsp;
 									</td>
 								</tr>
 								
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										主送
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(document.getZs(),"") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=StringUtil.parseNull(document.getZs(),"") %> &nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										抄送
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(document.getCs(),"") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=StringUtil.parseNull(document.getCs(),"") %> &nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										抄报
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(document.getCb(),"") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=StringUtil.parseNull(document.getCb(),"") %> &nbsp;&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										是否加急
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(document.getFwjb(),"") %>
+									<td class="head_right" align="left" style="text-align: left">
+
+										<%=StringUtil.parseNull(document.getFwjb(),"") %> &nbsp;&nbsp;
 									</td>
 								</tr>
 
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										备注
 									</td>
-									<td class="NormalDataColumn" align="left">
+									<td class="head_right" align="left" style="text-align: left">
 										&nbsp;&nbsp;
-										<%=StringUtil.parseNull(document.getBz(),"") %>
+										<%=StringUtil.parseNull(document.getBz(),"") %> &nbsp;&nbsp;
 									</td>
 								</tr>
 								<%if(hasFileList!=null && hasFileList.size()>0){ %>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										附件
 									</td>
-									<td class="NormalDataColumn" align="left" id="hasFile">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" id="hasFile" style="text-align: left">
+
 										<%
 											for(int i=0; i<hasFileList.size(); i++){
 												OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
 											<a href="<%=contentPath %>/officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
 												<img src="<%=contentPath %>/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='<%=contentPath %>/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
 											</a>&nbsp;&nbsp;&nbsp;
-									     <%}%>
+									     <%}%> &nbsp;&nbsp;
 									</td>
 								</tr>
 								<%} %>
 								<%if(document.getStatus()==null || document.getStatus().intValue()==0){ %>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										签收情况
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<span style="color: red">该文件还未发放</span>
 									</td>
 								</tr>
 								<%}else{ %>
 									<tr>
-										<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+										<td nowrap="nowrap" width="120" class="head_left">
 											签收情况<span style='color: red'>[未签收]</span>
 										</td>
-										<td class="NormalDataColumn" align="left">
-											&nbsp;&nbsp;
+										<td class="head_right" align="left" style="text-align: left">
+
 											<%
 												for(int i=0; i<checkList.size(); i++){
 													OfficeDocumentsCheck odc = (OfficeDocumentsCheck)checkList.get(i);
@@ -262,15 +261,15 @@
 													if(odc.getCheckflag()==null || odc.getCheckflag().equals("0")){
 														out.print("<span style='color: red'>[" + _tempUser + "]</span>&nbsp;&nbsp;");
 													}
-												}%>
+												}%>&nbsp;&nbsp;
 										</td>
 									</tr>
 									<tr>
-										<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+										<td nowrap="nowrap" width="120" class="head_left">
 											签收情况<span style='color: blue'>[已签收]</span>
 										</td>
-										<td class="NormalDataColumn" align="left">
-											&nbsp;&nbsp;
+										<td class="head_right" align="left" style="text-align: left">
+
 											<%for(int i=0; i<checkList.size(); i++){
 													OfficeDocumentsCheck odc = (OfficeDocumentsCheck)checkList.get(i);
 													String _tempUser = "";
@@ -280,7 +279,7 @@
 													if(odc.getCheckflag()!=null && odc.getCheckflag().equals("1")){
 														out.print("<span style='color: blue'>[" + _tempUser + "&nbsp;" + DateUtil.format(odc.getChecktime(),"yyyy-MM-dd HH:mm") + "]</span>&nbsp;&nbsp;");
 													}
-											}%>
+											}%> &nbsp;&nbsp;
 										</td>
 									</tr>
 								<%} %>

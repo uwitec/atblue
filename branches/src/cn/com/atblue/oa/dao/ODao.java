@@ -94,4 +94,8 @@ public interface ODao {
     public List getSmsPersonsList();
     
     public List getLatestAnnounce(int cn);
+    
+    public void delOfficeDocumentsCheck(String checkman, String documentid);
+    
+    public List getOfficeDocumentsCheckList(String documentid);
 }

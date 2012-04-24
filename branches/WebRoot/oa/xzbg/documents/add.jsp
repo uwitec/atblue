@@ -87,7 +87,7 @@
 		}
 		
 		//保存用户
-		if(act!=null && act.equals("pub")){
+//		if(act!=null && act.equals("pub")){
 			String[] ubox = fileUpload.getParameters("ubox");
 			
 			for(int i=0; i<ubox.length; i++){
@@ -99,7 +99,7 @@
 				
 				officeDocumentsCheckDAO.insert(odc);
 			}
-		}
+//		}
 		
 		out.print("<script>");
 		out.print("window.location='manager.jsp';");
@@ -115,8 +115,8 @@
 		<title></title>
 		<script src="<%=contentPath%>/js/common.js"
 			type="text/javascript" defer="defer"></script>
-		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
-			type="text/css">
+        <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"	type="text/css">
+        <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"	type="text/css">
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
@@ -132,7 +132,7 @@
 				
 				
 				document.form1.act.value=act;
-				if(act=='pub'){
+//				if(act=='pub'){
 					var has = false;
 					for(var i=0; i<document.form1.ubox.length; i++){
 						if(document.form1.ubox[i].checked){
@@ -144,7 +144,7 @@
 						alert("请选择签收用户.");
 						return;
 					}
-				}
+//				}
 				if(document.form1.wjbh.value==""){
 					document.form1.wjbh.focus();
 					alert("请输入文件编号");
@@ -186,9 +186,9 @@
 				var tableRows  = fileTable.getElementsByTagName("tr");
     			var objTR = fileTable.insertRow();
     			var objTD = objTR.insertCell(); 
-    			objTD.innerHTML = "<td nowrap='nowrap' width='120' class='NormalColumnTitle'>&nbsp;</td>";
+    			objTD.innerHTML = "<td nowrap='nowrap' width='120' class='head_left'>&nbsp;</td>";
     			objTD = objTR.insertCell(); 
-    			objTD.innerHTML += "<td class='NormalDataColumn' align='left'>"
+    			objTD.innerHTML += "<td class='head_right' align='left'>"
     			objTD.innerHTML += fileCount +  ".&nbsp;&nbsp;&nbsp;<input type='file' name='file_" + fileCount + "' style='width: 400px;'></td>";
 			}
 		</script>
@@ -265,10 +265,10 @@
 	    	var newTr = tbl.insertRow();
 	    	var newTd = newTr.insertCell(0);
 	    	newTd.align="center";
-	    	newTd.className="NormalDataColumn";
+	    	newTd.className="head_right";
 	    	newTd.appendChild(document.createTextNode(len));
 	    	newTd = newTr.insertCell(1);
-	    	newTd.className="NormalDataColumn";
+	    	newTd.className="head_right";
 	    	newTd.appendChild(document.createTextNode("文件："));
 	    	var node = document.createElement("input");
 	    	
@@ -278,7 +278,7 @@
 	    	newTd.appendChild(node);
 	    	newTd = newTr.insertCell(2);
 	    	newTd.align="center";
-	    	newTd.className="NormalDataColumn";
+	    	newTd.className="head_right";
 	    	var node = document.createElement("a");
 	    	node.href="javascript:void(0)";
 	    	node.onclick= function (){
@@ -389,22 +389,20 @@
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										文件标题<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="bt" class="inputStyle"
 											style="width: 400px;">
 											<input type="checkbox" name="checked" id="checked" value="1" checked>短信提醒
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										发文类型<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<select name="lb" onchange="lbz(this)" style="width: 200px;">
 			                            	<option value="" selected>请选择 </option>
 			                                <option value="公司文件">公司文件</option>
@@ -420,21 +418,19 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										文件编号<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="wjbh" class="inputStyle"
 											style="width: 300px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										密级
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<select name="mmcd" style="width: 100px;">
 			                                <option value="无">无</option>
 			                                <option value="秘密">秘密</option>
@@ -444,11 +440,10 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										缓急时限
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<select id="hjsx" name="hjsx" style="width: 100px;">
 			                                <option value="无">无</option>
 			                                <option value="平急">平急</option>
@@ -458,41 +453,37 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										签收人<span style="color: red">&nbsp;*</span>
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="checkman" readonly="readonly" class="inputStyle"
 											style="width: 400px;">
 										&nbsp;
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										签发人
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="qfr" class="inputStyle" value="<%=_user.getRealName() %>"
 											style="width: 50px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										签发日期
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="qfrq" class="Wdate" onClick="WdatePicker()" value="<%=DateUtil.format(DateUtil.getDate(),"yyyy-MM-dd") %>">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										拟稿部门
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<select name="ngbm" style="width: 200px;">
 											<%for(int i=0;i<departmentList.size(); i++){ 
 												COrgnization dep = (COrgnization)departmentList.get(i);%>
@@ -502,20 +493,19 @@
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										共印份数
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="gyfs" class="inputStyle" value="5"
 											style="width: 30px;">
 									</td>
 								</tr>
 								<!-- tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										主题词
 									</td>
-									<td class="NormalDataColumn" align="left">
+									<td class="head_right" align="left">
 										&nbsp;&nbsp;
 										<input type="text" name="ztc" class="inputStyle"
 											style="width: 400px;">
@@ -523,40 +513,37 @@
 								</tr -->
 								
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										主送
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-											<textarea name="zs" class="inputStyle" 
+									<td class="head_right" align="left" style="text-align: left">
+											<textarea name="zs" class="inputStyle"
 											style="width: 300px;"></textarea>
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										抄送
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<textarea name="cs" class="inputStyle" 
+									<td class="head_right" align="left" style="text-align: left">
+										<textarea name="cs" class="inputStyle"
 											style="width: 300px;"></textarea>
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										抄报
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
-										<textarea name="cb" class="inputStyle" 
+									<td class="head_right" align="left" style="text-align: left">
+										<textarea name="cb" class="inputStyle"
 											style="width: 300px;"></textarea>
 									</td>
 								</tr>
 								<!--  tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										是否加急
 									</td>
-									<td class="NormalDataColumn" align="left">
+									<td class="head_right" align="left">
 										&nbsp;&nbsp;
 										<select name="sfjj" style="width: 100px;">
 			                            	<option value="否" selected>否</option>
@@ -566,21 +553,19 @@
 								</tr-->
 
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										备注
 									</td>
-									<td class="NormalDataColumn" align="left">
-										&nbsp;&nbsp;
+									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="bz" class="inputStyle"
 											style="width: 400px;">
 									</td>
 								</tr>
 								<tr>
-									<td nowrap="nowrap" width="120" class="NormalColumnTitle">
+									<td nowrap="nowrap" width="120" class="head_left">
 										附件&nbsp;
 									</td>
-									<td class="NormalDataColumn" align="left" id="fileTd">
-										1.&nbsp;&nbsp;
+									<td class="head_right" align="left" id="fileTd" style="text-align: left">
 										<input type="file" name="file_1" style="width: 400px;">
 									</td>
 								</tr>
@@ -588,7 +573,7 @@
 							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"
                        				class="mtabtab" id="attachTab">
 				               <tr>
-				               		<td class="NormalDataColumn" width="100%" nowrap colspan="3">其他附件：<input type="button" name="b_bc" class="button" value="添加" onclick="doAddAttachRow('attachTab');"></td>
+				               		<td class="head_right" width="100%" nowrap colspan="3" style="text-align: left">其他附件：<input type="button" name="b_bc" class="button" value="添加" onclick="doAddAttachRow('attachTab');"></td>
 				               </tr>
          					</table>
 						</div>

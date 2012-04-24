@@ -23,6 +23,14 @@
     list4 = list4 == null ? new ArrayList() : list4;
     List list5 = officeHolidayDAO.getWaitPagedList(pageBean,paramMap);
     list5 = list5 == null ? new ArrayList() : list5;
+
+    OfficeDocumentsDAO officeDocumentsDAO = (OfficeDocumentsDAO)SpringFactory.instance.getBean("officeDocumentsDAO");
+    StringBuilder sb = new StringBuilder();
+    sb.append(" where documentid in(select documentid from office_documents_check where checkman='");
+    sb.append(_user.getUserId()).append("') and status='1'");
+    sb.append(" order by cjrq desc");
+    List list6 = officeDocumentsDAO.getByFreeSql(sb.toString(),pageBean);
+    list6 = list6 == null ? new ArrayList() : list6;
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -124,32 +132,21 @@
                   </table></td>
               </tr>
               <tr>
-                  <td height="140" align="center" class="tab_main"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                  <td height="140" align="center" class="tab_main" valign="top"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                      <%
+                          for(int i=0; i<list6.size();i++){
+                              OfficeDocuments document = (OfficeDocuments)list6.get(i);
+                              java.util.Date date = (java.util.Date)document.getQfrq();
+                      %>
                       <tr>
                           <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
-                          <td class="txt_home">中海油公布新油田渤中19-4产量中海油公布新油田渤中19-4产</td>
-                          <td width="50" class="txt_home">04-19</td>
+                          <td class="txt_home">
+                              <a href="<%=request.getContextPath()%>/oa/xzbg/documents/signView.jsp?pkid=<%=document.getDocumentid() %>">
+                                  <%=StringUtil.parseNull(document.getBt(),"")%></a></td>
+                          <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
                       </tr>
-                      <tr>
-                          <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
-                          <td><span class="txt_home">中海油公布新油田渤中19-4产量中海油公布新油田渤中19-4产</span></td>
-                          <td width="50" class="txt_home">04-19</td>
-                      </tr>
-                      <tr>
-                          <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
-                          <td><span class="txt_home">中海油公布新油田渤中19-4产量中海油公布新油田渤中19-4产</span></td>
-                          <td width="50"><span class="txt_home">04-19</span></td>
-                      </tr>
-                      <tr>
-                          <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
-                          <td><span class="txt_home">中海油公布新油田渤中19-4产量中海油公布新油田渤中19-4产</span></td>
-                          <td width="50"><span class="txt_home">04-19</span></td>
-                      </tr>
-                      <tr>
-                          <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
-                          <td><span class="txt_home">中海油公布新油田渤中19-4产量中海油公布新油田渤中19-4产</span></td>
-                          <td width="50"><span class="txt_home">04-19</span></td>
-                      </tr>
+                      <% }
+                      %>
                   </table></td>
               </tr>
           </table></td>
