@@ -283,7 +283,8 @@
 			                    autoTabs:true,
 			                    activeTab:0,
 			                    deferredRender:false,
-			                    border:false
+			                    border:false ,
+                                defaults:{autoScroll: true}
 			                }),
 			                buttons: [{
 			                    text:'确定',
