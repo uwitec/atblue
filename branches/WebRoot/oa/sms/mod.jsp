@@ -60,7 +60,7 @@
                 }
             }
             if (!has) {
-                alert("请选择签收用户.");
+                alert("请选择接收短消息的用户.");
                 return;
             }
             if(document.all["bean.dxnr"].value == ''){
@@ -165,7 +165,7 @@
     <input type="hidden" name="bean.tzid" value="${bean.tzid}"/>
     <div id="hello-win" class="x-hidden">
         <div id="hello-tabs">
-            <div class="x-tab" title="请选择收件人">
+            <div class="x-tab" title="请选择接收短信通知的人">
                 <table border="0" width="100%">
                     <tr>
                         <td colspan="6" align="left">
