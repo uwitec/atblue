@@ -8,6 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>『黄河钻井三公司OA系统』</title>
     <link href="css/fooder.css" rel="stylesheet" type="text/css"/>
+    <link href="css/css.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript">
 
         function open_pop(path) {
@@ -41,7 +42,9 @@
                     <td><img src="images/index/fooder_line.gif" width="2" height="24"/></td>
                     <td align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         黄河钻井三公司办公自动化系统
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="soft/WebSign.exe">Web签字查看组件</a>  <a href="soft/MakeSeal.exe">制作签章工具</a>
+                        &nbsp;&nbsp;
                     </td>
                     <td><img src="images/index/fooder_line.gif" width="2" height="24"/></td>
                 </tr>
