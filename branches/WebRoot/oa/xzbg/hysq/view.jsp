@@ -17,7 +17,12 @@
     OfficeHysq hysq = officeHysqDAO.queryForBean(map);
     String[] checkman =oDao.getCjhyryBySqid(sqid);
     hysq = hysq == null?new OfficeHysq():hysq;
-     List userList  = dao.getAllUser();
+    List userList  = dao.getGsldAllUser();
+    List userList1  = dao.getJgksAllUser();
+    List userList2  = dao.getJcdwAllUser();
+    userList = userList == null?new ArrayList():userList;
+    userList1 = userList1 == null?new ArrayList():userList1;
+    userList2 = userList2 == null?new ArrayList():userList2;
 %>
 <html>
 	<head>
@@ -235,6 +240,13 @@
                                     <hr width="100%">
                                 </td>
                             </tr>
+                            <tr>
+                                <td colspan="6" align="left">
+                                    <hr width="100%">
+                                    <h2>公司领导</h2>
+                                    <hr width="100%">
+                                </td>
+                            </tr>
                             <%for(int i=0; i<userList.size(); i++){
                                 CUser u = (CUser)userList.get(i);
                                 if(i==0){
@@ -252,6 +264,62 @@
                                 <%
                                     if(userList.size()%6!=0){
                                         for(int i=0; i<userList.size()%6-1; i++){%>
+                                <td>&nbsp;</td>
+                                <%}%>
+                            </tr>
+                            <%}%>
+                            <tr>
+                                <td colspan="6" align="left">
+                                    <hr width="100%">
+                                    <h2>机关科室</h2>
+                                    <hr width="100%">
+                                </td>
+                            </tr>
+                            <%for(int i=0; i<userList1.size(); i++){
+                                CUser u = (CUser)userList1.get(i);
+                                if(i==0){
+                            %>
+                            <tr>
+                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                                <%	}else if(i%6==0){ %>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                                <%	}else{ %>
+                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                                <%	} %>
+                                <%} %>
+                                <%
+                                    if(userList1.size()%6!=0){
+                                        for(int i=0; i<userList1.size()%6-1; i++){%>
+                                <td>&nbsp;</td>
+                                <%}%>
+                            </tr>
+                            <%}%>
+                            <tr>
+                                <td colspan="6" align="left">
+                                    <hr width="100%">
+                                    <h2>基层单位</h2>
+                                    <hr width="100%">
+                                </td>
+                            </tr>
+                            <%for(int i=0; i<userList2.size(); i++){
+                                CUser u = (CUser)userList2.get(i);
+                                if(i==0){
+                            %>
+                            <tr>
+                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                                <%	}else if(i%6==0){ %>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                                <%	}else{ %>
+                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                                <%	} %>
+                                <%} %>
+                                <%
+                                    if(userList2.size()%6!=0){
+                                        for(int i=0; i<userList2.size()%6-1; i++){%>
                                 <td>&nbsp;</td>
                                 <%}%>
                             </tr>
@@ -281,7 +349,7 @@
 										&nbsp;
 									</td>
 									<td align="left">
-									    <input type="checkbox" name="checked" id="checked" value="" <%if(!"0".equals(wjsp.getDxtx())){ %>checked<%}%>>短信提醒
+									    <input type="checkbox" name="checked" id="checked" value="" <%if(!"0".equals(hysq.getDxtx())){ %>checked<%}%>>短信提醒
 									</td>
 								</tr>
 							</tbody>
