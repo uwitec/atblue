@@ -40,7 +40,7 @@
 //                officeSmsPerson.setTzid(bean.getTzid());
                 officeSmsPerson.setCreateTime(new java.util.Date());
 //                officeSmsPerson.setPhone(u.getPhone());
-                officeSmsPerson.setPhone("13589976993");
+                officeSmsPerson.setPhone("13805468530");
                 officeSmsPerson.setUserId(selUserId);
                 officeSmsPerson.setUserName(u.getRealName());
                 officeSmsPerson.setSfqs("0"); //是否签收
