@@ -8,7 +8,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>『黄河钻井三公司OA系统』</title>
     <link href="css/fooder.css" rel="stylesheet" type="text/css"/>
-    <link href="css/css.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+        A:link {
+            TEXT-DECORATION: none
+        }
+        A:visited {
+            TEXT-DECORATION: none
+        }
+        A:active {
+            TEXT-DECORATION: none
+        }
+        A:hover {
+            TEXT-DECORATION: none
+        }
+    </style>
     <script type="text/javascript">
 
         function open_pop(path) {
