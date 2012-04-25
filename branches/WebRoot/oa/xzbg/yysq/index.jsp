@@ -11,10 +11,12 @@
     cUser = cUser == null?new CUser():cUser;
     String orgId = cUser.getOrgnaId();
     String yymc = StringUtil.parseNull(request.getParameter("yymc"),"");
+    String flag = StringUtil.parseNull(request.getParameter("flag"),"");
     Map paramMap = new HashMap();
     if(!StringUtil.isBlankOrEmpty(yymc))
         paramMap.put("yymc",yymc);
-	paramMap.put("orgnaId", _user.getOrgnaId()==null?"":_user.getOrgnaId());
+    if(!"1".equals(flag))
+	    paramMap.put("orgnaId", _user.getOrgnaId()==null?"":_user.getOrgnaId());
 	pageBean.setPageSize(pageSize);
 
 	int totalRow =oDao.getPagedYysqCount(paramMap);
@@ -54,6 +56,21 @@
             }
             window.location = "tj.jsp?selUserId="+selUserId+"&connectId="+cid+"&sqId="+sid+"&processId="+pid;
         }
+        function qz(processId,connectId){
+            window
+                    .open(
+                    "<%=request.getContextPath()%>/oa/qpd/view.jsp?formId=9d4d71dc-3497-4c97-bf3a-92cbb31b493a&connectId="+connectId+"&processId="+processId,
+                    "mywindow",
+                    "height="
+                            + 500
+                            + ",width="
+                            + 700
+                            + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="
+                            + 0
+                            + ",left="
+                            + 0
+                            + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
+        }
 		</script>
 	</head>
 	<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -91,23 +108,23 @@
 							<th nowrap="nowrap"  width="2%">
 								序号
 							</th>
-							<th nowrap="nowrap"  width="120">
+							<th nowrap="nowrap" >
 								用印名称
 							</th>
 							
-							<th  width="120">
+							<th  nowrap="nowrap">
 								用印部门
 							</th>
-							<th  width="120">
+							<th nowrap="nowrap">
 								申请时间
 							</th>
-							<th  width="120">
+							<th  nowrap="nowrap">
 								用印开始时间
 							</th>
-							<th  width="120">
+							<th  nowrap="nowrap">
 								用印结束时间
 							</th>
-							<th nowrap="nowrap"  width="200">
+							<th nowrap="nowrap">
 								用印事由
 							</th>
 							<th nowrap="nowrap"  width="80">
@@ -159,9 +176,9 @@
 							</td>
 							<td  align="center" nowrap="nowrap">
                                 <%
-                                    if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
+                                    if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){
                                      String nextRole = workFlow.getNextRoleName(connectId,"1");
                                      String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                 %>
@@ -174,6 +191,7 @@
                                 <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
                                 <%   }else{ %>
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
+                                <a href="#" onclick="qz('<%=processId%>','<%=connectId%>');">[查看签字]</a>
                                 <%  }
                                 %>
 

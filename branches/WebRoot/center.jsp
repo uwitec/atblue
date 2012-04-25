@@ -22,7 +22,7 @@
            title="leftFrame" frameborder="0" scrolling="auto"/>
     <frame src="middle.html" name="middleFrame" scrolling="No" noresize="noresize" id="middleFrame"
            title="middleFrame"/>
-    <frame src="blank.jsp" name="mainFrame" id="mainFrame" title="mainFrame" scrolling="no"  borderColor="eaf7ff"/>
+    <frame src="blank.jsp" name="mainFrame" id="mainFrame" title="mainFrame" scrolling="auto"  borderColor="eaf7ff"/>
 </frameset>
 <noframes>
     <body>

@@ -17,6 +17,8 @@
     OfficeYysq yysq = officeYysqDAO.queryForBean(map);
     String[] checkman =oDao.getCjhyryBySqid(sqid);
     yysq = yysq == null?new OfficeYysq():yysq;
+    String connectId = StringUtil.parseNull(yysq.getConnectId(),"");
+    String processId = StringUtil.parseNull(yysq.getProcessId(),"");
 %>
 <html>
 	<head>
@@ -137,6 +139,21 @@
                 }
                window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&sqId="+sid+"&processId="+pid+"&varValue="+varValue;
             }
+            function qz(){
+                window
+                        .open(
+                        "<%=request.getContextPath()%>/oa/qpd/qpd.jsp?formId=9d4d71dc-3497-4c97-bf3a-92cbb31b493a&connectId=<%=connectId%>&processId=<%=processId%>",
+                        "mywindow",
+                        "height="
+                                + 500
+                                + ",width="
+                                + 700
+                                + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="
+                                + 0
+                                + ",left="
+                                + 0
+                                + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
+            }
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">
@@ -158,7 +175,7 @@
 							<tbody>
 								<tr>
 									<td align="left">
-                                        <input type="button" name="sign" class="button" value="签字"/>&nbsp;&nbsp;&nbsp;
+                                        <input type="button" name="sign" class="button" value="签字" onclick="qz();"/>&nbsp;&nbsp;&nbsp;
                                         <input type="radio" name="agree" value="1" checked="checked" onclick="document.getElementById('d').style.display='none';document.getElementById('a').style.display='';">同意
                                         <input type="radio" name="agree" value="0" onclick="document.getElementById('a').style.display='none';document.getElementById('d').style.display='';">不同意
 

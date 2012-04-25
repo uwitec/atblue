@@ -185,14 +185,16 @@
     </select>
     <select id="getUsersByRoleName"  parameterClass="String"  resultClass="java.util.HashMap">
     <![CDATA[
-        select c.user_id,c.user_name,c.real_name from C_USERROLE t,c_user c,c_role r
+        select distinct c.user_id,c.user_name,c.real_name from C_USERROLE t,c_user c,c_role r
         where t.user_id = c.user_id and t.role_id = r.role_id and r.role_name= #value#
+        order by c.real_name
         ]]>
     </select>
     <select id="getUsersByRoleNameAndOrgId"  parameterClass="java.util.HashMap"  resultClass="java.util.HashMap">
     <![CDATA[
-        SELECT C.USER_ID,C.USER_NAME,C.REAL_NAME FROM C_USERROLE T,C_USER C,C_ROLE R
+        SELECT distinct C.USER_ID,C.USER_NAME,C.REAL_NAME FROM C_USERROLE T,C_USER C,C_ROLE R
         WHERE T.USER_ID = C.USER_ID AND T.ROLE_ID = R.ROLE_ID and c.orgna_id = #orgnaId# and r.role_name=#roleName#
+        order by c.real_name
         ]]>
     </select>
 </sqlMap>
