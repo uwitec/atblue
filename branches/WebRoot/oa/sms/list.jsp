@@ -170,9 +170,9 @@
                                 if(!"已发送".equals(ZT)){%>
                             <a href="./sms_mod.d?tzid=${TZID}">[编辑]</a>&nbsp;
                             <a href="javascript:onDelete('./sms_del.d?tzid=${TZID}');">[删除]</a>&nbsp;
-                            <a href="javascript:onSend('./sms_send.d?tzid=${TZID}');">[发送]</a>&nbsp;
+                            <%--<a href="javascript:onSend('./sms_send.d?tzid=${TZID}');">[发送]</a>&nbsp;--%>
                             <% }else{  %>
-                            <a href="javascript:onSend('./sms_send.d?tzid=${TZID}');">[发送]</a>&nbsp;
+                            <%--<a href="javascript:onSend('./sms_send.d?tzid=${TZID}');">[发送]</a>&nbsp;--%>
                             <%   }
                             %>
                         </td>
