@@ -33,6 +33,31 @@
 	            officeHoliday.setSqzt("已完成");
 	        } else {
 	            officeHoliday.setSqzt("正在审批");
+            if("1".equals(officeHoliday.getDxtx())){
+                //是否发送短信
+
+                map.put("userId", selUserId);
+                CUser u = userDAO.queryForBean(map);
+                StringBuffer message = new StringBuffer("");
+                message.append("尊敬的"+u.getRealName()+"您好：")
+                        .append(StringUtil.cutString(officeHoliday.getXm()+"请假时间"+StringUtil.parseNull(officeHoliday.getKssj(),"")+
+                                "到"+StringUtil.parseNull(officeHoliday.getJssj(),""),25))
+                        .append("，等待您的审批！");
+                OfficeSmsPerson officeSmsPerson = new OfficeSmsPerson();
+                officeSmsPerson.setPkId(StringUtil.getUUID());
+//                officeSmsPerson.setTzid(bean.getTzid());
+                officeSmsPerson.setCreateTime(new java.util.Date());
+//                officeSmsPerson.setPhone(u.getPhone());
+                officeSmsPerson.setPhone("13805468530");
+                officeSmsPerson.setUserId(selUserId);
+                officeSmsPerson.setUserName(u.getRealName());
+                officeSmsPerson.setSfqs("0"); //是否签收
+                officeSmsPerson.setSffs("0"); //是否发送
+                officeSmsPerson.setDxnr(message.toString());
+                officeSmsPerson.setTzlb("E");
+                officeSmsPerson.setPkId(officeHoliday.getHolidayid());
+                officeSmsPersonDAO.addOfficeSmsPerson(officeSmsPerson);
+            }
 	        }
 	        officeHolidayDAO.modOfficeHoliday(officeHoliday);
     }
