@@ -157,8 +157,8 @@ public class SmsAction extends BaseAction {
                     String uid = StringUtil.parseNull(map.get("USER_ID"), "");
                     String name = StringUtil.parseNull(map.get("REAL_NAME"), "");
                     String mobile = StringUtil.parseNull(map.get("MOBILE"), "");
-                    String sfqs = StringUtil.parseNull(map.get("SFQS"), "");
-                    if ("0".equals(sfqs)) {
+                    String sffs = StringUtil.parseNull(map.get("SFFS"), "");
+                    if ("0".equals(sffs)) {
                         this.bean.setZt("已发送");
                         officeSmsNoticeDAO.modOfficeSmsNotice(bean);
                     }
