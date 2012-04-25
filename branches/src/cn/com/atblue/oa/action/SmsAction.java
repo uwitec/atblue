@@ -123,7 +123,7 @@ public class SmsAction extends BaseAction {
                             officeSmsPerson.setUserName(u.getRealName());
                             officeSmsPerson.setSfqs("0");
                             officeSmsPerson.setSffs("0");
-                            officeSmsPerson.setDxnr(bean.getDxnr());
+                            officeSmsPerson.setDxnr(bean.getDxnr()+",请发送数字"+officeSmsPerson.getTzid()+"进行签收!");
                             officeSmsPerson.setTzlb("F");
                             officeSmsPerson.setPkId(bean.getTzid().toString());
                             officeSmsPersonDAO.addOfficeSmsPerson(officeSmsPerson);
