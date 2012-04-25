@@ -15,6 +15,18 @@ public class DaoImpl extends SqlMapClientDaoSupport implements Dao{
         return this.getSqlMapClientTemplate().queryForList("manager.dao.getAllUser");
     }
 
+    public List getGsldAllUser(){
+        return this.getSqlMapClientTemplate().queryForList("manager.dao.getGsldAllUser");
+    }
+
+    public List getJgksAllUser(){
+        return this.getSqlMapClientTemplate().queryForList("manager.dao.getJgksAllUser");
+    }
+
+    public List getJcdwAllUser(){
+        return this.getSqlMapClientTemplate().queryForList("manager.dao.getJcdwAllUser");
+    }
+
     @Override
     public CUser findUserByName(String userName) {
         return (CUser)this.getSqlMapClientTemplate().queryForObject("manager.dao.findUserByName",userName);

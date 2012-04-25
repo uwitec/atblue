@@ -80,7 +80,7 @@
 				            		OfficeNoticeCheck u = (OfficeNoticeCheck)checkList.get(i);
 				            		CUser _tUser = dao.findUserById(u.getCheckman());
 				            		if(_tUser==null) _tUser = new CUser();
-				            		if(i==0){	
+				            		if(i==0){
 				            	%>
 				            	<tr>
 				            		<td><input type="checkbox" name="ubox" <%if(u.getCheckflag()!=null && u.getCheckflag().equals("1")){ %> checked="checked"<%} %> disabled="disabled"><%=_tUser.getRealName() %></td>

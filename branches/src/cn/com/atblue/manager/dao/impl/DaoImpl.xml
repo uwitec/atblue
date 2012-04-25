@@ -24,6 +24,63 @@
                USER_DESC  AS USERDESC FROM C_USER T ORDER BY T.USER_NAME
         ]]>
     </select>
+    <select id="getGsldAllUser" parameterClass="java.util.HashMap" resultClass="CUser">
+        <![CDATA[
+            SELECT USER_ID    AS USERID,
+               ORGNA_ID   AS ORGNAID,
+               USER_NAME  AS USERNAME,
+               PASSWORD   AS PASSWORD,
+               USER_ORDER AS USERORDER,
+               USER_LEVEL AS USERLEVEL,
+               REAL_NAME  AS REALNAME,
+               SEX        AS SEX,
+               AGE        AS AGE,
+               MOBILE     AS MOBILE,
+               PHONE      AS PHONE,
+               EMAIL      AS EMAIL,
+               USER_DESC  AS USERDESC FROM C_USER T
+               where t.orgna_id = '371'
+               ORDER BY T.Real_Name
+        ]]>
+    </select>
+    <select id="getJgksAllUser" parameterClass="java.util.HashMap" resultClass="CUser">
+    <![CDATA[
+  SELECT USER_ID    AS USERID,
+               T.ORGNA_ID   AS ORGNAID,
+               USER_NAME  AS USERNAME,
+               PASSWORD   AS PASSWORD,
+               USER_ORDER AS USERORDER,
+               USER_LEVEL AS USERLEVEL,
+               REAL_NAME  AS REALNAME,
+               SEX        AS SEX,
+               AGE        AS AGE,
+               MOBILE     AS MOBILE,
+               PHONE      AS PHONE,
+               EMAIL      AS EMAIL,
+               USER_DESC  AS USERDESC FROM C_USER T,c_orgnization o
+               where t.orgna_id = o.orgna_id and o.parent_id = 'a4947f11-4a47-4d8c-9f6e-85aa35aecca7'
+               ORDER BY T.Real_Name
+        ]]>
+</select>
+    <select id="getJcdwAllUser" parameterClass="java.util.HashMap" resultClass="CUser">
+        <![CDATA[
+  SELECT USER_ID    AS USERID,
+               T.ORGNA_ID   AS ORGNAID,
+               USER_NAME  AS USERNAME,
+               PASSWORD   AS PASSWORD,
+               USER_ORDER AS USERORDER,
+               USER_LEVEL AS USERLEVEL,
+               REAL_NAME  AS REALNAME,
+               SEX        AS SEX,
+               AGE        AS AGE,
+               MOBILE     AS MOBILE,
+               PHONE      AS PHONE,
+               EMAIL      AS EMAIL,
+               USER_DESC  AS USERDESC FROM C_USER T,c_orgnization o
+               where t.orgna_id = o.orgna_id and o.parent_id = 'd4dfcf91-6c09-470b-b3d1-8a47e1bdb562'
+               ORDER BY T.Real_Name
+        ]]>
+    </select>
     <select id="findUserByName" parameterClass="String" resultClass="CUser">
         <![CDATA[
             SELECT USER_ID    AS USERID,
