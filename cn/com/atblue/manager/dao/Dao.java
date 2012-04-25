@@ -8,6 +8,12 @@ import java.util.Map;
 public interface Dao {
     public List getAllUser();
 
+    public List getGsldAllUser();
+
+    public List getJgksAllUser();
+
+    public List getJcdwAllUser();
+
     public CUser findUserByName(String userName);
 
     public CUser findUserByRealName(String userName);
