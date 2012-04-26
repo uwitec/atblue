@@ -44,7 +44,7 @@
     <link href="<%=path%>/css/css.css" rel="stylesheet" type="text/css">
   </head>
   <body bgcolor="#eaf7ff">
-  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#eaf7ff">
+  <table width="1000" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#eaf7ff">
   <tr>
       <td height="6" colspan="3"></td>
   </tr>
@@ -118,7 +118,7 @@
                <td height="6" colspan="3"></td>
            </tr>
       <tr>
-          <td valign="top"><table width="494" border="0" cellspacing="0" cellpadding="0">
+          <td valign="top" align="center"><table width="494" border="0" cellspacing="0" cellpadding="0">
               <tr>
                   <td><table width="494" border="0" cellspacing="0" cellpadding="0">
                       <tr>
@@ -222,7 +222,7 @@
                               %>
                           </table></td>
                       </tr>
-                  </table></td></td>
+                  </table></td>
               </tr>
           </table></td>
       </tr>

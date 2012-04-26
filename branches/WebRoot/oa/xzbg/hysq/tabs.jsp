@@ -9,6 +9,7 @@
 	<meta http-equiv="expires" content="0">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>机笼信息</title>
+    <link href="<%=request.getContextPath() %>/css/css.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/js/ext/resources/css/ext-all.css" />
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/ext/adapter/ext/ext-base.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/ext/ext-all.js"></script>
