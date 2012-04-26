@@ -23,7 +23,7 @@
     top: 0;
     left: 0;
     border:1px solid;
-    background:repeat-x 0 -16px;
+    background:repeat-x 0 -14px;
     padding:2px;
 }
 
@@ -53,7 +53,7 @@
 .x-mask-loading div {
     padding:5px 10px 5px 25px;
     background:no-repeat 5px 5px;
-    line-height:16px;
+    line-height:14px;
 }
 
 /* class for hiding elements without using display:none */
@@ -268,7 +268,7 @@
 .loading-indicator {
     background: no-repeat left;
     padding-left: 20px;
-    line-height: 16px;
+    line-height: 14px;
     margin: 3px;
 }
 

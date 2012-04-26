@@ -39,7 +39,7 @@
 }
 
 .x-box-mc {
-	background: repeat-x 0 -16px;
+	background: repeat-x 0 -14px;
 	padding: 4px 10px;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .x-box-bl {
-	background: transparent no-repeat 0 -16px;
+	background: transparent no-repeat 0 -14px;
     zoom:1;
 }
 

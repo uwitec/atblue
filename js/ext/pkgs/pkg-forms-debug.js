@@ -7333,7 +7333,7 @@ Ext.form.HtmlEditor = Ext.extend(Ext.form.Field, {
             v = parseInt(doc.queryCommandValue('FontSize') || 2, 10);
         if((Ext.isSafari && !Ext.isSafari2) || Ext.isChrome || Ext.isAir){
             // Safari 3 values
-            // 1 = 10px, 2 = 13px, 3 = 16px, 4 = 18px, 5 = 24px, 6 = 32px
+            // 1 = 10px, 2 = 13px, 3 = 14px, 4 = 18px, 5 = 24px, 6 = 32px
             if(v <= 10){
                 v = 1 + adjust;
             }else if(v <= 13){

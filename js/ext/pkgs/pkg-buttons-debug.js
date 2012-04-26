@@ -129,7 +129,7 @@ Ext.Button = Ext.extend(Ext.BoxComponent, {
      * @cfg {String} scale
      * <p>(Optional) The size of the Button. Three values are allowed:</p>
      * <ul class="mdetail-params">
-     * <li>'small'<div class="sub-desc">Results in the button element being 16px high.</div></li>
+     * <li>'small'<div class="sub-desc">Results in the button element being 14px high.</div></li>
      * <li>'medium'<div class="sub-desc">Results in the button element being 24px high.</div></li>
      * <li>'large'<div class="sub-desc">Results in the button element being 32px high.</div></li>
      * </ul>
