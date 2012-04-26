@@ -296,7 +296,7 @@ window.onbeforeunload = function() { return mxResources.get('changesLost'); };
     <TABLE border=0 width=730>
         <TBODY>
         <TR>
-            <TD style="PADDING-LEFT: 20px; WIDTH: 16px" id=toolbar vAlign=top><!-- Toolbar Here --></TD>
+            <TD style="PADDING-LEFT: 20px; WIDTH: 14px" id=toolbar vAlign=top><!-- Toolbar Here --></TD>
             <TD
                     style="BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-RIGHT: black 1px solid"
                     vAlign=top>

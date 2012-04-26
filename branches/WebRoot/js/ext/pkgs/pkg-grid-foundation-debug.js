@@ -2109,7 +2109,7 @@ viewConfig: {
             p.css = i === 0 ? 'x-grid3-cell-first ' : (i == last ? 'x-grid3-cell-last ' : '');
 
             if (cm.config[i].align == 'right') {
-                p.istyle = 'padding-right:16px';
+                p.istyle = 'padding-right:14px';
             } else {
                 delete p.istyle;
             }
