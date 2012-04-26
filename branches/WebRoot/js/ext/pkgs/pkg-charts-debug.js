@@ -986,7 +986,7 @@ Ext.FlashEventProxy = {
      * For a detailed list of the options available, visit the YUI Charts site
      * at <a href="http://developer.yahoo.com/yui/charts/#basicstyles">http://developer.yahoo.com/yui/charts/#basicstyles</a><br/>
      * Some of the options availabe:<br />
-     * <ul style="padding:5px;padding-left:16px;list-style-type:inherit;">
+     * <ul style="padding:5px;padding-left:14px;list-style-type:inherit;">
      * <li><b>padding</b> - The space around the edge of the chart's contents. Padding does not increase the size of the chart.</li>
      * <li><b>animationEnabled</b> - A Boolean value that specifies whether marker animations are enabled or not. Enabled by default.</li>
      * <li><b>font</b> - An Object defining the font style to be used in the chart. Defaults to <tt>{ name: 'Tahoma', color: 0x444444, size: 11 }</tt><br/>

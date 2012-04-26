@@ -23,7 +23,7 @@ html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,bloc
     top: 0;
     left: 0;
     border:1px solid;
-    background:repeat-x 0 -16px;
+    background:repeat-x 0 -14px;
     padding:2px;
 }
 
@@ -53,7 +53,7 @@ html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,bloc
 .x-mask-loading div {
     padding:5px 10px 5px 25px;
     background:no-repeat 5px 5px;
-    line-height:16px;
+    line-height:14px;
 }
 
 /* class for hiding elements without using display:none */
@@ -268,7 +268,7 @@ html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,bloc
 .loading-indicator {
     background: no-repeat left;
     padding-left: 20px;
-    line-height: 16px;
+    line-height: 14px;
     margin: 3px;
 }
 
@@ -1101,7 +1101,7 @@ textarea {
     padding:2px;
     padding-left:18px;
     background: transparent no-repeat 0 2px;
-    line-height:16px;
+    line-height:14px;
     width:200px;
 }
 
@@ -1134,7 +1134,7 @@ textarea {
 /* Editor small font for grid, toolbar and tree */
 .x-small-editor .x-form-text {
     height:20px;
-    line-height:16px;
+    line-height:14px;
     vertical-align:middle;
 }
 
@@ -1142,16 +1142,16 @@ textarea {
     margin-top:-1px !important; /* ie bogus margin bug */
     margin-bottom:-1px !important;
     height:20px !important; /* ie quirks */
-    line-height:16px !important;
+    line-height:14px !important;
 }
 
 .ext-strict .x-small-editor .x-form-text {
-    height:16px !important;
+    height:14px !important;
 }
 
 .ext-ie6 .x-small-editor .x-form-text, .ext-ie7 .x-small-editor .x-form-text {
     height:20px;
-    line-height:16px;
+    line-height:14px;
 }
 
 .ext-border-box .x-small-editor .x-form-text {
@@ -1160,7 +1160,7 @@ textarea {
 
 .x-small-editor .x-form-select-one {
     height:20px;
-    line-height:16px;
+    line-height:14px;
     vertical-align:middle;
 }
 
@@ -1290,7 +1290,7 @@ textarea {
 }
 
 .x-form-invalid-icon {
-    width:16px;
+    width:14px;
     height:18px;
     visibility:hidden;
     position:absolute;
@@ -1375,7 +1375,7 @@ fieldset.x-panel-collapsed .x-fieldset-bwrap {
 }
 .ext-ie .x-fieldset-noborder legend span {
     position: absolute;
-    left:16px;
+    left:14px;
 }
 
 .ext-gecko .x-window-body .x-form-item {
@@ -1462,7 +1462,7 @@ fieldset.x-panel-collapsed .x-fieldset-bwrap {
 
 /* Only text */
 .x-btn-noicon .x-btn-small .x-btn-text{
-	height: 16px;
+	height: 14px;
 }
 
 .x-btn-noicon .x-btn-medium .x-btn-text{
@@ -1480,8 +1480,8 @@ fieldset.x-panel-collapsed .x-fieldset-bwrap {
 }
 
 .x-btn-icon .x-btn-small .x-btn-text{
-	height: 16px;
-	width: 16px;
+	height: 14px;
+	width: 14px;
 }
 
 .x-btn-icon .x-btn-medium .x-btn-text{
@@ -1500,7 +1500,7 @@ fieldset.x-panel-collapsed .x-fieldset-bwrap {
     background-position: 0 center;
 	background-repeat: no-repeat;
     padding-left:18px;
-    height:16px;
+    height:14px;
 }
 
 .x-btn-text-icon .x-btn-icon-medium-left .x-btn-text{
@@ -1541,7 +1541,7 @@ fieldset.x-panel-collapsed .x-fieldset-bwrap {
     background-position: right center;
 	background-repeat: no-repeat;
     padding-right:18px;
-    height:16px;
+    height:14px;
 }
 
 .x-btn-text-icon .x-btn-icon-medium-right .x-btn-text{
@@ -1978,7 +1978,7 @@ fieldset.x-panel-collapsed .x-fieldset-bwrap {
 
 .x-toolbar div.xtb-text{
     padding:2px 2px 0;
-    line-height:16px;
+    line-height:14px;
     display:block;
 }
 
@@ -1987,7 +1987,7 @@ fieldset.x-panel-collapsed .x-fieldset-bwrap {
 	background-repeat: no-repeat;
 	display: block;
 	font-size: 1px;
-	height: 16px;
+	height: 14px;
 	width:4px;
 	overflow: hidden;
 	cursor:default;
@@ -2030,7 +2030,7 @@ fieldset.x-panel-collapsed .x-fieldset-bwrap {
 }
 
 .x-toolbar-more .x-btn-small .x-btn-text{
-	height: 16px;
+	height: 14px;
 	width: 12px;
 }
 
@@ -2341,7 +2341,7 @@ td.x-grid3-hd-over .x-grid3-hd-inner, td.sort-desc .x-grid3-hd-inner, td.sort-as
 	cursor: col-resize;
 	display: block;
 	font-size: 1px;
-	height: 16px;
+	height: 14px;
 	overflow: hidden;
 	position: absolute;
 	top: 2px;
@@ -2420,7 +2420,7 @@ td.x-grid3-hd-over .x-grid3-hd-inner, td.sort-desc .x-grid3-hd-inner, td.sort-as
 }
 
 .x-props-grid .x-grid3-td-name .x-grid3-cell-inner{
-	background:transparent repeat-y -16px !important;
+	background:transparent repeat-y -14px !important;
     padding-left:12px;
 }
 
@@ -2565,8 +2565,8 @@ a.x-grid3-hd-btn:hover {
     padding:0 !important;
     background-position:center center;
     background-repeat:no-repeat;
-    width:16px;
-    height:16px;
+    width:14px;
+    height:14px;
     margin-left:2px;
     margin-top:3px;
 }
@@ -2584,7 +2584,7 @@ a.x-grid3-hd-btn:hover {
 
 .x-grid3-check-col {
     width:100%;
-    height:16px;
+    height:14px;
     background-position:center center;
     background-repeat:no-repeat;
     background-color:transparent;
@@ -2592,7 +2592,7 @@ a.x-grid3-hd-btn:hover {
 
 .x-grid3-check-col-on {
     width:100%;
-    height:16px;
+    height:14px;
     background-position:center center;
     background-repeat:no-repeat;
     background-color:transparent;
@@ -2699,8 +2699,8 @@ a.x-grid3-hd-btn:hover {
 	top:3px;
 	left:3px;
 	display:block;
-	width:16px;
-	height:16px;
+	width:14px;
+	height:14px;
 	background-color:transparent;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -2728,7 +2728,7 @@ a.x-grid3-hd-btn:hover {
 	margin: 0;
 	padding: 0;
 	vertical-align: top;
-	width: 16px;
+	width: 14px;
     background-repeat: no-repeat;
 }
 
@@ -2738,7 +2738,7 @@ a.x-grid3-hd-btn:hover {
 	margin: 0;
 	padding: 0;
 	vertical-align: top;
-	width: 16px;
+	width: 14px;
 	background-position:center;
     background-repeat: no-repeat;
 }
@@ -2762,8 +2762,8 @@ input.x-tree-node-cb {
 .ext-ie input.x-tree-node-cb {
     margin-left:0;
     margin-top: 1px;
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     vertical-align: middle;
 }
 
@@ -2809,7 +2809,7 @@ input.x-tree-node-cb {
 }
 
 .x-tree-arrows .x-tree-elbow-minus{
-    background:transparent no-repeat -16px 0;
+    background:transparent no-repeat -14px 0;
 }
 
 .x-tree-arrows .x-tree-elbow-end{
@@ -2821,7 +2821,7 @@ input.x-tree-node-cb {
 }
 
 .x-tree-arrows .x-tree-elbow-end-minus{
-    background:transparent no-repeat -16px 0;
+    background:transparent no-repeat -14px 0;
 }
 
 .x-tree-arrows .x-tree-elbow-line{
@@ -2976,8 +2976,8 @@ input.x-tree-node-cb {
 
 .x-date-right a, .x-date-left a{
     display:block;
-    width:16px;
-	height:16px;
+    width:14px;
+	height:14px;
 	background-position: center;
 	background-repeat: no-repeat;
 	cursor:pointer;
@@ -3424,7 +3424,7 @@ td.x-date-mp-sep {
 a.x-menu-item {
     cursor: pointer;
     display: block;
-    line-height: 16px;
+    line-height: 14px;
     outline-color: -moz-use-text-color;
     outline-style: none;
     outline-width: 0;
@@ -3451,10 +3451,10 @@ a.x-menu-item {
 
 .x-menu-item-icon {
 	border: 0 none;
-	height: 16px;
+	height: 14px;
 	padding: 0;
 	vertical-align: top;
-	width: 16px;
+	width: 14px;
 	position: absolute;
     left: 3px;
     top: 3px;
@@ -3605,7 +3605,7 @@ a.x-menu-item {
 }
 
 .x-box-mc {
-	background: repeat-x 0 -16px;
+	background: repeat-x 0 -14px;
 	padding: 4px 10px;
 }
 
@@ -3621,7 +3621,7 @@ a.x-menu-item {
 }
 
 .x-box-bl {
-	background: transparent no-repeat 0 -16px;
+	background: transparent no-repeat 0 -14px;
     zoom:1;
 }
 
@@ -3737,8 +3737,8 @@ a.x-menu-item {
 }
 
 .x-panel-inline-icon {
-    width:16px;
-	height:16px;
+    width:14px;
+	height:14px;
     background-repeat:no-repeat;
     background-position:0 0;
 	vertical-align:middle;
@@ -4473,7 +4473,7 @@ body.ext-ie6.x-body-masked .x-window select {
 }
 
 .x-html-editor-tb .x-edit-italic, .x-menu-item img.x-edit-italic {
-    background-position:-16px 0;
+    background-position:-14px 0;
     background-image:url(../images/default/editor/tb-sprite.gif);
 }
 
@@ -4910,7 +4910,7 @@ body.ext-ie6.x-body-masked .x-window select {
 }
 
 .x-progress-text-back {
-    line-height:16px;
+    line-height:14px;
 }
 
 .ext-ie .x-progress-text-back {
