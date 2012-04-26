@@ -13,6 +13,12 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/js/ext/resources/css/ext-all.css" />
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/ext/adapter/ext/ext-base.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/ext/ext-all.js"></script>
+    <style type="text/css">
+        .x-tab-strip span.x-tab-strip-text {
+            font:normal 14px 宋体;
+            color:#416aa3;
+        }
+    </style>
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <script type="text/javascript">
