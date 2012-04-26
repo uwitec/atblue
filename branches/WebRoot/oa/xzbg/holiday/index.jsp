@@ -103,13 +103,13 @@
                     <tbody>
                     <tr>
                         <td align="left">
-                        外出时间
+                            <font style="font-size: 16px">外出时间
                         <input type="text" name="kssj" class="Wdate" onClick="WdatePicker()" value="<%=kssj %>">
 						至
 						<input type="text" name="jssj" class="Wdate" onClick="WdatePicker()" value="<%=jssj%>">
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                             <input type="button" class="button" onclick="window.location = 'add.jsp?curRole=<%=curRole%>';" style="width:40px"  value='新增'>
-                        </td>
+                        </td>  </font>
                     </tr>
                     </tbody>
                 </table>

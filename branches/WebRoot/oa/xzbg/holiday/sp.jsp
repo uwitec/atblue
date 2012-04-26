@@ -175,7 +175,7 @@
                                         <input type="button" name="sign" class="button" value="签字" onclick="qz();"/>&nbsp;&nbsp;&nbsp;
                                         <input type="radio" name="agree" value="1" checked="checked" onclick="document.getElementById('d').style.display='none';document.getElementById('a').style.display='';">同意
                                         <input type="radio" name="agree" value="0" onclick="document.getElementById('a').style.display='none';document.getElementById('d').style.display='';">不同意
-
+                                        <font style="font-size: 16px">
                                         <span id="a">
                                             <%
                                             String nextRole = workFlow.getNextRoleName(StringUtil.parseNull(holiday.getConnectId(),""),"1");
@@ -214,7 +214,7 @@
                                                <option value="<%=u.getUserId()%>"><%=u.getRealName()%></option>
                                             <%     }%>
                                         </select> 处理！</span>
-
+                                         </font>
                                         <input type="button" class="button"
                                                onclick="tj('<%=holiday.getHolidayid()%>','<%=holiday.getProcessId()%>','<%=holiday.getConnectId()%>');" value="提交">
                                         <input type="button" class="button" id="button1"
