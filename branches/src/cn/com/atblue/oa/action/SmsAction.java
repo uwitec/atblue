@@ -85,7 +85,7 @@ public class SmsAction extends BaseAction {
                             officeSmsPerson.setPkId(StringUtil.getUUID());
                             officeSmsPerson.setTzid(bean.getTzid());
                             officeSmsPerson.setCreateTime(new Date());
-                            officeSmsPerson.setPhone(u.getPhone());
+                            officeSmsPerson.setPhone(u.getMobile());
                             officeSmsPerson.setUserId(uid);
                             officeSmsPerson.setUserName(u.getRealName());
                             officeSmsPerson.setSfqs("0");

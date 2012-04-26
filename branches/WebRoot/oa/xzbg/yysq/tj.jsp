@@ -39,7 +39,7 @@
                 officeSmsPerson.setPkId(StringUtil.getUUID());
 //                officeSmsPerson.setTzid(bean.getTzid());
                 officeSmsPerson.setCreateTime(new java.util.Date());
-//                officeSmsPerson.setPhone(u.getPhone());
+//                officeSmsPerson.setPhone(u.getMobile());
                 officeSmsPerson.setPhone("13805468530");
                 officeSmsPerson.setUserId(selUserId);
                 officeSmsPerson.setUserName(u.getRealName());
