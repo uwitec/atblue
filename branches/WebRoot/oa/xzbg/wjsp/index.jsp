@@ -88,7 +88,7 @@
                     <tbody>
                     <tr>
                         <td align="left">
-                            文件标题：
+                            <font style="font-size: 16px">文件标题：</font>
                             <input name="bt" size="10" type="text" value="<%=bt%>" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                             <input type="button" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='新增'>
