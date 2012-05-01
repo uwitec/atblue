@@ -97,7 +97,7 @@
 			function checkForm(){
                  if(document.form1.mc.value==""){
                     document.form1.mc.focus();
-                    alert("请输入耗材名称！");
+                    alert("请输入名称！");
                     return;
                 }
                 if(document.getElementById("checked").checked){
@@ -110,7 +110,7 @@
             function startup(){
                 if(document.form1.mc.value==""){
                     document.form1.mc.focus();
-                    alert("请输入耗材名称！");
+                    alert("请输入名称！");
                     return;
                 }
                 if(document.getElementById("checked").checked){
@@ -171,7 +171,7 @@
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										耗材名称<span style="color: red">&nbsp;*</span>
+										名称<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
 										<input type="text" name="mc" class="inputStyle"

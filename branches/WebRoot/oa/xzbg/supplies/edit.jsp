@@ -105,7 +105,7 @@
 			function checkForm(){
                  if(document.form1.mc.value==""){
                     document.form1.mc.focus();
-                    alert("请输入耗材名称！");
+                    alert("请输入名称！");
                     return;
                 }
                 if(document.getElementById("checked").checked){
@@ -118,7 +118,7 @@
             function startup(){
                if(document.form1.mc.value==""){
                     document.form1.mc.focus();
-                    alert("请输入耗材名称！");
+                    alert("请输入名称！");
                     return;
                 }
                 if(document.getElementById("checked").checked){
@@ -146,7 +146,7 @@
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
-						修改耗材
+						修改耗材、配产
 					</td>
 					<td width="74%" align="left" class="mhead">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -179,7 +179,7 @@
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										耗材名称<span style="color: red">&nbsp;*</span>
+										名称<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
 										<input type="text" name="mc" class="inputStyle" value="<%=StringUtil.parseNull(officeSupplies.getMc(),"")%>"
