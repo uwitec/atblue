@@ -22,6 +22,8 @@
     list4 = list4 == null ? new ArrayList() : list4;
     List list5 = officeHolidayDAO.getWaitPagedList(pageBean,paramMap);
     list5 = list5 == null ? new ArrayList() : list5;
+    List list7 = officeSuppliesDAO.getWaitPagedList(pageBean,paramMap);
+    list7 = list7 == null ? new ArrayList() : list7; 
 
     OfficeDocumentsDAO officeDocumentsDAO = (OfficeDocumentsDAO)SpringFactory.instance.getBean("officeDocumentsDAO");
     StringBuilder sb = new StringBuilder();
@@ -215,6 +217,21 @@
                                   <td class="txt_home">
                                       <a href="<%=request.getContextPath()%>/oa/xzbg/holiday/sp.jsp?holidayid=<%=StringUtil.parseNull(map.get("HOLIDAYID"),"") %>">
                                           【请假申请】<%=StringUtil.cutString(StringUtil.parseNull(map.get("XM"),""),23)%></a>
+                                  </td>
+                                  <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
+                              </tr>
+                              <% }
+                              %>
+                              <%
+                                  for(int i=0; i<list7.size();i++){
+                                      Map map = (Map)list7.get(i);
+                                      java.util.Date date = (java.util.Date)map.get("SQSJ");
+                              %>
+                              <tr>
+                                  <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
+                                  <td class="txt_home">
+                                      <a href="<%=request.getContextPath()%>/oa/xzbg/supplies/sp.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>">
+                                          【其它申请】<%=StringUtil.cutString(StringUtil.parseNull(map.get("MC"),""),23)%></a>
                                   </td>
                                   <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
                               </tr>

@@ -54,10 +54,10 @@
             }
             window.location = "tj.jsp?selUserId="+selUserId+"&connectId="+cid+"&sqId="+sid+"&processId="+pid;
         }
-        function qz(processId,connectId){
+        function qz(processId,connectId,sqid){
             window
                     .open(
-                    "<%=request.getContextPath()%>/oa/qpd/view.jsp?formId=3af46d80-8665-4587-9ca0-a94ece84750d&connectId="+connectId+"&processId="+processId,
+                    "./hysqqpd.jsp?formId=3af46d80-8665-4587-9ca0-a94ece84750d&connectId="+connectId+"&processId="+processId+"&sqid="+sqid,
                     "mywindow",
                     "height="
                             + 500
@@ -200,9 +200,10 @@
                                 <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
                                 <%   }else{ %>
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>&nbsp;
-                                <a href="#" onclick="qz('<%=processId%>','<%=connectId%>');">[查看签字]</a>
+                                
                                 <%  }
                                 %>
+                                <a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[查看簽批單]</a>
 							</td>
 						</tr>
 						<%

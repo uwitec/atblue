@@ -49,6 +49,8 @@
     OfficeQpdDAO officeQpdDAO = (OfficeQpdDAO)SpringFactory.instance.getBean("officeQpdDAO");
     OfficeQpdyjDAO officeQpdyjDAO = (OfficeQpdyjDAO)SpringFactory.instance.getBean("officeQpdyjDAO");
     OfficeCjhyryDAO officeCjhyryDAO = (OfficeCjhyryDAO)SpringFactory.instance.getBean("officeCjhyryDAO");
+    OfficeSuppliesDAO officeSuppliesDAO = (OfficeSuppliesDAO)SpringFactory.instance.getBean("officeSuppliesDAO");
+    
     CUserDAO userDAO = (CUserDAO)SpringFactory.instance.getBean("userDAO");
     String contentPath = request.getContextPath();
     //获取流程
