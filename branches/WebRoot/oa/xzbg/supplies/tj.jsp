@@ -52,7 +52,7 @@
                 officeSmsPerson.setSffs("0"); //是否发送
                 officeSmsPerson.setDxnr(message.toString());
                 officeSmsPerson.setTzlb("C");
-                officeSmsPerson.setPkId(officeSupplies.getSqid());
+                officeSmsPerson.setSqId(officeSupplies.getSqid());
                 officeSmsPersonDAO.addOfficeSmsPerson(officeSmsPerson);
             }
 	        }
