@@ -100,7 +100,7 @@ public class WorkflowAction extends BaseAction {
                 if (wDefinition != null && !StringUtil.isBlankOrEmpty(wDefinition.getFlowFile())) {
                     Document doc = null;
                     try {
-                        doc = StringUtil.str2Doc(xml);
+                        doc = StringUtil.str2Doc(wDefinition.getFlowFile());
                     } catch (IOException e) {
                         e.printStackTrace();
                     } catch (JDOMException e) {
