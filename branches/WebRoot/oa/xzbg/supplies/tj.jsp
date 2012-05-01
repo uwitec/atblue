@@ -17,9 +17,9 @@
     OfficeSupplies officeSupplies = officeSuppliesDAO.queryForBean(map);
     connectId = workFlow.claimMission(processId, connectId, cUser.getUserId());
     if (!StringUtil.isBlankOrEmpty(connectId)) {
-    	if(!"-1".equals(varValue)){
-    		varValue="1";
-    	}
+//    	if(!"-1".equals(varValue)){
+//    		varValue="1";
+//    	}
         connectId = workFlow.completeMission(processId, connectId, cUser.getUserId(), new String[]{selUserId}, varValue);
     }
     if (officeSupplies != null) {
