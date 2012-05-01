@@ -5,8 +5,8 @@
 			<name>local</name>
 			<driver>oracle.jdbc.driver.OracleDriver</driver>
 			<dbUsername>atblue</dbUsername>
-			<dbPassword>1</dbPassword>
-			<dbUrl>jdbc:oracle:thin:@127.0.0.1:1521:tsdb</dbUrl>
+			<dbPassword>atblue</dbPassword>
+			<dbUrl>jdbc:oracle:thin:@127.0.0.1:1521:orcl</dbUrl>
 			<maxActive>50</maxActive>
 			<maxIdle>5</maxIdle>
 			<maxWait>1000</maxWait>

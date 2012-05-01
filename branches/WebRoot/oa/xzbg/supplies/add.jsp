@@ -39,9 +39,9 @@
             //创建流程代码在这里
             Status status =null;
             if("1".equals(curRole)){//井队启动
-            	status = workflow.startWorkflow("375c30a9-62c7-464d-85d0-48524952f365",cUser.getUserId());
+            	status = workflow.startWorkflow("ae2c48f7-1f3f-41e6-888b-11b31b9249f6",cUser.getUserId());
             }else if("2".equals(curRole)){//科室长启动
-            	status = workflow.startWorkflow("4822f1b3-7579-42e4-800d-7a32602016c9",cUser.getUserId());
+            	status = workflow.startWorkflow("f57a7396-c2d7-4deb-b39e-562fa937acd7",cUser.getUserId());
             }
             officeSupplies.setProcessId(status.getProcessId());
             officeSupplies.setConnectId(status.getConnectId());
