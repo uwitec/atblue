@@ -29,7 +29,7 @@
         <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
 	</head>
 	<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-    <table width="60%" align="center" height="25" border="0"
+    <table width="80%" align="center" height="25" border="0"
            cellpadding="0" cellspacing="0"
            background="<%=contentPath%>/images/mhead.jpg">
         <tr>
@@ -53,7 +53,7 @@
             </td>
         </tr>
     </table>
-		<table width="60%" align="center" height="25" border="0"
+		<table width="80%" align="center" height="25" border="0"
 			cellpadding="0" cellspacing="0">
 			<tr>
 				<td>
