@@ -19,6 +19,7 @@
 
     <bean id="officeHysqDAO" class="cn.com.atblue.oa.dao.impl.OfficeHysqImpl" scope="prototype" autowire="byName"/>
     <bean id="officeWjspDAO" class="cn.com.atblue.oa.dao.impl.OfficeWjspImpl" scope="prototype" autowire="byName"/>
+    <bean id="officeSuppliesDAO" class="cn.com.atblue.oa.dao.impl.OfficeSuppliesImpl" scope="prototype" autowire="byName"/>
     <bean id="officeHolidayDAO" class="cn.com.atblue.oa.dao.impl.OfficeHolidayImpl" scope="prototype" autowire="byName"/>
     <bean id="officeYysqDAO" class="cn.com.atblue.oa.dao.impl.OfficeYysqImpl" scope="prototype" autowire="byName"/>
     <bean id="officeQpdDAO" class="cn.com.atblue.oa.dao.impl.OfficeQpdImpl" scope="prototype" autowire="byName"/>
