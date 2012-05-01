@@ -144,7 +144,7 @@
                                                 nextRole = workFlow.getNextRoleName(StringUtil.parseNull(officeSupplies.getConnectId(),""),"-1");
                                                 options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                             %>
-                                            <%if(!"发起单位".equals(nextRole)){ %>
+                                            <%if(!"其他申请".equals(nextRole)){ %>
                                                     <%=options%>
                                             <% }else{ 
                                             Map m = new HashMap();

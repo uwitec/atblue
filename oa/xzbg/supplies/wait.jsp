@@ -42,7 +42,7 @@
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 		<script type="text/javascript">
 		function onDelete(url){
-			if(window.confirm("确认删除该会议申请?")){
+			if(window.confirm("确认删除该其他申请?")){
 				window.location=url;
 			}
 			return;
@@ -60,14 +60,14 @@
                      alt="">
             </td>
             <td width="15%" class="mhead">
-                 文件待审批
+                 其他待审批
             </td>
             <td align="left" class="mhead">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                     <tbody>
                     <tr>
                         <td align="left">
-                            耗材名称：
+                            <font style="font-size: 14px">名称：</font>
                             <input name="mc" size="10" type="text" value="<%=mc%>" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                         </td>
