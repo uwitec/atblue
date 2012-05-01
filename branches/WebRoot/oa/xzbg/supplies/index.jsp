@@ -92,14 +92,14 @@
                      alt="">
             </td>
             <td width="15%" class="mhead">
-                 耗材审批
+                 其他申请
             </td>
             <td align="left" class="mhead">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                     <tbody>
                     <tr>
                         <td align="left">
-                            耗材名称：
+                            名称：
                             <input name="mc" size="10" type="text" value="<%=mc%>" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                             <input type="button" class="button" onclick="window.location = 'add.jsp?curRole=<%=curRole%>';" style="width:40px"  value='新增'>
