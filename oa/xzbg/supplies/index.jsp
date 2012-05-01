@@ -55,14 +55,13 @@
 			return;
 		}
         function tj(pid,cid,id){
-            alert(id);
             var selUserId = document.all[id+"nextUserId"];
             if(selUserId == null || selUserId.value == ''){
                 alert("请先选择进行审批的用户！");
                 document.all[id+"nextUserId"].focus();
                 return ;
             }
-            window.location = "tj.jsp?selUserId="+selUserId.value+"&connectId="+cid+"&processId="+pid+"&sqid="+id+"&varValue=<%=curRole%>";
+            window.location = "tj.jsp?selUserId="+selUserId.value+"&connectId="+cid+"&processId="+pid+"&sqid="+id+"&varValue=1";
         }
         function qz(processId,connectId){
             window
