@@ -36,7 +36,7 @@ public class Workflow {
      */
     public Status startWorkflow(String flowId, String userId) throws WorkflowException {
         WProcess wProcess = new WProcess();
-        wProcess.setFlowId("flowId");
+        wProcess.setFlowId(flowId);
         wProcess.setProcessId(StringUtil.getUUID());
         wProcess.setCreateTime(new Date());
         wProcess.setCreatePerson(userId);
