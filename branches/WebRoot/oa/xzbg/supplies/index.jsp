@@ -122,7 +122,7 @@
 								序号
 							</th>
 							<th nowrap="nowrap" >
-								耗材名称
+								名称
 							</th>
 							<th  width="120">
 								申请单位
