@@ -17,6 +17,8 @@
     OfficeSupplies officeSupplies = officeSuppliesDAO.queryForBean(map);
     officeSupplies = officeSupplies == null?new OfficeSupplies():officeSupplies;
      List userList  = dao.getAllUser();
+    String connectId = StringUtil.parseNull(officeSupplies.getConnectId(),"");
+    String processId = StringUtil.parseNull(officeSupplies.getProcessId(),"");
 %>
 <html>
 	<head>
@@ -45,7 +47,7 @@
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
-						查看耗材审批
+						查看耗材、配產
 					</td>
 					<td width="74%" align="left" class="mhead">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -79,6 +81,7 @@
 									</td>
 									<td class="head_right" style="text-align: left">
 									<%=StringUtil.parseNull(officeSupplies.getMc(),"")%>
+											<input type="checkbox" name="checked" id="checked" value="" <%if(!"0".equals(officeSupplies.getDxtx())){ %>checked<%}%>>短信提醒
 									</td>
 								</tr>
 									
@@ -118,7 +121,6 @@
 						</div>
 					</td>
 				</tr>
-
 			</table>
 		</form>
 	</body>

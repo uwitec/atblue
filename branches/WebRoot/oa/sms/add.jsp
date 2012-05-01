@@ -13,7 +13,12 @@
     paramMap.put("orgnaId",orgId);
     COrgnization cOrgnization = orgnizationDAO.queryForBean(paramMap);
     cOrgnization = cOrgnization == null?new COrgnization():cOrgnization;
-    List userList  = dao.getAllUser();
+        List userList  = dao.getGsldAllUser();
+    List userList1  = dao.getJgksAllUser();
+    List userList2  = dao.getJcdwAllUser();
+    userList = userList == null?new ArrayList():userList;
+    userList1 = userList1 == null?new ArrayList():userList1;
+    userList2 = userList2 == null?new ArrayList():userList2;
 %>
 <html>
 <head>
@@ -162,42 +167,104 @@
 <body onload="_resizeNoPage();">
 <form action="sms_save.d" name="form1" method="post">
     <input type="hidden" name="action" value="add"/>
-    <div id="hello-win" class="x-hidden">
-        <div id="hello-tabs">
-            <div class="x-tab" title="请选择接收短信通知的人">
-                <table border="0" width="100%">
-                    <tr>
-                        <td colspan="6" align="left">
-                            <input type="checkbox" name="allBox" onclick="checkAll(this);">全选&nbsp;
-                            <input type="checkbox" name="allBox" onclick="checkUnAll();">反选&nbsp;
-                            <hr width="100%">
-                        </td>
-                    </tr>
-                    <%for(int i=0; i<userList.size(); i++){
-                        CUser u = (CUser)userList.get(i);
-                        if(i==0){
-                    %>
-                    <tr>
-                        <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                        <%	}else if(i%6==0){ %>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                        <%	}else{ %>
-                        <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                        <%	} %>
-                        <%} %>
-                        <%
-                            if(userList.size()%6!=0){
-                                for(int i=0; i<userList.size()%6-1; i++){%>
-                        <td>&nbsp;</td>
+   <div id="hello-win" class="x-hidden">
+            <div id="hello-tabs">
+                <div class="x-tab" title="请选择签收用户">
+                    <table border="0" width="100%">
+                        <tr>
+                            <td colspan="6" align="left">
+                                <input type="checkbox" name="allBox" onclick="checkAll(this);">全选&nbsp;
+                                <input type="checkbox" name="allBox" onclick="checkUnAll();">反选&nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" align="left">
+                                <hr width="100%">
+                                <h2>公司领导</h2>
+                                <hr width="100%">
+                            </td>
+                        </tr>
+                        <%for(int i=0; i<userList.size(); i++){
+                            CUser u = (CUser)userList.get(i);
+                            if(i==0){
+                        %>
+                        <tr>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <%	}else if(i%6==0){ %>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <%	}else{ %>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <%	} %>
+                            <%} %>
+                            <%
+                                if(userList.size()%6!=0){
+                                    for(int i=0; i<userList.size()%6-1; i++){%>
+                            <td>&nbsp;</td>
+                            <%}%>
+                        </tr>
                         <%}%>
-                    </tr>
-                    <%}%>
-                </table>
+                        <tr>
+                            <td colspan="6" align="left">
+                                <hr width="100%">
+                                <h2>机关科室</h2>
+                                <hr width="100%">
+                            </td>
+                        </tr>
+                        <%for(int i=0; i<userList1.size(); i++){
+                            CUser u = (CUser)userList1.get(i);
+                            if(i==0){
+                        %>
+                        <tr>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <%	}else if(i%6==0){ %>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <%	}else{ %>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <%	} %>
+                            <%} %>
+                            <%
+                                if(userList1.size()%6!=0){
+                                    for(int i=0; i<userList1.size()%6-1; i++){%>
+                            <td>&nbsp;</td>
+                            <%}%>
+                        </tr>
+                        <%}%>
+                        <tr>
+                            <td colspan="6" align="left">
+                                <hr width="100%">
+                                <h2>基层单位</h2>
+                                <hr width="100%">
+                            </td>
+                        </tr>
+                        <%for(int i=0; i<userList2.size(); i++){
+                            CUser u = (CUser)userList2.get(i);
+                            if(i==0){
+                        %>
+                        <tr>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <%	}else if(i%6==0){ %>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <%	}else{ %>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <%	} %>
+                            <%} %>
+                            <%
+                                if(userList2.size()%6!=0){
+                                    for(int i=0; i<userList2.size()%6-1; i++){%>
+                            <td>&nbsp;</td>
+                            <%}%>
+                        </tr>
+                        <%}%>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
     <table width="100%" height="25" border="0" cellpadding="0"
            cellspacing="0"
            background="<%=request.getContextPath()%>/images/mhead.jpg">
