@@ -58,6 +58,10 @@
       -->
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeWjspImpl.xml" />
     <!--
+     	耗材
+      -->
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeSuppliesImpl.xml" />
+    <!--
      	请销假
       -->
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeHolidayImpl.xml" />
