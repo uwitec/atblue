@@ -309,7 +309,6 @@ public class Workflow {
        return  wDao.getNextUserRole(connectId,varValue);
    }
     public String getNextUserSelectOptions(String roleName, String orgnaId) {
-        System.out.println(roleName);
         StringBuffer s = new StringBuffer("");
         String nextRole = roleName;
         if (!StringUtil.isBlankOrEmpty(nextRole)) {
