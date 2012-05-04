@@ -274,7 +274,15 @@ rt
   <td colspan=2 class=xl6614414 style='border-left:none'><%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%></td>
   <td colspan=2 class=xl6514414 width=126 style='border-left:none;width:95pt'>申请召开<span
   style='mso-spacerun:yes'><br></span>时间期限</td>
-  <td colspan=3 class=xl6614414 style='border-left:none;text-align:left'><%=new Timestamp(hysq.getSqkssj().getTime())%>-<%=new Timestamp(hysq.getSqjssj().getTime())%></td>
+  <td colspan=3 class=xl6614414 style='border-left:none;text-align:left'>
+      <%
+          if(hysq.getSqkssj() != null){ %>
+      <%=DateUtil.format(hysq.getSqkssj(),"yyyy-MM-dd HH:mm")%>
+      <% }%>
+      - <br>
+      <%if(hysq.getSqjssj() != null){ %>
+      <%=DateUtil.format(hysq.getSqjssj(), "yyyy-MM-dd HH:mm")%>
+      <% }%></td>
  </tr>
  <tr height=200 style='mso-height-source:userset;height:150.0pt'>
   <td colspan=2 height=200 class=xl6514414 width=126 style='height:150.0pt;
@@ -288,10 +296,13 @@ rt
   <%
   StringBuffer sb = new StringBuffer();
   for(int i=0;i<checkman.length;i++){
-  	sb.append(dao.findUserById(checkman[i]).getRealName()).append(",");
+      if(i > 0){
+          sb.append(",");
+      }
+  	sb.append(dao.findUserById(checkman[i]).getRealName());
   } %>
   <%out.println(sb.toString());%><br>
-  參加人數為<%=checkman.length%>
+  参加人数为<%=checkman.length%>
   </td>
  </tr>
  <tr height=100 style='mso-height-source:userset;height:75.0pt'>

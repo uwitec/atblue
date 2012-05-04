@@ -104,9 +104,9 @@
 							<th >
 								申请结束时间
 							</th>
-							<th nowrap="nowrap" >
-								会议内容
-							</th>
+							<%--<th nowrap="nowrap" >--%>
+								<%--会议内容--%>
+							<%--</th>--%>
 							<th nowrap="nowrap" >
 								操作
 							</th>
@@ -117,16 +117,16 @@
                                 oracle.sql.TIMESTAMP sTime = (oracle.sql.TIMESTAMP)map.get("SQKSSJ");
                                 oracle.sql.TIMESTAMP eTime = (oracle.sql.TIMESTAMP)map.get("SQJSSJ");
 						%>
-						<tr>
+						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("SQID"),"") %>')">
 							<td  align="center" nowrap="nowrap">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td  align="left">
+							<td  align="left" style="text-align: left">
 								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("HYMC"),"") %></a>
 							</td>
 							
-							<td  align="left">
+							<td  align="left" style="text-align: left">
 								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
 							</td>
 							<td  align="center">
@@ -143,9 +143,9 @@
                                 <%=DateUtil.format(eTime.timestampValue(), "yyyy-MM-dd HH:mm")%>
                                 <% }%>
 							</td>
-							<td  align="left">
-								<%=StringUtil.cutString(StringUtil.parseNull(map.get("HYNR"),""),25)%>
-							</td>
+							<%--<td  align="left">--%>
+								<%--<%=StringUtil.cutString(StringUtil.parseNull(map.get("HYNR"),""),25)%>--%>
+							<%--</td>--%>
 							<td  align="center" nowrap="nowrap">
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
