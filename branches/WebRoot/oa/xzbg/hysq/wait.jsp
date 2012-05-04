@@ -83,7 +83,7 @@
 				<td>
 
 					<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" class="mtabtab" id="mtabtab">
+						cellspacing="0" class="mtabtab" id="tab_id">
 						<tr class="form_th">
 							<th nowrap="nowrap"  width="40">
 								序号
