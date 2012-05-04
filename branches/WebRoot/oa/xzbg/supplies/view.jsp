@@ -47,7 +47,7 @@
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
-						查看耗材、配產
+						查看其他申请信息
 					</td>
 					<td width="74%" align="left" class="mhead">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -77,11 +77,11 @@
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										耗材名称
+										申请名称
 									</td>
 									<td class="head_right" style="text-align: left">
 									<%=StringUtil.parseNull(officeSupplies.getMc(),"")%>
-											<input type="checkbox" name="checked" id="checked" value="" <%if(!"0".equals(officeSupplies.getDxtx())){ %>checked<%}%>>短信提醒
+
 									</td>
 								</tr>
 									
@@ -90,7 +90,7 @@
 										数量
 									</td>
 									<td class="head_right" style="text-align: left">
-									<%=StringUtil.parseNull(officeSupplies.getSl(),"")%>
+									<%=StringUtil.parseNull(officeSupplies.getSl(),"")%> &nbsp;
 									</td>
 								</tr>
 								<tr>
@@ -98,7 +98,7 @@
 										申请单位
 									</td>
 									<td class="head_right" style="text-align: left">
-										<%=StringUtil.parseNull(officeSupplies.getSqdw(),"")%>
+										<%=StringUtil.parseNull(officeSupplies.getSqdw(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
@@ -106,7 +106,7 @@
 										申请日期
 									</td>
 									<td class="head_right" style="text-align: left">
-										<%=DateUtil.format(officeSupplies.getSqsj(),"yyyy-MM-dd")%>
+										<%=DateUtil.format(officeSupplies.getSqsj(),"yyyy-MM-dd")%> &nbsp;
 									</td>
 								</tr>
 								<tr>
@@ -114,7 +114,7 @@
 										事由
 									</td>
 									<td class="head_right" style="text-align: left">
-                                       <%=StringUtil.parseNull(officeSupplies.getSy(),"yyyy-MM-dd")%>
+                                       <%=StringUtil.parseNull(officeSupplies.getSy(),"")%> &nbsp;
                                     </td>
 								</tr>
 							</table>
