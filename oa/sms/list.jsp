@@ -23,14 +23,10 @@
             type="text/javascript" defer="defer"></script>
     <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"
           type="text/css">
-    <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" charset="GB2312"
             src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
     <script type="text/javascript"
             src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
-    <script type="text/javascript"
-            src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
     <script type="text/javascript">
         function onDelete(url){
             if(window.confirm("确认删除该短信通知?")){
@@ -98,16 +94,14 @@
             </td>
             <td align="left" class="mhead">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                    <tbody>
                     <tr>
                         <td align="left">
-                            通知：
+                            <font style="font-size: 14px">通知：</font>
                             <input name="dxnr" size="10" type="text" value="${dxnr}" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                             <input type="button" class="button" onclick="window.location = 'sms_add.d';" style="width:40px"  value='新增'>
                         </td>
                     </tr>
-                    </tbody>
                 </table>
             </td>
         </tr>
