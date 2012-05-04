@@ -30,16 +30,10 @@
 		<title></title>
 		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet" type="text/css">
 		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet" type="text/css">
-		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
 		<script type="text/javascript"
 			src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
-		<script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
-
-		
 		<script type="text/javascript">
             function _resizeNoPage() {
                 document.getElementById("scrollDiv").style.width = document.body.clientWidth - 18;
@@ -184,150 +178,10 @@
 			}
 		}
 		</script>
-		<script type="text/javascript">
-			Ext.onReady(function(){
-			    var win;
-			    var button = Ext.get('mb3');
-			
-			    button.on('click', function(){
-			        // create the window on the first click and reuse on subsequent clicks
-			        if(!win){
-			            win = new Ext.Window({
-			                applyTo:'hello-win',
-			                layout:'fit',
-			                width:500,
-			                height:400,
-			                closeAction:'hide',
-			                plain: true,
-							pageX:100, 
-							pageY:100,
-							items: new Ext.TabPanel({
-			                    applyTo: 'hello-tabs',
-			                    autoTabs:true,
-			                    activeTab:0,
-//			                    deferredRender:false,
-			                    border:false
-			                }),
-			                buttons: [{
-			                    text:'确定',
-			                    handler: function(){
-			                        win.hide();
-			                    }
-			                },{
-			                    text: '关闭',
-			                    handler: function(){
-			                        win.hide();
-			                    }
-			                }]
-			            });
-			        }
-			        win.show(this);
-			    });
-			});
-		</script>
 	</head>
 	<body onload="_resizeNoPage();">
 		<form action="add.jsp" name="form1" method="post">
             <input type="hidden" name="flag" value=""/>
-            <div id="hello-win" class="x-hidden">
-                <div id="hello-tabs">
-                    <div class="x-tab" title="请选择签收用户">
-                        <table border="0" width="100%">
-                            <tr>
-                                <td colspan="6" align="left">
-                                    <input type="checkbox" name="allBox" onclick="checkAll(this);">全选&nbsp;
-                                    <input type="checkbox" name="allBox" onclick="checkUnAll();">反选&nbsp;
-                                    <hr width="100%">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="6" align="left">
-                                    <hr width="100%">
-                                    <h2>公司领导</h2>
-                                    <hr width="100%">
-                                </td>
-                            </tr>
-                            <%for(int i=0; i<userList.size(); i++){
-                                CUser u = (CUser)userList.get(i);
-                                if(i==0){
-                            %>
-                            <tr>
-                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else if(i%6==0){ %>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else{ %>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	} %>
-                                <%} %>
-                                <%
-                                    if(userList.size()%6!=0){
-                                        for(int i=0; i<userList.size()%6-1; i++){%>
-                                <td>&nbsp;</td>
-                                <%}%>
-                            </tr>
-                            <%}%>
-                            <tr>
-                                <td colspan="6" align="left">
-                                    <hr width="100%">
-                                    <h2>机关科室</h2>
-                                    <hr width="100%">
-                                </td>
-                            </tr>
-                            <%for(int i=0; i<userList1.size(); i++){
-                                CUser u = (CUser)userList1.get(i);
-                                if(i==0){
-                            %>
-                            <tr>
-                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else if(i%6==0){ %>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else{ %>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	} %>
-                                <%} %>
-                                <%
-                                    if(userList1.size()%6!=0){
-                                        for(int i=0; i<userList1.size()%6-1; i++){%>
-                                <td>&nbsp;</td>
-                                <%}%>
-                            </tr>
-                            <%}%>
-                            <tr>
-                                <td colspan="6" align="left">
-                                    <hr width="100%">
-                                    <h2>基层单位</h2>
-                                    <hr width="100%">
-                                </td>
-                            </tr>
-                            <%for(int i=0; i<userList2.size(); i++){
-                                CUser u = (CUser)userList2.get(i);
-                                if(i==0){
-                            %>
-                            <tr>
-                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else if(i%6==0){ %>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else{ %>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	} %>
-                                <%} %>
-                                <%
-                                    if(userList2.size()%6!=0){
-                                        for(int i=0; i<userList2.size()%6-1; i++){%>
-                                <td>&nbsp;</td>
-                                <%}%>
-                            </tr>
-                            <%}%>
-                        </table>
-                    </div>
-                </div>
-            </div>
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
 				background="<%=request.getContextPath()%>/images/mhead.jpg">
@@ -387,9 +241,15 @@
 										与会人员
 									</td>
 									<td class="head_right" style="text-align: left">
-										<button id="mb3" class="button">
-											参加人
-										</button>
+                                        <%
+                                            StringBuffer sb = new StringBuffer();
+                                            for(int i=0;i<checkman.length;i++){
+                                                if(i > 0){
+                                                    sb.append(",");
+                                                }
+                                                sb.append(dao.findUserById(checkman[i]).getRealName());
+                                            } %>
+                                        <%out.println(sb.toString());%>
 									</td>
 								</tr>
 
@@ -398,7 +258,10 @@
 										申请开始时间
 									</td>
 									<td class="head_right" style="text-align: left">
-										<%=StringUtil.parseNull(hysq.getSqkssj(),"")%>
+                                        <%
+                                            if(hysq.getSqkssj() != null){ %>
+                                        <%=DateUtil.format(hysq.getSqkssj(),"yyyy-MM-dd HH:mm")%>
+                                        <% }%> &nbsp;
 									</td>
 								</tr>
 								<tr>
@@ -406,7 +269,9 @@
 										申请结束时间
 									</td>
 									<td class="head_right" style="text-align: left">
-										<%=StringUtil.parseNull(hysq.getSqjssj(),"")%>
+                                        <%if(hysq.getSqjssj() != null){ %>
+                                        <%=DateUtil.format(hysq.getSqjssj(), "yyyy-MM-dd HH:mm")%>
+                                        <% }%>&nbsp;
 									</td>
 								</tr>
 
