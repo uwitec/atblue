@@ -191,7 +191,7 @@
 										数量
 									</td>
 									<td class="head_right" style="text-align: left">
-									<%=StringUtil.parseNull(officeSupplies.getSl(),"")%>
+									<%=StringUtil.parseNull(officeSupplies.getSl(),"")%> &nbsp;
 									</td>
 								</tr>
 								<tr>
@@ -199,7 +199,7 @@
 										申请单位
 									</td>
 									<td class="head_right" style="text-align: left">
-										<%=StringUtil.parseNull(officeSupplies.getSqdw(),"")%>
+										<%=StringUtil.parseNull(officeSupplies.getSqdw(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
@@ -207,7 +207,7 @@
 										申请日期
 									</td>
 									<td class="head_right" style="text-align: left">
-										<%=DateUtil.format(officeSupplies.getSqsj(),"yyyy-MM-dd")%>
+										<%=DateUtil.format(officeSupplies.getSqsj(),"yyyy-MM-dd")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
@@ -215,7 +215,7 @@
 										事由
 									</td>
 									<td class="head_right" style="text-align: left">
-                                       <%=StringUtil.parseNull(officeSupplies.getSy(),"yyyy-MM-dd")%>
+                                       <%=StringUtil.parseNull(officeSupplies.getSy(),"")%>&nbsp;
                                     </td>
 								</tr>
 							</table>

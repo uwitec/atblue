@@ -449,7 +449,7 @@ function addSealB(){
  <tr height=37 style='mso-height-source:userset;height:27.75pt'>
   <td height=37 class=xl636142 style='height:27.75pt;border-top:none;
   border-left:none'>份数</td>
-  <td colspan=3 class=xl636142 style='border-left:none'><%=yysq.getFs() %></td>
+  <td colspan=3 class=xl636142 style='border-left:none'><%=yysq.getFs() == null?0:yysq.getFs().intValue() %></td>
  </tr>
  <tr height=38 style='mso-height-source:userset;height:28.5pt'>
   <td height=38 class=xl636142 style='height:28.5pt;border-top:none'>用印人</td>
