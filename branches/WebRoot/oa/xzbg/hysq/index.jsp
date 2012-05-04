@@ -127,9 +127,9 @@
 							<th >
 								申请结束时间
 							</th>
-							<th nowrap="nowrap" width="200">
-								会议内容
-							</th>
+							<%--<th nowrap="nowrap" width="200">--%>
+								<%--会议内容--%>
+							<%--</th>--%>
 							<th nowrap="nowrap" >
 								申请状态
 							</th>
@@ -169,10 +169,10 @@
                                 <%=DateUtil.format(eTime.timestampValue(), "yyyy-MM-dd HH:mm")%>
                                 <% }%>
 							</td>
-							<td  align="left" title="<%=StringUtil.parseNull(map.get("HYNR"),"")%>"  style="text-align: left">
-								<%=StringUtil.cutString(StringUtil.parseNull(map.get("HYNR"),""),25)%>
-							</td>
-							<td  align="center">
+							<%--<td  align="left" title="<%=StringUtil.parseNull(map.get("HYNR"),"")%>"  style="text-align: left">--%>
+								<%--&lt;%&ndash;<%=StringUtil.cutString(StringUtil.parseNull(map.get("HYNR"),""),25)%>&ndash;%&gt;--%>
+							<%--</td>--%>
+							<td  align="center"> &nbsp;
 								<%String sqzt = StringUtil.parseNull(map.get("SQZT"),"");
                                      if("已完成".equals(sqzt)){ %>
                                         <font color="green"><%=sqzt%></font>
