@@ -36,7 +36,7 @@
     if("sign".equals(act)){
         oDao.updateOfficeCirculationCheck(cUser.getUserId(),pkid);
         out.print("<script>");
-        out.print("window.location='tabs2.jsp';");
+        out.print("window.location='check_index.jsp';");
         out.print("</script>");
     }
 %>
