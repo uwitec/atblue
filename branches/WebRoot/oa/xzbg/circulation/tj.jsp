@@ -49,7 +49,7 @@
                 officeSmsPerson.setSffs("0"); //是否发送
                 officeSmsPerson.setDxnr(message.toString());
                 officeSmsPerson.setTzlb("F");
-                officeSmsPerson.setPkId(document.getCyid());
+                officeSmsPerson.setSqId(document.getCyid());
                 officeSmsPersonDAO.addOfficeSmsPerson(officeSmsPerson);
             }
         }

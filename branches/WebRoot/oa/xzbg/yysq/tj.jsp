@@ -47,7 +47,7 @@
                 officeSmsPerson.setSffs("0"); //是否发送
                 officeSmsPerson.setDxnr(message.toString());
                 officeSmsPerson.setTzlb("E");
-                officeSmsPerson.setPkId(officeYysq.getSqid());
+                officeSmsPerson.setSqId(officeYysq.getSqid());
                 officeSmsPersonDAO.addOfficeSmsPerson(officeSmsPerson);
             }
         }
