@@ -23,6 +23,7 @@ private String processId;
 private String connectId;
 private String sqr;
 private String dxtx;
+private String dzyj;
 
 public String getSqid(){
 return this.sqid;
@@ -134,5 +135,13 @@ public String getDxtx() {
 
 public void setDxtx(String dxtx) {
 	this.dxtx = dxtx;
+}
+
+public String getDzyj() {
+	return dzyj;
+}
+
+public void setDzyj(String dzyj) {
+	this.dzyj = dzyj;
 }
 }

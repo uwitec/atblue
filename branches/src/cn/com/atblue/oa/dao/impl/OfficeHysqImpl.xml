@@ -45,8 +45,11 @@
             <isNotEmpty prepend=" and " property="sqr">
                 <![CDATA[sqr=#sqr#]]>
             </isNotEmpty>
-            <isNotEmpty prepend=" and " property="sqr">
+            <isNotEmpty prepend=" and " property="dxtx">
                 <![CDATA[dxtx=#dxtx#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dzyj">
+                <![CDATA[dzyj=#dzyj#]]>
             </isNotEmpty>
         </dynamic>
     </sql>
@@ -55,11 +58,11 @@
             insert into office_hysq(
                 sqid,hymc,sqbm,hynr,bz,
 				sqsj,sqkssj,sqjssj,sjjssj,sqzt,
-				process_id,connect_id,sqr,dxtx
+				process_id,connect_id,sqr,dxtx,dzyj
             ) values(
                 #sqid#,#hymc#,#sqbm#,#hynr#,#bz#,
 				#sqsj#,#sqkssj#,#sqjssj#,#sjjssj#,#sqzt#,
-				#processId#,#connectId#,#sqr#,#dxtx#
+				#processId#,#connectId#,#sqr#,#dxtx#,#dzyj#
             )
         ]]>
     </insert>
@@ -71,7 +74,7 @@
 				hynr=#hynr#,bz=#bz#,sqsj=#sqsj#,
 				sqkssj=#sqkssj#,sqjssj=#sqjssj#,sjjssj=#sjjssj#,
 				sqzt=#sqzt#,process_id=#processId#,connect_id=#connectId#,
-				sqr=#sqr#,dxtx=#dxtx#
+				sqr=#sqr#,dxtx=#dxtx#,dzyj=#dzyj#
             where SQID=#sqid#
         ]]>
     </update>
@@ -85,7 +88,7 @@
 
     <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeHysq">
         <![CDATA[
-            select sqid as sqid,hymc as hymc,sqbm as sqbm,hynr as hynr,bz as bz,sqsj as sqsj,sqkssj as sqkssj,sqjssj as sqjssj,sjjssj as sjjssj,sqzt as sqzt,process_id as processId,connect_id as connectId,sqr as sqr,dxtx from office_hysq where SQID=#sqid#
+            select sqid as sqid,hymc as hymc,sqbm as sqbm,hynr as hynr,bz as bz,sqsj as sqsj,sqkssj as sqkssj,sqjssj as sqjssj,sjjssj as sjjssj,sqzt as sqzt,process_id as processId,connect_id as connectId,sqr as sqr,dxtx,dzyj from office_hysq where SQID=#sqid#
         ]]>
     </select>
 
