@@ -221,7 +221,17 @@
 			function lbz(obj){
 				document.form1.wjbh.value=obj.value;
 			}
-			
+			function checkAll(obj){
+				for(var i=0; i<document.form1.ubox.length; i++){
+					document.form1.ubox[i].checked=obj.checked;
+				}
+			}
+		
+		function checkUnAll(){
+			for(var i=0; i<document.form1.ubox.length; i++){
+				document.form1.ubox[i].checked=!document.form1.ubox[i].checked;
+			}
+		}
 			function  selLdps(){
 				document.form1.nbr.disabled=true;
 				document.form1.ldps.disabled=false;
@@ -280,7 +290,7 @@
 	    }
             Ext.onReady(function(){
                 var win;
-                var button = Ext.get('checkman');
+                var button = Ext.get('mb3');
 
                 button.on('click', function(){
                     // create the window on the first click and reuse on subsequent clicks
@@ -303,23 +313,16 @@
                                 defaults:{autoScroll: true}
                             }),
                             buttons: [{
-                                text:'确定',
-                                handler: function(){
-                                    document.form1.checkman.value = "";
-                                    for(var i=0; i<document.form1.ubox.length; i++){
-                                        if(document.form1.ubox[i].checked){
-                                            document.form1.checkman.value+=document.form1.ubox[i].title + ";";
-                                        }
-                                        //document.form1.ubox[i].checked=obj.checked;
-                                    }
-                                    win.hide();
-                                }
-                            },{
-                                text: '关闭',
-                                handler: function(){
-                                    win.hide();
-                                }
-                            }]
+			                    text:'确定',
+			                    handler: function(){
+			                        win.hide();
+			                    }
+			                },{
+			                    text: '关闭',
+			                    handler: function(){
+			                        win.hide();
+			                    }
+			                }]
                         });
                     }
                     win.show(this);
@@ -530,9 +533,9 @@
                                         传阅人<span style="color: red">&nbsp;*</span>
                                     </td>
                                     <td class="head_right" align="left" style="text-align: left">
-                                        <input type="text" name="checkman" readonly="readonly" class="inputStyle"
-                                               style="width: 400px;">
-                                        &nbsp;
+                                       <button id="mb3" class="button">
+											签收人
+										</button>
                                     </td>
                                 </tr>
 								<%--<tr>--%>
