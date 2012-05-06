@@ -68,7 +68,7 @@
 		for (int i = 0; i < fileList.size(); i++) {
 			Map map = (Map) fileList.get(i);
 			OfficeFile uploadFile = new OfficeFile();
-			uploadFile.setPkid((String) map.get("rename"));
+			uploadFile.setPkid(StringUtil.getUUID());
 			uploadFile.setFkid(documentid);
 			uploadFile.setLrip(request.getRemoteAddr());
 			uploadFile.setLrr(_user.getRealName());

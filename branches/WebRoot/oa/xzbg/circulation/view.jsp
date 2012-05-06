@@ -44,17 +44,7 @@
 		<script src="<%=contentPath%>/js/common.js"
 			type="text/javascript" defer="defer"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
-        <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
-		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
-		<script type="text/javascript" charset="GB2312"
-			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
-		<script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
-
-		
+        <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">		
 		<script type="text/javascript">
 			function checkForm(act){
 				
@@ -117,53 +107,6 @@
    					 ajax.send(null);
 				}
 			}
-            Ext.onReady(function(){
-                var win;
-                var button = Ext.get('checkman');
-
-                button.on('click', function(){
-                    // create the window on the first click and reuse on subsequent clicks
-                    if(!win){
-                        win = new Ext.Window({
-                            applyTo:'hello-win',
-                            layout:'fit',
-                            width:500,
-                            height:400,
-                            closeAction:'hide',
-                            plain: true,
-                            pageX:100,
-                            pageY:100,
-                            items: new Ext.TabPanel({
-                                applyTo: 'hello-tabs',
-                                autoTabs:true,
-                                activeTab:0,
-                                deferredRender:false,
-                                border:false,
-                                defaults:{autoScroll: true}
-                            }),
-                            buttons: [{
-                                text:'确定',
-                                handler: function(){
-                                    document.form1.checkman.value = "";
-                                    for(var i=0; i<document.form1.ubox.length; i++){
-                                        if(document.form1.ubox[i].checked){
-                                            document.form1.checkman.value+=document.form1.ubox[i].title + ";";
-                                        }
-                                        //document.form1.ubox[i].checked=obj.checked;
-                                    }
-                                    win.hide();
-                                }
-                            },{
-                                text: '关闭',
-                                handler: function(){
-                                    win.hide();
-                                }
-                            }]
-                        });
-                    }
-                    win.show(this);
-                });
-            });
 		</script>
 		
 		<script type="text/javascript">
@@ -176,105 +119,6 @@
 		<form name="form1" method="post"
 			enctype="multipart/form-data">
 			<input type="hidden" name="act" value="">
-            <div id="hello-win" class="x-hidden">
-                <div id="hello-tabs">
-                    <div class="x-tab" title="请选择签收用户">
-                        <table border="0" width="100%">
-                            <tr>
-                                <td colspan="6" align="left">
-                                    <input type="checkbox" name="allBox" onclick="checkAll(this);">全选&nbsp;
-                                    <input type="checkbox" name="allBox" onclick="checkUnAll();">反选&nbsp;
-                                    <hr width="100%">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="6" align="left">
-                                    <hr width="100%">
-                                    <h2>公司领导</h2>
-                                    <hr width="100%">
-                                </td>
-                            </tr>
-                            <%for(int i=0; i<userList.size(); i++){
-                                CUser u = (CUser)userList.get(i);
-                                if(i==0){
-                            %>
-                            <tr>
-                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else if(i%6==0){ %>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else{ %>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	} %>
-                                <%} %>
-                                <%
-                                    if(userList.size()%6!=0){
-                                        for(int i=0; i<userList.size()%6-1; i++){%>
-                                <td>&nbsp;</td>
-                                <%}%>
-                            </tr>
-                            <%}%>
-                            <tr>
-                                <td colspan="6" align="left">
-                                    <hr width="100%">
-                                    <h2>机关科室</h2>
-                                    <hr width="100%">
-                                </td>
-                            </tr>
-                            <%for(int i=0; i<userList1.size(); i++){
-                                CUser u = (CUser)userList1.get(i);
-                                if(i==0){
-                            %>
-                            <tr>
-                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else if(i%6==0){ %>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else{ %>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	} %>
-                                <%} %>
-                                <%
-                                    if(userList1.size()%6!=0){
-                                        for(int i=0; i<userList1.size()%6-1; i++){%>
-                                <td>&nbsp;</td>
-                                <%}%>
-                            </tr>
-                            <%}%>
-                            <tr>
-                                <td colspan="6" align="left">
-                                    <hr width="100%">
-                                    <h2>基层单位</h2>
-                                    <hr width="100%">
-                                </td>
-                            </tr>
-                            <%for(int i=0; i<userList2.size(); i++){
-                                CUser u = (CUser)userList2.get(i);
-                                if(i==0){
-                            %>
-                            <tr>
-                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else if(i%6==0){ %>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else{ %>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	} %>
-                                <%} %>
-                                <%
-                                    if(userList2.size()%6!=0){
-                                        for(int i=0; i<userList2.size()%6-1; i++){%>
-                                <td>&nbsp;</td>
-                                <%}%>
-                            </tr>
-                            <%}%>
-                        </table>
-                    </div>
-                </div>
-            </div>
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
 				background="<%=contentPath%>/images/mhead.jpg">
@@ -350,8 +194,7 @@
                                         传阅人<span style="color: red">&nbsp;*</span>
                                     </td>
                                     <td class="head_right" align="left" style="text-align: left">
-                                        <input type="text" name="checkman" readonly="readonly" class="inputStyle"
-                                               style="width: 400px;" value="<%=checkman%>">
+                                      <%=checkman%>
                                         &nbsp;
                                     </td>
                                 </tr>
