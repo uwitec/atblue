@@ -27,6 +27,8 @@
     //上级文件管理 
 	 List list8 = oDao.getWaitPagedOfficeCirculationList(pageBean,paramMap);
 	 list8 = list8 == null ? new ArrayList() : list8; 
+	 OfficeCirculationDAO officeCirculationDAO = (OfficeCirculationDAO)SpringFactory.instance.getBean("officeCirculationDAO");
+	 List list9 = officeCirculationDAO.getBeanByNbr("0",_user.getUserId(),pageBean);
     OfficeDocumentsDAO officeDocumentsDAO = (OfficeDocumentsDAO)SpringFactory.instance.getBean("officeDocumentsDAO");
     StringBuilder sb = new StringBuilder();
     sb.append(" where documentid in(select documentid from office_documents_check where checkman='");
@@ -144,6 +146,22 @@
                           <td class="txt_home">
                               <a href="<%=request.getContextPath()%>/oa/xzbg/documents/signView.jsp?pkid=<%=document.getDocumentid() %>">
                                   <%=StringUtil.cutString(StringUtil.parseNull(document.getBt(),""),30)%></a></td>
+                          <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
+                      </tr>
+                      <% }
+                      %>
+                       <%
+                          for(int i=0; i<list9.size();i++){
+                             OfficeCirculation document = (OfficeCirculation)list9.get(i);
+                              java.util.Date date = (java.util.Date)document.getLwsj();
+                      %>
+                      <tr>
+                          <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
+                          <td class="txt_home">
+                              <a href="<%=request.getContextPath()%>/oa/xzbg/circulation/sign.jsp?pkid=<%=document.getCyid()%>">
+                                  <%=StringUtil.cutString(StringUtil.parseNull(document.getWjmc(),""),30)%>
+                              </a>
+                          </td>
                           <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
                       </tr>
                       <% }
