@@ -13,22 +13,22 @@
     COrgnization cOrgnization = orgnizationDAO.queryForBean(paramMap);
     cOrgnization = cOrgnization == null?new COrgnization():cOrgnization;
 	if (request.getMethod().equals("POST")) {
-        String mc = StringUtil.parseNull(request.getParameter("mc"),"");
-        String sl = StringUtil.parseNull(request.getParameter("sl"),"");
-        String sqdw = StringUtil.parseNull(request.getParameter("sqdw"),"");
-        curRole = StringUtil.parseNull(request.getParameter("curRole"),"");
-        String sy = StringUtil.parseNull(request.getParameter("sy"),"");
-        String sqsj = StringUtil.parseNull(request.getParameter("sqsj"),"");
-        String flag = StringUtil.parseNull(request.getParameter("flag"),"");
-        String dxtx = StringUtil.parseNull(request.getParameter("dxtx"),"");
+		FileUploadUtil fileUpload = new FileUploadUtil(request);
+        String mc = StringUtil.parseNull(fileUpload.getParameter("mc"),"");
+        String sqdw = StringUtil.parseNull(fileUpload.getParameter("sqdw"),"");
+        curRole = StringUtil.parseNull(fileUpload.getParameter("curRole"),"");
+        String editor = StringUtil.parseNull(fileUpload.getParameter("editor"),"");
+        String sqsj = StringUtil.parseNull(fileUpload.getParameter("sqsj"),"");
+        String flag = StringUtil.parseNull(fileUpload.getParameter("flag"),"");
+        String dxtx = StringUtil.parseNull(fileUpload.getParameter("dxtx"),"");
         OfficeSupplies officeSupplies = new  OfficeSupplies();
         String sqid = StringUtil.getUUID();
         officeSupplies.setSqid(sqid);
         officeSupplies.setMc(mc);
-        officeSupplies.setSl(sl);
+        //officeSupplies.setSl(sl);
         officeSupplies.setSqzt("已保存");//保存状态
         officeSupplies.setDxtx(dxtx);
-        officeSupplies.setSy(sy);
+        officeSupplies.setSy(editor);
         officeSupplies.setSqdw(sqdw);
         officeSupplies.setRoleflag(curRole);
         officeSupplies.setSqsj(DateUtil.parse(sqsj,"yyyy-MM-dd"));
@@ -47,6 +47,28 @@
             officeSupplies.setConnectId(status.getConnectId());
         }
         officeSuppliesDAO.addOfficeSupplies(officeSupplies);
+        
+        //保存附件信息
+		List fileList = fileUpload.uploadFile(filePath);
+		for (int i = 0; i < fileList.size(); i++) {
+			Map map = (Map) fileList.get(i);
+			OfficeFile uploadFile = new OfficeFile();
+			uploadFile.setPkid(StringUtil.getUUID());
+			uploadFile.setFkid(sqid);
+			uploadFile.setLrip(request.getRemoteAddr());
+			uploadFile.setLrr(_user.getRealName());
+			uploadFile.setLrsj(DateUtil.getDateTime());
+			try {
+				uploadFile.setWjcc(new BigDecimal((Long) map
+						.get("fileSize")));
+			} catch (Exception e) {
+			}
+			uploadFile.setWjlj((String) map.get("fullPath"));
+			uploadFile.setWjm((String) map.get("realName"));
+			uploadFile.setWjlx((String) map.get("fileType"));
+			uploadFile.setXzcs(new Integer(0));
+            officeFileDAO.insert(uploadFile);
+		}
 %>
 		<script>
 		    window.location='index.jsp?curRole=<%=curRole%>';
@@ -71,7 +93,30 @@
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
 
 		
-		<script type="text/javascript">
+		<script type="text/javascript" defer="defer">
+		CKEDITOR.replace( 'editor',
+		{
+			skin : 'office2003'
+		});
+
+		//隐藏不需要的工具按钮
+		CKEDITOR.editorConfig = function( config )
+		{
+		    config.toolbar = 'MyToolbar';
+		    config.toolbar_MyToolbar =
+		    [
+		        ['NewPage','Preview'],
+		        ['Cut','Copy','Paste','PasteText','PasteFromWord','-'],
+		        ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+		        ['Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+		        '/',
+		        ['Styles','Format'],
+		        ['Bold','Italic','Strike'],
+		        ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+		        ['Link','Unlink','Anchor'],
+		        ['Maximize','-','About']
+		    ];
+		};
             function _resizeNoPage() {
                 document.getElementById("scrollDiv").style.width = document.body.clientWidth - 18;
                 document.getElementById("scrollDiv").style.height = document.body.clientHeight - 50;
@@ -121,10 +166,58 @@
                 document.all.flag.value="startup";
                 document.form1.submit();
             }
+             function doAddAttachRow(tid){
+    	var tbl = document.getElementById(tid);
+    	var rows = tbl.rows;
+    	var len = rows.length;
+    	var newTr = tbl.insertRow();
+    	var newTd = newTr.insertCell(0);
+    	newTd.align="center";
+    	newTd.className="NormalDataColumn";
+    	newTd.appendChild(document.createTextNode(len));
+    	newTd = newTr.insertCell(1);
+    	newTd.className="NormalDataColumn";
+    	newTd.appendChild(document.createTextNode("文件："));
+    	var node = document.createElement("input");
+    	
+		node.type = "file";
+		node.size = "60";
+		node.name = "fjlist";
+    	newTd.appendChild(node);
+    	newTd = newTr.insertCell(2);
+    	newTd.align="center";
+    	newTd.className="NormalDataColumn";
+    	var node = document.createElement("a");
+    	node.href="javascript:void(0)";
+    	node.onclick= function (){
+			doDeleteRow(this);
+		};
+    	node.appendChild(document.createTextNode("[删除]"));
+    	newTd.appendChild(node);
+    }
+        function doDeleteRow(t,uuid){
+    	if( uuid != undefined && uuid != null && uuid != ''){
+    		if(!confirm("确定要删除此附件信息么?")){
+    			return ;
+    		}
+    	}
+    	var row = t.parentElement.parentElement;
+    	var index = row.rowIndex;
+    	//通过Ajax删除附件记录
+    	document.getElementById("attachTab").deleteRow(row.rowIndex);
+    	var rows = document.getElementById("attachTab").rows;
+    	var len = rows.length;
+    	for(var i=1; i<len; i++){
+    		var r = rows[i];
+    		var c = r.cells[0];
+    		c.innerText = i;
+    	}
+    }
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">
-		<form action="add.jsp" name="form1" method="post">
+		<form action="add.jsp" name="form1" method="post"
+			enctype="multipart/form-data">
             <input type="hidden" name="flag" value=""/>
              <input type="hidden" name="curRole" value="<%=curRole%>">
             <input type="hidden" name="dxtx" value=""/>
@@ -180,14 +273,14 @@
 									</td>
 								</tr>
 								
-								<tr>
+								<!-- tr>
 									<td nowrap="nowrap" width="120" class="head_left">
 										数量<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
 										<input type="text" name="sl" class="inputStyle"
 											style="width: 300px;">
-									</td>
+									</td -->
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
@@ -210,10 +303,25 @@
 										事由
 									</td>
 									<td class="head_right" style="text-align: left">
-                                        <textarea rows="4" cols="40" name="sy"></textarea>
+									<textarea cols="80" id="editor" name="editor" rows="10"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td nowrap="nowrap" width="120" class="head_left">
+										附件&nbsp;
+									</td>
+									<td class="head_right" align="left" id="fileTd" style="text-align: left">
+										1.&nbsp;&nbsp;
+										<input type="file" name="file_1" style="width: 400px;">
 									</td>
 								</tr>
 							</table>
+							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"
+                       				class="mtabtab" id="attachTab">
+				               <tr>
+				               		<td class="head_right" width="100%" nowrap colspan="3" style="text-align: left">其他附件：<input type="button" name="b_bc" class="button" value="添加" onclick="doAddAttachRow('attachTab');"></td>
+				               </tr>
+         				</table>
 						</div>
 					</td>
 				</tr>
