@@ -166,7 +166,7 @@
                             <a href="javascript:onDelete('./sms_del.d?tzid=${TZID}');">[删除]</a>&nbsp;
                             <%--<a href="javascript:onSend('./sms_send.d?tzid=${TZID}');">[发送]</a>&nbsp;--%>
                             <% }else{  %>
-                            <%--<a href="javascript:onSend('./sms_send.d?tzid=${TZID}');">[发送]</a>&nbsp;--%>
+                            <a href="javascript:onSend('./sms_send.d?tzid=${TZID}');">[发送]</a>&nbsp;
                             <%   }
                             %>
                         </td>
