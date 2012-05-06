@@ -173,7 +173,7 @@
 		}
 		</script>
 	</head>
-	<body onload="_resizeNoPage();">
+	<body>
 		<form action="yj.jsp" name="form1" method="post">
             <input type="hidden" name="flag" value=""/>
             <input type="hidden" name="sqid" value=""/>
@@ -211,9 +211,6 @@
 			<table>
 				<tr>
 					<td>
-						<%--固定表头DIV--%>
-						<div id="scrollDiv"
-							style="width: 1000px; overflow: auto; cursor: default; display: inline; position: absolute; height: 200px;">
 							<table width="100%" border="0" align="center" cellpadding="0"
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
@@ -277,7 +274,7 @@
 										会议内容及目的
 									</td>
 									<td class="head_right" style="text-align: left">
-										<%=StringUtil.parseNull(hysq.getHynr(),"")%>
+										<%=StringUtil.parseNull(hysq.getHynr(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>
@@ -285,7 +282,7 @@
 										党政意见
 									</td>
 									<td class="head_right" style="text-align: left">
-                                        <textarea cols="80"name="DZYJ" rows="5"><%=StringUtil.parseNull(hysq.getDzyj(),"")%></textarea>
+                                        <textarea cols="60"name="DZYJ" rows="5"><%=StringUtil.parseNull(hysq.getDzyj(),"")%></textarea>
 									</td>
 								</tr>
 								<tr>
@@ -293,11 +290,10 @@
 										备注
 									</td>
 									<td class="head_right" style="text-align: left">
-                                        <%=StringUtil.parseNull(hysq.getBz(),"")%>
+                                        <%=StringUtil.parseNull(hysq.getBz(),"")%>&nbsp;
 									</td>
 								</tr>
 							</table>
-						</div>
 					</td>
 				</tr>
 
