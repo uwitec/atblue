@@ -103,7 +103,7 @@
 								文件编号
 							</th>
 							
-							<th >
+							<th nowrap="nowrap" >
 								文件名称
 							</th>
 							<th  width="120">
@@ -135,13 +135,13 @@
 								<a href="view.jsp?pkid=<%=document.getCyid() %>"><%=document.getWjbh()%></a>
 							</td>
 							
-							<td  align="center" style="text-align: left" style="text-align: left">
+							<td  align="center" style="text-align: left" style="text-align: left" nowrap="nowrap" >
 								<%=document.getWjmc()%>&nbsp;
 							</td>
 							<td  align="center">
 								<%=DateUtil.format(document.getLwsj(),"yyyy-MM-dd")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" style="text-align: left">
 								<%=StringUtil.parseNull(document.getLwdw(),"")%>&nbsp;
 							</td>
 							<td  align="center">

@@ -297,7 +297,7 @@
                                         </select> 处理！</span>
                                 </font>
                             <input type="button" class="button"
-                                   onclick="tj('<%=document.getCyid()%>','<%=document.getProcessId()%>','<%=document.getConnectId()%>');" value="传阅">
+                                   onclick="tj('<%=document.getCyid()%>','<%=document.getProcessId()%>','<%=document.getConnectId()%>');" value="提交">
                             <input type="button" class="button" id="button1"
                                    onclick="history.back()" value="返回">
                             &nbsp;
@@ -359,7 +359,8 @@
                                 传阅人<span style="color: red">&nbsp;*</span>
                             </td>
                             <td class="head_right" align="left" style="text-align: left">
-                              <%=checkman%>
+                                <input type="text" id="checkman" name="checkman" readonly="readonly" class="inputStyle"
+                                       style="width: 200px;" value="<%=checkman%>">
                                 &nbsp;
                             </td>
                         </tr>
