@@ -20,6 +20,8 @@
     String connectId = StringUtil.parseNull(wjsp.getConnectId(),"");
     System.out.println(connectId);
     String processId = StringUtil.parseNull(wjsp.getProcessId(),"");
+    List orgTreeList = dao.getSelectOrgTrees();
+    orgTreeList = orgTreeList == null?new ArrayList():orgTreeList;
 %>
 <html>
 	<head>
@@ -383,8 +385,13 @@
 										拟稿部门
 									</td>
 									<td class="head_right" style="text-align: left">
-										 <%=StringUtil.parseNull(wjsp.getNgbm(),"")%>&nbsp;
-									</td>
+                                        <select name="ngbm" style="width: 200px;">
+                                            <%for(int i=0;i<orgTreeList.size(); i++){
+                                                Map dep = (Map)orgTreeList.get(i);%>
+                                            <option value="<%=StringUtil.parseNull(dep.get("ORGNA_ID"),"")%>" <%if(StringUtil.parseNull(dep.get("ORGNA_ID"),"").equals(wjsp.getNgbm())){out.println("selected");} %>><%=StringUtil.parseNull(dep.get("ORGNA_NAME"),"")%></option>
+                                            <%} %>
+                                        </select>
+                                    </td>
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">

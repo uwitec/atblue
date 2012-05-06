@@ -115,8 +115,9 @@
     <select id="getPagedList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
         <include refid="basic.pageStart"/>
         <![CDATA[
-            select t.* from OFFICE_WJSP t
-            where 1=1
+   select t.*, o.orgna_name
+     from OFFICE_WJSP t, c_orgnization o
+    where t.ngbm = o.orgna_id
         ]]>
         <dynamic prepend=" and ">
             <isNotEmpty prepend=" and " property="bt">
@@ -146,7 +147,7 @@
   from OFFICE_WJSP t, w_connect c, w_process p, c_orgnization o
  where t.connect_id = c.connect_id
    and t.process_id = p.process_id
-   and t.ngbm = o.orgna_name
+   and t.ngbm = o.orgna_id
    and p.process_status = '1'
         ]]>
         <dynamic prepend=" and ">
@@ -166,7 +167,7 @@
   from OFFICE_WJSP t, w_connect c, w_process p, c_orgnization o
  where t.connect_id = c.connect_id
    and t.process_id = p.process_id
-   and t.ngbm = o.orgna_name
+   and t.ngbm = o.orgna_id
    and p.process_status = '1'
         ]]>
         <dynamic prepend=" and ">
@@ -183,13 +184,14 @@
     <select id="getAlreadyPagedList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
         <include refid="basic.pageStart"/>
         <![CDATA[
-      select t.*
+      select t.*,o.orgna_name
         from OFFICE_WJSP t,
              (select c.process_id, count(*) cn
                 from w_connect c
                where c.real_person like  '%'||#userId#||'%'
-               group by c.process_id) d
+               group by c.process_id) d, c_orgnization o
        where t.process_id = d.process_id
+         and t.ngbm =o.orgna_id
          and d.cn > 0
         ]]>
         <dynamic prepend=" and ">
@@ -207,8 +209,9 @@
              (select c.process_id, count(*) cn
                 from w_connect c
                where c.real_person like  '%'||#userId#||'%'
-               group by c.process_id) d
+               group by c.process_id) d, c_orgnization o
        where t.process_id = d.process_id
+         and t.ngbm = o.orgna_id
          and d.cn > 0
         ]]>
         <dynamic prepend=" and ">
