@@ -655,4 +655,13 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
             </isNotEmpty>
         </dynamic>
     </select>
+    <select id="isAllCirculationCheck" parameterClass="String" resultClass="int">
+        <![CDATA[
+     select count(*) cn   from (
+select count(*) totalcn,
+sum(case when t.checkflag = '1' then 1 else 0 end) checked
+from OFFICE_CIRCULATION_CHECK t  where t.cyid = #value#
+group by t.cyid) c where c.totalcn = checked
+        ]]>
+    </select>
 </sqlMap>

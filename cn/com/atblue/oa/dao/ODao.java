@@ -116,4 +116,6 @@ public interface ODao {
     public void updateOfficeCirculationCheck(String checkman, String pkid);
     
     public void updateSmsPersonSffs(String tzid);
+    
+    public boolean isAllCirculationCheck(String cyid);
 }
