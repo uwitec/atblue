@@ -8,6 +8,7 @@
             <result name="list">/workflow/listWorkflow.jsp</result>
             <result name="add">/workflow/addWorkflow.jsp</result>
             <result name="mod">/workflow/modWorkflow.jsp</result>
+            <result name="view">/workflow/viewWorkflow.jsp</result>
             <result name="del" type="redirect">workflow_list.d</result>
             <result name="release" type="redirect">workflow_list.d</result>
             <result name="save">/workflow/addResult.jsp</result>
