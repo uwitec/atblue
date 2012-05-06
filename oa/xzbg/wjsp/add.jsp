@@ -74,7 +74,9 @@
 		</script>
 <%	}
      List userList  = dao.getAllUser();
-     List departmentList = orgnizationDAO.queryForList(null);
+//     List departmentList = orgnizationDAO.queryForList(null);
+     List orgTreeList = dao.getSelectOrgTrees();
+    orgTreeList = orgTreeList == null?new ArrayList():orgTreeList;
 %>
 <html>
 	<head>
@@ -314,9 +316,10 @@
 									</td>
 									<td class="head_right" style="text-align: left">
 										<select name="ngbm" style="width: 200px;">
-											<%for(int i=0;i<departmentList.size(); i++){ 
-												COrgnization dep = (COrgnization)departmentList.get(i);%>
-											<option value="<%=dep.getOrgnaName() %>"><%=dep.getOrgnaName() %></option>
+                                            <option value="">请选择</option>
+											<%for(int i=0;i<orgTreeList.size(); i++){
+                                                Map dep = (Map)orgTreeList.get(i);%>
+											<option value="<%=StringUtil.parseNull(dep.get("ORGNA_ID"),"")%>"><%=StringUtil.parseNull(dep.get("ORGNA_NAME"),"")%></option>
 											<%} %>
 										</select> 
 									</td>

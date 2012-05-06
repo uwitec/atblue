@@ -83,27 +83,27 @@
 							<th nowrap="nowrap" >
 								文件标题
 							</th>
-							<th  width="120">
+							<th  nowrap="nowrap">
 								发文类别
 							</th>
-							<th  width="120">
+							<th  nowrap="nowrap">
 								文件编号
 							</th>
-							<th  width="120">
+							<th  nowrap="nowrap">
 								密级
 							</th>
-							<th  width="120">
+							<th  nowrap="nowrap">
 								缓急时限
 							</th>
-							<th  width="120">
+							<th  nowrap="nowrap">
 								签发日期
 							</th>
-							<th  width="120">
+							<th  nowrap="nowrap">
 								拟稿部门
 							</th>
-							<th nowrap="nowrap"  width="200">
-								备注
-							</th>
+							<%--<th nowrap="nowrap"  width="200">--%>
+								<%--备注--%>
+							<%--</th>--%>
 							<th nowrap="nowrap" >
 								操作
 							</th>
@@ -137,11 +137,11 @@
 								<%=StringUtil.parseNull(map.get("QFRQ"),"")%>&nbsp;
 							</td>
 							<td  align="left">
-								<%=StringUtil.parseNull(map.get("NGBM"),"")%>&nbsp;
+								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
 							</td>
-							<td  align="left" style="text-align: left">
-								<%=StringUtil.parseNull(map.get("BZ"),"")%>&nbsp;
-							</td>
+							<%--<td  align="left" style="text-align: left">--%>
+								<%--<%=StringUtil.parseNull(map.get("BZ"),"")%>&nbsp;--%>
+							<%--</td>--%>
 							<td  align="center" nowrap="nowrap">
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
