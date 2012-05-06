@@ -61,7 +61,7 @@
         officeCirculationDAO.updateByPrimaryKey(document);
     }
     if("1".equals(type)){
-        response.sendRedirect("wait.jsp");
+        response.sendRedirect("tabs.jsp");
     }else{
         response.sendRedirect("index.jsp");
     }
