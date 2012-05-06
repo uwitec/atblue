@@ -17,6 +17,19 @@
     OfficeHysq hysq = officeHysqDAO.queryForBean(map);
     String[] checkman =oDao.getCjhyryBySqid(sqid);
     hysq = hysq == null?new OfficeHysq():hysq;
+    	if (request.getMethod().equals("POST")) {
+        String SQID = StringUtil.parseNull(request.getParameter("SQID"),"");
+        String DZYJ = StringUtil.parseNull(request.getParameter("DZYJ"),"");
+        map.put("sqid",SQID);
+        OfficeHysq officeHysq = officeHysqDAO.queryForBean(map);
+        officeHysq.setSqid(SQID);
+        officeHysq.setDzyj(DZYJ);
+        officeHysqDAO.modOfficeHysq(officeHysq);
+%>
+		<script>
+		    window.close();
+		</script>
+<%	}
     List userList  = dao.getGsldAllUser();
     List userList1  = dao.getJgksAllUser();
     List userList2  = dao.getJcdwAllUser();
@@ -58,28 +71,9 @@
 			}		
 
 			function checkForm(){
-                var has = false;
-                for (var i = 0; i < document.form1.ubox.length; i++) {
-                    if (document.form1.ubox[i].checked) {
-                        has = true;
-                        break;
-                    }
-                }
-                if (!has) {
-                    alert("请选择签收用户.");
-                    return;
-                }
-				if(document.form1.HYMC.value==""){
-					document.form1.HYMC.focus();
-					alert("请输入会议名称");
-					return;
-				}
-				if(!CheckDateTime(document.form1.SQKSSJ)){
-					alert("请输入正确的开始时间,例如2009-12-23 15:46");
-					return;
-				}
-				if(!CheckDateTime(document.form1.SQJSSJ)){
-					alert("请输入正确的结束时间,例如2009-12-23 15:46");
+				if(document.form1.DZYJ.value==""){
+					document.form1.DZYJ.focus();
+					alert("请输入党政意见！");
 					return;
 				}
 				document.form1.submit();
@@ -180,8 +174,9 @@
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">
-		<form action="add.jsp" name="form1" method="post">
+		<form action="yj.jsp" name="form1" method="post">
             <input type="hidden" name="flag" value=""/>
+            <input type="hidden" name="sqid" value=""/>
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
 				background="<%=request.getContextPath()%>/images/mhead.jpg">
@@ -198,8 +193,10 @@
 							<tbody>
 								<tr>
 									<td align="left">
+									<input type="button" class="button" id="button"
+											onclick="checkForm();" value="保存">
 										<input type="button" class="button" id="button1"
-											onclick="history.back()" value="返回">
+											onclick="window.close();" value="返回">
 										&nbsp;
 									</td>
 									<td align="left">
@@ -280,10 +277,17 @@
 										会议内容及目的
 									</td>
 									<td class="head_right" style="text-align: left">
-										<textarea cols="80" id="HYNR" name="HYNR" rows="10"><%=StringUtil.parseNull(hysq.getHynr(),"")%></textarea>
+										<%=StringUtil.parseNull(hysq.getHynr(),"")%>
 									</td>
 								</tr>
-
+								<tr>
+									<td nowrap="nowrap" width="120" class="head_left">
+										党政意见
+									</td>
+									<td class="head_right" style="text-align: left">
+                                        <textarea cols="80"name="DZYJ" rows="5"><%=StringUtil.parseNull(hysq.getDzyj(),"")%></textarea>
+									</td>
+								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
 										备注

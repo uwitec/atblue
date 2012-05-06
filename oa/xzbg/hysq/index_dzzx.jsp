@@ -15,8 +15,6 @@
     Map paramMap = new HashMap();
     if(!StringUtil.isBlankOrEmpty(hymc))
         paramMap.put("hymc",hymc);
-	  if(!"1".equals(flag))
-	    paramMap.put("orgnaId", _user.getOrgnaId()==null?"":_user.getOrgnaId());
 	pageBean.setPageSize(pageSize);
 
 	int totalRow =oDao.getPagedHysqCount(paramMap);
@@ -59,7 +57,22 @@
         function qz(processId,connectId,sqid){
             window
                     .open(
-                    "./hysqqpd.jsp?formId=3af46d80-8665-4587-9ca0-a94ece84750d&connectId="+connectId+"&processId="+processId+"&sqid="+sqid,
+                    "./hysqqpd.jsp?formId=9d4d71dc-3497-4c97-bf3a-92cbb31b493a&connectId="+connectId+"&processId="+processId+"&sqid="+sqid,
+                    "mywindow",
+                    "height="
+                            + 500
+                            + ",width="
+                            + 700
+                            + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="
+                            + 0
+                            + ",left="
+                            + 0
+                            + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
+        }
+        function yj(sqid){
+            window
+                    .open(
+                    "./yj.jsp?sqid="+sqid,
                     "mywindow",
                     "height="
                             + 500
@@ -94,7 +107,7 @@
                             <font style="font-size: 14px">会议名称：</font>
                             <input name="hymc" size="10" type="text" value="<%=hymc%>" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
-                            <input type="button" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='新增'>
+                            <input type="hidden" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='新增'>
                         </td>
                     </tr>
                     </tbody>
@@ -129,9 +142,9 @@
 							<th >
 								申请结束时间
 							</th>
-							<%--<th nowrap="nowrap" width="200">--%>
-								<%--会议内容--%>
-							<%--</th>--%>
+							<th nowrap="nowrap">
+								党办意见
+							</th>
 							<th nowrap="nowrap" >
 								申请状态
 							</th>
@@ -174,6 +187,9 @@
 							<%--<td  align="left" title="<%=StringUtil.parseNull(map.get("HYNR"),"")%>"  style="text-align: left">--%>
 								<%--&lt;%&ndash;<%=StringUtil.cutString(StringUtil.parseNull(map.get("HYNR"),""),25)%>&ndash;%&gt;--%>
 							<%--</td>--%>
+							<td  align="center" nowrap="nowrap">
+                             <a href="#" onclick="yj('<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[党办意见]</a>
+							</td>
 							<td  align="center"> &nbsp;
 								<%String sqzt = StringUtil.parseNull(map.get("SQZT"),"");
                                      if("已完成".equals(sqzt)){ %>
@@ -189,23 +205,9 @@
                                 <%
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
-                                    if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){
-                                     String nextRole = workFlow.getNextRoleName(connectId,"1");
-                                     String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                 %>
-                                     发送给&nbsp;<%=nextRole%>
-                                <select name="<%=StringUtil.parseNull(map.get("SQID"),"")%>nextUserId">
-                                <%=StringUtil.parseNull(options,"")%>
-                                </select>审批<input type="button" class="button"  style="width:40px" value="提交" onclick="tj('<%=StringUtil.parseNull(map.get("SQID"),"")%>','<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');"/>
-                                <% }else if("已保存".equals(StringUtil.parseNull(map.get("SQZT"),""))){%>
-                                <a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">[编辑]</a>&nbsp;
-                                <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
-                                <%   }else{ %>
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>&nbsp;
-                                
-                                <%  }
-                                %>
-                                <a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[查看簽批單]</a>
+                                <a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[打印]</a>
 							</td>
 						</tr>
 						<%

@@ -287,7 +287,7 @@ rt
  <tr height=200 style='mso-height-source:userset;height:150.0pt'>
   <td colspan=2 height=200 class=xl6514414 width=126 style='height:150.0pt;
   width:95pt'>会议内容及目的</td>
-  <td colspan=7 class=xl6614414 style='border-left:none;text-align:left'><%=hysq.getHynr()%></td>
+  <td colspan=7 class=xl6614414 style='border-left:none;text-align:left'><%=StringUtil.parseNull(hysq.getHynr(),"")%></td>
  </tr>
  <tr height=100 style='mso-height-source:userset;height:75.0pt'>
   <td colspan=2 height=100 class=xl6514414 width=126 style='height:75.0pt;
@@ -327,7 +327,7 @@ rt
  </tr>
  <tr height=100 style='mso-height-source:userset;height:75.0pt'>
   <td colspan=2 height=100 class=xl6614414 style='height:75.0pt'>办公室安排意见</td>
-  <td colspan=7 class=xl6614414 style='border-left:none'></td>
+  <td colspan=7 class=xl6614414 style='border-left:none;text-align:left'><%=StringUtil.parseNull(hysq.getDzyj(),"")%></td>
  </tr>
  <tr height=80 style='mso-height-source:userset;height:60.0pt'>
   <td colspan=2 height=80 class=xl6614414 style='height:60.0pt'>备注</td>
