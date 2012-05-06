@@ -323,4 +323,12 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         return getSqlMapClientTemplate().queryForList(
                 "oa.dao.getOfficeCirculationCheckList",documentid);
     }
+
+    public boolean isAllCirculationCheck(String cyid){
+        int result = (Integer)getSqlMapClientTemplate().queryForObject("oa.dao.isAllCirculationCheck",cyid);
+        if(result > 0){
+            return true;
+        }
+        return false;
+    }
 }

@@ -33,7 +33,12 @@
     List hasFileList = officeFileDAO.getByFk(pkid);
 //    OfficeCirculationCheck officeCirculationCheck = officeCirculationCheckDAO.selectByPrimaryCyid(pkid);
 //    if(officeCirculationCheck==null) officeCirculationCheck = new OfficeCirculationCheck();
-    List userList = dao.getAllUser();
+    List userList  = dao.getGsldAllUser();
+    List userList1  = dao.getJgksAllUser();
+    List userList2  = dao.getJcdwAllUser();
+    userList = userList == null?new ArrayList():userList;
+    userList1 = userList1 == null?new ArrayList():userList1;
+    userList2 = userList2 == null?new ArrayList():userList2;
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -45,7 +50,7 @@
             type="text/javascript" defer="defer"></script>
     <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
     <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
-    <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/js/ext/resources/css/ext-all.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" charset="GB2312"
             src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
     <script type="text/javascript"
@@ -216,23 +221,86 @@
                             <hr width="100%">
                         </td>
                     </tr>
+                    <tr>
+                        <td colspan="6" align="left">
+                            <hr width="100%">
+                            <h2>公司领导</h2>
+                            <hr width="100%">
+                        </td>
+                    </tr>
                     <%for(int i=0; i<userList.size(); i++){
                         CUser u = (CUser)userList.get(i);
                         if(i==0){
                     %>
                     <tr>
-                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
+                        <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
                         <%	}else if(i%6==0){ %>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
+                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
                         <%	}else{ %>
-                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
+                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
                         <%	} %>
                         <%} %>
                         <%
                             if(userList.size()%6!=0){
                                 for(int i=0; i<userList.size()%6-1; i++){%>
+                        <td>&nbsp;</td>
+                        <%}%>
+                    </tr>
+                    <%}%>
+                    <tr>
+                        <td colspan="6" align="left">
+                            <hr width="100%">
+                            <h2>机关科室</h2>
+                            <hr width="100%">
+                        </td>
+                    </tr>
+                    <%for(int i=0; i<userList1.size(); i++){
+                        CUser u = (CUser)userList1.get(i);
+                        if(i==0){
+                    %>
+                    <tr>
+                        <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                        <%	}else if(i%6==0){ %>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                        <%	}else{ %>
+                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                        <%	} %>
+                        <%} %>
+                        <%
+                            if(userList1.size()%6!=0){
+                                for(int i=0; i<userList1.size()%6-1; i++){%>
+                        <td>&nbsp;</td>
+                        <%}%>
+                    </tr>
+                    <%}%>
+                    <tr>
+                        <td colspan="6" align="left">
+                            <hr width="100%">
+                            <h2>基层单位</h2>
+                            <hr width="100%">
+                        </td>
+                    </tr>
+                    <%for(int i=0; i<userList2.size(); i++){
+                        CUser u = (CUser)userList2.get(i);
+                        if(i==0){
+                    %>
+                    <tr>
+                        <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                        <%	}else if(i%6==0){ %>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                        <%	}else{ %>
+                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                        <%	} %>
+                        <%} %>
+                        <%
+                            if(userList2.size()%6!=0){
+                                for(int i=0; i<userList2.size()%6-1; i++){%>
                         <td>&nbsp;</td>
                         <%}%>
                     </tr>
