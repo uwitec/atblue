@@ -59,7 +59,7 @@
           function qz(processId,connectId,sqid){
             window
                     .open(
-                    "./yyspd.jsp?formId=9d4d71dc-3497-4c97-bf3a-92cbb31b493a&connectId="+connectId+"&processId="+processId+"&sqid="+sqid,
+                    "<%=request.getContextPath()%>/oa/qpd/view.jsp?formId=9d4d71dc-3497-4c97-bf3a-92cbb31b493a&connectId="+connectId+"&processId="+processId+"&sqid="+sqid,
                     "mywindow",
                     "height="
                             + 500
