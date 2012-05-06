@@ -35,7 +35,7 @@
             return;
         }
         function onSend(url){
-            if(window.confirm("确认发送该短信通知?\n短信发送操作可能比较耗时，请耐心等待！")){
+            if(window.confirm("确认发送该短信通知?\n系统会在1分钟内发送该短息！")){
                 window.location=url;
             }
             return;
@@ -164,9 +164,9 @@
                                 if(!"已发送".equals(ZT)){%>
                             <a href="./sms_mod.d?tzid=${TZID}">[编辑]</a>&nbsp;
                             <a href="javascript:onDelete('./sms_del.d?tzid=${TZID}');">[删除]</a>&nbsp;
-                            <%--<a href="javascript:onSend('./sms_send.d?tzid=${TZID}');">[发送]</a>&nbsp;--%>
-                            <% }else{  %>
                             <a href="javascript:onSend('./sms_send.d?tzid=${TZID}');">[发送]</a>&nbsp;
+                            <% }else{  %>
+                            <a href="javascript:onSend('./sms_send.d?tzid=${TZID}');">[重新发送]</a>&nbsp;
                             <%   }
                             %>
                         </td>
