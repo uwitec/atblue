@@ -54,7 +54,7 @@
 					&nbsp;
                     <input type="button" value="发文登记" class="button" onclick="window.location = 'add.jsp';"/>
                     &nbsp;
-                    <input type="button" value="签收统计" class="button" onclick="window.location = 'count.jsp';"/>
+                    <%--<input type="button" value="签收统计" class="button" onclick="window.location = 'count.jsp';"/>--%>
 				</td>
 			</tr>
 		</table>
