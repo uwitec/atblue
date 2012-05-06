@@ -517,6 +517,11 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
        update OFFICE_MAIL_SJR t set t.sffs = '1' where t.mail_id = #mailId# and t.user_id = #userId#
         ]]>
     </update>
+    <update id="updateSmsPersonSffs" parameterClass="String">
+        <![CDATA[
+       update OFFICE_SMS_PERSON t set t.sffs = '0' where t.sq_id = #value#   and t.tzid = #value#
+        ]]>
+    </update>
     <update id="updateSmsPersons" parameterClass="java.util.HashMap">
         <![CDATA[
         update OFFICE_SMS_PERSON t set t.sfqs = '1',t.read_time=sysdate

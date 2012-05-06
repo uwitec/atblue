@@ -252,6 +252,10 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         this.getSqlMapClientTemplate().update("oa.dao.updateOfficeCirculationCheck",map);
     }
 
+    public void updateSmsPersonSffs(String tzid){
+        this.getSqlMapClientTemplate().update("oa.dao.updateSmsPersonSffs",tzid);
+    }
+
     public void deleteAllSms(){
         this.getSqlMapClientTemplate().delete("oa.dao.deleteAllSms");
     }
