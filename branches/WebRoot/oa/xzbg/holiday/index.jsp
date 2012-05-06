@@ -55,7 +55,7 @@
 			return;
 		}
         function tj(sid,pid,cid,id){
-            var selUserId = document.all[id+"nextUserId"].value;
+            var selUserId = document.getElementsByName(id+"nextUserId")[0].value;
             if(selUserId == null || selUserId == ''){
                 alert("请先选择进行审批的用户！");
                 document.all[id+"nextUserId"].focus();
