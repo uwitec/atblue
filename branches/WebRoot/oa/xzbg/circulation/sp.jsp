@@ -28,6 +28,8 @@
     }catch(Exception e){
         e.printStackTrace();
     }
+    String connectId = StringUtil.parseNull(document.getConnectId(),"");
+    String processId = StringUtil.parseNull(document.getProcessId(),"");
     List hasFileList = officeFileDAO.getByFk(pkid);
 //    OfficeCirculationCheck officeCirculationCheck = officeCirculationCheckDAO.selectByPrimaryCyid(pkid);
 //    if(officeCirculationCheck==null) officeCirculationCheck = new OfficeCirculationCheck();
@@ -121,6 +123,20 @@
         function lbz(obj){
             document.form1.wjbh.value=obj.value;
         }
+             function qz(){
+                window.open(
+                        "<%=request.getContextPath()%>/oa/qpd/qpd.jsp?formId=5d97f266-6a7b-4deb-9aae-b7f056b280a4&connectId=<%=connectId%>&processId=<%=processId%>&pkid=<%=pkid%>",
+                        "mywindow",
+                        "height="
+                                + 500
+                                + ",width="
+                                + 700
+                                + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="
+                                + 0
+                                + ",left="
+                                + 0
+                                + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
+            }
     </script>
     <script type="text/javascript">
         function tj(sid,pid,cid){
@@ -241,7 +257,7 @@
                     <tbody>
                     <tr>
                         <td align="left">
-                            <input type="button" name="sign" class="button" value="签字"/>&nbsp;&nbsp;&nbsp;
+                            <input type="button" name="sign" class="button" value="签字" onclick="qz();"/>&nbsp;&nbsp;&nbsp;
                             <input type="radio" name="agree" value="1" checked="checked" onclick="document.getElementById('d').style.display='none';document.getElementById('a').style.display='';">同意
                             <input type="radio" name="agree" value="0" onclick="document.getElementById('a').style.display='none';document.getElementById('d').style.display='';">不同意
                             <font style="font-size: 14px">
@@ -281,7 +297,7 @@
                                         </select> 处理！</span>
                                 </font>
                             <input type="button" class="button"
-                                   onclick="tj('<%=document.getCyid()%>','<%=document.getProcessId()%>','<%=document.getConnectId()%>');" value="提交">
+                                   onclick="tj('<%=document.getCyid()%>','<%=document.getProcessId()%>','<%=document.getConnectId()%>');" value="传阅">
                             <input type="button" class="button" id="button1"
                                    onclick="history.back()" value="返回">
                             &nbsp;

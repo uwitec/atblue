@@ -103,9 +103,6 @@
                     <th width="5%" nowrap="nowrap">
                         流程状态
                     </th>
-                    <th width="5%" nowrap="nowrap">
-                        操作
-                    </th>
                 </tr>
                 <%
                     for (int i = 0; i < list.size(); i++) {
@@ -132,10 +129,6 @@
                     </td>
                     <td  style="text-align: center" nowrap="nowrap">
                         <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
-                    </td>
-                    <td  style="text-align: center" nowrap="nowrap">
-                        <input type="button" class="button" name="" style="width:60px"  value="审批" onclick="window.location='sp.jsp?pkid=<%=StringUtil.parseNull(map.get("CYID"),"") %>';"/>
-                        &nbsp;
                     </td>
                 </tr>
                 <%
