@@ -121,20 +121,23 @@
 							<th nowrap="nowrap"  width="40">
 								序号
 							</th>
-							<th nowrap="nowrap"  width="120">
+							<th nowrap="nowrap" >
 								姓名
 							</th>
-							<th  width="120">
+							<th  nowrap="nowrap">
 								单位
 							</th>
-							<th  width="200">
+							<th  nowrap="nowrap">
 								外出时间
 							</th>
-							<th  width="120">
+							<th  nowrap="nowrap">
 								外出地点
 							</th>
-							<th  width="200">
+							<th  nowrap="nowrap">
 								外出事由
+							</th>
+                            <th  nowrap="nowrap">
+								销假时间
 							</th>
                             <th nowrap="nowrap" >
                                 状态
@@ -168,6 +171,9 @@
 							<td  align="left" style="text-align: left">
 								<%=StringUtil.parseNull(map.get("WCSY"),"")%>&nbsp;
 							</td>
+                            <td  align="left" style="text-align: center">
+                                <%=StringUtil.parseNull(map.get("XJSJ"),"")%>&nbsp;
+                            </td>
                             <td  align="center" nowrap="nowrap">
                                 <%String sqzt = StringUtil.parseNull(map.get("SQZT"),"");
                                     if("已完成".equals(sqzt)){ %>

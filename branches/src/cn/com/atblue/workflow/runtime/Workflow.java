@@ -141,7 +141,7 @@ public class Workflow {
         if (hasInPendingPerson && !hasInRealPerson) {
             return connectId;
         }
-        System.out.println("connectId:"+connectId);
+//        System.out.println("connectId:"+connectId);
         return null;
     }
 
@@ -283,7 +283,7 @@ public class Workflow {
                 wConnectDAO.addWConnect(wConnect);
             }
         }
-        System.out.println("wConnect.getConnectId():"+wConnect.getConnectId());
+//        System.out.println("wConnect.getConnectId():"+wConnect.getConnectId());
         return wConnect.getConnectId();
     }
 
