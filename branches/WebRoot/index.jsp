@@ -23,8 +23,10 @@
     List list5 = officeHolidayDAO.getWaitPagedList(pageBean,paramMap);
     list5 = list5 == null ? new ArrayList() : list5;
     List list7 = officeSuppliesDAO.getWaitPagedList(pageBean,paramMap);
-    list7 = list7 == null ? new ArrayList() : list7; 
-
+    list7 = list7 == null ? new ArrayList() : list7;
+    //上级文件管理 
+	 List list8 = oDao.getWaitPagedOfficeCirculationList(pageBean,paramMap);
+	 list8 = list8 == null ? new ArrayList() : list8; 
     OfficeDocumentsDAO officeDocumentsDAO = (OfficeDocumentsDAO)SpringFactory.instance.getBean("officeDocumentsDAO");
     StringBuilder sb = new StringBuilder();
     sb.append(" where documentid in(select documentid from office_documents_check where checkman='");
@@ -164,6 +166,20 @@
                       </tr>
                       <tr>
                           <td align="center" class="tab_main" valign="top"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                             <%
+                                  for(int i=0; i<list8.size();i++){
+                                      Map map = (Map)list8.get(i);
+                                      java.util.Date date = (java.util.Date)map.get("LWSJ");
+                              %>
+                              <tr>
+                                  <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
+                                  <td class="txt_home">
+                                      <a href="<%=request.getContextPath()%>/oa/xzbg/circulation/sp.jsp?pkid=<%=StringUtil.parseNull(map.get("CYID"),"") %>">
+                                      【上级文件管理】<%=StringUtil.cutString(StringUtil.parseNull(map.get("WJMC"),""),23)%></a></td>
+                                  <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
+                              </tr>
+                              <% }
+                              %>
                               <%
                                   for(int i=0; i<list2.size();i++){
                                       Map map = (Map)list2.get(i);
