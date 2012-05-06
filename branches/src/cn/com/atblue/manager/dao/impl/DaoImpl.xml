@@ -97,7 +97,7 @@
                EMAIL      AS EMAIL,
                USER_DESC  AS USERDESC
           FROM C_USER T
-         WHERE T.USER_NAME LIKE '%$value$%'
+         WHERE T.USER_NAME = #value#
            AND ROWNUM = 1
         ]]>
     </select>
