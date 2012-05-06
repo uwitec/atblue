@@ -359,8 +359,7 @@
                                 传阅人<span style="color: red">&nbsp;*</span>
                             </td>
                             <td class="head_right" align="left" style="text-align: left">
-                                <input type="text" name="checkman" readonly="readonly" class="inputStyle"
-                                       style="width: 400px;" value="<%=checkman%>">
+                              <%=checkman%>
                                 &nbsp;
                             </td>
                         </tr>
