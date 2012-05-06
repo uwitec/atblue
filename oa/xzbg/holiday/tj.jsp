@@ -55,7 +55,7 @@
                 officeSmsPerson.setSffs("0"); //是否发送
                 officeSmsPerson.setDxnr(message.toString());
                 officeSmsPerson.setTzlb("B");
-                officeSmsPerson.setPkId(officeHoliday.getHolidayid());
+                officeSmsPerson.setSqId(officeHoliday.getHolidayid());
                 officeSmsPersonDAO.addOfficeSmsPerson(officeSmsPerson);
             }
 	        }

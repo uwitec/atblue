@@ -66,7 +66,7 @@
                 officeSmsPerson.setSffs("0"); //是否发送
                 officeSmsPerson.setDxnr(message.toString());
                 officeSmsPerson.setTzlb("C");
-                officeSmsPerson.setPkId(officeWjsp.getDocumentid());
+                officeSmsPerson.setSqId(officeWjsp.getDocumentid());
                 officeSmsPersonDAO.addOfficeSmsPerson(officeSmsPerson);
             }
 	        }
