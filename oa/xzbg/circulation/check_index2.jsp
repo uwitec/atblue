@@ -26,8 +26,6 @@
 			type="text/javascript" defer="defer"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
         <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
-		<script type="text/javascript" charset="GB2312"
-			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
 		<script>
 		function workflow(id){
         	window.open("workflow.jsp?instanceid="+id,"newWindow","height=700,width=1000,top=0,left=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no, status=no");

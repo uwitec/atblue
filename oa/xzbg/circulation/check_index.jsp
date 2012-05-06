@@ -29,11 +29,6 @@
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
-		<script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
 		<script>
 		function workflow(id){
         	window.open("workflow.jsp?instanceid="+id,"newWindow","height=700,width=1000,top=0,left=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no, status=no");
