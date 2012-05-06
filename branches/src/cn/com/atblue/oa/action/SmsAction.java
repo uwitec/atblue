@@ -89,10 +89,11 @@ public class SmsAction extends BaseAction {
                             officeSmsPerson.setUserId(uid);
                             officeSmsPerson.setUserName(u.getRealName());
                             officeSmsPerson.setSfqs("0");
-                            officeSmsPerson.setSffs("0");
+//                            officeSmsPerson.setSffs("0");
                             officeSmsPerson.setDxnr(bean.getDxnr());
-                            officeSmsPerson.setTzlb("D");
-                            officeSmsPerson.setPkId(bean.getTzid().toString());
+                            officeSmsPerson.setTzlb("G");
+                            officeSmsPerson.setSqId(bean.getTzid().toString());
+                            officeSmsPerson.setTzid(bean.getTzid());
                             officeSmsPersonDAO.addOfficeSmsPerson(officeSmsPerson);
                         }
                     }
@@ -114,6 +115,7 @@ public class SmsAction extends BaseAction {
                         if (!StringUtil.isBlankOrEmpty(uid)) {
                             map.put("userId", uid);
                             CUser u = userDAO.queryForBean(map);
+                            //默认不发送短信
                             OfficeSmsPerson officeSmsPerson = new OfficeSmsPerson();
                             officeSmsPerson.setPkId(StringUtil.getUUID());
                             officeSmsPerson.setTzid(bean.getTzid());
@@ -122,10 +124,11 @@ public class SmsAction extends BaseAction {
                             officeSmsPerson.setUserId(uid);
                             officeSmsPerson.setUserName(u.getRealName());
                             officeSmsPerson.setSfqs("0");
-                            officeSmsPerson.setSffs("0");
+//                            officeSmsPerson.setSffs("0");
                             officeSmsPerson.setDxnr(bean.getDxnr()+",请发送数字"+officeSmsPerson.getTzid()+"进行签收!");
-                            officeSmsPerson.setTzlb("F");
-                            officeSmsPerson.setPkId(bean.getTzid().toString());
+                            officeSmsPerson.setTzlb("G");
+                            officeSmsPerson.setSqId(bean.getTzid().toString());
+                            officeSmsPerson.setTzid(bean.getTzid());
                             officeSmsPersonDAO.addOfficeSmsPerson(officeSmsPerson);
                         }
                     }
@@ -150,20 +153,9 @@ public class SmsAction extends BaseAction {
             Map map = new HashMap();
             map.put("tzid", tzid);
             this.bean = officeSmsNoticeDAO.queryForBean(map);
-            List uList = oDao.getSmsPersonsByTzId(tzid);
-            if (uList != null && uList.size() > 0) {
-                for (int i = 0; i < uList.size(); i++) {
-                    map = (Map) uList.get(i);
-                    String uid = StringUtil.parseNull(map.get("USER_ID"), "");
-                    String name = StringUtil.parseNull(map.get("REAL_NAME"), "");
-                    String mobile = StringUtil.parseNull(map.get("MOBILE"), "");
-                    String sffs = StringUtil.parseNull(map.get("SFFS"), "");
-                    if ("0".equals(sffs)) {
-                        this.bean.setZt("已发送");
-                        officeSmsNoticeDAO.modOfficeSmsNotice(bean);
-                    }
-                }
-            }
+            oDao.updateSmsPersonSffs(tzid);//设置发送标志0
+            this.bean.setZt("已发送");
+            officeSmsNoticeDAO.modOfficeSmsNotice(this.bean);
         }
         return "send";
     }

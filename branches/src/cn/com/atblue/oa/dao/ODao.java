@@ -114,4 +114,6 @@ public interface ODao {
     public List getLatestNotice(String userid, int cn);
 
     public void updateOfficeCirculationCheck(String checkman, String pkid);
+    
+    public void updateSmsPersonSffs(String tzid);
 }
