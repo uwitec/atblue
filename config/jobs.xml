@@ -2,7 +2,7 @@
 <jobs>
 	<description>任务调度</description>
 	<job>
-	    <nostart>false</nostart>
+	    <nostart>true</nostart>
 		<description>短信发送任务</description>
 		<name>smsSendJob</name>
 		<class>cn.com.atblue.common.sms.SMSSendJob</class>
