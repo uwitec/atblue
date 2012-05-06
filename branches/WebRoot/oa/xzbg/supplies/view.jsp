@@ -19,6 +19,7 @@
      List userList  = dao.getAllUser();
     String connectId = StringUtil.parseNull(officeSupplies.getConnectId(),"");
     String processId = StringUtil.parseNull(officeSupplies.getProcessId(),"");
+    List hasFileList = officeFileDAO.getByFk(sqid);
 %>
 <html>
 	<head>
@@ -76,15 +77,6 @@
 
 									</td>
 								</tr>
-									
-								<tr>
-									<td nowrap="nowrap" width="120" class="head_left">
-										数量
-									</td>
-									<td class="head_right" style="text-align: left">
-									<%=StringUtil.parseNull(officeSupplies.getSl(),"")%> &nbsp;
-									</td>
-								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
 										申请单位
@@ -109,6 +101,22 @@
                                        <%=StringUtil.parseNull(officeSupplies.getSy(),"")%> &nbsp;
                                     </td>
 								</tr>
+								<%if(hasFileList!=null && hasFileList.size()>0){ %>
+								<tr>
+									<td nowrap="nowrap" width="120" class="head_left">
+										已有附件
+									</td>
+									<td class="head_right" align="left" id="hasFile" style="text-align: left">
+										<%
+											for(int i=0; i<hasFileList.size(); i++){
+												OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
+											<a href="<%=request.getContextPath()%>/officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
+												<img src="<%=request.getContextPath()%>/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='<%=request.getContextPath()%>/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
+											</a>&nbsp;&nbsp;&nbsp;
+									     <%}%>
+									</td>
+								</tr>
+								<%} %>
 							</table>
 						</div>
 					</td>
