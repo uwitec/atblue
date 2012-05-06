@@ -75,7 +75,9 @@
                        <td style="text-align: center" nowrap>
                            <s:property value="#status.index+1"/>
                        </td>
-                       <td style="text-align: left" nowrap>${FLOW_NAME}&nbsp;</td>
+                       <td style="text-align: left" nowrap>
+                       <a href="#" onclick="doView('${FLOW_NAME}');"> ${FLOW_NAME}</a>
+                      &nbsp;</td>
                        <%--<td style="text-align: left" nowrap>${FLOW_DESC}&nbsp;</td>--%>
                        <td style="text-align: center" nowrap>
                                ${CREATE_TIME}&nbsp;
@@ -85,13 +87,16 @@
                        <td style="text-align: center" nowrap>
                            <%
                                 String status = StringUtil.parseNull(request.getAttribute("RELEASE_STATUS"),"");
-//                               if("尚未发布".equals(status)){
+                               if(!"已发布".equals(status)){
                            %>
                            <input  type="button" class="button" onClick="doEdit('${FLOW_NAME}');" value="修改">
                            <input  type="button" class="button" onClick="doDelete('${FLOW_ID}');" value="删除">
                            <input  type="button" class="button" onClick="doRelease('${FLOW_ID}');" value="发布">
-                           <%--<%   }--%>
-                           <%--%>--%>
+                           <%   }else{  %>
+                           <input  type="button" class="button" onClick="doEdit('${FLOW_NAME}');" value="修改">
+                           <input  type="button" class="button" onClick="doReRelease('${FLOW_ID}');" value="重新发布">
+                           <% }
+                           %>
 
                            &nbsp;</td>
                    </tr>
@@ -155,6 +160,11 @@ function doEdit(name) {
         document.forms[0].action = "workflow_mod.d";
         document.forms[0].submit();
 }
+function doView(name) {
+    document.all.name.value = name;
+    document.forms[0].action = "workflow_view.d";
+    document.forms[0].submit();
+}
 
 function doDelete(id) {
 		var del = confirm("确认删除该条记录吗?");
@@ -166,6 +176,12 @@ function doRelease(id){
     var release = confirm("确认需要发布该流程吗?发布后不能进行修改和删除操作。");
     if(release) {
         window.location = "workflow_release.d?flowId="+id;
+    }
+}
+function doReRelease(id){
+    var release = confirm("确认需要重新发布该流程吗?发布后原来的流程都会受影响。");
+    if(release) {
+        window.location = "workflow_rerelease.d?flowId="+id;
     }
 }
 </script>

@@ -70,6 +70,10 @@ public class WorkflowAction extends BaseAction {
         return "mod";
     }
 
+    public String view() {
+        return "view";
+    }
+
     public String get() {
         if (!StringUtil.isBlankOrEmpty(name)) {
             this.xml = wDao.getDefXmlByName(name);
@@ -169,6 +173,14 @@ public class WorkflowAction extends BaseAction {
             }
         }
         return "release";
+    }
+
+    public String rerelease() {
+        if (!StringUtil.isBlankOrEmpty(flowId)) {
+            wDao.deleteActivitiesByFlowId(flowId);
+            wDao.deleteLinesByFlowId(flowId);
+        }
+        return release();
     }
 
     public String save() {
