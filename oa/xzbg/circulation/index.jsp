@@ -64,9 +64,8 @@
                                 + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
             }
             function cy(id){
-                if(confirm("确定要传阅该文件？")){
-                    window.location = "chuanyue.jsp?pkid="+id;
-                }
+                window.location = "chuanyue2.jsp?pkid="+id;
+
             }
 		</script>
 		
@@ -177,7 +176,7 @@
                                 %>
                                 <%sqzt = StringUtil.parseNull(document.getZt(),"");
                                     if("已完成".equals(sqzt) && !"正在传阅中".equals(sqzt)){ %>
-                                <a href="#" onclick="cy('<%=StringUtil.parseNull(document.getCyid(),"")%>');">[开始传阅]</a>
+                                <a href="#" onclick="cy('<%=StringUtil.parseNull(document.getCyid(),"")%>');">[确定传阅人]</a>
                                 <%}%>&nbsp;
 							</td>
 						</tr>
