@@ -1,6 +1,7 @@
 package cn.com.atblue.oa.dao.impl;
 
 import cn.com.atblue.common.bean.PageBean;
+import cn.com.atblue.common.util.StringUtil;
 import cn.com.atblue.oa.bean.OfficeSeal;
 import cn.com.atblue.oa.dao.ODao;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
@@ -264,7 +265,11 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
     	Map map = new HashMap();
     	map.put("connectId", connectId);
     	map.put("formId", formId);
-        return (String)this.getSqlMapClientTemplate().queryForObject("oa.dao.getFormItemIdByConnectId",map);
+        String value = (String)this.getSqlMapClientTemplate().queryForObject("oa.dao.getFormItemIdByConnectId",map);
+        if(StringUtil.isBlankOrEmpty(value)){
+            value = (String)this.getSqlMapClientTemplate().queryForObject("oa.dao.getFormItemIdByConnectId2",map);
+        }
+        return value;
     }
 
     public String getSignDataByProcessId(String processId){

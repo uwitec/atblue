@@ -492,6 +492,12 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
         and a.activity_name = t.form_item_name and rownum = 1
         ]]>
     </select>
+    <select id="getFormItemIdByConnectId2" parameterClass="java.util.HashMap" resultClass="String">
+        <![CDATA[
+        select * from (select t.form_item_id from OFFICE_QPD_FORMITEM t
+        where t.form_id=#formId# order by t.px)where rownum = 1
+        ]]>
+    </select>
     <select id="getSignDataByProcessId" parameterClass="String" resultClass="String">
         <![CDATA[
         select t.signdata from OFFICE_QPD t where t.processid = #value#
