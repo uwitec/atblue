@@ -230,7 +230,7 @@
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
-						新建耗材、配产
+						新建其他申请
 					</td>
 					<td width="74%" align="left" class="mhead">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
