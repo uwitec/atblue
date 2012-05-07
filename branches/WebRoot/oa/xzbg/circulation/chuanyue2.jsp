@@ -169,7 +169,8 @@
                                     <hr width="100%">
                                 </td>
                             </tr>
-                            <%for(int i=0; i<userList.size(); i++){
+                            <%
+                                for(int i=0; i<userList.size(); i++){
                                 CUser u = (CUser)userList.get(i);
                                 if(i==0){
                             %>

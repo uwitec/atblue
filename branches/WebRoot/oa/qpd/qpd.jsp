@@ -13,7 +13,7 @@
     List dataList = oDao.getAllQpdFormItemsByFormId2(formId,processId);
     bean = bean == null?new OfficeQpdForm():bean; 
     dataList = dataList == null?new ArrayList():dataList; 
-     String formItemId = oDao.getFormItemIdByConnectId(connectId,formId);
+    String formItemId = oDao.getFormItemIdByConnectId(connectId,formId);
     String signdata =   oDao.getSignDataByProcessId(processId);
     signdata = StringUtil.parseNull(signdata,"");
     String[] nodeName  = request.getParameterValues("nodeName");

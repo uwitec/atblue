@@ -70,6 +70,21 @@
                             + 0
                             + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
         }
+        function qz2(processId,connectId,sqid){
+            window
+                    .open(
+                    "<%=request.getContextPath()%>/oa/qpd/qpd.jsp?formId=<%=formId%>&curRole=<%=curRole%>&connectId="+connectId+"&processId="+processId+"&sqid="+sqid,
+                    "mywindow",
+                    "height="
+                            + 500
+                            + ",width="
+                            + 700
+                            + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="
+                            + 0
+                            + ",left="
+                            + 0
+                            + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
+        }
 		</script>
 	</head>
 	<body>
@@ -116,16 +131,16 @@
 							<th nowrap="nowrap" >
 								名称
 							</th>
-							<th  width="120">
+							<th  nowrap="nowrap" >
 								申请单位
 							</th>
-							<th  width="80">
+							<th  nowrap="nowrap" >
 								申请时间
 							</th>
-							<th nowrap="nowrap"  width="300">
+							<th nowrap="nowrap" >
 								事由
 							</th>
-							<th nowrap="nowrap" >
+							<th nowrap="nowrap"  width="10%">
 								操作
 							</th>
 						</tr>
@@ -159,7 +174,8 @@
                                      String nextRole = workFlow.getNextRoleName(connectId,"1");
                                      String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                 %>
-                                     发送给&nbsp;<%=nextRole%>
+                                <input type="button" class="button"  style="width:40px" value="签字" onclick="qz2('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"") %>');"/>
+                                &nbsp;发送给&nbsp;<%=nextRole%>
                                 <select name="<%=StringUtil.parseNull(map.get("SQID"),"")%>nextUserId">
                                 <%=StringUtil.parseNull(options,"")%>
                                 </select>审批
