@@ -22,12 +22,12 @@
 	int totalRow = officeCirculationDAO.getByFreeSqlCount(sb.toString());
 	pageBean.setTotalRows(totalRow);
 
-	List list = officeCirculationDAO.getByFreeSql("",pageBean);
+	List list = officeCirculationDAO.getByFreeSql(sb.toString(),pageBean);
 %>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Insert title here</title>
+		<title>来文管理</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
