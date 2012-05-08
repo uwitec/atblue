@@ -210,6 +210,9 @@ rt
 	mso-char-type:none;}
 -->
 </style>
+<style media=print>
+    .Noprint{display:none;}
+</style>
 </head>
 
 <body onload="LoadSignData()">
@@ -223,9 +226,9 @@ rt
 <div id="会议申请单_14414" align=center x:publishsource="Excel">
 <table align="center">
 	<tr>
-	<td>
-		<input name="button" type="button" class="button" value="打印" onClick="window.print()"/>
-	      <input name="submit" type="submit" class="button" value="关闭" onClick="window.close();">
+	<td class="Noprint">
+		<input name="button" type="button" class="button" value="打印预览" onClick="WebBrowser.ExecWB(7,1) "/>
+	    <input name="submit" type="submit" class="button" value="关闭" onClick="window.close();">
 		  <!-- SignData隐藏域，用于将所有加密的数据提交到表单保存页面 -->
 		  <input type="hidden" id="signdata" name="signdata"/>
 	</td>
