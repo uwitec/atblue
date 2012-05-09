@@ -260,6 +260,9 @@
    UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
  </w:LatentStyles>
 </xml><![endif]-->
+<style media=print>
+    .Noprint{display:none;}
+</style>
 <script type="text/javascript">
 	// --- 为控件设置要签名的数据
 function SetStore() {
@@ -463,6 +466,18 @@ div.Section1
 </head>
 
 <body lang=ZH-CN style='tab-interval:21.0pt;text-justify-trim:punctuation' onload="LoadSignData()">
+<object id="factory" viewastext style="display:none"
+        classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814" codebase="<%="http://127.0.0.1:"+request.getLocalPort()+request.getContextPath()%>/soft/smsx.cab#Version=7,0,0,8">
+</object>
+<script defer>
+    //打印组件通用设置
+    factory.printing.header = "";//页眉
+    factory.printing.footer = "";//页脚
+    factory.printing.leftMargin = 7;//左边距
+    factory.printing.topMargin = 7;//上边距
+    factory.printing.rightMargin = 7;//右边距
+    factory.printing.bottomMargin = 7;//下边距
+</script>
   	<form name="form1" method="post" action="">
 <div class=Section1 style='layout-grid:15.6pt'>
 
@@ -471,8 +486,8 @@ div.Section1
 style='font-size:18.0pt;font-family:华文中宋'><%=title %><span lang=EN-US><o:p></o:p></span></span></b></p>
 <table align="center">
 	<tr>
-	<td>
-		<input name="button" type="button" class="button" value="打印" onClick="window.print()"/>
+	<td class="Noprint">
+		<input name="button" type="button" class="button" value="打印预览" onClick="factory.printing.Preview();"/>
 	      <input name="submit" type="submit" class="button" value="关闭" onClick="window.close();">
 		  <!-- SignData隐藏域，用于将所有加密的数据提交到表单保存页面 -->
 		  <input type="hidden" id="signdata" name="signdata"/>
