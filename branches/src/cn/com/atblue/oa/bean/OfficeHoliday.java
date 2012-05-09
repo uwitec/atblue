@@ -24,6 +24,13 @@ private String bz;
 private Date xjsj;
 private String xjdj;
 private String roleflag;
+private String sfbr;
+public String getSfbr() {
+	return sfbr;
+}
+public void setSfbr(String sfbr) {
+	this.sfbr = sfbr;
+}
 public String getBz() {
 	return bz;
 }

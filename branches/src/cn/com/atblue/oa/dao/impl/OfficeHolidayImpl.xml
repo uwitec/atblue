@@ -54,14 +54,17 @@
              <isNotEmpty prepend=" and " property="roleflag">
                 <![CDATA[roleflag=#roleflag#]]>
             </isNotEmpty>
+             <isNotEmpty prepend=" and " property="sfbr">
+                <![CDATA[sfbr=#sfbr#]]>
+            </isNotEmpty>
         </dynamic>
     </sql>
     <insert id="addOfficeHoliday" parameterClass="OfficeHoliday">
         <![CDATA[
             insert into OFFICE_HOLIDAY(
-                holidayid,xm,dw,kssj,jssj,wcdd,wcsy,sqr,sqzt,process_id,connect_id,dxtx,bz,xjsj,xjdj,roleflag
+                holidayid,xm,dw,kssj,jssj,wcdd,wcsy,sqr,sqzt,process_id,connect_id,dxtx,bz,xjsj,xjdj,roleflag,sfbr
             ) values(
-               #holidayid#,#xm#,#dw#,#kssj#,#jssj#,#wcdd#,#wcsy#,#sqr#,#sqzt#,#processId#,#connectId#,#dxtx#,#bz#,#xjsj#,#xjdj#,#roleflag#
+               #holidayid#,#xm#,#dw#,#kssj#,#jssj#,#wcdd#,#wcsy#,#sqr#,#sqzt#,#processId#,#connectId#,#dxtx#,#bz#,#xjsj#,#xjdj#,#roleflag#,#sfbr#
             )
         ]]>
     </insert>
@@ -72,7 +75,7 @@
             set holidayid=#holidayid#,xm=#xm#,dw=#dw#,
 				kssj=#kssj#,jssj=#jssj#,wcdd=#wcdd#,
 				wcsy=#wcsy#,sqr=#sqr#,sqzt=#sqzt#,process_id=#processId#,connect_id=#connectId#,dxtx=#dxtx#,
-				bz=#bz#,xjsj=#xjsj#,xjdj=#xjdj#,roleflag=#roleflag#
+				bz=#bz#,xjsj=#xjsj#,xjdj=#xjdj#,roleflag=#roleflag#,sfbr=#sfbr#
             where holidayid=#holidayid#
         ]]>
     </update>
@@ -86,7 +89,7 @@
 
     <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeHoliday">
         <![CDATA[
-            select holidayid,xm,dw,kssj,jssj,wcdd,wcsy,sqzt,process_id as processid,connect_id as connectid,sqr,dxtx,bz,xjsj,xjdj,roleflag from OFFICE_HOLIDAY where holidayid=#holidayid#
+            select holidayid,xm,dw,kssj,jssj,wcdd,wcsy,sqzt,process_id as processid,connect_id as connectid,sqr,dxtx,bz,xjsj,xjdj,roleflag,sfbr from OFFICE_HOLIDAY where holidayid=#holidayid#
         ]]>
     </select>
 
