@@ -8,15 +8,11 @@
 <%
 	//判断权限
     boolean isRole =dao.isRole(_user.getUserId(), officeRole);
-
 	//查询字符串
-	String queryString = request.getParameter("queryString");
-	queryString = StringUtil.parseNull(queryString, "");
-	queryString = StringUtil.parseISOtoUTF(queryString);
-
+	String notititle = StringUtil.parseNull(request.getParameter("notititle"),"");
 	Map paramMap = new HashMap();
-	if (queryString != null && !queryString.equals("")) {
-		paramMap.put("queryString", queryString);
+	if (!StringUtil.isBlankOrEmpty(notititle)) {
+		paramMap.put("notititle", notititle);
 	}
 	paramMap.put("department", _user.getOrgnaId()==null?"":_user.getOrgnaId());
 	pageBean.setPageSize(pageSize);
@@ -32,7 +28,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Insert title here</title>
+		<title>通知公告管理</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
@@ -52,6 +48,7 @@
 		</script>
 	</head>
 	<body>
+    <form action="index.jsp" method="post">
 		<table width="100%" align="center" height="25" border="0"
 			cellpadding="0" cellspacing="0"
 			background="<%=contentPath%>/images/mhead.jpg">
@@ -64,7 +61,9 @@
 					通知公告
 				</td>
 				<td align="left" class="mhead">
-					&nbsp;
+                    <font style="font-size: 14px">标题：</font>
+                    <input name="notititle"  type="text" value="<%=notititle%>" />&nbsp;
+                    <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;
                     <input type="button" class="button" value="新增" onclick="window.location = 'add.jsp';"/>
 				</td>
 			</tr>
@@ -153,5 +152,6 @@
 				</td>
 			</tr>
 		</table>
+    </form>
 	</body>
 </html>

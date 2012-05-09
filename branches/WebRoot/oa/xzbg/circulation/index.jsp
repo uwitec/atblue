@@ -14,10 +14,14 @@
 	//判断权限
 	boolean isRole = dao
 			.isRole(_user.getUserId(), officeRole);
-
+    String wjmc = StringUtil.parseNull(request.getParameter("wjmc"),"");
 	Map paramMap = new HashMap();
 	pageBean.setPageSize(pageSize);
 	StringBuilder sb = new StringBuilder();
+    sb.append(" where 1=1 ");
+    if(!StringUtil.isBlankOrEmpty(wjmc)){
+        sb.append(" and WJMC like '%"+wjmc+"%'");
+    }
 	sb.append("  order by lrsj desc");
 	int totalRow = officeCirculationDAO.getByFreeSqlCount(sb.toString());
 	pageBean.setTotalRows(totalRow);
@@ -27,7 +31,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>来文管理</title>
+		<title>来文登记</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="defer"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
@@ -71,6 +75,7 @@
 		
 	</head>
 	<body>
+    <form action="" method="post">
 		<table width="100%" align="center" height="25" border="0"
 			cellpadding="0" cellspacing="0"
 			background="<%=contentPath%>/images/mhead.jpg">
@@ -80,9 +85,12 @@
 						height="11" alt="">
 				</td>
 				<td width="15%" class="mhead">
-					来文管理
+					来文登记
 				</td>
 				<td align="left" class="mhead">
+                    <font style="font-size: 14px">文件名称：</font>
+                    <input name="wjmc"  type="text" value="<%=wjmc%>" />&nbsp;
+                    <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;
 					&nbsp;
                     <input type="button" value="来文登记" onclick="window.location = 'add.jsp';" class="button"/>
 				</td>
@@ -98,20 +106,21 @@
 							<th nowrap="nowrap"  width="40">
 								序号
 							</th>
-							<th nowrap="nowrap"  width="220">
+                            <th nowrap="nowrap" >
+                                文件名称
+                            </th>
+							<th nowrap="nowrap">
 								文件编号
 							</th>
 							
-							<th nowrap="nowrap" >
-								文件名称
-							</th>
-							<th  width="120">
+
+							<th  nowrap="nowrap">
 								来文时间
 							</th>
-							<th  width="120">
+							<th  nowrap="nowrap">
 								来文单位
 							</th>
-							<th  width="120">
+							<th  nowrap="nowrap">
 								状态
 							</th>
 							<th  width="3%">
@@ -130,12 +139,11 @@
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
+                            <td  align="center" style="text-align: left" style="text-align: left" nowrap="nowrap" >
+                                <a href="view.jsp?pkid=<%=document.getCyid() %>"><%=document.getWjmc()%></a>&nbsp;
+                            </td>
 							<td  align="center" style="text-align: left">
-								<a href="view.jsp?pkid=<%=document.getCyid() %>"><%=document.getWjbh()%></a>
-							</td>
-							
-							<td  align="center" style="text-align: left" style="text-align: left" nowrap="nowrap" >
-								<%=document.getWjmc()%>&nbsp;
+								<%=document.getWjbh()%> &nbsp;
 							</td>
 							<td  align="center">
 								<%=DateUtil.format(document.getLwsj(),"yyyy-MM-dd")%>&nbsp;
@@ -192,5 +200,6 @@
 				</td>
 			</tr>
 		</table>
+    </form>
 	</body>
 </html>
