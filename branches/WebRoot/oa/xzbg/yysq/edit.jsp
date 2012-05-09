@@ -321,7 +321,7 @@
                                     </td>
                                     <td class="head_right" style="text-align: left">
                                         &nbsp;&nbsp;
-                                        <input type="text" name="FS" value="<%=StringUtil.parseNull(yysq.getFs(),"")%>"  style="width:500px"/>
+                                        <input type="text" name="FS" value="<%=StringUtil.parseNull(yysq.getFs(),"")%>"  style="width:500px" onkeyup="this.value=this.value.replace(/[^\d\.]+?/g, '')"/>
                                     </td>
                                 </tr>
                                 <tr>
