@@ -55,9 +55,9 @@ public class WorkflowAction extends BaseAction {
             map.put("flowName", flowName);
         int cn = wDao.getPagedWorkflowCount(map);
         this.getPagination().setRowCount(cn);
-        this.getParams().put("currentPage", this.getPagination().getPage());
-        this.getParams().put("pageSize", this.getPagination().getPageSize());
-        this.dataList = wDao.getPagedWorkflowList(this.getParams());
+        map.put("currentPage", this.getPagination().getPage());
+        map.put("pageSize", this.getPagination().getPageSize());
+        this.dataList = wDao.getPagedWorkflowList(map);
         return "list";
     }
 
