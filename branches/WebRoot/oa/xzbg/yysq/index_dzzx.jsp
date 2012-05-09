@@ -73,28 +73,32 @@
 	</head>
 	<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
     <form name="form1" action=""  style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px">
-    <table width="100%" align="center" height="25" border="0"
-           cellpadding="0" cellspacing="0">
-        <tr>
-            <td align="left" class="mhead">
-                <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                    <tbody>
-                    <tr>
-                        <td class="head_left">
-                            用印名称：
-                        </td>
-                        <td class="head_right">
-                            <input name="yymc"  type="text" value="<%=yymc%>" />
-                            &nbsp;
-                            <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
-                            <input type="hidden" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='新增'>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-    </table>
+        <table width="100%" align="center" height="25" border="0"
+               cellpadding="0" cellspacing="0"
+               background="<%=contentPath%>/images/mhead.jpg">
+            <tr>
+                <td width="3%" align="center">
+                    <img src="<%=contentPath%>/images/mlogo.jpg" width="11" height="11"
+                         alt="">
+                </td>
+                <td width="15%" class="mhead">
+                    用印申请
+                </td>
+                <td align="left" class="mhead">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                        <tr>
+                            <td align="left">
+                                <font style="font-size: 14px">用印名称：</font>
+                                <input name="yymc"  type="text" value="<%=yymc%>" />&nbsp;
+                                <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
         </form>
 		<table width="100%" align="center" height="25" border="0"
 			cellpadding="0" cellspacing="0">
@@ -122,9 +126,9 @@
 							<th  nowrap="nowrap">
 								用印结束时间
 							</th>
-							<th nowrap="nowrap">
-								用印事由
-							</th>
+							<%--<th nowrap="nowrap">--%>
+								<%--用印事由--%>
+							<%--</th>--%>
 							<th nowrap="nowrap"  width="80">
 								申请状态
 							</th>
@@ -158,9 +162,9 @@
 							<td  align="center">
                                 <%=StringUtil.parseNull(map.get("YYJSSJ"),"")%>
 							</td>
-							<td  style="text-align: left">
-								<%=StringUtil.cutString(StringUtil.parseNull(map.get("YYSY"),"&nbsp;"),25)%>
-							</td>
+							<%--<td  style="text-align: left">--%>
+								<%--<%=StringUtil.cutString(StringUtil.parseNull(map.get("YYSY"),"&nbsp;"),25)%>--%>
+							<%--</td>--%>
 							<td  align="center">
 								<%String sqzt = StringUtil.parseNull(map.get("SQZT"),"");
                                      if("已完成".equals(sqzt)){ %>
