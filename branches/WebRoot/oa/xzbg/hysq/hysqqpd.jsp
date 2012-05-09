@@ -216,6 +216,11 @@ rt
 </head>
 
 <body onload="LoadSignData()">
+<!-- MeadCo ScriptX -->
+<object id="factory" viewastext style="display:none"
+        classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814" codebase="<%="http://127.0.0.1:"+request.getLocalPort()+request.getContextPath()%>/soft/smsx.cab#Version=7,0,0,8">
+</object>
+
 <!--[if !excel]>　　<![endif]-->
 <!--下列信息由 Microsoft Office Excel 的“发布为网页”向导生成。-->
 <!--如果同一条目从 Excel 中重新发布，则所有位于 DIV 标记之间的信息均将被替换。-->
@@ -227,7 +232,7 @@ rt
 <table align="center">
 	<tr>
 	<td class="Noprint">
-		<input name="button" type="button" class="button" value="打印预览" onClick="WebBrowser.ExecWB(7,1) "/>
+		<input name="button" type="button" class="button" value="打印预览" onClick="factory.printing.Preview(); "/>
 	    <input name="submit" type="submit" class="button" value="关闭" onClick="window.close();">
 		  <!-- SignData隐藏域，用于将所有加密的数据提交到表单保存页面 -->
 		  <input type="hidden" id="signdata" name="signdata"/>
