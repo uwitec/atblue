@@ -518,7 +518,7 @@
 									</td>
 									<td class="head_right" align="left" style="text-align: left">
 										<input type="text" name="fs" class="inputStyle" value="<%=StringUtil.parseNull(document.getFs(),"") %>"
-											style="width: 50px;">
+											style="width: 50px;" onkeyup="this.value=this.value.replace(/[^\d\.]+?/g, '')">
 									</td>
 								</tr>
 								<tr>
