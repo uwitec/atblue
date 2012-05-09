@@ -14,11 +14,12 @@
     //修改会议申请的状态
     map.put("holidayid", holidayid);
     OfficeHoliday officeHoliday = officeHolidayDAO.queryForBean(map);
-    int wcts = DateUtil.differenceOfDay(officeHoliday.getJssj(),officeHoliday.getKssj())+1;
-    String nextRole1 = workFlow.getNextRoleName(StringUtil.parseNull(officeHoliday.getConnectId(),""),"2");
-     if(wcts==1&&"结束".equals(nextRole1)){ //休假天数为1天时，分管领导审批通过即可，无需销假登记
-          varValue="2";
-     }
+    //int wcts = DateUtil.differenceOfDay(officeHoliday.getJssj(),officeHoliday.getKssj())+1;
+    String nextRole1 = workFlow.getNextRoleName(StringUtil.parseNull(officeHoliday.getConnectId(),""),varValue);
+     //if(wcts==1&&"结束".equals(nextRole1)){ //休假天数为1天时，分管领导审批通过即可，无需销假登记
+     //     varValue="2";
+     //}
+	System.out.println(nextRole1+"++++++++++++++++++++++++"+varValue+"-----------------------");
     String nextRole = workFlow.getNextRoleName(connectId,varValue);
     connectId = workFlow.claimMission(processId, connectId, cUser.getUserId());
     if (!StringUtil.isBlankOrEmpty(connectId)) {
@@ -69,7 +70,7 @@
     if("1".equals(type)){
         response.sendRedirect("tabs.jsp");
     }else{
-        response.sendRedirect("index.jsp?curRole="+varValue);
+        response.sendRedirect("index.jsp?curRole="+officeHoliday.getRoleflag());
     }
 
 %>

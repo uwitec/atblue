@@ -23,13 +23,6 @@
 	pageBean.setTotalRows(totalRow); 
 	List list = officeHolidayDAO.getPagedList(pageBean,paramMap);
 	String formId="";
-	if("1".equals(curRole)){
-		formId="0b5e90b6-cae3-47a6-b8c9-a9eea4cc7c22";
-	}else if("2".equals(curRole)){
-		formId="f2a79740-08c4-4157-bdfb-5e51fd582a29";
-	}else if("3".equals(curRole)){
-		formId="8ea507bb-d42a-4871-b691-2e49bcb3c56a";
-	}
 %>
 <html>
 	<head>
@@ -55,11 +48,11 @@
                 document.all[id+"nextUserId"].focus();
                 return ;
             }
-            window.location = "tj.jsp?selUserId="+selUserId+"&connectId="+cid+"&documentid="+sid+"&processId="+pid+"&varValue=<%=curRole%>"+"&holidayid="+sid;
+            window.location = "tj.jsp?selUserId="+selUserId+"&connectId="+cid+"&documentid="+sid+"&processId="+pid+"&varValue=1"+"&holidayid="+sid;
         }
-        function qz(processId,connectId,holidayid){
+        function qz(formId,processId,connectId,holidayid){
             window.open(
-                    "<%=request.getContextPath()%>/oa/qpd/view.jsp?formId=<%=formId%>&curRole=<%=curRole%>&connectId="+connectId+"&processId="+processId+"&holidayid="+holidayid,
+                    "<%=request.getContextPath()%>/oa/qpd/view.jsp?formId="+formId+"&curRole=<%=curRole%>&connectId="+connectId+"&processId="+processId+"&holidayid="+holidayid,
                     "mywindow",
                     "height="
                             + 500
@@ -76,6 +69,20 @@
                 window.location = "xj.jsp?holidayid="+id+"&curRole="+role;
             }
         }
+         function qz1(formId,connectId,processId,holidayid){
+                window.open(
+                        "<%=request.getContextPath()%>/oa/qpd/qpd.jsp?formId="+formId+"&connectId="+connectId+"&processId="+processId+"&holidayid="+holidayid,
+                        "mywindow",
+                        "height="
+                                + 500
+                                + ",width="
+                                + 700
+                                + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="
+                                + 0
+                                + ",left="
+                                + 0
+                                + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
+            }
 		</script>
 	</head>
 	<body>
@@ -149,6 +156,16 @@
 						<%
 							for (int i = 0; i < list.size(); i++) {
 								Map map = (Map) list.get(i);
+								String sfbr = map.get("SFBR")+"";
+								if("1".equals(curRole)&&"1".equals(sfbr)){//基层正职干部请销假
+									formId="95cd282c-0a52-443f-82f8-9939d954af54";
+								}else if("1".equals(curRole)&&"0".equals(sfbr)){ //基层干部职工请销假
+									formId="7e7220a8-1423-4db5-b4ee-90ef33b0c0ab";
+								}else if("2".equals(curRole)&&"1".equals(sfbr)){ //机关科室长请销假
+									formId="78c3cf78-a89a-4103-8d88-59578ce0fea7";
+								}else if("2".equals(curRole)&&"0".equals(sfbr)){ //机关普通干部请销假
+									formId="e39db318-02c6-474e-a4cb-21f8914cb900";
+								}
 
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"") %>')">
@@ -190,9 +207,10 @@
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
                                     if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){
-                                     String nextRole = workFlow.getNextRoleName(connectId,curRole);
+                                     String nextRole = workFlow.getNextRoleName(connectId,"1");
                                      String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                 %>
+                                 <a href="#" onclick="qz1('<%=formId%>','<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>');">[签字]</a>
                                      发送给&nbsp;<%=nextRole%>
                                 <select name="<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>nextUserId">
                                 <%=StringUtil.parseNull(options,"")%>
@@ -206,7 +224,7 @@
                                 <a href="#" onclick="xj('<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>','<%=curRole%>');">[销假登记]</a>
                                 <%    }else{ %>
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>&nbsp;
-                                <a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>');">[签批单]</a>
+                                <a href="#" onclick="qz('<%=formId%>','<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>');">[签批单]</a>
                                 <%  }
                                 %>
 							</td>

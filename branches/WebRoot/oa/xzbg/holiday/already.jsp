@@ -34,14 +34,16 @@
 			}
 			return;
 		}
-        function qz(processId,connectId,holidayid,roleFlag){
+        function qz(processId,connectId,holidayid,roleFlag,sfbr){
             var formId= "";
-            if("1" == roleFlag){
-                formId="0b5e90b6-cae3-47a6-b8c9-a9eea4cc7c22";
-            }else if("2" == roleFlag){
-                formId="f2a79740-08c4-4157-bdfb-5e51fd582a29";
-            }else if("3" == roleFlag){
-                formId="8ea507bb-d42a-4871-b691-2e49bcb3c56a";
+            if("1" == roleFlag&&"1"==sfbr){
+                formId="95cd282c-0a52-443f-82f8-9939d954af54";
+            }else if("1" == roleFlag&&"0"==sfbr){
+                formId="7e7220a8-1423-4db5-b4ee-90ef33b0c0ab";
+            }else if("2" == roleFlag&&"1"==sfbr){
+                formId="78c3cf78-a89a-4103-8d88-59578ce0fea7";
+            }else if("2" == roleFlag&&"0"==sfbr){
+                formId="e39db318-02c6-474e-a4cb-21f8914cb900";
             }
             window.open(
                     "./ybgbqpd.jsp?formId="+formId+"&curRole="+roleFlag+"&connectId="+connectId+"&processId="+processId+"&holidayid="+holidayid,
@@ -121,6 +123,7 @@
                                 String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                 String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
                                 String roleFlag = StringUtil.parseNull(map.get("ROLEFLAG"),"");
+                                String sfbr = StringUtil.parseNull(map.get("SFBR"),"");
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"") %>')">
 							<td  align="center">
@@ -144,7 +147,7 @@
 							</td>
 							<td  align="center" nowrap="nowrap">
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
-                                <a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>','<%=roleFlag%>');">[查看签批单]</a>
+                                <a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>','<%=roleFlag%>','<%=sfbr%>');">[查看签批单]</a>
 							</td>
 						</tr>
 						<%
