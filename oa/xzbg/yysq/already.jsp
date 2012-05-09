@@ -83,21 +83,21 @@
                             <th nowrap="nowrap" >
                                 用印名称
                             </th>
-                            <th  width="120">
+                            <th  nowrap="nowrap">
                                 用印部门
                             </th>
-                            <th  width="120">
+                            <th  nowrap="nowrap">
                                 申请时间
                             </th>
-                            <th  width="120">
+                            <th  nowrap="nowrap">
                                 用印开始时间
                             </th>
-                            <th  width="120">
+                            <th  nowrap="nowrap">
                                 用印结束时间
                             </th>
-                            <th nowrap="nowrap"  width="200">
-                                用印事由
-                            </th>
+                            <%--<th nowrap="nowrap">--%>
+                                <%--用印事由--%>
+                            <%--</th>--%>
 							<th nowrap="nowrap" >
 								操作
 							</th>
@@ -106,16 +106,16 @@
 							for (int i = 0; i < list.size(); i++) {
 								Map map = (Map) list.get(i);
 						%>
-						<tr>
+						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("SQID"),"") %>')">
 							<td  align="center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-                            <td  align="left">
+                            <td  align="left" style="text-align: left">
                                 <a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("YYMC"),"") %></a>
                             </td>
 
-                            <td  align="left">
+                            <td  align="left" style="text-align: left">
                                 <%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
                             </td>
                             <td  align="center">
@@ -128,9 +128,9 @@
                             <td  align="center">
                                 <%=StringUtil.parseNull(map.get("YYJSSJ"),"")%>
                             </td>
-                            <td  align="left">
-                                <%=StringUtil.cutString(StringUtil.parseNull(map.get("YYSY"),""),25)%>
-                            </td>
+                            <%--<td  align="left" style="text-align: left">--%>
+                                <%--<%=StringUtil.cutString(StringUtil.parseNull(map.get("YYSY"),""),25)%>--%>
+                            <%--</td>--%>
 							<td  align="center" nowrap="nowrap">
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
