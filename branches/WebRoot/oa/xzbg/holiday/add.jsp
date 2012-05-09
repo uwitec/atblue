@@ -24,6 +24,7 @@
         String wcsy = StringUtil.parseNull(fileUpload.getParameter("wcsy"),"");
         String dxtx = StringUtil.parseNull(fileUpload.getParameter("dxtx"),"");
         String bz = StringUtil.parseNull(fileUpload.getParameter("bz"),"");
+        String sfbr = StringUtil.parseNull(fileUpload.getParameter("sfbr1"),"1");
         OfficeHoliday officeHoliday = new  OfficeHoliday();
         String holidayid = StringUtil.getUUID();
         officeHoliday.setHolidayid(holidayid);
@@ -38,10 +39,11 @@
         officeHoliday.setDxtx(dxtx);
         officeHoliday.setBz(bz);
         officeHoliday.setRoleflag(curRole);
+        officeHoliday.setSfbr(sfbr);
         if("startup".equals(flag)){ 
             officeHoliday.setSqzt("已申请");
             //创建流程代码在这里
-            Status status = workflow.startWorkflow("0139c66e-a3cc-4f2c-ae4c-5287304a7b8c",cUser.getUserId());
+            Status status = workflow.startWorkflow("dd36d294-4c79-43e7-9019-5df8a17cef8a",cUser.getUserId());
             officeHoliday.setProcessId(status.getProcessId());
             officeHoliday.setConnectId(status.getConnectId());
         }
@@ -140,12 +142,22 @@
                 document.all.flag.value="startup";
                 document.form1.submit();
             }
+            function geiXm(obj){
+            	if(obj.checked){
+            		document.all.xm.value='<%=cUser.getRealName() %>';
+            		document.all.sfbr1.value='1';
+            	}else{
+            		document.all.xm.value='';
+            		document.all.sfbr1.value='0';
+            	}
+            }
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">
 		<form action="add.jsp" name="form1" method="post" enctype="multipart/form-data">
             <input type="hidden" name="flag" value=""/>
             <input type="hidden" name="dxtx" value=""/>
+            <input type="hidden" name="sfbr1" value=""/>
             <input type="hidden" name="curRole" value="<%=curRole%>"/>
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
@@ -193,6 +205,7 @@
 										姓名<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" align="left" style="text-align: left">
+									<input type="checkbox" name="sfbr" id="sfbr" checked onclick="geiXm(this);">是否本人
 										<input type="text" name="xm" class="inputStyle"
 											style="width: 200px;" value="<%=cUser.getRealName() %>" maxlength="20">
 											<input type="checkbox" name="checked" id="checked" value="1" checked>短信提醒

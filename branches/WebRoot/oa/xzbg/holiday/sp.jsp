@@ -20,12 +20,35 @@
     String connectId = StringUtil.parseNull(holiday.getConnectId(),"");
     String processId = StringUtil.parseNull(holiday.getProcessId(),"");
     String formId="";
-	if("1".equals(holiday.getRoleflag())){
-		formId="0b5e90b6-cae3-47a6-b8c9-a9eea4cc7c22";
-	}else if("2".equals(holiday.getRoleflag())){
-		formId="f2a79740-08c4-4157-bdfb-5e51fd582a29";
-	}else if("3".equals(holiday.getRoleflag())){
-		formId="8ea507bb-d42a-4871-b691-2e49bcb3c56a";
+    String nextRole ="";
+    String varValue="";
+	if("1".equals(holiday.getRoleflag())&&"1".equals(holiday.getSfbr())){//基层正职干部请销假
+		nextRole = workFlow.getNextRoleName(StringUtil.parseNull(holiday.getConnectId(),""),"3");
+		varValue="3";
+		formId="95cd282c-0a52-443f-82f8-9939d954af54";
+	}else if("1".equals(holiday.getRoleflag())&&"0".equals(holiday.getSfbr())){ //基层干部职工请销假
+		formId="7e7220a8-1423-4db5-b4ee-90ef33b0c0ab";
+		nextRole = workFlow.getNextRoleName(StringUtil.parseNull(holiday.getConnectId(),""),"1");
+		varValue="1";
+	}else if("2".equals(holiday.getRoleflag())&&"1".equals(holiday.getSfbr())){ //机关科室长请销假
+		nextRole = workFlow.getNextRoleName(StringUtil.parseNull(holiday.getConnectId(),""),"2");
+		String nextRole1 = workFlow.getNextRoleName(StringUtil.parseNull(holiday.getConnectId(),""),"1");
+		String nextRole2 = workFlow.getNextRoleName(StringUtil.parseNull(holiday.getConnectId(),""),"3");
+		System.out.println(nextRole1);
+		if("主要领导".equals(nextRole1)){
+			varValue="1";
+			nextRole = nextRole1;
+		}else if("分管领导".equals(nextRole)){
+			varValue="2";
+		}else if("结束".equals(nextRole2)){
+			varValue="3";
+			nextRole = nextRole2;
+		}
+		formId="78c3cf78-a89a-4103-8d88-59578ce0fea7";
+	}else if("2".equals(holiday.getRoleflag())&&"0".equals(holiday.getSfbr())){ //机关普通干部请销假
+		nextRole = workFlow.getNextRoleName(StringUtil.parseNull(holiday.getConnectId(),""),"2");
+		formId="e39db318-02c6-474e-a4cb-21f8914cb900";
+		varValue="2";
 	}
 %>
 <html>
@@ -128,7 +151,7 @@
                     nextUserId = document.all.disagreed.value;
                     varValue = "-1";
                 }
-               window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&documentid="+sid+"&processId="+pid+"&varValue="+varValue+"&holidayid="+sid;
+               window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&documentid="+sid+"&processId="+pid+"&varValue=<%=varValue%>"+"&holidayid="+sid;
             }
             function qz(){
                 window.open(
@@ -172,11 +195,11 @@
                                         <font style="font-size: 14px">
                                         <span id="a">
                                             <%
-                                            String nextRole = workFlow.getNextRoleName(StringUtil.parseNull(holiday.getConnectId(),""),"1");
-                                            String nextRole1 = workFlow.getNextRoleName(StringUtil.parseNull(holiday.getConnectId(),""),"2");
-                                            if(wcts==1&&"结束".equals(nextRole1)){ //休假天数为1天时，分管领导审批通过即可，无需销假登记
-                                            	nextRole = nextRole1;
-                                            }
+                                            
+                                           // String nextRole1 = workFlow.getNextRoleName(StringUtil.parseNull(holiday.getConnectId(),""),"2");
+                                            //if(wcts==1&&"结束".equals(nextRole1)){ //休假天数为1天时，分管领导审批通过即可，无需销假登记
+                                            //	nextRole = nextRole1;
+                                            //}
                                             String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                         %>
                                             <%if(!"结束".equals(nextRole)){ %>
