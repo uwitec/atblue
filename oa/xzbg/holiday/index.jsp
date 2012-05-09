@@ -83,6 +83,30 @@
                                 + 0
                                 + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
             }
+         function print(processId,connectId,holidayid,roleFlag,sfbr){
+            var formId= "";
+            if("1" == roleFlag&&"1"==sfbr){
+                formId="95cd282c-0a52-443f-82f8-9939d954af54";
+            }else if("1" == roleFlag&&"0"==sfbr){
+                formId="7e7220a8-1423-4db5-b4ee-90ef33b0c0ab";
+            }else if("2" == roleFlag&&"1"==sfbr){
+                formId="78c3cf78-a89a-4103-8d88-59578ce0fea7";
+            }else if("2" == roleFlag&&"0"==sfbr){
+                formId="e39db318-02c6-474e-a4cb-21f8914cb900";
+            }
+            window.open(
+                    "./ybgbqpd.jsp?formId="+formId+"&curRole="+roleFlag+"&connectId="+connectId+"&processId="+processId+"&holidayid="+holidayid,
+                    "mywindow",
+                    "height="
+                            + 500
+                            + ",width="
+                            + 700
+                            + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="
+                            + 0
+                            + ",left="
+                            + 0
+                            + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
+        }
 		</script>
 	</head>
 	<body>
@@ -157,6 +181,7 @@
 							for (int i = 0; i < list.size(); i++) {
 								Map map = (Map) list.get(i);
 								String sfbr = map.get("SFBR")+"";
+								String roleFlag = StringUtil.parseNull(map.get("ROLEFLAG"),"");
 								if("1".equals(curRole)&&"1".equals(sfbr)){//基层正职干部请销假
 									formId="95cd282c-0a52-443f-82f8-9939d954af54";
 								}else if("1".equals(curRole)&&"0".equals(sfbr)){ //基层干部职工请销假
@@ -220,7 +245,7 @@
                                 <a href="javascript:onDelete('./delete.jsp?holidayid=<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>');">[删除]</a>&nbsp;
                                 <%   }else if("已完成".equals(StringUtil.parseNull(map.get("SQZT"),""))){ %>
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>&nbsp;
-                                <a href="#" onclick="qz('<%=formId%>','<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>');">[签批单]</a>
+                                <a href="#" onclick="print('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>','<%=roleFlag%>','<%=sfbr%>');">[打印]</a>
                                 <a href="#" onclick="xj('<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>','<%=curRole%>');">[销假登记]</a>
                                 <%    }else{ %>
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>&nbsp;
