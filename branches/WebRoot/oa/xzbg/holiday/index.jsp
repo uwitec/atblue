@@ -250,6 +250,7 @@
                                 <%    }else{ %>
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>&nbsp;
                                 <a href="#" onclick="qz('<%=formId%>','<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>');">[签批单]</a>
+                                <a href="#" onclick="print('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>','<%=roleFlag%>','<%=sfbr%>');">[打印]</a>
                                 <%  }
                                 %>
 							</td>
