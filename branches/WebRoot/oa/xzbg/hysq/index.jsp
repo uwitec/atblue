@@ -199,7 +199,7 @@
                                 
                                 <%  }
                                 %>
-                                <a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[查看簽批單]</a>
+                                <a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[查看签批单]</a>
 							</td>
 						</tr>
 						<%

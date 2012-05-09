@@ -32,6 +32,7 @@ xmlns:x="urn:schemas-microsoft-com:office:excel"
 xmlns="http://www.w3.org/TR/REC-html40">
 
 <head>
+<title>用印申请单打印</title>
 <meta http-equiv=Content-Type content="text/html; charset=gb2312">
 <meta name=ProgId content=Excel.Sheet>
 <meta name=Generator content="Microsoft Excel 12">
@@ -366,6 +367,9 @@ rt
 	mso-char-type:none;}
 -->
 </style>
+<style media=print>
+    .Noprint{display:none;}
+</style>
 <script type="text/javascript">
 	// --- 为控件设置要签名的数据
 function SetStore() {
@@ -423,8 +427,8 @@ function addSealB(){
 <div id="用印审批单_6142" align=center x:publishsource="Excel">
 <table align="center">
 	<tr>
-	<td>
-		<input name="button" type="button" class="button" value="打印" onClick="factory.printing.Preview();"/>
+	<td class="Noprint">
+		<input name="button" type="button" class="button" value="打印预览" onClick="factory.printing.Preview();"/>
 	      <input name="submit" type="submit" class="button" value="关闭" onClick="window.close();">
 		  <!-- SignData隐藏域，用于将所有加密的数据提交到表单保存页面 -->
 		  <input type="hidden" id="signdata" name="signdata"/>
