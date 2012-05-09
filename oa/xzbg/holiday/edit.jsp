@@ -30,6 +30,7 @@
         String wcsy = StringUtil.parseNull(fileUpload.getParameter("wcsy"),"");
         String dxtx = StringUtil.parseNull(fileUpload.getParameter("dxtx"),"");
          String bz = StringUtil.parseNull(fileUpload.getParameter("bz"),"");
+         String sfbr = StringUtil.parseNull(fileUpload.getParameter("sfbr1"),"");
         holiday.setHolidayid(holidayid);
       	holiday.setXm(xm);
       	holiday.setDw(dw);
@@ -41,6 +42,7 @@
         holiday.setSqr(cUser.getUserId());
         holiday.setDxtx(dxtx);
         holiday.setBz(bz);
+        holiday.setSfbr(sfbr);
         holiday.setRoleflag(curRole);
         if("startup".equals(flag)){
             holiday.setSqzt("已申请");
@@ -146,12 +148,22 @@
                 document.all.flag.value="startup";
                 document.form1.submit();
             }
+               function geiXm(obj){
+            	if(obj.checked){
+            		document.all.xm.value='<%=cUser.getRealName() %>';
+            		document.all.sfbr1.value='1';
+            	}else{
+            		document.all.xm.value='';
+            		document.all.sfbr1.value='0';
+            	}
+            }
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">
 		<form action="edit.jsp" name="form1" method="post" enctype="multipart/form-data">
             <input type="hidden" name="flag" value=""/>
             <input type="hidden" name="dxtx" value=""/>
+            <input type="hidden" name="sfbr1" value=""/>
              <input type="hidden" name="curRole" value="<%=curRole%>"/>
             <input type="hidden" name="holidayid" value="<%=holidayid%>"/>
 			<table width="100%" height="25" border="0" cellpadding="0"
@@ -199,9 +211,10 @@
 										姓名<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" align="left" style="text-align: left">
+									<input type="checkbox" name="sfbr" id="sfbr" value="1" <%if(!"0".equals(holiday.getSfbr())){ %>checked<%}%> onclick="geiXm(this);">是否本人
 										<input type="text" name="xm" class="inputStyle"
 											style="width: 200px;" value="<%=holiday.getXm() %>" maxlength="20">
-											<input type="checkbox" name="checked" id="checked" value="1" checked>短信提醒
+											<input type="checkbox" name="checked" id="checked" value="1" <%if(!"0".equals(holiday.getDxtx())){ %>checked<%}%>>短信提醒
 									</td>
 								</tr>
 								<tr>
