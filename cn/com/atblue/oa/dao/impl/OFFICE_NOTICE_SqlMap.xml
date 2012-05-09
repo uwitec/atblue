@@ -75,14 +75,25 @@
   <select id="selectAllByDepartment" parameterClass="java.util.HashMap" resultClass="cn.com.atblue.oa.bean.OfficeNotice">
   	<include refid="basic.pageStart" />
 	  	<![CDATA[
-	  		select * from OFFICE_NOTICE where NOTIUNIT=#department:VARCHAR# order by RLSDATE desc
+	  		select * from OFFICE_NOTICE where NOTIUNIT=#department:VARCHAR#
 	  	]]>
+      <dynamic prepend=" and ">
+          <isNotEmpty prepend=" and " property="notititle">
+              <![CDATA[NOTITITLE like '%'||#notititle#||'%']]>
+          </isNotEmpty>
+      </dynamic>
+      order by RLSDATE desc
   	<include refid="basic.pageEnd" />
   </select>
   <select id="selectAllByDepartmentCount" parameterClass="java.util.HashMap" resultClass="java.lang.Integer">
   	<![CDATA[
   		select count(*) from OFFICE_NOTICE where NOTIUNIT=#department:VARCHAR#
   	]]>
+      <dynamic prepend=" and ">
+          <isNotEmpty prepend=" and " property="notititle">
+              <![CDATA[NOTITITLE like '%'||#notititle#||'%']]>
+          </isNotEmpty>
+      </dynamic>
   </select>
   <resultMap class="cn.com.atblue.oa.bean.OfficeNotice" extends="OFFICE_NOTICE.ibatorgenerated_BaseResultMap" id="ibatorgenerated_ResultMapWithBLOBs">
     <!--
