@@ -106,6 +106,10 @@
                     alert("请输入部门！");
                     return;
                 }
+                if(document.form1.wcdd.value==""){
+                    alert("请输入外出地点！");
+                    return;
+                }
                 if(document.form1.kssj.value==""||document.form1.jssj.value==""){
                     document.form1.kssj.focus();
                     alert("请输入外出时间！");
@@ -122,6 +126,10 @@
                if(document.form1.xm.value==""){
                     document.form1.xm.focus();
                     alert("请输入姓名！");
+                    return;
+                }
+                if(document.form1.wcdd.value==""){
+                    alert("请输入外出地点！");
                     return;
                 }
                 if(document.form1.dw.value==""){

@@ -69,7 +69,7 @@
                 window.location = "xj.jsp?holidayid="+id+"&curRole="+role;
             }
         }
-         function qz1(formId,connectId,processId,holidayid){
+         function qz1(formId,processId,connectId,holidayid){
                 window.open(
                         "<%=request.getContextPath()%>/oa/qpd/qpd.jsp?formId="+formId+"&connectId="+connectId+"&processId="+processId+"&holidayid="+holidayid,
                         "mywindow",
@@ -220,7 +220,7 @@
                                 <a href="javascript:onDelete('./delete.jsp?holidayid=<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>');">[删除]</a>&nbsp;
                                 <%   }else if("已完成".equals(StringUtil.parseNull(map.get("SQZT"),""))){ %>
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>&nbsp;
-                                <a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>');">[签批单]</a>
+                                <a href="#" onclick="qz('<%=formId%>','<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>');">[签批单]</a>
                                 <a href="#" onclick="xj('<%=StringUtil.parseNull(map.get("HOLIDAYID"),"")%>','<%=curRole%>');">[销假登记]</a>
                                 <%    }else{ %>
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>&nbsp;
