@@ -254,7 +254,11 @@
                                         份数<span style="color: red">&nbsp;*</span>
                                     </td>
                                     <td class="head_right" style="text-align: left">
-                                        <%=StringUtil.parseNull(yysq.getFs(),"")%>
+                                        <%if(yysq.getFs() != null){%>
+                                        <%=StringUtil.parseNull(yysq.getFs().intValue(),"")%>
+                                        <%}else{%>
+                                        &nbsp;
+                                        <%}%>
                                     </td>
                                 </tr>
                                 <tr>
