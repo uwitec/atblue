@@ -24,12 +24,15 @@
     String[] spyj  = request.getParameterValues("spyj");
     List list = wDao.getActivitiesByFlowId(processId);
     String title="";
-	if("1".equals(curRole)){
-		title="井队、后勤一般干部请销假审批表";
-	}else if("2".equals(curRole)){ 
-		title="钻井三公司一般干部请销假审批表";
-	}else if("3".equals(curRole)){
-		title="领导干部请销假审批表";
+	
+	if("1".equals(holiday.getRoleflag())&&"1".equals(holiday.getSfbr())){//基层正职干部请销假
+		title="基层正职干部请销假";
+	}else if("1".equals(holiday.getRoleflag())&&"0".equals(holiday.getSfbr())){ //基层干部职工请销假
+		title="基层干部职工请销假";
+	}else if("2".equals(holiday.getRoleflag())&&"1".equals(holiday.getSfbr())){ //机关科室长请销假
+		title="机关科室长请销假";
+	}else if("2".equals(holiday.getRoleflag())&&"0".equals(holiday.getSfbr())){ //机关普通干部请销假
+		title="机关普通干部请销假";
 	}
 %>
 <html>
