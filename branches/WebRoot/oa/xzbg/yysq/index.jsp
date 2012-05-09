@@ -123,9 +123,9 @@
 							<th  nowrap="nowrap">
 								用印结束时间
 							</th>
-							<th nowrap="nowrap">
-								用印事由
-							</th>
+							<%--<th nowrap="nowrap">--%>
+								<%--用印事由--%>
+							<%--</th>--%>
 							<th nowrap="nowrap"  width="80">
 								申请状态
 							</th>
@@ -159,9 +159,9 @@
 							<td  align="center">
                                 <%=StringUtil.parseNull(map.get("YYJSSJ"),"")%>
 							</td>
-							<td  style="text-align: left">
-								<%=StringUtil.cutString(StringUtil.parseNull(map.get("YYSY"),"&nbsp;"),25)%>
-							</td>
+							<%--<td  style="text-align: left">--%>
+								<%--<%=StringUtil.cutString(StringUtil.parseNull(map.get("YYSY"),"&nbsp;"),25)%>--%>
+							<%--</td>--%>
 							<td  align="center">
 								<%String sqzt = StringUtil.parseNull(map.get("SQZT"),"");
                                      if("已完成".equals(sqzt)){ %>
@@ -193,7 +193,7 @@
                                 
                                 <%  }
                                 %>
-							<a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[查看簽批單]</a>
+							<a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[查看签批单]</a>
 							</td>
 						</tr>
 						<%

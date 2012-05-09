@@ -34,6 +34,7 @@ xmlns:x="urn:schemas-microsoft-com:office:excel"
 xmlns="http://www.w3.org/TR/REC-html40">
 
 <head>
+    <title>会议申请单打印</title>
 <meta http-equiv=Content-Type content="text/html; charset=gb2312">
 <meta name=ProgId content=Excel.Sheet>
 <meta name=Generator content="Microsoft Excel 12">
