@@ -253,7 +253,7 @@
                                         份数<span style="color: red">&nbsp;*</span>
                                     </td>
                                     <td class="head_right" style="text-align: left">
-                                        <input type="text" name="FS" value=""  style="width:500px"/>
+                                        <input type="text" name="FS" value=""  style="width:500px" onkeyup="this.value=this.value.replace(/[^\d\.]+?/g, '')"/>
                                     </td>
                                 </tr>
 								<tr>

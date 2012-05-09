@@ -215,11 +215,20 @@ rt
 </style>
 </head>
 
-<body onload="LoadSignData()">
+<body onload="LoadSignData()" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <!-- MeadCo ScriptX -->
 <object id="factory" viewastext style="display:none"
         classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814" codebase="<%="http://127.0.0.1:"+request.getLocalPort()+request.getContextPath()%>/soft/smsx.cab#Version=7,0,0,8">
 </object>
+<script defer>
+    //打印组件通用设置
+    factory.printing.header = "";//页眉
+    factory.printing.footer = "";//页脚
+    factory.printing.leftMargin = 7;//左边距
+    factory.printing.topMargin = 7;//上边距
+    factory.printing.rightMargin = 7;//右边距
+    factory.printing.bottomMargin = 7;//下边距
+</script>
 
 <!--[if !excel]>　　<![endif]-->
 <!--下列信息由 Microsoft Office Excel 的“发布为网页”向导生成。-->
