@@ -6,8 +6,9 @@
     String processId = StringUtil.parseNull(request.getParameter("processId"), "");
     String sqid = StringUtil.parseNull(request.getParameter("sqid"), "");
     String type = StringUtil.parseNull(request.getParameter("type"), "");
+    String curRole = StringUtil.parseNull(request.getParameter("curRole"), "1");
     String varValue = StringUtil.parseNull(request.getParameter("varValue"), "1");
-    String curRole = varValue;
+//    String curRole = varValue;
     CUser cUser = (CUser) session.getAttribute("cUser");
     cUser = cUser == null ? new CUser() : cUser;
     Map map = new HashMap();
