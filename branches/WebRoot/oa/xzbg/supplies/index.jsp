@@ -53,7 +53,7 @@
                 document.all[id+"nextUserId"].focus();
                 return ;
             }
-            window.location = "tj.jsp?selUserId="+selUserId.value+"&connectId="+cid+"&processId="+pid+"&sqid="+id+"&varValue=1";
+            window.location = "tj.jsp?selUserId="+selUserId.value+"&connectId="+cid+"&processId="+pid+"&sqid="+id+"&varValue=1&curRole=<%=curRole%>";
         }
         function qz(processId,connectId){
             window
@@ -137,9 +137,9 @@
 							<th  nowrap="nowrap" >
 								申请时间
 							</th>
-							<th nowrap="nowrap" >
-								事由
-							</th>
+							<%--<th nowrap="nowrap" >--%>
+								<%--事由--%>
+							<%--</th>--%>
 							<th nowrap="nowrap"  width="10%">
 								操作
 							</th>
@@ -163,9 +163,9 @@
 							<td  align="center" style="text-align: center">
 								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
 							</td>
-							<td   style="text-align: left">
-                                <%=StringUtil.parseNull(map.get("SY"),"")%>&nbsp;
-							</td>
+							<%--<td   style="text-align: left">--%>
+                                <%--<%=StringUtil.parseNull(map.get("SY"),"")%>&nbsp;--%>
+							<%--</td>--%>
 							<td class="NormalDataColumn" align="center" nowrap="nowrap">
                                  <%
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");

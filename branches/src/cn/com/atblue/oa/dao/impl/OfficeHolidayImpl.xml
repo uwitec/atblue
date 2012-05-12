@@ -122,20 +122,56 @@
         <include refid="basic.pageStart"/>
         <![CDATA[
             select t.* from OFFICE_HOLIDAY t
-            where 1=1 and roleflag=#roleflag# and sqr=#sqr#
-            and kssj between to_date(#kssj#,'yyyy-mm-dd') and to_date(#jssj#,'yyyy-mm-dd')
-            and jssj between to_date(#kssj#,'yyyy-mm-dd') and to_date(#jssj#,'yyyy-mm-dd')
+            where 1=1
         ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="roleflag">
+                <![CDATA[roleflag=#roleflag#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqr">
+                <![CDATA[sqr=#sqr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="kssj">
+                <![CDATA[kssj >=   to_date(#kssj#,'yyyy-mm-dd')]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jssj">
+                <![CDATA[kssj <=   to_date(#jssj#,'yyyy-mm-dd')]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="kssj">
+                <![CDATA[jssj >=   to_date(#kssj#,'yyyy-mm-dd')]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jssj">
+                <![CDATA[jssj <=   to_date(#jssj#,'yyyy-mm-dd')]]>
+            </isNotEmpty>
+        </dynamic>
         order by t.kssj desc
         <include refid="basic.pageEnd"/>
     </select>
     <select id="getPagedCount" parameterClass="java.util.HashMap" resultClass="int">
         <![CDATA[
             select count(*) cn  from OFFICE_HOLIDAY t
-            where 1=1 and roleflag=#roleflag#  and sqr=#sqr#
-            and kssj between to_date(#kssj#,'yyyy-mm-dd') and to_date(#jssj#,'yyyy-mm-dd')
-            and jssj between to_date(#kssj#,'yyyy-mm-dd') and to_date(#jssj#,'yyyy-mm-dd')
+            where 1=1
         ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="roleflag">
+                <![CDATA[roleflag=#roleflag#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqr">
+                <![CDATA[sqr=#sqr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="kssj">
+                <![CDATA[kssj >=   to_date(#kssj#,'yyyy-mm-dd')]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jssj">
+                <![CDATA[kssj <=   to_date(#jssj#,'yyyy-mm-dd')]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="kssj">
+                <![CDATA[jssj >=   to_date(#kssj#,'yyyy-mm-dd')]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jssj">
+                <![CDATA[jssj <=   to_date(#jssj#,'yyyy-mm-dd')]]>
+            </isNotEmpty>
+        </dynamic>
         order by t.kssj desc
     </select>
     
