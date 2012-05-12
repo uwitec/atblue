@@ -50,14 +50,14 @@
                      alt="">
             </td>
             <td width="15%" class="mhead">
-                 耗材申请审批
+                 其他申请审批
             </td>
             <td align="left" class="mhead">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                     <tbody>
                     <tr>
                         <td align="left">
-                            耗材名称：
+                            申请名称：
                             <input name="mc" size="10" type="text" value="<%=mc%>" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                         </td>
@@ -81,15 +81,15 @@
 							<th nowrap="nowrap" >
 								名称
 							</th>
-							<th  width="120">
+							<th  nowrap="nowrap">
 								申请单位
 							</th>
-							<th  width="120">
+							<th  nowrap="nowrap">
 								申请时间
 							</th>
-							<th nowrap="nowrap"  width="400">
-								事由
-							</th>
+							<%--<th nowrap="nowrap"  width="400">--%>
+								<%--事由--%>
+							<%--</th>--%>
 							<th nowrap="nowrap" >
 								操作
 							</th>
@@ -113,9 +113,9 @@
 							<td  align="center" style="text-align: left">
 								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
 							</td>
-							<td  align="center">
-                                <%=StringUtil.parseNull(map.get("SY"),"")%>&nbsp;
-							</td>
+							<%--<td  align="center">--%>
+                                <%--<%=StringUtil.parseNull(map.get("SY"),"")%>&nbsp;--%>
+							<%--</td>--%>
 							<td  align="center" nowrap="nowrap">
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>

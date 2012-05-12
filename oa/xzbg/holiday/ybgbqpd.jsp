@@ -491,7 +491,7 @@ style='font-size:18.0pt;font-family:华文中宋'><%=title %><span lang=EN-US><o
 	<tr>
 	<td class="Noprint">
 		<input name="button" type="button" class="button" value="打印预览" onClick="factory.printing.Preview();"/>
-	      <input name="submit" type="submit" class="button" value="关闭" onClick="window.close();">
+	      <input name="submit" type="button" class="button" value="关闭" onClick="window.close();">
 		  <!-- SignData隐藏域，用于将所有加密的数据提交到表单保存页面 -->
 		  <input type="hidden" id="signdata" name="signdata"/>
 	</td>
@@ -558,7 +558,7 @@ style='font-size:18.0pt;font-family:华文中宋'><%=title %><span lang=EN-US><o
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:32.8pt'>
   <p class=MsoNormal align=center style='text-align:center;tab-stops:61.5pt'><span
-  lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p><%=holiday.getWcdd() %>&nbsp;</o:p></span></p>
+  lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p><%=StringUtil.parseNull(holiday.getWcdd(),"") %>&nbsp;</o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:2;height:64.95pt'>
@@ -575,7 +575,7 @@ style='font-size:18.0pt;font-family:华文中宋'><%=title %><span lang=EN-US><o
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:64.95pt'>
   <p class=MsoNormal align=left style='text-align:left;tab-stops:61.5pt'><span
-  lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p><%=holiday.getWcsy()%>&nbsp;</o:p></span></p>
+  lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p><%=StringUtil.parseNull(holiday.getWcsy(),"")%>&nbsp;</o:p></span></p>
   <p class=MsoNormal align=center style='text-align:center;tab-stops:61.5pt'><span
   lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='tab-stops:61.5pt'><span style='font-size:12.0pt;
@@ -632,7 +632,7 @@ style='font-size:18.0pt;font-family:华文中宋'><%=title %><span lang=EN-US><o
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:77.75pt'>
-  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;<%=StringUtil.parseNull(holiday.getXjdj(),"")%></o:p></span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;<%if("1".equals(StringUtil.parseNull(holiday.getXjdj(),""))){%>已销假！<%}%></o:p></span></p>
   <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;</o:p></span></p>
@@ -650,7 +650,7 @@ style='font-size:18.0pt;font-family:华文中宋'><%=title %><span lang=EN-US><o
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:29.7pt'>
   <p class=MsoNormal style='tab-stops:147.0pt'><span lang=EN-US
-  style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;<%=holiday.getBz()%></o:p></span></p>
+  style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;<%=StringUtil.parseNull(holiday.getBz(),"")%></o:p></span></p>
   <p class=MsoNormal style='tab-stops:147.0pt'><span lang=EN-US
   style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='tab-stops:147.0pt'><span lang=EN-US

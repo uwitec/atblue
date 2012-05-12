@@ -32,6 +32,33 @@
 		<title></title>
 		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
 		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
+        <script type="text/javascript"
+                src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
+        <script type="text/javascript" defer="defer">
+            CKEDITOR.replace( 'editor',
+                    {
+                        skin : 'office2003'
+                    });
+
+            //隐藏不需要的工具按钮
+            CKEDITOR.editorConfig = function( config )
+            {
+                config.toolbar = 'MyToolbar';
+                config.toolbar_MyToolbar =
+                        [
+                            ['NewPage','Preview'],
+                            ['Cut','Copy','Paste','PasteText','PasteFromWord','-'],
+                            ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+                            ['Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+                            '/',
+                            ['Styles','Format'],
+                            ['Bold','Italic','Strike'],
+                            ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+                            ['Link','Unlink','Anchor'],
+                            ['Maximize','-','About']
+                        ];
+            };
+        </script>
 		<script type="text/javascript">
             function _resizeNoPage() {
                 document.getElementById("scrollDiv").style.width = document.body.clientWidth - 18;
@@ -168,7 +195,7 @@
 								cellspacing="0" class="mtabtab" id="mtabtab">
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										耗材名称
+                                        申请名称
 									</td>
 									<td class="head_right" style="text-align: left">
 									<%=StringUtil.parseNull(officeSupplies.getMc(),"")%>
@@ -205,7 +232,7 @@
 										事由
 									</td>
 									<td class="head_right" style="text-align: left">
-                                       <%=StringUtil.parseNull(officeSupplies.getSy(),"")%>&nbsp;
+                                        <textarea cols="80" id="editor" name="editor" rows="10"><%=StringUtil.parseNull(officeSupplies.getSy(),"")%></textarea>
                                     </td>
 								</tr>
 							</table>
