@@ -605,7 +605,11 @@ style='font-size:18.0pt;font-family:华文中宋'><%=title %><span lang=EN-US><o
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:84.7pt'>
   <p class=MsoNormal align=center style='text-align:left;tab-stops:61.5pt'><span
-  lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p><%=StringUtil.parseNull(beanMap.get("SPYJ"),"")%></o:p></span></p>
+  lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>
+  <span   <%if("主要领导".equals(StringUtil.parseNull(beanMap.get("FORM_ITEM_TITLE"),""))) {%>
+   	style="font-size:30px;"
+   <%} %>><%=StringUtil.parseNull(beanMap.get("SPYJ"),"")%></span>
+  </o:p></span></p>
   <p class=MsoNormal align=center style='text-align:center;tab-stops:61.5pt'><span
   lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal align=center style='text-align:center;tab-stops:61.5pt'><span
@@ -635,7 +639,7 @@ style='font-size:18.0pt;font-family:华文中宋'><%=title %><span lang=EN-US><o
   <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;<%if("1".equals(StringUtil.parseNull(holiday.getXjdj(),""))){%>已销假！<%}%></o:p></span></p>
   <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;</o:p></span></p>
-  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:仿宋_GB2312;' align="right"><o:p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=DateUtil.format(holiday.getXjsj(),"yyyy-MM-dd")%></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:7;mso-yfti-lastrow:yes;height:29.7pt'>

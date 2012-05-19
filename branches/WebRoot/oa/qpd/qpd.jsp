@@ -121,6 +121,11 @@ function sumbitForm() {
     document.form1.submit();
 	return true;
 }
+function changeFont(title,size){
+		if(title=='主要领导'){
+			document.getElementById("spyj"+size).style.fontSize=30;
+		}
+}
 	</script>
   </head>
   <body onload="LoadSignData()">
@@ -164,13 +169,13 @@ function sumbitForm() {
                                           <span class="STYLE9"><%=StringUtil.parseNull(beanMap.get("FORM_ITEM_TITLE"),"")%>：</span><br>
                                           <input type="hidden" name="nodeName" value="<%=StringUtil.parseNull(beanMap.get("FORM_ITEM_NAME"),"")%>"/>
                                           <input type="hidden" name="nodeId" value="<%=StringUtil.parseNull(beanMap.get("FORM_ITEM_ID"),"")%>"/>
-                                          <textarea  name="spyj"
+                                          <textarea  name="spyj" id="spyj<%=i+1%>"
                                                      <%
-                                                     System.out.println(id+"::"+formItemId);
                                                      if(!id.equals(formItemId)){%>
                                                            readonly="readonly"
                                                   <%}%>
-                                                     cols="80" rows="6" class="TAcss"  width="100%"><%=StringUtil.parseNull(beanMap.get("SPYJ"),"")%></textarea>
+                                                     cols="80" rows="6" width="100%" onkeydown="changeFont('<%=StringUtil.parseNull(beanMap.get("FORM_ITEM_TITLE"),"")%>','<%=dataList.size()%>');">
+                                                     <%=StringUtil.parseNull(beanMap.get("SPYJ"),"")%></textarea>
                                       </td>
                                   </tr>
                                   <tr>
