@@ -32,7 +32,7 @@
     OfficeDocumentsDAO officeDocumentsDAO = (OfficeDocumentsDAO)SpringFactory.instance.getBean("officeDocumentsDAO");
     StringBuilder sb = new StringBuilder();
     sb.append(" where documentid in(select documentid from office_documents_check where checkman='");
-    sb.append(_user.getUserId()).append("') and status='1'");
+    sb.append(_user.getUserId()).append("' and checkflag='0') and status='1'");
     sb.append(" order by cjrq desc");
     List list6 = officeDocumentsDAO.getByFreeSql(sb.toString(),pageBean);
     list6 = list6 == null ? new ArrayList() : list6;
