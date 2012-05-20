@@ -121,11 +121,9 @@ function sumbitForm() {
     document.form1.submit();
 	return true;
 }
-function changeFont(title,size){
-		if(title=='主要领导'){
-			document.getElementById("spyj"+size).style.fontSize=30;
-		}
-}
+	function changeFont(title,size){
+		document.getElementById("spyj"+size).style.fontSize=28;
+	}
 	</script>
   </head>
   <body onload="LoadSignData()">
