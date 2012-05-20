@@ -121,7 +121,7 @@ function sumbitForm() {
     document.form1.submit();
 	return true;
 }
-	function changeFont(title,size){
+	function changeFont(size){
 		document.getElementById("spyj"+size).style.fontSize=28;
 	}
 	</script>
@@ -172,7 +172,7 @@ function sumbitForm() {
                                                      if(!id.equals(formItemId)){%>
                                                            readonly="readonly"
                                                   <%}%>
-                                                     cols="80" rows="6" width="100%" onkeydown="changeFont('<%=StringUtil.parseNull(beanMap.get("FORM_ITEM_TITLE"),"")%>','<%=dataList.size()%>');">
+                                                     cols="80" rows="6" class="TAcss" width="100%" onkeydown="changeFont('<%=i+1%>');">
                                                      <%=StringUtil.parseNull(beanMap.get("SPYJ"),"")%></textarea>
                                       </td>
                                   </tr>
