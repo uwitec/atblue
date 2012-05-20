@@ -122,11 +122,8 @@ function sumbitForm() {
                                           <span class="STYLE9"><%=StringUtil.parseNull(beanMap.get("FORM_ITEM_TITLE"),"")%>：</span><br>
                                           <input type="hidden" name="nodeName" value="<%=StringUtil.parseNull(beanMap.get("FORM_ITEM_NAME"),"")%>"/>
                                           <input type="hidden" name="nodeId" value="<%=StringUtil.parseNull(beanMap.get("FORM_ITEM_ID"),"")%>"/>
-                                          <textarea  name="spyj"
-                                                     <%if(!id.equals(formItemId)){%>
-                                                           readonly="readonly"
-                                                  <%}%>
-                                                     cols="80" rows="6" class="TAcss"  width="100%"><%=StringUtil.parseNull(beanMap.get("SPYJ"),"")%></textarea>
+                                        <span   <%if("主要领导".equals(StringUtil.parseNull(beanMap.get("FORM_ITEM_TITLE"),""))) {%>	style="font-size:30px;"
+										   <%} %>><%=StringUtil.parseNull(beanMap.get("SPYJ"),"")%></span>
                                       </td>
                                   </tr>
                                   <tr>
