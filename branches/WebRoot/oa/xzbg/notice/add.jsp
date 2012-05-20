@@ -305,6 +305,21 @@
     		c.innerText = i;
     	}
     }
+        function checkPartAll(obj,alt){
+            for(var i=0; i<document.form1.ubox.length; i++){
+                if(document.form1.ubox[i].getAttribute("alt") == alt){
+                    document.form1.ubox[i].checked=obj.checked;
+                }
+            }
+        }
+
+        function checkPartNot(obj,alt){
+            for(var i=0; i<document.form1.ubox.length; i++){
+                if(document.form1.ubox[i].getAttribute("alt")  == alt){
+                    document.form1.ubox[i].checked=!document.form1.ubox[i].checked;
+                }
+            }
+        }
 		</script>
 		<script type="text/javascript">
 			Ext.onReady(function(){
@@ -366,6 +381,7 @@
                             <td colspan="6" align="left">
                                 <hr width="100%">
                                 <h2>公司领导</h2>
+                                <input type="checkbox" onclick="checkPartAll(this,'gsld');"/>全选<input type="checkbox"  onclick="checkPartNot(this,'gsld');"/>反选
                                 <hr width="100%">
                             </td>
                         </tr>
@@ -374,13 +390,13 @@
                             if(i==0){
                         %>
                         <tr>
-                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>" alt="gsld"  ><%=u.getRealName() %></td>
                             <%	}else if(i%6==0){ %>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>" alt="gsld"><%=u.getRealName() %></td>
                             <%	}else{ %>
-                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>" alt="gsld"><%=u.getRealName() %></td>
                             <%	} %>
                             <%} %>
                             <%
@@ -394,6 +410,7 @@
                             <td colspan="6" align="left">
                                 <hr width="100%">
                                 <h2>机关科室</h2>
+                                <input type="checkbox"  onclick="checkPartAll(this,'jgks');"/>全选<input type="checkbox" onclick="checkPartNot(this,'jgks');"/>反选
                                 <hr width="100%">
                             </td>
                         </tr>
@@ -402,13 +419,13 @@
                             if(i==0){
                         %>
                         <tr>
-                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>" alt="jgks"><%=u.getRealName() %></td>
                             <%	}else if(i%6==0){ %>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>" alt="jgks"><%=u.getRealName() %></td>
                             <%	}else{ %>
-                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>" alt="jgks"><%=u.getRealName() %></td>
                             <%	} %>
                             <%} %>
                             <%
@@ -422,6 +439,7 @@
                             <td colspan="6" align="left">
                                 <hr width="100%">
                                 <h2>基层单位</h2>
+                                <input type="checkbox"  onclick="checkPartAll(this,'jcdw');"/>全选<input type="checkbox" onclick="checkPartNot(this,'jcdw');"/>反选
                                 <hr width="100%">
                             </td>
                         </tr>
@@ -430,13 +448,13 @@
                             if(i==0){
                         %>
                         <tr>
-                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>" alt="jcdw"><%=u.getRealName() %></td>
                             <%	}else if(i%6==0){ %>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>" alt="jcdw"><%=u.getRealName() %></td>
                             <%	}else{ %>
-                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
+                            <td><input type="checkbox" name="ubox" value="<%=u.getUserId() %>" title="<%=u.getRealName() %>" alt="jcdw"><%=u.getRealName() %></td>
                             <%	} %>
                             <%} %>
                             <%
