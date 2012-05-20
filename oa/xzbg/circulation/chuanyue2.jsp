@@ -190,13 +190,13 @@
                                 if(i==0){
                             %>
                             <tr>
-                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="gsld"><%=u.getRealName() %></td>
+                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="gsld" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
                                 <%	}else if(i%6==0){ %>
                             </tr>
                             <tr>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="gsld"><%=u.getRealName() %></td>
+                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="gsld" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
                                 <%	}else{ %>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="gsld"><%=u.getRealName() %></td>
+                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="gsld" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
                                 <%	} %>
                                 <%} %>
                                 <%
@@ -219,13 +219,13 @@
                                 if(i==0){
                             %>
                             <tr>
-                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jgks"><%=u.getRealName() %></td>
+                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jgks" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
                                 <%	}else if(i%6==0){ %>
                             </tr>
                             <tr>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jgks"><%=u.getRealName() %></td>
+                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jgks" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
                                 <%	}else{ %>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jgks"><%=u.getRealName() %></td>
+                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jgks" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
                                 <%	} %>
                                 <%} %>
                                 <%
@@ -248,13 +248,13 @@
                                 if(i==0){
                             %>
                             <tr>
-                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jcdw"><%=u.getRealName() %></td>
+                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jcdw" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
                                 <%	}else if(i%6==0){ %>
                             </tr>
                             <tr>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jcdw"><%=u.getRealName() %></td>
+                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jcdw" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
                                 <%	}else{ %>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jcdw"><%=u.getRealName() %></td>
+                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkmans,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jcdw" title="<%=u.getRealName() %>"><%=u.getRealName() %></td>
                                 <%	} %>
                                 <%} %>
                                 <%
