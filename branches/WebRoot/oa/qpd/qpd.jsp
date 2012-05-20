@@ -172,7 +172,7 @@ function sumbitForm() {
                                                      if(!id.equals(formItemId)){%>
                                                            readonly="readonly"
                                                   <%}%>
-                                                     cols="45" rows="6" style="font-family:verdana;font-size:28"><%=StringUtil.parseNull(beanMap.get("SPYJ"),"")%></textarea>
+                                                     cols="45" rows="6" style="font-family:Arial, Helvetica, sans-serif;font-size:28"><%=StringUtil.parseNull(beanMap.get("SPYJ"),"")%></textarea>
                                       </td>
                                   </tr>
                                   <tr>
