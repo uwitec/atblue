@@ -122,8 +122,7 @@ function sumbitForm() {
                                           <span class="STYLE9"><%=StringUtil.parseNull(beanMap.get("FORM_ITEM_TITLE"),"")%>：</span><br>
                                           <input type="hidden" name="nodeName" value="<%=StringUtil.parseNull(beanMap.get("FORM_ITEM_NAME"),"")%>"/>
                                           <input type="hidden" name="nodeId" value="<%=StringUtil.parseNull(beanMap.get("FORM_ITEM_ID"),"")%>"/>
-                                        <span   <%if("主要领导".equals(StringUtil.parseNull(beanMap.get("FORM_ITEM_TITLE"),""))) {%>	style="font-size:30px;"
-										   <%} %>><%=StringUtil.parseNull(beanMap.get("SPYJ"),"")%></span>
+                                          <span style="height:79%;width:100%;font-size:28px;border-top:solid windowtext 1.0pt;border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;"><%=StringUtil.parseNull(beanMap.get("SPYJ"),"")%></span>
                                       </td>
                                   </tr>
                                   <tr>
