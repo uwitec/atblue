@@ -483,7 +483,11 @@ function addSealB(){
  </tr>
  <tr height=19 style='height:14.25pt'>
   <td colspan=9 rowspan=8 height=341 class=xl686142 style='border-right:.5pt solid black;
-  border-bottom:.5pt solid black;height:255.75pt;text-align:left;vertical-align:top;'><%=StringUtil.parseNull(yysq.getYysy(),"")%></td>
+  border-bottom:.5pt solid black;height:255.75pt;text-align:left;vertical-align:top;'>
+      <p><font style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;
+      <%=StringUtil.parseNull(yysq.getYysy(),"")%>
+      </font> </p>
+  </td>
  </tr>
  <tr height=19 style='height:14.25pt'>
  </tr>
@@ -506,12 +510,12 @@ function addSealB(){
  <tr height=19 style='height:14.25pt'>
   <td colspan=8 rowspan=7 height=210 class=xl686142 style='border-right:none;
   border-bottom:.5pt solid black;height:157.5pt;text-align:left;vertical-align:top;'>
-  <%
+  <p><font style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;<%
     for(int i=0;i<dataList.size();i++){ 
   Map beanMap = (Map)dataList.get(0);
    out.println(StringUtil.parseNull(beanMap.get("SPYJ"),""));
    %>
-  <%} %>
+  <%} %> </font> </p>
   </td>
    <td colspan=1 rowspan=7 style='border-right:.5pt solid black;
   border-bottom:.5pt solid black;height:157.5pt;vertical-align:bottom;'>
