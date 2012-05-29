@@ -535,6 +535,13 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
         ]]>
     </update>
 
+    <update id="updateSmsPerson" parameterClass="java.util.HashMap">
+        <![CDATA[
+        update OFFICE_SMS_PERSON t set t.sfqs = '1',t.read_time=sysdate
+        where t.tzid =#tzId# and t.phone = #phone#
+        ]]>
+    </update>
+
     <select id="getSmsSequence" resultClass="int">
         <![CDATA[
        select seq_sms.nextval from dual

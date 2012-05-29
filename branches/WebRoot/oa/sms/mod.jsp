@@ -162,6 +162,20 @@
                 win.show(this);
             });
         });
+        function checkPartAll(obj,alt){
+            for(var i=0; i<document.form1.ubox.length; i++){
+                if(document.form1.ubox[i].getAttribute("alt") == alt){
+                    document.form1.ubox[i].checked=obj.checked;
+                }
+            }
+        }
+        function checkPartNot(obj,alt){
+            for(var i=0; i<document.form1.ubox.length; i++){
+                if(document.form1.ubox[i].getAttribute("alt")  == alt){
+                    document.form1.ubox[i].checked=!document.form1.ubox[i].checked;
+                }
+            }
+        }
     </script>
 </head>
 <body onload="_resizeNoPage();">
@@ -170,104 +184,107 @@
     <input type="hidden" name="tzid" value="${tzid}"/>
     <input type="hidden" name="bean.tzid" value="${bean.tzid}"/>
     <div id="hello-win" class="x-hidden">
-                <div id="hello-tabs">
-                    <div class="x-tab" title="请选择签收用户">
-                        <table border="0" width="100%">
-                            <tr>
-                                <td colspan="6" align="left">
-                                    <input type="checkbox" name="allBox" onclick="checkAll(this);">全选&nbsp;
-                                    <input type="checkbox" name="allBox" onclick="checkUnAll();">反选&nbsp;
-                                    <hr width="100%">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="6" align="left">
-                                    <hr width="100%">
-                                    <h2>公司领导</h2>
-                                    <hr width="100%">
-                                </td>
-                            </tr>
-                            <%for(int i=0; i<userList.size(); i++){
-                                CUser u = (CUser)userList.get(i);
-                                if(i==0){
-                            %>
-                            <tr>
-                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else if(i%6==0){ %>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else{ %>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	} %>
-                                <%} %>
-                                <%
-                                    if(userList.size()%6!=0){
-                                        for(int i=0; i<userList.size()%6-1; i++){%>
-                                <td>&nbsp;</td>
-                                <%}%>
-                            </tr>
-                            <%}%>
-                            <tr>
-                                <td colspan="6" align="left">
-                                    <hr width="100%">
-                                    <h2>机关科室</h2>
-                                    <hr width="100%">
-                                </td>
-                            </tr>
-                            <%for(int i=0; i<userList1.size(); i++){
-                                CUser u = (CUser)userList1.get(i);
-                                if(i==0){
-                            %>
-                            <tr>
-                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else if(i%6==0){ %>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else{ %>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	} %>
-                                <%} %>
-                                <%
-                                    if(userList1.size()%6!=0){
-                                        for(int i=0; i<userList1.size()%6-1; i++){%>
-                                <td>&nbsp;</td>
-                                <%}%>
-                            </tr>
-                            <%}%>
-                            <tr>
-                                <td colspan="6" align="left">
-                                    <hr width="100%">
-                                    <h2>基层单位</h2>
-                                    <hr width="100%">
-                                </td>
-                            </tr>
-                            <%for(int i=0; i<userList2.size(); i++){
-                                CUser u = (CUser)userList2.get(i);
-                                if(i==0){
-                            %>
-                            <tr>
-                                <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else if(i%6==0){ %>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	}else{ %>
-                                <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>"><%=u.getRealName() %></td>
-                                <%	} %>
-                                <%} %>
-                                <%
-                                    if(userList2.size()%6!=0){
-                                        for(int i=0; i<userList2.size()%6-1; i++){%>
-                                <td>&nbsp;</td>
-                                <%}%>
-                            </tr>
-                            <%}%>
-                        </table>
-                    </div>
-                </div>
+        <div id="hello-tabs">
+            <div class="x-tab" title="请选择签收用户">
+                <table border="0" width="100%">
+                    <tr>
+                        <td colspan="6" align="left">
+                            <input type="checkbox" name="allBox" onclick="checkAll(this);">全选&nbsp;
+                            <input type="checkbox" name="allBox" onclick="checkUnAll();">反选&nbsp;
+                            <hr width="100%">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" align="left">
+                            <hr width="100%">
+                            <h2>公司领导</h2>
+                            <input type="checkbox" onclick="checkPartAll(this,'gsld');"/>全选<input type="checkbox"  onclick="checkPartNot(this,'gsld');"/>反选
+                            <hr width="100%">
+                        </td>
+                    </tr>
+                    <%for(int i=0; i<userList.size(); i++){
+                        CUser u = (CUser)userList.get(i);
+                        if(i==0){
+                    %>
+                    <tr>
+                        <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="gsld"><%=u.getRealName() %></td>
+                        <%	}else if(i%6==0){ %>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="gsld"><%=u.getRealName() %></td>
+                        <%	}else{ %>
+                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="gsld"><%=u.getRealName() %></td>
+                        <%	} %>
+                        <%} %>
+                        <%
+                            if(userList.size()%6!=0){
+                                for(int i=0; i<userList.size()%6-1; i++){%>
+                        <td>&nbsp;</td>
+                        <%}%>
+                    </tr>
+                    <%}%>
+                    <tr>
+                        <td colspan="6" align="left">
+                            <hr width="100%">
+                            <h2>机关科室</h2>
+                            <input type="checkbox"  onclick="checkPartAll(this,'jgks');"/>全选<input type="checkbox" onclick="checkPartNot(this,'jgks');"/>反选
+                            <hr width="100%">
+                        </td>
+                    </tr>
+                    <%for(int i=0; i<userList1.size(); i++){
+                        CUser u = (CUser)userList1.get(i);
+                        if(i==0){
+                    %>
+                    <tr>
+                        <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jgks"><%=u.getRealName() %></td>
+                        <%	}else if(i%6==0){ %>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jgks"><%=u.getRealName() %></td>
+                        <%	}else{ %>
+                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jgks"><%=u.getRealName() %></td>
+                        <%	} %>
+                        <%} %>
+                        <%
+                            if(userList1.size()%6!=0){
+                                for(int i=0; i<userList1.size()%6-1; i++){%>
+                        <td>&nbsp;</td>
+                        <%}%>
+                    </tr>
+                    <%}%>
+                    <tr>
+                        <td colspan="6" align="left">
+                            <hr width="100%">
+                            <h2>基层单位</h2>
+                            <input type="checkbox"  onclick="checkPartAll(this,'jcdw');"/>全选<input type="checkbox" onclick="checkPartNot(this,'jcdw');"/>反选
+                            <hr width="100%">
+                        </td>
+                    </tr>
+                    <%for(int i=0; i<userList2.size(); i++){
+                        CUser u = (CUser)userList2.get(i);
+                        if(i==0){
+                    %>
+                    <tr>
+                        <td><input type="checkbox" name="ubox"  <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jcdw"><%=u.getRealName() %></td>
+                        <%	}else if(i%6==0){ %>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jcdw"><%=u.getRealName() %></td>
+                        <%	}else{ %>
+                        <td><input type="checkbox" name="ubox" <%if(StringUtil.contains(checkman,u.getUserId())){ %> checked="checked"<%} %>  value="<%=u.getUserId() %>" alt="jcdw"><%=u.getRealName() %></td>
+                        <%	} %>
+                        <%} %>
+                        <%
+                            if(userList2.size()%6!=0){
+                                for(int i=0; i<userList2.size()%6-1; i++){%>
+                        <td>&nbsp;</td>
+                        <%}%>
+                    </tr>
+                    <%}%>
+                </table>
             </div>
+        </div>
+    </div>
     <table width="100%" height="25" border="0" cellpadding="0"
            cellspacing="0"
            background="<%=request.getContextPath()%>/images/mhead.jpg">
