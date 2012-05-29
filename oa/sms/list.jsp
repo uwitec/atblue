@@ -144,7 +144,11 @@
                         <td class="form" style="text-align: center" nowrap>
                             <s:property value="#status.index+1"/>
                         </td>
-                        <td class="form" style="text-align: left" nowrap>${DXNR}&nbsp;</td>
+                        <td class="form" style="text-align: left" nowrap>
+                        <%
+                            String dxnr = StringUtil.parseNull(request.getAttribute("DXNR"),"");
+                        %>
+                        <%=StringUtil.cutString(dxnr,45)%>&nbsp;</td>
                         <td class="form" style="text-align: left" nowrap>
                             ${ORGNA_NAME}
                             &nbsp;</td>
