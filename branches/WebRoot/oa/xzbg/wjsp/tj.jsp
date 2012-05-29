@@ -51,7 +51,7 @@
                 map.put("userId", selUserId);
                 CUser u = userDAO.queryForBean(map);
                 StringBuffer message = new StringBuffer("");
-                message.append("尊敬的"+u.getRealName()+"您好：")
+                message.append("尊敬的"+u.getRealName()+"您好，OA系统：")
                         .append(StringUtil.cutString(officeWjsp.getBt(),25))
                         .append("，等待您的审批！");
                 OfficeSmsPerson officeSmsPerson = new OfficeSmsPerson();
