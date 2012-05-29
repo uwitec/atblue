@@ -25,12 +25,11 @@ public class SMSSendJob implements Job {
         OfficeSmsPersonDAO officeSmsPersonDAO = (OfficeSmsPersonDAO) beanFactory.getBean("officeSmsPersonDAO");
 
         List list = oDao.getSmsPersonsList();
+        if (!smsHandler.isStarted()) {
+            smsHandler.start();
+        }
         if (list != null && list.size() > 0) {
-            if(!smsHandler.isStarted()){
-//                smsHandler.init();
-                smsHandler.start();
-            }
-            System.out.println("短信猫已经启动！");
+
             for (int i = 0; i < list.size(); i++) {
                 OfficeSmsPerson bean = (OfficeSmsPerson) list.get(i);
                 String USER_NAME = StringUtil.parseNull(bean.getUserName(), "");
@@ -41,22 +40,26 @@ public class SMSSendJob implements Job {
                     OutboundMessage message = new OutboundMessage(PHONE, DXNR);
                     smsHandler.sendSMS(message);
                     bean.setSffs("1");
-                    System.out.println("短息发送成功："+message);
+                    System.out.println("短息发送成功：" + message);
                     officeSmsPersonDAO.modOfficeSmsPerson(bean);
                 }
 
             }
-            List<InboundMessage> list2 = smsHandler.readUnReadSMS();
-            if (list2 != null && list2.size() > 0) {
-                for (InboundMessage message : list2) {
-                    String phone = message.getOriginator();
-                    String text = message.getText();
-                    if (!StringUtil.isBlankOrEmpty(text)) {
-                        oDao.updateSmsPerson(text,phone.substring(2));
-                    }
+
+
+        }
+
+        List<InboundMessage> list2 = smsHandler.readUnReadSMS();
+        if (list2 != null && list2.size() > 0) {
+            for (InboundMessage message : list2) {
+                String phone = message.getOriginator();
+                String text = message.getText();
+                if (!StringUtil.isBlankOrEmpty(text)) {
+                    System.out.println("短息读取成功：" + phone);
+                    oDao.updateSmsPerson(text, phone.substring(2));
                 }
             }
-            smsHandler.destroy();
         }
+        smsHandler.destroy();
     }
 }

@@ -6,6 +6,6 @@
 		<description>短信任务</description>
 		<name>smsSendJob</name>
 		<class>cn.com.atblue.common.sms.SMSSendJob</class>
-		<time>0 0/2 * * * ?</time>
+		<time>0 * * * * ?</time>
 	</job>
 </jobs>

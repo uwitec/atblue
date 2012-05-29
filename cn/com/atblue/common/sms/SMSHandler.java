@@ -27,6 +27,7 @@ public class SMSHandler {
         gateway.setSimPin("0000");
         try {
             smsService.addGateway(gateway);
+            System.out.println("短信猫已经启动！");
         } catch (GatewayException e) {
             e.printStackTrace();
         }
@@ -35,6 +36,7 @@ public class SMSHandler {
     public void start() {
         try {
             smsService.startService();
+            System.out.println("启动连接服务！");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,6 +45,7 @@ public class SMSHandler {
     public void destroy() {
         try {
             smsService.stopService();
+            System.out.println("停止连接服务！");
         } catch (Exception e) {
             e.printStackTrace();
         }
