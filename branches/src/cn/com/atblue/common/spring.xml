@@ -87,7 +87,7 @@
         </property>
     </bean>
     <!-- ¶ÌÐÅÅäÖÃ -->
-    <bean id="smsHandler" class="cn.com.atblue.common.sms.SMSHandler">
+    <bean id="smsHandler" class="cn.com.atblue.common.sms.SMSHandler" init-method="init">
         <property name="comPort">
             <value>${comPort}</value>
         </property>
