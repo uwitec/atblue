@@ -25,8 +25,10 @@ public class SMSSendJob implements Job {
 
         List list = oDao.getSmsPersonsList();
         if (list != null && list.size() > 0) {
-            smsHandler.init();
-            smsHandler.start();
+            if(!smsHandler.isStarted()){
+                smsHandler.init();
+                smsHandler.start();
+            }
             System.out.println("短信猫已经启动！");
             for (int i = 0; i < list.size(); i++) {
                 OfficeSmsPerson bean = (OfficeSmsPerson) list.get(i);
@@ -47,7 +49,7 @@ public class SMSSendJob implements Job {
                 }
 
             }
-            smsHandler.destroy();
+//            smsHandler.destroy();
         }
     }
 }

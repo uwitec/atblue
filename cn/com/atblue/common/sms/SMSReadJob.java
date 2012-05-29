@@ -19,8 +19,10 @@ public class SMSReadJob implements Job {
         BeanFactory beanFactory = (BeanFactory) jobExecutionContext.getJobDetail().getJobDataMap().get("beanFactory");
         SMSHandler smsHandler = (SMSHandler) beanFactory.getBean("smsHandler");
         ODao oDao = (ODao) beanFactory.getBean("oDao");
-        smsHandler.init();
-        smsHandler.start();
+        if(!smsHandler.isStarted()){
+            smsHandler.init();
+            smsHandler.start();
+        }
         List<InboundMessage> list = smsHandler.readUnReadSMS();
         if (list != null && list.size() > 0) {
             for (InboundMessage message : list) {
@@ -31,6 +33,6 @@ public class SMSReadJob implements Job {
                 }
             }
         }
-        smsHandler.destroy();
+//        smsHandler.destroy();
     }
 }

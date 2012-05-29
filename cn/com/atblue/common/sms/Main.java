@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         SMSHandler smsHandler = new SMSHandler();
-        smsHandler.setComPort("COM4");
+        smsHandler.setComPort("COM3");
         smsHandler.setBaudRate(9600);
         smsHandler.setManufacturer("wavecom");
         smsHandler.init();
