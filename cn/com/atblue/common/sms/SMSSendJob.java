@@ -27,7 +27,7 @@ public class SMSSendJob implements Job {
         List list = oDao.getSmsPersonsList();
         if (list != null && list.size() > 0) {
             if(!smsHandler.isStarted()){
-                smsHandler.init();
+//                smsHandler.init();
                 smsHandler.start();
             }
             System.out.println("短信猫已经启动！");
