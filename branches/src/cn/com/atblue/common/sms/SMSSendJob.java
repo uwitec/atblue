@@ -7,13 +7,14 @@ import cn.com.atblue.oa.dao.OfficeSmsPersonDAO;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import org.smslib.InboundMessage;
 import org.smslib.OutboundMessage;
 import org.springframework.beans.factory.BeanFactory;
 
 import java.util.List;
 
 /**
- * 定时短信发送任务
+ * 定时短信任务
  */
 public class SMSSendJob implements Job {
     @Override
@@ -36,10 +37,6 @@ public class SMSSendJob implements Job {
                 String DXNR = StringUtil.parseNull(bean.getDxnr(), "");
                 String PHONE = StringUtil.parseNull(bean.getPhone(), "");
                 String TZID = StringUtil.parseNull(bean.getTzid(), "");
-//                StringBuffer s = new StringBuffer();
-//                s.append("尊敬的" + USER_NAME + "您好：");
-//                s.append("OA系统有[").append(DXNR).append("]等待您签收！");
-//                s.append("请发短信返回数字").append(TZID).append("进行签收！");
                 if (!StringUtil.isBlankOrEmpty(PHONE)) {
                     OutboundMessage message = new OutboundMessage(PHONE, DXNR);
                     smsHandler.sendSMS(message);
@@ -49,7 +46,17 @@ public class SMSSendJob implements Job {
                 }
 
             }
-//            smsHandler.destroy();
+            List<InboundMessage> list2 = smsHandler.readUnReadSMS();
+            if (list2 != null && list2.size() > 0) {
+                for (InboundMessage message : list2) {
+                    String phone = message.getOriginator();
+                    String text = message.getText();
+                    if (!StringUtil.isBlankOrEmpty(text)) {
+                        oDao.updateSmsPerson(text,phone.substring(2));
+                    }
+                }
+            }
+            smsHandler.destroy();
         }
     }
 }

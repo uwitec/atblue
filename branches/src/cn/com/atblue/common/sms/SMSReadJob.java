@@ -33,6 +33,6 @@ public class SMSReadJob implements Job {
                 }
             }
         }
-//        smsHandler.destroy();
+        smsHandler.destroy();
     }
 }

@@ -72,7 +72,7 @@
             alert("请录入短信内容!");
             return ;
         }
-        if(document.all["bean.dxnr"].value.length >= 50){
+        if(document.all["bean.dxnr"].value.length >= 200){
             alert("短信内容已超出50字限制，请更正!");
             return ;
         }
@@ -308,11 +308,11 @@
                             </td>
                             <td class="head_right" align="left">
                                 &nbsp;&nbsp;
-                                <textarea cols="80" id="dxnr"  name="bean.dxnr" rows="2"  onkeyup="textCounter(this, 50, this.form.remLen)"></textarea>
-                                (限50个字)现在剩余:
-                                <input name="remLen" value="50" readonly="readonly" type="text" size="4" maxlength="4" style="background-color: eaffe0; border: 0; color: red" >
+                                <textarea cols="80" id="dxnr"  name="bean.dxnr" rows="4"  onkeyup="textCounter(this, 200, this.form.remLen)"></textarea>
+                                (限200个字)现在剩余:
+                                <input name="remLen" value="200" readonly="readonly" type="text" size="4" maxlength="4" style="background-color: eaffe0; border: 0; color: red" >
                                 <script>
-                                    document.all.remLen.value = (50-document.all["bean.dxnr"].value.length);
+                                    document.all.remLen.value = (200-document.all["bean.dxnr"].value.length);
                                 //统计审核字数
                                 function textCounter(field, maxlimit, remLen){
                                     if (field.value.length > maxlimit)
