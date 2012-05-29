@@ -1,6 +1,7 @@
 package cn.com.atblue.oa.action;
 
 import cn.com.atblue.common.SpringFactory;
+import cn.com.atblue.common.SysConfig;
 import cn.com.atblue.common.sms.SMSHandler;
 import cn.com.atblue.common.util.StringUtil;
 import cn.com.atblue.manager.bean.CUser;
@@ -67,6 +68,7 @@ public class SmsAction extends BaseAction {
     public String save() {
         Map session = ActionContext.getContext().getSession();
         CUser cUser = (CUser) session.get("cUser");
+        SysConfig sysConfig =(SysConfig)SpringFactory.instance.getBean("propertyConfig");
         if (bean != null) {
             if ("add".equals(action)) {
                 bean.setTzid(oDao.getSmsSequence());
@@ -85,12 +87,17 @@ public class SmsAction extends BaseAction {
                             officeSmsPerson.setPkId(StringUtil.getUUID());
                             officeSmsPerson.setTzid(bean.getTzid());
                             officeSmsPerson.setCreateTime(new Date());
-                            officeSmsPerson.setPhone(u.getMobile());
+                            String testPhone = sysConfig.getProperty("testPhone");
+                            if(!StringUtil.isBlankOrEmpty(testPhone)){
+                                officeSmsPerson.setPhone(testPhone);
+                            }else{
+                                officeSmsPerson.setPhone(u.getMobile());
+                            }
                             officeSmsPerson.setUserId(uid);
                             officeSmsPerson.setUserName(u.getRealName());
                             officeSmsPerson.setSfqs("0");
-//                            officeSmsPerson.setSffs("0");
-                            officeSmsPerson.setDxnr(bean.getDxnr());
+                            officeSmsPerson.setSffs("0");
+                            officeSmsPerson.setDxnr("尊敬的" + u.getRealName() + "您好，OA系统："+bean.getDxnr()+"，请返回数字"+bean.getTzid()+"进行签收！");
                             officeSmsPerson.setTzlb("G");
                             officeSmsPerson.setSqId(bean.getTzid().toString());
                             officeSmsPerson.setTzid(bean.getTzid());
@@ -120,12 +127,17 @@ public class SmsAction extends BaseAction {
                             officeSmsPerson.setPkId(StringUtil.getUUID());
                             officeSmsPerson.setTzid(bean.getTzid());
                             officeSmsPerson.setCreateTime(new Date());
-                            officeSmsPerson.setPhone(u.getPhone());
+                            String testPhone = sysConfig.getProperty("testPhone");
+                            if(!StringUtil.isBlankOrEmpty(testPhone)){
+                                officeSmsPerson.setPhone(testPhone);
+                            }else{
+                                officeSmsPerson.setPhone(u.getMobile());
+                            }
                             officeSmsPerson.setUserId(uid);
                             officeSmsPerson.setUserName(u.getRealName());
                             officeSmsPerson.setSfqs("0");
-//                            officeSmsPerson.setSffs("0");
-                            officeSmsPerson.setDxnr(bean.getDxnr()+",请发送数字"+officeSmsPerson.getTzid()+"进行签收!");
+                            officeSmsPerson.setSffs("0"); //是否发送
+                            officeSmsPerson.setDxnr("尊敬的" + u.getRealName() + "您好，OA系统："+bean.getDxnr()+"，请返回数字"+bean.getTzid()+"进行签收！");
                             officeSmsPerson.setTzlb("G");
                             officeSmsPerson.setSqId(bean.getTzid().toString());
                             officeSmsPerson.setTzid(bean.getTzid());

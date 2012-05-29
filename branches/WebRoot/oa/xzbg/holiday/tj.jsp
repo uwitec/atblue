@@ -40,7 +40,7 @@
                 map.put("userId", selUserId);
                 CUser u = userDAO.queryForBean(map);
                 StringBuffer message = new StringBuffer("");
-                message.append("尊敬的"+u.getRealName()+"您好：")
+                message.append("尊敬的"+u.getRealName()+"您好，OA系统：")
                         .append(StringUtil.cutString(officeHoliday.getXm()+"请假时间"+StringUtil.parseNull(officeHoliday.getKssj(),"")+
                                 "到"+StringUtil.parseNull(officeHoliday.getJssj(),""),25))
                         .append("，等待您的审批！");

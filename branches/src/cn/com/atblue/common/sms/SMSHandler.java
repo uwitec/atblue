@@ -59,7 +59,7 @@ public class SMSHandler {
     }
 
     public boolean isStarted() {
-        if (smsService.getServiceStatus() == Service.ServiceStatus.STARTED) {
+        if (smsService != null && smsService.getServiceStatus() == Service.ServiceStatus.STARTED) {
             for (AGateway gateway : smsService.getGateways()) {
                 if (gateway.getStatus() == AGateway.GatewayStatuses.STARTED) {
                     return true;
