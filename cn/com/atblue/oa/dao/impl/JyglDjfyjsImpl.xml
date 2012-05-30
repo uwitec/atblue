@@ -306,6 +306,9 @@
             <isNotEmpty prepend=" and " property="sqr">
                 <![CDATA[sqr=#sqr#]]>
             </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jyclr">
+                <![CDATA[jyclr=#jyclr#]]>
+            </isNotEmpty>
         </dynamic>
     </sql>
     <insert id="addJyglDjfyjs" parameterClass="JyglDjfyjs">
@@ -330,7 +333,8 @@
 				qtycbhcl,ybcl,aklcl,fzq,bzgy,
 				jhclr,scclr,jsclr,nybclr,jdkclr,
 				aqkclr,gnkclr,zhdclr,wxdclr,gyclr,
-				sqsj,sqzt,process_id,connect_id,sqr
+				sqsj,sqzt,process_id,connect_id,sqr,
+				jyclr
             ) values(
                 #pkid#,#dh#,#jh#,#jsdw#,#fdq#,
 				#jb#,#js#,#jj#,#dezq#,#njmd#,
@@ -351,7 +355,8 @@
 				#qtycbhcl#,#ybcl#,#aklcl#,#fzq#,#bzgy#,
 				#jhclr#,#scclr#,#jsclr#,#nybclr#,#jdkclr#,
 				#aqkclr#,#gnkclr#,#zhdclr#,#wxdclr#,#gyclr#,
-				#sqsj#,#sqzt#,#processId#,#connectId#,#sqr#
+				#sqsj#,#sqzt#,#processId#,#connectId#,#sqr#,
+				#jyclr#
             )
         ]]>
     </insert>
@@ -392,7 +397,7 @@
 				aqkclr=#aqkclr#,gnkclr=#gnkclr#,zhdclr=#zhdclr#,
 				wxdclr=#wxdclr#,gyclr=#gyclr#,sqsj=#sqsj#,
 				sqzt=#sqzt#,process_id=#processId#,connect_id=#connectId#,
-				sqr=#sqr#
+				sqr=#sqr#,jyclr=#jyclr#
             where PKID=#pkid#
         ]]>
     </update>
@@ -406,13 +411,13 @@
 
     <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="JyglDjfyjs">
         <![CDATA[
-            select pkid as pkid,dh as dh,jh as jh,jsdw as jsdw,fdq as fdq,jb as jb,js as js,jj as jj,dezq as dezq,njmd as njmd,jtxs as jtxs,qx as qx,dezjy as dezjy,jsms as jsms,jxj as jxj,yyfwx as yyfwx,bz as bz,bqsj as bqsj,sjjjzq as sjjjzq,sjzjy as sjzjy,azfy as azfy,kzsj as kzsj,sjzjzq as sjzjzq,sjjs as sjjs,ztf as ztf,wjsj as wjsj,sfzt as sfzt,bqf as bqf,rcyf as rcyf,bzsc as bzsc,zqlw as zqlw,tg as tg,zqzlf as zqzlf,sfcl as sfcl,gjlw as gjlw,tgfj as tgfj,gxfzq as gxfzq,sflw as sflw,gjlw2 as gjlw2,tjj as tjj,jkgktx as jkgktx,jkpj as jkpj,gjsn as gjsn,kly as kly,jsfwf as jsfwf,wwlw as wwlw,zlkk as zlkk,fzckz as fzckz,cy as cy,cyyf as cyyf,cylwf as cylwf,wdf as wdf,yy as yy,qtnyb as qtnyb,sjjsjs as sjjsjs,qxjc as qxjc,txfzq as txfzq,yxfgjc as yxfgjc,sgxs as sgxs,njfwf as njfwf,dxfwf as dxfwf,sbxlf as sbxlf,sjlwf as sjlwf,qtjdk as qtjdk,aqssf as aqssf,sjlwfaqk as sjlwfaqk,qtaqk as qtaqk,gnf as gnf,fzckzgnk as fzckzgnk,jdyl as jdyl,qtzhd as qtzhd,jdylwxd as jdylwxd,qtwxd as qtwxd,zt as zt,jy as jy,clgjfy as clgjfy,njcl as njcl,fstycbhcl as fstycbhcl,megnjcl as megnjcl,ajjcycbhcl as ajjcycbhcl,qtycbhcl as qtycbhcl,ybcl as ybcl,aklcl as aklcl,fzq as fzq,bzgy as bzgy,jhclr as jhclr,scclr as scclr,jsclr as jsclr,nybclr as nybclr,jdkclr as jdkclr,aqkclr as aqkclr,gnkclr as gnkclr,zhdclr as zhdclr,wxdclr as wxdclr,gyclr as gyclr,sqsj as sqsj,sqzt as sqzt,process_id as processId,connect_id as connectId,sqr as sqr from jygl_djfyjs where PKID=#pkid#
+            select pkid as pkid,dh as dh,jh as jh,jsdw as jsdw,fdq as fdq,jb as jb,js as js,jj as jj,dezq as dezq,njmd as njmd,jtxs as jtxs,qx as qx,dezjy as dezjy,jsms as jsms,jxj as jxj,yyfwx as yyfwx,bz as bz,bqsj as bqsj,sjjjzq as sjjjzq,sjzjy as sjzjy,azfy as azfy,kzsj as kzsj,sjzjzq as sjzjzq,sjjs as sjjs,ztf as ztf,wjsj as wjsj,sfzt as sfzt,bqf as bqf,rcyf as rcyf,bzsc as bzsc,zqlw as zqlw,tg as tg,zqzlf as zqzlf,sfcl as sfcl,gjlw as gjlw,tgfj as tgfj,gxfzq as gxfzq,sflw as sflw,gjlw2 as gjlw2,tjj as tjj,jkgktx as jkgktx,jkpj as jkpj,gjsn as gjsn,kly as kly,jsfwf as jsfwf,wwlw as wwlw,zlkk as zlkk,fzckz as fzckz,cy as cy,cyyf as cyyf,cylwf as cylwf,wdf as wdf,yy as yy,qtnyb as qtnyb,sjjsjs as sjjsjs,qxjc as qxjc,txfzq as txfzq,yxfgjc as yxfgjc,sgxs as sgxs,njfwf as njfwf,dxfwf as dxfwf,sbxlf as sbxlf,sjlwf as sjlwf,qtjdk as qtjdk,aqssf as aqssf,sjlwfaqk as sjlwfaqk,qtaqk as qtaqk,gnf as gnf,fzckzgnk as fzckzgnk,jdyl as jdyl,qtzhd as qtzhd,jdylwxd as jdylwxd,qtwxd as qtwxd,zt as zt,jy as jy,clgjfy as clgjfy,njcl as njcl,fstycbhcl as fstycbhcl,megnjcl as megnjcl,ajjcycbhcl as ajjcycbhcl,qtycbhcl as qtycbhcl,ybcl as ybcl,aklcl as aklcl,fzq as fzq,bzgy as bzgy,jhclr as jhclr,scclr as scclr,jsclr as jsclr,nybclr as nybclr,jdkclr as jdkclr,aqkclr as aqkclr,gnkclr as gnkclr,zhdclr as zhdclr,wxdclr as wxdclr,gyclr as gyclr,sqsj as sqsj,sqzt as sqzt,process_id as processId,connect_id as connectId,sqr as sqr,jyclr as jyclr from jygl_djfyjs where PKID=#pkid#
         ]]>
     </select>
 
     <select id="queryForList" parameterClass="java.util.HashMap" resultClass="JyglDjfyjs">
         <![CDATA[
-            select pkid as pkid,dh as dh,jh as jh,jsdw as jsdw,fdq as fdq,jb as jb,js as js,jj as jj,dezq as dezq,njmd as njmd,jtxs as jtxs,qx as qx,dezjy as dezjy,jsms as jsms,jxj as jxj,yyfwx as yyfwx,bz as bz,bqsj as bqsj,sjjjzq as sjjjzq,sjzjy as sjzjy,azfy as azfy,kzsj as kzsj,sjzjzq as sjzjzq,sjjs as sjjs,ztf as ztf,wjsj as wjsj,sfzt as sfzt,bqf as bqf,rcyf as rcyf,bzsc as bzsc,zqlw as zqlw,tg as tg,zqzlf as zqzlf,sfcl as sfcl,gjlw as gjlw,tgfj as tgfj,gxfzq as gxfzq,sflw as sflw,gjlw2 as gjlw2,tjj as tjj,jkgktx as jkgktx,jkpj as jkpj,gjsn as gjsn,kly as kly,jsfwf as jsfwf,wwlw as wwlw,zlkk as zlkk,fzckz as fzckz,cy as cy,cyyf as cyyf,cylwf as cylwf,wdf as wdf,yy as yy,qtnyb as qtnyb,sjjsjs as sjjsjs,qxjc as qxjc,txfzq as txfzq,yxfgjc as yxfgjc,sgxs as sgxs,njfwf as njfwf,dxfwf as dxfwf,sbxlf as sbxlf,sjlwf as sjlwf,qtjdk as qtjdk,aqssf as aqssf,sjlwfaqk as sjlwfaqk,qtaqk as qtaqk,gnf as gnf,fzckzgnk as fzckzgnk,jdyl as jdyl,qtzhd as qtzhd,jdylwxd as jdylwxd,qtwxd as qtwxd,zt as zt,jy as jy,clgjfy as clgjfy,njcl as njcl,fstycbhcl as fstycbhcl,megnjcl as megnjcl,ajjcycbhcl as ajjcycbhcl,qtycbhcl as qtycbhcl,ybcl as ybcl,aklcl as aklcl,fzq as fzq,bzgy as bzgy,jhclr as jhclr,scclr as scclr,jsclr as jsclr,nybclr as nybclr,jdkclr as jdkclr,aqkclr as aqkclr,gnkclr as gnkclr,zhdclr as zhdclr,wxdclr as wxdclr,gyclr as gyclr,sqsj as sqsj,sqzt as sqzt,process_id as processId,connect_id as connectId,sqr as sqr from jygl_djfyjs
+            select pkid as pkid,dh as dh,jh as jh,jsdw as jsdw,fdq as fdq,jb as jb,js as js,jj as jj,dezq as dezq,njmd as njmd,jtxs as jtxs,qx as qx,dezjy as dezjy,jsms as jsms,jxj as jxj,yyfwx as yyfwx,bz as bz,bqsj as bqsj,sjjjzq as sjjjzq,sjzjy as sjzjy,azfy as azfy,kzsj as kzsj,sjzjzq as sjzjzq,sjjs as sjjs,ztf as ztf,wjsj as wjsj,sfzt as sfzt,bqf as bqf,rcyf as rcyf,bzsc as bzsc,zqlw as zqlw,tg as tg,zqzlf as zqzlf,sfcl as sfcl,gjlw as gjlw,tgfj as tgfj,gxfzq as gxfzq,sflw as sflw,gjlw2 as gjlw2,tjj as tjj,jkgktx as jkgktx,jkpj as jkpj,gjsn as gjsn,kly as kly,jsfwf as jsfwf,wwlw as wwlw,zlkk as zlkk,fzckz as fzckz,cy as cy,cyyf as cyyf,cylwf as cylwf,wdf as wdf,yy as yy,qtnyb as qtnyb,sjjsjs as sjjsjs,qxjc as qxjc,txfzq as txfzq,yxfgjc as yxfgjc,sgxs as sgxs,njfwf as njfwf,dxfwf as dxfwf,sbxlf as sbxlf,sjlwf as sjlwf,qtjdk as qtjdk,aqssf as aqssf,sjlwfaqk as sjlwfaqk,qtaqk as qtaqk,gnf as gnf,fzckzgnk as fzckzgnk,jdyl as jdyl,qtzhd as qtzhd,jdylwxd as jdylwxd,qtwxd as qtwxd,zt as zt,jy as jy,clgjfy as clgjfy,njcl as njcl,fstycbhcl as fstycbhcl,megnjcl as megnjcl,ajjcycbhcl as ajjcycbhcl,qtycbhcl as qtycbhcl,ybcl as ybcl,aklcl as aklcl,fzq as fzq,bzgy as bzgy,jhclr as jhclr,scclr as scclr,jsclr as jsclr,nybclr as nybclr,jdkclr as jdkclr,aqkclr as aqkclr,gnkclr as gnkclr,zhdclr as zhdclr,wxdclr as wxdclr,gyclr as gyclr,sqsj as sqsj,sqzt as sqzt,process_id as processId,connect_id as connectId,sqr as sqr,jyclr as jyclr from jygl_djfyjs
         ]]>
         <!--
         <dynamic prepend="where">
