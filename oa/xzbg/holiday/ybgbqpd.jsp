@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="java.net.InetAddress" %>
 <%@ include file="../../../import.jsp"%>
  <%
     CUser cUser = (CUser)session.getAttribute("cUser");
@@ -293,7 +294,7 @@ function addSealB(){
     SetStore();
     var shr = 'shr<%=StringUtil.parseNull(formItemId,"")%>';
 	document.all.DWebSignSeal.SetPosition(-140,-35,shr);
-    var sealURL='<%="http://127.0.0.1:"+request.getLocalPort()+request.getContextPath()+"/servlet/sealDown?userId="+cUser.getUserId()%>';
+    var sealURL='<%="http://"+InetAddress.getLocalHost().getHostAddress().toString()+":"+request.getLocalPort()+request.getContextPath()+"/servlet/sealDown?userId="+cUser.getUserId()%>';
     document.all.DWebSignSeal.AddSeal(sealURL, "");
 }
 	</script>
@@ -470,7 +471,7 @@ div.Section1
 
 <body lang=ZH-CN style='tab-interval:21.0pt;text-justify-trim:punctuation' onload="LoadSignData()">
 <object id="factory" viewastext style="display:none"
-        classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814" codebase="<%="http://127.0.0.1:"+request.getLocalPort()+request.getContextPath()%>/soft/smsx.cab#Version=7,0,0,8">
+        classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814" codebase="<%="http://"+InetAddress.getLocalHost().getHostAddress().toString()+":"+request.getLocalPort()+request.getContextPath()%>/soft/smsx.cab#Version=7,0,0,8">
 </object>
 <script defer>
     //打印组件通用设置

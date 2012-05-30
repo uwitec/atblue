@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@page import="java.sql.Date"%>
+<%@ page import="java.net.InetAddress" %>
 <%@ include file="../../import.jsp" %>
 <%
     CUser cUser = (CUser)session.getAttribute("cUser");
@@ -102,7 +103,7 @@ function addSealB(){
     SetStore();
     var shr = 'shr<%=StringUtil.parseNull(formItemId,"")%>';
 	document.all.DWebSignSeal.SetPosition(-10,-20,shr);
-    var sealURL='<%="http://127.0.0.1:"+request.getLocalPort()+request.getContextPath()+"/servlet/sealDown?userId="+cUser.getUserId()%>';
+    var sealURL='<%="http://"+InetAddress.getLocalHost().getHostAddress().toString()+":"+request.getLocalPort()+request.getContextPath()+"/servlet/sealDown?userId="+cUser.getUserId()%>';
     document.all.DWebSignSeal.AddSeal(sealURL, "");
 }
 function sumbitForm() {
