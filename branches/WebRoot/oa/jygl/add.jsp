@@ -251,9 +251,39 @@
                                     <td nowrap="nowrap" width="120" class="head_left">
                                         选择审批人<span style="color: red">&nbsp;*</span>
                                     </td>
+                                    <%
+                                        List sclist = dao.getUsersByOrgId("33c165b3-b6a7-4144-b8a2-aaebe111845e");
+                                        sclist = sclist == null?new ArrayList():sclist;
+                                        List jslist = dao.getUsersByOrgId("8a49607b-d8da-4f7f-a594-9946f6d7d7c9");
+                                        jslist = jslist == null?new ArrayList():jslist;
+                                    %>
                                     <td class="head_right" style="text-align: left">
-                                        生产办<select><option>请选择</option></select>&nbsp;&nbsp;
-                                        技术<select><option>请选择</option></select>&nbsp;&nbsp;
+                                        生产办
+                                        <select name="SCCLR">
+                                            <option value="">==请选择==</option>
+                                             <%
+                                                for(int i=0;i<sclist.size();i++){
+                                                    Map m = (Map)sclist.get(i);
+                                                    String userid = StringUtil.parseNull(m.get("USER_ID"),"");
+                                                    String realname = StringUtil.parseNull(m.get("REAL_NAME"),"");
+                                             %>
+                                            <option value="<%=userid%>"><%=realname%></option>
+                                            <%}%>
+                                        </select>
+                                        &nbsp;&nbsp;
+                                        技术
+                                        <select name="JSCLR">
+                                            <option value="">==请选择==</option>
+                                            <%
+                                                for(int i=0;i<jslist.size();i++){
+                                                    Map m = (Map)jslist.get(i);
+                                                    String userid = StringUtil.parseNull(m.get("USER_ID"),"");
+                                                    String realname = StringUtil.parseNull(m.get("REAL_NAME"),"");
+                                            %>
+                                            <option value="<%=userid%>"><%=realname%></option>
+                                            <%}%>
+                                        </select>
+                                        &nbsp;&nbsp;
                                         经营<select><option>请选择</option></select>&nbsp;&nbsp;
                                         能源办<select><option>请选择</option></select>&nbsp;&nbsp;
                                         机动办<select><option>请选择</option></select>&nbsp;&nbsp;

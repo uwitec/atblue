@@ -318,4 +318,15 @@
     <select id="getRoleCount"  resultClass="int" parameterClass="java.util.HashMap">
       select count(*) from C_USERROLE t where  t.user_id=#userid# and role_id=#roleid#
     </select>
+
+    <select id="getUsersByOrgId" resultClass="java.util.HashMap" parameterClass="String">
+        select t.user_id,t.user_name,t.real_name from C_USER t where t.ORGNA_ID = #value#
+        order by t.REAL_NAME
+    </select>
+
+    <select id="getUsersByRoleId" resultClass="java.util.HashMap" parameterClass="String">
+        select u.user_id,u.user_name,u.real_name from C_USERROLE t,c_user u
+        where t.USER_ID = u.USER_ID and t.role_id = #value#
+        order by u.REAL_NAME
+    </select>
 </sqlMap>

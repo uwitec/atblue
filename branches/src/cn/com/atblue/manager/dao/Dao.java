@@ -51,4 +51,9 @@ public interface Dao {
     public List getResList(String userId, String parentId);
 
     public boolean isRole(String userId, String roleId);
+
+
+    public  List getUsersByOrgId(String orgId);
+
+    public  List getUsersByRoleId(String roleId);
 }

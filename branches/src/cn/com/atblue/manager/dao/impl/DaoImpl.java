@@ -123,4 +123,11 @@ public class DaoImpl extends SqlMapClientDaoSupport implements Dao{
         }
         return false;
     }
+    public  List getUsersByOrgId(String orgId){
+        return this.getSqlMapClientTemplate().queryForList("manager.dao.getUsersByOrgId",orgId);
+    }
+
+    public  List getUsersByRoleId(String roleId){
+        return this.getSqlMapClientTemplate().queryForList("manager.dao.getUsersByRoleId",roleId);
+    }
 }
