@@ -20,7 +20,7 @@ public class SMSSendJob implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         BeanFactory beanFactory = (BeanFactory) jobExecutionContext.getJobDetail().getJobDataMap().get("beanFactory");
-        SMSHandler smsHandler = (SMSHandler) beanFactory.getBean("smsHandler");
+        SMSHandler smsHandler =SMSHandler.getInstance();
         ODao oDao = (ODao) beanFactory.getBean("oDao");
         OfficeSmsPersonDAO officeSmsPersonDAO = (OfficeSmsPersonDAO) beanFactory.getBean("officeSmsPersonDAO");
 
