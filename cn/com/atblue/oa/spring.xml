@@ -35,4 +35,5 @@
     <bean id="officeSmsNoticeDAO" class="cn.com.atblue.oa.dao.impl.OfficeSmsNoticeImpl" autowire="byName"/>
     <bean id="officeSmsPersonDAO" class="cn.com.atblue.oa.dao.impl.OfficeSmsPersonImpl" autowire="byName"/>
 
+    <bean id="jyglDjfyjsDAO" class="cn.com.atblue.oa.dao.impl.JyglDjfyjsImpl" autowire="byName"/>
 </beans>

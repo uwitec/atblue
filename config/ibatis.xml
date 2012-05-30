@@ -85,4 +85,6 @@
 
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeSmsNoticeImpl.xml" />
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeSmsPersonImpl.xml" />
+
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/JyglDjfyjsImpl.xml" />
 </sqlMapConfig>
