@@ -13,14 +13,13 @@ import org.springframework.beans.factory.BeanFactory;
 import java.util.Date;
 import java.util.List;
 
-public class SMSReadJob implements Job {
+public class SMSJob implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         BeanFactory beanFactory = (BeanFactory) jobExecutionContext.getJobDetail().getJobDataMap().get("beanFactory");
-        SMSHandler smsHandler = (SMSHandler) beanFactory.getBean("smsHandler");
+        SMSHandler smsHandler =SMSHandler.getInstance();
         ODao oDao = (ODao) beanFactory.getBean("oDao");
         if(!smsHandler.isStarted()){
-            smsHandler.init();
             smsHandler.start();
         }
         List<InboundMessage> list = smsHandler.readUnReadSMS();

@@ -1,5 +1,8 @@
 package cn.com.atblue.common.sms;
 
+import cn.com.atblue.common.SpringFactory;
+import cn.com.atblue.common.SysConfig;
+import cn.com.atblue.common.util.StringUtil;
 import org.smslib.*;
 import org.smslib.AGateway.Protocols;
 import org.smslib.Message.MessageEncodings;
@@ -14,7 +17,26 @@ public class SMSHandler {
     private String manufacturer;
     private Service smsService;
 
+    private  static SMSHandler instance;
+
     public SMSHandler() {
+        SysConfig sysConfig =(SysConfig) SpringFactory.instance.getBean("propertyConfig");
+        String manufacturer = sysConfig.getProperty("manufacturer");
+        String comPort = sysConfig.getProperty("comPort");
+        String baudRate = sysConfig.getProperty("baudRate");
+        this.comPort = comPort;
+        if(!StringUtil.isBlankOrEmpty(baudRate)){
+            this.baudRate = Integer.valueOf(baudRate).intValue();
+        }
+        this.manufacturer = manufacturer;
+        init();
+    }
+
+    public static SMSHandler getInstance(){
+        if(instance == null){
+            instance = new SMSHandler();
+        }
+        return instance;
     }
 
     public void init() {
