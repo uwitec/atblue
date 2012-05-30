@@ -18,9 +18,9 @@
         paramMap.put("yymc",yymc);
 	pageBean.setPageSize(pageSize);
 
-	int totalRow =oDao.getPagedYysqCount(paramMap);
+	int totalRow =oDao.getPagedDjfyjsCount(paramMap);
 	pageBean.setTotalRows(totalRow);
-	List list = oDao.getPagedYysqList(pageBean,paramMap);
+	List list = oDao.getPagedDjfyjsList(pageBean,paramMap);
 %>
 <html>
 	<head>
@@ -133,11 +133,11 @@
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
 							<td  nowrap="nowrap" style="text-align: left">
-								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("YYMC"),"") %></a>
+								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("DH"),"") %></a>
 							</td>
 							
 							<td  style="text-align: left">
-								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
+								<%=StringUtil.parseNull(map.get("JH"),"")%>&nbsp;
 							</td>
 							<td  align="center">
 								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
