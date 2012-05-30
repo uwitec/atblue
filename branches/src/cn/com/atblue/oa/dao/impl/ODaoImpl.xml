@@ -345,6 +345,30 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
         </dynamic>
         order by t.sqsj desc
     </select>
+    <select id="getPagedDjfyjsList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+            select * from JYGL_DJFYJS t where 1=1
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="sqr">
+                <![CDATA[t.sqr=#sqr#]]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedDjfyjsCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) cn  from JYGL_DJFYJS t where 1=1
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="sqr">
+                <![CDATA[t.sqr=#sqr#]]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+    </select>
     <select id="getWaitPagedYysqList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
         <include refid="basic.pageStart"/>
         <![CDATA[

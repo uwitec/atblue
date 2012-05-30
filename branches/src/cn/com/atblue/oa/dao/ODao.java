@@ -43,6 +43,10 @@ public interface ODao {
 
     public int getPagedYysqCount(Map paramMap);
 
+    public List getPagedDjfyjsList(PageBean pb, Map paramMap);
+
+    public int getPagedDjfyjsCount(Map paramMap);
+
     public List getWaitPagedYysqList(PageBean pb, Map paramMap);
 
     public int getWaitPagedYysqCount(Map paramMap);

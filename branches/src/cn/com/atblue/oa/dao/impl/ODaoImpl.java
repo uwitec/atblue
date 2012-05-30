@@ -159,6 +159,18 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
                 "oa.dao.getPagedYysqCount", paramMap);
     }
 
+    public List getPagedDjfyjsList(PageBean pb, Map paramMap){
+        paramMap.put("currentPage", pb.getCurrentPage());
+        paramMap.put("pageSize", pb.getPageSize());
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getPagedDjfyjsList", paramMap);
+    }
+
+    public int getPagedDjfyjsCount(Map paramMap){
+        return (Integer) getSqlMapClientTemplate().queryForObject(
+                "oa.dao.getPagedDjfyjsCount", paramMap);
+    }
+
     public List getWaitPagedYysqList(PageBean pb, Map paramMap){
         paramMap.put("currentPage", pb.getCurrentPage());
         paramMap.put("pageSize", pb.getPageSize());
