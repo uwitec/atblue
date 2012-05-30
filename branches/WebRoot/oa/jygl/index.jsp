@@ -13,10 +13,9 @@
     String yymc = StringUtil.parseNull(request.getParameter("yymc"),"");
     String flag = StringUtil.parseNull(request.getParameter("flag"),"");
     Map paramMap = new HashMap();
+    paramMap.put("sqr",cUser.getUserId());
     if(!StringUtil.isBlankOrEmpty(yymc))
         paramMap.put("yymc",yymc);
-    if(!"1".equals(flag))
-	    paramMap.put("orgnaId", _user.getOrgnaId()==null?"":_user.getOrgnaId());
 	pageBean.setPageSize(pageSize);
 
 	int totalRow =oDao.getPagedYysqCount(paramMap);
@@ -36,7 +35,7 @@
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 		<script type="text/javascript">
 		function onDelete(url){
-			if(window.confirm("确认删除该用印申请?")){
+			if(window.confirm("确认删除该单井费用申请?")){
 				window.location=url;
 			}
 			return;

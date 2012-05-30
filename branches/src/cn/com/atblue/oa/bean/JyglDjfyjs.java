@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
 * 
-* @newtime 2012-05-30 10:23:35
+* @newtime 2012-05-30 16:04:49
 */
 public class JyglDjfyjs {
 
@@ -107,6 +107,7 @@ private Date sqsj;
 private String sqzt;
 private String processId;
 private String connectId;
+private String sqr;
 
 public String getPkid(){
 return this.pkid;
@@ -898,5 +899,13 @@ return this.connectId;
 
 public void setConnectId(String connectId){
 this.connectId=connectId;
+}
+
+public String getSqr(){
+return this.sqr;
+}
+
+public void setSqr(String sqr){
+this.sqr=sqr;
 }
 }
