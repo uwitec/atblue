@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="jygl.jygldjfyjs">
+    <typeAlias alias="JyglDjfyjs" type="cn.com.atblue.oa.bean.JyglDjfyjs"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="pkid">
+                <![CDATA[pkid=#pkid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dh">
+                <![CDATA[dh=#dh#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jh">
+                <![CDATA[jh=#jh#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jsdw">
+                <![CDATA[jsdw=#jsdw#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fdq">
+                <![CDATA[fdq=#fdq#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jb">
+                <![CDATA[jb=#jb#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="js">
+                <![CDATA[js=#js#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jj">
+                <![CDATA[jj=#jj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dezq">
+                <![CDATA[dezq=#dezq#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="njmd">
+                <![CDATA[njmd=#njmd#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jtxs">
+                <![CDATA[jtxs=#jtxs#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="qx">
+                <![CDATA[qx=#qx#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dezjy">
+                <![CDATA[dezjy=#dezjy#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jsms">
+                <![CDATA[jsms=#jsms#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jxj">
+                <![CDATA[jxj=#jxj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="yyfwx">
+                <![CDATA[yyfwx=#yyfwx#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="bz">
+                <![CDATA[bz=#bz#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="bqsj">
+                <![CDATA[bqsj=#bqsj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sjjjzq">
+                <![CDATA[sjjjzq=#sjjjzq#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sjzjy">
+                <![CDATA[sjzjy=#sjzjy#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="azfy">
+                <![CDATA[azfy=#azfy#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="kzsj">
+                <![CDATA[kzsj=#kzsj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sjzjzq">
+                <![CDATA[sjzjzq=#sjzjzq#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sjjs">
+                <![CDATA[sjjs=#sjjs#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="ztf">
+                <![CDATA[ztf=#ztf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="wjsj">
+                <![CDATA[wjsj=#wjsj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sfzt">
+                <![CDATA[sfzt=#sfzt#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="bqf">
+                <![CDATA[bqf=#bqf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="rcyf">
+                <![CDATA[rcyf=#rcyf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="bzsc">
+                <![CDATA[bzsc=#bzsc#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="zqlw">
+                <![CDATA[zqlw=#zqlw#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="tg">
+                <![CDATA[tg=#tg#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="zqzlf">
+                <![CDATA[zqzlf=#zqzlf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sfcl">
+                <![CDATA[sfcl=#sfcl#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="gjlw">
+                <![CDATA[gjlw=#gjlw#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="tgfj">
+                <![CDATA[tgfj=#tgfj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="gxfzq">
+                <![CDATA[gxfzq=#gxfzq#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sflw">
+                <![CDATA[sflw=#sflw#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="gjlw2">
+                <![CDATA[gjlw2=#gjlw2#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="tjj">
+                <![CDATA[tjj=#tjj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jkgktx">
+                <![CDATA[jkgktx=#jkgktx#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jkpj">
+                <![CDATA[jkpj=#jkpj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="gjsn">
+                <![CDATA[gjsn=#gjsn#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="kly">
+                <![CDATA[kly=#kly#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jsfwf">
+                <![CDATA[jsfwf=#jsfwf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="wwlw">
+                <![CDATA[wwlw=#wwlw#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="zlkk">
+                <![CDATA[zlkk=#zlkk#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fzckz">
+                <![CDATA[fzckz=#fzckz#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="cy">
+                <![CDATA[cy=#cy#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="cyyf">
+                <![CDATA[cyyf=#cyyf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="cylwf">
+                <![CDATA[cylwf=#cylwf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="wdf">
+                <![CDATA[wdf=#wdf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="yy">
+                <![CDATA[yy=#yy#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="qtnyb">
+                <![CDATA[qtnyb=#qtnyb#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sjjsjs">
+                <![CDATA[sjjsjs=#sjjsjs#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="qxjc">
+                <![CDATA[qxjc=#qxjc#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="txfzq">
+                <![CDATA[txfzq=#txfzq#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="yxfgjc">
+                <![CDATA[yxfgjc=#yxfgjc#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sgxs">
+                <![CDATA[sgxs=#sgxs#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="njfwf">
+                <![CDATA[njfwf=#njfwf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dxfwf">
+                <![CDATA[dxfwf=#dxfwf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sbxlf">
+                <![CDATA[sbxlf=#sbxlf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sjlwf">
+                <![CDATA[sjlwf=#sjlwf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="qtjdk">
+                <![CDATA[qtjdk=#qtjdk#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="aqssf">
+                <![CDATA[aqssf=#aqssf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sjlwfaqk">
+                <![CDATA[sjlwfaqk=#sjlwfaqk#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="qtaqk">
+                <![CDATA[qtaqk=#qtaqk#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="gnf">
+                <![CDATA[gnf=#gnf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fzckzgnk">
+                <![CDATA[fzckzgnk=#fzckzgnk#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jdyl">
+                <![CDATA[jdyl=#jdyl#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="qtzhd">
+                <![CDATA[qtzhd=#qtzhd#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jdylwxd">
+                <![CDATA[jdylwxd=#jdylwxd#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="qtwxd">
+                <![CDATA[qtwxd=#qtwxd#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="zt">
+                <![CDATA[zt=#zt#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jy">
+                <![CDATA[jy=#jy#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="clgjfy">
+                <![CDATA[clgjfy=#clgjfy#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="njcl">
+                <![CDATA[njcl=#njcl#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fstycbhcl">
+                <![CDATA[fstycbhcl=#fstycbhcl#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="megnjcl">
+                <![CDATA[megnjcl=#megnjcl#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="ajjcycbhcl">
+                <![CDATA[ajjcycbhcl=#ajjcycbhcl#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="qtycbhcl">
+                <![CDATA[qtycbhcl=#qtycbhcl#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="ybcl">
+                <![CDATA[ybcl=#ybcl#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="aklcl">
+                <![CDATA[aklcl=#aklcl#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fzq">
+                <![CDATA[fzq=#fzq#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="bzgy">
+                <![CDATA[bzgy=#bzgy#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jhclr">
+                <![CDATA[jhclr=#jhclr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="scclr">
+                <![CDATA[scclr=#scclr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jsclr">
+                <![CDATA[jsclr=#jsclr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="nybclr">
+                <![CDATA[nybclr=#nybclr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jdkclr">
+                <![CDATA[jdkclr=#jdkclr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="aqkclr">
+                <![CDATA[aqkclr=#aqkclr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="gnkclr">
+                <![CDATA[gnkclr=#gnkclr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="zhdclr">
+                <![CDATA[zhdclr=#zhdclr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="wxdclr">
+                <![CDATA[wxdclr=#wxdclr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="gyclr">
+                <![CDATA[gyclr=#gyclr#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addJyglDjfyjs" parameterClass="JyglDjfyjs">
+        <![CDATA[
+            insert into jygl_djfyjs(
+                pkid,dh,jh,jsdw,fdq,
+				jb,js,jj,dezq,njmd,
+				jtxs,qx,dezjy,jsms,jxj,
+				yyfwx,bz,bqsj,sjjjzq,sjzjy,
+				azfy,kzsj,sjzjzq,sjjs,ztf,
+				wjsj,sfzt,bqf,rcyf,bzsc,
+				zqlw,tg,zqzlf,sfcl,gjlw,
+				tgfj,gxfzq,sflw,gjlw2,tjj,
+				jkgktx,jkpj,gjsn,kly,jsfwf,
+				wwlw,zlkk,fzckz,cy,cyyf,
+				cylwf,wdf,yy,qtnyb,sjjsjs,
+				qxjc,txfzq,yxfgjc,sgxs,njfwf,
+				dxfwf,sbxlf,sjlwf,qtjdk,aqssf,
+				sjlwfaqk,qtaqk,gnf,fzckzgnk,jdyl,
+				qtzhd,jdylwxd,qtwxd,zt,jy,
+				clgjfy,njcl,fstycbhcl,megnjcl,ajjcycbhcl,
+				qtycbhcl,ybcl,aklcl,fzq,bzgy,
+				jhclr,scclr,jsclr,nybclr,jdkclr,
+				aqkclr,gnkclr,zhdclr,wxdclr,gyclr
+            ) values(
+                #pkid#,#dh#,#jh#,#jsdw#,#fdq#,
+				#jb#,#js#,#jj#,#dezq#,#njmd#,
+				#jtxs#,#qx#,#dezjy#,#jsms#,#jxj#,
+				#yyfwx#,#bz#,#bqsj#,#sjjjzq#,#sjzjy#,
+				#azfy#,#kzsj#,#sjzjzq#,#sjjs#,#ztf#,
+				#wjsj#,#sfzt#,#bqf#,#rcyf#,#bzsc#,
+				#zqlw#,#tg#,#zqzlf#,#sfcl#,#gjlw#,
+				#tgfj#,#gxfzq#,#sflw#,#gjlw2#,#tjj#,
+				#jkgktx#,#jkpj#,#gjsn#,#kly#,#jsfwf#,
+				#wwlw#,#zlkk#,#fzckz#,#cy#,#cyyf#,
+				#cylwf#,#wdf#,#yy#,#qtnyb#,#sjjsjs#,
+				#qxjc#,#txfzq#,#yxfgjc#,#sgxs#,#njfwf#,
+				#dxfwf#,#sbxlf#,#sjlwf#,#qtjdk#,#aqssf#,
+				#sjlwfaqk#,#qtaqk#,#gnf#,#fzckzgnk#,#jdyl#,
+				#qtzhd#,#jdylwxd#,#qtwxd#,#zt#,#jy#,
+				#clgjfy#,#njcl#,#fstycbhcl#,#megnjcl#,#ajjcycbhcl#,
+				#qtycbhcl#,#ybcl#,#aklcl#,#fzq#,#bzgy#,
+				#jhclr#,#scclr#,#jsclr#,#nybclr#,#jdkclr#,
+				#aqkclr#,#gnkclr#,#zhdclr#,#wxdclr#,#gyclr#
+            )
+        ]]>
+    </insert>
+
+    <update id="modJyglDjfyjs" parameterClass="JyglDjfyjs">
+        <![CDATA[
+            update jygl_djfyjs
+            set pkid=#pkid#,dh=#dh#,jh=#jh#,
+				jsdw=#jsdw#,fdq=#fdq#,jb=#jb#,
+				js=#js#,jj=#jj#,dezq=#dezq#,
+				njmd=#njmd#,jtxs=#jtxs#,qx=#qx#,
+				dezjy=#dezjy#,jsms=#jsms#,jxj=#jxj#,
+				yyfwx=#yyfwx#,bz=#bz#,bqsj=#bqsj#,
+				sjjjzq=#sjjjzq#,sjzjy=#sjzjy#,azfy=#azfy#,
+				kzsj=#kzsj#,sjzjzq=#sjzjzq#,sjjs=#sjjs#,
+				ztf=#ztf#,wjsj=#wjsj#,sfzt=#sfzt#,
+				bqf=#bqf#,rcyf=#rcyf#,bzsc=#bzsc#,
+				zqlw=#zqlw#,tg=#tg#,zqzlf=#zqzlf#,
+				sfcl=#sfcl#,gjlw=#gjlw#,tgfj=#tgfj#,
+				gxfzq=#gxfzq#,sflw=#sflw#,gjlw2=#gjlw2#,
+				tjj=#tjj#,jkgktx=#jkgktx#,jkpj=#jkpj#,
+				gjsn=#gjsn#,kly=#kly#,jsfwf=#jsfwf#,
+				wwlw=#wwlw#,zlkk=#zlkk#,fzckz=#fzckz#,
+				cy=#cy#,cyyf=#cyyf#,cylwf=#cylwf#,
+				wdf=#wdf#,yy=#yy#,qtnyb=#qtnyb#,
+				sjjsjs=#sjjsjs#,qxjc=#qxjc#,txfzq=#txfzq#,
+				yxfgjc=#yxfgjc#,sgxs=#sgxs#,njfwf=#njfwf#,
+				dxfwf=#dxfwf#,sbxlf=#sbxlf#,sjlwf=#sjlwf#,
+				qtjdk=#qtjdk#,aqssf=#aqssf#,sjlwfaqk=#sjlwfaqk#,
+				qtaqk=#qtaqk#,gnf=#gnf#,fzckzgnk=#fzckzgnk#,
+				jdyl=#jdyl#,qtzhd=#qtzhd#,jdylwxd=#jdylwxd#,
+				qtwxd=#qtwxd#,zt=#zt#,jy=#jy#,
+				clgjfy=#clgjfy#,njcl=#njcl#,fstycbhcl=#fstycbhcl#,
+				megnjcl=#megnjcl#,ajjcycbhcl=#ajjcycbhcl#,qtycbhcl=#qtycbhcl#,
+				ybcl=#ybcl#,aklcl=#aklcl#,fzq=#fzq#,
+				bzgy=#bzgy#,jhclr=#jhclr#,scclr=#scclr#,
+				jsclr=#jsclr#,nybclr=#nybclr#,jdkclr=#jdkclr#,
+				aqkclr=#aqkclr#,gnkclr=#gnkclr#,zhdclr=#zhdclr#,
+				wxdclr=#wxdclr#,gyclr=#gyclr#
+            where PKID=#pkid#
+        ]]>
+    </update>
+
+    <delete id="delJyglDjfyjs" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from jygl_djfyjs
+            where PKID=#pkid#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="JyglDjfyjs">
+        <![CDATA[
+            select pkid as pkid,dh as dh,jh as jh,jsdw as jsdw,fdq as fdq,jb as jb,js as js,jj as jj,dezq as dezq,njmd as njmd,jtxs as jtxs,qx as qx,dezjy as dezjy,jsms as jsms,jxj as jxj,yyfwx as yyfwx,bz as bz,bqsj as bqsj,sjjjzq as sjjjzq,sjzjy as sjzjy,azfy as azfy,kzsj as kzsj,sjzjzq as sjzjzq,sjjs as sjjs,ztf as ztf,wjsj as wjsj,sfzt as sfzt,bqf as bqf,rcyf as rcyf,bzsc as bzsc,zqlw as zqlw,tg as tg,zqzlf as zqzlf,sfcl as sfcl,gjlw as gjlw,tgfj as tgfj,gxfzq as gxfzq,sflw as sflw,gjlw2 as gjlw2,tjj as tjj,jkgktx as jkgktx,jkpj as jkpj,gjsn as gjsn,kly as kly,jsfwf as jsfwf,wwlw as wwlw,zlkk as zlkk,fzckz as fzckz,cy as cy,cyyf as cyyf,cylwf as cylwf,wdf as wdf,yy as yy,qtnyb as qtnyb,sjjsjs as sjjsjs,qxjc as qxjc,txfzq as txfzq,yxfgjc as yxfgjc,sgxs as sgxs,njfwf as njfwf,dxfwf as dxfwf,sbxlf as sbxlf,sjlwf as sjlwf,qtjdk as qtjdk,aqssf as aqssf,sjlwfaqk as sjlwfaqk,qtaqk as qtaqk,gnf as gnf,fzckzgnk as fzckzgnk,jdyl as jdyl,qtzhd as qtzhd,jdylwxd as jdylwxd,qtwxd as qtwxd,zt as zt,jy as jy,clgjfy as clgjfy,njcl as njcl,fstycbhcl as fstycbhcl,megnjcl as megnjcl,ajjcycbhcl as ajjcycbhcl,qtycbhcl as qtycbhcl,ybcl as ybcl,aklcl as aklcl,fzq as fzq,bzgy as bzgy,jhclr as jhclr,scclr as scclr,jsclr as jsclr,nybclr as nybclr,jdkclr as jdkclr,aqkclr as aqkclr,gnkclr as gnkclr,zhdclr as zhdclr,wxdclr as wxdclr,gyclr as gyclr from jygl_djfyjs where PKID=#pkid#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="JyglDjfyjs">
+        <![CDATA[
+            select pkid as pkid,dh as dh,jh as jh,jsdw as jsdw,fdq as fdq,jb as jb,js as js,jj as jj,dezq as dezq,njmd as njmd,jtxs as jtxs,qx as qx,dezjy as dezjy,jsms as jsms,jxj as jxj,yyfwx as yyfwx,bz as bz,bqsj as bqsj,sjjjzq as sjjjzq,sjzjy as sjzjy,azfy as azfy,kzsj as kzsj,sjzjzq as sjzjzq,sjjs as sjjs,ztf as ztf,wjsj as wjsj,sfzt as sfzt,bqf as bqf,rcyf as rcyf,bzsc as bzsc,zqlw as zqlw,tg as tg,zqzlf as zqzlf,sfcl as sfcl,gjlw as gjlw,tgfj as tgfj,gxfzq as gxfzq,sflw as sflw,gjlw2 as gjlw2,tjj as tjj,jkgktx as jkgktx,jkpj as jkpj,gjsn as gjsn,kly as kly,jsfwf as jsfwf,wwlw as wwlw,zlkk as zlkk,fzckz as fzckz,cy as cy,cyyf as cyyf,cylwf as cylwf,wdf as wdf,yy as yy,qtnyb as qtnyb,sjjsjs as sjjsjs,qxjc as qxjc,txfzq as txfzq,yxfgjc as yxfgjc,sgxs as sgxs,njfwf as njfwf,dxfwf as dxfwf,sbxlf as sbxlf,sjlwf as sjlwf,qtjdk as qtjdk,aqssf as aqssf,sjlwfaqk as sjlwfaqk,qtaqk as qtaqk,gnf as gnf,fzckzgnk as fzckzgnk,jdyl as jdyl,qtzhd as qtzhd,jdylwxd as jdylwxd,qtwxd as qtwxd,zt as zt,jy as jy,clgjfy as clgjfy,njcl as njcl,fstycbhcl as fstycbhcl,megnjcl as megnjcl,ajjcycbhcl as ajjcycbhcl,qtycbhcl as qtycbhcl,ybcl as ybcl,aklcl as aklcl,fzq as fzq,bzgy as bzgy,jhclr as jhclr,scclr as scclr,jsclr as jsclr,nybclr as nybclr,jdkclr as jdkclr,aqkclr as aqkclr,gnkclr as gnkclr,zhdclr as zhdclr,wxdclr as wxdclr,gyclr as gyclr from jygl_djfyjs
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from jygl_djfyjs
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

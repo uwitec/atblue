@@ -57,9 +57,9 @@
     <!-- ´úÂëÉú³É»úÅäÖÃ -->
     <bean id="codeManager" class="cn.com.atblue.common.codegen.CodeManager">
         <property name="outputDir" value="D:\\"/>
-        <property name="prefixOfPackage" value="cn.com.victorysoft.jszy.log"/>
-        <property name="prefixOfSqlmap" value="log"/>
-        <property name="prefixOfTable" value="U_LOG"/>
+        <property name="prefixOfPackage" value="cn.com.atblue.oa"/>
+        <property name="prefixOfSqlmap" value="jygl"/>
+        <property name="prefixOfTable" value="JYGL_DJFYJS"/>
         <property name="dataSource" ref="internalDataSource"/>
     </bean>
     <!-- ÓÊ¼þÅäÖÃ -->
@@ -86,18 +86,18 @@
             <value>${port}</value>
         </property>
     </bean>
-    <!-- ¶ÌÐÅÅäÖÃ -->
-    <bean id="smsHandler" class="cn.com.atblue.common.sms.SMSHandler" init-method="init">
-        <property name="comPort">
-            <value>${comPort}</value>
-        </property>
-        <property name="baudRate">
-            <value>${baudRate}</value>
-        </property>
-        <property name="manufacturer">
-            <value>${manufacturer}</value>
-        </property>
-    </bean>
+    <!--&lt;!&ndash; ¶ÌÐÅÅäÖÃ &ndash;&gt;-->
+    <!--<bean id="smsHandler" class="cn.com.atblue.common.sms.SMSHandler" init-method="init">-->
+        <!--<property name="comPort">-->
+            <!--<value>${comPort}</value>-->
+        <!--</property>-->
+        <!--<property name="baudRate">-->
+            <!--<value>${baudRate}</value>-->
+        <!--</property>-->
+        <!--<property name="manufacturer">-->
+            <!--<value>${manufacturer}</value>-->
+        <!--</property>-->
+    <!--</bean>-->
 
     <bean id="loginAction" class="cn.com.atblue.common.action.LoginAction" scope="prototype" autowire="byName"/>
 </beans>
