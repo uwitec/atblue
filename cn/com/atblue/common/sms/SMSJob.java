@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * 定时短信任务
  */
-public class SMSSendJob implements Job {
+public class SMSJob implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         BeanFactory beanFactory = (BeanFactory) jobExecutionContext.getJobDetail().getJobDataMap().get("beanFactory");
