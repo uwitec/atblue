@@ -1,9 +1,10 @@
 package cn.com.atblue.oa.bean;
 
+import java.util.Date;
 
 /**
 * 
-* @newtime 2012-05-30 10:04:57
+* @newtime 2012-05-30 10:23:35
 */
 public class JyglDjfyjs {
 
@@ -102,6 +103,10 @@ private String gnkclr;
 private String zhdclr;
 private String wxdclr;
 private String gyclr;
+private Date sqsj;
+private String sqzt;
+private String processId;
+private String connectId;
 
 public String getPkid(){
 return this.pkid;
@@ -861,5 +866,37 @@ return this.gyclr;
 
 public void setGyclr(String gyclr){
 this.gyclr=gyclr;
+}
+
+public Date getSqsj(){
+return this.sqsj;
+}
+
+public void setSqsj(Date sqsj){
+this.sqsj=sqsj;
+}
+
+public String getSqzt(){
+return this.sqzt;
+}
+
+public void setSqzt(String sqzt){
+this.sqzt=sqzt;
+}
+
+public String getProcessId(){
+return this.processId;
+}
+
+public void setProcessId(String processId){
+this.processId=processId;
+}
+
+public String getConnectId(){
+return this.connectId;
+}
+
+public void setConnectId(String connectId){
+this.connectId=connectId;
 }
 }
