@@ -88,13 +88,29 @@
         <url-pattern>/servlet/sealDown</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ReportServer</servlet-name>
-        <servlet-class>com.fr.web.ReportServlet</servlet-class>
-        <load-on-startup>0</load-on-startup>
+        <servlet-name>XiorkFlowWorkSpace</servlet-name>
+        <servlet-class>
+            cn.com.atblue.common.servlet.XiorkFlowWorkSpace
+        </servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ReportServer</servlet-name>
-        <url-pattern>/ReportServer</url-pattern>
+        <servlet-name>XiorkFlowWorkSpace</servlet-name>
+        <url-pattern>
+            /js/XiorkFlow/XiorkFlowWorkSpace.js
+        </url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>reportServlet</servlet-name>
+        <servlet-class>cn.com.atblue.common.filter.ReportServletOra</servlet-class>
+        <init-param>
+            <param-name>configFile</param-name>
+            <param-value>/WEB-INF/reportConfig.xml</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>reportServlet</servlet-name>
+        <url-pattern>/reportServlet</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
