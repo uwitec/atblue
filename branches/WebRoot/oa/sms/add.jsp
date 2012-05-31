@@ -357,19 +357,20 @@
                                 </button>
                             </td>
                         </tr>
-                        <%--<tr>--%>
-                            <%--<td nowrap="nowrap" width="120" class="head_left">--%>
-                                <%--发送部门--%>
-                            <%--</td>--%>
-                            <%--<td class="head_right" align="left">--%>
+                        <tr style="display:none">
+                            <td nowrap="nowrap" width="120" class="head_left">
+                                发送部门
+                            </td>
+                            <td class="head_right" align="left">
+                                <input type="hidden" name="bean.fsbm" value="a395bbe5-726d-45a4-9e9f-003bfe730319"/>
                                 <%--<select name="bean.fsbm">--%>
                                     <%--<option value="">请选择</option>--%>
                                     <%--<s:iterator value="orgTreeList">--%>
                                         <%--<option value="${ORGNA_ID}" >${ORGNA_NAME}</option>--%>
                                     <%--</s:iterator>--%>
                                 <%--</select>--%>
-                            <%--</td>--%>
-                        <%--</tr>--%>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </td>
