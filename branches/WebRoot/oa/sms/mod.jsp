@@ -354,19 +354,19 @@
                                 </button>
                             </td>
                         </tr>
-                        <tr>
-                            <td nowrap="nowrap" width="120" class="head_left">
-                                发送部门
-                            </td>
-                            <td class="head_right" align="left">
-                                <select name="bean.fsbm">
-                                    <option value="">请选择</option>
-                                    <s:iterator value="orgTreeList">
-                                        <option value="${ORGNA_ID}" <s:if test="bean.fsbm == ORGNA_ID">selected</s:if>>${ORGNA_NAME}</option>
-                                    </s:iterator>
-                                </select>
-                            </td>
-                        </tr>
+                        <%--<tr>--%>
+                        <%--<td nowrap="nowrap" width="120" class="head_left">--%>
+                            <%--发送部门--%>
+                        <%--</td>--%>
+                        <%--<td class="head_right" align="left">--%>
+                            <%--<select name="bean.fsbm">--%>
+                                <%--<option value="">请选择</option>--%>
+                                <%--<s:iterator value="orgTreeList">--%>
+                                    <%--<option value="${ORGNA_ID}" <s:if test="bean.fsbm == ORGNA_ID">selected</s:if>>${ORGNA_NAME}</option>--%>
+                                <%--</s:iterator>--%>
+                            <%--</select>--%>
+                        <%--</td>--%>
+                    <%--</tr>--%>
                     </table>
                 </div>
             </td>
