@@ -97,7 +97,7 @@ public class SmsAction extends BaseAction {
                             officeSmsPerson.setUserName(u.getRealName());
                             officeSmsPerson.setSfqs("0");
                             officeSmsPerson.setSffs("0");
-                            officeSmsPerson.setDxnr("尊敬的" + u.getRealName() + "您好，OA系统："+bean.getDxnr()+"，请返回数字"+bean.getTzid()+"进行签收！");
+                            officeSmsPerson.setDxnr("尊敬的" + u.getRealName() + ",您好！"+bean.getDxnr()+"请回复数字"+bean.getTzid()+"表示收到！");
                             officeSmsPerson.setTzlb("G");
                             officeSmsPerson.setSqId(bean.getTzid().toString());
                             officeSmsPerson.setTzid(bean.getTzid());
@@ -137,7 +137,7 @@ public class SmsAction extends BaseAction {
                             officeSmsPerson.setUserName(u.getRealName());
                             officeSmsPerson.setSfqs("0");
                             officeSmsPerson.setSffs("0"); //是否发送
-                            officeSmsPerson.setDxnr("尊敬的" + u.getRealName() + "您好，OA系统："+bean.getDxnr()+"，请返回数字"+bean.getTzid()+"进行签收！");
+                            officeSmsPerson.setDxnr("尊敬的" + u.getRealName() + ",您好！"+bean.getDxnr()+"请回复数字"+bean.getTzid()+"表示收到！");
                             officeSmsPerson.setTzlb("G");
                             officeSmsPerson.setSqId(bean.getTzid().toString());
                             officeSmsPerson.setTzid(bean.getTzid());
