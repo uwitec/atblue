@@ -15,6 +15,7 @@
     Map map = new HashMap();
     map.put("documentid",documentid);
     OfficeWjsp wjsp = officeWjspDAO.queryForBean(map);
+    List hasFileList = officeFileDAO.getByFk(documentid);
     wjsp = wjsp == null?new OfficeWjsp():wjsp;
      List userList  = dao.getAllUser();
     String connectId = StringUtil.parseNull(wjsp.getConnectId(),"");
@@ -401,6 +402,23 @@
                                         <%=StringUtil.parseNull(wjsp.getBz(),"")%>&nbsp;
 									</td>
 								</tr>
+                                <%if(hasFileList!=null && hasFileList.size()>0){ %>
+                                <tr>
+                                    <td nowrap="nowrap" width="120" class="head_left">
+                                        已有附件
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%
+                                            for(int i=0; i<hasFileList.size(); i++){
+                                                OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
+                                        <a href="<%=request.getContextPath()%>/officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
+                                            <img src="<%=request.getContextPath()%>/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='<%=request.getContextPath()%>/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <a href="javascript:delFile('<%=beanFile.getPkid() %>','<%=documentid %>')">[删除]</a></br>
+                                        <%}%>
+                                    </td>
+                                </tr>
+                                <%} %>
 							</table>
 						</div>
 					</td>
