@@ -51,9 +51,12 @@
                 map.put("userId", selUserId);
                 CUser u = userDAO.queryForBean(map);
                 StringBuffer message = new StringBuffer("");
-                message.append("尊敬的"+u.getRealName()+"您好，OA系统：")
-                        .append(StringUtil.cutString(officeWjsp.getBt(),25))
-                        .append("，等待您的审批！");
+                CUser u1 = dao.findUserById(officeWjsp.getSqr());
+                String smsNotice = StringUtil.parseNull(sysConfig.getProperty("smsNotice"),"");
+                smsNotice = StringUtil.replace(smsNotice,"$0",u.getRealName());
+                smsNotice = StringUtil.replace(smsNotice,"$4",u1.getRealName());
+                smsNotice = StringUtil.replace(smsNotice,"$5",officeWjsp.getBt());
+                message.append(smsNotice);
                 OfficeSmsPerson officeSmsPerson = new OfficeSmsPerson();
                 officeSmsPerson.setPkId(StringUtil.getUUID());
 //                officeSmsPerson.setTzid(bean.getTzid());

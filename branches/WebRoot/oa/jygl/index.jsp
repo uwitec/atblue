@@ -127,13 +127,13 @@
 							for (int i = 0; i < list.size(); i++) {
 								Map map = (Map) list.get(i);
 						%>
-						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("SQID"),"") %>')">
+						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("PKID"),"") %>')">
 							<td  style="text-align: center;border-left: 1px solid #01a0fe;" >
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
 							<td  nowrap="nowrap" style="text-align: left">
-								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("DH"),"") %></a>
+								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("PKID"),"") %>"><%=StringUtil.parseNull(map.get("DH"),"") %></a>
 							</td>
 							
 							<td  style="text-align: left">
@@ -163,11 +163,11 @@
                                      String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                 %>
                                      发送给&nbsp;<%=nextRole%>
-                                <select name="<%=StringUtil.parseNull(map.get("SQID"),"")%>nextUserId">
+                                <select name="<%=StringUtil.parseNull(map.get("PKID"),"")%>nextUserId">
                                 <%=StringUtil.parseNull(options,"")%>
                                 </select>审批<input type="button" class="button"  style="width:40px" value="提交" onclick="tj('<%=StringUtil.parseNull(map.get("SQID"),"")%>','<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');"/>
                                 <% }else if("已保存".equals(StringUtil.parseNull(map.get("SQZT"),""))){%>
-                                <a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">[编辑]</a>&nbsp;
+                                <a href="./edit.jsp?pkid=<%=StringUtil.parseNull(map.get("PKID"),"")%>">[编辑]</a>&nbsp;
                                 <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
                                 <%   }else{ %>
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
