@@ -245,7 +245,7 @@
 									<td class="head_right" style="text-align: left">
 										<input type="text" name="bt" class="inputStyle"
 											style="width: 200px;" maxlength="20">
-											<input type="checkbox" name="checked" id="checked" value="1" checked>短信提醒
+											<input type="checkbox" name="checked" id="checked" value="1">短信提醒
 									</td>
 								</tr>
 								<tr>

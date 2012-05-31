@@ -97,7 +97,11 @@ public class SmsAction extends BaseAction {
                             officeSmsPerson.setUserName(u.getRealName());
                             officeSmsPerson.setSfqs("0");
                             officeSmsPerson.setSffs("0");
-                            officeSmsPerson.setDxnr("尊敬的" + u.getRealName() + "您好，OA系统："+bean.getDxnr()+"，请返回数字"+bean.getTzid()+"进行签收！");
+                            String smsNotice = StringUtil.parseNull(sysConfig.getProperty("smsNotice"),"");
+                            smsNotice = StringUtil.replace(smsNotice,"$0",u.getRealName());
+                            smsNotice = StringUtil.replace(smsNotice,"$2",bean.getDxnr());
+                            smsNotice = StringUtil.replace(smsNotice,"$3",bean.getTzid().toString());
+                            officeSmsPerson.setDxnr(smsNotice);
                             officeSmsPerson.setTzlb("G");
                             officeSmsPerson.setSqId(bean.getTzid().toString());
                             officeSmsPerson.setTzid(bean.getTzid());

@@ -12,43 +12,46 @@
     COrgnization cOrgnization = orgnizationDAO.queryForBean(paramMap);
     cOrgnization = cOrgnization == null?new COrgnization():cOrgnization;
 	if (request.getMethod().equals("POST")) {
-        String YYMC = StringUtil.parseNull(request.getParameter("YYMC"),"");
-        String YYBM = StringUtil.parseNull(request.getParameter("YYBM"),"");
-        String YYSY = StringUtil.parseNull(request.getParameter("YYSY"),"");
-        String BZ = StringUtil.parseNull(request.getParameter("BZ"),"");
-        String YYKSSJ = StringUtil.parseNull(request.getParameter("YYKSSJ"),"");
-        String YYJSSJ = StringUtil.parseNull(request.getParameter("YYJSSJ"),"");
-        String FS = StringUtil.parseNull(request.getParameter("FS"),"");
+        String DH = StringUtil.parseNull(request.getParameter("DH"),"");
+        String JH = StringUtil.parseNull(request.getParameter("JH"),"");
+        String SCCLR = StringUtil.parseNull(request.getParameter("SCCLR"),"");
+        String JHCLR = StringUtil.parseNull(request.getParameter("JHCLR"),"");
+        String JSCLR = StringUtil.parseNull(request.getParameter("JSCLR"),"");
+        String NYBCLR = StringUtil.parseNull(request.getParameter("NYBCLR"),"");
+        String JDKCLR = StringUtil.parseNull(request.getParameter("JDKCLR"),"");
+        String AQKCLR = StringUtil.parseNull(request.getParameter("AQKCLR"),"");
+        String GNKCLR = StringUtil.parseNull(request.getParameter("GNKCLR"),"");
+        String ZHDCLR = StringUtil.parseNull(request.getParameter("ZHDCLR"),"");
+        String WXDCLR = StringUtil.parseNull(request.getParameter("WXDCLR"),"");
+        String GYCLR = StringUtil.parseNull(request.getParameter("GYCLR"),"");
+        String JYCLR = StringUtil.parseNull(request.getParameter("JYCLR"),"");
         String flag = StringUtil.parseNull(request.getParameter("flag"),"");
-        String dxtx = StringUtil.parseNull(request.getParameter("dxtx"),"");
-        OfficeYysq officeYysq = new  OfficeYysq();
-        officeYysq.setSqid(StringUtil.getUUID());
-        officeYysq.setBz(BZ);
-        officeYysq.setYymc(YYMC);
-        officeYysq.setYybm(YYBM);
-        officeYysq.setYysy(YYSY);
-        officeYysq.setSqzt("已保存");
-        officeYysq.setDxtx(dxtx);
-        officeYysq.setSqsj(new java.util.Date());
-        if(!StringUtil.isBlankOrEmpty(FS)){
-            officeYysq.setFs(Double.valueOf(FS));
-        }
-        if(cUser != null)
-            officeYysq.setYyr(cUser.getUserId());
-        if(!StringUtil.isBlankOrEmpty(YYKSSJ)){
-            officeYysq.setYykssj(DateUtil.parse(YYKSSJ));
-        }
-        if(!StringUtil.isBlankOrEmpty(YYJSSJ)){
-            officeYysq.setYyjssj(DateUtil.parse(YYJSSJ));
-        }
+        JyglDjfyjs bean = new  JyglDjfyjs();
+        bean.setPkid(StringUtil.getUUID());
+        bean.setDh(DH);
+        bean.setJh(JH);
+        bean.setSqr(cUser.getUserId());
+        bean.setSqsj(new java.util.Date());
+        bean.setScclr(SCCLR);
+        bean.setJhclr(JHCLR);
+        bean.setJsclr(JSCLR);
+        bean.setJyclr(JYCLR);
+        bean.setNybclr(NYBCLR);
+        bean.setJdkclr(JDKCLR);
+        bean.setAqkclr(AQKCLR);
+        bean.setGnkclr(GNKCLR);
+        bean.setZhdclr(ZHDCLR);
+        bean.setWxdclr(WXDCLR);
+        bean.setGyclr(GYCLR);
+        bean.setJyclr(JYCLR);
         if("startup".equals(flag)){
-            officeYysq.setSqzt("已申请");
+            bean.setSqzt("已申请");
             //创建流程代码在这里
-            Status status = workflow.startWorkflow("06cb3db8-36c2-4f1e-bbf3-db5809037f74",cUser.getUserId());
-            officeYysq.setProcessId(status.getProcessId());
-            officeYysq.setConnectId(status.getConnectId());
+            Status status = workflow.startWorkflow("d1325ed3-9ffd-4c21-91ae-399db5a02a08",cUser.getUserId());
+            bean.setProcessId(status.getProcessId());
+            bean.setConnectId(status.getConnectId());
         }
-        officeYysqDAO.addOfficeYysq(officeYysq);
+        jyglDjfyjsDAO.addJyglDjfyjs(bean);
 %>
 		<script>
 		    window.location='index.jsp';
@@ -63,11 +66,6 @@
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
-		<script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
 
 		
 		<script type="text/javascript">
@@ -75,117 +73,35 @@
                 document.getElementById("scrollDiv").style.width = document.body.clientWidth - 18;
                 document.getElementById("scrollDiv").style.height = document.body.clientHeight - 50;
             }
-
-			function CheckDateTime(object){
-			   var rr=/^(?:19|20)[0-9][0-9]-(?:(?:0[1-9])|(?:1[0-2]))-(?:(?:[0-2][1-9])|(?:[1-3][0-1])) (?:(?:[0-2][0-3])|(?:[0-1][0-9])):[0-5][0-9]$/
-			   if(!rr.test(object.value)){
-			    	object.focus();
-			 		return false;
-			   }
-			   return true;
-			}
-			function CheckDate(object){
-			   var rr=/^(?:19|20)[0-9][0-9]-(?:(?:0[1-9])|(?:1[0-2]))-(?:(?:[0-2][1-9])|(?:[1-3][0-1]))$/
-			   if(!rr.test(object.value)){
-			    	object.focus();
-			 		return false;
-			  }
-			  return true;
-			}		
-
 			function checkForm(){
-				if(document.form1.YYMC.value==""){
-					document.form1.YYMC.focus();
-					alert("请输入用印名称");
-					return;
-				}
-				if(document.getElementById("checked").checked){
-                	 document.all.dxtx.value="1";
-                }else if(!document.getElementById("checked").checked){
-                	document.all.dxtx.value="0";
+                if(document.form1.DH.value==""){
+                    document.form1.DH.focus();
+                    alert("请输入队号");
+                    return;
+                }
+                if(document.form1.JH.value==""){
+                    document.form1.JH.focus();
+                    alert("请输入井号");
+                    return;
                 }
 				document.form1.submit();
 			}
             function startup(){
-                if(document.form1.YYMC.value==""){
-                    document.form1.YYMC.focus();
-                    alert("请输入用印名称");
+                if(document.form1.DH.value==""){
+                    document.form1.DH.focus();
+                    alert("请输入队号");
                     return;
                 }
-                 if(document.getElementById("checked").checked){
-                	 document.all.dxtx.value="1";
-                }else if(!document.getElementById("checked").checked){
-                	document.all.dxtx.value="0";
+                if(document.form1.JH.value==""){
+                    document.form1.JH.focus();
+                    alert("请输入井号");
+                    return;
                 }
                 document.all.flag.value="startup";
                 document.form1.submit();
             }
 		</script>
-		<script type="text/javascript" defer="defer">
-		CKEDITOR.replace('YYSY',
-		{
-			skin : 'office2003'
-		});
 
-		//隐藏不需要的工具按钮
-		CKEDITOR.editorConfig = function( config )
-		{
-		    config.toolbar = 'MyToolbar';
-		    config.toolbar_MyToolbar =
-		    [
-		        ['NewPage','Preview'],
-		        ['Cut','Copy','Paste','PasteText','PasteFromWord','-'],
-		        ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
-		        ['Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
-		        '/',
-		        ['Styles','Format'],
-		        ['Bold','Italic','Strike'],
-		        ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
-		        ['Link','Unlink','Anchor'],
-		        ['Maximize','-','About']
-		    ];
-		};
-		
-		function publicSelect(obj){
-			if(obj.value=="1"){
-				var bDisabled = document.form1.mustSign;
-				for(var i=0; i<bDisabled.length; i++){
-					document.form1.mustSign[i].disabled = false;
-				}
-				document.form1.mustSign[0].checked = true;
-				document.form1.mustSign[1].checked = false;
-				document.form1.mb3.disabled = false;
-			}else{
-				var bDisabled = document.form1.mustSign;
-				for(var i=0; i<bDisabled.length; i++){
-					document.form1.mustSign[i].disabled = true;
-				}
-				document.form1.mustSign[1].checked = true;
-				document.form1.mustSign[0].checked = false;
-				document.form1.mb3.disabled = true;
-			}
-		}
-		
-		function checkAll(obj){
-			for(var i=0; i<document.form1.ubox.length; i++){
-				document.form1.ubox[i].checked=obj.checked;
-			}
-		}
-		
-		function checkUnAll(){
-			for(var i=0; i<document.form1.ubox.length; i++){
-				document.form1.ubox[i].checked=!document.form1.ubox[i].checked;
-			}
-		}
-		
-		function mustSignSelect(obj){
-			if(obj.value=="1"){
-				document.form1.mb3.disabled = false;
-			}else{
-				document.form1.mb3.disabled = true;
-			}
-		}
-		</script>
 	</head>
 	<body onload="_resizeNoPage();">
 		<form action="add.jsp" name="form1" method="post">
@@ -236,7 +152,7 @@
 										队号<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
-                                        <input type="text" name="YYMC" value=""  style="width:500px"/>
+                                        <input type="text" name="DH" value=""  style="width:500px"/>
 									</td>
 								</tr>
                                 <tr>
@@ -244,7 +160,7 @@
                                         井号<span style="color: red">&nbsp;*</span>
                                     </td>
                                     <td class="head_right" style="text-align: left">
-                                        <input type="text" name="YYMC" value=""  style="width:500px"/>
+                                        <input type="text" name="JH" value=""  style="width:500px"/>
                                     </td>
                                 </tr>
                                 <tr>

@@ -40,10 +40,16 @@
                 map.put("userId", selUserId);
                 CUser u = userDAO.queryForBean(map);
                 StringBuffer message = new StringBuffer("");
-                message.append("尊敬的"+u.getRealName()+"您好，OA系统：")
-                        .append(StringUtil.cutString(officeHoliday.getXm()+"请假时间"+StringUtil.parseNull(officeHoliday.getKssj(),"")+
-                                "到"+StringUtil.parseNull(officeHoliday.getJssj(),""),25))
-                        .append("，等待您的审批！");
+//                message.append("尊敬的"+u.getRealName()+"您好，OA系统：")
+//                        .append(StringUtil.cutString(officeHoliday.getXm()+"请假时间"+StringUtil.parseNull(officeHoliday.getKssj(),"")+
+//                                "到"+StringUtil.parseNull(officeHoliday.getJssj(),""),25))
+//                        .append("，等待您的审批！");
+//                CUser u1 = dao.findUserById(officeHysq.getSqr());
+                String smsNotice = StringUtil.parseNull(sysConfig.getProperty("smsNotice"),"");
+                smsNotice = StringUtil.replace(smsNotice,"$0",u.getRealName());
+                smsNotice = StringUtil.replace(smsNotice,"$4",officeHoliday.getXm());
+                smsNotice = StringUtil.replace(smsNotice,"$5","请假");
+                message.append(smsNotice);
                 OfficeSmsPerson officeSmsPerson = new OfficeSmsPerson();
                 officeSmsPerson.setPkId(StringUtil.getUUID());
 //                officeSmsPerson.setTzid(bean.getTzid());
