@@ -103,7 +103,7 @@ function addSealB(){
     SetStore();
     var shr = 'shr<%=StringUtil.parseNull(formItemId,"")%>';
 	document.all.DWebSignSeal.SetPosition(-10,-20,shr);
-    var sealURL='<%="http://"+InetAddress.getLocalHost().getHostAddress().toString()+":"+request.getLocalPort()+request.getContextPath()+"/servlet/sealDown?userId="+cUser.getUserId()%>';
+    var sealURL='<%="http://10.66.117.234:"+request.getLocalPort()+request.getContextPath()+"/servlet/sealDown?userId="+cUser.getUserId()%>';
     document.all.DWebSignSeal.AddSeal(sealURL, "");
 }
 function sumbitForm() {

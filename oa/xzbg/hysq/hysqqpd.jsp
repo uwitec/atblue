@@ -76,7 +76,7 @@ function addSealB(){
     SetStore();
     var shr = 'shr<%=StringUtil.parseNull(formItemId,"")%>';
 	document.all.DWebSignSeal.SetPosition(-140,-35,shr);
-    var sealURL='<%="http://"+InetAddress.getLocalHost().getHostAddress().toString()+":"+request.getLocalPort()+request.getContextPath()+"/servlet/sealDown?userId="+cUser.getUserId()%>';
+    var sealURL='<%="http://10.66.117.234:"+request.getLocalPort()+request.getContextPath()+"/servlet/sealDown?userId="+cUser.getUserId()%>';
     document.all.DWebSignSeal.AddSeal(sealURL, "");
 }
 	</script>
@@ -220,7 +220,7 @@ rt
 <body onload="LoadSignData()" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <!-- MeadCo ScriptX -->
 <object id="factory" viewastext style="display:none"
-        classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814" codebase="<%="http://"+InetAddress.getLocalHost().getHostAddress().toString()+":"+request.getLocalPort()+request.getContextPath()%>/soft/smsx.cab#Version=7,0,0,8">
+        classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814" codebase="<%="http://10.66.117.234:"+request.getLocalPort()+request.getContextPath()%>/soft/smsx.cab#Version=7,0,0,8">
 </object>
 <script defer>
     //打印组件通用设置
