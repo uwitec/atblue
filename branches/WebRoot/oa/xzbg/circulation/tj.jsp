@@ -38,11 +38,7 @@
 //                        .append(StringUtil.cutString(document.getWjmc(),25))
 //                        .append("，等待您的审批！");
                 CUser u1 = dao.findUserById(document.getLrr());
-                String smsNotice = StringUtil.parseNull(sysConfig.getProperty("smsNotice"),"");
-                smsNotice = StringUtil.replace(smsNotice,"$0",u.getRealName());
-                smsNotice = StringUtil.replace(smsNotice,"$4",u1.getRealName());
-                smsNotice = StringUtil.replace(smsNotice,"$5",document.getWjmc());
-                message.append(smsNotice);
+                message.append("尊敬的"+u.getRealName()+"，您好！OA系统提醒您，"+u1.getRealName()+"的"+document.getWjmc()+"申请等待您的审批");
                 OfficeSmsPerson officeSmsPerson = new OfficeSmsPerson();
                 officeSmsPerson.setPkId(StringUtil.getUUID());
 //                officeSmsPerson.setTzid(bean.getTzid());

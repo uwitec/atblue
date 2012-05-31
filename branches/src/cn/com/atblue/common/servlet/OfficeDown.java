@@ -3,8 +3,6 @@ package cn.com.atblue.common.servlet;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 
 import javax.activation.FileTypeMap;
 import javax.servlet.ServletException;
