@@ -53,7 +53,7 @@
                     "<%=request.getContextPath()%>/oa/qpd/view.jsp?formId="+formId+"&curRole=<%=curRole%>&connectId="+connectId+"&processId="+processId+"&holidayid="+holidayid,
                     "mywindow",
                     "height="
-                            + 500
+                            + 800
                             + ",width="
                             + 700
                             + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="

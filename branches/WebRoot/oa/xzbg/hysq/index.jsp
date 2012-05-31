@@ -56,7 +56,7 @@
                     "<%=request.getContextPath()%>/oa/qpd/view.jsp?formId=3af46d80-8665-4587-9ca0-a94ece84750d&connectId="+connectId+"&processId="+processId+"&sqid="+sqid,
                     "mywindow",
                     "height="
-                            + 500
+                            + 800
                             + ",width="
                             + 700
                             + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="

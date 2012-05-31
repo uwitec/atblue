@@ -104,7 +104,7 @@
                         "<%=request.getContextPath()%>/oa/qpd/qpd.jsp?formId=<%=formId%>&connectId=<%=connectId%>&processId=<%=processId%>&sqid=<%=sqid%>",
                         "mywindow",
                         "height="
-                                + 500
+                                + 800
                                 + ",width="
                                 + 700
                                 + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="
