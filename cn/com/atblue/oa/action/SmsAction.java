@@ -2,7 +2,6 @@ package cn.com.atblue.oa.action;
 
 import cn.com.atblue.common.SpringFactory;
 import cn.com.atblue.common.SysConfig;
-import cn.com.atblue.common.sms.SMSHandler;
 import cn.com.atblue.common.util.StringUtil;
 import cn.com.atblue.manager.bean.CUser;
 import cn.com.atblue.manager.dao.CUserDAO;
@@ -13,7 +12,6 @@ import cn.com.atblue.oa.dao.ODao;
 import cn.com.atblue.oa.dao.OfficeSmsNoticeDAO;
 import cn.com.atblue.oa.dao.OfficeSmsPersonDAO;
 import com.opensymphony.xwork2.ActionContext;
-import org.smslib.OutboundMessage;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -97,11 +95,7 @@ public class SmsAction extends BaseAction {
                             officeSmsPerson.setUserName(u.getRealName());
                             officeSmsPerson.setSfqs("0");
                             officeSmsPerson.setSffs("0");
-                            String smsNotice = StringUtil.parseNull(sysConfig.getProperty("smsNotice"),"");
-                            smsNotice = StringUtil.replace(smsNotice,"$0",u.getRealName());
-                            smsNotice = StringUtil.replace(smsNotice,"$2",bean.getDxnr());
-                            smsNotice = StringUtil.replace(smsNotice,"$3",bean.getTzid().toString());
-                            officeSmsPerson.setDxnr(smsNotice);
+                            officeSmsPerson.setDxnr("尊敬的"+u.getRealName()+"，您好！"+bean.getDxnr()+"请回复数字"+bean.getTzid().toString()+"表示收到。");
                             officeSmsPerson.setTzlb("G");
                             officeSmsPerson.setSqId(bean.getTzid().toString());
                             officeSmsPerson.setTzid(bean.getTzid());
@@ -141,11 +135,7 @@ public class SmsAction extends BaseAction {
                             officeSmsPerson.setUserName(u.getRealName());
                             officeSmsPerson.setSfqs("0");
                             officeSmsPerson.setSffs("0"); //是否发送
-                            String smsNotice = StringUtil.parseNull(sysConfig.getProperty("smsNotice"),"");
-                            smsNotice = StringUtil.replace(smsNotice,"$0",u.getRealName());
-                            smsNotice = StringUtil.replace(smsNotice,"$2",bean.getDxnr());
-                            smsNotice = StringUtil.replace(smsNotice,"$3",bean.getTzid().toString());
-                            officeSmsPerson.setDxnr(smsNotice);
+                            officeSmsPerson.setDxnr("尊敬的"+u.getRealName()+"，您好！"+bean.getDxnr()+"请回复数字"+bean.getTzid().toString()+"表示收到。");
 //                            officeSmsPerson.setDxnr("尊敬的" + u.getRealName() + "您好，OA系统："+bean.getDxnr()+"，请返回数字"+bean.getTzid()+"进行签收！");
                             officeSmsPerson.setTzlb("G");
                             officeSmsPerson.setSqId(bean.getTzid().toString());
