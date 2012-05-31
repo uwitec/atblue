@@ -85,6 +85,21 @@
                             + 0
                             + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
         }
+         function print(processId,connectId,sqid){
+            var formId= "";
+            window.open(
+                    "./qtqpd.jsp?formId=<%=formId%>"+"&connectId="+connectId+"&processId="+processId+"&sqid="+sqid,
+                    "mywindow",
+                    "height="
+                            + 500
+                            + ",width="
+                            + 700
+                            + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="
+                            + 0
+                            + ",left="
+                            + 0
+                            + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
+        }
 		</script>
 	</head>
 	<body>
@@ -188,6 +203,7 @@
                                 <a href="#" onclick="qz('<%=processId%>','<%=connectId%>');">[查看签字]</a>
                                 <%  }
                                 %>
+                                <a href="#" onclick="print('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[打印]</a>
 							</td>
 						</tr>
 						<%
