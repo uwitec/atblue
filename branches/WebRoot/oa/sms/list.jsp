@@ -148,7 +148,7 @@
                         <%
                             String dxnr = StringUtil.parseNull(request.getAttribute("DXNR"),"");
                         %>
-                        <%=StringUtil.cutString(dxnr,45)%>&nbsp;</td>
+                        <%=StringUtil.cutString(dxnr,35)%>&nbsp;</td>
                         <td class="form" style="text-align: left" nowrap>
                             ${ORGNA_NAME}
                             &nbsp;</td>
