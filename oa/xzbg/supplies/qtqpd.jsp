@@ -370,7 +370,7 @@ table.MsoTableGrid
   style='font-size:22.0pt;font-family:黑体'>关于<%=officeSupplies.getMc()%>的请示<span lang=EN-US><o:p></o:p></span></span></p>
   <p class=MsoNormal><span style='font-size:16.0pt;font-family:宋体;mso-ascii-theme-font:
   major-fareast;mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-fareast'>公司领导：<span
-  lang=EN-US><o:p><%=officeSupplies.getSy()%></o:p></span></span></p>
+  lang=EN-US><o:p><p>&nbsp;&nbsp;<%=officeSupplies.getSy()%></p></o:p></span></span></p>
   <p class=MsoNormal><span lang=EN-US style='font-size:16.0pt;font-family:宋体;
   mso-ascii-theme-font:major-fareast;mso-fareast-theme-font:major-fareast;
   mso-hansi-theme-font:major-fareast'><o:p>&nbsp;</o:p></span></p>
@@ -406,7 +406,8 @@ table.MsoTableGrid
  <tr style='mso-yfti-irow:1'>
   <td width=664 valign=top style='width:498.1pt;padding:0cm 5.4pt 0cm 5.4pt'>
   <p class=MsoNormal><span style='font-size:16.0pt;font-family:宋体;mso-ascii-theme-font:
-  major-fareast;mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-fareast'><%=StringUtil.parseNull(beanMap.get("FORM_ITEM_TITLE"),"")%>：<span
+  major-fareast;mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-fareast'>
+      <%=StringUtil.parseNull(beanMap.get("FORM_ITEM_TITLE"),"")%>意见：<span
   lang=EN-US><o:p></o:p></span></span></p>
   <p class=MsoNormal><span lang=EN-US style='font-size:16.0pt;font-family:宋体;
   mso-ascii-theme-font:major-fareast;mso-fareast-theme-font:major-fareast;
