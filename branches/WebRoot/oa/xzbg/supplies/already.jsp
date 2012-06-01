@@ -90,7 +90,7 @@
 							<%--<th nowrap="nowrap"  width="400">--%>
 								<%--事由--%>
 							<%--</th>--%>
-							<th nowrap="nowrap" >
+							<th nowrap="nowrap" width="40">
 								操作
 							</th>
 						</tr>
