@@ -75,10 +75,13 @@ function addSealB(){
     SetStore();
     var shr = 'shr<%=StringUtil.parseNull(formItemId,"")%>';
 	document.all.DWebSignSeal.SetPosition(-140,-35,shr);
-    var sealURL='<%="http://10.66.117.234:"+request.getLocalPort()+request.getContextPath()+"/servlet/sealDown?userId="+cUser.getUserId()%>';
+    var sealURL='<%="http://"+sysConfig.getProperty("sealServer")+":"+request.getLocalPort()+request.getContextPath()+"/servlet/sealDown?userId="+cUser.getUserId()%>';
     document.all.DWebSignSeal.AddSeal(sealURL, "");
 }
 	</script>
+    <style media=print>
+        .Noprint{display:none;}
+    </style>
 <style>
 <!--
  /* Font Definitions */
@@ -326,6 +329,7 @@ table.MsoTableGrid
 	mso-bidi-theme-font:minor-bidi;
 	mso-font-kerning:1.0pt;}
 </style>
+
 <![endif]--><!--[if gte mso 9]><xml>
  <o:shapedefaults v:ext="edit" spidmax="11266"/>
 </xml><![endif]--><!--[if gte mso 9]><xml>
@@ -336,7 +340,7 @@ table.MsoTableGrid
 
 <body lang=ZH-CN style='tab-interval:21.0pt;text-justify-trim:punctuation' onload="LoadSignData()">
 <object id="factory" viewastext style="display:none"
-        classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814" codebase="<%="http://10.66.117.234:"+request.getLocalPort()+request.getContextPath()%>/soft/smsx.cab#Version=7,0,0,8">
+        classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814" codebase="<%="http://"+sysConfig.getProperty("sealServer")+":"+request.getLocalPort()+request.getContextPath()%>/soft/smsx.cab#Version=7,0,0,8">
 </object>
 <script defer>
     //打印组件通用设置
@@ -369,7 +373,7 @@ table.MsoTableGrid
   <p class=MsoNormal align=center style='text-align:center'><span
   style='font-size:22.0pt;font-family:黑体'>关于<%=officeSupplies.getMc()%>的请示<span lang=EN-US><o:p></o:p></span></span></p>
   <p class=MsoNormal><span style='font-size:16.0pt;font-family:宋体;mso-ascii-theme-font:
-  major-fareast;mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-fareast'>公司领导：<span
+  major-fareast;mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-fareast'><span
   lang=EN-US><o:p><p>&nbsp;&nbsp;<%=officeSupplies.getSy()%></p></o:p></span></span></p>
   <p class=MsoNormal><span lang=EN-US style='font-size:16.0pt;font-family:宋体;
   mso-ascii-theme-font:major-fareast;mso-fareast-theme-font:major-fareast;
@@ -379,7 +383,7 @@ table.MsoTableGrid
   mso-hansi-theme-font:major-fareast'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='text-indent:24.0pt;mso-char-indent-count:1.5'><span
   style='font-size:16.0pt;font-family:宋体;mso-ascii-theme-font:major-fareast;
-  mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-fareast'>妥否，请批示。<span
+  mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-fareast'><span
   lang=EN-US><o:p></o:p></span></span></p>
   <p class=MsoNormal style='text-indent:16.0pt;mso-char-indent-count:1.0'><span
   lang=EN-US style='font-size:16.0pt;font-family:宋体;mso-ascii-theme-font:major-fareast;
@@ -388,7 +392,7 @@ table.MsoTableGrid
   </span><span
   style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span
   style='font-size:16.0pt;font-family:宋体;mso-ascii-theme-font:major-fareast;
-  mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-fareast'>钻井三公司思想政治办公室<span
+  mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-fareast'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=cOrgnization.getOrgnaName()%><span
   lang=EN-US><o:p></o:p></span></span></p>
   <p class=MsoNormal style='text-indent:16.0pt;mso-char-indent-count:1.0'><span
   lang=EN-US style='font-size:16.0pt;font-family:宋体;mso-ascii-theme-font:major-fareast;
@@ -405,7 +409,7 @@ table.MsoTableGrid
                   %>
  <tr style='mso-yfti-irow:1'>
   <td width=664 valign=top style='width:498.1pt;padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal><span style='font-size:16.0pt;font-family:宋体;mso-ascii-theme-font:
+  <p class="Noprint"><span style='font-size:16.0pt;font-family:宋体;mso-ascii-theme-font:
   major-fareast;mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-fareast'>
       <%=StringUtil.parseNull(beanMap.get("FORM_ITEM_TITLE"),"")%>意见：<span
   lang=EN-US><o:p></o:p></span></span></p>
@@ -417,7 +421,7 @@ table.MsoTableGrid
   mso-hansi-theme-font:major-fareast'><span
   style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   </span>
- <table align="right"><tr><td valign=top id="shr<%=id%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><%=StringUtil.parseNull(beanMap.get("LRSJ"),DateUtil.format(new java.util.Date()))%></td></tr></table>
+ <table align="right"><tr><td valign=top id="shr<%=id%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><%=StringUtil.parseNull(beanMap.get("LRSJ"),"")%></td></tr></table>
   </td>
  </tr>
  <%} %>

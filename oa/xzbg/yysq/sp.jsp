@@ -202,7 +202,7 @@
                                                 nextRole = workFlow.getNextRoleName(StringUtil.parseNull(yysq.getConnectId(),""),"-1");
                                                 options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                             %>
-                                            <%if(!"会议申请".equals(nextRole)){ %>
+                                            <%if(!"用印申请".equals(nextRole)){ %>
                                                     <%=options%>
                                             <% }else{ 
                                             Map m = new HashMap();

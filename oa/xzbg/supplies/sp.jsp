@@ -198,7 +198,7 @@
                                         申请名称
 									</td>
 									<td class="head_right" style="text-align: left">
-									<%=StringUtil.parseNull(officeSupplies.getMc(),"")%>
+                                        关于<%=StringUtil.parseNull(officeSupplies.getMc(),"")%>的请示
 											<input type="checkbox" name="checked" id="checked" value="" <%if(!"0".equals(officeSupplies.getDxtx())){ %>checked<%}%>>短信提醒
 									</td>
 								</tr>

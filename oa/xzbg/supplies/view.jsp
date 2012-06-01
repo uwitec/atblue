@@ -104,7 +104,7 @@
 										申请名称
 									</td>
 									<td class="head_right" style="text-align: left">
-									<%=StringUtil.parseNull(officeSupplies.getMc(),"")%>
+									关于<%=StringUtil.parseNull(officeSupplies.getMc(),"")%>的请示
 
 									</td>
 								</tr>
