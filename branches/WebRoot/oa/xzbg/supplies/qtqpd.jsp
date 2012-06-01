@@ -421,7 +421,7 @@ table.MsoTableGrid
   mso-hansi-theme-font:major-fareast'><span
   style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   </span>
- <table align="right"><tr><td valign=top id="shr<%=id%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><%=StringUtil.parseNull(beanMap.get("LRSJ"),"")%></td></tr></table>
+ <table align="right"><tr><td valign=top id="shr<%=id%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><%=StringUtil.parseNull(beanMap.get("SJ"),"")%></td></tr></table>
   </td>
  </tr>
  <%} %>
