@@ -76,7 +76,7 @@
 				<td>
 
 					<table width="100%" border="0" align="center" cellpadding="0"
-						cellspacing="0" class="mtabtab" id="mtabtab">
+						cellspacing="0" class="mtabtab" id="tab_id">
 						<tr class="form_th">
 							<th nowrap="nowrap"  width="40">
 								序号
@@ -96,9 +96,9 @@
 							<th  nowrap="nowrap" >
                                 用印结束时间
 							</th>
-							<th nowrap="nowrap" >
-                                用印事由
-							</th>
+							<%--<th nowrap="nowrap" >--%>
+                                <%--用印事由--%>
+							<%--</th>--%>
 							<th nowrap="nowrap" >
 								流程状态
 							</th>
@@ -110,7 +110,7 @@
 							for (int i = 0; i < list.size(); i++) {
 								Map map = (Map) list.get(i);
 						%>
-						<tr>
+						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("SQID"),"") %>')">
 							<td  style="text-align: center" nowrap="nowrap">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
@@ -132,9 +132,7 @@
                             <td  style="text-align: center" nowrap="nowrap">
                                 <%=StringUtil.parseNull(map.get("YYJSSJ"),"")%>
                             </td>
-							<td  style="text-align: left" nowrap="nowrap">
-								<%=StringUtil.cutString(StringUtil.parseNull(map.get("YYSY"),""),25)%>
-							</td>
+
 							<td  style="text-align: center" nowrap="nowrap">
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
