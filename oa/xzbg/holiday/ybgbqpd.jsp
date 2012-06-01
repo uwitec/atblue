@@ -617,7 +617,7 @@ style='font-size:18.0pt;font-family:华文中宋'><%=title %><span lang=EN-US><o
   <p class=MsoNormal style='tab-stops:61.5pt'><span lang=EN-US
   style='font-size:12.0pt;font-family:仿宋_GB2312'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='text-indent:60.0pt;mso-char-indent-count:5.0;
-  tab-stops:61.5pt'><table style='font-size:12.0pt;font-family:仿宋_GB2312' align="right"><tr><td>批准人：</td><td id="shr<%=id%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><%=StringUtil.parseNull(beanMap.get("LRSJ"),DateUtil.format(new java.util.Date()))%></td></tr></table>
+  tab-stops:61.5pt'><table style='font-size:12.0pt;font-family:仿宋_GB2312' align="right"><tr><td>批准人：</td><td id="shr<%=id%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td><%=StringUtil.parseNull(beanMap.get("SJ"),DateUtil.format(new java.util.Date()))%></td></tr></table>
   </td>
  </tr>
  <%} %>
