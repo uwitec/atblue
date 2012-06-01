@@ -270,7 +270,13 @@ public class Workflow {
                 paramMap.put("activityId", nextLine.getEndActivity());
                 WActivity endActivity = wActivityDAO.queryForBean(paramMap);
                 if (endActivity != null) {
-                    if ("9".equals(endActivity.getActivityType())) {
+                    if ("9".equals(endActivity.getActivityType()) ||
+                            "用印申请".equals(endActivity.getActivityName()) ||
+                            "其他申请".equals(endActivity.getActivityName()) ||
+                            "会议申请".equals(endActivity.getActivityName()) ||
+                            "申请人".equals(endActivity.getActivityName()) ||
+                            "发起单位".equals(endActivity.getActivityName()) ||
+                            "来文传阅".equals(endActivity.getActivityName())) {
                         //如果是结束节点
                         wProcess.setProcessStatus("9");
                         wProcessDAO.modWProcess(wProcess);

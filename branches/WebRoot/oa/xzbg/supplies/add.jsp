@@ -267,8 +267,8 @@
 										名称<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
-										<input type="text" name="mc" class="inputStyle"
-											style="width: 200px;" maxlength="20">
+                                        关于<input type="text" name="mc" class="inputStyle"
+											style="width: 200px;" maxlength="20">的请示
 											<input type="checkbox" name="checked" id="checked" value="1">短信提醒
 									</td>
 								</tr>
@@ -303,7 +303,18 @@
 										事由
 									</td>
 									<td class="head_right" style="text-align: left">
-									<textarea cols="80" id="editor" name="editor" rows="10"></textarea>
+									<textarea cols="80" id="editor" name="editor" rows="10">
+                                        <p>
+                                            <strong>公司领导：</strong></p>
+                                        <p>
+                                            &nbsp;</p>
+                                        <p>
+                                            &nbsp;</p>
+                                        <p>
+                                            &nbsp;</p>
+                                        <p>
+                                            <strong>&nbsp;妥否，请批示。 </strong></p>
+                                    </textarea>
 									</td>
 								</tr>
 								<tr>

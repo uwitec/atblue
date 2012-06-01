@@ -1,5 +1,6 @@
 <%@ page import="java.net.InetAddress" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="../../import.jsp"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags" %>
 <html>
@@ -24,7 +25,7 @@
             }
         }
         function addSealB(userid){
-            var sealURL='<%="http://10.66.117.234:"+request.getLocalPort()+"/"+request.getContextPath()+"/servlet/sealDown?userId="%>'+userid;
+            var sealURL='<%="http://"+sysConfig.getProperty("sealServer")+":"+request.getLocalPort()+"/"+request.getContextPath()+"/servlet/sealDown?userId="%>'+userid;
             document.all.DWebSignSeal.DelSeal("");
             document.all.DWebSignSeal.SetPosition(60,-40,"seal");
             document.all.DWebSignSeal.AddSeal(sealURL, "");

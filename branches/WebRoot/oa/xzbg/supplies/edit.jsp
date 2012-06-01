@@ -238,7 +238,7 @@
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
-						修改耗材、配产
+						修改其他申请
 					</td>
 					<td width="74%" align="left" class="mhead">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -274,8 +274,8 @@
 										名称<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
-										<input type="text" name="mc" class="inputStyle" value="<%=StringUtil.parseNull(officeSupplies.getMc(),"")%>"
-											style="width: 200px;" maxlength="20">
+                                        关于<input type="text" name="mc" class="inputStyle" value="<%=StringUtil.parseNull(officeSupplies.getMc(),"")%>"
+											style="width: 200px;" maxlength="20">的请示
 											<input type="checkbox" name="checked" id="checked" value="" <%if(!"0".equals(officeSupplies.getDxtx())){ %>checked<%}%>>短信提醒
 									</td>
 								</tr>
