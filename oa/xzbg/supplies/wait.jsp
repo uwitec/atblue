@@ -89,9 +89,9 @@
 							<th  width="120">
 								申请时间
 							</th>
-							<th nowrap="nowrap"  width="400">
-								事由
-							</th>
+							<%--<th nowrap="nowrap"  width="400">--%>
+								<%--事由--%>
+							<%--</th>--%>
 							<th nowrap="nowrap"  width="80">
 								流程状态
 							</th>
@@ -118,9 +118,9 @@
 							<td  align="center" style="text-align: left">
 								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
 							</td>
-							<td  align="center">
-                                <%=StringUtil.parseNull(map.get("SY"),"")%>&nbsp;
-							</td>
+							<%--<td  align="center">--%>
+                                <%--<%=StringUtil.parseNull(map.get("SY"),"")%>&nbsp;--%>
+							<%--</td>--%>
 							<td  align="center" nowrap="nowrap">
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
