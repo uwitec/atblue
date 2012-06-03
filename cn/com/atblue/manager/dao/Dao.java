@@ -56,4 +56,6 @@ public interface Dao {
     public  List getUsersByOrgId(String orgId);
 
     public  List getUsersByRoleId(String roleId);
+
+    public void updateUserPassword(String userId,String password);
 }
