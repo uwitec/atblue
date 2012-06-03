@@ -10,12 +10,15 @@
     CUser cUser = (CUser)session.getAttribute("cUser");
     cUser = cUser == null?new CUser():cUser;
     String orgId = cUser.getOrgnaId();
-    String yymc = StringUtil.parseNull(request.getParameter("yymc"),"");
+    String dh = StringUtil.parseNull(request.getParameter("dh"),"");
+    String jh = StringUtil.parseNull(request.getParameter("jh"),"");
     String flag = StringUtil.parseNull(request.getParameter("flag"),"");
     Map paramMap = new HashMap();
     paramMap.put("sqr",cUser.getUserId());
-    if(!StringUtil.isBlankOrEmpty(yymc))
-        paramMap.put("yymc",yymc);
+    if(!StringUtil.isBlankOrEmpty(dh))
+        paramMap.put("dh",dh);
+    if(!StringUtil.isBlankOrEmpty(jh))
+        paramMap.put("jh",jh);
 	pageBean.setPageSize(pageSize);
 
 	int totalRow =oDao.getPagedDjfyjsCount(paramMap);
@@ -85,7 +88,9 @@
                         <tr>
                             <td align="left">
                                 <font style="font-size: 14px">队号：</font>
-                                <input name="yymc"  type="text" value="<%=yymc%>" />&nbsp;
+                                <input name="dh"  type="text" value="<%=dh%>" />&nbsp;
+                                <font style="font-size: 14px">井号：</font>
+                                <input name="jh"  type="text" value="<%=jh%>" />&nbsp;
                                 <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                                 <input type="button" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='新增'>
                             </td>
@@ -133,7 +138,7 @@
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
 							<td  nowrap="nowrap" style="text-align: left">
-								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("PKID"),"") %>"><%=StringUtil.parseNull(map.get("DH"),"") %></a>
+								<a href="view.jsp?pkid=<%=StringUtil.parseNull(map.get("PKID"),"") %>"><%=StringUtil.parseNull(map.get("DH"),"") %></a>
 							</td>
 							
 							<td  style="text-align: left">
@@ -158,14 +163,16 @@
                                 <%
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
+                                    String SCCLR = StringUtil.parseNull(map.get("SCCLR"),"");
                                     if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){
                                      String nextRole = workFlow.getNextRoleName(connectId,"1");
-                                     String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
+                                     CUser u2 = dao.findUserById(SCCLR);
+                                        u2 = u2 == null?new CUser():u2;
                                 %>
                                      发送给&nbsp;<%=nextRole%>
                                 <select name="<%=StringUtil.parseNull(map.get("PKID"),"")%>nextUserId">
-                                <%=StringUtil.parseNull(options,"")%>
-                                </select>审批<input type="button" class="button"  style="width:40px" value="提交" onclick="tj('<%=StringUtil.parseNull(map.get("SQID"),"")%>','<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');"/>
+                                <option value="<%=u2.getUserId()%>"><%=u2.getRealName()%></option>
+                                </select>审批<input type="button" class="button"  style="width:40px" value="提交" onclick="tj('<%=StringUtil.parseNull(map.get("PKID"),"")%>','<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("PKID"),"")%>');"/>
                                 <% }else if("已保存".equals(StringUtil.parseNull(map.get("SQZT"),""))){%>
                                 <a href="./edit.jsp?pkid=<%=StringUtil.parseNull(map.get("PKID"),"")%>">[编辑]</a>&nbsp;
                                 <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;

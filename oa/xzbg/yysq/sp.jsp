@@ -181,7 +181,7 @@
 
                                         <span id="a">
                                             <%
-                                                String nextRole = workFlow.getNextRoleName(StringUtil.parseNull(yysq.getConnectId(),""),"1");
+                                                String nextRole = workFlow.getNextRoleName(StringUtil.parseNull(yysq.getConnectId(), ""),"1");
                                                 String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                         %>
                                             <%if(!"结束".equals(nextRole)){ %>

@@ -44,10 +44,11 @@
         bean.setWxdclr(WXDCLR);
         bean.setGyclr(GYCLR);
         bean.setJyclr(JYCLR);
+        bean.setSqzt("已保存");
         if("startup".equals(flag)){
             bean.setSqzt("已申请");
             //创建流程代码在这里
-            Status status = workflow.startWorkflow("d1325ed3-9ffd-4c21-91ae-399db5a02a08",cUser.getUserId());
+            Status status = workflow.startWorkflow("f0819b2e-e86e-489f-be89-85f997fcfd93",cUser.getUserId());
             bean.setProcessId(status.getProcessId());
             bean.setConnectId(status.getConnectId());
         }
@@ -182,13 +183,18 @@
                                         gnlist = gnlist == null?new ArrayList():gnlist;
                                         List zhlist = dao.getUsersByOrgId("895ba579-95d8-4e88-b615-3c2b2443aa0e");
                                         zhlist = zhlist == null?new ArrayList():zhlist;
-                                        List wxlist = dao.getUsersByOrgId("ec46c87f-cf1b-4ea8-8041-c85ab579c09d");
+                                        List wxlist = dao.getUsersByOrgId("3b6f38fb-fd8c-4a50-9587-431b841b2c7a");
                                         wxlist = wxlist == null?new ArrayList():wxlist;
+                                        List jhlist = dao.getUsersByOrgId("04b02beb-3532-40c9-8e28-e3b25a76f826");
+                                        jhlist = jhlist == null?new ArrayList():jhlist;
+                                        List nylist = dao.getUsersByOrgId("55fc5e6f-6a0c-4976-b0dd-03d72ebd3448");
+                                        nylist = nylist == null?new ArrayList():nylist;
+                                        List gylist = dao.getUsersByOrgId("6f531ccb-7cbe-4614-9a1b-3683992ffa89");  //物资配送队
+                                        gylist = gylist == null?new ArrayList():gylist;
                                     %>
                                     <td class="head_right" style="text-align: left">
                                         生产办
-                                        <select name="SCCLR">
-                                            <option value="">==请选择==</option>
+                                        <select name="SCCLR" style="width: 100px">
                                              <%
                                                 for(int i=0;i<sclist.size();i++){
                                                     Map m = (Map)sclist.get(i);
@@ -197,11 +203,9 @@
                                              %>
                                             <option value="<%=userid%>"><%=realname%></option>
                                             <%}%>
-                                        </select>
-                                        &nbsp;&nbsp;
-                                        技术
-                                        <select name="JSCLR">
-                                            <option value="">==请选择==</option>
+                                        </select>&nbsp;&nbsp;
+                                        技&nbsp;&nbsp;术
+                                        <select name="JSCLR" style="width: 100px">
                                             <%
                                                 for(int i=0;i<jslist.size();i++){
                                                     Map m = (Map)jslist.get(i);
@@ -210,22 +214,33 @@
                                             %>
                                             <option value="<%=userid%>"><%=realname%></option>
                                             <%}%>
+                                        </select>&nbsp;&nbsp;
+                                        计&nbsp;&nbsp;划
+                                        <select name="JHCLR" style="width: 100px">
+                                            <%
+                                                for(int i=0;i<jhlist.size();i++){
+                                                    Map m = (Map)jhlist.get(i);
+                                                    String userid = StringUtil.parseNull(m.get("USER_ID"),"");
+                                                    String realname = StringUtil.parseNull(m.get("REAL_NAME"),"");
+                                            %>
+                                            <option value="<%=userid%>"><%=realname%></option>
+                                            <%}%>
                                         </select>
                                         &nbsp;&nbsp;
-                                        经营<select name="JYCLR"><option value="">==请选择==</option>
-                                                <%
-                                                    for(int i=0;i<jylist.size();i++){
-                                                        Map m = (Map)jylist.get(i);
-                                                        String userid = StringUtil.parseNull(m.get("USER_ID"),"");
-                                                        String realname = StringUtil.parseNull(m.get("REAL_NAME"),"");
-                                                %>
-                                                <option value="<%=userid%>"><%=realname%></option>
-                                                <%}%>
+                                       <br>
+                                        能源办
+                                        <select style="width: 100px" name="NYBCLR">
+                                            <%
+                                                for(int i=0;i<nylist.size();i++){
+                                                    Map m = (Map)nylist.get(i);
+                                                    String userid = StringUtil.parseNull(m.get("USER_ID"),"");
+                                                    String realname = StringUtil.parseNull(m.get("REAL_NAME"),"");
+                                            %>
+                                            <option value="<%=userid%>"><%=realname%></option>
+                                            <%}%>
                                             </select>&nbsp;&nbsp;
-                                        能源办<select><option value="">==请选择==</option>
-
-                                            </select>&nbsp;&nbsp;
-                                        机动办<select><option value="">==请选择==</option>
+                                        机动办
+                                        <select style="width: 100px" name="JDKCLR">
                                         <%
                                             for(int i=0;i<jdlist.size();i++){
                                                 Map m = (Map)jdlist.get(i);
@@ -236,7 +251,8 @@
                                         <%}%>
 
                                     </select>&nbsp;&nbsp;
-                                        安全科<select><option value="">==请选择==</option>
+                                        安全科
+                                        <select style="width: 100px" name="AQKCLR">
                                         <%
                                             for(int i=0;i<aqlist.size();i++){
                                                 Map m = (Map)aqlist.get(i);
@@ -246,7 +262,8 @@
                                         <option value="<%=userid%>"><%=realname%></option>
                                         <%}%>
                                     </select>&nbsp;&nbsp;
-                                        工农科<select><option value="">==请选择==</option>
+                                        工农科
+                                        <select style="width: 100px" name="GNKCLR">
                                         <%
                                             for(int i=0;i<gnlist.size();i++){
                                                 Map m = (Map)gnlist.get(i);
@@ -255,8 +272,9 @@
                                         %>
                                         <option value="<%=userid%>"><%=realname%></option>
                                         <%}%>
-                                    </select>&nbsp;&nbsp;
-                                        综合队<select><option value="">==请选择==</option>
+                                    </select>&nbsp;&nbsp;  <br>
+                                        综合队
+                                        <select style="width: 100px"  name="ZHDCLR">
                                         <%
                                             for(int i=0;i<zhlist.size();i++){
                                                 Map m = (Map)zhlist.get(i);
@@ -266,7 +284,8 @@
                                         <option value="<%=userid%>"><%=realname%></option>
                                         <%}%>
                                     </select>&nbsp;&nbsp;
-                                        外修队<select><option value="">==请选择==</option>
+                                        外修队
+                                        <select style="width: 100px" name="WXDCLR">
                                         <%
                                             for(int i=0;i<wxlist.size();i++){
                                                 Map m = (Map)wxlist.get(i);
@@ -276,7 +295,29 @@
                                         <option value="<%=userid%>"><%=realname%></option>
                                         <%}%>
                                     </select>&nbsp;&nbsp;
-                                        供应<select><option value="">==请选择==</option></select>
+                                        供&nbsp;&nbsp;应
+                                        <select style="width: 100px" name="GYCLR">
+                                            <%
+                                                for(int i=0;i<gylist.size();i++){
+                                                    Map m = (Map)gylist.get(i);
+                                                    String userid = StringUtil.parseNull(m.get("USER_ID"),"");
+                                                    String realname = StringUtil.parseNull(m.get("REAL_NAME"),"");
+                                            %>
+                                            <option value="<%=userid%>"><%=realname%></option>
+                                            <%}%>
+
+                                        </select>&nbsp;&nbsp;
+                                        经&nbsp;&nbsp;营
+                                        <select name="JYCLR" style="width: 100px">
+                                        <%
+                                            for(int i=0;i<jylist.size();i++){
+                                                Map m = (Map)jylist.get(i);
+                                                String userid = StringUtil.parseNull(m.get("USER_ID"),"");
+                                                String realname = StringUtil.parseNull(m.get("REAL_NAME"),"");
+                                        %>
+                                        <option value="<%=userid%>"><%=realname%></option>
+                                        <%}%>
+                                    </select>&nbsp;&nbsp;
                                     </td>
                                 </tr>
 							</table>
