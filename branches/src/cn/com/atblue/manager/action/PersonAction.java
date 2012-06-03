@@ -105,6 +105,15 @@ public class PersonAction extends BaseAction {
         return "save";
     }
 
+    public String del(){
+        if (!StringUtil.isBlankOrEmpty(userId)) {
+            Map map = new HashMap();
+            map.put("userId", userId);
+            userDAO.delCUser(map);
+        }
+        return "del";
+    }
+
     public CUserDAO getUserDAO() {
         return userDAO;
     }

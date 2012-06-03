@@ -16,52 +16,7 @@
     map.put("pkid",pkid);
     JyglDjfyjs bean = jyglDjfyjsDAO.queryForBean(map);
     bean = bean == null?new JyglDjfyjs():bean;
-	if (request.getMethod().equals("POST")) {
-        String DH = StringUtil.parseNull(request.getParameter("DH"),"");
-        String JH = StringUtil.parseNull(request.getParameter("JH"),"");
-        String SCCLR = StringUtil.parseNull(request.getParameter("SCCLR"),"");
-        String JHCLR = StringUtil.parseNull(request.getParameter("JHCLR"),"");
-        String JSCLR = StringUtil.parseNull(request.getParameter("JSCLR"),"");
-        String NYBCLR = StringUtil.parseNull(request.getParameter("NYBCLR"),"");
-        String JDKCLR = StringUtil.parseNull(request.getParameter("JDKCLR"),"");
-        String AQKCLR = StringUtil.parseNull(request.getParameter("AQKCLR"),"");
-        String GNKCLR = StringUtil.parseNull(request.getParameter("GNKCLR"),"");
-        String ZHDCLR = StringUtil.parseNull(request.getParameter("ZHDCLR"),"");
-        String WXDCLR = StringUtil.parseNull(request.getParameter("WXDCLR"),"");
-        String GYCLR = StringUtil.parseNull(request.getParameter("GYCLR"),"");
-        String JYCLR = StringUtil.parseNull(request.getParameter("JYCLR"),"");
-        String flag = StringUtil.parseNull(request.getParameter("flag"),"");
-        bean.setPkid(pkid);
-        bean.setDh(DH);
-        bean.setJh(JH);
-        bean.setSqr(cUser.getUserId());
-        bean.setSqsj(new java.util.Date());
-        bean.setScclr(SCCLR);
-        bean.setJhclr(JHCLR);
-        bean.setJsclr(JSCLR);
-        bean.setJyclr(JYCLR);
-        bean.setNybclr(NYBCLR);
-        bean.setJdkclr(JDKCLR);
-        bean.setAqkclr(AQKCLR);
-        bean.setGnkclr(GNKCLR);
-        bean.setZhdclr(ZHDCLR);
-        bean.setWxdclr(WXDCLR);
-        bean.setGyclr(GYCLR);
-        bean.setJyclr(JYCLR);
-        bean.setSqzt("已保存");
-        if("startup".equals(flag)){
-            bean.setSqzt("已申请");
-            //创建流程代码在这里
-            Status status = workflow.startWorkflow("f0819b2e-e86e-489f-be89-85f997fcfd93",cUser.getUserId());
-            bean.setProcessId(status.getProcessId());
-            bean.setConnectId(status.getConnectId());
-        }
-        jyglDjfyjsDAO.modJyglDjfyjs(bean);
-%>
-		<script>
-		    window.location='index.jsp';
-		</script>
-<%	}%>
+	%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -71,42 +26,6 @@
 		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
-
-		
-		<script type="text/javascript">
-            function _resizeNoPage() {
-                document.getElementById("scrollDiv").style.width = document.body.clientWidth - 18;
-                document.getElementById("scrollDiv").style.height = document.body.clientHeight - 50;
-            }
-
-			function checkForm(){
-                if(document.form1.DH.value==""){
-                    document.form1.DH.focus();
-                    alert("请输入队号");
-                    return;
-                }
-                if(document.form1.JH.value==""){
-                    document.form1.JH.focus();
-                    alert("请输入井号");
-                    return;
-                }
-				document.form1.submit();
-			}
-            function startup(){
-                if(document.form1.DH.value==""){
-                    document.form1.DH.focus();
-                    alert("请输入队号");
-                    return;
-                }
-                if(document.form1.JH.value==""){
-                    document.form1.JH.focus();
-                    alert("请输入井号");
-                    return;
-                }
-                document.all.flag.value="startup";
-                document.form1.submit();
-            }
-		</script>
 	</head>
 	<body onload="_resizeNoPage();">
 		<form action="edit.jsp" name="form1" method="post">
@@ -122,19 +41,13 @@
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
-						修改单井费用结算信息
+						查看单井费用结算信息
 					</td>
 					<td width="74%" align="left" class="mhead">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
 							<tbody>
 								<tr>
 									<td align="left">
-										<input type="button" class="button" id="button"
-											onclick="checkForm();" value="保存">
-										&nbsp;
-                                        <input type="button" class="button"
-											onclick="startup();" value="创建流程并启动">
-										&nbsp;
 										<input type="button" class="button" id="button1"
 											onclick="history.back()" value="返回">
 										&nbsp;
@@ -155,23 +68,23 @@
 								cellspacing="0" class="mtabtab" id="mtabtab">
                                 <tr>
                                     <td nowrap="nowrap" width="120" class="head_left">
-                                        队号<span style="color: red">&nbsp;*</span>
+                                        队号
                                     </td>
                                     <td class="head_right" style="text-align: left">
-                                        <input type="text" name="DH"  style="width:500px" value="<%=StringUtil.parseNull(bean.getDh(),"")%>"/>
+                                        <%=StringUtil.parseNull(bean.getDh(),"")%>&nbsp;
                                     </td>
                                 </tr>
                                 <tr>
                                     <td nowrap="nowrap" width="120" class="head_left">
-                                        井号<span style="color: red">&nbsp;*</span>
+                                        井号
                                     </td>
                                     <td class="head_right" style="text-align: left">
-                                        <input type="text" name="JH"  style="width:500px" value="<%=StringUtil.parseNull(bean.getJh(),"")%>"/>
+                                        <%=StringUtil.parseNull(bean.getJh(),"")%>&nbsp;
                                     </td>
                                 </tr>
                                 <tr>
                                     <td nowrap="nowrap" width="120" class="head_left">
-                                        选择审批人<span style="color: red">&nbsp;*</span>
+                                        选择审批人
                                     </td>
                                     <%
                                         List sclist = dao.getUsersByOrgId("33c165b3-b6a7-4144-b8a2-aaebe111845e");
