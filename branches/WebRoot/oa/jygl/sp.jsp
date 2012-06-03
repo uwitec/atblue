@@ -150,8 +150,10 @@
                     selUserId = bean.getWxdclr();
                 }else if("供应".equals(nextRole)){
                     selUserId = bean.getGyclr();
+                }else if("经管".equals(nextRole)){
+                    selUserId = bean.getJyclr();
                 }else {
-                    selUserId = cUser.getUserId();
+                    selUserId = "";
                 }
                 connectId = workFlow.completeMission(processId, connectId, cUser.getUserId(), new String[]{selUserId}, "1");
             }
@@ -1361,6 +1363,266 @@
                                         供应签字
                                     </td>
                                     <td class="head_right" style="text-align: left;height:140px;width:140px" id="shr6f531ccb-7cbe-4614-9a1b-3683992ffa89">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <% }
+                                %>
+
+
+                                <%
+                                    //经管
+                                    if("b23121d4-db76-4d2d-b59d-eefd2873e0ab".equals(orgId)){  %>
+                                <tr bgcolor="yellow">
+                                    <td nowrap="nowrap" class="head_left">
+                                        钻前劳务
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="ZQLW" value="<%=StringUtil.parseNull(bean.getZqlw(),"")%>"/>
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        套    管
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="TG" value="<%=StringUtil.parseNull(bean.getTg(),"")%>"/>
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        钻具租赁费
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="ZQZLF" value="<%=StringUtil.parseNull(bean.getZqzlf(),"")%>"/>
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        石粉材料
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="SFCL" value="<%=StringUtil.parseNull(bean.getSfcl(),"")%>"/>
+                                    </td>
+                                </tr>
+                                <tr bgcolor="yellow">
+                                    <td nowrap="nowrap" class="head_left">
+                                        管具劳务
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="GJLW" value="<%=StringUtil.parseNull(bean.getGjlw(),"")%>"/>
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        套管附件
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="TGFJ" value="<%=StringUtil.parseNull(bean.getTgfj(),"")%>"/>
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        刚性扶正器
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="GXFZQ" value="<%=StringUtil.parseNull(bean.getGxfzq(),"")%>"/>
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        石粉劳务
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="SFLW" value="<%=StringUtil.parseNull(bean.getSflw(),"")%>"/>
+                                    </td>
+                                </tr>
+                                <tr bgcolor="yellow">
+                                    <td nowrap="nowrap" class="head_left">
+                                        固井劳务
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="GJLW2" value="<%=StringUtil.parseNull(bean.getGjlw2(),"")%>"/>
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        添加剂
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="TJJ" value="<%=StringUtil.parseNull(bean.getTjj(),"")%>"/>
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        井控固控摊销
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="JKGKTX" value="<%=StringUtil.parseNull(bean.getJkgktx(),"")%>"/>
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        井控配件
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="JKPJ" value="<%=StringUtil.parseNull(bean.getJkpj(),"")%>"/>
+                                    </td>
+                                </tr>
+                                <tr bgcolor="yellow">
+                                    <td nowrap="nowrap" class="head_left">
+                                        固井水泥
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="GJSN" value="<%=StringUtil.parseNull(bean.getGjsn(),"")%>"/>
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        隔离液
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="KLY" value="<%=StringUtil.parseNull(bean.getKly(),"")%>"/>
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        技术服务费
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="JSFWF" value="<%=StringUtil.parseNull(bean.getJsfwf(),"")%>"/>
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        外委劳务
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <input type="text" name="WWLW" value="<%=StringUtil.parseNull(bean.getWwlw(),"")%>"/>
+                                    </td>
+                                </tr>
+                                <tr bgcolor="yellow">
+                                    <td nowrap="nowrap" class="head_left">
+                                        质量扣款
+                                    </td>
+                                    <td class="head_right" style="text-align: left" colspan="7">
+                                        <input type="text" name="ZLKK" value="<%=StringUtil.parseNull(bean.getZlkk(),"")%>"/>
+                                    </td>
+                                </tr>
+                                <tr bgcolor="yellow">
+                                    <td nowrap="nowrap" class="head_left">
+                                        非正常开支
+                                    </td>
+                                    <td class="head_right" style="text-align: left" colspan="5">
+                                        <input type="text" name="FZCKZ" value="<%=StringUtil.parseNull(bean.getFzckz(),"")%>"/>
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        经管签字
+                                    </td>
+                                    <td class="head_right" style="text-align: left;height:140px;width:140px"  id="shrb23121d4-db76-4d2d-b59d-eefd2873e0ab">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <%   }else{  %>
+                                <tr bgcolor="yellow">
+                                    <td nowrap="nowrap" class="head_left">
+                                        钻前劳务
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%=StringUtil.parseNull(bean.getZqlw(),"")%>&nbsp;
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        套    管
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%=StringUtil.parseNull(bean.getTg(),"")%>&nbsp;
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        钻具租赁费
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%=StringUtil.parseNull(bean.getZqzlf(),"")%>&nbsp;
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        石粉材料
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%=StringUtil.parseNull(bean.getSfcl(),"")%>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr bgcolor="yellow">
+                                    <td nowrap="nowrap" class="head_left">
+                                        管具劳务
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%=StringUtil.parseNull(bean.getGjlw(),"")%>&nbsp;
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        套管附件
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%=StringUtil.parseNull(bean.getTgfj(),"")%>&nbsp;
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        刚性扶正器
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%=StringUtil.parseNull(bean.getGxfzq(),"")%>&nbsp;
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        石粉劳务
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%=StringUtil.parseNull(bean.getSflw(),"")%>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr bgcolor="yellow">
+                                    <td nowrap="nowrap" class="head_left">
+                                        固井劳务
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%=StringUtil.parseNull(bean.getGjlw2(),"")%>&nbsp;
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        添加剂
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%=StringUtil.parseNull(bean.getTjj(),"")%>&nbsp;
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        井控固控摊销
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%=StringUtil.parseNull(bean.getJkgktx(),"")%>&nbsp;
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        井控配件
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%=StringUtil.parseNull(bean.getJkpj(),"")%>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr bgcolor="yellow">
+                                    <td nowrap="nowrap" class="head_left">
+                                        固井水泥
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%=StringUtil.parseNull(bean.getGjsn(),"")%>&nbsp;
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        隔离液
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%=StringUtil.parseNull(bean.getKly(),"")%>&nbsp;
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        技术服务费
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                       <%=StringUtil.parseNull(bean.getJsfwf(),"")%>&nbsp;
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        外委劳务
+                                    </td>
+                                    <td class="head_right" style="text-align: left">
+                                        <%=StringUtil.parseNull(bean.getWwlw(),"")%>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr bgcolor="yellow">
+                                    <td nowrap="nowrap" class="head_left">
+                                        质量扣款
+                                    </td>
+                                    <td class="head_right" style="text-align: left" colspan="7">
+                                        <%=StringUtil.parseNull(bean.getZlkk(),"")%>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr bgcolor="yellow">
+                                    <td nowrap="nowrap" class="head_left">
+                                        非正常开支
+                                    </td>
+                                    <td class="head_right" style="text-align: left" colspan="5">
+                                        <%=StringUtil.parseNull(bean.getFzckz(),"")%>&nbsp;
+                                    </td>
+                                    <td nowrap="nowrap" class="head_left">
+                                        经管签字
+                                    </td>
+                                    <td class="head_right" style="text-align: left;height:140px;width:140px"  id="shrb23121d4-db76-4d2d-b59d-eefd2873e0ab">
                                         &nbsp;
                                     </td>
                                 </tr>

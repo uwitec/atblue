@@ -181,7 +181,7 @@
                                 
                                 <%  }
                                 %>
-							<a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[查看签批单]</a>
+							<a href="#" onclick="window.location='qpd.jsp?pkid=<%=StringUtil.parseNull(map.get("PKID"),"")%>';">[查看签批单]</a>
 							</td>
 						</tr>
 						<%
