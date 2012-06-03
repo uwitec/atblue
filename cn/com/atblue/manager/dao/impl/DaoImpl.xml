@@ -233,13 +233,13 @@
        ]]>
         <dynamic prepend=" and ">
             <isNotEmpty prepend=" and " property="userName">
-                <![CDATA[t.USER_NAME like '%'||#userName#||'%']]>
+                <![CDATA[(t.USER_NAME like '%'||#userName#||'%'  or  t.REAL_NAME like '%'||#userName#||'%')]]>
             </isNotEmpty>
             <isNotEmpty prepend=" and " property="orgId">
                 <![CDATA[t.ORGNA_ID=#orgId#]]>
             </isNotEmpty>
         </dynamic>
-        ORDER BY O.ORGNA_NAME,T.USER_NAME
+        ORDER BY O.ORGNA_NAME,T.REAL_NAME
         <include refid="basic.pageEnd"/>
     </select>
     <select id="getPagedUserCount" parameterClass="java.util.HashMap" resultClass="int">
@@ -249,7 +249,7 @@
        ]]>
         <dynamic prepend=" and ">
             <isNotEmpty prepend=" and " property="userName">
-                <![CDATA[t.USER_NAME like '%'||#userName#||'%']]>
+                <![CDATA[(t.USER_NAME like '%'||#userName#||'%'  or  t.REAL_NAME like '%'||#userName#||'%')]]>
             </isNotEmpty>
             <isNotEmpty prepend=" and " property="orgId">
                 <![CDATA[t.ORGNA_ID=#orgId#]]>
