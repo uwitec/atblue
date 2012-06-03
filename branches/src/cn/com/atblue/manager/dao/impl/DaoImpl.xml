@@ -329,4 +329,8 @@
         where t.USER_ID = u.USER_ID and t.role_id = #value#
         order by u.REAL_NAME
     </select>
+
+    <update id="updateUserPassword" parameterClass="java.util.HashMap">
+        update C_USER t set t.password=#password# where t.user_id=#userid#
+    </update>
 </sqlMap>

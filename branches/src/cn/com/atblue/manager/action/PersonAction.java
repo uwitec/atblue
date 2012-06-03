@@ -92,7 +92,7 @@ public class PersonAction extends BaseAction {
                     Map map = new HashMap();
                     map.put("userId", userId);
                     CUser u = userDAO.queryForBean(map);
-                    if(u != null && u.getPassword() != user.getPassword())
+                    if(u != null && !u.getPassword().equals(user.getPassword()))
                         user.setPassword(StringUtil.MD5Encode(user.getPassword()));
                     userDAO.modCUser(user);
                 }

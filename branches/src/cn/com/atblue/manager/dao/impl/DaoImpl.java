@@ -130,4 +130,11 @@ public class DaoImpl extends SqlMapClientDaoSupport implements Dao{
     public  List getUsersByRoleId(String roleId){
         return this.getSqlMapClientTemplate().queryForList("manager.dao.getUsersByRoleId",roleId);
     }
+
+    public void updateUserPassword(String userId,String password){
+        Map map = new HashMap();
+        map.put("userid", userId);
+        map.put("password", password);
+        this.getSqlMapClientTemplate().update("manager.dao.updateUserPassword",map);
+    }
 }
