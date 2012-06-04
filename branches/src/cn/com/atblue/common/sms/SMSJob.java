@@ -25,9 +25,9 @@ public class SMSJob implements Job {
         OfficeSmsPersonDAO officeSmsPersonDAO = (OfficeSmsPersonDAO) beanFactory.getBean("officeSmsPersonDAO");
 
         List list = oDao.getSmsPersonsList();
-        if (!smsHandler.isStarted()) {
-            smsHandler.start();
-        }
+//        if (!smsHandler.isStarted()) {
+//            smsHandler.start();
+//        }
         if (list != null && list.size() > 0) {
 
             for (int i = 0; i < list.size(); i++) {
@@ -38,7 +38,7 @@ public class SMSJob implements Job {
                 String TZID = StringUtil.parseNull(bean.getTzid(), "");
                 if (!StringUtil.isBlankOrEmpty(PHONE)) {
                     OutboundMessage message = new OutboundMessage(PHONE, DXNR);
-                    smsHandler.sendSMS(message);
+                    smsHandler.queueMessage(message);
                     bean.setSffs("1");
                     System.out.println("短息发送成功：" + message);
                     officeSmsPersonDAO.modOfficeSmsPerson(bean);
@@ -60,6 +60,6 @@ public class SMSJob implements Job {
                 }
             }
         }
-        smsHandler.destroy();
+//        smsHandler.destroy();
     }
 }

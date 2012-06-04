@@ -30,6 +30,7 @@ public class SMSHandler {
         }
         this.manufacturer = manufacturer;
         init();
+        start();
     }
 
     public static SMSHandler getInstance(){
@@ -83,6 +84,16 @@ public class SMSHandler {
         return false;
     }
 
+    public boolean queueMessage(OutboundMessage msg) {
+        msg.setEncoding(MessageEncodings.ENCUCS2);
+        try {
+            return smsService.queueMessage(msg);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public boolean isStarted() {
         if (smsService != null && smsService.getServiceStatus() == Service.ServiceStatus.STARTED) {
             for (AGateway gateway : smsService.getGateways()) {
@@ -118,6 +129,12 @@ public class SMSHandler {
             e.printStackTrace();
         }
         return msgList;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        this.destroy();
     }
 
     public String getComPort() {
