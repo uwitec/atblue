@@ -8,6 +8,7 @@ import org.smslib.AGateway.Protocols;
 import org.smslib.Message.MessageEncodings;
 import org.smslib.modem.SerialModemGateway;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -73,7 +74,19 @@ public class SMSHandler {
             e.printStackTrace();
         }
     }
-
+   public void deleteSMS(InboundMessage msg){
+       try {
+           smsService.deleteMessage(msg);
+       } catch (TimeoutException e) {
+           e.printStackTrace();
+       } catch (GatewayException e) {
+           e.printStackTrace();
+       } catch (IOException e) {
+           e.printStackTrace();
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       }
+   }
     public boolean sendSMS(OutboundMessage msg) {
         msg.setEncoding(MessageEncodings.ENCUCS2);
         try {
