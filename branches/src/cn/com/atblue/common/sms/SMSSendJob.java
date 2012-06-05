@@ -40,21 +40,6 @@ public class SMSSendJob implements Job {
                     System.out.println("短息发送成功：" + message);
                     officeSmsPersonDAO.modOfficeSmsPerson(bean);
                 }
-
-            }
-
-
-        }
-
-        List<InboundMessage> list2 = smsHandler.readUnReadSMS();
-        if (list2 != null && list2.size() > 0) {
-            for (InboundMessage message : list2) {
-                String phone = message.getOriginator();
-                String text = message.getText();
-                if (!StringUtil.isBlankOrEmpty(text)) {
-                    System.out.println("短息读取成功：" + phone);
-                    oDao.updateSmsPerson(text, phone.substring(2));
-                }
             }
         }
     }

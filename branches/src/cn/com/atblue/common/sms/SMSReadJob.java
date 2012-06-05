@@ -30,6 +30,7 @@ public class SMSReadJob implements Job {
                 if (!StringUtil.isBlankOrEmpty(text)) {
                     System.out.println("短息读取成功：" + phone);
                     oDao.updateSmsPerson(text, phone.substring(2));
+                    smsHandler.deleteSMS(message); //删除短信
                 }
             }
         }
