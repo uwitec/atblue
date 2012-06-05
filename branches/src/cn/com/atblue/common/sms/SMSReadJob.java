@@ -16,39 +16,12 @@ import java.util.List;
 /**
  * 定时短信任务
  */
-public class SMSJob implements Job {
+public class SMSReadJob implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         BeanFactory beanFactory = (BeanFactory) jobExecutionContext.getJobDetail().getJobDataMap().get("beanFactory");
         SMSHandler smsHandler =SMSHandler.getInstance();
         ODao oDao = (ODao) beanFactory.getBean("oDao");
-        OfficeSmsPersonDAO officeSmsPersonDAO = (OfficeSmsPersonDAO) beanFactory.getBean("officeSmsPersonDAO");
-
-        List list = oDao.getSmsPersonsList();
-//        if (!smsHandler.isStarted()) {
-//            smsHandler.start();
-//        }
-        if (list != null && list.size() > 0) {
-
-            for (int i = 0; i < list.size(); i++) {
-                OfficeSmsPerson bean = (OfficeSmsPerson) list.get(i);
-                String USER_NAME = StringUtil.parseNull(bean.getUserName(), "");
-                String DXNR = StringUtil.parseNull(bean.getDxnr(), "");
-                String PHONE = StringUtil.parseNull(bean.getPhone(), "");
-                String TZID = StringUtil.parseNull(bean.getTzid(), "");
-                if (!StringUtil.isBlankOrEmpty(PHONE)) {
-                    OutboundMessage message = new OutboundMessage(PHONE, DXNR);
-                    smsHandler.queueMessage(message);
-                    bean.setSffs("1");
-                    System.out.println("短息发送成功：" + message);
-                    officeSmsPersonDAO.modOfficeSmsPerson(bean);
-                }
-
-            }
-
-
-        }
-
         List<InboundMessage> list2 = smsHandler.readUnReadSMS();
         if (list2 != null && list2.size() > 0) {
             for (InboundMessage message : list2) {
@@ -60,6 +33,5 @@ public class SMSJob implements Job {
                 }
             }
         }
-//        smsHandler.destroy();
     }
 }
