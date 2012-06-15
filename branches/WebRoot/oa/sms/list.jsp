@@ -144,12 +144,12 @@
                         <td class="form" style="text-align: center" nowrap>
                             <s:property value="#status.index+1"/>
                         </td>
-                        <td class="form" style="text-align: left" nowrap>
+                        <td class="form" style="text-align: left" nowrap title="<%=StringUtil.parseNull(request.getAttribute("DXNR"),"")%>">
                         <%
                             String dxnr = StringUtil.parseNull(request.getAttribute("DXNR"),"");
                         %>
                         <%=StringUtil.cutString(dxnr,35)%>&nbsp;</td>
-                        <td class="form" style="text-align: left" nowrap>
+                        <td class="form" style="text-align: center" nowrap>
                             ${ORGNA_NAME}
                             &nbsp;</td>
                         <td class="form" style="text-align: left" nowrap>${REAL_NAME}&nbsp;</td>
@@ -168,7 +168,7 @@
                                 if(!"已发送".equals(ZT)){%>
                             <a href="./sms_mod.d?tzid=${TZID}">[编辑]</a>&nbsp;
                             <a href="javascript:onDelete('./sms_del.d?tzid=${TZID}');">[删除]</a>&nbsp;
-                            <a href="javascript:onSend('./sms_send.d?tzid=${TZID}');">[发送]</a>&nbsp;
+                            <%--<a href="javascript:onSend('./sms_send.d?tzid=${TZID}');">[发送]</a>&nbsp;--%>
                             <% }else{  %>
                             <a href="javascript:onSend('./sms_send.d?tzid=${TZID}');">[重新发送]</a>&nbsp;
                             <%   }
