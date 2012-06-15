@@ -31,7 +31,6 @@ public class SMSHandler {
         }
         this.manufacturer = manufacturer;
         init();
-        start();
     }
 
     public static SMSHandler getInstance(){
@@ -142,12 +141,6 @@ public class SMSHandler {
             e.printStackTrace();
         }
         return msgList;
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-        this.destroy();
     }
 
     public String getComPort() {

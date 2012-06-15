@@ -22,17 +22,24 @@ public class SMSReadJob implements Job {
         BeanFactory beanFactory = (BeanFactory) jobExecutionContext.getJobDetail().getJobDataMap().get("beanFactory");
         SMSHandler smsHandler =SMSHandler.getInstance();
         ODao oDao = (ODao) beanFactory.getBean("oDao");
+        smsHandler.start();
         List<InboundMessage> list2 = smsHandler.readUnReadSMS();
+        System.out.println("开始读取短息！");
         if (list2 != null && list2.size() > 0) {
+            smsHandler.start();
             for (InboundMessage message : list2) {
                 String phone = message.getOriginator();
                 String text = message.getText();
+                System.out.println("已经读取短息:"+text);
                 if (!StringUtil.isBlankOrEmpty(text)) {
                     System.out.println("短息读取成功：" + phone);
                     oDao.updateSmsPerson(text, phone.substring(2));
                     smsHandler.deleteSMS(message); //删除短信
                 }
             }
+
         }
+        smsHandler.destroy();
+        System.out.println("读取短息结束！");
     }
 }
