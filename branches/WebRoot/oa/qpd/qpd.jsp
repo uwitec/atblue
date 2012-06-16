@@ -54,6 +54,7 @@
           }
 %>
 <script type="text/javascript">
+	opener.document.getElementById("qzgz").value="isSign";
     window.close();
 </script>
 <%   }

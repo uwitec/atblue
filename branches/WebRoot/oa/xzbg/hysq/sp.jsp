@@ -186,6 +186,10 @@
                 var v = document.all.agree;
                 var nextUserId = "";
                 var varValue = "";
+                 if(document.form1.qzgz.value !="isSign"){
+				 	alert("本次需要审核的文档中没有您的签名印章，请签名后重新提交。");
+				    return false;
+		     	}
                 if(v[0].checked && v[0].value == '1'){
                     nextUserId = document.all.agreed.value;
                     varValue = "1";
@@ -216,6 +220,7 @@
 	<body onload="_resizeNoPage();">
 		<form action="add.jsp" name="form1" method="post">
             <input type="hidden" name="flag" value=""/>
+            <input type="hidden" name="qzgz" id="qzgz">
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
 				background="<%=request.getContextPath()%>/images/mhead.jpg">
