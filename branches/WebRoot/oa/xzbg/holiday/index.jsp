@@ -43,11 +43,16 @@
 		}
         function tj(sid,pid,cid,id){
             var selUserId = document.getElementsByName(id+"nextUserId")[0].value;
+          	if(document.form1.qzgz.value !="isSign"){
+			 	alert("本次需要审核的文档中没有您的签名印章，请签名后重新提交。");
+			    return false;
+		     }
             if(selUserId == null || selUserId == ''){
                 alert("请先选择进行审批的用户！");
                 document.all[id+"nextUserId"].focus();
                 return ;
             }
+            document.form1.qzgz.value='';
             window.location = "tj.jsp?selUserId="+selUserId+"&connectId="+cid+"&documentid="+sid+"&processId="+pid+"&varValue=1"+"&holidayid="+sid;
         }
         function qz(formId,processId,connectId,holidayid){
@@ -112,6 +117,7 @@
 	<body>
     <form name="form1" action=""  style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px">
     <input type="hidden" name="curRole" value="<%=curRole%>">
+    <input type="hidden" name="qzgz" id="qzgz">
     <table width="100%" align="center" height="25" border="0"
            cellpadding="0" cellspacing="0"
            background="<%=contentPath%>/images/mhead.jpg">
