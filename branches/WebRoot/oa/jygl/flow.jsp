@@ -87,10 +87,49 @@
 							</td>
 							
 							<td class="form" align="left">
-								<%=StringUtil.parseNull(map.get("REAL_NAME"),"")%>&nbsp;
+                                <%
+                                String pending =StringUtil.parseNull(map.get("PENDING_PERSON"),"");
+                                if(pending.indexOf(",") != -1){
+                                    String str = "";
+                                       String[] us = StringUtil.split(pending,",");
+                                       if(us != null && us.length > 0){
+                                           for(int j=0; j<us.length; j++){
+                                                String uid = us[j];
+                                                Map p = new HashMap();
+                                                p.put("userId",uid);
+                                                CUser _u = userDAO.queryForBean(p);
+                                               if(_u != null)
+                                               str = str + _u.getRealName()+ ",";
+                                           }
+                                       } %>
+                                <%=str%>
+                                <% }else{  %>
+                                <%=StringUtil.parseNull(map.get("REAL_NAME"),"")%>
+                                <% }
+                                %>
+								&nbsp;
 							</td>
-							<td class="form" align="center">
+							<td class="form" align="left">
+                                <%
+                                    String real =StringUtil.parseNull(map.get("REAL_PERSON"),"");
+                                    if(real.indexOf(",") != -1){
+                                        String str = "";
+                                        String[] us = StringUtil.split(real,",");
+                                        if(us != null && us.length > 0){
+                                            for(int j=0; j<us.length; j++){
+                                                String uid = us[j];
+                                                Map p = new HashMap();
+                                                p.put("userId",uid);
+                                                CUser _u = userDAO.queryForBean(p);
+                                                if(_u != null)
+                                                str = str + _u.getRealName()+ ",";
+                                            }
+                                        } %>
+                                <%=str%>
+                                <% }else{  %>
                                 <%=StringUtil.parseNull(map.get("REAL_NAME2"),"")%>
+                                <% }
+                                %>
                                     &nbsp;
 							</td>
 						</tr>

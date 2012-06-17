@@ -57,7 +57,7 @@
                      alt="">
             </td>
             <td width="15%" class="mhead">
-                 用印申请已审批
+                单井费用已审批
             </td>
             <td align="left" class="mhead">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
