@@ -382,6 +382,9 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
             <isNotEmpty prepend=" and " property="userId">
                 <![CDATA[c.pending_person like '%'||#userId#||'%']]>
             </isNotEmpty>
+            <isNotEmpty prepend=" and " property="userId">
+                <![CDATA[(c.REAL_PERSON is null or c.REAL_PERSON not like '%'||#userId#||'%')]]>
+            </isNotEmpty>
             <isNotEmpty prepend=" and " property="dh">
                 <![CDATA[t.dh like '%'||#dh#||'%']]>
             </isNotEmpty>

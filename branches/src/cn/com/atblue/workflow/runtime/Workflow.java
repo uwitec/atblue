@@ -183,9 +183,9 @@ public class Workflow {
                 curActivityId = wInstance.getActivityId();
                 //并设置当前用户到连接实例的实际处理人中
                 if (!StringUtil.isBlankOrEmpty(wConnect.getRealPerson())) {
-                    wConnect.setRealPerson("," + wConnect.getRealPerson());
+                    wConnect.setRealPerson(wConnect.getRealPerson()+"," + userId);
                 } else {
-                    wConnect.setRealPerson(wConnect.getRealPerson());
+                    wConnect.setRealPerson(userId);
                 }
                 wConnectDAO.modWConnect(wConnect);
                 //查找当前连接的定义，获取会签类型和会签值字段
@@ -216,7 +216,7 @@ public class Workflow {
                     wConnect.setCreateTime(new Date());
                     wConnect.setLineId(nextLine.getLineId());
                     wConnect.setProcessId(wProcess.getProcessId());
-                    wConnectDAO.addWConnect(wConnect);
+//                    wConnectDAO.addWConnect(wConnect);
 
                     WInstance nextInstance = new WInstance();
                     nextInstance.setInstanceId(StringUtil.getUUID());
