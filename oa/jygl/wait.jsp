@@ -48,7 +48,7 @@
                      alt="">
             </td>
             <td width="15%" class="mhead">
-                 用印申请待审批
+                 单井费用待审批
             </td>
             <td align="left" class="mhead">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -119,7 +119,7 @@
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
 							<td  style="text-align: center" nowrap="nowrap">
-                                <input type="button" class="button" name="" style="width:60px"  value="审批" onclick="window.location='sp.jsp?pkid=<%=StringUtil.parseNull(map.get("PKID"),"") %>';"/>
+                                <input type="button" class="button" name="" style="width:60px"  value="审批" onclick="window.location='sp2.jsp?pkid=<%=StringUtil.parseNull(map.get("PKID"),"") %>';"/>
                                 &nbsp;
 							</td>
 						</tr>
