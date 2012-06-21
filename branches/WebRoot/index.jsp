@@ -265,7 +265,7 @@
                                   <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
                                   <td class="txt_home">
                                       <a href="<%=request.getContextPath()%>/oa/xzbg/supplies/sp.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>">
-                                          【其它申请】<%=StringUtil.cutString(StringUtil.parseNull(map.get("MC"),""),23)%></a>
+                                          【其它申请】关于<%=StringUtil.cutString(StringUtil.parseNull(map.get("MC"),""),23)%>的请示</a>
                                   </td>
                                   <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
                               </tr>
