@@ -1264,7 +1264,7 @@ rt
     <tr>
         <td class="Noprint">
             <input name="button" type="button" class="button" value="打印预览" onClick="factory.printing.Preview();"/>
-            <input name="submit" type="submit" class="button" value="关闭" onClick="window.close();">
+            <input name="submit" type="submit" class="button" value="返回" onClick="window.history.go(-1);">
             <!-- SignData隐藏域，用于将所有加密的数据提交到表单保存页面 -->
             <input type="hidden" id="signdata" name="signdata"/>
         </td>
@@ -1302,55 +1302,55 @@ rt
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl6322393 style='height:23.45pt;border-top:none'>队<span
             style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>号</td>
-    <td class=xl8622393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getDh(),"")%>　</td>
+    <td class=xl8622393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getDh(),"")%>　</td>
     <td class=xl6322393 style='border-top:none'>井<span
             style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>号</td>
-    <td class=xl8622393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getJh(),"")%>　</td>
+    <td class=xl8622393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getJh(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>建设单位</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getJsdw(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getJsdw(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>分地区</td>
-    <td class=xl6522393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getFdq(),"")%>　</td>
+    <td class=xl6522393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getFdq(),"")%>　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl6322393 style='height:23.45pt;border-top:none'>井<span
             style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>别</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getJb(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getJb(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>井<span
             style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>深</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getJs(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getJs(),"")%>　</td>
     <td class=xl6822393 style='border-top:none'>井<span
             style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>径</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getJj(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getJj(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>定额周期</td>
-    <td class=xl6522393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getDezq(),"")%>　</td>
+    <td class=xl6522393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getDezq(),"")%>　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl6322393 style='height:23.45pt;border-top:none'>泥浆密度</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getNjmd(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getNjmd(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>技套下深</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getJtxs(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getJtxs(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>取<span
             style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>芯</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getQx(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getQx(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>定额钻机月</td>
-    <td class=xl6522393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getDezjy(),"")%>　</td>
+    <td class=xl6522393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getDezjy(),"")%>　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl6322393 style='height:23.45pt;border-top:none'>加深米数</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getJsms(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getJsms(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>井 斜 角</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getJxj(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getJxj(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>野营房维修</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getYyfwx(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getYyfwx(),"")%>　</td>
     <td rowspan=2 class=xl7222393 style='border-bottom:1.0pt solid black;
   border-top:none'>计划签字</td>
     <td rowspan=2 class=xl11422393 style='border-bottom:1.0pt solid black;
-  border-top:none'  id="shr04b02beb-3532-40c9-8e28-e3b25a76f826">　</td>
+  border-top:none;text-align: left'  id="shr04b02beb-3532-40c9-8e28-e3b25a76f826">&nbsp;　</td>
 </tr>
 <tr height=64 style='mso-height-source:userset;height:48.0pt'>
     <td height=64 class=xl7922393 style='height:48.0pt'>备注</td>
     <td colspan=5 class=xl11122393 style='border-right:.5pt solid black;
-  border-left:none'><%=StringUtil.parseNull(bean.getBz(),"")%>　</td>
+  border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getBz(),"")%>　</td>
 </tr>
 <tr height=26 style='mso-height-source:userset;height:19.5pt'>
     <td colspan=8 height=26 class=xl10222393 style='border-right:1.0pt solid black;
@@ -1360,40 +1360,40 @@ rt
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl6322393 style='height:23.45pt;border-top:none'>搬迁时间</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getBqsj(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getBqsj(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>实际建井周期</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getSjjjzq(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getSjjjzq(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>实际钻机月</td>
-    <td class=xl6722393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getSjzjy(),"")%>　</td>
+    <td class=xl6722393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getSjzjy(),"")%>　</td>
     <td class=xl6422393 style='border-top:none'>安装费用</td>
-    <td class=xl6522393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getAzfy(),"")%>　</td>
+    <td class=xl6522393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getAzfy(),"")%>　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl6322393 style='height:23.45pt;border-top:none'>开钻时间</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getKzsj(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getKzsj(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>实际钻井周期</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getSjzjzq(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getSjzjzq(),"")%>　</td>
     <td class=xl6922393 style='border-top:none;border-left:none'>实际井深</td>
-    <td class=xl6722393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getSjjs(),"")%>　</td>
+    <td class=xl6722393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getSjjs(),"")%>　</td>
     <td class=xl6422393 style='border-top:none'>整拖费</td>
-    <td class=xl6522393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getZtf(),"")%>　</td>
+    <td class=xl6522393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getZtf(),"")%>　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl6322393 style='height:23.45pt;border-top:none'>完井时间</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getWjsj(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getWjsj(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>是否整拖</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getSfzt(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getSfzt(),"")%>　</td>
     <td class=xl6422393 style='border-left:none'>搬迁费</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getBqf(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getBqf(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>日常运费</td>
-    <td class=xl6522393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getRcyf(),"")%>　</td>
+    <td class=xl6522393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getRcyf(),"")%>　</td>
 </tr>
 <tr height=82 style='mso-height-source:userset;height:61.5pt'>
     <td height=82 class=xl7922393 style='height:61.5pt'>备注</td>
     <td colspan=5 class=xl9922393 style='border-right:.5pt solid black;
-  border-left:none'><%=StringUtil.parseNull(bean.getBzsc(),"")%>　</td>
+  border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getBzsc(),"")%>　</td>
     <td class=xl7122393 style='border-top:none;border-left:none'>生产办签字</td>
-    <td class=xl8022393 style='border-left:none' id="shr33c165b3-b6a7-4144-b8a2-aaebe111845e">　</td>
+    <td class=xl8022393 style='border-left:none;text-align: left' id="shr33c165b3-b6a7-4144-b8a2-aaebe111845e">&nbsp;　</td>
 </tr>
 <tr height=24 style='mso-height-source:userset;height:18.0pt'>
     <td colspan=8 height=24 class=xl10222393 style='border-right:1.0pt solid black;
@@ -1403,56 +1403,56 @@ rt
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl6322393 style='height:23.45pt;border-top:none'>钻前劳务</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getZqlw(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getZqlw(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>套<span
             style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>管</td>
-    <td class=xl6722393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getTg(),"")%>　</td>
+    <td class=xl6722393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getTg(),"")%>　</td>
     <td class=xl6422393 style='border-top:none'>钻具租赁费</td>
-    <td class=xl6722393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getZqzlf(),"")%>　</td>
+    <td class=xl6722393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getZqzlf(),"")%>　</td>
     <td class=xl6422393 style='border-top:none'>石粉材料</td>
-    <td class=xl6522393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getSfcl(),"")%>　</td>
+    <td class=xl6522393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getSfcl(),"")%>　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl6322393 style='height:23.45pt;border-top:none'>管具劳务</td>
-    <td class=xl6722393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getGjlw(),"")%>　</td>
+    <td class=xl6722393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getGjlw(),"")%>　</td>
     <td class=xl6422393 style='border-top:none'>套管附件</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getTgfj(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getTgfj(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>刚性扶正器</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getGxfzq(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getGxfzq(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>石粉劳务</td>
-    <td class=xl6522393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getSflw(),"")%>　</td>
+    <td class=xl6522393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getSflw(),"")%>　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl6322393 style='height:23.45pt;border-top:none'>固井劳务</td>
-    <td class=xl6722393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getGjlw2(),"")%>　</td>
+    <td class=xl6722393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getGjlw2(),"")%>　</td>
     <td class=xl6422393 style='border-top:none'>添加剂</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getTjj(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getTjj(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>井控固控摊销</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getJkgktx(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getJkgktx(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>井控配件</td>
-    <td class=xl6522393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getJkpj(),"")%>　</td>
+    <td class=xl6522393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getJkpj(),"")%>　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl6322393 style='height:23.45pt;border-top:none'>固井水泥</td>
-    <td class=xl6722393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getGjsn(),"")%>　</td>
+    <td class=xl6722393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getGjsn(),"")%>　</td>
     <td class=xl6422393 style='border-top:none'>隔离液</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getKly(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getKly(),"")%>　</td>
     <td class=xl6822393 style='border-top:none'>技术服务费</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getJsfwf(),"")%>　　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getJsfwf(),"")%>　　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>外委劳务</td>
-    <td class=xl6522393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getWwlw(),"")%>　　</td>
+    <td class=xl6522393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getWwlw(),"")%>　　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl6322393 style='height:23.45pt;border-top:none'>质量扣款</td>
     <td colspan=7 class=xl6722393 style='border-right:1.0pt solid black;
-  border-left:none'><%=StringUtil.parseNull(bean.getZlkk(),"")%>　　</td>
+  border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getZlkk(),"")%>　　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td rowspan=2 height=102 class=xl6322393 style='height:76.7pt;border-top:
   none'>非正常开支</td>
-    <td colspan=5 rowspan=2 class=xl10722393><%=StringUtil.parseNull(bean.getFzckz(),"")%>　　</td>
+    <td colspan=5 rowspan=2 class=xl10722393 style="text-align: left"><%=StringUtil.parseNull(bean.getFzckz(),"")%>　　</td>
     <td rowspan=2 class=xl7022393 style='border-top:none'>经管签字</td>
-    <td rowspan=2 class=xl10522393 style='border-top:none' id="shrb23121d4-db76-4d2d-b59d-eefd2873e0ab">　</td>
+    <td rowspan=2 class=xl10522393 style='border-top:none;text-align: left' id="shrb23121d4-db76-4d2d-b59d-eefd2873e0ab">&nbsp;　</td>
 </tr>
 <tr height=71 style='mso-height-source:userset;height:53.25pt'>
 </tr>
@@ -1465,134 +1465,134 @@ rt
 </tr>
 <tr height=47 style='mso-height-source:userset;height:35.25pt'>
     <td height=47 class=xl6322393 style='height:35.25pt;border-top:none'>柴油</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getCy(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getCy(),"")%>　</td>
     <td class=xl6822393 style='border-top:none'>柴油运费</td>
-    <td class=xl6722393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getCyyf(),"")%>　</td>
+    <td class=xl6722393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getCyyf(),"")%>　</td>
     <td class=xl6422393 style='border-top:none'>柴油劳务费</td>
-    <td class=xl6722393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getCylwf(),"")%>　</td>
+    <td class=xl6722393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getCylwf(),"")%>　</td>
     <td rowspan=2 class=xl7222393 style='border-bottom:.5pt solid black;
   border-top:none'>能源办签字</td>
     <td rowspan=2 class=xl8522393 style='border-bottom:.5pt solid black;
-  border-top:none' id="shr55fc5e6f-6a0c-4976-b0dd-03d72ebd3448">　</td>
+  border-top:none;text-align: left' id="shr55fc5e6f-6a0c-4976-b0dd-03d72ebd3448">&nbsp;　</td>
 </tr>
 <tr height=61 style='mso-height-source:userset;height:45.75pt'>
     <td height=61 class=xl6322393 style='height:45.75pt;border-top:none'>网电费</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getWdf(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getWdf(),"")%>　</td>
     <td class=xl7822393>原油</td>
-    <td class=xl6922393 style='border-top:none'><%=StringUtil.parseNull(bean.getYy(),"")%>　</td>
+    <td class=xl6922393 style='border-top:none;text-align: left'><%=StringUtil.parseNull(bean.getYy(),"")%>　</td>
     <td class=xl7822393>其他</td>
-    <td class=xl7422393 style='border-top:none'><%=StringUtil.parseNull(bean.getQtnyb(),"")%>　</td>
+    <td class=xl7422393 style='border-top:none;text-align: left'><%=StringUtil.parseNull(bean.getQtnyb(),"")%>　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl7322393 style='height:23.45pt;border-top:none'>实际井深</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getSjjs(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getSjjs(),"")%>　</td>
     <td class=xl6922393 style='border-left:none'>取芯进尺</td>
-    <td class=xl6422393 style='border-left:none'><%=StringUtil.parseNull(bean.getQxjc(),"")%>　</td>
+    <td class=xl6422393 style='border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getQxjc(),"")%>　</td>
     <td class=xl6422393 style='border-left:none'>弹性扶正器</td>
-    <td class=xl7622393 style='border-left:none'><%=StringUtil.parseNull(bean.getTxfzq(),"")%>　</td>
+    <td class=xl7622393 style='border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getTxfzq(),"")%>　</td>
     <td rowspan=3 class=xl7222393 style='border-bottom:.5pt solid black;
   border-top:none'>技术签字</td>
     <td rowspan=3 class=xl8522393 style='border-bottom:.5pt solid black;
-  border-top:none' id="shr8a49607b-d8da-4f7f-a594-9946f6d7d7c9">　</td>
+  border-top:none;text-align: left' id="shr8a49607b-d8da-4f7f-a594-9946f6d7d7c9">&nbsp;　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl6322393 style='height:23.45pt'>有效返工进尺</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getYxfgjc(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getYxfgjc(),"")%>　</td>
     <td class=xl6422393 style='border-left:none'>筛管下深</td>
-    <td class=xl6722393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getSgxs(),"")%>　</td>
+    <td class=xl6722393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getSgxs(),"")%>　</td>
     <td rowspan=2 class=xl6922393 style='border-bottom:.5pt solid black;
   border-top:none'>其他</td>
-    <td rowspan=2 class=xl6922393 style='border-bottom:.5pt solid black'><%=StringUtil.parseNull(bean.getQtjs(),"")%>　</td>
+    <td rowspan=2 class=xl6922393 style='border-bottom:.5pt solid black;text-align: left'><%=StringUtil.parseNull(bean.getQtjs(),"")%>　</td>
 </tr>
 <tr height=45 style='mso-height-source:userset;height:33.75pt'>
     <td height=45 class=xl6322393 style='height:33.75pt;border-top:none'>泥浆服务方</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getNjfwf(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getNjfwf(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>定向服务方</td>
-    <td class=xl6722393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getDxfwf(),"")%>　</td>
+    <td class=xl6722393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getDxfwf(),"")%>　</td>
 </tr>
 <tr height=104 style='mso-height-source:userset;height:78.0pt'>
     <td height=104 class=xl6322393 style='height:78.0pt;border-top:none'>设备修理费</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getSbxlf(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getSbxlf(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>上井劳务费</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getSjlwf(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getSjlwf(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>其他</td>
-    <td class=xl7522393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getQtjdk(),"")%>　</td>
+    <td class=xl7522393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getQtjdk(),"")%>　</td>
     <td class=xl7022393 style='border-top:none'>机动科签字</td>
-    <td class=xl8422393 style='border-top:none;border-left:none' id="shr27021cde-c852-4c4a-8809-dbcb155825d2">　</td>
+    <td class=xl8422393 style='border-top:none;border-left:none;text-align: left' id="shr27021cde-c852-4c4a-8809-dbcb155825d2">&nbsp;　</td>
 </tr>
 <tr height=107 style='mso-height-source:userset;height:80.25pt'>
     <td height=107 class=xl6322393 style='height:80.25pt;border-top:none'>安全设施费</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getAqssf(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getAqssf(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>上井劳务费</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getSjlwf(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getSjlwf(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>其他</td>
-    <td class=xl7422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getQtaqk(),"")%>　</td>
+    <td class=xl7422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getQtaqk(),"")%>　</td>
     <td class=xl7222393 style='border-top:none'>安全科签字</td>
-    <td class=xl8522393 style='border-top:none;border-left:none' id="shr254db449-d2de-4335-a130-6f1603cb741f">　</td>
+    <td class=xl8522393 style='border-top:none;border-left:none;text-align: left' id="shr254db449-d2de-4335-a130-6f1603cb741f">&nbsp;　</td>
 </tr>
 <tr height=104 style='mso-height-source:userset;height:78.0pt'>
     <td height=104 class=xl6322393 style='height:78.0pt;border-top:none'>工农费</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getGnf(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getGnf(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>非正常开支</td>
-    <td colspan=3 class=xl6422393 style='border-left:none'><%=StringUtil.parseNull(bean.getFzckz(),"")%>　</td>
+    <td colspan=3 class=xl6422393 style='border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getFzckz(),"")%>　</td>
     <td class=xl7022393 style='border-left:none'>工农科签字</td>
-    <td class=xl8522393 style='border-left:none' id="shr61314660-7176-4f17-b19c-ba9840acd849">　</td>
+    <td class=xl8522393 style='border-left:none;text-align: left' id="shr61314660-7176-4f17-b19c-ba9840acd849">&nbsp;　</td>
 </tr>
 <tr height=104 style='mso-height-source:userset;height:78.0pt'>
     <td height=104 class=xl6322393 style='height:78.0pt;border-top:none'>井队用料</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getJdyl(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getJdyl(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>其<span
             style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>他</td>
     <td colspan=3 class=xl6722393 style='border-right:.5pt solid black;
-  border-left:none'><%=StringUtil.parseNull(bean.getQtzhd(),"")%>　</td>
+  border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getQtzhd(),"")%>　</td>
     <td class=xl7022393 style='border-top:none;border-left:none'>综合队</td>
-    <td class=xl8522393 style='border-left:none' id="shr895ba579-95d8-4e88-b615-3c2b2443aa0e">　</td>
+    <td class=xl8522393 style='border-left:none;text-align: left' id="shr895ba579-95d8-4e88-b615-3c2b2443aa0e">&nbsp;　</td>
 </tr>
 <tr height=129 style='mso-height-source:userset;height:96.75pt'>
     <td height=129 class=xl6322393 style='height:96.75pt;border-top:none'>井队用料</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getJdylwxd(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getJdylwxd(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>其<span
             style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>他</td>
     <td colspan=3 class=xl6722393 style='border-right:.5pt solid black;
-  border-left:none'><%=StringUtil.parseNull(bean.getQtwxd(),"")%>　</td>
+  border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getQtwxd(),"")%>　</td>
     <td class=xl7022393 style='border-top:none;border-left:none'>外修队</td>
-    <td class=xl8522393 style='border-left:none' id="shr3b6f38fb-fd8c-4a50-9587-431b841b2c7a">　</td>
+    <td class=xl8522393 style='border-left:none;text-align: left' id="shr3b6f38fb-fd8c-4a50-9587-431b841b2c7a">&nbsp;　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl6322393 style='height:23.45pt;border-top:none'>钻头</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getZt(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getZt(),"")%>　</td>
     <td class=xl8122393 style='border-left:none'>机油</td>
-    <td class=xl6422393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getJy(),"")%>　</td>
+    <td class=xl6422393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getJy(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>材料供井运费</td>
-    <td class=xl6722393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getClgjfy(),"")%>　</td>
+    <td class=xl6722393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getClgjfy(),"")%>　</td>
     <td rowspan=6 class=xl9622393 width=98 style='border-bottom:1.0pt solid black;
   border-top:none;width:74pt'>供应签字<br>
     </td>
-    <td rowspan=6 class=xl8722393 style='border-bottom:.5pt solid black' id="shr6f531ccb-7cbe-4614-9a1b-3683992ffa89">　</td>
+    <td rowspan=6 class=xl8722393 style='border-bottom:.5pt solid black;text-align: left' id="shr6f531ccb-7cbe-4614-9a1b-3683992ffa89">&nbsp;　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl6322393 style='height:23.45pt;border-top:none'>泥浆村料</td>
-    <td class=xl6922393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getNjcl(),"")%>　</td>
+    <td class=xl6922393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getNjcl(),"")%>　</td>
     <td class=xl8222393 width=119 style='border-left:none;width:89pt'>非渗透油层保护材料</td>
-    <td class=xl6922393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getFstycbhcl(),"")%>　</td>
+    <td class=xl6922393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getFstycbhcl(),"")%>　</td>
     <td class=xl6422393 style='border-top:none;border-left:none'>MEG泥浆材料</td>
-    <td class=xl7622393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getMegnjcl(),"")%>　</td>
+    <td class=xl7622393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getMegnjcl(),"")%>　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl8322393 width=85 style='height:23.45pt;border-top:none;
   width:64pt'>胺基聚醇油层保护材料</td>
-    <td class=xl6922393 style='border-left:none'><%=StringUtil.parseNull(bean.getAjjcycbhcl(),"")%>　</td>
+    <td class=xl6922393 style='border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getAjjcycbhcl(),"")%>　</td>
     <td class=xl6922393 style='border-top:none;border-left:none'>其他油层保护材料</td>
     <td colspan=3 class=xl6722393 style='border-right:.5pt solid black;
-  border-left:none'><%=StringUtil.parseNull(bean.getQtycbhcl(),"")%>　</td>
+  border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getQtycbhcl(),"")%>　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl7322393 style='height:23.45pt'>一般材料</td>
-    <td class=xl6922393 style='border-left:none'><%=StringUtil.parseNull(bean.getYbcl(),"")%>　</td>
+    <td class=xl6922393 style='border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getYbcl(),"")%>　</td>
     <td class=xl6922393 style='border-left:none'>奥凯龙材料</td>
-    <td class=xl6922393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getAklcl(),"")%>　</td>
+    <td class=xl6922393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getAklcl(),"")%>　</td>
     <td class=xl8122393 style='border-left:none'>扶正器</td>
-    <td class=xl7622393 style='border-top:none;border-left:none'><%=StringUtil.parseNull(bean.getFzq(),"")%>　</td>
+    <td class=xl7622393 style='border-top:none;border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getFzq(),"")%>　</td>
 </tr>
 <tr height=31 style='mso-height-source:userset;height:23.45pt'>
     <td height=31 class=xl7322393 style='height:23.45pt'>　</td>
@@ -1604,7 +1604,7 @@ rt
 </tr>
 <tr height=50 style='mso-height-source:userset;height:37.5pt'>
     <td height=50 class=xl6622393 style='height:37.5pt'>备注</td>
-    <td colspan=5 class=xl9422393 style='border-left:none'><%=StringUtil.parseNull(bean.getBzgy(),"")%>　</td>
+    <td colspan=5 class=xl9422393 style='border-left:none;text-align: left'><%=StringUtil.parseNull(bean.getBzgy(),"")%>　</td>
 </tr>
 <![if supportMisalignedColumns]>
 <tr height=0 style='display:none'>
