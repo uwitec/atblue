@@ -546,9 +546,9 @@
     padding-right:1px;
     padding-left:1px;
     mso-ignore:padding;
-    color:red;
+    /*color:red;*/
     font-size:10.0pt;
-    font-weight:700;
+    /*font-weight:700;*/
     font-style:normal;
     text-decoration:none;
     font-family:仿宋_GB2312, monospace;

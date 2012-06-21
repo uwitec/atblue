@@ -461,22 +461,22 @@ function addSealB(){
   <td rowspan=2 height=74 class=xl636142 style='height:55.5pt;border-top:none'>用印单位</td>
   <td colspan=4 rowspan=2 class=xl636142><%=cOrgnization.getOrgnaName()%></td>
   <td class=xl636142 style='border-top:none;border-left:none'>时间</td>
-  <td colspan=3 class=xl636142 style='border-left:none'><%=DateUtil.format(yysq.getSqsj(),"yyyy-MM-dd")%></td>
+  <td colspan=3 class=xl636142 style='border-left:none'><%=DateUtil.format(yysq.getSqsj(),"yyyy-MM-dd")%>&nbsp;</td>
  </tr>
  <tr height=37 style='mso-height-source:userset;height:27.75pt'>
   <td height=37 class=xl636142 style='height:27.75pt;border-top:none;
   border-left:none'>份数</td>
-  <td colspan=3 class=xl636142 style='border-left:none'><%=yysq.getFs() == null?0:yysq.getFs().intValue() %></td>
+  <td colspan=3 class=xl636142 style='border-left:none'><%=yysq.getFs() == null?0:yysq.getFs().intValue() %>&nbsp;</td>
  </tr>
  <tr height=38 style='mso-height-source:userset;height:28.5pt'>
   <td height=38 class=xl636142 style='height:28.5pt;border-top:none'>用印人</td>
-  <td colspan=4 class=xl636142 style='border-left:none'><%=dao.findUserById(yysq.getYyr()).getRealName()%></td>
+  <td colspan=4 class=xl636142 style='border-left:none'><%=dao.findUserById(yysq.getYyr()).getRealName()%>&nbsp;</td>
   <td class=xl636142 style='border-top:none;border-left:none'>经办人</td>
-  <td colspan=3 class=xl636142 style='border-left:none'><%=dao.findUserById(yysq.getYyr()).getRealName()%></td>
+  <td colspan=3 class=xl636142 style='border-left:none'><%=dao.findUserById(yysq.getYyr()).getRealName()%>&nbsp;</td>
  </tr>
  <tr height=57 style='mso-height-source:userset;height:42.75pt'>
   <td height=57 class=xl636142 style='height:42.75pt;border-top:none'>名称</td>
-  <td colspan=8 class=xl636142 style='border-left:none'><%=yysq.getYymc()%></td>
+  <td colspan=8 class=xl636142 style='border-left:none'><%=yysq.getYymc()%>&nbsp;</td>
  </tr>
  <tr height=19 style='mso-height-source:userset;height:14.25pt'>
   <td colspan=9 height=19 class=xl656142 style='border-right:.5pt solid black;
@@ -486,7 +486,7 @@ function addSealB(){
   <td colspan=9 rowspan=8 height=341 class=xl686142 style='border-right:.5pt solid black;
   border-bottom:.5pt solid black;height:255.75pt;text-align:left;vertical-align:top;'>
       <p><font style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;
-      <%=StringUtil.parseNull(yysq.getYysy(),"")%>
+      <%=StringUtil.parseNull(yysq.getYysy(),"&nbsp;")%>
       </font> </p>
   </td>
  </tr>
@@ -509,7 +509,7 @@ function addSealB(){
   height:14.25pt'>领导批示</td>
  </tr>
  <tr height=19 style='height:14.25pt'>
-  <td colspan=8 rowspan=7 height=210 class=xl686142 style='border-right:none;
+  <td colspan=7 rowspan=7 height=210 class=xl686142 style='border-right:none;
   border-bottom:.5pt solid black;height:157.5pt;text-align:left;vertical-align:top;'>
   <p><font style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;<%
     for(int i=0;i<dataList.size();i++){ 
@@ -518,11 +518,11 @@ function addSealB(){
    %>
   <%} %> </font> </p>
   </td>
-   <td colspan=1 rowspan=7 style='border-right:.5pt solid black;
-  border-bottom:.5pt solid black;height:157.5pt;vertical-align:bottom;'>
+   <td colspan=2 rowspan=7 style='border-right:.5pt solid black;
+  border-bottom:.5pt solid black;height:157.5pt;vertical-align:bottom;text-align: left'>
 	 	<table style='vertical-align:bottom;'>
 	  <tr>
-	  <td id="shr684a191b-be64-46fd-a6be-b30763ef6e53"></td>
+	  <td id="shr684a191b-be64-46fd-a6be-b30763ef6e53" style="text-align: left">&nbsp;</td>
 	  </tr>
 	  </table>
 	 </td>
@@ -541,7 +541,7 @@ function addSealB(){
  </tr>
  <tr height=19 style='height:14.25pt'>
   <td rowspan=3 height=57 class=xl636142 style='height:42.75pt;border-top:none'>备注</td>
-  <td colspan=8 rowspan=3 class=xl636142 style="text-align:left"><%=StringUtil.parseNull(yysq.getBz(),"")%></td>
+  <td colspan=8 rowspan=3 class=xl636142 style="text-align:left"><%=StringUtil.parseNull(yysq.getBz(),"&nbsp;")%></td>
  </tr>
  <tr height=19 style='height:14.25pt'>
  </tr>

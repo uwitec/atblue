@@ -285,7 +285,7 @@ rt
  </tr>
  <tr height=100 style='mso-height-source:userset;height:75.0pt'>
   <td colspan=2 height=100 class=xl6514414 width=126 style='height:75.0pt;
-  width:95pt'><%=DateUtil.format(hysq.getSqsj(),"yyyy年MM月dd日")%><br>会议名称</td>
+  width:95pt'><%=DateUtil.format(hysq.getSqsj(), "yyyy年MM月dd日")%><br>会议名称</td>
   <td colspan=7 class=xl6614414 style='border-left:none;text-align:left;'><%=hysq.getHymc()%></td>
  </tr>
  <tr height=100 style='mso-height-source:userset;height:75.0pt'>
@@ -306,8 +306,8 @@ rt
  <tr height=200 style='mso-height-source:userset;height:150.0pt'>
   <td colspan=2 height=200 class=xl6514414 width=126 style='height:150.0pt;
   width:95pt'>会议内容及目的</td>
-  <td colspan=7 class=xl6614414 style='border-left:none;text-align:left'>
-      <p><font style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;
+  <td colspan=7 class=xl6614414 style='border-left:none;text-align:left;vertical-align: top;'>
+      <p><font style="font-size: 16px;">
       <%=StringUtil.parseNull(hysq.getHynr(),"")%></font></p></td>
  </tr>
  <tr height=100 style='mso-height-source:userset;height:75.0pt'>
@@ -332,7 +332,7 @@ rt
   <td colspan=2 class=xl6614414 style='border-left:none;text-align:left'>
 	  <table>
 	  <tr>
-	  <td id="shr034ddf84-e174-480e-b52d-c3e2542b4203"></td>
+	  <td id="shr034ddf84-e174-480e-b52d-c3e2542b4203">&nbsp;</td>
 	  </tr>
 	  </table>
   </td>
@@ -340,8 +340,8 @@ rt
   style='mso-spacerun:yes'>&nbsp; </span>意见</td>
   <td colspan=3 class=xl6614414 style='border-left:none;text-align:left'>
 	  	 <table>
-		  <tr style='border-left:none;text-align:right'>
-		  <td id="shr2cef866c-e5aa-4e3c-92bc-451d0e211762"></td>
+		  <tr style='border-left:none;text-align:left'>
+		  <td id="shr2cef866c-e5aa-4e3c-92bc-451d0e211762">&nbsp;</td>
 		  </tr>
 		 </table>
   </td>
