@@ -24,6 +24,8 @@
     list5 = list5 == null ? new ArrayList() : list5;
     List list7 = officeSuppliesDAO.getWaitPagedList(pageBean,paramMap);
     list7 = list7 == null ? new ArrayList() : list7;
+    List list10 = oDao.getWaitPagedDjfyjsList(pageBean,paramMap);
+    list10 = list10 == null ? new ArrayList() : list10;
     //上级文件管理 
 	 List list8 = oDao.getWaitPagedOfficeCirculationList(pageBean,paramMap);
 	 list8 = list8 == null ? new ArrayList() : list8; 
@@ -266,6 +268,23 @@
                                   <td class="txt_home">
                                       <a href="<%=request.getContextPath()%>/oa/xzbg/supplies/sp.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>">
                                           【其它申请】关于<%=StringUtil.cutString(StringUtil.parseNull(map.get("MC"),""),23)%>的请示</a>
+                                  </td>
+                                  <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
+                              </tr>
+                              <% }
+                              %>
+                              <%
+                                  for(int i=0; i<list10.size();i++){
+                                      Map map = (Map)list10.get(i);
+                                      java.util.Date date = (java.util.Date)map.get("SQSJ");
+                                      String dh = StringUtil.parseNull(map.get("DH"),"");
+                                      String jh = StringUtil.parseNull(map.get("JH"),"");
+                              %>
+                              <tr>
+                                  <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
+                                  <td class="txt_home">
+                                      <a href="<%=request.getContextPath()%>/oa/xzbg/supplies/sp.jsp?sqid=<%=StringUtil.parseNull(map.get("PKID"),"") %>">
+                                          【单井费用审批】<%=dh+""+jh%>单井费用结算待审批</a>
                                   </td>
                                   <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
                               </tr>
