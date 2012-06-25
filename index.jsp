@@ -283,7 +283,7 @@
                               <tr>
                                   <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
                                   <td class="txt_home">
-                                      <a href="<%=request.getContextPath()%>/oa/xzbg/supplies/sp.jsp?sqid=<%=StringUtil.parseNull(map.get("PKID"),"") %>">
+                                      <a href="<%=request.getContextPath()%>/oa/jygl/sp2.jsp?pkid=<%=StringUtil.parseNull(map.get("PKID"),"") %>">
                                           【单井费用审批】<%=dh+""+jh%>单井费用结算待审批</a>
                                   </td>
                                   <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
