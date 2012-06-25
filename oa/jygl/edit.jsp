@@ -54,7 +54,7 @@
             //创建流程代码在这里
 //            Status status = workflow.startWorkflow("f0819b2e-e86e-489f-be89-85f997fcfd93",cUser.getUserId());
 //            Status status = workflow.startWorkflow("36a02352-1b66-472a-adcb-779d9d686c1d",cUser.getUserId());
-            Status status = workflow.startWorkflow("a3ab33eb-b065-4038-be82-dc0037bf3b96",cUser.getUserId());
+            Status status = workflow.startWorkflow("36a02352-1b66-472a-adcb-779d9d686c1d",cUser.getUserId());
             bean.setProcessId(status.getProcessId());
             bean.setConnectId(status.getConnectId());
         }
