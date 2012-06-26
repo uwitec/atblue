@@ -155,7 +155,8 @@
                     nextUserId = document.all.disagreed.value;
                     varValue = "-1";
                 }
-               window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&documentid="+sid+"&processId="+pid+"&varValue=<%=varValue%>"+"&holidayid="+sid;
+               <%--window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&documentid="+sid+"&processId="+pid+"&varValue=<%=varValue%>"+"&holidayid="+sid;--%>
+               window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&documentid="+sid+"&processId="+pid+"&varValue="+varValue+"&holidayid="+sid;
             }
             function qz(){
                 window.open(
