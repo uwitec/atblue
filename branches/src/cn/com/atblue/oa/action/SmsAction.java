@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 public class SmsAction extends BaseAction {
+    private static  int number = 1;
     private Dao dao;
     private ODao oDao;
     private OfficeSmsNoticeDAO officeSmsNoticeDAO;
@@ -83,7 +84,9 @@ public class SmsAction extends BaseAction {
                             CUser u = userDAO.queryForBean(map);
                             OfficeSmsPerson officeSmsPerson = new OfficeSmsPerson();
                             officeSmsPerson.setPkId(StringUtil.getUUID());
-                            officeSmsPerson.setTzid(bean.getTzid());
+                            if(number >= 10)number=1;
+                            officeSmsPerson.setTzid(number);
+                            number++;
                             officeSmsPerson.setCreateTime(new Date());
                             String testPhone = sysConfig.getProperty("testPhone");
                             if(!StringUtil.isBlankOrEmpty(testPhone)){
@@ -123,7 +126,9 @@ public class SmsAction extends BaseAction {
                             //默认不发送短信
                             OfficeSmsPerson officeSmsPerson = new OfficeSmsPerson();
                             officeSmsPerson.setPkId(StringUtil.getUUID());
-                            officeSmsPerson.setTzid(bean.getTzid());
+                            if(number >= 10)number=1;
+                            officeSmsPerson.setTzid(number);
+                            number++;
                             officeSmsPerson.setCreateTime(new Date());
                             String testPhone = sysConfig.getProperty("testPhone");
                             if(!StringUtil.isBlankOrEmpty(testPhone)){

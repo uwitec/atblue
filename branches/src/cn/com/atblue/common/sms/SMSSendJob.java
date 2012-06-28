@@ -55,7 +55,7 @@ public class SMSSendJob implements Job {
                 System.out.println("已经读取短息:"+text);
                 if (!StringUtil.isBlankOrEmpty(text)) {
                     System.out.println("短息读取成功：" + phone);
-                    oDao.updateSmsPerson(text, phone.substring(2));
+                    oDao.updateSmsPerson(text.trim(), phone.substring(2));
                     smsHandler.deleteSMS(message);
                 }
             }
