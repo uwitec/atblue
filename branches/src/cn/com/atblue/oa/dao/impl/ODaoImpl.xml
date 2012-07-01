@@ -792,4 +792,151 @@ from OFFICE_CIRCULATION_CHECK t  where t.cyid = #value#
 group by t.cyid) c where c.totalcn = checked
         ]]>
     </select>
+
+    <select id="getPagedYjhfyList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+            select * from JYGL_YJHFY t where 1=1
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="sqr">
+                <![CDATA[t.sqr=#sqr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fzbm">
+                <![CDATA[t.FZBM like '%$fzbm$%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fymc">
+                <![CDATA[t.FYMC like '%$fymc$%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fyxm">
+                <![CDATA[t.FYMC like '%$fyxm$%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedYjhfyCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) cn  from JYGL_YJHFY t where 1=1
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="sqr">
+                <![CDATA[t.sqr=#sqr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fzbm">
+                <![CDATA[t.FZBM like '%$fzbm$%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fymc">
+                <![CDATA[t.FYMC like '%$fymc$%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fyxm">
+                <![CDATA[t.FYMC like '%$fyxm$%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+    </select>
+
+    <select id="getWaitPagedYjhfyList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+        select t.*, o.orgna_name
+  from JYGL_YJHFY t, w_connect c, w_process p, c_orgnization o
+ where t.connect_id = c.connect_id
+   and t.process_id = p.process_id
+   and t.fzbm = o.orgna_id(+)
+   and p.process_status = '1'
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="userId">
+                <![CDATA[c.pending_person like '%'||#userId#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fzbm">
+                <![CDATA[t.FZBM like '%$fzbm$%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fymc">
+                <![CDATA[t.FYMC like '%$fymc$%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fyxm">
+                <![CDATA[t.FYMC like '%$fyxm$%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getWaitPagedYjhfyCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+        select count(*)
+  from JYGL_YJHFY t, w_connect c, w_process p, c_orgnization o
+ where t.connect_id = c.connect_id
+   and t.process_id = p.process_id
+   and t.fzbm = o.orgna_id(+)
+   and p.process_status = '1'
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="userId">
+                <![CDATA[c.pending_person like '%'||#userId#||'%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fzbm">
+                <![CDATA[t.FZBM like '%$fzbm$%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fymc">
+                <![CDATA[t.FYMC like '%$fymc$%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fyxm">
+                <![CDATA[t.FYMC like '%$fyxm$%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+    </select>
+
+    <select id="getAlreadyPagedYjhfyList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+  select t.*
+        from JYGL_YJHFY t,
+             (select c.process_id, count(*) cn
+                from w_connect c
+               where c.real_person like  '%'||#userId#||'%'
+               group by c.process_id) d
+       where t.process_id = d.process_id
+         and d.cn > 0
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="fzbm">
+                <![CDATA[t.FZBM like '%$fzbm$%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fymc">
+                <![CDATA[t.FYMC like '%$fymc$%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fyxm">
+                <![CDATA[t.FYMC like '%$fyxm$%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getAlreadyPagedYjhfyCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+      select count(*)
+        from JYGL_YJHFY t,
+             (select c.process_id, count(*) cn
+                from w_connect c
+               where c.real_person like  '%'||#userId#||'%'
+               group by c.process_id) d
+       where t.process_id = d.process_id
+         and d.cn > 0
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="fzbm">
+                <![CDATA[t.FZBM like '%$fzbm$%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fymc">
+                <![CDATA[t.FYMC like '%$fymc$%']]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fyxm">
+                <![CDATA[t.FYMC like '%$fyxm$%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.sqsj desc
+    </select>
 </sqlMap>
