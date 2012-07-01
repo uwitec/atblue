@@ -47,6 +47,10 @@ public interface ODao {
 
     public int getPagedDjfyjsCount(Map paramMap);
 
+    public List getPagedYjhfyList(PageBean pb, Map paramMap);
+
+    public int getPagedYjhfyCount(Map paramMap);
+
     public List getWaitPagedDjfyjsList(PageBean pb, Map paramMap);
 
     public int getWaitPagedDjfyjsCount(Map paramMap);
@@ -59,6 +63,10 @@ public interface ODao {
 
     public int getWaitPagedYysqCount(Map paramMap);
 
+    public List getWaitPagedYjhfyList(PageBean pb, Map paramMap);
+
+    public int getWaitPagedYjhfyCount(Map paramMap);
+
     public List getWaitPagedOfficeCirculationList(PageBean pb, Map paramMap);
 
     public int getWaitPagedOfficeCirculationCount(Map paramMap);
@@ -70,6 +78,10 @@ public interface ODao {
     public List getAlreadyPagedYysqList(PageBean pb, Map paramMap);
 
     public int getAlreadyPagedYysqCount(Map paramMap);
+
+    public List getAlreadyPagedYjhfyList(PageBean pb, Map paramMap);
+
+    public int getAlreadyPagedYjhfyCount(Map paramMap);
 
     public List getPagedQpdList(Map paramMap);
 

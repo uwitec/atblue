@@ -87,4 +87,5 @@
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeSmsPersonImpl.xml" />
 
     <sqlMap resource="cn/com/atblue/oa/dao/impl/JyglDjfyjsImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/JyglYjhfyImpl.xml" />
 </sqlMapConfig>
