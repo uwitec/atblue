@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="jygl.jyglyjhfy">
+    <typeAlias alias="JyglYjhfy" type="cn.com.atblue.oa.bean.JyglYjhfy"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="sqid">
+                <![CDATA[sqid=#sqid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fzbm">
+                <![CDATA[fzbm=#fzbm#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jd">
+                <![CDATA[jd=#jd#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fymc">
+                <![CDATA[fymc=#fymc#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fyxm">
+                <![CDATA[fyxm=#fyxm#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="xmmx">
+                <![CDATA[xmmx=#xmmx#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="xhgz">
+                <![CDATA[xhgz=#xhgz#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dw">
+                <![CDATA[dw=#dw#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dj">
+                <![CDATA[dj=#dj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dj2">
+                <![CDATA[dj2=#dj2#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sl">
+                <![CDATA[sl=#sl#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="yjfy">
+                <![CDATA[yjfy=#yjfy#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="djyj">
+                <![CDATA[djyj=#djyj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="tjfwcs1">
+                <![CDATA[tjfwcs1=#tjfwcs1#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="ywzrz1">
+                <![CDATA[ywzrz1=#ywzrz1#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="tjfwcs2">
+                <![CDATA[tjfwcs2=#tjfwcs2#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="ywzrz2">
+                <![CDATA[ywzrz2=#ywzrz2#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fsyf">
+                <![CDATA[fsyf=#fsyf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="bz">
+                <![CDATA[bz=#bz#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqsj">
+                <![CDATA[sqsj=#sqsj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqzt">
+                <![CDATA[sqzt=#sqzt#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="processId">
+                <![CDATA[process_id=#processId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="connectId">
+                <![CDATA[connect_id=#connectId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqr">
+                <![CDATA[sqr=#sqr#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addJyglYjhfy" parameterClass="JyglYjhfy">
+        <![CDATA[
+            insert into jygl_yjhfy(
+                sqid,fzbm,jd,fymc,fyxm,
+				xmmx,xhgz,dw,dj,dj2,
+				sl,yjfy,djyj,tjfwcs1,ywzrz1,
+				tjfwcs2,ywzrz2,fsyf,bz,sqsj,
+				sqzt,process_id,connect_id,sqr
+            ) values(
+                #sqid#,#fzbm#,#jd#,#fymc#,#fyxm#,
+				#xmmx#,#xhgz#,#dw#,#dj#,#dj2#,
+				#sl#,#yjfy#,#djyj#,#tjfwcs1#,#ywzrz1#,
+				#tjfwcs2#,#ywzrz2#,#fsyf#,#bz#,#sqsj#,
+				#sqzt#,#processId#,#connectId#,#sqr#
+            )
+        ]]>
+    </insert>
+
+    <update id="modJyglYjhfy" parameterClass="JyglYjhfy">
+        <![CDATA[
+            update jygl_yjhfy
+            set sqid=#sqid#,fzbm=#fzbm#,jd=#jd#,
+				fymc=#fymc#,fyxm=#fyxm#,xmmx=#xmmx#,
+				xhgz=#xhgz#,dw=#dw#,dj=#dj#,
+				dj2=#dj2#,sl=#sl#,yjfy=#yjfy#,
+				djyj=#djyj#,tjfwcs1=#tjfwcs1#,ywzrz1=#ywzrz1#,
+				tjfwcs2=#tjfwcs2#,ywzrz2=#ywzrz2#,fsyf=#fsyf#,
+				bz=#bz#,sqsj=#sqsj#,sqzt=#sqzt#,
+				process_id=#processId#,connect_id=#connectId#,sqr=#sqr#
+            where SQID=#sqid#
+        ]]>
+    </update>
+
+    <delete id="delJyglYjhfy" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from jygl_yjhfy
+            where SQID=#sqid#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="JyglYjhfy">
+        <![CDATA[
+            select sqid as sqid,fzbm as fzbm,jd as jd,fymc as fymc,fyxm as fyxm,xmmx as xmmx,xhgz as xhgz,dw as dw,dj as dj,dj2 as dj2,sl as sl,yjfy as yjfy,djyj as djyj,tjfwcs1 as tjfwcs1,ywzrz1 as ywzrz1,tjfwcs2 as tjfwcs2,ywzrz2 as ywzrz2,fsyf as fsyf,bz as bz,sqsj as sqsj,sqzt as sqzt,process_id as processId,connect_id as connectId,sqr as sqr from jygl_yjhfy where SQID=#sqid#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="JyglYjhfy">
+        <![CDATA[
+            select sqid as sqid,fzbm as fzbm,jd as jd,fymc as fymc,fyxm as fyxm,xmmx as xmmx,xhgz as xhgz,dw as dw,dj as dj,dj2 as dj2,sl as sl,yjfy as yjfy,djyj as djyj,tjfwcs1 as tjfwcs1,ywzrz1 as ywzrz1,tjfwcs2 as tjfwcs2,ywzrz2 as ywzrz2,fsyf as fsyf,bz as bz,sqsj as sqsj,sqzt as sqzt,process_id as processId,connect_id as connectId,sqr as sqr from jygl_yjhfy
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from jygl_yjhfy
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

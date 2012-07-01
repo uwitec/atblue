@@ -171,6 +171,18 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
                 "oa.dao.getPagedDjfyjsCount", paramMap);
     }
 
+    public List getPagedYjhfyList(PageBean pb, Map paramMap){
+        paramMap.put("currentPage", pb.getCurrentPage());
+        paramMap.put("pageSize", pb.getPageSize());
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getPagedYjhfyList", paramMap);
+    }
+
+    public int getPagedYjhfyCount(Map paramMap){
+        return (Integer) getSqlMapClientTemplate().queryForObject(
+                "oa.dao.getPagedYjhfyCount", paramMap);
+    }
+
     public List getWaitPagedDjfyjsList(PageBean pb, Map paramMap){
         paramMap.put("currentPage", pb.getCurrentPage());
         paramMap.put("pageSize", pb.getPageSize());
@@ -207,6 +219,18 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
                 "oa.dao.getWaitPagedYysqCount", paramMap);
     }
 
+    public List getWaitPagedYjhfyList(PageBean pb, Map paramMap){
+        paramMap.put("currentPage", pb.getCurrentPage());
+        paramMap.put("pageSize", pb.getPageSize());
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getWaitPagedYjhfyList", paramMap);
+    }
+
+    public int getWaitPagedYjhfyCount(Map paramMap){
+        return (Integer) getSqlMapClientTemplate().queryForObject(
+                "oa.dao.getWaitPagedYjhfyCount", paramMap);
+    }
+
     public List getWaitPagedOfficeCirculationList(PageBean pb, Map paramMap){
         paramMap.put("currentPage", pb.getCurrentPage());
         paramMap.put("pageSize", pb.getPageSize());
@@ -241,6 +265,18 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
     public int getAlreadyPagedYysqCount(Map paramMap){
         return (Integer) getSqlMapClientTemplate().queryForObject(
                 "oa.dao.getAlreadyPagedYysqCount", paramMap);
+    }
+
+    public List getAlreadyPagedYjhfyList(PageBean pb, Map paramMap){
+        paramMap.put("currentPage", pb.getCurrentPage());
+        paramMap.put("pageSize", pb.getPageSize());
+        return getSqlMapClientTemplate().queryForList(
+                "oa.dao.getAlreadyPagedYjhfyList", paramMap);
+    }
+
+    public int getAlreadyPagedYjhfyCount(Map paramMap){
+        return (Integer) getSqlMapClientTemplate().queryForObject(
+                "oa.dao.getAlreadyPagedYjhfyCount", paramMap);
     }
 
     public List getAllQpdFormItemsByFormId(String formId){
