@@ -354,6 +354,9 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
             <isNotEmpty prepend=" and " property="sqr">
                 <![CDATA[t.sqr=#sqr#]]>
             </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqzt">
+                <![CDATA[t.SQZT=#sqzt#]]>
+            </isNotEmpty>
         </dynamic>
         order by t.sqsj desc
         <include refid="basic.pageEnd"/>
@@ -365,6 +368,9 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
         <dynamic prepend=" and ">
             <isNotEmpty prepend=" and " property="sqr">
                 <![CDATA[t.sqr=#sqr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqzt">
+                <![CDATA[t.SQZT=#sqzt#]]>
             </isNotEmpty>
         </dynamic>
         order by t.sqsj desc
