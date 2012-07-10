@@ -133,6 +133,8 @@
                 String nextRole = workFlow.getNextRoleName(StringUtil.parseNull(connectId, ""),"1");
                 if("生产部门".equals(nextRole)){
                     selUserId = bean.getScclr();
+                }else if("计划部门".equals(nextRole)){
+                    selUserId = bean.getJhclr();
                 }else if("多部门审核".equals(nextRole)){
                     nextUsers[0]  = bean.getJsclr();
                     nextUsers[1]  = bean.getJhclr();
@@ -147,7 +149,7 @@
                 }else {
                     selUserId = "";
                 }
-                if(nextUsers != null && nextUsers.length > 0){
+                if(nextUsers != null && StringUtil.isBlankOrEmpty(selUserId)){
                     connectId = workFlow.completeMission(processId, connectId, cUser.getUserId(), nextUsers, "1");
                 }else{
                     connectId = workFlow.completeMission(processId, connectId, cUser.getUserId(), new String[]{selUserId}, "1");
@@ -781,8 +783,7 @@
                             </td>
                         </tr>
                         <%   }else{  %>
-                        <div style="display: none">
-                        <tr style="display: none">
+                        <tr>
                             <td nowrap="nowrap" class="head_left">
                                 建设单位
                             </td>
@@ -808,7 +809,7 @@
                                 <%=StringUtil.parseNull(bean.getJs(),"&nbsp;")%>
                             </td>
                         </tr>
-                        <tr style="display: none">
+                        <tr>
                             <td nowrap="nowrap" class="head_left">
                                 井    径
                             </td>
@@ -834,7 +835,7 @@
                                 <%=StringUtil.parseNull(bean.getJtxs(),"&nbsp;")%>
                             </td>
                         </tr>
-                        <tr style="display: none">
+                        <tr>
                             <td nowrap="nowrap" class="head_left">
                                 取    芯
                             </td>
@@ -860,7 +861,7 @@
                                 <%=StringUtil.parseNull(bean.getJxj(),"&nbsp;")%>
                             </td>
                         </tr>
-                        <tr style="display: none">
+                        <tr>
                             <td nowrap="nowrap" class="head_left">
                                 野营房维修
                             </td>
@@ -880,7 +881,6 @@
                                 &nbsp;
                             </td>
                         </tr>
-                        </div>
                         <% }
                         %>
 
