@@ -32,7 +32,8 @@
          if("startup".equals(flag)){
             officePlanProcess.setSqzt("已申请");
             //创建流程代码在这里
-             Status status = workflow.startWorkflow("5a06a28b-133f-44d7-99da-fc5f209fbc19",cUser.getUserId());
+//             Status status = workflow.startWorkflow("5a06a28b-133f-44d7-99da-fc5f209fbc19",cUser.getUserId());
+             Status status = workflow.startWorkflow("21aac430-1b8c-43aa-9406-eba4a1931082",cUser.getUserId());
             officePlanProcess.setProcessId(status.getProcessId());
             officePlanProcess.setConnectId(status.getConnectId());
         }
