@@ -38,6 +38,8 @@
     sb.append(" order by cjrq desc");
     List list6 = officeDocumentsDAO.getByFreeSql(sb.toString(),pageBean);
     list6 = list6 == null ? new ArrayList() : list6;
+    List list11 = officePlanDAO.getWaitPagedList(pageBean,paramMap);
+    list11 = list11 == null ? new ArrayList() : list11;
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -285,6 +287,23 @@
                                   <td class="txt_home">
                                       <a href="<%=request.getContextPath()%>/oa/jygl/sp2.jsp?pkid=<%=StringUtil.parseNull(map.get("PKID"),"") %>">
                                           【单井费用审批】<%=dh+""+jh%>单井费用结算待审批</a>
+                                  </td>
+                                  <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
+                              </tr>
+                              <% }
+                              %>
+                              <%
+                                  for(int i=0; i<list11.size();i++){
+                                      Map map = (Map)list11.get(i);
+                                      java.util.Date date = (java.util.Date)map.get("LRSJ");
+                                      String bt = StringUtil.parseNull(map.get("BT"),"");
+                                      String mc = StringUtil.parseNull(map.get("MC"),"");
+                              %>
+                              <tr>
+                                  <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
+                                  <td class="txt_home">
+                                      <a href="<%=request.getContextPath()%>/oa/xzbg/plan/sp.jsp?pkid=<%=StringUtil.parseNull(map.get("PKID"),"") %>">
+                                          【预计划费用支出】<%=bt+"-"+mc%>待审批</a>
                                   </td>
                                   <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
                               </tr>
