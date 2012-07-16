@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officePlanProcess">
+    <typeAlias alias="OfficePlanProcess" type="cn.com.atblue.oa.bean.OfficePlanProcess"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="pkid">
+                <![CDATA[pkid=#pkid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqzt">
+                <![CDATA[sqzt=#sqzt#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="processId">
+                <![CDATA[process_id=#processId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="connectId">
+                <![CDATA[connect_id=#connectId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dxtx">
+                <![CDATA[dxtx=#dxtx#]]>
+            </isNotEmpty>
+             <isNotEmpty prepend=" and " property="sqr">
+                <![CDATA[sqr=#sqr#]]>
+            </isNotEmpty>
+             <isNotEmpty prepend=" and " property="sqr">
+                <![CDATA[sqr=#sqr#]]>
+            </isNotEmpty>
+             <isNotEmpty prepend=" and " property="bt">
+                <![CDATA[bt=#bt#]]>
+            </isNotEmpty>
+             <isNotEmpty prepend=" and " property="bm">
+                <![CDATA[bm=#bm#]]>
+            </isNotEmpty>
+             <isNotEmpty prepend=" and " property="mc">
+                <![CDATA[mc=#mc#]]>
+            </isNotEmpty>
+             <isNotEmpty prepend=" and " property="lrsj">
+                <![CDATA[lrsj=#lrsj#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficePlanProcess" parameterClass="OfficePlanProcess">
+        <![CDATA[
+            insert into office_plan_process(
+                pkid,sqzt,process_id,
+				connect_id,sqr,dxtx,bt,bm,mc,lrsj
+            ) values(
+                #pkid#,#sqzt#,#processId#,
+				#connectId#,#sqr#,#dxtx#,#bt#,#bm#,#mc#,#lrsj#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficePlanProcess" parameterClass="OfficePlanProcess">
+        <![CDATA[
+            update office_plan_process
+            set pkid=#pkid#,sqzt=#sqzt#,
+				process_id=#processId#,connect_id=#connectId#,sqr=#sqr#,dxtx=#dxtx#,bt=#bt#,bm=#bm#,mc=#mc#,lrsj=#lrsj#
+            where pkid=#pkid#
+        ]]>
+    </update>
+
+    <delete id="delOfficePlanProcess" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_plan_process
+            where pkid=#pkid#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficePlanProcess">
+        <![CDATA[
+            select pkid as pkid,sqzt as sqzt,process_id as processId,connect_id as connectId,sqr as sqr,dxtx,bt,bm,mc,lrsj from office_plan_process where pkid=#pkid#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficePlanProcess">
+        <![CDATA[
+            select * from office_plan_process
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_plan_process
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>
