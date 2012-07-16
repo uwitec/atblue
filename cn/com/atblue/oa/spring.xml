@@ -37,4 +37,7 @@
 
     <bean id="jyglDjfyjsDAO" class="cn.com.atblue.oa.dao.impl.JyglDjfyjsImpl" autowire="byName"/>
     <bean id="jyglYjhfyDAO" class="cn.com.atblue.oa.dao.impl.JyglYjhfyImpl" autowire="byName"/>
+
+    <bean id="officePlanDAO" class="cn.com.atblue.oa.dao.impl.OfficePlanImpl" scope="prototype" autowire="byName"/>
+    <bean id="officePlanProcessDAO" class="cn.com.atblue.oa.dao.impl.OfficePlanProcessImpl" scope="prototype" autowire="byName"/>
 </beans>
