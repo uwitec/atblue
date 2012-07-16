@@ -54,6 +54,8 @@
     JyglYjhfyDAO jyglYjhfyDAO = (JyglYjhfyDAO)SpringFactory.instance.getBean("jyglYjhfyDAO");
     CUserDAO userDAO = (CUserDAO)SpringFactory.instance.getBean("userDAO");
     String contentPath = request.getContextPath();
+    OfficePlanDAO officePlanDAO = (OfficePlanDAO)SpringFactory.instance.getBean("officePlanDAO");
+    OfficePlanProcessDAO officePlanProcessDAO = (OfficePlanProcessDAO)SpringFactory.instance.getBean("officePlanProcessDAO");
     //获取流程
     Workflow workFlow = (Workflow)SpringFactory.instance.getBean("workflow");
     //传阅ID:
