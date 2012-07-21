@@ -108,7 +108,6 @@
                             <td align="left">
                                 <font style="font-size: 14px">预计划费用标题：</font>
                                 <input name="mc"  type="text" value="<%=mc%>" />&nbsp;
-                                <font style="font-size: 14px">年月：</font>
                                 <input type="submit" class="button"  style="width:40px" value='查询'>
                                 &nbsp;
                                 <input type="button" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='新增'>
