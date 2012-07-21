@@ -87,7 +87,7 @@
                         "<%=request.getContextPath()%>/oa/qpd/qpd.jsp?formId=855a093f-7777-43bb-9512-a05cfb03bf03&connectId=<%=connectId%>&processId=<%=processId%>",
                         "mywindow",
                         "height="
-                                + 500
+                                + 800
                                 + ",width="
                                 + 700
                                 + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="
