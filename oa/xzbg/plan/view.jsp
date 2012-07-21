@@ -126,10 +126,10 @@
 							<table width="100%" border="0" align="center" cellpadding="0"
 						cellspacing="0" id="tab_id" class="mtabtab">
 						<tr class="form_th">
-						<th  nowrap="nowrap" width="80">
+						<th  nowrap="nowrap" width="40">
 						序号
 					</th>
-					<th  nowrap="nowrap" width="80" style="text-align: left" align="left">
+					<th  nowrap="nowrap" width="80"  align="left">
 						负责部门
 					</th>
 					<th  nowrap="nowrap" width="80" style="text-align: left">
@@ -188,46 +188,46 @@
 							<td  style="text-align: center;border-left: 1px solid #01a0fe;" >
 								<%=i + 1%>
 							</td>
-							<td>
+							<td style="text-align: left">
 								<%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"&nbsp;") %>
 							</td>
-							<td>
+							<td style="text-align: left">
 								<%=StringUtil.parseNull(officePlan.getMc(),"&nbsp;") %>
 							</td>
-							<td>
+							<td style="text-align: left">
 								<%=StringUtil.parseNull(officePlan.getXm(),"&nbsp;") %>
 							</td>
-							<td>
+							<td style="text-align: left">
 								<%=StringUtil.parseNull(officePlan.getXmmx(),"&nbsp;") %>
 							</td>
-							<td>
+							<td style="text-align: left">
 								<%=StringUtil.parseNull(officePlan.getGg(),"&nbsp;") %>
 							</td>
-							<td>
+							<td style="text-align: left">
 								<%=StringUtil.parseNull(officePlan.getDw(),"&nbsp;") %>
 							</td>
-							<td>
+							<td style="text-align: right">
 								<%=StringUtil.parseNull(officePlan.getDj(),"&nbsp;") %>
 							</td>
-							<td>
+							<td style="text-align: right">
 								<%=StringUtil.parseNull(officePlan.getDj_w(),"&nbsp;") %>
 							</td>
-							<td>
+							<td style="text-align: right">
 								<%=StringUtil.parseNull(officePlan.getSl(),"&nbsp;") %>
 							</td>
-							<td>
+							<td style="text-align: right">
 								<%=StringUtil.parseNull(officePlan.getFy(),"&nbsp;") %>
 							</td>
-							<td>
+							<td style="text-align: left">
 								<%=StringUtil.parseNull(officePlan.getDjyj(),"&nbsp;") %>
 							</td>
-							<td>
+							<td style="text-align: left">
 								<%=StringUtil.parseNull(officePlan.getTjfwcs(),"&nbsp;") %>
 							</td>
 							<td>
 								<%=StringUtil.parseNull(officePlan.getYwsczrz(),"&nbsp;") %>
 							</td>
-							<td>
+							<td style="text-align: left">
 								<%=StringUtil.parseNull(officePlan.getTjfwcs2(),"&nbsp;") %>
 							</td>
 							<td>
@@ -236,7 +236,7 @@
 							<td>
 								<%=StringUtil.parseNull(officePlan.getNy(),"&nbsp;") %>
 							</td>
-							<td>
+							<td style="text-align: left">
 								<%=StringUtil.parseNull(officePlan.getBz(),"&nbsp;") %>
 							</td>
 						</tr>
