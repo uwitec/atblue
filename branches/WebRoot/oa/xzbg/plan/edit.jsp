@@ -285,52 +285,52 @@
 						<tr>
 							<td>
 							<input type="hidden" name="PLANPKID" id="PLANPKID<%=i%>" value="<%=StringUtil.parseNull(officePlan.getPkid(),"") %>" size="13">
-								<input name="MC" id="MC<%=i%>" value="<%=StringUtil.parseNull(officePlan.getMc(),"") %>" size="13">
+								<input name="MC" id="MC<%=i%>" value="<%=StringUtil.parseNull(officePlan.getMc(),"") %>" size="13" style="width: 100%">
 							</td>
 							<td>
-							<input name="XM" id="XM<%=i%>" value="<%=StringUtil.parseNull(officePlan.getXm(),"") %>" size="13">
+							<input name="XM" id="XM<%=i%>" value="<%=StringUtil.parseNull(officePlan.getXm(),"") %>" size="13" style="width: 100%">
 							</td>
 							<td>
-							<input name="XMMX" id="XMMX<%=i%>" value="<%=StringUtil.parseNull(officePlan.getXmmx(),"") %>" size="13">
+							<input name="XMMX" id="XMMX<%=i%>" value="<%=StringUtil.parseNull(officePlan.getXmmx(),"") %>" size="13" style="width: 100%">
 							</td>
 							<td>
-								<input name="GG" id="GG<%=i%>" value="<%=StringUtil.parseNull(officePlan.getGg(),"") %>" size="3">
+								<input name="GG" id="GG<%=i%>" value="<%=StringUtil.parseNull(officePlan.getGg(),"") %>" size="3" style="width: 100%">
 							</td>
 							<td>
-								<input name="DW" id="DW<%=i%>" value="<%=StringUtil.parseNull(officePlan.getDw(),"") %>" size="3">
+								<input name="DW" id="DW<%=i%>" value="<%=StringUtil.parseNull(officePlan.getDw(),"") %>" size="3" style="width: 100%">
 							</td>
 							<td>
-								<input name="DJ" id="DJ<%=i%>" value="<%=StringUtil.parseNull(officePlan.getDj(),"") %>" onkeyup="FloatInput1(this);turn('<%=i%>');" onkeydown="FloatInput1(this);" size="3">
+								<input name="DJ" id="DJ<%=i%>" value="<%=StringUtil.parseNull(officePlan.getDj(),"") %>" onkeyup="FloatInput1(this);turn('<%=i%>');" onkeydown="FloatInput1(this);" size="3" style="width: 100%">
 							</td>
 							<td>
-								<input name="DJ_W" id="DJ_W<%=i%>" value="<%=StringUtil.parseNull(officePlan.getDj_w(),"") %>" onkeyup="FloatInput1(this);" onkeydown="FloatInput1(this);" size="3" readonly>
+								<input name="DJ_W" id="DJ_W<%=i%>" value="<%=StringUtil.parseNull(officePlan.getDj_w(),"") %>" onkeyup="FloatInput1(this);" onkeydown="FloatInput1(this);" size="3"  style="width: 100%">
 							</td>
 							<td>
-								<input name="SL" id="SL<%=i%>" value="<%=StringUtil.parseNull(officePlan.getSl(),"") %>" size="3" onkeyup="FloatInput1(this);turn1('<%=i%>');" onkeydown="FloatInput1(this);">
+								<input name="SL" id="SL<%=i%>" value="<%=StringUtil.parseNull(officePlan.getSl(),"") %>" size="3" onkeyup="FloatInput1(this);turn1('<%=i%>');" onkeydown="FloatInput1(this);" style="width: 100%">
 							</td>
 							<td>
-								<input name="FY" id="FY<%=i%>" value="<%=StringUtil.parseNull(officePlan.getFy(),"") %>" size="3" onkeyup="FloatInput1(this);" onkeydown="FloatInput1(this);" readonly>
+								<input name="FY" id="FY<%=i%>" value="<%=StringUtil.parseNull(officePlan.getFy(),"") %>" size="3" onkeyup="FloatInput1(this);" onkeydown="FloatInput1(this);"  style="width: 100%">
 							</td>
 							<td>
-								<input name="DJYJ" id="DJYJ<%=i%>" value="<%=StringUtil.parseNull(officePlan.getDjyj(),"") %>" size="13">
+								<input name="DJYJ" id="DJYJ<%=i%>" value="<%=StringUtil.parseNull(officePlan.getDjyj(),"") %>" size="13" style="width: 100%">
 							</td>
 							<td>
-								<input name="TJFWCS" id="TJFWCS<%=i%>" value="<%=StringUtil.parseNull(officePlan.getTjfwcs(),"") %>" size="13">
+								<input name="TJFWCS" id="TJFWCS<%=i%>" value="<%=StringUtil.parseNull(officePlan.getTjfwcs(),"") %>" size="13" style="width: 100%">
 							</td>
 							<td>
-								<input name="YWSCZRZ" id="YWSCZRZ<%=i%>" value="<%=StringUtil.parseNull(officePlan.getYwsczrz(),"") %>" size="3">
+								<input name="YWSCZRZ" id="YWSCZRZ<%=i%>" value="<%=StringUtil.parseNull(officePlan.getYwsczrz(),"") %>" size="3" style="width: 100%">
 							</td>
 							<td>
-								<input name="TJFWCS2" id="TJFWCS2<%=i%>" value="<%=StringUtil.parseNull(officePlan.getTjfwcs2(),"") %>" size="13">
+								<input name="TJFWCS2" id="TJFWCS2<%=i%>" value="<%=StringUtil.parseNull(officePlan.getTjfwcs2(),"") %>" size="13" style="width: 100%">
 							</td>
 							<td>
-								<input name="YWSCZRZ2" id="YWSCZRZ2<%=i%>" value="<%=StringUtil.parseNull(officePlan.getYwsczrz2(),"") %>" size="3">
+								<input name="YWSCZRZ2" id="YWSCZRZ2<%=i%>" value="<%=StringUtil.parseNull(officePlan.getYwsczrz2(),"") %>" size="3" style="width: 100%">
 							</td>
 							<td>
-								<input name="NY" id="NY<%=i%>" value="<%=StringUtil.parseNull(officePlan.getNy(),"") %>" size="9">
+								<input name="NY" id="NY<%=i%>" value="<%=StringUtil.parseNull(officePlan.getNy(),"") %>" size="9" style="width: 100%">
 							</td>
 							<td>
-								<input name="BZ" id="BZ<%=i%>" value="<%=StringUtil.parseNull(officePlan.getBz(),"") %>" size="13">
+								<input name="BZ" id="BZ<%=i%>" value="<%=StringUtil.parseNull(officePlan.getBz(),"") %>" size="13" style="width: 100%">
 							</td>
 							<td>
 								<input type="button" value="删除" name="del" onClick="onDelete('./delete.jsp?pkid=<%=StringUtil.parseNull(officePlan.getPkid(),"")%>&flag=1&propkid=<%=pkid %>',this);">
@@ -366,6 +366,10 @@ function insert(){
           }else if(!document.getElementById("checked").checked){
                 	document.all.dxtx.value="0";
          }
+        document.getElementById("warn").innerText="";
+        document.all.flag.value="";
+        document.frmRd.submit();
+        return ;
 		var _tab = document.getElementById("tab_id");
 		var _rows = _tab.rows;
 			if(_rows.length<=1){
@@ -401,6 +405,10 @@ function insert(){
           }else if(!document.getElementById("checked").checked){
                 	document.all.dxtx.value="0";
          }
+        document.getElementById("warn").innerText="";
+        document.all.flag.value="startup";
+        document.frmRd.submit();
+        return ;
 		var _tab = document.getElementById("tab_id");
 		var _rows = _tab.rows;
 			if(_rows.length<=1){

@@ -10,6 +10,7 @@
 <form name="role_save" method="post" action="role_save.d">
     <input type="hidden" name="action" value="save"/>
     <input type="hidden" name="role.roleId" value="${role.roleId}"/>
+    <input type="hidden" name="roleId" value="${role.roleId}"/>
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
             <td>

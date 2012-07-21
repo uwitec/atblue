@@ -296,6 +296,10 @@ function insert(){
           }else if(!document.getElementById("checked").checked){
                 	document.all.dxtx.value="0";
          }
+    document.getElementById("warn").innerText="";
+    document.all.flag.value="";
+    document.frmRd.submit();
+    return ;
 		var _tab = document.getElementById("tab_id");
 		var _rows = _tab.rows;
 			if(_rows.length<=1){
@@ -331,6 +335,10 @@ function insert(){
           }else if(!document.getElementById("checked").checked){
                 	document.all.dxtx.value="0";
          }
+        document.getElementById("warn").innerText="";
+        document.all.flag.value="startup";
+        document.frmRd.submit();
+        return ;
 		var _tab = document.getElementById("tab_id");
 		var _rows = _tab.rows;
 			if(_rows.length<=1){
