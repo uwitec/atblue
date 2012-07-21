@@ -129,46 +129,46 @@
 						<th  nowrap="nowrap" width="80">
 						序号
 					</th>
-					<th  nowrap="nowrap" width="80">
+					<th  nowrap="nowrap" width="80" style="text-align: left" align="left">
 						负责部门
 					</th>
-					<th  nowrap="nowrap" width="80">
+					<th  nowrap="nowrap" width="80" style="text-align: left">
 						费用名称
 					</th>
-					<th  nowrap="nowrap" width="80">
+					<th  nowrap="nowrap" width="80" style="text-align: left">
 						费用项目
 					</th>
-					<th  nowrap="nowrap" width="80">
+					<th  nowrap="nowrap" width="80" style="text-align: left">
 						项目明细
 					</th>
-					<th  nowrap="nowrap" width="80">
+					<th  nowrap="nowrap" width="80" style="text-align: left">
 						型号规格
 					</th>
-					<th nowrap="nowrap"  width="80">
+					<th nowrap="nowrap"  width="80" style="text-align: left">
 						单位
 					</th>
-					<th nowrap="nowrap"  width="40">
+					<th nowrap="nowrap"  width="40" style="text-align: right">
 						单价<br>(元)
 					</th>
-					<th nowrap="nowrap"  width="50">
+					<th nowrap="nowrap"  width="50" style="text-align: right">
 						单价<br>(万元)
 					</th>
-					<th nowrap="nowrap"  width="40">
+					<th nowrap="nowrap"  width="40" style="text-align: right">
 						数量
 					</th>
-					<th nowrap="nowrap"  width="50">
+					<th nowrap="nowrap"  width="50" style="text-align: right">
 						预计划<br>费用
 					</th>
-					<th nowrap="nowrap"  width="80">
+					<th nowrap="nowrap"  width="80" style="text-align: left">
 						定价依据
 					</th>
-					<th nowrap="nowrap"  width="80">
+					<th nowrap="nowrap"  width="80" style="text-align: left">
 						推荐服务厂商1
 					</th>
 					<th nowrap="nowrap"  width="80">
 						有无市场准入证
 					</th>
-					<th nowrap="nowrap"  width="80">
+					<th nowrap="nowrap"  width="80" style="text-align: left">
 						推荐服务厂商2
 					</th>
 					<th nowrap="nowrap"  width="80">
@@ -177,7 +177,7 @@
 					<th nowrap="nowrap"  width="80">
 						发生<br>年月
 					</th>
-					<th nowrap="nowrap"  width="80">
+					<th nowrap="nowrap"  width="80" style="text-align: left">
 						备注
 					</th>
 					</tr>
