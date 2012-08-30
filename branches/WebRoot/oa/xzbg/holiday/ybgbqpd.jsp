@@ -477,10 +477,10 @@ div.Section1
     //打印组件通用设置
     factory.printing.header = "";//页眉
     factory.printing.footer = "";//页脚
-    factory.printing.leftMargin = 7;//左边距
-    factory.printing.topMargin = 7;//上边距
-    factory.printing.rightMargin = 7;//右边距
-    factory.printing.bottomMargin = 7;//下边距
+    factory.printing.leftMargin = 0;//左边距
+    factory.printing.topMargin = 0;//上边距
+    factory.printing.rightMargin = 0;//右边距
+    factory.printing.bottomMargin = 0;//下边距
 </script>
   	<form name="form1" method="post" action="">
 <div class=Section1 style='layout-grid:15.6pt'>
