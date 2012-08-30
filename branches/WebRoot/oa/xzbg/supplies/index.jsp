@@ -28,7 +28,9 @@
         formId="859106e7-46b6-49f7-a334-ccad832ffcd9";
 	}else if("2".equals(curRole)){
         formId="83389b53-80e4-441c-8463-f4d39176bd23";
-	}
+	}else if("3".equals(curRole)){
+        formId="11a99f76-9309-452c-be1b-4c1a932462fd";
+    }
 %>
 <html>
 	<head>
@@ -48,10 +50,10 @@
 		}
         function tj(pid,cid,id){
             var selUserId = document.all[id+"nextUserId"];
-             if(document.form1.qzgz.value !="isSign"){
-				 	alert("本次需要审核的文档中没有您的签名印章，请签名后重新提交。");
-				    return false;
-		     }
+//             if(document.form1.qzgz.value !="isSign"){
+//				 	alert("本次需要审核的文档中没有您的签名印章，请签名后重新提交。");
+//				    return false;
+//		     }
             if(selUserId == null || selUserId.value == ''){
                 alert("请先选择进行审批的用户！");
                 document.all[id+"nextUserId"].focus();
@@ -194,7 +196,7 @@
                                      String nextRole = workFlow.getNextRoleName(connectId,"1");
                                      String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                 %>
-                                <input type="button" class="button"  style="width:40px" value="签字" onclick="qz2('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"") %>');"/>
+                                <%--<input type="button" class="button"  style="width:40px" value="签字" onclick="qz2('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"") %>');"/>--%>
                                 &nbsp;发送给&nbsp;<%=nextRole%>
                                 <select name="<%=StringUtil.parseNull(map.get("SQID"),"")%>nextUserId">
                                 <%=StringUtil.parseNull(options,"")%>
