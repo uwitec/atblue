@@ -24,7 +24,10 @@
 		formId="859106e7-46b6-49f7-a334-ccad832ffcd9";
 	}else if("2".equals(officeSupplies.getRoleflag())){
 		formId="83389b53-80e4-441c-8463-f4d39176bd23";
-	}
+	}else if("3".equals(officeSupplies.getRoleflag())){
+        formId="11a99f76-9309-452c-be1b-4c1a932462fd";
+    }
+    List hasFileList = officeFileDAO.getByFk(sqid);
 %>
 <html>
 	<head>
@@ -240,6 +243,22 @@
                                         <textarea cols="80" id="editor" name="editor" rows="10"><%=StringUtil.parseNull(officeSupplies.getSy(),"")%></textarea>
                                     </td>
 								</tr>
+                                <%if(hasFileList!=null && hasFileList.size()>0){ %>
+                                <tr>
+                                    <td nowrap="nowrap" width="120" class="head_left">
+                                        已有附件
+                                    </td>
+                                    <td class="head_right" align="left" id="hasFile" style="text-align: left">
+                                        <%
+                                            for(int i=0; i<hasFileList.size(); i++){
+                                                OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
+                                        <a href="<%=request.getContextPath()%>/officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
+                                            <img src="<%=request.getContextPath()%>/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='<%=request.getContextPath()%>/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <%}%>
+                                    </td>
+                                </tr>
+                                <%} %>
 							</table>
 						</div>
 					</td>
