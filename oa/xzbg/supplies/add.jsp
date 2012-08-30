@@ -42,6 +42,8 @@
             	status = workflow.startWorkflow("ae2c48f7-1f3f-41e6-888b-11b31b9249f6",cUser.getUserId());
             }else if("2".equals(curRole)){//科室长启动
             	status = workflow.startWorkflow("f57a7396-c2d7-4deb-b39e-562fa937acd7",cUser.getUserId());
+            }else if("3".equals(curRole)){//科室长启动
+                status = workflow.startWorkflow("fbcb0432-d64e-44b3-91d9-a99b64b091b1",cUser.getUserId());
             }
             officeSupplies.setProcessId(status.getProcessId());
             officeSupplies.setConnectId(status.getConnectId());
