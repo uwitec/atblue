@@ -112,6 +112,8 @@
                                 &nbsp;
                                 <input type="button" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='新增'>
                                 &nbsp;
+                                <a href="../../../soft/template.xls">预计划费用模板</a>
+                                &nbsp;
 								<input type="button" class="button" id="button"	onclick="importExcel();" value="导入">
                             </td>
                         </tr>
