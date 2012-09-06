@@ -15,13 +15,12 @@
     Map paramMap = new HashMap();
     if(!StringUtil.isBlankOrEmpty(mc))
     paramMap.put("mc",mc);
-    paramMap.put("roleflag",curRole);
-    paramMap.put("sqr",cUser.getUserId());
+    paramMap.put("orgid",cUser.getOrgnaId());
 	pageBean.setPageSize(pageSize);
 
-	int totalRow =officeSuppliesDAO.getPagedCount(paramMap); 
+	int totalRow =officeSuppliesDAO.getPagedCountByOrg(paramMap);
 	pageBean.setTotalRows(totalRow); 
-	List list = officeSuppliesDAO.getPagedList(pageBean,paramMap);
+	List list = officeSuppliesDAO.getPagedListByOrg(pageBean,paramMap);
 	
 	String formId="";
 	if("1".equals(curRole)){
@@ -91,10 +90,10 @@
                             + 0
                             + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
         }
-         function print(processId,connectId,sqid){
+         function print(formid,processId,connectId,sqid){
             var formId= "";
             window.open(
-                    "./qtqpd.jsp?formId=<%=formId%>"+"&connectId="+connectId+"&processId="+processId+"&sqid="+sqid,
+                    "./qtqpd.jsp?formId="+formid+"&connectId="+connectId+"&processId="+processId+"&sqid="+sqid,
                     "mywindow",
                     "height="
                             + 500
@@ -131,7 +130,6 @@
                             名称：
                             <input name="mc" size="10" type="text" value="<%=mc%>" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
-                            <input type="button" class="button" onclick="window.location = 'add.jsp?curRole=<%=curRole%>';" style="width:40px"  value='新增'>
                         </td>
                     </tr>
                     </tbody>
@@ -185,31 +183,26 @@
 							<td  align="center" style="text-align: center">
 								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
 							</td>
-							<td   style="text-align: left">
+							<td   style="text-align: center">
                                 <%=StringUtil.parseNull(map.get("SQZT"),"")%>&nbsp;
 							</td>
 							<td class="NormalDataColumn" align="center" nowrap="nowrap">
                                  <%
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
-                                    if("已申请".equals(StringUtil.parseNull(map.get("SQZT"),""))){
-                                     String nextRole = workFlow.getNextRoleName(connectId,"1");
-                                     String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
+                                    String roleflag = StringUtil.parseNull(map.get("ROLEFLAG"),"");
+                                    String form = "";
+                                     if("1".equals(roleflag)){
+                                         form="859106e7-46b6-49f7-a334-ccad832ffcd9";
+                                     }else if("2".equals(roleflag)){
+                                         form="83389b53-80e4-441c-8463-f4d39176bd23";
+                                     }else if("3".equals(roleflag)){
+                                         form="11a99f76-9309-452c-be1b-4c1a932462fd";
+                                     }
+
                                 %>
-                                <%--<input type="button" class="button"  style="width:40px" value="签字" onclick="qz2('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"") %>');"/>--%>
-                                &nbsp;发送给&nbsp;<%=nextRole%>
-                                <select name="<%=StringUtil.parseNull(map.get("SQID"),"")%>nextUserId">
-                                <%=StringUtil.parseNull(options,"")%>
-                                </select>审批
-                                <input type="button" class="button"  style="width:40px" value="提交" onclick="tj('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');"/>
-                                <% }else if("已保存".equals(StringUtil.parseNull(map.get("SQZT"),""))){%>
-                                <a href="./edit.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>&curRole=<%=curRole%>">[编辑]</a>&nbsp;
-                                <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
-                                <%   }else{ %>
-                                <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>&nbsp;
-                                <a href="#" onclick="qz('<%=processId%>','<%=connectId%>');">[查看签字]</a>
-                                <%  }
-                                %>
+
+                                <a href="#" onclick="print('<%=form%>','<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[打印]</a>
 							</td>
 						</tr>
 						<%

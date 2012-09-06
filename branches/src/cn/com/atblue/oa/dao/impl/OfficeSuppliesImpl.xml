@@ -131,6 +131,34 @@
         </dynamic>
         order by t.SQSJ desc
     </select>
+    <select id="getPagedListByOrg" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+            select t.* from OFFICE_SUPPLIES t,
+                (select d.sqid,count(*)cn from office_supplies_depart d where d.orgid = #orgid# group by d.sqid)c
+            where 1=1 and t.sqid = c.sqid(+) and sqzt = '已完成' and c.cn > 0
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="mc">
+                <![CDATA[t.mc like '%'||#mc#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.SQSJ desc
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedCountByOrg" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) cn  from OFFICE_SUPPLIES t,
+               (select d.sqid,count(*)cn from office_supplies_depart d where d.orgid = #orgid# group by d.sqid)c
+            where 1=1 and t.sqid = c.sqid(+) and sqzt = '已完成' and c.cn > 0
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="mc">
+                <![CDATA[t.mc like '%'||#mc#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.SQSJ desc
+    </select>
     
     <select id="getWaitPagedList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
         <include refid="basic.pageStart"/>
