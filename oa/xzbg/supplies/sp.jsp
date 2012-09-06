@@ -28,6 +28,8 @@
         formId="11a99f76-9309-452c-be1b-4c1a932462fd";
     }
     List hasFileList = officeFileDAO.getByFk(sqid);
+    List orgList = dao.getOrgsByParentId("a4947f11-4a47-4d8c-9f6e-85aa35aecca7");//获取所有的机关科室
+    orgList = orgList == null?new ArrayList():orgList;
 %>
 <html>
 	<head>
@@ -35,8 +37,12 @@
 		<title></title>
 		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
 		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
+        <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
         <script type="text/javascript"
                 src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
+        <script type="text/javascript"
+                src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
         <script type="text/javascript" defer="defer">
             CKEDITOR.replace( 'editor',
                     {
@@ -102,8 +108,11 @@
                     nextUserId = document.all.disagreed.value;
                     varValue = "-1";
                 }
-
-               window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&sqid="+sid+"&processId="+pid+"&varValue="+varValue;
+                if(document.all.checkman.value == ''){
+                    alert("请选择待办理单位!");
+                    return ;
+                }
+               window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&sqid="+sid+"&processId="+pid+"&varValue="+varValue+"&checkman="+document.all.checkman.value;
             }
             function qz(){
                 window
@@ -122,11 +131,90 @@
             }
 
 		</script>
+        <script type="text/javascript">
+            Ext.onReady(function(){
+                var win;
+                var button = Ext.get('mb3');
+
+                button.on('click', function(){
+                    // create the window on the first click and reuse on subsequent clicks
+                    if(!win){
+                        win = new Ext.Window({
+                            applyTo:'hello-win',
+                            layout:'fit',
+                            width:800,
+                            height:200,
+                            closeAction:'hide',
+                            plain: true,
+                            pageX:100,
+                            pageY:100,
+                            items: new Ext.TabPanel({
+                                applyTo: 'hello-tabs',
+                                autoTabs:true,
+                                activeTab:0,
+//			                    deferredRender:false,
+                                border:false ,
+                                defaults:{autoScroll: true}
+                            }),
+                            buttons: [{
+                                text:'确定',
+                                handler: function(){
+                                    document.form1.checkman.value = "";
+                                    document.form1.mb3.value = "";
+                                    for(var i=0; i<document.form1.ubox.length; i++){
+                                        if(document.form1.ubox[i].checked){
+                                            document.form1.mb3.value+=document.form1.ubox[i].title + ";";
+                                            document.form1.checkman.value+=document.form1.ubox[i].value + ";";
+                                        }
+                                    }
+                                    win.hide();
+                                }
+                            },{
+                                text: '关闭',
+                                handler: function(){
+                                    win.hide();
+                                }
+                            }]
+                        });
+                    }
+                    win.show(this);
+                });
+            });
+        </script>
 	</head>
 	<body onload="_resizeNoPage();">
 		<form action="add.jsp" name="form1" method="post">
             <input type="hidden" name="flag" value=""/>
             <input type="hidden" name="qzgz" id="qzgz">
+            <div id="hello-win" class="x-hidden">
+                <div id="hello-tabs">
+                    <div class="x-tab" title="请选择办理部门">
+                        <table border="0" width="100%">
+                            <%for(int i=0; i<orgList.size(); i++){
+                                Map u = (Map)orgList.get(i);
+                                if(i==0){
+                            %>
+                            <tr>
+                                <td><input type="checkbox" name="ubox" value="<%=StringUtil.parseNull(u.get("ORGNA_ID"),"")%>" title="<%=StringUtil.parseNull(u.get("ORGNA_NAME"),"")%>" alt="gsld"  ><%=StringUtil.parseNull(u.get("ORGNA_NAME"),"")%></td>
+                                <%	}else if(i%6==0){ %>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="ubox" value="<%=StringUtil.parseNull(u.get("ORGNA_ID"),"")%>" title="<%=StringUtil.parseNull(u.get("ORGNA_NAME"),"")%>" alt="gsld"><%=StringUtil.parseNull(u.get("ORGNA_NAME"),"")%></td>
+                                <%	}else{ %>
+                                <td><input type="checkbox" name="ubox" value="<%=StringUtil.parseNull(u.get("ORGNA_ID"),"")%>" title="<%=StringUtil.parseNull(u.get("ORGNA_NAME"),"")%>" alt="gsld"><%=StringUtil.parseNull(u.get("ORGNA_NAME"),"")%></td>
+                                <%	} %>
+                                <%} %>
+                                <%
+                                    if(userList.size()%6!=0){
+                                        for(int i=0; i<userList.size()%6-1; i++){%>
+                                <td>&nbsp;</td>
+                                <%}%>
+                            </tr>
+                            <%}%>
+                        </table>
+                    </div>
+                </div>
+            </div>
 			<table width="100%" height="25" border="0" cellpadding="0"
 				cellspacing="0"
 				background="<%=request.getContextPath()%>/images/mhead.jpg">
@@ -161,6 +249,9 @@
                                             %>
                                             结束审批！
                                             <input type="hidden" name="agreed" value=""/>
+                                            选择待处理部门:
+                                            <input type="text" value="" id="mb3" name="mb3"/>
+                                            <input type="hidden" value="" id="checkman" name="checkman"/>
                                             <%     }%>
                                        </span>
                                         <span id="d"  style="display: none">
