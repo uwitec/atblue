@@ -58,8 +58,8 @@
     <bean id="codeManager" class="cn.com.atblue.common.codegen.CodeManager">
         <property name="outputDir" value="D:\\"/>
         <property name="prefixOfPackage" value="cn.com.atblue.oa"/>
-        <property name="prefixOfSqlmap" value="jygl"/>
-        <property name="prefixOfTable" value="JYGL_YJHFY"/>
+        <property name="prefixOfSqlmap" value="oa"/>
+        <property name="prefixOfTable" value="OFFICE_SUPPLIES_DEPART"/>
         <property name="dataSource" ref="internalDataSource"/>
     </bean>
     <!-- ÓÊ¼þÅäÖÃ -->
