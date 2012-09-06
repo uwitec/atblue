@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officesuppliesdepart">
+    <typeAlias alias="OfficeSuppliesDepart" type="cn.com.atblue.oa.bean.OfficeSuppliesDepart"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="pkId">
+                <![CDATA[pk_id=#pkId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqid">
+                <![CDATA[sqid=#sqid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="orgid">
+                <![CDATA[orgid=#orgid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lrsj">
+                <![CDATA[lrsj=#lrsj#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficeSuppliesDepart" parameterClass="OfficeSuppliesDepart">
+        <![CDATA[
+            insert into office_supplies_depart(
+                pk_id,sqid,orgid,lrsj
+            ) values(
+                #pkId#,#sqid#,#orgid#,#lrsj#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficeSuppliesDepart" parameterClass="OfficeSuppliesDepart">
+        <![CDATA[
+            update office_supplies_depart
+            set pk_id=#pkId#,sqid=#sqid#,orgid=#orgid#,
+				lrsj=#lrsj#
+            where PK_ID=#pkId#
+        ]]>
+    </update>
+
+    <delete id="delOfficeSuppliesDepart" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_supplies_depart
+            where PK_ID=#pkId#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeSuppliesDepart">
+        <![CDATA[
+            select pk_id as pkId,sqid as sqid,orgid as orgid,lrsj as lrsj from office_supplies_depart where PK_ID=#pkId#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficeSuppliesDepart">
+        <![CDATA[
+            select pk_id as pkId,sqid as sqid,orgid as orgid,lrsj as lrsj from office_supplies_depart
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_supplies_depart
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>
