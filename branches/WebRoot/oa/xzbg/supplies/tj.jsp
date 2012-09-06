@@ -4,6 +4,7 @@
     String selUserId = StringUtil.parseNull(request.getParameter("selUserId"), "");
     String connectId = StringUtil.parseNull(request.getParameter("connectId"), "");
     String processId = StringUtil.parseNull(request.getParameter("processId"), "");
+    String checkman = StringUtil.parseNull(request.getParameter("checkman"), "");
     String sqid = StringUtil.parseNull(request.getParameter("sqid"), "");
     String type = StringUtil.parseNull(request.getParameter("type"), "");
     String curRole = StringUtil.parseNull(request.getParameter("curRole"), "1");
@@ -62,6 +63,22 @@
             }
 	        }
 	        officeSuppliesDAO.modOfficeSupplies(officeSupplies);
+    }
+    if(!StringUtil.isBlankOrEmpty(checkman)){
+        String[] orgs = StringUtil.split(checkman,";");
+        if(orgs != null && orgs.length > 0){
+            for(int i=0; i<orgs.length; i++){
+                String org = orgs[i];
+                if(!StringUtil.isBlankOrEmpty(org)){
+                    OfficeSuppliesDepart depart = new OfficeSuppliesDepart();
+                    depart.setPkId(StringUtil.getUUID());
+                    depart.setLrsj(new java.util.Date());
+                    depart.setSqid(officeSupplies.getSqid());
+                    depart.setOrgid(org);
+                    officeSuppliesDepartDAO.addOfficeSuppliesDepart(depart);
+                }
+            }
+        }
     }
     if("1".equals(type)){
         response.sendRedirect("tabs.jsp");

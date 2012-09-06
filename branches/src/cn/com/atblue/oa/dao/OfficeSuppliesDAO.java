@@ -23,6 +23,10 @@ public interface OfficeSuppliesDAO {
     public List getPagedList(PageBean pb, Map paramMap);
 
     public int getPagedCount(Map paramMap);
+
+    public List getPagedListByOrg(PageBean pb, Map paramMap);
+
+    public int getPagedCountByOrg(Map paramMap);
     
     public List getWaitPagedList(PageBean pb, Map paramMap);
 

@@ -55,6 +55,7 @@
     CUserDAO userDAO = (CUserDAO)SpringFactory.instance.getBean("userDAO");
     String contentPath = request.getContextPath();
     OfficePlanDAO officePlanDAO = (OfficePlanDAO)SpringFactory.instance.getBean("officePlanDAO");
+    OfficeSuppliesDepartDAO officeSuppliesDepartDAO = (OfficeSuppliesDepartDAO)SpringFactory.instance.getBean("officeSuppliesDepartDAO");
     OfficePlanProcessDAO officePlanProcessDAO = (OfficePlanProcessDAO)SpringFactory.instance.getBean("officePlanProcessDAO");
     //获取流程
     Workflow workFlow = (Workflow)SpringFactory.instance.getBean("workflow");

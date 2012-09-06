@@ -43,6 +43,19 @@ public class OfficeSuppliesImpl extends SqlMapClientDaoSupport implements Office
         return (Integer) getSqlMapClientTemplate().queryForObject(
                 "oa.OfficeSupplies.getPagedCount", paramMap);
     }
+
+    public List getPagedListByOrg(PageBean pb, Map paramMap){
+        paramMap.put("currentPage", pb.getCurrentPage());
+        paramMap.put("pageSize", pb.getPageSize());
+        return getSqlMapClientTemplate().queryForList(
+                "oa.OfficeSupplies.getPagedListByOrg", paramMap);
+    }
+
+    public int getPagedCountByOrg(Map paramMap){
+        return (Integer) getSqlMapClientTemplate().queryForObject(
+                "oa.OfficeSupplies.getPagedCountByOrg", paramMap);
+    }
+
     public List getWaitPagedList(PageBean pb, Map paramMap){
         paramMap.put("currentPage", pb.getCurrentPage());
         paramMap.put("pageSize", pb.getPageSize());
