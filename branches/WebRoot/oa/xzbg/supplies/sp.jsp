@@ -108,9 +108,11 @@
                     nextUserId = document.all.disagreed.value;
                     varValue = "-1";
                 }
-                if(document.all.checkman.value == ''){
-                    alert("请选择待办理单位!");
-                    return ;
+                if(document.form1.mb3){
+                    if(document.all.checkman.value == ''){
+                        alert("请选择待办理单位!");
+                        return ;
+                    }
                 }
                window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&sqid="+sid+"&processId="+pid+"&varValue="+varValue+"&checkman="+document.all.checkman.value;
             }
@@ -159,12 +161,14 @@
                             buttons: [{
                                 text:'确定',
                                 handler: function(){
-                                    document.form1.checkman.value = "";
-                                    document.form1.mb3.value = "";
-                                    for(var i=0; i<document.form1.ubox.length; i++){
-                                        if(document.form1.ubox[i].checked){
-                                            document.form1.mb3.value+=document.form1.ubox[i].title + ";";
-                                            document.form1.checkman.value+=document.form1.ubox[i].value + ";";
+                                    if(document.form1.checkman && document.form1.mb3){
+                                        document.form1.checkman.value = "";
+                                        document.form1.mb3.value = "";
+                                        for(var i=0; i<document.form1.ubox.length; i++){
+                                            if(document.form1.ubox[i].checked){
+                                                document.form1.mb3.value+=document.form1.ubox[i].title + ";";
+                                                document.form1.checkman.value+=document.form1.ubox[i].value + ";";
+                                            }
                                         }
                                     }
                                     win.hide();
@@ -186,6 +190,7 @@
 		<form action="add.jsp" name="form1" method="post">
             <input type="hidden" name="flag" value=""/>
             <input type="hidden" name="qzgz" id="qzgz">
+            <input type="hidden" value="" id="checkman" name="checkman"/>
             <div id="hello-win" class="x-hidden">
                 <div id="hello-tabs">
                     <div class="x-tab" title="请选择办理部门">
@@ -251,7 +256,7 @@
                                             <input type="hidden" name="agreed" value=""/>
                                             选择待处理部门:
                                             <input type="text" value="" id="mb3" name="mb3"/>
-                                            <input type="hidden" value="" id="checkman" name="checkman"/>
+
                                             <%     }%>
                                        </span>
                                         <span id="d"  style="display: none">
