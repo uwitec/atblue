@@ -108,13 +108,16 @@
                     nextUserId = document.all.disagreed.value;
                     varValue = "-1";
                 }
-                if(document.form1.mb3){
+                if(document.form1.checkman){
                     if(document.all.checkman.value == ''){
                         alert("请选择待办理单位!");
                         return ;
                     }
+                    window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&sqid="+sid+"&processId="+pid+"&varValue="+varValue+"&checkman="+document.all.checkman.value;
+                }else{
+                    window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&sqid="+sid+"&processId="+pid+"&varValue="+varValue+"&checkman=";
                 }
-               window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&sqid="+sid+"&processId="+pid+"&varValue="+varValue+"&checkman="+document.all.checkman.value;
+
             }
             function qz(){
                 window
@@ -190,7 +193,7 @@
 		<form action="add.jsp" name="form1" method="post">
             <input type="hidden" name="flag" value=""/>
             <input type="hidden" name="qzgz" id="qzgz">
-            <input type="hidden" value="" id="checkman" name="checkman"/>
+
             <div id="hello-win" class="x-hidden">
                 <div id="hello-tabs">
                     <div class="x-tab" title="请选择办理部门">
@@ -256,6 +259,7 @@
                                             <input type="hidden" name="agreed" value=""/>
                                             选择待处理部门:
                                             <input type="text" value="" id="mb3" name="mb3"/>
+                                            <input type="hidden" value="" id="checkman" name="checkman"/>
 
                                             <%     }%>
                                        </span>
