@@ -193,6 +193,9 @@
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
                                 
                                 <%  }
+                                    if("system".equals(cUser.getUserName())){ %>
+                                    <a href="javascript:onDelete('./delete.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[删除]</a>&nbsp;
+                                <%   }
                                 %>
 							<a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("SQID"),"")%>');">[查看签批单]</a>
 							</td>
