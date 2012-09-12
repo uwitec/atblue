@@ -21,7 +21,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title></title>
-			<script src="<%=contentPath%>/js/common.js" type="text/javascript" defer="defer"></script>
+			<script src="<%=contentPath%>/js/common.js" type="text/javascript" defer="true"></script>
         <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"	type="text/css">
         <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"	type="text/css">
 

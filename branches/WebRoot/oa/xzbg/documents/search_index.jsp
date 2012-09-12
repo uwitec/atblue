@@ -29,12 +29,12 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
 			<script src="<%=contentPath%>/js/common.js"
-			type="text/javascript" defer="defer"></script>
+			type="text/javascript" defer="true"></script>
 		<link href="<%=request.getContextPath()%>/css/xzbg-css.css" rel="stylesheet"
 			type="text/css">
 		<link href="<%=request.getContextPath()%>/js/ext/resources/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
-			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
+			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="true"></script>
 		<script type="text/javascript"
 			src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
 		<script type="text/javascript"

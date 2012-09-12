@@ -95,14 +95,14 @@
 		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet" type="text/css">
 		<link href="<%=request.getContextPath()%>/js/ext/resources/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
-			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
+			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="true"></script>
 		<script type="text/javascript"
 			src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
 		<script type="text/javascript"
 			src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
 
-		<script type="text/javascript" defer="defer">
+		<script type="text/javascript" defer="true">
 		CKEDITOR.replace( 'editor',
 		{
 			skin : 'office2003'

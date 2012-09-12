@@ -23,7 +23,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
 		<script src="<%=contentPath%>/js/common.js"
-			type="text/javascript" defer="defer"></script>
+			type="text/javascript" defer="true"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
         <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
 		<script>

@@ -34,11 +34,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
-                type="text/javascript" defer="defer"></script>
+                type="text/javascript" defer="true"></script>
         <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
         <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
         <script type="text/javascript" charset="GB2312"
-                src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
+                src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="true"></script>
 	</head>
 	<body>
     <form name="form1" action=""  style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px">

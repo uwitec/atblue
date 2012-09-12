@@ -33,7 +33,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>来文登记</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
-                type="text/javascript" defer="defer"></script>
+                type="text/javascript" defer="true"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
         <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript">
