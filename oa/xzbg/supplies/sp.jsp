@@ -43,7 +43,7 @@
         <script type="text/javascript"
                 src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
-        <script type="text/javascript" defer="defer">
+        <script type="text/javascript" defer="true">
             CKEDITOR.replace( 'editor',
                     {
                         skin : 'office2003'

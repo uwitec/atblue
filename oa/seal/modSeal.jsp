@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>电子签章修改</title>
     <link href="<%=request.getContextPath()%>/css/css.css" type="text/css" rel="stylesheet"/>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="true"></script>
     <script type="text/javascript">
         String.prototype.trim = function () {
             return this.rtrim().ltrim();

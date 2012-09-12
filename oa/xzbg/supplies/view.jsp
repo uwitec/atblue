@@ -29,7 +29,7 @@
 		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"	type="text/css">
         <script type="text/javascript"
                 src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
-        <script type="text/javascript" defer="defer">
+        <script type="text/javascript" defer="true">
             CKEDITOR.replace( 'editor',
                     {
                         skin : 'office2003'
