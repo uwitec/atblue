@@ -27,11 +27,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>请销假-党办执行</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
-                type="text/javascript" defer="defer"></script>
+                type="text/javascript" defer="true"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
         <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
-                src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
+                src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="true"></script>
 		<script type="text/javascript">
 		function onDelete(url){
 			if(window.confirm("确认删除该会议申请?")){
