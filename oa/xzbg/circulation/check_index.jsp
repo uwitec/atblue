@@ -26,7 +26,7 @@
 			type="text/javascript" defer="defer"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
         <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
-		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
+		<link href="<%=request.getContextPath()%>/js/ext/resources/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
 		<script>
