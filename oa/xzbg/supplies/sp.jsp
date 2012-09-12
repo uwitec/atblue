@@ -108,7 +108,7 @@
                     nextUserId = document.all.disagreed.value;
                     varValue = "-1";
                 }
-                if(document.form1.checkman){
+                if(varValue == "1" && document.form1.checkman){
                     if(document.all.checkman.value == ''){
                         alert("请选择待办理单位!");
                         return ;
