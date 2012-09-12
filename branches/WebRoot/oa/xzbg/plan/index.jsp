@@ -139,11 +139,11 @@
 							<th  nowrap="nowrap">
 								预计划费用标题
 							</th>
+							<%--<th  nowrap="nowrap">--%>
+								<%--平均单价--%>
+							<%--</th>--%>
 							<th  nowrap="nowrap">
-								平均单价
-							</th>
-							<th  nowrap="nowrap">
-								费用合计
+								费用合计（万元）
 							</th>
 							<th nowrap="nowrap"  width="80">
 								状态
@@ -173,10 +173,10 @@
 							<td  style="text-align: left">
 								<a href="view.jsp?pkid=<%=StringUtil.parseNull(map.get("PKID"),"") %>&fkid=<%=StringUtil.parseNull(map.get("FKID"),"") %>"><%=StringUtil.parseNull(map.get("BT"),"&nbsp;")%></a>
 							</td>
-							<td  align="center">
-                                <%=StringUtil.parseNull(map.get("DJ"),"&nbsp;")%>
-                                    &nbsp;
-							</td>
+							<%--<td  align="center">--%>
+                                <%--<%=StringUtil.parseNull(map.get("DJ"),"&nbsp;")%>--%>
+                                    <%--&nbsp;--%>
+							<%--</td>--%>
 							<td  align="center">
                                 <%=StringUtil.parseNull(map.get("FY"),"&nbsp;")%>
 							</td>
