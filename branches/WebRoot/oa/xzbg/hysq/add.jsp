@@ -74,7 +74,7 @@
 		<title></title>
 		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
 		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
-		<link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
+		<link href="<%=request.getContextPath()%>/js/ext/resources/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="defer"></script>
 		<script type="text/javascript"
@@ -277,7 +277,7 @@
 			                    autoTabs:true,
 			                    activeTab:0,
 //			                    deferredRender:false,
-			                    border:false ,
+			                    border:true ,
                                 defaults:{autoScroll: true}
 			                }),
 			                buttons: [{

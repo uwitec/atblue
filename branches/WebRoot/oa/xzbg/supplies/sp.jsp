@@ -37,7 +37,7 @@
 		<title></title>
 		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
 		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
-        <link href="<%=request.getContextPath()%>/css/ext-all.css" rel="stylesheet" type="text/css">
+        <link href="<%=request.getContextPath()%>/js/ext/resources/css/ext-all.css" rel="stylesheet" type="text/css">
         <script type="text/javascript"
                 src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
         <script type="text/javascript"
