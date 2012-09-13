@@ -191,6 +191,7 @@
                                 <a href="./edit.jsp?documentid=<%=StringUtil.parseNull(map.get("DOCUMENTID"),"")%>">[编辑]</a>&nbsp;
                                 <a href="javascript:onDelete('./delete.jsp?documentid=<%=StringUtil.parseNull(map.get("DOCUMENTID"),"")%>');">[删除]</a>&nbsp;
                                 <%   }else{ %>
+                                <a href="javascript:onDelete('./delete.jsp?documentid=<%=StringUtil.parseNull(map.get("DOCUMENTID"),"")%>');">[删除]</a>&nbsp;
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>&nbsp;
                                 <a href="#" onclick="qz('<%=processId%>','<%=connectId%>');">[查看签字]</a>
                                 <%  }

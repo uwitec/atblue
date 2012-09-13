@@ -6,6 +6,7 @@
     CUser cUser = (CUser) session.getAttribute("cUser");
     cUser = cUser == null ? new CUser() : cUser;
     List announceList = oDao.getLatestAnnounce(5);
+//    List announceList = null;
     announceList = announceList == null ? new ArrayList() : announceList;
     PageBean pageBean = new PageBean();
     pageBean.setPageSize(5);
