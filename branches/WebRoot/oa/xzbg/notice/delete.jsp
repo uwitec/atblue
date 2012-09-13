@@ -11,5 +11,5 @@
 	}
     officeNoticeCheckDAO.deleteByNoticeid(noticeid);
     officeNoticeDAO.deleteByPrimaryKey(noticeid);
-    response.sendRedirect("list.jsp");
+    response.sendRedirect("index.jsp");
 %>
