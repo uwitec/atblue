@@ -7,5 +7,5 @@
         map.put("sqid",sqid);
         officeHysqDAO.delOfficeHysq(map);
     }
-    response.sendRedirect("list.jsp");
+    response.sendRedirect("index.jsp");
 %>
