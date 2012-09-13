@@ -7,5 +7,5 @@
         map.put("documentid",documentid);
         officeWjspDAO.delOfficeWjsp(map);
     }
-    response.sendRedirect("list.jsp");
+    response.sendRedirect("index.jsp");
 %>

@@ -7,5 +7,5 @@
         map.put("holidayid",holidayid);
         officeHolidayDAO.delOfficeHoliday(map);
     }
-    response.sendRedirect("list.jsp");
+    response.sendRedirect("index.jsp");
 %>
