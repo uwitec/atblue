@@ -178,6 +178,7 @@
                                 <a href="./edit.jsp?pkid=<%=StringUtil.parseNull(document.getCyid(),"")%>">[编辑]</a>&nbsp;
                                 <a href="javascript:onDelete('./delete.jsp?pkid=<%=StringUtil.parseNull(document.getCyid(),"")%>');">[删除]</a>&nbsp;
                                 <%   }else{ %>
+                                <a href="javascript:onDelete('./delete.jsp?pkid=<%=StringUtil.parseNull(document.getCyid(),"")%>');">[删除]</a>&nbsp;
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(document.getProcessId(),"")%>">[查看流程]</a>
                                 <a href="#" onclick="qz('<%=document.getProcessId()%>','<%=document.getConnectId()%>');">[查看签字]</a>
                                 <%  }
