@@ -62,9 +62,9 @@
     <insert id="addOfficePlan" parameterClass="OfficePlan">
         <![CDATA[
             insert into office_plan(
-                pkid,ny,mc,bm,xm,xmmx,gg,dw,dj,sl,djyj,tjfwcs,ywsczrz,tjfwcs2,ywsczrz2,bz,fkid,fy,dj_w
+                pkid,ny,mc,bm,xm,xmmx,gg,dw,dj,sl,djyj,tjfwcs,ywsczrz,tjfwcs2,ywsczrz2,bz,fkid,fy,dj_w,lrsj,px
             ) values(
-                #pkid#,#ny#,#mc#,#bm#,#xm#,#xmmx#,#gg#,#dw#,#dj#,#sl#,#djyj#,#tjfwcs#,#ywsczrz#,#tjfwcs2#,#ywsczrz2#,#bz#,#fkid#,#fy#,#dj_w#
+                #pkid#,#ny#,#mc#,#bm#,#xm#,#xmmx#,#gg#,#dw#,#dj#,#sl#,#djyj#,#tjfwcs#,#ywsczrz#,#tjfwcs2#,#ywsczrz2#,#bz#,#fkid#,#fy#,#dj_w#,#lrsj#,#px#
             )
         ]]>
     </insert>
@@ -95,12 +95,14 @@
     <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficePlan">
         <![CDATA[
             select pkid,ny,mc,bm,xm,xmmx,gg,dw,dj,sl,djyj,tjfwcs,ywsczrz,tjfwcs2,ywsczrz2,bz,fkid,fy,dj_w from office_plan where pkid=#pkid#
+
         ]]>
     </select>
 
     <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficePlan">
         <![CDATA[
             select * from office_plan where fkid=#fkid#
+            order by px
         ]]>
     </select>
     <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">

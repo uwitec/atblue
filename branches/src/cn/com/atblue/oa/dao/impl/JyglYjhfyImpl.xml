@@ -87,13 +87,13 @@
 				xmmx,xhgz,dw,dj,dj2,
 				sl,yjfy,djyj,tjfwcs1,ywzrz1,
 				tjfwcs2,ywzrz2,fsyf,bz,sqsj,
-				sqzt,process_id,connect_id,sqr
+				sqzt,process_id,connect_id,sqr,lrsj
             ) values(
                 #sqid#,#fzbm#,#jd#,#fymc#,#fyxm#,
 				#xmmx#,#xhgz#,#dw#,#dj#,#dj2#,
 				#sl#,#yjfy#,#djyj#,#tjfwcs1#,#ywzrz1#,
 				#tjfwcs2#,#ywzrz2#,#fsyf#,#bz#,#sqsj#,
-				#sqzt#,#processId#,#connectId#,#sqr#
+				#sqzt#,#processId#,#connectId#,#sqr#,sysdate
             )
         ]]>
     </insert>
@@ -123,12 +123,14 @@
     <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="JyglYjhfy">
         <![CDATA[
             select sqid as sqid,fzbm as fzbm,jd as jd,fymc as fymc,fyxm as fyxm,xmmx as xmmx,xhgz as xhgz,dw as dw,dj as dj,dj2 as dj2,sl as sl,yjfy as yjfy,djyj as djyj,tjfwcs1 as tjfwcs1,ywzrz1 as ywzrz1,tjfwcs2 as tjfwcs2,ywzrz2 as ywzrz2,fsyf as fsyf,bz as bz,sqsj as sqsj,sqzt as sqzt,process_id as processId,connect_id as connectId,sqr as sqr from jygl_yjhfy where SQID=#sqid#
+            ORDER BY LRSJ
         ]]>
     </select>
 
     <select id="queryForList" parameterClass="java.util.HashMap" resultClass="JyglYjhfy">
         <![CDATA[
             select sqid as sqid,fzbm as fzbm,jd as jd,fymc as fymc,fyxm as fyxm,xmmx as xmmx,xhgz as xhgz,dw as dw,dj as dj,dj2 as dj2,sl as sl,yjfy as yjfy,djyj as djyj,tjfwcs1 as tjfwcs1,ywzrz1 as ywzrz1,tjfwcs2 as tjfwcs2,ywzrz2 as ywzrz2,fsyf as fsyf,bz as bz,sqsj as sqsj,sqzt as sqzt,process_id as processId,connect_id as connectId,sqr as sqr from jygl_yjhfy
+
         ]]>
         <!--
         <dynamic prepend="where">

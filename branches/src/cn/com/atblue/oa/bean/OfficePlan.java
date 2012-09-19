@@ -26,6 +26,8 @@ public class OfficePlan {
 	private String fkid;
 	private double fy;
 	private double dj_w;
+    private Date lrsj;
+    private int px;
 	public String getPkid() {
 		return pkid;
 	}
@@ -140,4 +142,20 @@ public class OfficePlan {
 	public void setDj_w(double dj_w) {
 		this.dj_w = dj_w;
 	}
+
+    public Date getLrsj() {
+        return lrsj;
+    }
+
+    public void setLrsj(Date lrsj) {
+        this.lrsj = lrsj;
+    }
+
+    public int getPx() {
+        return px;
+    }
+
+    public void setPx(int px) {
+        this.px = px;
+    }
 }
