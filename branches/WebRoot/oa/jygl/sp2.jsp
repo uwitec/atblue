@@ -133,19 +133,21 @@
                 String nextRole = workFlow.getNextRoleName(StringUtil.parseNull(connectId, ""),"1");
                 if("生产部门".equals(nextRole)){
                     selUserId = bean.getScclr();
+                }else if("技术部门".equals(nextRole)){
+                    selUserId = bean.getJsclr();
                 }else if("计划部门".equals(nextRole)){
                     selUserId = bean.getJhclr();
                 }else if("多部门审核".equals(nextRole)){
-                    nextUsers[0]  = bean.getJsclr();
-                    nextUsers[1]  = bean.getJhclr();
-                    nextUsers[2]  = bean.getNybclr();
-                    nextUsers[3]  = bean.getJdkclr();
-                    nextUsers[4]  = bean.getAqkclr();
-                    nextUsers[5]  = bean.getGnkclr();
-                    nextUsers[6]  = bean.getZhdclr();
-                    nextUsers[7]  = bean.getWxdclr();
-                    nextUsers[8]  = bean.getGyclr();
-                    nextUsers[9]  = bean.getJyclr();
+//                    nextUsers[0]  = bean.getJsclr();
+//                    nextUsers[1]  = bean.getJhclr();
+                    nextUsers[0]  = bean.getNybclr();
+                    nextUsers[1]  = bean.getJdkclr();
+                    nextUsers[2]  = bean.getAqkclr();
+                    nextUsers[3]  = bean.getGnkclr();
+                    nextUsers[4]  = bean.getZhdclr();
+                    nextUsers[5]  = bean.getWxdclr();
+                    nextUsers[6]  = bean.getGyclr();
+                    nextUsers[7]  = bean.getJyclr();
                 }else {
                     selUserId = "";
                 }
@@ -1202,56 +1204,6 @@
                                 综合队
                             </td>
                             <td class="head_right" style="text-align: left;height:140px;width:140px"   id="shr895ba579-95d8-4e88-b615-3c2b2443aa0e">
-                                &nbsp;
-                            </td>
-                        </tr>
-                        </div>
-                        <% }
-                        %>
-
-                        <%
-                            //外修队
-                            if("3b6f38fb-fd8c-4a50-9587-431b841b2c7a".equals(orgId)){  %>
-                        <tr bgcolor="yellow">
-                            <td nowrap="nowrap" class="head_left">
-                                井队用料
-                            </td>
-                            <td class="head_right" style="text-align: left">
-                                <input type="text" name="JDYLWXD" value="<%=StringUtil.parseNull(bean.getJdylwxd(),"")%>" style="width:100%"/>
-                            </td>
-                            <td nowrap="nowrap" class="head_left">
-                                其    他
-                            </td>
-                            <td class="head_right" style="text-align: left" colspan="3">
-                                <input type="text" name="QTWXD" value="<%=StringUtil.parseNull(bean.getQtwxd(),"")%>" style="width:100%"/>
-                            </td>
-                            <td nowrap="nowrap" class="head_left">
-                                外修队
-                            </td>
-                            <td class="head_right" style="text-align: left;height:140px;width:140px" id="shr3b6f38fb-fd8c-4a50-9587-431b841b2c7a">
-                                &nbsp;
-                            </td>
-                        </tr>
-
-                        <%   }else{  %>
-                        <div style="display: none">
-                        <tr style="display: none">
-                            <td nowrap="nowrap" class="head_left">
-                                井队用料
-                            </td>
-                            <td class="head_right" style="text-align: left">
-                                <%=StringUtil.parseNull(bean.getJdylwxd(),"&nbsp;")%>
-                            </td>
-                            <td nowrap="nowrap" class="head_left">
-                                其    他
-                            </td>
-                            <td class="head_right" style="text-align: left" colspan="3">
-                                <%=StringUtil.parseNull(bean.getQtwxd(),"&nbsp;")%>
-                            </td>
-                            <td nowrap="nowrap" class="head_left">
-                                外修队
-                            </td>
-                            <td class="head_right" style="text-align: left;height:140px;width:140px" id="shr3b6f38fb-fd8c-4a50-9587-431b841b2c7a">
                                 &nbsp;
                             </td>
                         </tr>
