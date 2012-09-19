@@ -121,8 +121,8 @@
 				<tr>
 					<td>
 						<%--固定表头DIV--%>
-						<div id="scrollDiv"
-							style="width: 1000px; overflow: auto; cursor: default; display: inline; position: absolute; height: 200px;">
+						<%--<div id="scrollDiv"--%>
+							<%--style="width: 1000px; overflow: auto; cursor: default; display: inline; position: absolute; height: 200px;">--%>
 							<table width="100%" border="0" align="center" cellpadding="0"
 						cellspacing="0" id="tab_id" class="mtabtab">
 						<tr class="form_th">
@@ -188,22 +188,22 @@
 							<td  style="text-align: center;border-left: 1px solid #01a0fe;" >
 								<%=i + 1%>
 							</td>
-							<td style="text-align: left">
+							<td style="text-align: left" nowrap="nowrap">
 								<%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"&nbsp;") %>
 							</td>
-							<td style="text-align: left">
+							<td style="text-align: left" nowrap="nowrap">
 								<%=StringUtil.parseNull(officePlan.getMc(),"&nbsp;") %>
 							</td>
-							<td style="text-align: left">
+							<td style="text-align: left" nowrap="nowrap">
 								<%=StringUtil.parseNull(officePlan.getXm(),"&nbsp;") %>
 							</td>
-							<td style="text-align: left">
+							<td style="text-align: left" nowrap="nowrap">
 								<%=StringUtil.parseNull(officePlan.getXmmx(),"&nbsp;") %>
 							</td>
-							<td style="text-align: left">
+							<td style="text-align: left" nowrap="nowrap">
 								<%=StringUtil.parseNull(officePlan.getGg(),"&nbsp;") %>
 							</td>
-							<td style="text-align: left">
+							<td style="text-align: left" nowrap="nowrap">
 								<%=StringUtil.parseNull(officePlan.getDw(),"&nbsp;") %>
 							</td>
 							<td style="text-align: right">
@@ -218,16 +218,16 @@
 							<td style="text-align: right">
 								<%=StringUtil.parseNull(officePlan.getFy(),"&nbsp;") %>
 							</td>
-							<td style="text-align: left">
+							<td style="text-align: left" nowrap="nowrap">
 								<%=StringUtil.parseNull(officePlan.getDjyj(),"&nbsp;") %>
 							</td>
-							<td style="text-align: left">
+							<td style="text-align: left" nowrap="nowrap">
 								<%=StringUtil.parseNull(officePlan.getTjfwcs(),"&nbsp;") %>
 							</td>
 							<td>
 								<%=StringUtil.parseNull(officePlan.getYwsczrz(),"&nbsp;") %>
 							</td>
-							<td style="text-align: left">
+							<td style="text-align: left" nowrap="nowrap">
 								<%=StringUtil.parseNull(officePlan.getTjfwcs2(),"&nbsp;") %>
 							</td>
 							<td>
@@ -242,7 +242,7 @@
 						</tr>
 					<%} %>
 				</table>
-						</div>
+						<%--</div>--%>
 					</td>
 				</tr>
 			</table>
