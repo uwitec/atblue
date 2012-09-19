@@ -151,8 +151,8 @@
                         win = new Ext.Window({
                             applyTo:'hello-win',
                             layout:'fit',
-                            width:800,
-                            height:200,
+                            width:900,
+                            height:400,
                             closeAction:'hide',
                             plain: true,
                             pageX:100,
@@ -202,6 +202,12 @@
                 <div id="hello-tabs">
                     <div class="x-tab" title="请选择办理部门">
                         <table border="0" width="100%">
+                            <tr>
+                                <td colspan="6" align="left">
+                                    <h2>机关科室</h2>
+                                    <hr width="100%">
+                                </td>
+                            </tr>
                             <%for(int i=0; i<orgList.size(); i++){
                                 Map u = (Map)orgList.get(i);
                                 if(i==0){
@@ -223,6 +229,13 @@
                                 <%}%>
                             </tr>
                             <%}%>
+                            <tr>
+                                <td colspan="6" align="left">
+                                    <hr width="100%">
+                                    <h2>基层单位</h2>
+                                    <hr width="100%">
+                                </td>
+                            </tr>
                             <%for(int i=0; i<orgList2.size(); i++){
                                 Map u = (Map)orgList2.get(i);
                                 if(i==0){
