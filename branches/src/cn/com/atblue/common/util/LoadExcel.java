@@ -6,11 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -51,17 +47,24 @@ public class LoadExcel {
 			officePlanProcess.setPkid(StringUtil.getUUID());
 			officePlanProcess.setBm(bm);
 			officePlanProcess.setSqzt("已保存");
+            System.out.println(row1.getCell(0).toString());
 			officePlanProcess.setBt(row1.getCell(0).getStringCellValue());
 			officePlanProcessDAO.addOfficePlanProcess(officePlanProcess);
 			for(int i=0;i<sheet.getLastRowNum();i++){
 				OfficePlan officePlan = new OfficePlan(); 
 				HSSFRow row = sheet.getRow((short)(i+2));
+//                System.out.print(i+2);
+//                System.out.print("    ");
 				HSSFCell cell=null;
 				String val=null;
 				try {
 					cell = row.getCell(0);
 					val = cell.getStringCellValue();
+                    if(val.indexOf("审批") != -1){
+                        break;
+                    }
 					officePlan.setMc(val);
+
 				} catch (RuntimeException e1) {
 					e1.printStackTrace();
 				}
@@ -70,6 +73,7 @@ public class LoadExcel {
 					cell = row.getCell(1);
 					val = cell.getStringCellValue();
 					officePlan.setXm(val);
+
 				} catch (RuntimeException e3) {
 					e3.printStackTrace();
 				}
@@ -78,6 +82,7 @@ public class LoadExcel {
 					cell = row.getCell(2);
 					val = cell.getStringCellValue();
 					officePlan.setXmmx(val);
+
 				} catch (RuntimeException e2) {
 					e2.printStackTrace();
 				}
@@ -86,6 +91,7 @@ public class LoadExcel {
 					cell = row.getCell(3);
 					val = cell.getStringCellValue();
 					officePlan.setGg(val);
+
 				} catch (RuntimeException e1) {
 					e1.printStackTrace();
 				}
@@ -93,31 +99,35 @@ public class LoadExcel {
 				cell = row.getCell(4);
 				val = cell.getStringCellValue();
 				officePlan.setDw(val);
-				
+
 				try {
 					cell = row.getCell(5);
-					officePlan.setDj(cell.getNumericCellValue());
+					officePlan.setDj(NumberUtil.round(cell.getNumericCellValue(),2));
+
 				} catch (RuntimeException e) {
 					e.printStackTrace();
 				}
 				
 				try {
 					cell = row.getCell(6);
-					officePlan.setDj_w(cell.getNumericCellValue());
+					officePlan.setDj_w(NumberUtil.round(cell.getNumericCellValue(),2));
+
 				} catch (RuntimeException e) {
 					e.printStackTrace();
 				}
 				
 				try {
 					cell = row.getCell(7);
-					officePlan.setSl(cell.getNumericCellValue());
+					officePlan.setSl(NumberUtil.round(cell.getNumericCellValue(),1));
+
 				} catch (RuntimeException e) {
 					e.printStackTrace();
 				}
 				
 				try {
 					cell = row.getCell(8);
-					officePlan.setFy(cell.getNumericCellValue());
+					officePlan.setFy(NumberUtil.round(cell.getNumericCellValue(),4));
+
 				} catch (RuntimeException e) {
 					e.printStackTrace();
 				}
@@ -125,11 +135,12 @@ public class LoadExcel {
 				cell = row.getCell(9);
 				val = cell.getStringCellValue();
 				officePlan.setDjyj(val);
-				
+
 				try {
 					cell = row.getCell(10);
 					val = cell.getStringCellValue();
 					officePlan.setTjfwcs(val);
+
 				} catch (RuntimeException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -138,19 +149,20 @@ public class LoadExcel {
 				cell = row.getCell(11);
 				val = cell.getStringCellValue();
 				officePlan.setYwsczrz(val);
-				
+
 				cell = row.getCell(12);
 				val = cell.getStringCellValue();
 				officePlan.setTjfwcs2(val);
-				
+
 				cell = row.getCell(13);
 				val = cell.getStringCellValue();
 				officePlan.setYwsczrz2(val);
-				
+
 				try {
 					cell = row.getCell(14);
 					val = cell.getStringCellValue();
 					officePlan.setNy(val);
+
 				} catch (Exception e) {
 				}
 				try {
@@ -163,6 +175,9 @@ public class LoadExcel {
 				
 				officePlan.setPkid(StringUtil.getUUID());
 				officePlan.setFkid(officePlanProcess.getPkid());
+
+                officePlan.setLrsj(new Date());
+                officePlan.setPx(i-1);
 				officePlanDAO.addOfficePlan(officePlan);
 			}
 		} catch (Exception e) {
