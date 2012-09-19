@@ -28,8 +28,12 @@
         formId="11a99f76-9309-452c-be1b-4c1a932462fd";
     }
     List hasFileList = officeFileDAO.getByFk(sqid);
-    List orgList = dao.getOrgsByParentId("a4947f11-4a47-4d8c-9f6e-85aa35aecca7");//获取所有的机关科室
+    List orgList = dao.getOrgsByParentId("a4947f11-4a47-4d8c-9f6e-85aa35aecca7");//获取所有的机关科室  d4dfcf91-6c09-470b-b3d1-8a47e1bdb562
+
     orgList = orgList == null?new ArrayList():orgList;
+    List orgList2 = dao.getOrgsByParentId("d4dfcf91-6c09-470b-b3d1-8a47e1bdb562");//获取所有的基层单位
+
+    orgList2 = orgList2 == null?new ArrayList():orgList2;
 %>
 <html>
 	<head>
@@ -213,8 +217,29 @@
                                 <%	} %>
                                 <%} %>
                                 <%
-                                    if(userList.size()%6!=0){
-                                        for(int i=0; i<userList.size()%6-1; i++){%>
+                                    if(orgList.size()%6!=0){
+                                        for(int i=0; i<orgList.size()%6-1; i++){%>
+                                <td>&nbsp;</td>
+                                <%}%>
+                            </tr>
+                            <%}%>
+                            <%for(int i=0; i<orgList2.size(); i++){
+                                Map u = (Map)orgList2.get(i);
+                                if(i==0){
+                            %>
+                            <tr>
+                                <td><input type="checkbox" name="ubox" value="<%=StringUtil.parseNull(u.get("ORGNA_ID"),"")%>" title="<%=StringUtil.parseNull(u.get("ORGNA_NAME"),"")%>" alt="gsld"  ><%=StringUtil.parseNull(u.get("ORGNA_NAME"),"")%></td>
+                                <%	}else if(i%6==0){ %>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="ubox" value="<%=StringUtil.parseNull(u.get("ORGNA_ID"),"")%>" title="<%=StringUtil.parseNull(u.get("ORGNA_NAME"),"")%>" alt="gsld"><%=StringUtil.parseNull(u.get("ORGNA_NAME"),"")%></td>
+                                <%	}else{ %>
+                                <td><input type="checkbox" name="ubox" value="<%=StringUtil.parseNull(u.get("ORGNA_ID"),"")%>" title="<%=StringUtil.parseNull(u.get("ORGNA_NAME"),"")%>" alt="gsld"><%=StringUtil.parseNull(u.get("ORGNA_NAME"),"")%></td>
+                                <%	} %>
+                                <%} %>
+                                <%
+                                    if(orgList2.size()%6!=0){
+                                        for(int i=0; i<orgList2.size()%6-1; i++){%>
                                 <td>&nbsp;</td>
                                 <%}%>
                             </tr>
