@@ -199,7 +199,7 @@
                                      String nextRole = workFlow.getNextRoleName(connectId,"1");
                                      String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
                                 %>
-                                 <a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("PKID"),"")%>');">[签字]</a>
+                                 <%--<a href="#" onclick="qz('<%=processId%>','<%=connectId%>','<%=StringUtil.parseNull(map.get("PKID"),"")%>');">[签字]</a>--%>
                                      发送给&nbsp;<%=nextRole%>
                                 <select name="<%=StringUtil.parseNull(map.get("PKID"),"")%>nextUserId">
                                 <%=StringUtil.parseNull(options,"")%>
