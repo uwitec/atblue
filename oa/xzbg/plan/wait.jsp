@@ -90,9 +90,7 @@
 							<th nowrap="nowrap">
 								费用名称
 							</th>
-							<th  nowrap="nowrap">
-								平均单价
-							</th>
+
 							<th  nowrap="nowrap">
 								费用合计
 							</th>
@@ -126,10 +124,7 @@
 							<td  align="center">
 								<%=StringUtil.parseNull(map.get("MC"),"&nbsp;")%>&nbsp;
 							</td>
-							<td  align="center">
-                                <%=StringUtil.parseNull(map.get("DJ"),"&nbsp;")%>
-                                    &nbsp;
-							</td>
+
 							<td  align="center">
                                 <%=StringUtil.parseNull(map.get("FY"),"&nbsp;")%>
 							</td>
