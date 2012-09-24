@@ -619,8 +619,7 @@
                             </td>
                         </tr>
                         <%   }else{  %>
-                        <div style="display: none">
-                        <tr style="display: none">
+                        <tr>
                             <td nowrap="nowrap" class="head_left">
                                 实际井深
                             </td>
@@ -646,7 +645,7 @@
                                 <%=StringUtil.parseNull(bean.getYxfgjc(),"&nbsp;")%>
                             </td>
                         </tr>
-                        <tr style="display: none">
+                        <tr>
                             <td nowrap="nowrap" class="head_left">
                                 筛管下深
                             </td>
@@ -672,7 +671,7 @@
                                 &nbsp;
                             </td>
                         </tr>
-                        <tr style="display: none">
+                        <tr>
                             <td nowrap="nowrap" class="head_left">
                                 其他
                             </td>
@@ -680,7 +679,6 @@
                                 &nbsp;
                             </td>
                         </tr>
-                        </div>
                         <% }
                         %>
                         <%
