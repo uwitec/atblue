@@ -121,7 +121,7 @@
                      alt="">
             </td>
             <td width="15%" class="mhead">
-                 其他申请
+                 请示报告
             </td>
             <td align="left" class="mhead">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
