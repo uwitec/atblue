@@ -142,6 +142,9 @@
             <isNotEmpty prepend=" and " property="mc">
                 <![CDATA[t.mc like '%'||#mc#||'%']]>
             </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqid">
+                <![CDATA[t.sqid = #sqid#]]>
+            </isNotEmpty>
         </dynamic>
         order by t.SQSJ desc
         <include refid="basic.pageEnd"/>
