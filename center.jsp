@@ -17,7 +17,7 @@
     String name = StringUtil.parseNull(request.getParameter("name"),"");
     String path = StringUtil.parseNull(request.getParameter("path"),"");
 %>
-<frameset rows="*" cols="250,6,*" id="center" name="center" frameborder="no" border="1" framespacing="0" borderColor="eaf7ff">
+<frameset rows="*" cols="180,6,*" id="center" name="center" frameborder="no" border="1" framespacing="0" borderColor="eaf7ff">
     <frame src="left2.jsp?id=<%=id%>&name=<%=name%>&path=<%=path%>" name="leftFrame" id="leftFrame"
            title="leftFrame" frameborder="0" scrolling="auto"/>
     <frame src="middle.html" name="middleFrame" scrolling="No" noresize="noresize" id="middleFrame"

@@ -66,7 +66,7 @@
                 {
                     region:"north",
                     height:29,
-                    html: "<img src=\"images/index_20.jpg\" width=\"250\" height=\"29\">"
+                    html: "<img src=\"images/index_20.jpg\" width=\"180\" height=\"29\">"
                 },
                 {
                     region:'center',
