@@ -93,4 +93,9 @@
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficePlanProcessImpl.xml" />
 
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeSuppliesDepartImpl.xml" />
+
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficePeixunImpl.xml" />
+
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeYsfImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeYsfYspImpl.xml" />
 </sqlMapConfig>
