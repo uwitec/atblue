@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officeysf">
+    <typeAlias alias="OfficeYsf" type="cn.com.atblue.oa.bean.OfficeYsf"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="sqid">
+                <![CDATA[sqid=#sqid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqsj">
+                <![CDATA[sqsj=#sqsj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqzt">
+                <![CDATA[sqzt=#sqzt#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="processId">
+                <![CDATA[process_id=#processId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="connectId">
+                <![CDATA[connect_id=#connectId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqr">
+                <![CDATA[sqr=#sqr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqbm">
+                <![CDATA[sqbm=#sqbm#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqsy">
+                <![CDATA[sqsy=#sqsy#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficeYsf" parameterClass="OfficeYsf">
+        <![CDATA[
+            insert into office_ysf(
+                sqid,sqsj,sqzt,process_id,connect_id,
+				sqr,sqbm,sqsy
+            ) values(
+                #sqid#,#sqsj#,#sqzt#,#processId#,#connectId#,
+				#sqr#,#sqbm#,#sqsy#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficeYsf" parameterClass="OfficeYsf">
+        <![CDATA[
+            update office_ysf
+            set sqid=#sqid#,sqsj=#sqsj#,sqzt=#sqzt#,
+				process_id=#processId#,connect_id=#connectId#,sqr=#sqr#,
+				sqbm=#sqbm#,sqsy=#sqsy#
+            where SQID=#sqid#
+        ]]>
+    </update>
+
+    <delete id="delOfficeYsf" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_ysf
+            where SQID=#sqid#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeYsf">
+        <![CDATA[
+            select sqid as sqid,sqsj as sqsj,sqzt as sqzt,process_id as processId,connect_id as connectId,sqr as sqr,sqbm as sqbm,sqsy as sqsy from office_ysf where SQID=#sqid#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficeYsf">
+        <![CDATA[
+            select sqid as sqid,sqsj as sqsj,sqzt as sqzt,process_id as processId,connect_id as connectId,sqr as sqr,sqbm as sqbm,sqsy as sqsy from office_ysf
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_ysf
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

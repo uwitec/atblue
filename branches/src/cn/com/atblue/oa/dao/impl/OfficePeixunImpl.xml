@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officepeixun">
+    <typeAlias alias="OfficePeixun" type="cn.com.atblue.oa.bean.OfficePeixun"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="sqid">
+                <![CDATA[sqid=#sqid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqbm">
+                <![CDATA[sqbm=#sqbm#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="apbm">
+                <![CDATA[apbm=#apbm#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="pxnr">
+                <![CDATA[pxnr=#pxnr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqsj">
+                <![CDATA[sqsj=#sqsj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqr">
+                <![CDATA[sqr=#sqr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="pxxx">
+                <![CDATA[pxxx=#pxxx#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="processId">
+                <![CDATA[process_id=#processId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="connectId">
+                <![CDATA[connect_id=#connectId#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqzt">
+                <![CDATA[sqzt=#sqzt#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficePeixun" parameterClass="OfficePeixun">
+        <![CDATA[
+            insert into office_peixun(
+                sqid,sqbm,apbm,pxnr,sqsj,
+				sqr,pxxx,process_id,connect_id,sqzt
+            ) values(
+                #sqid#,#sqbm#,#apbm#,#pxnr#,#sqsj#,
+				#sqr#,#pxxx#,#processId#,#connectId#,#sqzt#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficePeixun" parameterClass="OfficePeixun">
+        <![CDATA[
+            update office_peixun
+            set sqid=#sqid#,sqbm=#sqbm#,apbm=#apbm#,
+				pxnr=#pxnr#,sqsj=#sqsj#,sqr=#sqr#,
+				pxxx=#pxxx#,process_id=#processId#,connect_id=#connectId#,
+				sqzt=#sqzt#
+            where SQID=#sqid#
+        ]]>
+    </update>
+
+    <delete id="delOfficePeixun" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_peixun
+            where SQID=#sqid#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficePeixun">
+        <![CDATA[
+            select sqid as sqid,sqbm as sqbm,apbm as apbm,pxnr as pxnr,sqsj as sqsj,sqr as sqr,pxxx as pxxx,process_id as processId,connect_id as connectId,sqzt as sqzt from office_peixun where SQID=#sqid#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficePeixun">
+        <![CDATA[
+            select sqid as sqid,sqbm as sqbm,apbm as apbm,pxnr as pxnr,sqsj as sqsj,sqr as sqr,pxxx as pxxx,process_id as processId,connect_id as connectId,sqzt as sqzt from office_peixun
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_peixun
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>
