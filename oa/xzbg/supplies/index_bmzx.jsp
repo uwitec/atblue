@@ -9,6 +9,7 @@
 <%
     CUser cUser = (CUser)session.getAttribute("cUser");
     String curRole = request.getParameter("curRole");
+    String sqid = StringUtil.parseNull(request.getParameter("sqid"),"");
     cUser = cUser == null?new CUser():cUser;
     String orgId = cUser.getOrgnaId();
     String mc = StringUtil.parseNull(request.getParameter("mc"),"");
@@ -16,6 +17,9 @@
     if(!StringUtil.isBlankOrEmpty(mc))
     paramMap.put("mc",mc);
     paramMap.put("orgid",cUser.getOrgnaId());
+    if(!StringUtil.isBlankOrEmpty(sqid)){
+        paramMap.put("sqid",sqid);
+    }
 	pageBean.setPageSize(pageSize);
 
 	int totalRow =officeSuppliesDAO.getPagedCountByOrg(paramMap);
@@ -120,7 +124,7 @@
                      alt="">
             </td>
             <td width="15%" class="mhead">
-                 其他申请
+                 请示报告
             </td>
             <td align="left" class="mhead">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">

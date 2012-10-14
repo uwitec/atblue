@@ -41,6 +41,9 @@
     list6 = list6 == null ? new ArrayList() : list6;
     List list11 = officePlanDAO.getWaitPagedList(pageBean,paramMap);
     list11 = list11 == null ? new ArrayList() : list11;
+    paramMap.put("orgid",cUser.getOrgnaId());
+    List list12 = officeSuppliesDAO.getPagedListByOrg(pageBean,paramMap);
+    list12 = list12 == null ? new ArrayList() : list12;
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -316,6 +319,40 @@
               </tr>
           </table></td>
       </tr>
+  <tr>
+      <td align="center"><table width="494" border="0" cellspacing="0" cellpadding="0"  align="center">
+          <tr>
+              <td><table width="494" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                      <td width="153"><img src="images/zxgg.jpg" width="153" height="25"></td>
+                      <td background="images/index---home_02.jpg">&nbsp;</td>
+                      <td width="51"><img src="images/index---home_04.jpg" width="51" height="25"></td>
+                  </tr>
+              </table></td>
+          </tr>
+          <tr>
+              <td height="140" align="center" class="tab_main" valign="top"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                  <%
+                      for(int i=0; i<list12.size();i++){
+                          Map map = (Map)list12.get(i);
+                          java.util.Date date = (java.util.Date)map.get("SQSJ");
+                  %>
+                  <tr>
+                      <td width="25" height="24"><img src="images/index---home_12.jpg" width="5" height="5"></td>
+                      <td class="txt_home">
+                          <a href="<%=request.getContextPath()%>/oa/xzbg/supplies/index_bmzx.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"")%>">
+                              <%=StringUtil.cutString(StringUtil.parseNull(map.get("MC"),""),30)%></a>
+                      </td>
+                      <td width="50" class="txt_home"><%=date ==null?"":DateUtil.format(date,"MM-dd")%></td>
+                  </tr>
+                  <% }
+                  %>
+              </table></td>
+          </tr>
+      </table></td>
+      <td width="6">&nbsp;</td>
+      <td>&nbsp;</td>
+  </tr>
   </table>
   </body>
 </html>
