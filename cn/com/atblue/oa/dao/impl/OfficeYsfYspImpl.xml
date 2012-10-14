@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.officeysfysp">
+    <typeAlias alias="OfficeYsfYsp" type="cn.com.atblue.oa.bean.OfficeYsfYsp"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="pkid">
+                <![CDATA[pkid=#pkid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sqid">
+                <![CDATA[sqid=#sqid#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="yspmc">
+                <![CDATA[yspmc=#yspmc#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dw">
+                <![CDATA[dw=#dw#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="sl">
+                <![CDATA[sl=#sl#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dj">
+                <![CDATA[dj=#dj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="je">
+                <![CDATA[je=#je#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="px">
+                <![CDATA[px=#px#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addOfficeYsfYsp" parameterClass="OfficeYsfYsp">
+        <![CDATA[
+            insert into office_ysf_ysp(
+                pkid,sqid,yspmc,dw,sl,
+				dj,je,px
+            ) values(
+                #pkid#,#sqid#,#yspmc#,#dw#,#sl#,
+				#dj#,#je#,#px#
+            )
+        ]]>
+    </insert>
+
+    <update id="modOfficeYsfYsp" parameterClass="OfficeYsfYsp">
+        <![CDATA[
+            update office_ysf_ysp
+            set pkid=#pkid#,sqid=#sqid#,yspmc=#yspmc#,
+				dw=#dw#,sl=#sl#,dj=#dj#,
+				je=#je#,px=#px#
+            where PKID=#pkid#
+        ]]>
+    </update>
+
+    <delete id="delOfficeYsfYsp" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from office_ysf_ysp
+            where PKID=#pkid#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeYsfYsp">
+        <![CDATA[
+            select pkid as pkid,sqid as sqid,yspmc as yspmc,dw as dw,sl as sl,dj as dj,je as je,px as px from office_ysf_ysp where PKID=#pkid#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="OfficeYsfYsp">
+        <![CDATA[
+            select pkid as pkid,sqid as sqid,yspmc as yspmc,dw as dw,sl as sl,dj as dj,je as je,px as px from office_ysf_ysp
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from office_ysf_ysp
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

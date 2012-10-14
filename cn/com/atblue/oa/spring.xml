@@ -42,4 +42,9 @@
     <bean id="officePlanProcessDAO" class="cn.com.atblue.oa.dao.impl.OfficePlanProcessImpl" scope="prototype" autowire="byName"/>
 
     <bean id="officeSuppliesDepartDAO" class="cn.com.atblue.oa.dao.impl.OfficeSuppliesDepartImpl" autowire="byName"/>
+
+    <bean id="officePeixunDAO" class="cn.com.atblue.oa.dao.impl.OfficePeixunImpl" autowire="byName"/>
+
+    <bean id="officeYsfDAO" class="cn.com.atblue.oa.dao.impl.OfficeYsfImpl" autowire="byName"/>
+    <bean id="officeYsfYspDAO" class="cn.com.atblue.oa.dao.impl.OfficeYsfYspImpl" autowire="byName"/>
 </beans>
