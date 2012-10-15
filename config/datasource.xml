@@ -6,7 +6,8 @@
 			<driver>oracle.jdbc.driver.OracleDriver</driver>
 			<dbUsername>atblue</dbUsername>
 			<dbPassword>atblue</dbPassword>
-			<dbUrl>jdbc:oracle:thin:@10.66.117.2:1521:orcl</dbUrl>
+			<dbUrl>jdbc:oracle:thin:@10.68.118.227:1521:orcl</dbUrl>
+			<!--<dbUrl>jdbc:oracle:thin:@10.66.117.2:1521:orcl</dbUrl>-->
 			<maxActive>200</maxActive>
 			<maxIdle>5</maxIdle>
 			<maxWait>1000</maxWait>
