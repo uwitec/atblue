@@ -142,4 +142,8 @@ public interface ODao {
     public void updateSmsPersonSffs(String tzid);
     
     public boolean isAllCirculationCheck(String cyid);
+
+    public List getPagedFwdwList(Map paramMap);
+
+    public int getPagedFwdwCount(Map paramMap);
 }
