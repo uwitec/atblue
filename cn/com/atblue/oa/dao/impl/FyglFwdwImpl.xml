@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.fyglfwdw">
+    <typeAlias alias="FyglFwdw" type="cn.com.atblue.oa.bean.FyglFwdw"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="bm">
+                <![CDATA[bm=#bm#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="mc">
+                <![CDATA[mc=#mc#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jc">
+                <![CDATA[jc=#jc#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dz">
+                <![CDATA[dz=#dz#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lxr">
+                <![CDATA[lxr=#lxr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dh">
+                <![CDATA[dh=#dh#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="bz">
+                <![CDATA[bz=#bz#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="px">
+                <![CDATA[px=#px#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addFyglFwdw" parameterClass="FyglFwdw">
+        <![CDATA[
+            insert into fygl_fwdw(
+                bm,mc,jc,dz,lxr,
+				dh,bz,px
+            ) values(
+                #bm#,#mc#,#jc#,#dz#,#lxr#,
+				#dh#,#bz#,#px#
+            )
+        ]]>
+    </insert>
+
+    <update id="modFyglFwdw" parameterClass="FyglFwdw">
+        <![CDATA[
+            update fygl_fwdw
+            set bm=#bm#,mc=#mc#,jc=#jc#,
+				dz=#dz#,lxr=#lxr#,dh=#dh#,
+				bz=#bz#,px=#px#
+            where BM=#bm#
+        ]]>
+    </update>
+
+    <delete id="delFyglFwdw" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from fygl_fwdw
+            where BM=#bm#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="FyglFwdw">
+        <![CDATA[
+            select bm as bm,mc as mc,jc as jc,dz as dz,lxr as lxr,dh as dh,bz as bz,px as px from fygl_fwdw where BM=#bm#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="FyglFwdw">
+        <![CDATA[
+            select bm as bm,mc as mc,jc as jc,dz as dz,lxr as lxr,dh as dh,bz as bz,px as px from fygl_fwdw
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from fygl_fwdw
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+</sqlMap>

@@ -98,4 +98,8 @@
 
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeYsfImpl.xml" />
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeYsfYspImpl.xml" />
+
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglFwdwImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglQzgznrImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglQzyfImpl.xml" />
 </sqlMapConfig>

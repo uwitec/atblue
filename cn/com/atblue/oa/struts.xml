@@ -39,5 +39,12 @@
             <result name="save" type="redirect">sms_list.d</result>
             <result name="send" type="redirect">sms_list.d</result>
         </action>
+        <action name="fwdw_*" class="fwdwAction" method="{1}">
+            <result name="list">/oa/fygl/fwdw/list.jsp</result>
+            <result name="add">/oa/fygl/fwdw/add.jsp</result>
+            <result name="mod">/oa/fygl/fwdw/mod.jsp</result>
+            <result name="del" type="redirect">fwdw_list.d</result>
+            <result name="save" type="redirect">fwdw_list.d</result>
+        </action>
 	</package>
 </struts>
