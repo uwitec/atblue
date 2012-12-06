@@ -7,6 +7,8 @@
     <bean id="qpdAction" class="cn.com.atblue.oa.action.QpdAction" scope="prototype" autowire="byName"/>
     <bean id="mailAction" class="cn.com.atblue.oa.action.MailAction" scope="prototype" autowire="byName"/>
     <bean id="smsAction" class="cn.com.atblue.oa.action.SmsAction" scope="prototype" autowire="byName"/>
+    <bean id="fwdwAction" class="cn.com.atblue.oa.action.FwdwAction" scope="prototype" autowire="byName"/>
+
     <bean id="officeFileDAO" class="cn.com.atblue.oa.dao.impl.OfficeFileDAOImpl" scope="prototype" autowire="byName"/>
     <bean id="officeNoticeDAO" class="cn.com.atblue.oa.dao.impl.OfficeNoticeDAOImpl" scope="prototype" autowire="byName"/>
     <bean id="officeNoticeCheckDAO" class="cn.com.atblue.oa.dao.impl.OfficeNoticeCheckDAOImpl" scope="prototype" autowire="byName"/>
@@ -47,4 +49,10 @@
 
     <bean id="officeYsfDAO" class="cn.com.atblue.oa.dao.impl.OfficeYsfImpl" autowire="byName"/>
     <bean id="officeYsfYspDAO" class="cn.com.atblue.oa.dao.impl.OfficeYsfYspImpl" autowire="byName"/>
+
+
+    <bean id="fyglFwdwDAO" class="cn.com.atblue.oa.dao.impl.FyglFwdwImpl" autowire="byName"/>
+    <bean id="fyglQzgznrDAO" class="cn.com.atblue.oa.dao.impl.FyglQzgznrImpl" autowire="byName"/>
+    <bean id="fyglQzyfDAO" class="cn.com.atblue.oa.dao.impl.FyglQzyfImpl" autowire="byName"/>
+
 </beans>

@@ -945,4 +945,29 @@ group by t.cyid) c where c.totalcn = checked
         </dynamic>
         order by t.sqsj desc
     </select>
+
+    <select id="getPagedFwdwList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+          select * from FYGL_FWDW t  where 1=1
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="mc">
+                <![CDATA[t.mc like '%'||#mc#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.mc
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedFwdwCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+          select count(*) cn  from FYGL_FWDW t  where 1=1
+        ]]>
+        <dynamic prepend=" and ">
+            <isNotEmpty prepend=" and " property="mc">
+                <![CDATA[t.mc like '%'||#mc#||'%']]>
+            </isNotEmpty>
+        </dynamic>
+        order by t.mc
+    </select>
 </sqlMap>
