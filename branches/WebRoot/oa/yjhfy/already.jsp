@@ -58,11 +58,11 @@
                     <tbody>
                     <tr>
                         <td align="left">
-                            <font style="font-size: 14px">负责部门：</font>
+                            <font style="font-size: 12px">负责部门：</font>
                             <input name="fzbm"  type="text" value="<%=fzbm%>" />&nbsp;
-                            <font style="font-size: 14px">费用名称：</font>
+                            <font style="font-size: 12px">费用名称：</font>
                             <input name="fymc"  type="text" value="<%=fymc%>" />&nbsp;
-                            <font style="font-size: 14px">费用项目：</font>
+                            <font style="font-size: 12px">费用项目：</font>
                             <input name="fyxm"  type="text" value="<%=fyxm%>" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                         </td>

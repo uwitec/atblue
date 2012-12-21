@@ -14,6 +14,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link href="<%=request.getContextPath() %>/images/css.css" type="text/css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath() %>/css/css.css" type="text/css" rel="stylesheet"/>
     <title>修改签批表单</title>
 </head>
 <body>
@@ -33,10 +34,10 @@
                             </TBODY>
                         </TABLE>
                     </LEGEND>
-                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="record" style="BORDER-COLLAPSE: collapse">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="mtabtab" style="BORDER-COLLAPSE: collapse">
                         <tr>
                             <td class="head_left" width="20%">表单名称：</td>
-                            <td class="head_right" colspan="2">
+                            <td class="head_right" colspan="2" style="text-align: left">
                                 <input type="hidden" name="formId" value="${bean.formId}"/>
                                 <input type="hidden" name="bean.formId" value="${bean.formId}"/>
                                 <input name="bean.formName" type="text" class="textinput" style="width: 200px" value="${bean.formName}"/><span style="color: red;">*</span>
@@ -44,7 +45,7 @@
                         </tr>
                         <tr>
                             <td class="head_left">表单标题：</td>
-                            <td class="head_right" colspan="2"><input name="bean.formTitle" style="width: 200px" type="text" class="textinput"  value="${bean.formTitle}"/><span style="color: red;">*</span></td>
+                            <td class="head_right" colspan="2" style="text-align: left"><input name="bean.formTitle" style="width: 200px" type="text" class="textinput"  value="${bean.formTitle}"/><span style="color: red;">*</span></td>
                         </tr>
                     </table>
                 </FIELDSET>

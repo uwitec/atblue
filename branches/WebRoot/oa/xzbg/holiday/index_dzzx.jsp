@@ -126,7 +126,7 @@
                     <tbody>
                     <tr>
                         <td align="left">
-                            <font style="font-size: 14px">外出时间
+                            <font style="font-size: 12px">外出时间
                         <input type="text" name="kssj" class="Wdate" onClick="WdatePicker()" value="<%=kssj %>">
 						至
 						<input type="text" name="jssj" class="Wdate" onClick="WdatePicker()" value="<%=jssj%>">

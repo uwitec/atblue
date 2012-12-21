@@ -32,11 +32,10 @@
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="true"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/css/web.css" rel="stylesheet" type="text/css">
         <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="true"></script>
-        <script type="text/javascript"
-                src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 		<script type="text/javascript">
 		function onDelete(url){
@@ -61,7 +60,7 @@
 					通知公告
 				</td>
 				<td align="left" class="mhead">
-                    <font style="font-size: 14px">标题：</font>
+                    <font style="font-size: 12px">标题：</font>
                     <input name="notititle"  type="text" value="<%=notititle%>" />&nbsp;
                     <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;
                     <input type="button" class="button" value="新增" onclick="window.location = 'add.jsp';"/>
@@ -109,33 +108,33 @@
 								OfficeNotice notice = (OfficeNotice) list.get(i);
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=notice.getNoticeid()%>')">
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td  align="left" style="text-align: left">
+							<td  align="left" style="text-align: left" class="form_th">
 								<a href="view.jsp?noticeid=<%=notice.getNoticeid() %>"><%=notice.getNotititle()%></a>
 							</td>
 							
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=StringUtil.parseNull(notice.getSubscriber(),"")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=DateUtil.format(notice.getStartime(),"yyyy-MM-dd HH:mm")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=DateUtil.format(notice.getEndtime(),"yyyy-MM-dd HH:mm")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=DateUtil.format(notice.getEnddate(),"yyyy-MM-dd")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=notice.getIspublic().equals("0") ? "公告" : "通知"%>
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=notice.getStatus().equals("0") ? "草稿" : "已发布"%>
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<a href="./edit.jsp?noticeid=<%=notice.getNoticeid() %>">[编辑]</a>&nbsp;
 								<a href="javascript:onDelete('./delete.jsp?noticeid=<%=notice.getNoticeid() %>');">[删除]</a>&nbsp;
 							</td>

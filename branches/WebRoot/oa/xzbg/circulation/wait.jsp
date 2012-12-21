@@ -57,7 +57,7 @@
                     <tbody>
                     <tr>
                         <td align="left">
-                            <font style="font-size: 14px"> 文件名称：</font>
+                            <font style="font-size: 12px"> 文件名称：</font>
                             <input name="wjmc" size="10" type="text" value="<%=wjmc%>" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                         </td>

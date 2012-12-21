@@ -8,6 +8,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>电子签章维护列表</title>
     <link href="<%=request.getContextPath()%>/images/css.css" type="text/css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath()%>/css/css.css" type="text/css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath()%>/css/web.css" type="text/css" rel="stylesheet"/>
     <script type="text/javascript">
         function SetStore() {
             var separator = "::";  // 分隔符
@@ -106,15 +108,15 @@
                     </tr>
                     <s:iterator value="dataList" status="status">
                         <tr onclick="setSelected(this,'tab_id','tr_head','${SEAL_ID}')">
-                            <td class="form" style="text-align: center;border-left: 1px solid #01a0fe;" nowrap>
+                            <td class="form_th" style="text-align: center;border-left: 1px solid #01a0fe;" nowrap>
                                 <s:property value="#status.index+1"/>
                             </td>
-                            <td class="form" style="text-align: left" nowrap>${REAL_NAME}&nbsp;</td>
-                            <td class="form" style="text-align: left" nowrap>${USER_NAME}&nbsp;</td>
-                            <td class="form" style="text-align: left" nowrap>
+                            <td class="form_th" style="text-align: left" nowrap>${REAL_NAME}&nbsp;</td>
+                            <td class="form_th" style="text-align: left" nowrap>${USER_NAME}&nbsp;</td>
+                            <td class="form_th" style="text-align: left" nowrap>
                                     ${ORGNA_NAME}&nbsp;
                             </td>
-                            <td class="form" style="text-align: center" nowrap>
+                            <td class="form_th" style="text-align: center" nowrap>
                                 <input type="button" class="button" value="查看印章" onClick="addSealB('${USER_ID}')"/>&nbsp;</td>
                         </tr>
                     </s:iterator>
