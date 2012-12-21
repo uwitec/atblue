@@ -1,0 +1,169 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	margin:0px;
+}
+.dh_login {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #ffffff;
+}
+.dh_line {
+background:url(../images/web_dh.jpg);
+	height:24px;
+}
+.txt{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#000000;
+	padding-left:8px;
+}
+.tab_menu {
+	border:#ededed 5px solid;
+	padding:4px;
+	background-color:#ffffff;
+}
+input {
+	border: 1px solid #6082a5;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#000000;
+}
+.select1 {
+	font-family: Verdana, Tahoma, "宋体";
+	width:130px;
+	font-size: 9pt;
+	padding: 3px;
+	border: 1px solid #DBDBDB;
+}
+.head {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 26px;
+	font-weight:bold;
+	color: #000000;
+	background-color:#f6f6f6;
+	letter-spacing: 0.2em;
+	text-align: center;
+	border-left:1px solid #d4d4d4;
+	border-bottom: 1px solid #d4d4d4;
+}
+.form_th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 25px;
+	color: #000000;
+	text-align: left;
+	text-indent: 5px;
+	border-bottom: 1px  dashed #d4d4d4;
+	/*border-left:1px solid #d4d4d4;*/
+}
+.form_th_center {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 25px;
+	color: #000000;
+	text-align: center;
+	text-indent: 5px;
+	border-bottom: 1px  dashed #d4d4d4;
+	border-left:1px solid #d4d4d4;
+}
+.form_th_right {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 25px;
+	color: #000000;
+	text-align: right;
+	text-indent: 5px;
+	border-bottom: 1px  dashed #d4d4d4;
+	border-left:1px solid #d4d4d4;
+}
+.tab {
+	border-top: 1px solid #d4d4d4;
+	border-right: 1px solid #d4d4d4;
+    border-left: 1px solid #d4d4d4;
+}
+
+
+h3 {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  margin: 0 0 0.5em 0;
+  padding:0;
+  color: black;
+}
+
+div.box {
+	width:400px;    
+    border: 1px solid #a8bacd;
+    padding: 1px;
+    position: relative;
+    margin-bottom: 10px;
+    overflow: hidden;
+    height:170px;  
+}
+
+div.box li {
+    padding: 0 10px 5px 0;
+}
+
+div#recommended_a9 li, {
+    margin-left: 23px;
+    padding: 0 4px 10px 0;
+}
+
+div#recommended_a9 li {
+    list-style-image: url(../images/dot_yellow.png);
+    padding-bottom: 10px;
+    font-size: 12px;
+    margin-left: 20px;   
+}
+
+div#recommended_a10 li, {
+    margin-left: 23px;
+    padding: 0 4px 10px 0;
+}
+
+div#recommended_a10 li {
+    list-style-image: url(../images/dot_blue.gif);
+    padding-bottom: 10px;
+    font-size: 12px;
+    margin-left: 20px;   
+}
+
+.CalendarList{width:360px; padding:9px 0 0; float:left; height:170px;  margin-top:5px; overflow:hidden;}
+.CalendarList li {list-style-image: url(../images/Phone_10.gif); padding-bottom: 10px; margin-left: 20px; line-height:22px; height:22px;font-size: 12px;}
+.CalendarList li h4{width:40px; float:left; color:#00439a; line-height:20px;}
+.CalendarNext{width:11px; height:62px; margin:20px 0 0; padding:13px 0 0 3px; float:left; background:url(../images/icon_msn_27.gif) no-repeat;}
+
+.bbsbutton
+{
+	BACKGROUND-COLOR:#e0e0d5;
+	font-size: 9pt;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: ridge;
+	border-right-style: ridge;
+	border-bottom-style: ridge;
+	border-left-style: ridge;
+	border-top-color: #FFFFFF;
+	border-left-color: #FFFFFF;
+	font-family: "宋体", Tahoma, Verdana;
+	border-right-color: #CCCCCC;
+	border-bottom-color: #CCCCCC;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-right: 2px;
+	padding-left: 2px;
+}
+
+.wbg  {
+	background-color:white;
+	color:#555555;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:12px;
+	height:18px;
+}
