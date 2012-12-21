@@ -22,31 +22,29 @@
 </head>
 <body>
 <form method="post" name="changePass" action="changePassProcess.jsp" >
-<table width="100%" border="0">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="mtabtab" style="BORDER-COLLAPSE: collapse">
   <tr>
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0" class="tablett" style="BORDER-COLLAPSE: collapse">
       <tr>
         <td class="head_left" width="30%">请输入用户密码：</td>
-        <td class="head_right" width="">
+        <td class="head_right" width="" style="text-align: left">
         <input name="oldPass" type="password" id="oldPass" value="" size="30"></td>
       </tr>
       
       <tr>
         <td class="head_left">请输入您的新密码：</td>
-        <td class="head_right"><input name="newPass" type="password" id="newPass" size="30"/></td>
+        <td class="head_right" style="text-align: left"><input name="newPass" type="password" id="newPass" size="30"/></td>
       </tr>
       <tr>
         <td  class="head_left">请确认您的新密码：</td>
-        <td class="head_right"><input name="repeatPass" type="password" id="repeatPass" size="30"/></td>
+        <td class="head_right" style="text-align: left"><input name="repeatPass" type="password" id="repeatPass" size="30"/></td>
       </tr>
     </table>
         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bgdh">
           <tr>
-            <td width="8%">&nbsp;</td>
             <td align="center"><input class="button" name="save" type="button" onclick="tj();"
 					id="save" value="提交" />&nbsp;&nbsp;&nbsp;
 			</td>
-			<td width="8%">&nbsp;</td>
           </tr>
       </table></td>
   </tr>

@@ -1,134 +1,67 @@
 <%@ page import="cn.com.atblue.common.util.StringUtil" %>
+<%@ page import="cn.com.atblue.common.SpringFactory" %>
+<%@ page import="cn.com.atblue.manager.dao.Dao" %>
+<%@ page import="java.util.List" %>
+<%@ page import="cn.com.atblue.manager.bean.CUser" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="cn.com.atblue.manager.dao.CResourceDAO" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="cn.com.atblue.manager.bean.CResource" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="css/css.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/ext/resources/css/ext-all.css"/>
-    <link id="theme" rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/ext/resources/css/xtheme-gray.css" />
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
-    <style>
-        /*.x-tree-node-collapsed .x-tree-node-icon{*/
-            /*background-image:url(images/books_close.gif);*/
-        /*}*/
-        /*.x-tree-node-expanded .x-tree-node-icon*/
-        /*{*/
-            /*background-image: url(images/books_open.gif);*/
-        /*}*/
-        /*.x-tree-node-leaf .x-tree-node-icon{*/
-            /*background-image:url(images/book.gif);*/
-        /*}*/
-        /*.x-tree-node-collapsed .x-tree-node-icon{*/
-            /*background-image:url(images/folderClosed.gif);*/
-        /*}*/
-        /*.x-tree-node-expanded .x-tree-node-icon*/
-        /*{*/
-            /*background-image: url(images/folderOpen.gif);*/
-        /*}*/
-        /*.x-tree-node-leaf .x-tree-node-icon{*/
-            /*background-image:url(images/leaf.gif);*/
-        /*}*/
-        /*.x-tree-node-collapsed .x-tree-node-icon, .x-tree-node-expanded .x-tree-node-icon, .x-tree-node-leaf .x-tree-node-icon*/
-        /*{*/
-            /*border: 0 none;*/
-            /*height: 18px; *//*空白部分高*/
-            /*margin: 0;*/
-            /*padding: 0;*/
-            /*vertical-align: top;*/
-            /*width: 16px;*//*空白部分宽*/
-            /*background-position: center;*/
-            /*background-repeat: no-repeat;*/
-        /*}*/
-    </style>
-    <title>菜单</title>
-</head>
 <%
     String id = StringUtil.parseNull(request.getParameter("id"),"");
     String name = StringUtil.parseNull(request.getParameter("name"),"");
     String path = StringUtil.parseNull(request.getParameter("path"),"");
+    CUser cUser = (CUser)session.getAttribute("cUser");
+    cUser = cUser == null?new CUser():cUser;
+    CResourceDAO resourceDAO = (CResourceDAO)SpringFactory.instance.getBean("resourceDAO");
+    Map param = new HashMap();
+    param.put("resId",id);
+    CResource cResource = resourceDAO.queryForBean(param);
+    cResource = cResource == null?new CResource():cResource;
 %>
-<script>
-    var contextPath = "<%=request.getContextPath()%>";
-    Ext.BLANK_IMAGE_URL = '<%=request.getContextPath()%>/js/ext/resources/images/default/s.gif';
-    Ext.onReady(function() {
-        Ext.layout.CustomHeightLayout = Ext.extend(Ext.layout.FitLayout, {
-            setItemSize : function(item, size) {
-                if (item && size.height > 0) {
-                    item.setHeight(size.height);
-                }
-            }
-        });
-        Ext.Container.LAYOUTS['customheight'] = Ext.layout.CustomHeightLayout;
-        var viewport = new Ext.Viewport({
-            layout:'border',
-            items:[
-                {
-                    region:"north",
-                    height:29,
-                    html: "<img src=\"images/index_20.jpg\" width=\"180\" height=\"29\">"
-                },
-                {
-                    region:'center',
-                    id:'west-panel',
-                    width: 160,
-//                    collapsible: true,
-                    layout:'customheight',
-                    layoutConfig:{
-                        animate:true
-                    },
-                    items: [
-                        {
-                            html: "<div id=\"tree-div\" style=\"overflow:auto; height:100%;width:100%;\"></div>",
-                            autoScroll:true,
-                            border:false,
-                            iconCls:'nav'
-                        }
-                    ]
-                }
-            ]
-        });
-        var Tree = Ext.tree;
-        var tree = new Tree.TreePanel({
-            useArrows: true,
-            autoScroll: true,
-            animate: true,
-            enableDD: true,
-            containerScroll: true,
-            border: false,
-            rootVisible:false,
-            loader: new Ext.tree.TreeLoader({
-                url: 'treeLoader.jsp',
-                createNode: function(attr) {
-                    return Ext.tree.TreeLoader.prototype.createNode.call(this, attr);
-                }
-            }),
-            root: {
-                nodeType: 'async',
-                text: '<%=name%>',
-                draggable: false,
-                id: '<%=id%>'
-            },
-            listeners: {
-                'render': function(tp) {
-                    tp.getSelectionModel().on('selectionchange', function(tree, node) {
-                        node.expanded = true;
-                    })
-                },
-                click: function(n) {
-                    if (n.id.indexOf("#") != -1) {
-                        var s = n.id.split("#");
-                        <%--var p = "main.jsp?text="+encodeURIComponent(encodeURIComponent(n.text))+"&p="+'<%=request.getContextPath() %>'+s[1];--%>
-                        if (s[1] != '/')window.open('<%=request.getContextPath() %>'+s[1], 'mainFrame');
-                    }
-                }
-            }
-        });
-        tree.render('tree-div');
-        tree.getRootNode().expand(true);
-        <%--window.open(encodeURI(encodeURI('<%=request.getContextPath()+url %>')), 'rightFrame');--%>
-    });
-</script>
-<body>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="css/css.css" rel="stylesheet" type="text/css">
+    <link href="css/web.css" rel="stylesheet" type="text/css">
+    <link rel="StyleSheet" href="js/dtree/default/dtree.css" type="text/css" />
+    <script type="text/javascript" src="js/dtree/dtree.js" charset="GB2312"></script>
+   <script type="text/javascript">
+       var d = new dTree ('d','js/dtree/default/images/');
+       d.config.useSelection = true;
+       d.add("<%=id%>","-1","<%=cResource.getResName()%>","");//从基层队下找菜单树
+       <%
+       Dao dao = (Dao)SpringFactory.instance.getBean("dao");
+       List list  = dao.getMenu(cUser.getUserId(),"",id);
+       list = list == null?new ArrayList():list;
+       for(int i=0;i<list.size();i++){
+        Map map = (Map)list.get(i);
+        String key = StringUtil.parseNull(map.get("RES_ID"),"");
+        String parentKey = StringUtil.parseNull(map.get("PARENT_ID"),"");
+        String info = StringUtil.parseNull(map.get("RES_NAME"),"");
+        String url = StringUtil.parseNull(map.get("RES_DESC"),"");
+        %>
+        d.add("<%=key%>", "<%=parentKey%>", "<%=info%>","javascript:goTarget('<%=url%>')");
+       <% }
+        %>
+       function goTarget(url){
+           if(url != null && url !="/" && url !="#"){
+               window.open('<%=request.getContextPath()%>' +url,"mainFrame");
+           }
+       }
+
+
+   </script>
+    <title>菜单</title>
+</head>
+
+<body topmargin="0" leftmargin="0" style="background-color: transparent;" onload="d.openAll();">
+<table border="0" cellpadding="0" cellspacing="0" >
+    <tr><td valign="top">
+        <script type="text/javascript">document.write(d);</script>
+    </td></tr>
+</table>
 </body>
 </html>
