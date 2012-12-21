@@ -88,9 +88,9 @@
                         <tbody>
                         <tr>
                             <td align="left">
-                                <font style="font-size: 14px">队号：</font>
+                                <font style="font-size: 12px">队号：</font>
                                 <input name="dh"  type="text" value="<%=dh%>" />&nbsp;
-                                <font style="font-size: 14px">井号：</font>
+                                <font style="font-size: 12px">井号：</font>
                                 <input name="jh"  type="text" value="<%=jh%>" />&nbsp;
                                 <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                             </td>

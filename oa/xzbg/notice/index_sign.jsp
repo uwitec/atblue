@@ -30,6 +30,7 @@
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="true"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/css/web.css" rel="stylesheet" type="text/css">
         <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript">
 		function onDelete(url){
@@ -96,30 +97,30 @@
 								OfficeNoticeCheck onc = officeNoticeCheckDAO.getCheckByNoticeidUserid(_user.getUserId(), notice.getNoticeid());
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=notice.getNoticeid()%>')">
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td  align="left" style="text-align: left">
+							<td  align="left" style="text-align: left" class="form_th">
 								<a href="view.jsp?noticeid=<%=notice.getNoticeid() %>"><%=notice.getNotititle()%></a>
 							</td>
 							
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=StringUtil.parseNull(notice.getSubscriber(),"")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=DateUtil.format(notice.getStartime(),"yyyy-MM-dd HH:mm")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=DateUtil.format(notice.getEndtime(),"yyyy-MM-dd HH:mm")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=DateUtil.format(notice.getEnddate(),"yyyy-MM-dd")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=notice.getIspublic().equals("0") ? "公告" : "通知"%>
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%
 								if(onc!=null && onc.getCheckflag().equals("1")){
 								%>

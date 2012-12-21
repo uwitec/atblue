@@ -15,7 +15,7 @@
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/ext/ext-all.js"></script>
     <style type="text/css">
         .x-tab-strip span.x-tab-strip-text {
-            font:normal 14px 宋体;
+            font:normal 12px 宋体;
             color:#416aa3;
         }
     </style>

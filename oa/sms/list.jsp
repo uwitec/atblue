@@ -96,7 +96,7 @@
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                         <td align="left">
-                            <font style="font-size: 14px">通知：</font>
+                            <font style="font-size: 12px">通知：</font>
                             <input name="dxnr" size="10" type="text" value="${dxnr}" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                             <input type="button" class="button" onclick="window.location = 'sms_add.d';" style="width:40px"  value='新增'>

@@ -13,14 +13,9 @@
     <title></title>
     <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"
           type="text/css">
-    <link href="<%=request.getContextPath()%>/js/ext/resources/css/ext-all.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
     <script type="text/javascript" charset="GB2312"
             src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="true"></script>
-    <script type="text/javascript"
-            src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
-    <script type="text/javascript"
-            src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
 
     <script type="text/javascript">
         function _resizeNoPage() {
@@ -112,7 +107,7 @@
                             <td nowrap="nowrap" width="120" class="head_left">
                                 服务单位名称<span style="color: red">&nbsp;*</span>
                             </td>
-                            <td class="head_right" align="left">
+                            <td class="head_right" align="left" style="text-align: left">
                                 <input type="text" name="bean.mc" value="${bean.mc}"  style="width:500px"/>
                             </td>
                         </tr>
@@ -120,7 +115,7 @@
                             <td nowrap="nowrap" width="120" class="head_left">
                                 简称<span style="color: red">&nbsp;*</span>
                             </td>
-                            <td class="head_right" align="left">
+                            <td class="head_right" align="left" style="text-align: left">
                                 <input type="text" name="bean.jc" value="${bean.jc}"/>
                             </td>
                         </tr>
@@ -128,7 +123,7 @@
                             <td nowrap="nowrap" width="120" class="head_left">
                                 联系人
                             </td>
-                            <td class="head_right" align="left">
+                            <td class="head_right" align="left" style="text-align: left">
                                 <input type="text" name="bean.lxr" value="${bean.lxr}"  style="width:500px"/>
                             </td>
                         </tr>
@@ -136,7 +131,7 @@
                             <td nowrap="nowrap" width="120" class="head_left">
                                 电话
                             </td>
-                            <td class="head_right" align="left">
+                            <td class="head_right" align="left" style="text-align: left">
                                 <input type="text" name="bean.dh" value="${bean.dh}"/>
                             </td>
                         </tr>
@@ -144,7 +139,7 @@
                             <td nowrap="nowrap" width="120" class="head_left">
                                 地址
                             </td>
-                            <td class="head_right" align="left">
+                            <td class="head_right" align="left" style="text-align: left">
                                 <textarea cols="80" id="dz" name="bean.dz" rows="10">${bean.dz}</textarea>
                             </td>
                         </tr>

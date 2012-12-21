@@ -4,6 +4,8 @@
 <html>
 <head>
 <link href="<%=request.getContextPath() %>/images/css.css" type="text/css" rel="stylesheet"/>
+<link href="<%=request.getContextPath() %>/css/css.css" type="text/css" rel="stylesheet"/>
+<link href="<%=request.getContextPath() %>/css/web.css" type="text/css" rel="stylesheet"/>
 <title>签批单表单列表</title>
 </head>
 <body>        
@@ -37,17 +39,17 @@
 		<td>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0" id="tab_id" name="tab_id" class="mtabtab" style="BORDER-COLLAPSE: collapse">
 			<tr id="tr_head">
-				<th class="head"><div align="center"><strong>序号</strong></div></th>
+				<th class="head" width="2%" nowrap="nowrap"><div align="center"><strong>序号</strong></div></th>
 				<th class="head"><div align="center"><strong>表单名称</strong></div></th>
 				<th class="head"><div align="center"><strong>表单标题</strong></div></th>
-				<th class="head"><div align="center"><strong>录入时间</strong></div></th>
+				<th class="head" style="text-align: center"><div align="center"><strong>录入时间</strong></div></th>
 			</tr>
 			<s:iterator value="dataList" status="status" >
 				<tr onclick="setSelected(this,'tab_id','tr_head','${FORM_ID}')">
-					<td class="form" nowrap style="text-align: center;border-left: 1px solid #01a0fe;"><s:property value="#status.index+1"/></td>
-					<td class="form" nowrap style="text-align: left">${FORM_NAME}</td>
-					<td class="form" nowrap style="text-align: left">${FORM_TITLE}</td>
-					<td class="form" nowrap style="text-align: left">${LRSJ}</td>
+					<td class="form_th" nowrap style="text-align: center;border-left: 1px solid #01a0fe;"><s:property value="#status.index+1"/></td>
+					<td class="form_th" nowrap style="text-align: left">${FORM_NAME}</td>
+					<td class="form_th" nowrap style="text-align: left">${FORM_TITLE}</td>
+					<td class="form_th" nowrap style="text-align: center">${LRSJ}</td>
 				</tr>
 			</s:iterator>
 		</table>
