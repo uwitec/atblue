@@ -88,7 +88,7 @@
 					来文登记
 				</td>
 				<td align="left" class="mhead">
-                    <font style="font-size: 14px">文件名称：</font>
+                    <font style="font-size: 12px">文件名称：</font>
                     <input name="wjmc"  type="text" value="<%=wjmc%>" />&nbsp;
                     <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;
 					&nbsp;
@@ -135,23 +135,23 @@
 //								String instanceid = history.getInstanceId();
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(document.getCyid(),"") %>')">
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-                            <td  align="center" style="text-align: left" style="text-align: left" nowrap="nowrap" >
+                            <td  align="center" style="text-align: left" style="text-align: left" nowrap="nowrap" class="form_th" >
                                 <a href="view.jsp?pkid=<%=document.getCyid() %>"><%=document.getWjmc()%></a>&nbsp;
                             </td>
-							<td  align="center" style="text-align: left">
+							<td  align="center" style="text-align: left" class="form_th">
 								<%=document.getWjbh()%> &nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" nowrap="nowrap" class="form_th">
 								<%=DateUtil.format(document.getLwsj(),"yyyy-MM-dd")%>&nbsp;
 							</td>
-							<td  align="center" style="text-align: left">
+							<td  align="center" style="text-align: left" nowrap="nowrap" class="form_th">
 								<%=StringUtil.parseNull(document.getLwdw(),"")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" nowrap="nowrap" class="form_th">
                                 <%String sqzt = StringUtil.parseNull(document.getZt(),"");
                                     if("已完成".equals(sqzt)){ %>
                                 <font color="green"><%=sqzt%></font>
@@ -162,7 +162,7 @@
                                 <% }
                                 %>&nbsp;
 							</td>
-							<td  align="center" nowrap="nowrap">
+							<td  align="center" nowrap="nowrap" class="form_th">
                                 <%
                                     if("已申请".equals(StringUtil.parseNull(document.getZt(),""))){
                                         String processId = StringUtil.parseNull(document.getProcessId(),"");

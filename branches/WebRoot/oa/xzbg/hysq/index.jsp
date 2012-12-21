@@ -86,7 +86,7 @@
                     <tbody>
                     <tr>
                         <td align="left">
-                            <font style="font-size: 14px">会议名称：</font>
+                            <font style="font-size: 12px">会议名称：</font>
                             <input name="hymc" size="10" type="text" value="<%=hymc%>" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                             <input type="button" class="button" onclick="window.location = 'add.jsp';" style="width:40px"  value='新增'>

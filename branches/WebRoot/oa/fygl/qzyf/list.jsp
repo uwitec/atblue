@@ -16,7 +16,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>服务单位列表</title>
+    <title>迁装运费管理</title>
     <script src="<%=request.getContextPath()%>/js/common.js"
             type="text/javascript" defer="true"></script>
     <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"
@@ -26,7 +26,7 @@
     <link href="<%=request.getContextPath()%>/css/web.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
         function onDelete(url){
-            if(window.confirm("确认删除该单位信息?")){
+            if(window.confirm("确认删除该迁装费用信息?")){
                 window.location=url;
             }
             return;
@@ -71,7 +71,7 @@
     </script>
 </head>
 <body>
-<form name="form1" action=""  style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px">
+<form name="form1" action=""  style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px" method="post">
     <table width="100%" align="center" height="25" border="0"
            cellpadding="0" cellspacing="0"
            background="<%=contentPath%>/images/mhead.jpg">
@@ -81,17 +81,17 @@
                      alt="">
             </td>
             <td width="15%" class="mhead">
-                服务单位信息列表
+                迁装运费管理
             </td>
             <td align="left" class="mhead">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                     <tbody>
                     <tr>
                         <td align="left">
-                            单位名称：
-                            <input name="mc" size="10" type="text" value="${mc}" />&nbsp;
+                            队号：
+                            <input name="mc" type="text" value="${mc}" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
-                            <input type="button" class="button" onclick="window.location = 'fwdw_add.d';" style="width:40px"  value='新增'>
+                            <input type="button" class="button" onclick="window.location = 'qzyf_add.d';" style="width:40px"  value='新增'>
                         </td>
                     </tr>
                     </tbody>
@@ -111,48 +111,78 @@
                         序号
                     </th>
                     <th nowrap="nowrap" >
-                        服务单位名称
+                        完成日期
                     </th>
-                    <th  width="30%">
-                        简称
+                    <th  width="10%" nowrap="nowrap">
+                        队号
                     </th>
-                    <th  width="120">
-                        联系人
+                    <th nowrap="nowrap">
+                        新井号
                     </th>
-                    <th  width="120">
-                        联系电话
+                    <th nowrap="nowrap">
+                        老井号
                     </th>
-                    <th nowrap="nowrap"  width="8%">
-                        地址
+                    <th nowrap="nowrap">
+                        工作内容
                     </th>
-                    <th nowrap="nowrap"  width="8%">
-                        备注
+                    <th nowrap="nowrap">
+                        距离
                     </th>
-                    <th nowrap="nowrap"  width="8%">
+                    <th nowrap="nowrap">
+                        车型数量
+                    </th>
+                    <th nowrap="nowrap">
+                        编码
+                    </th>
+                    <th nowrap="nowrap">
+                        迁装费（元）
+                    </th>
+                    <th nowrap="nowrap">
+                        路桥费（元）
+                    </th>
+                    <th nowrap="nowrap">
+                        预算费用（元）
+                    </th>
+                    <th nowrap="nowrap">
                         操作
                     </th>
                 </tr>
                 <s:iterator value="dataList" status="status">
-                    <tr onclick="setSelected(this,'tab_id','tr_head','${BM}')">
+                    <tr onclick="setSelected(this,'tab_id','tr_head','${QZBM}')">
                         <td class="form_th" style="text-align: center" nowrap>
                             <s:property value="#status.index+1"/>
                         </td>
-                        <td class="form_th" style="text-align: left" nowrap>${MC}&nbsp;</td>
-                        <td class="form_th" style="text-align: left" nowrap>${JC}
+                        <td class="form_th" style="text-align: left" nowrap>${WCRQ}&nbsp;</td>
+                        <td class="form_th" style="text-align: left" nowrap>${DH}
                             &nbsp;</td>
-                        <td class="form_th" style="text-align: left" nowrap>${LXR}&nbsp;</td>
+                        <td class="form_th" style="text-align: left" nowrap>${XJH}&nbsp;</td>
                         <td class="form_th" style="text-align: left" nowrap>
-                                ${DH}&nbsp;
+                                ${LJH}&nbsp;
                         </td>
                         <td class="form_th" style="text-align: center" nowrap>
-                                ${DZ}&nbsp;
+                                ${NRBM}&nbsp;
                         </td>
                         <td class="form_th" style="text-align: center" nowrap>
-                            ${BZ}&nbsp;
+                            ${JL}&nbsp;
                         </td>
                         <td class="form_th" style="text-align: center" nowrap>
-                            <a href="./fwdw_mod.d?bm=${BM}">[编辑]</a>&nbsp;
-                            <a href="javascript:onDelete('./fwdw_del.d?bm=${BM}');">[删除]</a>&nbsp;
+                                ${CXSL}&nbsp;
+                        </td>
+                        <td class="form_th" style="text-align: center" nowrap>
+                                ${BM}&nbsp;
+                        </td>
+                        <td class="form_th" style="text-align: center" nowrap>
+                                ${QZF}&nbsp;
+                        </td>
+                        <td class="form_th" style="text-align: center" nowrap>
+                                ${LQF}&nbsp;
+                        </td>
+                        <td class="form_th" style="text-align: center" nowrap>
+                                ${YSFY}&nbsp;
+                        </td>
+                        <td class="form_th" style="text-align: center" nowrap>
+                            <a href="./qzyf_mod.d?qzbm=${QZBM}">[编辑]</a>&nbsp;
+                            <a href="javascript:onDelete('./qzyf_del.d?qzbm=${QZBM}');">[删除]</a>&nbsp;
                         </td>
                     </tr>
                 </s:iterator>

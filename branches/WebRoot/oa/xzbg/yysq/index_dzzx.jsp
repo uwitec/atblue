@@ -89,7 +89,7 @@
                         <tbody>
                         <tr>
                             <td align="left">
-                                <font style="font-size: 14px">用印名称：</font>
+                                <font style="font-size: 12px">用印名称：</font>
                                 <input name="yymc"  type="text" value="<%=yymc%>" />&nbsp;
                                 <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                             </td>

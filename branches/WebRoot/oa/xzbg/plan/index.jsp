@@ -106,7 +106,7 @@
                         <tbody>
                         <tr>
                             <td align="left">
-                                <font style="font-size: 14px">预计划费用标题：</font>
+                                <font style="font-size: 12px">预计划费用标题：</font>
                                 <input name="mc"  type="text" value="<%=mc%>" />&nbsp;
                                 <input type="submit" class="button"  style="width:40px" value='查询'>
                                 &nbsp;

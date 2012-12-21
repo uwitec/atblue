@@ -59,7 +59,7 @@
                     <tbody>
                     <tr>
                         <td align="left">
-                            <font style="font-size: 14px">名称：</font>
+                            <font style="font-size: 12px">名称：</font>
                             <input name="mc" size="10" type="text" value="<%=mc%>" />&nbsp;
                             <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
                         </td>
