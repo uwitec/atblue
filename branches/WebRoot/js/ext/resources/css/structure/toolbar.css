@@ -131,7 +131,7 @@
 
 .x-toolbar div.xtb-text{
     padding:2px 2px 0;
-    line-height:14px;
+    line-height:16px;
     display:block;
 }
 
@@ -140,7 +140,7 @@
 	background-repeat: no-repeat;
 	display: block;
 	font-size: 1px;
-	height: 14px;
+	height: 16px;
 	width:4px;
 	overflow: hidden;
 	cursor:default;
@@ -183,7 +183,7 @@
 }
 
 .x-toolbar-more .x-btn-small .x-btn-text{
-	height: 14px;
+	height: 16px;
 	width: 12px;
 }
 

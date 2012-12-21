@@ -5843,7 +5843,7 @@ var myBorderPanel = new Ext.Panel({
  * managed by the BorderLayout.  If the region is to be collapsible, the Container used directly
  * by the BorderLayout manager should be a Panel.  In the following example a Container (an Ext.Panel)
  * is added to the west region:
- * <div style="margin-left:14px"><pre><code>
+ * <div style="margin-left:12px"><pre><code>
 wrc = {@link Ext#getCmp Ext.getCmp}('west-region-container');
 wrc.{@link Ext.Panel#removeAll removeAll}();
 wrc.{@link Ext.Container#add add}({
@@ -5854,7 +5854,7 @@ wrc.{@link Ext.Container#doLayout doLayout}();
  * </code></pre></div>
  * </li>
  * <li> To reference a {@link Ext.layout.BorderLayout.Region Region}:
- * <div style="margin-left:14px"><pre><code>
+ * <div style="margin-left:12px"><pre><code>
 wr = myBorderPanel.layout.west;
  * </code></pre></div>
  * </li>
