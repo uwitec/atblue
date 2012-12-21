@@ -356,7 +356,7 @@ Ext.grid.EditorGridPanel = Ext.extend(Ext.grid.GridPanel, {
             /**
              * @event beforeedit
              * Fires before cell editing is triggered. The edit event object has the following properties <br />
-             * <ul style="padding:5px;padding-left:14px;">
+             * <ul style="padding:5px;padding-left:12px;">
              * <li>grid - This grid</li>
              * <li>record - The record being edited</li>
              * <li>field - The field name being edited</li>
@@ -371,7 +371,7 @@ Ext.grid.EditorGridPanel = Ext.extend(Ext.grid.GridPanel, {
             /**
              * @event afteredit
              * Fires after a cell is edited. The edit event object has the following properties <br />
-             * <ul style="padding:5px;padding-left:14px;">
+             * <ul style="padding:5px;padding-left:12px;">
              * <li>grid - This grid</li>
              * <li>record - The record being edited</li>
              * <li>field - The field name being edited</li>
@@ -396,7 +396,7 @@ function afterEdit(e) {
              * @event validateedit
              * Fires after a cell is edited, but before the value is set in the record. Return false
              * to cancel the change. The edit event object has the following properties <br />
-             * <ul style="padding:5px;padding-left:14px;">
+             * <ul style="padding:5px;padding-left:12px;">
              * <li>grid - This grid</li>
              * <li>record - The record being edited</li>
              * <li>field - The field name being edited</li>

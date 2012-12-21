@@ -48,7 +48,7 @@ Ext.extend(Ext.ux.plugins.GroupHeaderGrid, Ext.util.Observable, {
 						row: row,
 						style: 'width:' + gs.width + ';' + (gs.hidden ? 'display:none;' : '') + (group.align ? 'text-align:' + group.align + ';' : ''),
 						tooltip: group.tooltip ? (Ext.QuickTips.isEnabled() ? 'ext:qtip' : 'title') + '="' + group.tooltip + '"' : '',
-						istyle: group.align == 'right' ? 'padding-right:14px' : '',
+						istyle: group.align == 'right' ? 'padding-right:12px' : '',
 						btn: this.grid.enableHdMenu && group.header,
 						value: group.header || '&nbsp;'
 					});
