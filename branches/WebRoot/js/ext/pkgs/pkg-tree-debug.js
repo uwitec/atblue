@@ -433,7 +433,7 @@ new Ext.tree.TreePanel({
              * @event beforenodedrop
              * Fires when a DD object is dropped on a node in this tree for preprocessing. Return false to cancel the drop. The dropEvent
              * passed to handlers has the following properties:<br />
-             * <ul style="padding:5px;padding-left:14px;">
+             * <ul style="padding:5px;padding-left:12px;">
              * <li>tree - The TreePanel</li>
              * <li>target - The node being targeted for the drop</li>
              * <li>data - The drag data from the drag source</li>
@@ -453,7 +453,7 @@ new Ext.tree.TreePanel({
              * @event nodedrop
              * Fires after a DD object is dropped on a node in this tree. The dropEvent
              * passed to handlers has the following properties:<br />
-             * <ul style="padding:5px;padding-left:14px;">
+             * <ul style="padding:5px;padding-left:12px;">
              * <li>tree - The TreePanel</li>
              * <li>target - The node being targeted for the drop</li>
              * <li>data - The drag data from the drag source</li>
@@ -469,7 +469,7 @@ new Ext.tree.TreePanel({
              * @event nodedragover
              * Fires when a tree node is being targeted for a drag drop, return false to signal drop not allowed. The dragOverEvent
              * passed to handlers has the following properties:<br />
-             * <ul style="padding:5px;padding-left:14px;">
+             * <ul style="padding:5px;padding-left:12px;">
              * <li>tree - The TreePanel</li>
              * <li>target - The node being targeted for the drop</li>
              * <li>data - The drag data from the drag source</li>

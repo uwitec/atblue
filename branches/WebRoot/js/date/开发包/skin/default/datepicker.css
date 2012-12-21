@@ -22,8 +22,8 @@
 .WdateDiv .NavImg a{
 	display:block;
 	cursor:pointer;
-	height:14px;
-	width:14px;
+	height:12px;
+	width:12px;
 }
 
 .WdateDiv .NavImgll a{
@@ -32,7 +32,7 @@
 }
 .WdateDiv .NavImgl a{
 	float:left;
-	background:transparent url(img.gif) no-repeat scroll -14px 0;
+	background:transparent url(img.gif) no-repeat scroll -12px 0;
 }
 .WdateDiv .NavImgr a{
 	float:right;
@@ -234,14 +234,14 @@
 	height:10px;
 	width:13px;
 	border:0px;
-	background:url(img.gif) no-repeat -32px -14px;
+	background:url(img.gif) no-repeat -32px -12px;
 }
 /* ʱ���ұߵ����°�ť BUTTON */
 .WdateDiv #dpTime #dpTimeDown{
 	height:10px;
 	width:13px;
 	border:0px;
-    background:url(img.gif) no-repeat -48px -14px;
+    background:url(img.gif) no-repeat -48px -12px;
 }
 /****************************
  * ����
@@ -250,7 +250,7 @@
  	float:left;
 	margin-right:3px;
 	margin-top:3px;
-	background:url(img.gif) no-repeat 0px -14px;
+	background:url(img.gif) no-repeat 0px -12px;
 	width:20px;
 	height:20px;
 	cursor:pointer;

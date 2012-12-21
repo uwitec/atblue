@@ -53,7 +53,7 @@
 
 /* Only text */
 .x-btn-noicon .x-btn-small .x-btn-text{
-	height: 14px;
+	height: 16px;
 }
 
 .x-btn-noicon .x-btn-medium .x-btn-text{
@@ -71,8 +71,8 @@
 }
 
 .x-btn-icon .x-btn-small .x-btn-text{
-	height: 14px;
-	width: 14px;
+	height: 16px;
+	width: 16px;
 }
 
 .x-btn-icon .x-btn-medium .x-btn-text{
@@ -91,7 +91,7 @@
     background-position: 0 center;
 	background-repeat: no-repeat;
     padding-left:18px;
-    height:14px;
+    height:16px;
 }
 
 .x-btn-text-icon .x-btn-icon-medium-left .x-btn-text{
@@ -132,7 +132,7 @@
     background-position: right center;
 	background-repeat: no-repeat;
     padding-right:18px;
-    height:14px;
+    height:16px;
 }
 
 .x-btn-text-icon .x-btn-icon-medium-right .x-btn-text{

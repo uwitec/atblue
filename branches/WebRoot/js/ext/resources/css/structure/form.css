@@ -253,7 +253,7 @@ textarea {
     padding:2px;
     padding-left:18px;
     background: transparent no-repeat 0 2px;
-    line-height:14px;
+    line-height:16px;
     width:200px;
 }
 
@@ -286,7 +286,7 @@ textarea {
 /* Editor small font for grid, toolbar and tree */
 .x-small-editor .x-form-text {
     height:20px;
-    line-height:14px;
+    line-height:16px;
     vertical-align:middle;
 }
 
@@ -294,16 +294,16 @@ textarea {
     margin-top:-1px !important; /* ie bogus margin bug */
     margin-bottom:-1px !important;
     height:20px !important; /* ie quirks */
-    line-height:14px !important;
+    line-height:16px !important;
 }
 
 .ext-strict .x-small-editor .x-form-text {
-    height:14px !important;
+    height:16px !important;
 }
 
 .ext-ie6 .x-small-editor .x-form-text, .ext-ie7 .x-small-editor .x-form-text {
     height:20px;
-    line-height:14px;
+    line-height:16px;
 }
 
 .ext-border-box .x-small-editor .x-form-text {
@@ -312,7 +312,7 @@ textarea {
 
 .x-small-editor .x-form-select-one {
     height:20px;
-    line-height:14px;
+    line-height:16px;
     vertical-align:middle;
 }
 
@@ -442,7 +442,7 @@ textarea {
 }
 
 .x-form-invalid-icon {
-    width:14px;
+    width:16px;
     height:18px;
     visibility:hidden;
     position:absolute;
@@ -527,7 +527,7 @@ fieldset.x-panel-collapsed .x-fieldset-bwrap {
 }
 .ext-ie .x-fieldset-noborder legend span {
     position: absolute;
-    left:14px;
+    left:16px;
 }
 
 .ext-gecko .x-window-body .x-form-item {
