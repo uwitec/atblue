@@ -53,7 +53,7 @@ body {
 
 .note_txt {
 	font-family: "Microsoft YaHei" ! important;
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 25px;
 	text-align: left;
 	text-indent: 0.5em;
@@ -61,7 +61,7 @@ body {
 
 .note_txt_user {
 	font-family: "Microsoft YaHei" ! important;
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 25px;
 	text-align: left;
 	text-indent: 0.5em;
@@ -129,7 +129,7 @@ body {
 }
 
 .page_ch {
-	font-size: 14px;
+	font-size: 12px;
 	color: #ff0000;
 }
 
@@ -143,7 +143,7 @@ body {
 	background-repeat: no-repeat;
 	height: 28px;
 	color: #1264b0;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: bolder;
 	text-indent: 3.5em;
 }
@@ -153,7 +153,7 @@ body {
 	background-repeat: no-repeat;
 	height: 28px;
 	color: #189127;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: bolder;
 	text-indent: 3.5em;
 }
@@ -163,7 +163,7 @@ body {
 	background-repeat: no-repeat;
 	height: 26px;
 	color: #ef5402;
-	font-size: 14px;
+	font-size: 12px;
 	text-indent: 3.5em;
 }
 
@@ -172,7 +172,7 @@ body {
 	background-repeat: no-repeat;
 	height: 26px;
 	color: #2567a4;
-	font-size: 14px;
+	font-size: 12px;
 	text-indent: 3.5em;
 }
 

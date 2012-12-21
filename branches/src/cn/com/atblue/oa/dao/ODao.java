@@ -146,4 +146,8 @@ public interface ODao {
     public List getPagedFwdwList(Map paramMap);
 
     public int getPagedFwdwCount(Map paramMap);
+
+    public List getPagedQzfyList(Map paramMap);
+
+    public int getPagedQzfyCount(Map paramMap);
 }

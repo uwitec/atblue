@@ -180,23 +180,15 @@
         <![CDATA[
             SELECT T.*, LEVEL
               FROM (SELECT DISTINCT A.*
-                      FROM U_RESOURCE A, U_RELATION B
+                      FROM C_RESOURCE A, C_RELATION B
                      WHERE A.RES_ID = B.RES_ID
                        AND (B.USER_ID = #userid# OR
                            (B.ROLE_ID IN
                            (SELECT ROLE_ID
-                                FROM U_USER_ROLE, U_USER
-                               WHERE U_USER_ROLE.USER_ID = #userid#)) OR
-                           B.ROLE_ID IN
-                           (SELECT U_R_ROLE_ID
-                               FROM U_ROLE_PARENT
-                              START WITH ROLE_ID IN
-                                         (SELECT ROLE_ID
-                                            FROM U_USER_ROLE, U_USER
-                                           WHERE U_USER_ROLE.USER_ID = #userid#)
-                             CONNECT BY PRIOR U_R_ROLE_ID = ROLE_ID))) T
+                                FROM C_USERROLE, c_USER
+                               WHERE C_USERROLE.USER_ID = #userid#)))) T
              START WITH RES_ID IN
-                        (SELECT RES_ID FROM U_RESOURCE WHERE PARENT_ID = #root#)
+                        (SELECT RES_ID FROM C_RESOURCE WHERE PARENT_ID = #parentid#)
             CONNECT BY PRIOR RES_ID = PARENT_ID
              ORDER SIBLINGS BY RES_ORDER
         ]]>
@@ -281,7 +273,7 @@
        ]]>
     </delete>
 
-    <select id="getSelectOrgTrees" resultClass="java.util.HashMap">
+    <select id="getSelectOrgTrees" resultClass="java.util.HashMap" parameterClass="String">
         <![CDATA[
             SELECT LPAD(' ', (LEVEL - 1) * 4, '┊  ') || '┣' || ORGNA_NAME ORGNA_NAME,
                    ORGNA_ID,
@@ -289,7 +281,7 @@
                    ORGNA_MEMO,
                    PARENT_ID
               FROM C_ORGNIZATION
-             START WITH ORGNA_ID = '1'
+             START WITH ORGNA_ID = #value#
             CONNECT BY PRIOR ORGNA_ID = PARENT_ID
             order siblings by ORGNA_ORDER
        ]]>

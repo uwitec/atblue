@@ -5,7 +5,7 @@ UL {
 	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
 }
 .top-tab {
-	WIDTH: 100%; FLOAT: left; COLOR: #fff; font-size: 14px; PADDING-TOP: 10px
+	WIDTH: 100%; FLOAT: left; COLOR: #fff; font-size: 12px; PADDING-TOP: 10px
 }
 .top-tab UL {
 	WIDTH: 280px; FLOAT: left
@@ -23,7 +23,7 @@ UL {
 	BACKGROUND-IMAGE: url(../images/tab02.jpg); COLOR: #fff
 }
 .choose_dh {
-	TEXT-ALIGN: center; WIDTH: 100px; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND: url(../images/sys_17.jpg) no-repeat center 50%; HEIGHT: 33px; COLOR: #ffffff; font-size: 14px; FONT-WEIGHT: 600
+	TEXT-ALIGN: center; WIDTH: 100px; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND: url(../images/sys_17.jpg) no-repeat center 50%; HEIGHT: 33px; COLOR: #ffffff; font-size: 12px; FONT-WEIGHT: 600
 }
 .nav_tab {
 	WIDTH: 100%; HEIGHT: 33px; COLOR: #ffffff; FONT-SIZE: 12px
@@ -32,7 +32,7 @@ UL {
 	BACKGROUND-IMAGE: url(../images/sys_17.jpg); TEXT-ALIGN: center; WIDTH: 99px; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: center center; HEIGHT: 33px
 }
 .top-nav {
-	LINE-HEIGHT: 33px; FLOAT: left; HEIGHT: 33px; COLOR: #000; MARGIN-LEFT: 50px; font-size: 14px; OVERFLOW: hidden
+	LINE-HEIGHT: 33px; FLOAT: left; HEIGHT: 33px; COLOR: #000; MARGIN-LEFT: 50px; font-size: 12px; OVERFLOW: hidden
 }
 .top-nav UL {
 	FLOAT: left
@@ -59,7 +59,7 @@ UL {
 	BORDER-BOTTOM: #0048ab 1px solid; BORDER-LEFT: #0048ab 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BORDER-TOP: #0048ab 1px solid; BORDER-RIGHT: #0048ab 1px solid; PADDING-TOP: 5px
 }
 .dh {
-	TEXT-ALIGN: center; WIDTH: 100px; FONT-FAMILY: Arial, Helvetica, sans-serif; HEIGHT: 33px; COLOR: #000000; font-size: 14px; FONT-WEIGHT: 600
+	TEXT-ALIGN: center; WIDTH: 100px; FONT-FAMILY: Arial, Helvetica, sans-serif; HEIGHT: 33px; COLOR: #000000; font-size: 12px; FONT-WEIGHT: 600
 }
 .txt {
 	FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #000000; FONT-SIZE: 12px
@@ -68,22 +68,22 @@ UL {
 	FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #ffffff; FONT-SIZE: 12px
 }
 .choose_tab {
-	BACKGROUND-IMAGE: url(../images/sys_27.jpg); TEXT-ALIGN: center; WIDTH: 72px; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-POSITION: center 50%; HEIGHT: 23px; COLOR: #871212; font-size: 14px; FONT-WEIGHT: 600; PADDING-TOP: 7px
+	BACKGROUND-IMAGE: url(../images/sys_27.jpg); TEXT-ALIGN: center; WIDTH: 72px; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-POSITION: center 50%; HEIGHT: 23px; COLOR: #871212; font-size: 12px; FONT-WEIGHT: 600; PADDING-TOP: 7px
 }
 .unchoose_tab {
-	BACKGROUND-IMAGE: url(../images/sys_28.jpg); TEXT-ALIGN: center; WIDTH: 72px; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-POSITION: center 50%; HEIGHT: 23px; COLOR: #000000; font-size: 14px; PADDING-TOP: 3px
+	BACKGROUND-IMAGE: url(../images/sys_28.jpg); TEXT-ALIGN: center; WIDTH: 72px; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-POSITION: center 50%; HEIGHT: 23px; COLOR: #000000; font-size: 12px; PADDING-TOP: 3px
 }
 .choose_tab2 {
 	BACKGROUND-IMAGE: url(../images/choose_tab.jpg); TEXT-ALIGN: center; WIDTH: 130px; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-POSITION: center 50%; HEIGHT: 27px; COLOR: #000000; FONT-SIZE: 13px; FONT-WEIGHT: 600; PADDING-TOP: 7px
 }
 .unchoose_tab2 {
-	BACKGROUND-IMAGE: url(../images/unchoose_tab.jpg); TEXT-ALIGN: center; WIDTH: 130px; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-POSITION: center 50%; HEIGHT: 27px; COLOR: #000000; font-size: 14px; PADDING-TOP: 3px
+	BACKGROUND-IMAGE: url(../images/unchoose_tab.jpg); TEXT-ALIGN: center; WIDTH: 130px; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-POSITION: center 50%; HEIGHT: 27px; COLOR: #000000; font-size: 12px; PADDING-TOP: 3px
 }
 .bt {
-	TEXT-ALIGN: center; LINE-HEIGHT: 35px; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 14px; FONT-WEIGHT: 600
+	TEXT-ALIGN: center; LINE-HEIGHT: 35px; FONT-FAMILY: Arial, Helvetica, sans-serif; font-size: 12px; FONT-WEIGHT: 600
 }
 .input {
-	BORDER-BOTTOM: #6082a5 1px solid; BORDER-LEFT: #6082a5 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #000000; font-size: 14px; BORDER-TOP: #6082a5 1px solid; BORDER-RIGHT: #6082a5 1px solid
+	BORDER-BOTTOM: #6082a5 1px solid; BORDER-LEFT: #6082a5 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #000000; font-size: 12px; BORDER-TOP: #6082a5 1px solid; BORDER-RIGHT: #6082a5 1px solid
 }
 .sobar {
 	FILTER: progid : DXImageTransform . Microsoft .
@@ -102,13 +102,13 @@ UL {
 	BORDER-BOTTOM: 0px; POSITION: relative; BORDER-LEFT: 0px; BACKGROUND-COLOR: transparent; WIDTH: 160px; DISPLAY: block; HEIGHT: 18px; OVERFLOW: hidden; BORDER-TOP: 0px; TOP: -2px; BORDER-RIGHT: 0px; LEFT: -2px
 }
 /*.form {*/
-	/*BORDER-BOTTOM: #7cecf0 1px solid; TEXT-ALIGN: left; BORDER-LEFT: #7cecf0 1px solid; LINE-HEIGHT: 26px; TEXT-INDENT: 5pt; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #000000; font-size: 14px; BORDER-TOP: #7cecf0 1px solid; BORDER-RIGHT: #7cecf0 1px solid*/
+	/*BORDER-BOTTOM: #7cecf0 1px solid; TEXT-ALIGN: left; BORDER-LEFT: #7cecf0 1px solid; LINE-HEIGHT: 26px; TEXT-INDENT: 5pt; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #000000; font-size: 12px; BORDER-TOP: #7cecf0 1px solid; BORDER-RIGHT: #7cecf0 1px solid*/
 /*}*/
 .lr_head1 {
-	BORDER-BOTTOM: #d7e1e3 3px double; TEXT-ALIGN: left; BORDER-LEFT: #d7e1e3 0px solid; LINE-HEIGHT: 35px; PADDING-LEFT: 8px; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-WEIGHT: 600; COLOR: #000000; font-size: 14px; BORDER-TOP: #d7e1e3 0px solid; background-color:#e7f6fb;
+	BORDER-BOTTOM: #d7e1e3 3px double; TEXT-ALIGN: left; BORDER-LEFT: #d7e1e3 0px solid; LINE-HEIGHT: 35px; PADDING-LEFT: 8px; FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-WEIGHT: 600; COLOR: #000000; font-size: 12px; BORDER-TOP: #d7e1e3 0px solid; background-color:#e7f6fb;
 }
 .lr_head {
-	BORDER-BOTTOM: #d7e1e3 3px double; TEXT-ALIGN: left; BORDER-LEFT: #d7e1e3 0px solid; LINE-HEIGHT: 35px; PADDING-LEFT: 8px; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #000000; font-size: 14px; BORDER-TOP: #d7e1e3 0px solid
+	BORDER-BOTTOM: #d7e1e3 3px double; TEXT-ALIGN: left; BORDER-LEFT: #d7e1e3 0px solid; LINE-HEIGHT: 35px; PADDING-LEFT: 8px; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #000000; font-size: 12px; BORDER-TOP: #d7e1e3 0px solid
 }
 .icon-add {
 	BACKGROUND-IMAGE: url(../images/add.gif) !important
@@ -156,16 +156,16 @@ UL {
 	BACKGROUND-IMAGE: url(../images/search.gif) !important
 }
 .drawLeftIcon {
-	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 14px; BACKGROUND: url(../images/left2.gif) no-repeat; HEIGHT: 14px; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 12px; BACKGROUND: url(../images/left2.gif) no-repeat; HEIGHT: 12px; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px
 }
 .drawRightIcon {
-	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 14px; BACKGROUND: url(../images/right2.gif) no-repeat; HEIGHT: 14px; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 12px; BACKGROUND: url(../images/right2.gif) no-repeat; HEIGHT: 12px; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px
 }
 .drawTopIcon {
-	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 14px; BACKGROUND: url(../images/top2.gif) no-repeat; HEIGHT: 14px; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 12px; BACKGROUND: url(../images/top2.gif) no-repeat; HEIGHT: 12px; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px
 }
 .drawBotIcon {
-	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 14px; BACKGROUND: url(../images/bottom2.gif) no-repeat; HEIGHT: 14px; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 12px; BACKGROUND: url(../images/bottom2.gif) no-repeat; HEIGHT: 12px; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px
 }
 A:link {
 	TEXT-DECORATION: none
@@ -180,22 +180,22 @@ A:hover {
 	TEXT-DECORATION: none
 }
 .bt_txt {
-	TEXT-ALIGN: center; LINE-HEIGHT: 28px; TEXT-INDENT: 8px; FONT-FAMILY: "????"; COLOR: #666666; font-size: 14px; FONT-WEIGHT: 400
+	TEXT-ALIGN: center; LINE-HEIGHT: 28px; TEXT-INDENT: 8px; FONT-FAMILY: "????"; COLOR: #666666; font-size: 12px; FONT-WEIGHT: 400
 }
 .jc_ed {
-	BACKGROUND-IMAGE: url(../images/xm_pic.jpg); BORDER-BOTTOM: #9db0bc 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #9db0bc 1px solid; PADDING-LEFT: 2px; WIDTH: 80px; BACKGROUND-ATTACHMENT: fixed; PADDING-RIGHT: 2px; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-POSITION: center center; HEIGHT: 35px; COLOR: #000000; font-size: 14px; BORDER-TOP: #9db0bc 1px solid; CURSOR: hand; BORDER-RIGHT: #9db0bc 1px solid
+	BACKGROUND-IMAGE: url(../images/xm_pic.jpg); BORDER-BOTTOM: #9db0bc 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #9db0bc 1px solid; PADDING-LEFT: 2px; WIDTH: 80px; BACKGROUND-ATTACHMENT: fixed; PADDING-RIGHT: 2px; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-POSITION: center center; HEIGHT: 35px; COLOR: #000000; font-size: 12px; BORDER-TOP: #9db0bc 1px solid; CURSOR: hand; BORDER-RIGHT: #9db0bc 1px solid
 }
 .lc_txt {
-	PADDING-LEFT: 25px; FONT-FAMILY: Arial, Helvetica, sans-serif; HEIGHT: 35px; COLOR: #981000; font-size: 14px; BORDER-TOP: #bcbcbc 1px dashed; FONT-WEIGHT: 600; PADDING-TOP: 12px
+	PADDING-LEFT: 25px; FONT-FAMILY: Arial, Helvetica, sans-serif; HEIGHT: 35px; COLOR: #981000; font-size: 12px; BORDER-TOP: #bcbcbc 1px dashed; FONT-WEIGHT: 600; PADDING-TOP: 12px
 }
 .ed_tab {
-	BORDER-BOTTOM: #88abb9 3px double; TEXT-ALIGN: center; BORDER-LEFT: #88abb9 3px double; LINE-HEIGHT: 22px; WIDTH: 150px; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #3d5156; font-size: 14px; BORDER-TOP: #88abb9 3px double; BORDER-RIGHT: #88abb9 3px double
+	BORDER-BOTTOM: #88abb9 3px double; TEXT-ALIGN: center; BORDER-LEFT: #88abb9 3px double; LINE-HEIGHT: 22px; WIDTH: 150px; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #3d5156; font-size: 12px; BORDER-TOP: #88abb9 3px double; BORDER-RIGHT: #88abb9 3px double
 }
 .ing_tab {
-	BORDER-BOTTOM: #e56621 3px double; TEXT-ALIGN: center; BORDER-LEFT: #e56621 3px double; LINE-HEIGHT: 22px; WIDTH: 150px; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #000000; font-size: 14px; BORDER-TOP: #e56621 3px double; BORDER-RIGHT: #e56621 3px double
+	BORDER-BOTTOM: #e56621 3px double; TEXT-ALIGN: center; BORDER-LEFT: #e56621 3px double; LINE-HEIGHT: 22px; WIDTH: 150px; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #000000; font-size: 12px; BORDER-TOP: #e56621 3px double; BORDER-RIGHT: #e56621 3px double
 }
 .en_tab {
-	BORDER-BOTTOM: #88abb9 2px dashed; TEXT-ALIGN: center; BORDER-LEFT: #88abb9 2px dashed; LINE-HEIGHT: 22px; WIDTH: 150px; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #3d5156; font-size: 14px; BORDER-TOP: #88abb9 2px dashed; BORDER-RIGHT: #88abb9 2px dashed
+	BORDER-BOTTOM: #88abb9 2px dashed; TEXT-ALIGN: center; BORDER-LEFT: #88abb9 2px dashed; LINE-HEIGHT: 22px; WIDTH: 150px; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #3d5156; font-size: 12px; BORDER-TOP: #88abb9 2px dashed; BORDER-RIGHT: #88abb9 2px dashed
 }
 
 body {
@@ -256,21 +256,21 @@ div
 .button {
     background: url("../images/btn_bg.jpg") repeat scroll 0 0 transparent;
     border: 1px solid #83B1F2;
-    font-size: 14px;
+    font-size: 12px;
     height: 22px;
     line-height: 20px;
 }
 .button_hover {
     background: url("../images/btn_bg_hover.jpg") repeat scroll 0 0 transparent;
     border: 1px solid #AF923F;
-    font-size: 14px;
+    font-size: 12px;
     height: 22px;
     line-height: 20px;
 }
 .button_focus {
     background: url("../images/btn_bg.jpg") repeat scroll 0 0 transparent;
     border: 1px solid;
-    font-size: 14px;
+    font-size: 12px;
     height: 22px;
     line-height: 20px;
 }
@@ -350,25 +350,25 @@ table,td{
 }
 a:link {
 	font-family: "宋体";
-	font-size: 14px;
+	font-size: 12px;
 	color: blue;
 	text-decoration: none;
 }
 a:visited {
 	font-family: "宋体";
-	font-size: 14px;
+	font-size: 12px;
 	color: blue;
 	text-decoration: none;
 }
 a:active {
 	font-family: "宋体";
-	font-size: 14px;
+	font-size: 12px;
 	color: blue;
 	text-decoration: none;
 }
 a:hover {
 	font-family: "宋体";
-	font-size: 14px;
+	font-size: 12px;
 	color: red;
 	text-decoration: none;
 }
@@ -376,7 +376,7 @@ a:hover {
 .mdhead{
 	height:29px;
 	color:#000000;
-	font-size:14px;
+	font-size:12px;
 	text-align:center;
 	font-weight:bold;
 	background-image:url(../images/mtbck.jpg);
@@ -384,12 +384,12 @@ a:hover {
 
 .STYLE1 {
 	color: #e1e2e3;
-	font-size: 14px;
+	font-size: 12px;
 }
 /************列表样式**************/
 .mtabtal{
 	font-family: "宋体";
-	font-size: 14px;
+	font-size: 12px;
 	color: #000000;
 	margin-top:12px;
 	margin-bottom:12px;
@@ -398,7 +398,7 @@ a:hover {
 }
 .mtabtal th{
 	font-family: "宋体";
-	font-size: 14px;
+	font-size: 12px;
 	color: #000000;
 	height:20px;
 	text-align:center;
@@ -408,7 +408,7 @@ a:hover {
 }
 .mtabtal td{
 	font-family: "宋体";
-	font-size: 14px;
+	font-size: 12px;
 	color: #000000;
 	height:20px;
 	text-align:center;
@@ -420,7 +420,7 @@ a:hover {
 }
 .mtabtab{
 	font-family: "宋体";
-	font-size: 14px;
+	font-size: 12px;
 	color: #000000;
 	margin-bottom:12px;
 	border-top:1px #b0d1fa solid;
@@ -428,7 +428,7 @@ a:hover {
 }
 .mtabtab th{
 	font-family: "宋体";
-	font-size: 14px;
+	font-size: 12px;
 	color: #000000;
 	height:28px;
 	text-align:center;
@@ -438,7 +438,7 @@ a:hover {
 }
 .mtabtab td{
 	font-family: "宋体";
-	font-size: 14px;
+	font-size: 12px;
 	color: #000000;
 	height:20px;
 	text-align:center;
@@ -447,7 +447,7 @@ a:hover {
 }
 .mtabtittd2{
 	font-family: "宋体";
-	font-size: 14px;
+	font-size: 12px;
 	color: #1e4985;
 	height:24px;
 	text-align:center;
@@ -501,7 +501,7 @@ a:hover {
     border-style: solid;
     border-width: 1px;
     color: #336699;
-    font-size: 14px;
+    font-size: 12px;
     height: 22px;
     line-height: 22px;
     width: 120px;
@@ -512,7 +512,7 @@ a:hover {
     border-style: solid;
     border-width: 1px;
     color: #336699;
-    font-size: 14px;
+    font-size: 12px;
     height: 22px;
     line-height: 22px;
     width: 120px;
@@ -523,7 +523,7 @@ a:hover {
     border-style: solid;
     border-width: 1px;
     color: #336699;
-    font-size: 14px;
+    font-size: 12px;
     height: 22px;
     line-height: 22px;
     width: 120px;
@@ -534,7 +534,7 @@ a:hover {
     border-style: solid;
     border-width: 1px;
     color: #000000;
-    font-size: 14px;
+    font-size: 12px;
     height: 80px;
     overflow: auto;
     width: 250px;
@@ -546,7 +546,7 @@ a:hover {
     border-style: solid;
     border-width: 1px;
     color: #000000;
-    font-size: 14px;
+    font-size: 12px;
     height: 80px;
     overflow: auto;
     width: 250px;
@@ -558,7 +558,7 @@ a:hover {
     border-style: solid;
     border-width: 1px;
     color: #000000;
-    font-size: 14px;
+    font-size: 12px;
     height: 80px;
     overflow: auto;
     width: 250px;
@@ -575,7 +575,7 @@ a:hover {
 	text-align: center;
 	color: white;
 	border: 1px #666666 none;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 /*两个字的Button*/
@@ -588,7 +588,7 @@ a:hover {
 	text-align: center;
 	color: white;
 	border: 1px #666666 none;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 /*四个字的Button*/
@@ -600,7 +600,7 @@ a:hover {
 	text-align: center;
 	color: white;
 	border: 1px #666666 none;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 div.listerLinksLeft, div.listerLinksRight {
@@ -637,7 +637,7 @@ ul.lister {
 
 .font1 {
 	font-family: Verdana, Tahoma, "宋体";
-	font-size: 14px;
+	font-size: 12px;
 }
 .font2 {
 	color: #FF0000;

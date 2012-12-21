@@ -50,13 +50,13 @@
                         cUser = cUser == null?new CUser():cUser;
                         String orgnaName = StringUtil.parseNull(session.getAttribute("orgnaName"),"");
                     %>
-                    <td>&nbsp;&nbsp;<font style="font-size: 14px">当前用户：<%=orgnaName%>&nbsp;&nbsp;<%=cUser.getRealName()%>&nbsp;&nbsp;</font></td>
+                    <td>&nbsp;&nbsp;<font style="font-size: 12px">当前用户：<%=orgnaName%>&nbsp;&nbsp;<%=cUser.getRealName()%>&nbsp;&nbsp;</font></td>
                     <td></td>
                     <td><img src="images/index/fooder_line.gif" width="2" height="24"/></td>
                     <td align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <font style="font-size: 14px">黄河钻井三公司办公自动化系统</font>
+                        <font style="font-size: 12px">黄河钻井三公司办公自动化系统</font>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <font style="font-size: 14px"><a href="soft/WebSign.exe">Web签字查看组件</a>  <a href="soft/MakeSeal.exe">制作签章工具</a></font>
+                        <font style="font-size: 12px"><a href="soft/WebSign.exe">Web签字查看组件</a>  <a href="soft/MakeSeal.exe">制作签章工具</a></font>
                         &nbsp;&nbsp;
                     </td>
                     <td><img src="images/index/fooder_line.gif" width="2" height="24"/></td>
