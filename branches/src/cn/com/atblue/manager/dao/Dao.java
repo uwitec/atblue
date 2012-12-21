@@ -43,7 +43,9 @@ public interface Dao {
     public void deleteUserRole(String userId);
     
     public List getSelectOrgTrees();
-    
+
+    public List getSelectOrgTreesByParentId(String parentId);
+
     public List getResourcesByRole(String roleId);
 
     public void deleteRoleRes(String roleId);

@@ -7,12 +7,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>工作流定义维护列表</title>
     <link href="<%=request.getContextPath()%>/css/css.css" type="text/css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath() %>/css/web.css" type="text/css" rel="stylesheet"/>
 </head>
 <body  leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <form action="workflow_list.d" method="post">
 <input type="hidden" name="flowId" value="${flowId}"/>
 <input type="hidden" name="name" value=""/>
-<table cellpadding="0" cellspacing="0" align="center" width="80%">
+<table cellpadding="0" cellspacing="0" align="center" width="100%">
     <tr>
       <td>
 		<FIELDSET style="HEIGHT: 0px; OVERFLOW: visible" class=GroupBox>
@@ -72,19 +73,19 @@
 			    </tr>
 			   <s:iterator value="dataList" status="status">
                    <tr onclick="setSelected(this,'tab_id','tr_head','${FLOW_NAME}','${FLOW_ID}')">
-                       <td style="text-align: center" nowrap>
+                       <td style="text-align: center" nowrap class="form_th" >
                            <s:property value="#status.index+1"/>
                        </td>
-                       <td style="text-align: left" nowrap>
+                       <td style="text-align: left" nowrap class="form_th">
                        <a href="#" onclick="doView('${FLOW_NAME}');"> ${FLOW_NAME}</a>
                       &nbsp;</td>
                        <%--<td style="text-align: left" nowrap>${FLOW_DESC}&nbsp;</td>--%>
-                       <td style="text-align: center" nowrap>
+                       <td style="text-align: center" nowrap class="form_th">
                                ${CREATE_TIME}&nbsp;
                        </td>
-                       <td style="text-align: center" nowrap>${UPDATE_TIME}&nbsp;</td>
-                       <td style="text-align: center" nowrap>${RELEASE_STATUS}&nbsp;</td>
-                       <td style="text-align: center" nowrap>
+                       <td style="text-align: center" nowrap class="form_th">${UPDATE_TIME}&nbsp;</td>
+                       <td style="text-align: center" nowrap class="form_th">${RELEASE_STATUS}&nbsp;</td>
+                       <td style="text-align: center" nowrap class="form_th">
                            <%
                                 String status = StringUtil.parseNull(request.getAttribute("RELEASE_STATUS"),"");
                                if(!"已发布".equals(status)){

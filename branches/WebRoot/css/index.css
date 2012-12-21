@@ -10,7 +10,7 @@ body {
 }
 
 .msg .x-box-mc {
-    font-size:14px;
+    font-size:12px;
 }
 #msg-div {
     position:absolute;
@@ -86,7 +86,7 @@ body {
 }
 
 #loading-msg {
-	font: normal 14px arial, tahoma, sans-serif;
+	font: normal 12px arial, tahoma, sans-serif;
 	color: blue;
 	padding-top: 18px;
 }
@@ -94,8 +94,8 @@ body {
 div button {
 	border: none;
 	cursor: pointer;
-	width: 14px;
-	height: 14px;
+	width: 12px;
+	height: 12px;
 }
 
 #app-header {

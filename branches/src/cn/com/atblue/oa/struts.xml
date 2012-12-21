@@ -46,5 +46,13 @@
             <result name="del" type="redirect">fwdw_list.d</result>
             <result name="save" type="redirect">fwdw_list.d</result>
         </action>
+
+        <action name="qzyf_*" class="qzyfAction" method="{1}">
+            <result name="list">/oa/fygl/qzyf/list.jsp</result>
+            <result name="add">/oa/fygl/qzyf/add.jsp</result>
+            <result name="mod">/oa/fygl/qzyf/mod.jsp</result>
+            <result name="del" type="redirect">qzyf_list.d</result>
+            <result name="save" type="redirect">qzyf_list.d</result>
+        </action>
 	</package>
 </struts>

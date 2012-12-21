@@ -64,7 +64,7 @@ public class DaoImpl extends SqlMapClientDaoSupport implements Dao{
     public List getMenu(String userid, String type, String root) {
         Map map = new HashMap();
         map.put("userid",userid);
-        map.put("root",root);
+        map.put("parentid",root);
         return this.getSqlMapClientTemplate().queryForList("manager.dao.getMenu",map);
     }
 
@@ -96,7 +96,11 @@ public class DaoImpl extends SqlMapClientDaoSupport implements Dao{
     }
 
     public List getSelectOrgTrees(){
-        return this.getSqlMapClientTemplate().queryForList("manager.dao.getSelectOrgTrees");
+        return this.getSqlMapClientTemplate().queryForList("manager.dao.getSelectOrgTrees","1");
+    }
+
+    public List getSelectOrgTreesByParentId(String parentId){
+        return this.getSqlMapClientTemplate().queryForList("manager.dao.getSelectOrgTrees",parentId);
     }
 
     public List getResourcesByRole(String roleId){
