@@ -416,4 +416,12 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
     public int getPagedFwdwCount(Map paramMap){
         return (Integer) this.getSqlMapClientTemplate().queryForObject("oa.dao.getPagedFwdwCount", paramMap);
     }
+
+    public List getPagedQzfyList(Map paramMap){
+        return this.getSqlMapClientTemplate().queryForList("oa.dao.getPagedQzfyList", paramMap);
+    }
+
+    public int getPagedQzfyCount(Map paramMap){
+        return (Integer) this.getSqlMapClientTemplate().queryForObject("oa.dao.getPagedQzfyCount", paramMap);
+    }
 }
