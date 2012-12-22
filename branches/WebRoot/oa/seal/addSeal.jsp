@@ -5,6 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>电子签章添加</title>
     <link href="<%=request.getContextPath()%>/images/css.css" type="text/css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath()%>/css/css.css" type="text/css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath()%>/css/web.css" type="text/css" rel="stylesheet"/>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="true"></script>
     <script type="text/javascript">
         String.prototype.trim = function () {
@@ -26,10 +28,10 @@
             <td>
                 <fieldset>
                     <legend><font style="font-size: 12px">基本信息</font></legend>
-                    <table width="100%" cellpadding="0" cellspacing="0" class="record">
+                    <table width="100%" cellpadding="0" cellspacing="0" class="mtabtab">
                         <tr>
                             <td class="head_left" nowrap="nowrap" width="10%">用户</td>
-                            <td class="head_right" colspan="3">
+                            <td class="head_right" colspan="3" style="text-align: left">
                                 <select name="bean.userId">
                                     <s:iterator value="dataList">
                                         <option value="${USER_ID}">${REAL_NAME}</option>
@@ -39,7 +41,7 @@
                         </tr>
                         <tr>
                             <td class="head_left" nowrap="nowrap" width="10%">印章文件</td>
-                            <td class="head_right" colspan="3">
+                            <td class="head_right" colspan="3" style="text-align: left">
                                 <input type="file" name="upload" value="浏览" class="text">
                             </td>
                         </tr>
