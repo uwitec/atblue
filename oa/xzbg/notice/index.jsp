@@ -61,7 +61,7 @@
 				</td>
 				<td align="left" class="mhead">
                     <font style="font-size: 12px">标题：</font>
-                    <input name="notititle"  type="text" value="<%=notititle%>" />&nbsp;
+                    <input name="notititle"  type="text" value="<%=notititle%>" />&nbsp;&nbsp;
                     <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;
                     <input type="button" class="button" value="新增" onclick="window.location = 'add.jsp';"/>
 				</td>
