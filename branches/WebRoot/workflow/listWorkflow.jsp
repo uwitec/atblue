@@ -8,6 +8,8 @@
     <title>工作流定义维护列表</title>
     <link href="<%=request.getContextPath()%>/css/css.css" type="text/css" rel="stylesheet"/>
     <link href="<%=request.getContextPath() %>/css/web.css" type="text/css" rel="stylesheet"/>
+    <script src="<%=request.getContextPath()%>/js/common.js"
+            type="text/javascript" defer="true"></script>
 </head>
 <body  leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <form action="workflow_list.d" method="post">
@@ -114,37 +116,6 @@ function doAdd(){
 }
 function doQuery() {
 	document.forms[0].submit();
-}
-
-//选中的行变量
-var selectedId = null;
-var selectedId1 = null;
-
-//设置某个表的某一行被选中
-function setSelected(tr,tab_id,tr_head,selectedId_,selectedId_2,rowClass,curClass){
-	
-	//循环表格中所有的行
-	var tab = document.getElementById(tab_id);
-	if(tab){
-		for(var i=0;i<tab.rows.length;i++){
-			var row = tab.rows[i];
-			//除去表头
-			if(row.id != tr_head){
-               if(rowClass){
-                    row.style.background = rowClass;
-               }else{
-                    row.style.background = "white";
-               }
-			}
-		}
-	}
-    if (curClass) {
-        tr.style.background = curClass;
-    } else {
-        tr.style.background = "#fff4a8";
-    }
-    selectedId = selectedId_;
-    selectedId2 = selectedId_2;
 }
 
 function getSelected(){
