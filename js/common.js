@@ -77,40 +77,27 @@ function findObj(theObj, theDoc) {
 }
 //选中的行变量
 var selectedId = null;
-var selectedId1 = null;
+var selectedBackground = null;
+var selectedTr = null;
 
 //设置某个表的某一行被选中
-function setSelected(tr,tab_id,tr_head,selectedId_,selectedId_2,rowClass,curClass){
-
-    //循环表格中所有的行
-    var tab = document.getElementById(tab_id);
-    if(tab){
-        for(var i=0;i<tab.rows.length;i++){
-            var row = tab.rows[i];
-            //除去表头
-            if(row.id != tr_head){
-                if(rowClass){
-                    row.style.background = rowClass;
-                }else{
-                    row.style.background = "white";
-                }
-            }
+function setSelected(tr, tab_id, tr_head, selectedId_, rowClass, curClass) {
+    if (tr != null) {
+        if (selectedTr != null) {
+            selectedTr.style.background = selectedBackground;
         }
-    }
-    if (curClass) {
-        tr.style.background = curClass;
-    } else {
+        selectedBackground = tr.style.background;
         tr.style.background = "#fff4a8";
     }
     selectedId = selectedId_;
-    selectedId2 = selectedId_2;
+    selectedTr = tr;
 }
 
-function getSelected(){
-    if(null == selectedId){
-        alert("请选择您要操作的项目！");
+function getSelected() {
+    if (null == selectedId) {
+        alert("请首先选择您要操作的行！");
         return false;
-    }else{
+    } else {
         return true;
     }
 }
