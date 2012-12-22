@@ -21,51 +21,38 @@ function toPage(page, pageSize) {
 }
 //-->
 </script>
+<span style="font-size:12px;">
 <input type="hidden" name="pagination.page" value="${pagination.page}">
 <input type="hidden" name="pagination.pageSize" value="${pagination.pageSize}">
-<table border=0 ${empty style?"":"style='"}${style}${empty style?"":"'"} ${empty styleClass?"class='dumppage'":"class="}${styleClass}><tr>
-<td valign="bottom" align="center">第${pagination.page }页/共${pagination.totalPage }页</td> 
-<td valign="bottom" align="center">
+第${pagination.page }页/共${pagination.totalPage }页
 <s:if test="pagination.page<=1">
 首页
 </s:if>
 <s:else>
 <a href="javascript:toPage(1,${pagination.pageSize })">首页</a>
-
 </s:else>
-</td>
-<td valign="bottom" align="center">
 <s:if test="pagination.page<=1">
 上一页
 </s:if>
 <s:else>
 <a href="javascript:toPage(${pagination.page-1 },${pagination.pageSize })">上一页</a>
 </s:else>
-</td>
-<td valign="bottom" align="center">
 <s:if test="pagination.page>=pagination.totalPage">
 下一页
 </s:if>
 <s:else>
 <a href="javascript:toPage(${pagination.page+1 }, ${pagination.pageSize })">下一页</a>
 </s:else>
-</td>
-<td valign="bottom" align="center">
 <s:if test="pagination.page>=pagination.totalPage">
 尾页
 </s:if>
 <s:else>
 <a href="javascript:toPage(${pagination.totalPage },${pagination.pageSize })">尾页</a>
 </s:else>
-</td>
-<td valign="bottom" align="center">
-
-到<input type=text name="page" style="width:20px; height:18px;" value="${pagination.page }">页
-<input type=text name="pageSize" style="width:20px; height:18px;" value="${pagination.pageSize }">条/页
+到<input type=text name="page" style="width:20px;height: 18px" value="${pagination.page }">页
+<input type=text name="pageSize" style="width:20px;height: 18px" value="${pagination.pageSize }">条/页
 <input type=button value=GO class="Button" onclick="toPage(document.forms[0].page.value, document.forms[0].pageSize.value)">
-
-</td>  
-</tr></table>
+</span>
 <s:if test="pagination.message!=null">
 <script>alert('${pagination.message}');</script>
 </s:if>
