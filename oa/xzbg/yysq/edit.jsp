@@ -71,11 +71,13 @@
 		<link href="<%=request.getContextPath()%>/js/ext/resources/css/ext-all.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" charset="GB2312"
 			src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="true"></script>
-		<script type="text/javascript"
-			src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
+		<%--<script type="text/javascript"--%>
+			<%--src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>--%>
 		<script type="text/javascript"
 			src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/xheditor/jquery/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/xheditor/xheditor-1.1.14-zh-cn.min.js"></script>
 
 		
 		<script type="text/javascript">
@@ -146,29 +148,29 @@
             }
 		</script>
 		<script type="text/javascript" defer="true">
-		CKEDITOR.replace('YYSY',
-		{
-			skin : 'office2003'
-		});
-
-		//隐藏不需要的工具按钮
-		CKEDITOR.editorConfig = function( config )
-		{
-		    config.toolbar = 'MyToolbar';
-		    config.toolbar_MyToolbar =
-		    [
-		        ['NewPage','Preview'],
-		        ['Cut','Copy','Paste','PasteText','PasteFromWord','-'],
-		        ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
-		        ['Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
-		        '/',
-		        ['Styles','Format'],
-		        ['Bold','Italic','Strike'],
-		        ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
-		        ['Link','Unlink','Anchor'],
-		        ['Maximize','-','About']
-		    ];
-		};
+//		CKEDITOR.replace('YYSY',
+//		{
+//			skin : 'office2003'
+//		});
+//
+//		//隐藏不需要的工具按钮
+//		CKEDITOR.editorConfig = function( config )
+//		{
+//		    config.toolbar = 'MyToolbar';
+//		    config.toolbar_MyToolbar =
+//		    [
+//		        ['NewPage','Preview'],
+//		        ['Cut','Copy','Paste','PasteText','PasteFromWord','-'],
+//		        ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+//		        ['Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+//		        '/',
+//		        ['Styles','Format'],
+//		        ['Bold','Italic','Strike'],
+//		        ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+//		        ['Link','Unlink','Anchor'],
+//		        ['Maximize','-','About']
+//		    ];
+//		};
 		
 		function publicSelect(obj){
 			if(obj.value=="1"){
@@ -254,7 +256,7 @@
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">
-		<form action="edit.jsp" name="form1" method="post">
+		<form action="edit.jsp" name="form1" id="form1" method="post">
             <input type="hidden" name="flag" value=""/>
             <input type="hidden" name="dxtx" value=""/>
 			<table width="100%" height="25" border="0" cellpadding="0"
@@ -320,7 +322,6 @@
                                         份数<span style="color: red">&nbsp;*</span>
                                     </td>
                                     <td class="head_right" style="text-align: left">
-                                        &nbsp;&nbsp;
                                         <input type="text" name="FS" value="<%=StringUtil.parseNull(yysq.getFs(),"")%>"  style="width:500px" onkeyup="this.value=this.value.replace(/[^\d\.]+?/g, '')"/>
                                     </td>
                                 </tr>
@@ -350,7 +351,7 @@
                                         用印事由
                                     </td>
                                     <td class="head_right" style="text-align: left">
-                                        <textarea cols="80" id="YYSY" name="YYSY" rows="10"><%=StringUtil.parseNull(yysq.getYysy(),"")%></textarea>
+                                        <textarea cols="80" id="YYSY" name="YYSY" rows="10" class="xheditor {submitID:'form1'}" style="width:100%"><%=StringUtil.parseNull(yysq.getYysy(),"")%></textarea>
                                     </td>
                                 </tr>
 
