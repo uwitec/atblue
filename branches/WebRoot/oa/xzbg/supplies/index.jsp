@@ -185,7 +185,7 @@
 							<td  align="center" style="text-align: center">
 								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
 							</td>
-							<td   style="text-align: left">
+							<td   style="text-align: center">
                                 <%=StringUtil.parseNull(map.get("SQZT"),"")%>&nbsp;
 							</td>
 							<td class="NormalDataColumn" align="center" nowrap="nowrap">
