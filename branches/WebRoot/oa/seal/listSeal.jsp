@@ -10,6 +10,8 @@
     <link href="<%=request.getContextPath()%>/images/css.css" type="text/css" rel="stylesheet"/>
     <link href="<%=request.getContextPath()%>/css/css.css" type="text/css" rel="stylesheet"/>
     <link href="<%=request.getContextPath()%>/css/web.css" type="text/css" rel="stylesheet"/>
+    <script src="<%=request.getContextPath()%>/js/common.js"
+            type="text/javascript"></script>
     <script type="text/javascript">
         function SetStore() {
             var separator = "::";  // 分隔符
@@ -143,44 +145,6 @@
         document.forms[0].action = "seal_add.d";
         document.forms[0].submit();
     }
-    //选中的行变量
-    var selectedId = null;
-
-    //设置某个表的某一行被选中
-    function setSelected(tr,tab_id,tr_head,selectedId_,rowClass,curClass){
-
-        //循环表格中所有的行
-        var tab = document.getElementById(tab_id);
-        if(tab){
-            for(var i=0;i<tab.rows.length;i++){
-                var row = tab.rows[i];
-                //除去表头
-                if(row.id != tr_head){
-                    if(rowClass){
-                        row.style.background = rowClass;
-                    }else{
-                        row.style.background = "white";
-                    }
-                }
-            }
-        }
-        if (curClass) {
-            tr.style.background = curClass;
-        } else {
-            tr.style.background = "#fff4a8";
-        }
-        selectedId = selectedId_;
-    }
-
-    function getSelected(){
-        if(null == selectedId){
-            alert("请选择您要操作的项目！");
-            return false;
-        }else{
-            return true;
-        }
-    }
-
     function doEdit() {
         if(getSelected()) {
             document.all["sealId"].value = selectedId;
