@@ -96,7 +96,7 @@
 		}
 		
 		out.print("<script>");
-		out.print("window.location='list.jsp';");
+		out.print("window.location='index.jsp';");
 		out.print("</script>");
 	}
 
@@ -118,11 +118,13 @@
         <link href="<%=request.getContextPath()%>/js/ext/resources/css/ext-all.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="true"></script>
-        <script type="text/javascript"
-                src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
+        <%--<script type="text/javascript"--%>
+                <%--src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>--%>
         <script type="text/javascript"
                 src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/xheditor/jquery/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/xheditor/xheditor-1.1.14-zh-cn.min.js"></script>
 
 		
 		<script type="text/javascript">
@@ -197,29 +199,29 @@
 			}
 		</script>
 		<script type="text/javascript" defer="true">
-		CKEDITOR.replace( 'editor',
-		{
-			skin : 'office2003'
-		});
-
-		//隐藏不需要的工具按钮
-		CKEDITOR.editorConfig = function( config )
-		{
-		    config.toolbar = 'MyToolbar';
-		    config.toolbar_MyToolbar =
-		    [
-		        ['NewPage','Preview'],
-		        ['Cut','Copy','Paste','PasteText','PasteFromWord','-'],
-		        ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
-		        ['Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
-		        '/',
-		        ['Styles','Format'],
-		        ['Bold','Italic','Strike'],
-		        ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
-		        ['Link','Unlink','Anchor'],
-		        ['Maximize','-','About']
-		    ];
-		};
+//		CKEDITOR.replace( 'editor',
+//		{
+//			skin : 'office2003'
+//		});
+//
+//		//隐藏不需要的工具按钮
+//		CKEDITOR.editorConfig = function( config )
+//		{
+//		    config.toolbar = 'MyToolbar';
+//		    config.toolbar_MyToolbar =
+//		    [
+//		        ['NewPage','Preview'],
+//		        ['Cut','Copy','Paste','PasteText','PasteFromWord','-'],
+//		        ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+//		        ['Image','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],
+//		        '/',
+//		        ['Styles','Format'],
+//		        ['Bold','Italic','Strike'],
+//		        ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+//		        ['Link','Unlink','Anchor'],
+//		        ['Maximize','-','About']
+//		    ];
+//		};
 		
 		function publicSelect(obj){
 			if(obj.value=="1"){
@@ -383,7 +385,7 @@
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">
-		<form name="form1" method="post"
+		<form name="form1" id="form1" method="post"
 			enctype="multipart/form-data">
 			<input type="hidden" name="noticeid" value="<%=noticeid %>">
             <div id="hello-win" class="x-hidden">
@@ -497,7 +499,7 @@
 							height="11">
 					</td>
 					<td width="15%" class="mhead">
-						新建通知
+						修改通知
 					</td>
 					<td width="74%" align="left" class="mhead">
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -607,7 +609,7 @@
 										正文
 									</td>
 									<td class="head_right" align="left"  style="text-align: left">
-										<textarea cols="80" id="editor" name="editor" rows="10"><%=on.getContent() %></textarea>
+										<textarea cols="80" id="editor" class="xheditor {submitID:'form1'}" style="width:100%"  name="editor" rows="10"><%=on.getContent() %></textarea>
 									</td>
 								</tr>
 								<tr>
