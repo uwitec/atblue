@@ -32,9 +32,9 @@ public class MenuUtil {
             String resId = StringUtil.parseNull(resource.get("RES_ID"), "");
             String resName = StringUtil.parseNull(resource.get("RES_NAME"), "");
             String path = contextPath + "/center.jsp" + "?id=" + resId + "&name=" + resName + "&path=";
-            s.append("<td width=\"98\" height=\"31\" class=\"txt_unchoose\"  id=\"fw" + i + "\"" +
-                    "onClick=\"changeMenu(this,'" + path + "');\"   style=\"cursor: hand\">" + resName + "</td>");
-            s.append("<td height=\"31\">&nbsp;</td>");
+            s.append("<td width=\"98px\" class=\"unchoose\"  id=\"fw" + i + "\"" +
+                    "onClick=\"changeMenu(this,'" + path + "','" + resId + "');\"   style=\"cursor: hand\">" + resName + "</td>");
+            s.append("<td width=\"20px\" align=\"center\"><img src=\"images2/index_32.gif\" width=\"2\" height=\"34\">&nbsp;</td>");
         }
         return s.toString();
     }
