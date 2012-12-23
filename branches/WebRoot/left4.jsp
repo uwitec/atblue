@@ -26,13 +26,33 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="css/css.css" rel="stylesheet" type="text/css">
     <link href="css/web.css" rel="stylesheet" type="text/css">
-    <link rel="StyleSheet" href="js/dtree/default/dtree.css" type="text/css" />
-    <script type="text/javascript" src="js/dtree/dtree.js" charset="GB2312"></script>
-   <script type="text/javascript">
-       var d = new dTree ('d','js/dtree/default/images/');
-       d.config.useSelection = true;
-       d.add("<%=id%>","-1","<%=cResource.getResName()%>","");//从基层队下找菜单树
-       <%
+    <link type="text/css" rel="stylesheet" href="js/dhtmlxtree/dhtmlxtree.css"  />
+    <script  src="js/dhtmlxtree/dhtmlxcommon.js"></script>
+    <script  src="js/dhtmlxtree/dhtmlxtree.js"></script>
+    <style type="text/css">
+        <!--
+        body {
+            background-image: url(images/bj.jpg);
+            background-repeat: repeat-x;
+        }
+        -->
+    </style>
+    <title>菜单</title>
+</head>
+
+<body topmargin="0" leftmargin="0" style="background-color: transparent;">
+<table border="0" cellpadding="0" cellspacing="0" >
+    <tr><td valign="top">
+        <div id="treeDiv" style="width:100%;height: 100%;"></div>
+    </td></tr>
+</table>
+<script type="text/javascript">
+    var node = {};
+    var tree=new dhtmlXTreeObject('treeDiv',"100%","100%",'<%=id%>');
+    tree.setImagePath("js/dhtmlxtree/imgs/csh_books/");
+    tree.enableCheckBoxes(false);
+    tree.enableDragAndDrop(false);
+    <%
        Dao dao = (Dao)SpringFactory.instance.getBean("dao");
        List list  = dao.getMenu(cUser.getUserId(),"",id);
        list = list == null?new ArrayList():list;
@@ -43,25 +63,17 @@
         String info = StringUtil.parseNull(map.get("RES_NAME"),"");
         String url = StringUtil.parseNull(map.get("RES_DESC"),"");
         %>
-        d.add("<%=key%>", "<%=parentKey%>", "<%=info%>","javascript:goTarget('<%=url%>')");
-       <% }
-        %>
-       function goTarget(url){
-           if(url != null && url !="/" && url !="#"){
-               window.open('<%=request.getContextPath()%>' +url,"mainFrame");
-           }
-       }
-
-
-   </script>
-    <title>菜单</title>
-</head>
-
-<body topmargin="0" leftmargin="0" style="background-color: transparent;" onload="d.openAll();">
-<table border="0" cellpadding="0" cellspacing="0" >
-    <tr><td valign="top">
-        <script type="text/javascript">document.write(d);</script>
-    </td></tr>
-</table>
+    tree.insertNewChild('<%=parentKey%>','<%=key%>','<%=info%>');
+    node["<%=key%>"] ="<%=url%>";
+    <% }
+     %>
+    tree.attachEvent("onClick",treeClick);
+    function treeClick(cnode){
+        var url = node[cnode];
+        if(url != null && url !="/" && url !="#"){
+            window.open('<%=request.getContextPath()%>' +url,"mainFrame");
+        }
+    }
+</script>
 </body>
 </html>
