@@ -33,9 +33,9 @@
 %>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" background="images2/index_59.gif">
     <tr>
-        <td height="34" class="txt3" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;当前用户：<%=orgnaName%>&nbsp;&nbsp;<%=cUser.getRealName()%>&nbsp;&nbsp;</font></td>
-        <td class="txt3" style="text-align: center">Copyright © 2012 &nbsp;&nbsp;&nbsp;胜&nbsp;利&nbsp;油&nbsp;田&nbsp;黄&nbsp;河&nbsp;钻&nbsp;井&nbsp;三&nbsp;公&nbsp;司&nbsp;版&nbsp;权&nbsp;所&nbsp;有</td>
-        <td class="txt3">&nbsp;</td>
+        <td height="34" class="txt2" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;当前用户：<%=orgnaName%>&nbsp;&nbsp;<%=cUser.getRealName()%>&nbsp;&nbsp;</font></td>
+        <td class="txt2" style="text-align: center">Copyright © 2012 &nbsp;&nbsp;&nbsp;胜&nbsp;利&nbsp;油&nbsp;田&nbsp;黄&nbsp;河&nbsp;钻&nbsp;井&nbsp;三&nbsp;公&nbsp;司&nbsp;版&nbsp;权&nbsp;所&nbsp;有</td>
+        <td class="txt2">&nbsp;</td>
     </tr>
 </table>
 </body>

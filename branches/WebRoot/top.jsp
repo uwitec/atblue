@@ -117,9 +117,9 @@
             </tr>
         </table></td>
     </tr>
-    <tr>
+    <tr valign="middle">
         <td height="34"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-left:110px;" >
-            <tr align="left">
+            <tr align="left" valign="middle">
                 <%=MenuUtil.getPageMenus2(cUser.getUserId(), "0", request.getContextPath())%>
                 <td class="unchoose">&nbsp;</td>
             </tr>
