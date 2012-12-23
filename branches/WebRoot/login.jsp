@@ -1,11 +1,21 @@
+<%@ page import="cn.com.atblue.common.util.StringUtil" %>
 <%@ page language="java" contentType="text/html; charset=gb2312"
          pageEncoding="gb2312" %>
 <%
     request.getSession().invalidate();
     Cookie[] cookies = request.getCookies();
+    String userName = "";
+    String userPassword = "";
     if (cookies != null && cookies.length > 0) {
-        Cookie cookie = request.getCookies()[0];
-        cookie.setMaxAge(0);
+        for(int i=0;i<cookies.length;i++){
+            Cookie cookie = request.getCookies()[i];
+            if(cookie.getName().equals("userName")){
+                userName = cookie.getValue();
+            }
+            if(cookie.getName().equals("userPassword")){
+                userPassword = cookie.getValue();
+            }
+        }
     }
 %>
 
@@ -22,7 +32,9 @@
         -->
     </style></head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
 <form action="<%=request.getContextPath()%>/login.d" name="form1" method="post">
+<input type="hidden" name="jzmm" value="0"/>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -42,7 +54,13 @@
                                 <td><table width="182" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                         <td width="40" class="txt_main">用户：</td>
+                                        <%
+                                            if(!StringUtil.isBlankOrEmpty(userName) && !StringUtil.isBlankOrEmpty(userPassword)){ %>
+                                        <td><input name="userName" type="text" class="tab_login" onkeydown="keyNext(event)" tabindex="100" value="<%=userName%>"></td>
+                                        <%  }else{ %>
                                         <td><input name="userName" type="text" class="tab_login" onkeydown="keyNext(event)" tabindex="100"></td>
+                                        <%     }
+                                        %>
                                     </tr>
                                 </table></td>
                             </tr>
@@ -53,7 +71,13 @@
                                 <td><table width="182" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                         <td width="40" class="txt_main">密码：</td>
+                                        <%
+                                            if(!StringUtil.isBlankOrEmpty(userName) && !StringUtil.isBlankOrEmpty(userPassword)){ %>
+                                        <td><input name="password" type="password" class="tab_login"  onkeydown="keyDown(event)" tabindex="101" value="<%=userPassword%>"></td>
+                                        <%  }else{ %>
                                         <td><input name="password" type="password" class="tab_login"  onkeydown="keyDown(event)" tabindex="101"></td>
+                                        <%     }
+                                        %>
                                     </tr>
                                 </table></td>
                             </tr>
@@ -61,13 +85,14 @@
                                 <td height="12"></td>
                             </tr>
                             <tr>
-                                <td align="center"><table width="120" border="0" cellspacing="0" cellpadding="0">
+                                <td align="right"><table width="140" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                         <td width="55"><img src="images/dl.jpg" width="55" height="21" style="cursor:pointer"
                                                             onClick="doLogin();" tabindex="103"></td>
                                         <td>&nbsp;</td>
-                                        <td width="55"><img src="images/qx.jpg" width="55" height="21" style="cursor:pointer"
-                                                            onClick="doClear();" tabindex="104"></td>
+                                        <td>
+                                            <input type="checkbox" name="jz" value=""/> 记住密码
+                                            </td>
                                     </tr>
                                 </table></td>
                             </tr>
@@ -91,6 +116,10 @@
             alert("请输入口令");
             document.form1.password.focus();
             return false;
+        }
+
+        if(document.all.jz.checked){
+            document.all.jzmm.value = "1";
         }
         document.form1.submit();
     }
