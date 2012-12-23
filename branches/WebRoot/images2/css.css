@@ -1,0 +1,44 @@
+.txt1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #434343;
+	text-align: center;
+}
+.choose {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #001c58;
+	background-image: url(index_30.gif);
+	text-align: center;
+	line-height: 25px;
+	vertical-align: bottom;
+}
+.unchoose {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 28px;
+	vertical-align: bottom;
+}
+.txt2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #001c58;
+	text-align: center;
+    display:inline
+}
+.txtmain {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.txt3 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+    line-height: 29px;
+    font-weight: bold;
+    color: #001c58;
+	text-align: center;
+    display:inline
+}
