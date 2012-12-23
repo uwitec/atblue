@@ -2,26 +2,12 @@
 <%@ page import="cn.com.atblue.common.util.StringUtil" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>『黄河钻井三公司OA系统』</title>
-    <link href="css/fooder.css" rel="stylesheet" type="text/css"/>
-    <style type="text/css">
-        A:link {
-            TEXT-DECORATION: none
-        }
-        A:visited {
-            TEXT-DECORATION: none
-        }
-        A:active {
-            TEXT-DECORATION: none
-        }
-        A:hover {
-            TEXT-DECORATION: none
-        }
-    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <link href="images2/css.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
 
         function open_pop(path) {
@@ -39,30 +25,17 @@
         }
     </script>
 </head>
-<body>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<%
+    CUser cUser = (CUser)session.getAttribute("cUser");
+    cUser = cUser == null?new CUser():cUser;
+    String orgnaName = StringUtil.parseNull(session.getAttribute("orgnaName"),"");
+%>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" background="images2/index_59.gif">
     <tr>
-        <td background="images/index/fooder_bg.gif">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <%
-                        CUser cUser = (CUser)session.getAttribute("cUser");
-                        cUser = cUser == null?new CUser():cUser;
-                        String orgnaName = StringUtil.parseNull(session.getAttribute("orgnaName"),"");
-                    %>
-                    <td>&nbsp;&nbsp;<font style="font-size: 12px">当前用户：<%=orgnaName%>&nbsp;&nbsp;<%=cUser.getRealName()%>&nbsp;&nbsp;</font></td>
-                    <td></td>
-                    <td><img src="images/index/fooder_line.gif" width="2" height="24"/></td>
-                    <td align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <font style="font-size: 12px">黄河钻井三公司办公自动化系统</font>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <font style="font-size: 12px"><a href="soft/WebSign.exe">Web签字查看组件</a>  <a href="soft/MakeSeal.exe">制作签章工具</a></font>
-                        &nbsp;&nbsp;
-                    </td>
-                    <td><img src="images/index/fooder_line.gif" width="2" height="24"/></td>
-                </tr>
-            </table>
-        </td>
+        <td height="34" class="txt3" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;当前用户：<%=orgnaName%>&nbsp;&nbsp;<%=cUser.getRealName()%>&nbsp;&nbsp;</font></td>
+        <td class="txt3" style="text-align: center">Copyright © 2012 &nbsp;&nbsp;&nbsp;胜&nbsp;利&nbsp;油&nbsp;田&nbsp;黄&nbsp;河&nbsp;钻&nbsp;井&nbsp;三&nbsp;公&nbsp;司&nbsp;版&nbsp;权&nbsp;所&nbsp;有</td>
+        <td class="txt3">&nbsp;</td>
     </tr>
 </table>
 </body>
