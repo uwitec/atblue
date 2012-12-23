@@ -9,37 +9,37 @@
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/adapter/ext/ext-base.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/ext/ext-all.js"></script>
     <style>
-        /*.x-tree-node-collapsed .x-tree-node-icon{*/
-            /*background-image:url(images/books_close.gif);*/
-        /*}*/
-        /*.x-tree-node-expanded .x-tree-node-icon*/
-        /*{*/
-            /*background-image: url(images/books_open.gif);*/
-        /*}*/
-        /*.x-tree-node-leaf .x-tree-node-icon{*/
-            /*background-image:url(images/book.gif);*/
-        /*}*/
-        /*.x-tree-node-collapsed .x-tree-node-icon{*/
-            /*background-image:url(images/folderClosed.gif);*/
-        /*}*/
-        /*.x-tree-node-expanded .x-tree-node-icon*/
-        /*{*/
-            /*background-image: url(images/folderOpen.gif);*/
-        /*}*/
-        /*.x-tree-node-leaf .x-tree-node-icon{*/
-            /*background-image:url(images/leaf.gif);*/
-        /*}*/
-        /*.x-tree-node-collapsed .x-tree-node-icon, .x-tree-node-expanded .x-tree-node-icon, .x-tree-node-leaf .x-tree-node-icon*/
-        /*{*/
-            /*border: 0 none;*/
-            /*height: 18px; *//*空白部分高*/
-            /*margin: 0;*/
-            /*padding: 0;*/
-            /*vertical-align: top;*/
-            /*width: 16px;*//*空白部分宽*/
-            /*background-position: center;*/
-            /*background-repeat: no-repeat;*/
-        /*}*/
+        .x-tree-node-collapsed .x-tree-node-icon{
+            background-image:url(images/books_close.gif);
+        }
+        .x-tree-node-expanded .x-tree-node-icon
+        {
+            background-image: url(images/books_open.gif);
+        }
+        .x-tree-node-leaf .x-tree-node-icon{
+            background-image:url(images/book.gif);
+        }
+        .x-tree-node-collapsed .x-tree-node-icon{
+            background-image:url(images/folderClosed.gif);
+        }
+        .x-tree-node-expanded .x-tree-node-icon
+        {
+            background-image: url(images/folderOpen.gif);
+        }
+        .x-tree-node-leaf .x-tree-node-icon{
+            background-image:url(images/leaf.gif);
+        }
+        .x-tree-node-collapsed .x-tree-node-icon, .x-tree-node-expanded .x-tree-node-icon, .x-tree-node-leaf .x-tree-node-icon
+        {
+            border: 0 none;
+            height: 18px; 空白部分高
+            margin: 0;
+            padding: 0;
+            vertical-align: top;
+            width: 16px;空白部分宽
+            background-position: center;
+            background-repeat: no-repeat;
+        }
     </style>
     <title>菜单</title>
 </head>

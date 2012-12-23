@@ -63,13 +63,13 @@
         String info = StringUtil.parseNull(map.get("RES_NAME"),"");
         String url = StringUtil.parseNull(map.get("RES_DESC"),"");
         %>
-            tree.insertNewChild('<%=parentKey%>','<%=key%>','<%=info%>');
+    tree.insertNewChild('<%=parentKey%>','<%=key%>','<%=info%>');
     node["<%=key%>"] ="<%=url%>";
     <% }
      %>
     tree.attachEvent("onClick",treeClick);
     function treeClick(cnode){
-       var url = node[cnode];
+        var url = node[cnode];
         if(url != null && url !="/" && url !="#"){
             window.open('<%=request.getContextPath()%>' +url,"mainFrame");
         }
