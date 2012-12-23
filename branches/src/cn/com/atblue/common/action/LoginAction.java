@@ -18,6 +18,7 @@ public class LoginAction extends BaseAction {
 
     private String userName;
     private String password;
+    private String jzmm;
 
     public String login() {
         Map session = ActionContext.getContext().getSession();
@@ -33,6 +34,7 @@ public class LoginAction extends BaseAction {
                 if(StringUtil.MD5Encode(password).equals(passwd)){
                     session.put("cUser",cUser);
                     session.put("passwd",password);
+                    session.put("jzmm",jzmm);
                     Map map = new HashMap();
                     map.put("orgnaId",cUser.getOrgnaId());
                     COrgnization cOrgnization = orgnizationDAO.queryForBean(map);
@@ -76,5 +78,13 @@ public class LoginAction extends BaseAction {
 
     public void setOrgnizationDAO(COrgnizationDAO orgnizationDAO) {
         this.orgnizationDAO = orgnizationDAO;
+    }
+
+    public String getJzmm() {
+        return jzmm;
+    }
+
+    public void setJzmm(String jzmm) {
+        this.jzmm = jzmm;
     }
 }
