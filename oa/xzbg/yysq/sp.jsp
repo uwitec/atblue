@@ -139,7 +139,7 @@
 		</script>
 	</head>
 	<body onload="_resizeNoPage();">
-		<form action="add.jsp" name="form1" method="post">
+		<form action="add.jsp" name="form1" method="post" id="form1">
             <input type="hidden" name="flag" value=""/>
             <input type="hidden" name="qzgz" id="qzgz">
 			<table width="100%" height="25" border="0" cellpadding="0"
