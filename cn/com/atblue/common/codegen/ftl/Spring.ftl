@@ -4,6 +4,9 @@
 <beans>
     <#list springBeanList as v>
         <bean id="${v.springBeanId}" class="${v.springBeanClass}" autowire="byName"/>
+    </#list>
+
+    <#list springBeanList as v>
         <bean id="${v.springActionId}" class="${v.springActionClass}" scope="prototype" autowire="byName"/>
     </#list>
 </beans>
