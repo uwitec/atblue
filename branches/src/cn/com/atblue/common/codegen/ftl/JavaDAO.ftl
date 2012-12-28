@@ -19,4 +19,8 @@ public interface ${className}DAO {
     public List<${className}> queryForList(Map paramMap);
 
     public int queryForCount(Map paramMap);
+
+    public List getPagedList(Map paramMap);
+
+    public int getPagedCount(Map paramMap);
 }

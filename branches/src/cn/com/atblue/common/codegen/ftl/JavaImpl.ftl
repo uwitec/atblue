@@ -32,4 +32,12 @@ public class ${className}Impl extends SqlMapClientDaoSupport implements ${classN
     public int queryForCount(Map paramMap){
         return (Integer)this.getSqlMapClientTemplate().queryForObject("${sqlMapPrefix}.queryForCount", paramMap);
     }
+
+    public List getPagedList(Map paramMap){
+        return this.getSqlMapClientTemplate().queryForList("${sqlMapPrefix}.getPagedList", paramMap);
+    }
+
+    public int getPagedCount(Map paramMap){
+        return (Integer)this.getSqlMapClientTemplate().queryForObject("${sqlMapPrefix}.getPagedCount", paramMap);
+    }
 }
