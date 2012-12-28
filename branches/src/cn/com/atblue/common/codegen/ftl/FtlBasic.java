@@ -47,12 +47,40 @@ public class FtlBasic {
         return this.prefixOfPackage + ".dao.impl";
     }
 
+    public String getPackageOfAction() {
+        return this.prefixOfPackage + ".action";
+    }
+
     public File getFileOfService() {
         return new File(this.config.getOutputDir(), this.prefixOfFilePath);
     }
 
     public File getFileOfBean() {
         String f = this.prefixOfFilePath + "/bean/" + parseTableName(this.table.getTableName()) + ".java";
+        return new File(this.config.getOutputDir(), f);
+    }
+    public File getFileOfAction() {
+        String f = this.prefixOfFilePath + "/action/" + parseTableName(this.table.getTableName()) + "Action.java";
+        return new File(this.config.getOutputDir(), f);
+    }
+    public File getFileOfStruts2() {
+        String f = this.prefixOfFilePath + "/struts/" + parseTableName(this.table.getTableName()) + "_struts.xml";
+        return new File(this.config.getOutputDir(), f);
+    }
+
+
+    public File getFileOfJspAdd() {
+        String f = this.prefixOfFilePath + "/jsps/" + parseTableName(this.table.getTableName()) + "_add.jsp";
+        return new File(this.config.getOutputDir(), f);
+    }
+
+    public File getFileOfJspMod() {
+        String f = this.prefixOfFilePath + "/jsps/" + parseTableName(this.table.getTableName()) + "_mod.jsp";
+        return new File(this.config.getOutputDir(), f);
+    }
+
+    public File getFileOfJspList() {
+        String f = this.prefixOfFilePath + "/jsps/" + parseTableName(this.table.getTableName()) + "_list.jsp";
         return new File(this.config.getOutputDir(), f);
     }
 
