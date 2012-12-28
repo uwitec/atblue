@@ -25,10 +25,14 @@ public class SpringFtl extends FtlBasic {
             String springBeanComments = StringUtil.parseNull(tmp.getComments(), "");
             String springBeanId = parsePropertyName(tmp.getTableName()) + "DAO";
             String springBeanClass = getPackageOfImpl() + "." + parseTableName(tmp.getTableName()) + "Impl";
+            String springActionClass = getPackageOfAction() + "." + parseTableName(tmp.getTableName()) + "Action";
             Map map = new HashMap();
             map.put("springBeanComments", springBeanComments);
             map.put("springBeanId", StringUtil.parseNull(springBeanId, ""));
             map.put("springBeanClass", StringUtil.parseNull(springBeanClass, ""));
+
+            map.put("springActionId", parseTableName(tmp.getTableName())+"Action");
+            map.put("springActionClass", springActionClass);
             springBeanList.add(map);
         }
 

@@ -3,6 +3,7 @@
 
 <beans>
     <#list springBeanList as v>
-    <bean id="${v.springBeanId}" class="${v.springBeanClass}" autowire="byName"/>
+        <bean id="${v.springBeanId}" class="${v.springBeanClass}" autowire="byName"/>
+        <bean id="${v.springActionId}" class="${v.springActionClass}" scope="prototype" autowire="byName"/>
     </#list>
 </beans>

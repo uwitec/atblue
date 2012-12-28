@@ -30,6 +30,10 @@ public class CodeManager {
             new DaoFtl(table, codeConfig).execute();
             new ImplFtl(table, codeConfig).execute();
             new SqlMapFtl(table, codeConfig).execute();
+            new JspAddFtl(table, codeConfig).execute();
+            new JspListFtl(table, codeConfig).execute();
+            new JavaActionFtl(table, codeConfig).execute();
+            new Struts2Ftl(table, codeConfig).execute();
 //            System.out.println("TableName=" + table.getTableName());
         }
     }
