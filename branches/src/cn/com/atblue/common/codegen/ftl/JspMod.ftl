@@ -52,7 +52,7 @@ cOrgnization = cOrgnization == null?new COrgnization():cOrgnization;
 </head>
 <body onload="_resizeNoPage();">
 <form action="${className}_save.d" name="form1" method="post">
-    <input type="hidden" name="action" value="add"/>
+    <input type="hidden" name="action" value="save"/>
     <table width="100%" height="25" border="0" cellpadding="0"
            cellspacing="0"
            background="<%=request.getContextPath()%>/images/mhead.jpg">
@@ -97,9 +97,9 @@ cOrgnization = cOrgnization == null?new COrgnization():cOrgnization;
                             </td>
                             <td class="head_right" align="left" style="text-align: left" width="30%" >
                                 <#if v.type == 'Date'>
-                                    <input type="text" name="bean.${v.name}" value="" class="Wdate" onClick="WdatePicker()"/>
+                                    <input type="text" name="bean.${v.name}" value="<s:date name="bean.${v.name}" format="yyyy-MM-dd"/>"/>" class="Wdate" onClick="WdatePicker()"/>
                                 <#else>
-                                    <input type="text" name="bean.${v.name}" value=""/>
+                                    <input type="text" name="bean.${v.name}" value="<s:property value="bean.${v.name}"/>"/>
                                 </#if>
 
                             </td>

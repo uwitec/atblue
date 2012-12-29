@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class QzyfAction extends BaseAction {
+public class ${beanType}Action extends BaseAction {
 private Dao dao;
 private ODao oDao;
 private ${daoType} ${daoName};
