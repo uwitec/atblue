@@ -21,6 +21,7 @@
     <link href="images2/css.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/prototype.js"></script>
     <script type="text/javascript">
+
         function changeMenu(t, url,id) {
             changeStatus(t, "choose", "unchoose");
             loadSubMenu(id);
@@ -101,7 +102,7 @@
                         <td align="center" background="images2/index_07.gif"><table width="90%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td width="15"><img src="images2/index_09.gif" width="15" height="20" alt=""></td>
-                                <td class="txt1">下载中心</td>
+                                <td class="txt1" onclick="goDownload();" style="cursor: hand">下载中心</td>
                                 <td width="10" align="center"><img src="images2/index_11.gif" width="2" height="20"></td>
                                 <td width="13"><img src="images2/index_13.gif" width="13" height="20" alt=""></td>
                                 <td class="txt1" onclick="goIndex();" style="cursor: hand">反回首页</td>
@@ -117,9 +118,9 @@
             </tr>
         </table></td>
     </tr>
-    <tr valign="middle">
-        <td height="34"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-left:110px;" >
-            <tr align="left" valign="middle">
+    <tr>
+        <td ><table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-left:110px;" >
+            <tr align="left">
                 <%=MenuUtil.getPageMenus2(cUser.getUserId(), "0", request.getContextPath())%>
                 <td class="unchoose">&nbsp;</td>
             </tr>
@@ -152,6 +153,9 @@
     function goIndex(){
         parent.location = "workbench.jsp";
 //        window.open("index.jsp","contentFrame");
+    }
+    function goDownload(){
+
     }
 </script>
 </html>

@@ -4,7 +4,7 @@
 pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags" %>
-<%@ include file="../../../import.jsp"%>
+<%@ include file="<%=request.getContextPath()%>/import.jsp"%>
 <jsp:useBean id="pageBean" class="cn.com.atblue.common.bean.PageBean"
              scope="page">
     <jsp:setProperty name="pageBean" property="*" />
@@ -16,7 +16,7 @@ cUser = cUser == null?new CUser():cUser;
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>迁装运费管理</title>
+    <title>${classComments}管理</title>
     <script src="<%=request.getContextPath()%>/js/common.js"
             type="text/javascript" defer="true"></script>
     <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"
@@ -129,8 +129,8 @@ cUser = cUser == null?new CUser():cUser;
                         <td class="form_th" style="text-align: left" nowrap><s:property value="${v.name}"/>&nbsp;</td>
                     </#list>
                         <td class="form_th" style="text-align: center" nowrap>
-                            <a href="./${className}_mod.d?qzbm=">[编辑]</a>&nbsp;
-                            <a href="javascript:onDelete('./${className}_del.d?qzbm=');">[删除]</a>&nbsp;
+                            <a href="./${className}_mod.d?bm=">[编辑]</a>&nbsp;
+                            <a href="javascript:onDelete('./${className}_del.d?bm=');">[删除]</a>&nbsp;
                         </td>
                     </tr>
                 </s:iterator>
