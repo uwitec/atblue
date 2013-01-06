@@ -482,7 +482,7 @@
 										与会人员<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
-										<button id="mb3" class="button">
+										<button id="mb3" class="button" type="button">
 											参加人
 										</button>
 									</td>

@@ -11,10 +11,10 @@
     <title></title>
     <style type="text/css">
         <!--
-        body {
-            background-image: url(images/bj.jpg);
-            background-repeat: repeat-x;
-        }
+        /*body {*/
+            /*background-image: url(images/bj.jpg);*/
+            /*background-repeat: repeat-x;*/
+        /*}*/
         -->
     </style>
 </head>
