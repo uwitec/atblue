@@ -467,7 +467,7 @@
 										与会人员<span style="color: red">&nbsp;*</span>
 									</td>
 									<td class="head_right" style="text-align: left">
-										<button id="mb3" class="button">
+										<button id="mb3" class="button" type="button">
 											参加人
 										</button>
 									</td>
@@ -499,7 +499,7 @@
 										会议内容及目的
 									</td>
 									<td class="head_right" style="text-align: left">
-										<textarea cols="80" id="HYNR" name="HYNR" rows="10"  class="xheditor {submitID:'form1'}"></textarea>
+										<textarea cols="80" id="HYNR" name="HYNR" rows="10"  class="xheditor {submitID:'form1'}" style="width: 100%"></textarea>
 									</td>
 								</tr>
 

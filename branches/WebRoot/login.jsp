@@ -1,8 +1,9 @@
 <%@ page import="cn.com.atblue.common.util.StringUtil" %>
+<%@ page import="cn.com.atblue.common.filter.HttpSessionBinding" %>
 <%@ page language="java" contentType="text/html; charset=gb2312"
          pageEncoding="gb2312" %>
 <%
-    request.getSession().invalidate();
+//    request.getSession().invalidate();
     Cookie[] cookies = request.getCookies();
     String userName = "";
     String userPassword = "";
@@ -17,6 +18,7 @@
             }
         }
     }
+
 %>
 
 <html>
