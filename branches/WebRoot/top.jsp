@@ -95,14 +95,14 @@
         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td width="497"><img src="images2/index_03.gif" width="497" height="59" alt=""></td>
-                <td width="300"></td>
-                <td width="400" valign="top"><table width="400" border="0" cellspacing="0" cellpadding="0">
+                <td width="500"></td>
+                <td width="300" valign="top"><table width="300" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td width="36"><img src="images2/index_06.gif" width="36" height="20" alt=""></td>
                         <td align="center" background="images2/index_07.gif"><table width="90%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td width="15"><img src="images2/index_09.gif" width="15" height="20" alt=""></td>
-                                <td class="txt1" onclick="goDownload();" style="cursor: hand">下载中心</td>
+                                <%--<td width="15"><img src="images2/index_09.gif" width="15" height="20" alt=""></td>--%>
+                                <%--<td class="txt1" onclick="goDownload();" style="cursor: hand">下载中心</td>--%>
                                 <td width="10" align="center"><img src="images2/index_11.gif" width="2" height="20"></td>
                                 <td width="13"><img src="images2/index_13.gif" width="13" height="20" alt=""></td>
                                 <td class="txt1" onclick="goIndex();" style="cursor: hand">反回首页</td>
@@ -119,8 +119,8 @@
         </table></td>
     </tr>
     <tr>
-        <td ><table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-left:110px;" >
-            <tr align="left">
+        <td height="34"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-left:110px;" >
+            <tr align="left" height="34">
                 <%=MenuUtil.getPageMenus2(cUser.getUserId(), "0", request.getContextPath())%>
                 <td class="unchoose">&nbsp;</td>
             </tr>

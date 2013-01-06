@@ -542,7 +542,7 @@
 										需签收&nbsp;
 										<input type="radio" name="mustSign" value="0" onclick="mustSignSelect(this);">
 										不需签收&nbsp;
-										<button id="mb3" class="button">
+										<button id="mb3" class="button" type="button">
 											签收人
 										</button>
 									</td>

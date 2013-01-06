@@ -9,6 +9,7 @@ import cn.com.atblue.oa.action.BaseAction;
 import com.opensymphony.xwork2.ActionContext;
 import com.slb.sis.wsafcep.controller.ActionServlet;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +36,7 @@ public class LoginAction extends BaseAction {
                     session.put("cUser",cUser);
                     session.put("passwd",password);
                     session.put("jzmm",jzmm);
+                    session.put("loginTime",new Date());
                     Map map = new HashMap();
                     map.put("orgnaId",cUser.getOrgnaId());
                     COrgnization cOrgnization = orgnizationDAO.queryForBean(map);

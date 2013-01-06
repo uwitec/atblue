@@ -1,5 +1,6 @@
 <%@ page import="cn.com.atblue.manager.bean.CUser" %>
 <%@ page import="cn.com.atblue.common.util.StringUtil" %>
+<%@ page import="cn.com.atblue.common.filter.HttpSessionBinding" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
@@ -7,6 +8,7 @@
     String passwd = StringUtil.parseNull(session.getAttribute("passwd"),"");
     CUser cUser = (CUser)session.getAttribute("cUser");
     cUser = cUser == null?new CUser():cUser;
+//    session.setAttribute("BindingNotify",new HttpSessionBinding(application));
     if("1".equals(jzmm)){
         Cookie userNameCookie = new Cookie("userName",cUser.getUserName());
         userNameCookie.setMaxAge(30*24*60*60);

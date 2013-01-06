@@ -335,7 +335,7 @@
                                 收件人<span style="color: red">&nbsp;*</span>
                             </td>
                             <td class="head_right" align="left">
-                                <button id="mb3" class="button">
+                                <button id="mb3" class="button" type="button">
                                     选择
                                 </button>
                             </td>

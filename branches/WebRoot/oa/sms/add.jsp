@@ -352,7 +352,7 @@
                             </td>
                             <td class="head_right" align="left">
                                 &nbsp;&nbsp;
-                                <button id="mb3" class="button">
+                                <button id="mb3" class="button" type="button">
                                     选择
                                 </button>
                             </td>
