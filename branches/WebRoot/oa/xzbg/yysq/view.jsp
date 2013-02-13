@@ -176,7 +176,7 @@
 							<tbody>
 								<tr>
 									<td align="left">
-										<input type="button" class="button" id="button1"
+										<input type="button" class="button" id="button1" style="width: 40px"
 											onclick="history.back()" value="返回">
 										&nbsp;
 									</td>
@@ -210,7 +210,13 @@
                                         用印部门
                                     </td>
                                     <td class="head_right" style="text-align: left">
-                                        <%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%>
+                                        <%
+                                            String yybm = StringUtil.parseNull(yysq.getYybm(),"");
+                                            paramMap.put("orgnaId",yybm);
+                                            COrgnization yyOrgnization = orgnizationDAO.queryForBean(paramMap);
+                                            yyOrgnization = yyOrgnization ==null?new COrgnization():yyOrgnization;
+                                        %>
+                                        <%=yyOrgnization.getOrgnaName()%>
                                     </td>
                                 </tr>
                                 <tr>

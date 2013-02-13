@@ -158,7 +158,7 @@
 							<tbody>
 								<tr>
 									<td align="left">
-                                        <input type="button" name="sign" class="button" value="签字" onclick="qz();"/>&nbsp;&nbsp;&nbsp;
+                                        <input type="button" name="sign" class="button" value="签字" onclick="qz();" style="width: 40px"/>&nbsp;&nbsp;&nbsp;
                                         <input type="radio" name="agree" value="1" checked="checked" onclick="document.getElementById('d').style.display='none';document.getElementById('a').style.display='';">同意
                                         <input type="radio" name="agree" value="0" onclick="document.getElementById('a').style.display='none';document.getElementById('d').style.display='';">不同意
 
@@ -198,8 +198,8 @@
                                         </select> 处理！</span>
 
                                         <input type="button" class="button"
-                                               onclick="tj('<%=yysq.getSqid()%>','<%=yysq.getProcessId()%>','<%=yysq.getConnectId()%>');" value="提交">
-                                        <input type="button" class="button" id="button1"
+                                               onclick="tj('<%=yysq.getSqid()%>','<%=yysq.getProcessId()%>','<%=yysq.getConnectId()%>');" value="提交" style="width: 40px">
+                                        <input type="button" class="button" id="button1"  style="width: 40px"
                                                onclick="history.back()" value="返回">
 									</td>
 								</tr>
