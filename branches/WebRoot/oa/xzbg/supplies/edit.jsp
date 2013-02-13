@@ -289,7 +289,13 @@
 										申请单位<span style="color: red">&nbsp;*</span>
 									</td>
 								<td class="head_right" style="text-align: left">
-                                        <input type="hidden" name="sqdw" value="<%=StringUtil.parseNull(officeSupplies.getSqdw(),"")%>"/><%=StringUtil.parseNull(officeSupplies.getSqdw(),"")%>
+                                    <%
+                                        paramMap.put("orgnaId",officeSupplies.getSqdw());
+                                        COrgnization cOrgnization1 = orgnizationDAO.queryForBean(paramMap);
+                                        cOrgnization1 = cOrgnization1 ==null?new COrgnization():cOrgnization1;
+
+                                    %>
+                                        <input type="hidden" name="sqdw" value="<%=StringUtil.parseNull(officeSupplies.getSqdw(),"")%>"/><%=StringUtil.parseNull(cOrgnization1.getOrgnaName(),"")%>
 									</td>
 								</tr> 
 								<tr>

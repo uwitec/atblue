@@ -4,7 +4,7 @@
 pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags" %>
-<%@ include file="<%=request.getContextPath()%>/import.jsp"%>
+<%@ include file="../../import.jsp"%>
 <jsp:useBean id="pageBean" class="cn.com.atblue.common.bean.PageBean"
              scope="page">
     <jsp:setProperty name="pageBean" property="*" />
@@ -107,7 +107,6 @@ cUser = cUser == null?new CUser():cUser;
             <table width="100%" border="0" align="center" cellpadding="0"  id="tab_id" name="tab_id"
                    cellspacing="0" class="mtabtab" id="mtabtab">
                 <tr>
-
                     <th nowrap="nowrap"  width="40">
                         序号
                     </th>
@@ -121,7 +120,7 @@ cUser = cUser == null?new CUser():cUser;
                     </th>
                 </tr>
                 <s:iterator value="dataList" status="status">
-                    <tr onclick="setSelected(this,'tab_id','tr_head','')">
+                    <tr onclick="setSelected(this,'tab_id','tr_head','<s:property value="${PKID}"/>')">
                         <td class="form_th" style="text-align: center" nowrap>
                             <s:property value="#status.index+1"/>
                         </td>
@@ -129,8 +128,8 @@ cUser = cUser == null?new CUser():cUser;
                         <td class="form_th" style="text-align: left" nowrap><s:property value="${v.name}"/>&nbsp;</td>
                     </#list>
                         <td class="form_th" style="text-align: center" nowrap>
-                            <a href="./${className}_mod.d?bm=">[编辑]</a>&nbsp;
-                            <a href="javascript:onDelete('./${className}_del.d?bm=');">[删除]</a>&nbsp;
+                            <a href="./${className}_mod.d?bm=<s:property value="${PKID}"/>">[编辑]</a>&nbsp;
+                            <a href="javascript:onDelete('./${className}_del.d?bm=<s:property value="${PKID}"/>');">[删除]</a>&nbsp;
                         </td>
                     </tr>
                 </s:iterator>

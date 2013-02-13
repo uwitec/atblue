@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.fyglpbyf">
+    <typeAlias alias="FyglPbyf" type="cn.com.atblue.oa.bean.FyglPbyf"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="pbbm">
+                <![CDATA[pbbm=#pbbm#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="rq">
+                <![CDATA[rq=#rq#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="ycdw">
+                <![CDATA[ycdw=#ycdw#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="dfdw">
+                <![CDATA[dfdw=#dfdw#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="yxtb">
+                <![CDATA[yxtb=#yxtb#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="yfxj">
+                <![CDATA[yfxj=#yfxj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="bz">
+                <![CDATA[bz=#bz#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="ch">
+                <![CDATA[ch=#ch#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="cx">
+                <![CDATA[cx=#cx#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lrsj">
+                <![CDATA[lrsj=#lrsj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lrr">
+                <![CDATA[lrr=#lrr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="zt">
+                <![CDATA[zt=#zt#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addFyglPbyf" parameterClass="FyglPbyf">
+        <![CDATA[
+            insert into fygl_pbyf(
+                pbbm,rq,ycdw,dfdw,yxtb,
+				yfxj,bz,ch,cx,lrsj,
+				lrr,zt
+            ) values(
+                #pbbm#,#rq#,#ycdw#,#dfdw#,#yxtb#,
+				#yfxj#,#bz#,#ch#,#cx#,#lrsj#,
+				#lrr#,#zt#
+            )
+        ]]>
+    </insert>
+
+    <update id="modFyglPbyf" parameterClass="FyglPbyf">
+        <![CDATA[
+            update fygl_pbyf
+            set pbbm=#pbbm#,rq=#rq#,ycdw=#ycdw#,
+				dfdw=#dfdw#,yxtb=#yxtb#,yfxj=#yfxj#,
+				bz=#bz#,ch=#ch#,cx=#cx#,
+				lrsj=#lrsj#,lrr=#lrr#,zt=#zt#
+            where PBBM=#pbbm#
+        ]]>
+    </update>
+
+    <delete id="delFyglPbyf" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from fygl_pbyf
+            where PBBM=#pbbm#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="FyglPbyf">
+        <![CDATA[
+            select pbbm as pbbm,rq as rq,ycdw as ycdw,dfdw as dfdw,yxtb as yxtb,yfxj as yfxj,bz as bz,ch as ch,cx as cx,lrsj as lrsj,lrr as lrr,zt as zt from fygl_pbyf where PBBM=#pbbm#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="FyglPbyf">
+        <![CDATA[
+            select pbbm as pbbm,rq as rq,ycdw as ycdw,dfdw as dfdw,yxtb as yxtb,yfxj as yfxj,bz as bz,ch as ch,cx as cx,lrsj as lrsj,lrr as lrr,zt as zt from fygl_pbyf
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from fygl_pbyf
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="getPagedList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+        select t.*  from fygl_pbyf t where 1=1
+        ]]>
+        <!--
+          <dynamic prepend="where">
+              <isNotEmpty prepend=" and " property="customProperty">
+                  <![CDATA[customProperty=#customProperty#]]>
+              </isNotEmpty>
+          </dynamic>
+          -->
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+        select count(*) cn  from fygl_pbyf  t  where 1=1
+        ]]>
+        <!--
+         <dynamic prepend="where">
+             <isNotEmpty prepend=" and " property="customProperty">
+                 <![CDATA[customProperty=#customProperty#]]>
+             </isNotEmpty>
+         </dynamic>
+         -->
+    </select>
+</sqlMap>

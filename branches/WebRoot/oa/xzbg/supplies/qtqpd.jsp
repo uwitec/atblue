@@ -392,7 +392,18 @@ table.MsoTableGrid
   </span><span
   style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span
   style='font-size:16.0pt;font-family:宋体;mso-ascii-theme-font:major-fareast;
-  mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-fareast'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=cOrgnization.getOrgnaName()%><span
+      <%
+                                            paramMap.put("orgnaId",officeSupplies.getSqdw());
+                                            COrgnization cOrgnization1 = orgnizationDAO.queryForBean(paramMap);
+                                            cOrgnization1 = cOrgnization1 ==null?new COrgnization():cOrgnization1;
+                                            String name = "";
+                                            if(StringUtil.isBlankOrEmpty(cOrgnization1.getOrgnaMemo())){
+                                                 name =  cOrgnization1.getOrgnaName();
+                                            }else{
+                                                 name =  cOrgnization1.getOrgnaMemo();
+                                            }
+                                        %>
+  mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-fareast'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=StringUtil.parseNull(name,"")%><span
   lang=EN-US><o:p></o:p></span></span></p>
   <p class=MsoNormal style='text-indent:16.0pt;mso-char-indent-count:1.0'><span
   lang=EN-US style='font-size:16.0pt;font-family:宋体;mso-ascii-theme-font:major-fareast;

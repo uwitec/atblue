@@ -30,8 +30,9 @@ public class SpringFtl extends FtlBasic {
             map.put("springBeanComments", springBeanComments);
             map.put("springBeanId", StringUtil.parseNull(springBeanId, ""));
             map.put("springBeanClass", StringUtil.parseNull(springBeanClass, ""));
-
-            map.put("springActionId", parseTableName(tmp.getTableName())+"Action");
+            String  springActionId =   parseTableName(tmp.getTableName());
+            springActionId = (springActionId.charAt(0)+"").toLowerCase()+springActionId.substring(1);
+            map.put("springActionId", springActionId+"Action");
             map.put("springActionClass", springActionClass);
             springBeanList.add(map);
         }

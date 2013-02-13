@@ -3,7 +3,7 @@ package cn.com.atblue.oa.bean;
 
 /**
 * 
-* @newtime 2012-12-06 20:46:39
+* @newtime 2013-01-14 20:39:35
 */
 public class FyglQzgznr {
 

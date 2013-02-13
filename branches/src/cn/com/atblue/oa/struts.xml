@@ -54,5 +54,217 @@
             <result name="del" type="redirect">qzyf_list.d</result>
             <result name="save" type="redirect">qzyf_list.d</result>
         </action>
+
+        <action name="FyglGdclyf_*" class="fyglGdclyfAction" method="{1}">
+            <result name="list">/oa/fygl/FyglGdclyf_list.jsp</result>
+            <result name="add">/oa/fygl/FyglGdclyf_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglGdclyf_mod.jsp</result>
+            <result name="del" type="redirect">FyglGdclyf_list.d</result>
+            <result name="save" type="redirect">FyglGdclyf_list.d</result>
+        </action>
+        <action name="FyglPbyf_*" class="fyglPbyfAction" method="{1}">
+            <result name="list">/oa/fygl/FyglPbyf_list.jsp</result>
+            <result name="add">/oa/fygl/FyglPbyf_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglPbyf_mod.jsp</result>
+            <result name="del" type="redirect">FyglPbyf_list.d</result>
+            <result name="save" type="redirect">FyglPbyf_list.d</result>
+        </action>
+        <action name="FyglScfzyf_*" class="fyglScfzyfAction" method="{1}">
+            <result name="list">/oa/fygl/FyglScfzyf_list.jsp</result>
+            <result name="add">/oa/fygl/FyglScfzyf_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglScfzyf_mod.jsp</result>
+            <result name="del" type="redirect">FyglScfzyf_list.d</result>
+            <result name="save" type="redirect">FyglScfzyf_list.d</result>
+        </action>
+        <action name="FyglZhdlwf_*" class="fyglZhdlwfAction" method="{1}">
+            <result name="list">/oa/fygl/FyglZhdlwf_list.jsp</result>
+            <result name="add">/oa/fygl/FyglZhdlwf_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglZhdlwf_mod.jsp</result>
+            <result name="del" type="redirect">FyglZhdlwf_list.d</result>
+            <result name="save" type="redirect">FyglZhdlwf_list.d</result>
+        </action>
+        <action name="FyglZqlwyf_*" class="fyglZqlwyfAction" method="{1}">
+            <result name="list">/oa/fygl/FyglZqlwyf_list.jsp</result>
+            <result name="add">/oa/fygl/FyglZqlwyf_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglZqlwyf_mod.jsp</result>
+            <result name="del" type="redirect">FyglZqlwyf_list.d</result>
+            <result name="save" type="redirect">FyglZqlwyf_list.d</result>
+        </action>
+
+        <action name="FyglAjfjlw_*" class="fyglAjfjlwAction" method="{1}">
+            <result name="list">/oa/fygl/FyglAjfjlw_list.jsp</result>
+            <result name="add">/oa/fygl/FyglAjfjlw_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglAjfjlw_mod.jsp</result>
+            <result name="del" type="redirect">FyglAjfjlw_list.d</result>
+            <result name="save" type="redirect">FyglAjfjlw_list.d</result>
+        </action>
+        <action name="FyglBfwxjgx_*" class="fyglBfwxjgxAction" method="{1}">
+            <result name="list">/oa/fygl/FyglBfwxjgx_list.jsp</result>
+            <result name="add">/oa/fygl/FyglBfwxjgx_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglBfwxjgx_mod.jsp</result>
+            <result name="del" type="redirect">FyglBfwxjgx_list.d</result>
+            <result name="save" type="redirect">FyglBfwxjgx_list.d</result>
+        </action>
+        <action name="FyglBgfkh_*" class="fyglBgfkhAction" method="{1}">
+            <result name="list">/oa/fygl/FyglBgfkh_list.jsp</result>
+            <result name="add">/oa/fygl/FyglBgfkh_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglBgfkh_mod.jsp</result>
+            <result name="del" type="redirect">FyglBgfkh_list.d</result>
+            <result name="save" type="redirect">FyglBgfkh_list.d</result>
+        </action>
+        <action name="FyglBghy_*" class="fyglBghyAction" method="{1}">
+            <result name="list">/oa/fygl/FyglBghy_list.jsp</result>
+            <result name="add">/oa/fygl/FyglBghy_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglBghy_mod.jsp</result>
+            <result name="del" type="redirect">FyglBghy_list.d</result>
+            <result name="save" type="redirect">FyglBghy_list.d</result>
+        </action>
+        <action name="FyglDjsrjzc_*" class="fyglDjsrjzcAction" method="{1}">
+            <result name="list">/oa/fygl/FyglDjsrjzc_list.jsp</result>
+            <result name="add">/oa/fygl/FyglDjsrjzc_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglDjsrjzc_mod.jsp</result>
+            <result name="del" type="redirect">FyglDjsrjzc_list.d</result>
+            <result name="save" type="redirect">FyglDjsrjzc_list.d</result>
+        </action>
+        <action name="FyglFlf_*" class="fyglFlfAction" method="{1}">
+            <result name="list">/oa/fygl/FyglFlf_list.jsp</result>
+            <result name="add">/oa/fygl/FyglFlf_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglFlf_mod.jsp</result>
+            <result name="del" type="redirect">FyglFlf_list.d</result>
+            <result name="save" type="redirect">FyglFlf_list.d</result>
+        </action>
+        <action name="FyglGhjfl_*" class="fyglGhjflAction" method="{1}">
+            <result name="list">/oa/fygl/FyglGhjfl_list.jsp</result>
+            <result name="add">/oa/fygl/FyglGhjfl_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglGhjfl_mod.jsp</result>
+            <result name="del" type="redirect">FyglGhjfl_list.d</result>
+            <result name="save" type="redirect">FyglGhjfl_list.d</result>
+        </action>
+        <action name="FyglGnf_*" class="fyglGnfAction" method="{1}">
+            <result name="list">/oa/fygl/FyglGnf_list.jsp</result>
+            <result name="add">/oa/fygl/FyglGnf_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglGnf_mod.jsp</result>
+            <result name="del" type="redirect">FyglGnf_list.d</result>
+            <result name="save" type="redirect">FyglGnf_list.d</result>
+        </action>
+        <action name="FyglGyfw_*" class="fyglGyfwAction" method="{1}">
+            <result name="list">/oa/fygl/FyglGyfw_list.jsp</result>
+            <result name="add">/oa/fygl/FyglGyfw_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglGyfw_mod.jsp</result>
+            <result name="del" type="redirect">FyglGyfw_list.d</result>
+            <result name="save" type="redirect">FyglGyfw_list.d</result>
+        </action>
+        <action name="FyglJdwxjlw_*" class="fyglJdwxjlwAction" method="{1}">
+            <result name="list">/oa/fygl/FyglJdwxjlw_list.jsp</result>
+            <result name="add">/oa/fygl/FyglJdwxjlw_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglJdwxjlw_mod.jsp</result>
+            <result name="del" type="redirect">FyglJdwxjlw_list.d</result>
+            <result name="save" type="redirect">FyglJdwxjlw_list.d</result>
+        </action>
+        <action name="FyglJjwxjhc_*" class="fyglJjwxjhcAction" method="{1}">
+            <result name="list">/oa/fygl/FyglJjwxjhc_list.jsp</result>
+            <result name="add">/oa/fygl/FyglJjwxjhc_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglJjwxjhc_mod.jsp</result>
+            <result name="del" type="redirect">FyglJjwxjhc_list.d</result>
+            <result name="save" type="redirect">FyglJjwxjhc_list.d</result>
+        </action>
+        <action name="FyglKzjzqys_*" class="fyglKzjzqysAction" method="{1}">
+            <result name="list">/oa/fygl/FyglKzjzqys_list.jsp</result>
+            <result name="add">/oa/fygl/FyglKzjzqys_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglKzjzqys_mod.jsp</result>
+            <result name="del" type="redirect">FyglKzjzqys_list.d</result>
+            <result name="save" type="redirect">FyglKzjzqys_list.d</result>
+        </action>
+        <action name="FyglLhfw_*" class="fyglLhfwAction" method="{1}">
+            <result name="list">/oa/fygl/FyglLhfw_list.jsp</result>
+            <result name="add">/oa/fygl/FyglLhfw_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglLhfw_mod.jsp</result>
+            <result name="del" type="redirect">FyglLhfw_list.d</result>
+            <result name="save" type="redirect">FyglLhfw_list.d</result>
+        </action>
+        <action name="FyglLwsc_*" class="fyglLwscAction" method="{1}">
+            <result name="list">/oa/fygl/FyglLwsc_list.jsp</result>
+            <result name="add">/oa/fygl/FyglLwsc_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglLwsc_mod.jsp</result>
+            <result name="del" type="redirect">FyglLwsc_list.d</result>
+            <result name="save" type="redirect">FyglLwsc_list.d</result>
+        </action>
+        <action name="FyglPsyf_*" class="fyglPsyfAction" method="{1}">
+            <result name="list">/oa/fygl/FyglPsyf_list.jsp</result>
+            <result name="add">/oa/fygl/FyglPsyf_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglPsyf_mod.jsp</result>
+            <result name="del" type="redirect">FyglPsyf_list.d</result>
+            <result name="save" type="redirect">FyglPsyf_list.d</result>
+        </action>
+        <action name="FyglPxf_*" class="fyglPxfAction" method="{1}">
+            <result name="list">/oa/fygl/FyglPxf_list.jsp</result>
+            <result name="add">/oa/fygl/FyglPxf_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglPxf_mod.jsp</result>
+            <result name="del" type="redirect">FyglPxf_list.d</result>
+            <result name="save" type="redirect">FyglPxf_list.d</result>
+        </action>
+        <action name="FyglQtzxfy_*" class="fyglQtzxfyAction" method="{1}">
+            <result name="list">/oa/fygl/FyglQtzxfy_list.jsp</result>
+            <result name="add">/oa/fygl/FyglQtzxfy_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglQtzxfy_mod.jsp</result>
+            <result name="del" type="redirect">FyglQtzxfy_list.d</result>
+            <result name="save" type="redirect">FyglQtzxfy_list.d</result>
+        </action>
+        <action name="FyglScfzlw_*" class="fyglScfzlwAction" method="{1}">
+            <result name="list">/oa/fygl/FyglScfzlw_list.jsp</result>
+            <result name="add">/oa/fygl/FyglScfzlw_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglScfzlw_mod.jsp</result>
+            <result name="del" type="redirect">FyglScfzlw_list.d</result>
+            <result name="save" type="redirect">FyglScfzlw_list.d</result>
+        </action>
+        <action name="FyglTwjf_*" class="fyglTwjfAction" method="{1}">
+            <result name="list">/oa/fygl/FyglTwjf_list.jsp</result>
+            <result name="add">/oa/fygl/FyglTwjf_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglTwjf_mod.jsp</result>
+            <result name="del" type="redirect">FyglTwjf_list.d</result>
+            <result name="save" type="redirect">FyglTwjf_list.d</result>
+        </action>
+        <action name="FyglWcf_*" class="fyglWcfAction" method="{1}">
+            <result name="list">/oa/fygl/FyglWcf_list.jsp</result>
+            <result name="add">/oa/fygl/FyglWcf_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglWcf_mod.jsp</result>
+            <result name="del" type="redirect">FyglWcf_list.d</result>
+            <result name="save" type="redirect">FyglWcf_list.d</result>
+        </action>
+        <action name="FyglWgyg_*" class="fyglWgygAction" method="{1}">
+            <result name="list">/oa/fygl/FyglWgyg_list.jsp</result>
+            <result name="add">/oa/fygl/FyglWgyg_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglWgyg_mod.jsp</result>
+            <result name="del" type="redirect">FyglWgyg_list.d</result>
+            <result name="save" type="redirect">FyglWgyg_list.d</result>
+        </action>
+        <action name="FyglWxdlw_*" class="fyglWxdlwAction" method="{1}">
+            <result name="list">/oa/fygl/FyglWxdlw_list.jsp</result>
+            <result name="add">/oa/fygl/FyglWxdlw_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglWxdlw_mod.jsp</result>
+            <result name="del" type="redirect">FyglWxdlw_list.d</result>
+            <result name="save" type="redirect">FyglWxdlw_list.d</result>
+        </action>
+        <action name="FyglWzffmx_*" class="fyglWzffmxAction" method="{1}">
+            <result name="list">/oa/fygl/FyglWzffmx_list.jsp</result>
+            <result name="add">/oa/fygl/FyglWzffmx_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglWzffmx_mod.jsp</result>
+            <result name="del" type="redirect">FyglWzffmx_list.d</result>
+            <result name="save" type="redirect">FyglWzffmx_list.d</result>
+        </action>
+        <action name="FyglXcjts_*" class="fyglXcjtsAction" method="{1}">
+            <result name="list">/oa/fygl/FyglXcjts_list.jsp</result>
+            <result name="add">/oa/fygl/FyglXcjts_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglXcjts_mod.jsp</result>
+            <result name="del" type="redirect">FyglXcjts_list.d</result>
+            <result name="save" type="redirect">FyglXcjts_list.d</result>
+        </action>
+        <action name="FyglYljwd_*" class="fyglYljwdAction" method="{1}">
+            <result name="list">/oa/fygl/FyglYljwd_list.jsp</result>
+            <result name="add">/oa/fygl/FyglYljwd_add.jsp</result>
+            <result name="mod">/oa/fygl/FyglYljwd_mod.jsp</result>
+            <result name="del" type="redirect">FyglYljwd_list.d</result>
+            <result name="save" type="redirect">FyglYljwd_list.d</result>
+        </action>
 	</package>
 </struts>

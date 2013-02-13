@@ -21,6 +21,7 @@ public class JspAddFtl extends FtlBasic {
         map.put("classComments", StringUtil.parseNull(getTable().getComments(), ""));
         map.put("className", StringUtil.parseNull(parseTableName(getTable().getTableName()), ""));
         map.put("columnList", getColumnMapList());
+        map.put("pkid", getTable().getPkName().toLowerCase());
         writeFile("JspAdd.ftl", map, getFileOfJspAdd());
     }
 

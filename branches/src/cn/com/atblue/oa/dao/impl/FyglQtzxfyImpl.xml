@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.fyglqtzxfy">
+    <typeAlias alias="FyglQtzxfy" type="cn.com.atblue.oa.bean.FyglQtzxfy"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="qtzxfybm">
+                <![CDATA[qtzxfybm=#qtzxfybm#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="yf">
+                <![CDATA[yf=#yf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="bfgx">
+                <![CDATA[bfgx=#bfgx#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="gyfw">
+                <![CDATA[gyfw=#gyfw#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lhfw">
+                <![CDATA[lhfw=#lhfw#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="jjwx">
+                <![CDATA[jjwx=#jjwx#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="wjjhc">
+                <![CDATA[wjjhc=#wjjhc#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fzcyg">
+                <![CDATA[fzcyg=#fzcyg#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="pxf">
+                <![CDATA[pxf=#pxf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="ghjfjflf">
+                <![CDATA[ghjfjflf=#ghjfjflf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="xcf">
+                <![CDATA[xcf=#xcf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="tszl">
+                <![CDATA[tszl=#tszl#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="twjf">
+                <![CDATA[twjf=#twjf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="bgf">
+                <![CDATA[bgf=#bgf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="hyf">
+                <![CDATA[hyf=#hyf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="zdf">
+                <![CDATA[zdf=#zdf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="shflf">
+                <![CDATA[shflf=#shflf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="wcf">
+                <![CDATA[wcf=#wcf#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lrsj">
+                <![CDATA[lrsj=#lrsj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lrr">
+                <![CDATA[lrr=#lrr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="bz">
+                <![CDATA[bz=#bz#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addFyglQtzxfy" parameterClass="FyglQtzxfy">
+        <![CDATA[
+            insert into fygl_qtzxfy(
+                qtzxfybm,yf,bfgx,gyfw,lhfw,
+				jjwx,wjjhc,fzcyg,pxf,ghjfjflf,
+				xcf,tszl,twjf,bgf,hyf,
+				zdf,shflf,wcf,lrsj,lrr,
+				bz
+            ) values(
+                #qtzxfybm#,#yf#,#bfgx#,#gyfw#,#lhfw#,
+				#jjwx#,#wjjhc#,#fzcyg#,#pxf#,#ghjfjflf#,
+				#xcf#,#tszl#,#twjf#,#bgf#,#hyf#,
+				#zdf#,#shflf#,#wcf#,#lrsj#,#lrr#,
+				#bz#
+            )
+        ]]>
+    </insert>
+
+    <update id="modFyglQtzxfy" parameterClass="FyglQtzxfy">
+        <![CDATA[
+            update fygl_qtzxfy
+            set qtzxfybm=#qtzxfybm#,yf=#yf#,bfgx=#bfgx#,
+				gyfw=#gyfw#,lhfw=#lhfw#,jjwx=#jjwx#,
+				wjjhc=#wjjhc#,fzcyg=#fzcyg#,pxf=#pxf#,
+				ghjfjflf=#ghjfjflf#,xcf=#xcf#,tszl=#tszl#,
+				twjf=#twjf#,bgf=#bgf#,hyf=#hyf#,
+				zdf=#zdf#,shflf=#shflf#,wcf=#wcf#,
+				lrsj=#lrsj#,lrr=#lrr#,bz=#bz#
+            where QTZXFYBM=#qtzxfybm#
+        ]]>
+    </update>
+
+    <delete id="delFyglQtzxfy" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from fygl_qtzxfy
+            where QTZXFYBM=#qtzxfybm#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="FyglQtzxfy">
+        <![CDATA[
+            select qtzxfybm as qtzxfybm,yf as yf,bfgx as bfgx,gyfw as gyfw,lhfw as lhfw,jjwx as jjwx,wjjhc as wjjhc,fzcyg as fzcyg,pxf as pxf,ghjfjflf as ghjfjflf,xcf as xcf,tszl as tszl,twjf as twjf,bgf as bgf,hyf as hyf,zdf as zdf,shflf as shflf,wcf as wcf,lrsj as lrsj,lrr as lrr,bz as bz from fygl_qtzxfy where QTZXFYBM=#qtzxfybm#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="FyglQtzxfy">
+        <![CDATA[
+            select qtzxfybm as qtzxfybm,yf as yf,bfgx as bfgx,gyfw as gyfw,lhfw as lhfw,jjwx as jjwx,wjjhc as wjjhc,fzcyg as fzcyg,pxf as pxf,ghjfjflf as ghjfjflf,xcf as xcf,tszl as tszl,twjf as twjf,bgf as bgf,hyf as hyf,zdf as zdf,shflf as shflf,wcf as wcf,lrsj as lrsj,lrr as lrr,bz as bz from fygl_qtzxfy
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from fygl_qtzxfy
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="getPagedList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+        select t.*  from fygl_qtzxfy t where 1=1
+        ]]>
+        <!--
+          <dynamic prepend="where">
+              <isNotEmpty prepend=" and " property="customProperty">
+                  <![CDATA[customProperty=#customProperty#]]>
+              </isNotEmpty>
+          </dynamic>
+          -->
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+        select count(*) cn  from fygl_qtzxfy  t  where 1=1
+        ]]>
+        <!--
+         <dynamic prepend="where">
+             <isNotEmpty prepend=" and " property="customProperty">
+                 <![CDATA[customProperty=#customProperty#]]>
+             </isNotEmpty>
+         </dynamic>
+         -->
+    </select>
+</sqlMap>

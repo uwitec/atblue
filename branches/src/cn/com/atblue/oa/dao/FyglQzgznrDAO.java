@@ -17,4 +17,8 @@ public interface FyglQzgznrDAO {
     public List<FyglQzgznr> queryForList(Map paramMap);
 
     public int queryForCount(Map paramMap);
+
+    public List getPagedList(Map paramMap);
+
+    public int getPagedCount(Map paramMap);
 }

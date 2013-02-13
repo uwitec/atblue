@@ -113,7 +113,7 @@
 								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("MC"),"") %></a>
 							</td>
 							<td  align="center">
-								<%=StringUtil.parseNull(map.get("SQDW"),"")%>&nbsp;
+								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
 							</td>
 							<td  align="center" style="text-align: left">
 								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
