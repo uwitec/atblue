@@ -39,6 +39,7 @@
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="true"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/css/web.css" rel="stylesheet" type="text/css">
         <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 		<script type="text/javascript">
@@ -172,23 +173,31 @@
 
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("SQID"),"") %>')">
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td  align="left" style="text-align: left">
+							<td  align="left" style="text-align: left" class="form_th">
 								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("MC"),"") %></a>
 							</td>
-							<td  style="text-align: left">
+							<td  style="text-align: left" class="form_th">
 								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
 							</td>
-							<td  align="center" style="text-align: center">
+							<td  align="center" style="text-align: center" class="form_th">
 								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
 							</td>
-							<td   style="text-align: center">
-                                <%=StringUtil.parseNull(map.get("SQZT"),"")%>&nbsp;
+							<td   style="text-align: center" class="form_th">
+                                <%String sqzt = StringUtil.parseNull(map.get("SQZT"),"");
+                                    if("已完成".equals(sqzt)){ %>
+                                <font color="green"><%=sqzt%></font>
+                                <%}else if("正在审批".equals(sqzt)) { %>
+                                <font color="red"><%=sqzt%></font>
+                                <%}else{  %>
+                                <%=sqzt%>
+                                <% }
+                                %>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center" nowrap="nowrap">
+							<td class="form_th" align="center" nowrap="nowrap">
                                  <%
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");

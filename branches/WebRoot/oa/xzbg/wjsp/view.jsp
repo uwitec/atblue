@@ -150,7 +150,7 @@
                      height="11">
             </td>
             <td width="15%" class="mhead">
-                修改文件审批
+                查看文件审批信息
             </td>
             <td width="74%" align="left" class="mhead">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -181,7 +181,7 @@
                             </td>
                             <td class="head_right" style="text-align: left">
                                 <%=StringUtil.parseNull(wjsp.getBt(),"")%>&nbsp;
-                                <input type="checkbox" name="checked" id="checked" value="" <%if(!"0".equals(wjsp.getDxtx())){ %>checked<%}%>>短信提醒
+                                <%--<input type="checkbox" name="checked" id="checked" value="" <%if(!"0".equals(wjsp.getDxtx())){ %>checked<%}%>>短信提醒--%>
                             </td>
                         </tr>
                         <tr>
@@ -189,18 +189,7 @@
                                 发文类型
                             </td>
                             <td class="head_right" style="text-align: left">
-                                <select name="lb" onchange="lbz(this)" style="width: 200px;">
-                                    <option value="" selected>请选择 </option>
-                                    <option value="公司文件" <%if("公司文件".equals(wjsp.getLb())){out.println("selected");}%>>公司文件</option>
-                                    <option value="党委文件" <%if("党委文件".equals(wjsp.getLb())){out.println("selected");}%>>党委文件</option>
-                                    <option value="办公室文件" <%if("办公室文件".equals(wjsp.getLb())){out.println("selected");}%>>办公室文件</option>
-                                    <option value="会议纪要" <%if("会议纪要".equals(wjsp.getLb())){out.println("selected");}%>>会议纪要</option>
-                                    <option value="领导讲话" <%if("领导讲话".equals(wjsp.getLb())){out.println("selected");}%>>领导讲话</option>
-                                    <option value="督查通报" <%if("督查通报".equals(wjsp.getLb())){out.println("selected");}%>>督查通报</option>
-                                    <option value="调研报告" <%if("调研报告".equals(wjsp.getLb())){out.println("selected");}%>>调研报告</option>
-                                    <option value="各委员会文件" <%if("各委员会文件".equals(wjsp.getLb())){out.println("selected");}%>>各委员会文件</option>
-                                    <option value="其它" <%if("其它".equals(wjsp.getLb())){out.println("selected");}%>>其它</option>
-                                </select>
+                                <%=StringUtil.parseNull(wjsp.getLb(),"")%>&nbsp;
                             </td>
                         </tr>
                         <tr>
@@ -216,12 +205,7 @@
                                 密级
                             </td>
                             <td class="head_right" style="text-align: left">
-                                <select name="mmcd" style="width: 100px;">
-                                    <option value="无" <%if("无".equals(wjsp.getMmcd())){out.println("selected");}%>>无</option>
-                                    <option value="秘密" <%if("秘密".equals(wjsp.getMmcd())){out.println("selected");}%>>秘密</option>
-                                    <option value="机密" <%if("机密".equals(wjsp.getMmcd())){out.println("selected");}%>>机密</option>
-                                    <option value="绝密" <%if("绝密".equals(wjsp.getMmcd())){out.println("selected");}%>>绝密</option>
-                                </select>
+                                <%=StringUtil.parseNull(wjsp.getMmcd(),"")%>&nbsp;
                             </td>
                         </tr>
                         <tr>
@@ -229,12 +213,7 @@
                                 缓急时限
                             </td>
                             <td class="head_right" style="text-align: left">
-                                <select id="hjsx" name="hjsx" style="width: 100px;">
-                                    <option value="无" <%if("无".equals(wjsp.getHjsx())){out.println("selected");}%>>无</option>
-                                    <option value="平急" <%if("平急".equals(wjsp.getHjsx())){out.println("selected");}%>>平急</option>
-                                    <option value="紧急" <%if("紧急".equals(wjsp.getHjsx())){out.println("selected");}%>>紧急</option>
-                                    <option value="特急" <%if("特急".equals(wjsp.getHjsx())){out.println("selected");}%>>特急</option>
-                                </select>
+                                <%=StringUtil.parseNull(wjsp.getHjsx(),"")%>&nbsp;
                             </td>
                         </tr>
                         <tr>
@@ -250,12 +229,13 @@
                                 拟稿部门
                             </td>
                             <td class="head_right" style="text-align: left">
-                                <select name="ngbm" style="width: 200px;">
-                                    <%for(int i=0;i<orgTreeList.size(); i++){
-                                        Map dep = (Map)orgTreeList.get(i);%>
-                                    <option value="<%=StringUtil.parseNull(dep.get("ORGNA_ID"),"")%>" <%if(StringUtil.parseNull(dep.get("ORGNA_ID"),"").equals(wjsp.getNgbm())){out.println("selected");} %>><%=StringUtil.parseNull(dep.get("ORGNA_NAME"),"")%></option>
-                                    <%} %>
-                                </select>
+                                <%
+                                    String ngbm = StringUtil.parseNull(wjsp.getNgbm(),"");
+                                    paramMap.put("orgnaId",ngbm);
+                                    COrgnization yyOrgnization = orgnizationDAO.queryForBean(paramMap);
+                                    yyOrgnization = yyOrgnization ==null?new COrgnization():yyOrgnization;
+                                %>
+                                <%=yyOrgnization.getOrgnaName()%>&nbsp;
                             </td>
                         </tr>
                         <tr>
@@ -277,8 +257,7 @@
                                         OfficeFile beanFile = (OfficeFile)hasFileList.get(i);%>
                                 <a href="<%=request.getContextPath()%>/officeFileDownload?pkid=<%=beanFile.getPkid() %>" >
                                     <img src="<%=request.getContextPath()%>/fileIco/<%=beanFile.getWjlx() %>.png" onerror="this.src='<%=request.getContextPath()%>/fileIco/other.png'" style="cursor: pointer;" border="0" alt="<%=beanFile.getWjm() %>(<%=StringUtil.getFileSize(beanFile.getWjcc().doubleValue()) %>)"><%=beanFile.getWjm() %>
-                                </a>&nbsp;&nbsp;&nbsp;
-                                <a href="javascript:delFile('<%=beanFile.getPkid() %>','<%=documentid %>')">[删除]</a></br>
+                                </a>&nbsp;&nbsp;&nbsp;</br>
                                 <%}%>
                             </td>
                         </tr>
