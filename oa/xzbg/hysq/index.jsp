@@ -30,6 +30,7 @@
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="true"></script>
         <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=request.getContextPath()%>/css/web.css" rel="stylesheet" type="text/css">
         <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="true"></script>
@@ -141,27 +142,27 @@
                                 oracle.sql.TIMESTAMP eTime = (oracle.sql.TIMESTAMP)map.get("SQJSSJ");
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("SQID"),"") %>')">
-							<td  style="text-align: center;border-left: 1px solid #01a0fe;" nowrap="nowrap">
+							<td  style="text-align: center;border-left: 1px solid #01a0fe;" nowrap="nowrap" class="form_th">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td  align="left" style="text-align: left">
+							<td  align="left" style="text-align: left" class="form_th">
 								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("HYMC"),"") %></a>
 							</td>
 							
-							<td  align="left" style="text-align: left">
+							<td  align="left" style="text-align: left" class="form_th">
 								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%if(sTime != null){ %>
                                 <%=DateUtil.format(sTime.timestampValue(),"yyyy-MM-dd HH:mm")%>
                                 <% }%>
                                     &nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
                                 <%if(eTime != null){ %>
                                 <%=DateUtil.format(eTime.timestampValue(), "yyyy-MM-dd HH:mm")%>
                                 <% }%>
@@ -169,7 +170,7 @@
 							<%--<td  align="left" title="<%=StringUtil.parseNull(map.get("HYNR"),"")%>"  style="text-align: left">--%>
 								<%--&lt;%&ndash;<%=StringUtil.cutString(StringUtil.parseNull(map.get("HYNR"),""),25)%>&ndash;%&gt;--%>
 							<%--</td>--%>
-							<td  align="center"> &nbsp;
+							<td  align="center" class="form_th"> &nbsp;
 								<%String sqzt = StringUtil.parseNull(map.get("SQZT"),"");
                                      if("已完成".equals(sqzt)){ %>
                                         <font color="green"><%=sqzt%></font>
@@ -180,7 +181,7 @@
                                 <% }
                                 %>&nbsp;
 							</td>
-							<td  align="center" nowrap="nowrap">
+							<td  align="center" nowrap="nowrap" class="form_th">
                                 <%
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");

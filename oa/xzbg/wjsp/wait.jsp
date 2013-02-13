@@ -118,38 +118,38 @@
 
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("DOCUMENTID"),"") %>')">
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td  align="left" style="text-align: left" nowrap="nowrap">
+							<td  align="left" style="text-align: left" nowrap="nowrap" class="form_th">
 								<a href="view.jsp?documentid=<%=StringUtil.parseNull(map.get("DOCUMENTID"),"") %>"><%=StringUtil.parseNull(map.get("BT"),"") %></a>
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=StringUtil.parseNull(map.get("LB"),"")%>&nbsp;
 							</td>
-							<td  align="center" style="text-align: left">
+							<td  align="center" style="text-align: left" class="form_th">
 								<%=StringUtil.parseNull(map.get("WJBH"),"")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
                                 <%=StringUtil.parseNull(map.get("MMCD"),"")%>&nbsp;
 							</td>
-							<td  align="left">
+							<td  align="left" class="form_th">
 								<%=StringUtil.parseNull(map.get("HJSX"),"")%>&nbsp;
 							</td>
-							<td  align="left">
+							<td  align="left" class="form_th">
 								<%=StringUtil.parseNull(map.get("QFRQ"),"")%>&nbsp;
 							</td>
-							<td  align="left">
+							<td  align="left" class="form_th">
 								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
 							</td>
-							<td  align="left" style="text-align: left">
+							<td  align="left" style="text-align: left" class="form_th">
 								<%=StringUtil.parseNull(map.get("BZ"),"")%>&nbsp;
 							</td>
-							<td  align="center" nowrap="nowrap">
+							<td  align="center" nowrap="nowrap" class="form_th">
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
-							<td  nowrap="nowrap" style="text-align: center">
+							<td  nowrap="nowrap" style="text-align: center" class="form_th">
                                 <input type="button" class="button" name=""  value="审批" onclick="window.location='sp.jsp?documentid=<%=StringUtil.parseNull(map.get("DOCUMENTID"),"") %>';"/>
                                 &nbsp;
 							</td>
