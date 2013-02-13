@@ -137,7 +137,13 @@
 								<%=StringUtil.parseNull(map.get("QFRQ"),"")%>&nbsp;
 							</td>
 							<td  align="left" class="form_th">
-								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
+                                <%
+                                    String ngbm = StringUtil.parseNull(map.get("NGBM"),"");
+                                    paramMap.put("orgnaId",ngbm);
+                                    COrgnization yyOrgnization = orgnizationDAO.queryForBean(paramMap);
+                                    yyOrgnization = yyOrgnization ==null?new COrgnization():yyOrgnization;
+                                %>
+                                <%=yyOrgnization.getOrgnaName()%>&nbsp;
 							</td>
 							<%--<td  align="left" style="text-align: left">--%>
 								<%--<%=StringUtil.parseNull(map.get("BZ"),"")%>&nbsp;--%>
