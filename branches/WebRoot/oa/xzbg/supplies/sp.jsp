@@ -10,6 +10,18 @@
     String orgId = cUser.getOrgnaId();
     Map paramMap = new HashMap();
     paramMap.put("orgnaId",orgId);
+    List roleList = dao.getAllRolesByUser(cUser.getUserId());
+    boolean isFgld = false;
+    if (roleList != null && roleList.size() > 0) {
+        for (int i = 0; i < roleList.size(); i++) {
+            Map m = (Map) roleList.get(i);
+            String roleName = StringUtil.parseNull(m.get("ROLE_NAME"), "");
+            if ("分管领导".equals(roleName)) {
+                isFgld = true;
+                break;
+            }
+        }
+    }
     COrgnization cOrgnization = orgnizationDAO.queryForBean(paramMap);
     String sqid = StringUtil.parseNull(request.getParameter("sqid"),"");
     Map map = new HashMap();
@@ -107,16 +119,21 @@
 		     	}
                 if(v[0].checked && v[0].value == '1'){
                     nextUserId = document.all.agreed.value;
-                    varValue = "1";
+                    if(nextUserId == "0"){
+                        varValue = "0";
+                    }else{
+                        varValue = "1";
+                    }
+
                 }else{
                     nextUserId = document.all.disagreed.value;
                     varValue = "-1";
                 }
                 if(varValue == "1" && document.form1.checkman){
-                    if(document.all.checkman.value == ''){
-                        alert("请选择待办理单位!");
-                        return ;
-                    }
+//                    if(document.all.checkman.value == ''){
+//                        alert("请选择待办理单位!");
+//                        return ;
+//                    }
                     window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&sqid="+sid+"&processId="+pid+"&varValue="+varValue+"&checkman="+document.all.checkman.value;
                 }else{
                     window.location = "tj.jsp?type=1&selUserId="+nextUserId+"&connectId="+cid+"&sqid="+sid+"&processId="+pid+"&varValue="+varValue+"&checkman=";
@@ -285,12 +302,26 @@
                                             <%
                                                 String nextRole = workFlow.getNextRoleName(StringUtil.parseNull(officeSupplies.getConnectId(),""),"1");
                                                 String options = workFlow.getNextUserSelectOptions(nextRole,orgId);
+                                                String endRole = workFlow.getNextRoleName(StringUtil.parseNull(officeSupplies.getConnectId(),""),"0");
                                         %>
                                             <%if(!"结束".equals(nextRole)){ %>
                                             发送给&nbsp; <%=nextRole%>
                                              <select name="agreed">
-                                            <%=options%>
+
+                                                 <%
+                                                     if(isFgld){  %>
+                                                 <option value="0">==请选择==</option>
+                                                 <%  }
+                                                 %>
+                                                 <%=options%>
                                          </select>  处理！
+                                                 <%
+                                                     if(isFgld){  %>
+                                                 选择待处理部门:
+                                            <input type="text" value="" id="mb3" name="mb3"/>
+                                            <input type="hidden" value="" id="checkman" name="checkman"/>
+                                                 <%  }
+                                                 %>
                                             <% }else{
                                             %>
                                             结束审批！

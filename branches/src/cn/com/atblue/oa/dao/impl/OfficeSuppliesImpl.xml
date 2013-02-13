@@ -170,7 +170,7 @@
   from OFFICE_SUPPLIES t, w_connect c, w_process p, c_orgnization o
  where t.connect_id = c.connect_id
    and t.process_id = p.process_id
-   and t.sqdw = o.orgna_name
+   and t.sqdw = o.orgna_id
    and p.process_status = '1'
         ]]>
         <dynamic prepend=" and ">

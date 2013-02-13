@@ -27,6 +27,7 @@
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="true"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/css/web.css" rel="stylesheet" type="text/css">
         <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="true"></script>
@@ -96,7 +97,7 @@
     </table>
         </form>
 		<table width="100%" align="center" height="25" border="0"
-			cellpadding="0" cellspacing="0">
+			cellpadding="0" cellspacing="0" >
 			<tr>
 				<td>
 				<table width="100%" border="0" align="center" cellpadding="0"
@@ -139,7 +140,7 @@
 
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("DOCUMENTID"),"") %>')">
-							<td class="NormalDataColumn" align="center">
+							<td class="form_th" align="center">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>

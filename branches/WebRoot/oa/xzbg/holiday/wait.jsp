@@ -26,6 +26,7 @@
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="true"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/css/web.css" rel="stylesheet" type="text/css">
         <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript">
 		function onDelete(url){
@@ -100,29 +101,29 @@
 								Map map = (Map) list.get(i);
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"") %>')">
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td  align="center" style="text-align: left">
+							<td  align="center" style="text-align: left" class="form_th">
 								<a href="view.jsp?holidayid=<%=StringUtil.parseNull(map.get("HOLIDAYID"),"") %>"><%=StringUtil.parseNull(map.get("XM"),"") %></a>
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=StringUtil.parseNull(map.get("DW"),"")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=map.get("KSSJ")+"至"+map.get("JSSJ")%>&nbsp;
 							</td>
-							<td  align="left" style="text-align: left">
+							<td  align="left" style="text-align: left" class="form_th">
                                 <%=StringUtil.parseNull(map.get("WCDD"),"")%>&nbsp;
 							</td>
-							<td  align="left" style="text-align: left">
+							<td  align="left" style="text-align: left" class="form_th">
 								<%=StringUtil.parseNull(map.get("WCSY"),"")%>&nbsp;
 							</td>
-							<td  align="center" nowrap="nowrap">
+							<td  align="center" nowrap="nowrap" class="form_th">
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
-							<td  align="center" nowrap="nowrap">
+							<td  align="center" nowrap="nowrap" class="form_th">
                                 <input type="button" class="button" name=""  value="审批" onclick="window.location='sp.jsp?holidayid=<%=StringUtil.parseNull(map.get("HOLIDAYID"),"") %>';"/>
                                 &nbsp;
 							</td>
