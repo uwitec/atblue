@@ -71,7 +71,7 @@
                             var menu = s[i];
                             var cell = menuTr.insertCell(i);
                             cell.className="txt2";
-                            cell.width="96px";
+                            cell.width="80px";
                             cell.id = "sw"+i;
                             cell.onclick = Function ("changeMenu2(this,'"+menu.path+"');");
                             cell.style.cursor="hand";//("style","cursor: hand");
@@ -105,10 +105,10 @@
                                 <%--<td class="txt1" onclick="goDownload();" style="cursor: hand">下载中心</td>--%>
                                 <td width="10" align="center"><img src="images2/index_11.gif" width="2" height="20"></td>
                                 <td width="13"><img src="images2/index_13.gif" width="13" height="20" alt=""></td>
-                                <td class="txt1" onclick="goIndex();" style="cursor: hand">反回首页</td>
+                                <td class="txt1" onclick="goIndex();" style="cursor: hand">返回首页</td>
                                 <td width="10" align="center"><img src="images2/index_11.gif" width="2" height="20"></td>
                                 <td width="11"><img src="images2/index_17.gif" width="11" height="20" alt=""></td>
-                                <td class="txt1" onclick="logout();" style="cursor: hand">系统注销</td>
+                                <td class="txt1" onclick="logout();" style="cursor: hand"  >系统注销</td>
                             </tr>
                         </table></td>
                         <td width="19"><img src="images2/index_19.gif" width="19" height="20" alt=""></td>
@@ -118,7 +118,7 @@
             </tr>
         </table></td>
     </tr>
-    <tr>
+    <tr height="34">
         <td height="34"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-left:110px;" >
             <tr align="left" height="34">
                 <%=MenuUtil.getPageMenus2(cUser.getUserId(), "0", request.getContextPath())%>
@@ -130,8 +130,8 @@
         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td width="19"><img src="images2/index_35.gif" width="19" height="29" alt=""></td>
-                <td background="images2/index_36.gif"><table width="480" border="0" cellspacing="0" cellpadding="0" style="margin-left:50px;" >
-                <tr id="submenus">
+                <td background="images2/index_36.gif"><table border="0" cellspacing="0" cellpadding="0" style="margin-left:50px;"   >
+                <tr id="submenus" valign="middle">
                         <td class="txt2">&nbsp;</td>
                 </tr>
                 </table></td>

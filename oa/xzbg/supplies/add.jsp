@@ -291,7 +291,7 @@
 										申请单位<span style="color: red">&nbsp;*</span>
 									</td>
 										<td class="head_right" style="text-align: left">
-                                        <input type="hidden" name="sqdw" value="<%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%>"/><%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%>
+                                        <input type="hidden" name="sqdw" value="<%=StringUtil.parseNull(cOrgnization.getOrgnaId(),"")%>"/><%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%>
 									</td>
 								</tr>
 								<tr>

@@ -115,7 +115,13 @@
 										申请单位
 									</td>
 									<td class="head_right" style="text-align: left">
-										<%=StringUtil.parseNull(officeSupplies.getSqdw(),"")%>&nbsp;
+                                        <%
+                                            paramMap.put("orgnaId",officeSupplies.getSqdw());
+                                            COrgnization cOrgnization1 = orgnizationDAO.queryForBean(paramMap);
+                                            cOrgnization1 = cOrgnization1 ==null?new COrgnization():cOrgnization1;
+
+                                        %>
+                                    <%=StringUtil.parseNull(cOrgnization1.getOrgnaName(),"")%>&nbsp;
 									</td>
 								</tr>
 								<tr>

@@ -165,19 +165,19 @@
                         <td class="form_th" style="text-align: center" nowrap>
                             ${JL}&nbsp;
                         </td>
-                        <td class="form_th" style="text-align: center" nowrap>
+                        <td class="form_th" style="text-align: right" nowrap>
                                 ${CXSL}&nbsp;
                         </td>
                         <td class="form_th" style="text-align: center" nowrap>
                                 ${BM}&nbsp;
                         </td>
-                        <td class="form_th" style="text-align: center" nowrap>
+                        <td class="form_th" style="text-align: right" nowrap>
                                 ${QZF}&nbsp;
                         </td>
-                        <td class="form_th" style="text-align: center" nowrap>
+                        <td class="form_th" style="text-align: right" nowrap>
                                 ${LQF}&nbsp;
                         </td>
-                        <td class="form_th" style="text-align: center" nowrap>
+                        <td class="form_th" style="text-align: right" nowrap>
                                 ${YSFY}&nbsp;
                         </td>
                         <td class="form_th" style="text-align: center" nowrap>

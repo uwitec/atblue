@@ -13,6 +13,7 @@
 	text-align: center;
 	line-height: 34px;
     height: 34px;
+    background-repeat: repeat-y;
 	vertical-align: middle;
 }
 .unchoose {

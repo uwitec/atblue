@@ -113,16 +113,16 @@
                     <table width="100%" border="0" align="center" cellpadding="0"
                            cellspacing="0" class="mtabtab" id="mtabtab">
                         <tr>
-                            <td nowrap="nowrap" width="20%" class="head_left">
+                            <td nowrap="nowrap" width="120" class="head_left">
                                 完成日期<span style="color: red">&nbsp;*</span>
                             </td>
-                            <td class="head_right" align="left" style="text-align: left" width="30%" >
+                            <td class="head_right" align="left" style="text-align: left">
                                 <input type="text" name="bean.wcrq" value="" class="Wdate" onClick="WdatePicker()"/>
                             </td>
-                            <td nowrap="nowrap" width="20%" class="head_left">
+                            <td nowrap="nowrap" width="120" class="head_left">
                                 队号<span style="color: red">&nbsp;*</span>
                             </td>
-                            <td class="head_right" align="left" style="text-align: left" width="30%" >
+                            <td class="head_right" align="left" style="text-align: left">
                                 <select name="bean.dh"  style="width:200px;">
                                     <option value="">请选择</option>
                                     <s:iterator value="orgTreeList">
