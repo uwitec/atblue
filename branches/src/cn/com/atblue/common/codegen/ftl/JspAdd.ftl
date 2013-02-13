@@ -2,7 +2,7 @@
 pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Map" %>
-<%@ include file="<%=request.getContextPath()%>/import.jsp"%>
+<%@ include file="../../import.jsp"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 CUser cUser = (CUser)session.getAttribute("cUser");
@@ -92,10 +92,10 @@ cOrgnization = cOrgnization == null?new COrgnization():cOrgnization;
                            cellspacing="0" class="mtabtab" id="mtabtab">
                     <#list columnList as v>
                         <tr>
-                            <td nowrap="nowrap" width="20%" class="head_left">
+                            <td nowrap="nowrap" width="120" class="head_left">
                                 ${v.comments}
                             </td>
-                            <td class="head_right" align="left" style="text-align: left" width="30%" >
+                            <td class="head_right" align="left" style="text-align: left">
                                 <#if v.type == 'Date'>
                                     <input type="text" name="bean.${v.name}" value="" class="Wdate" onClick="WdatePicker()"/>
                                 <#else>

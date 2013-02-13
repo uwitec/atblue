@@ -28,11 +28,11 @@ public String list() {
 Map map = new HashMap();
 if (!StringUtil.isBlankOrEmpty(mc))
 map.put("mc", mc);
-int cn = oDao.getPagedCount(map);
+int cn = ${daoName}.getPagedCount(map);
 this.getPagination().setRowCount(cn);
 map.put("currentPage", this.getPagination().getPage());
 map.put("pageSize", this.getPagination().getPageSize());
-this.dataList = oDao.getPagedList(map);
+this.dataList = ${daoName}.getPagedList(map);
 return "list";
 }
 
