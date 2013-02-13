@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.fyglgdclyf">
+    <typeAlias alias="FyglGdclyf" type="cn.com.atblue.oa.bean.FyglGdclyf"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="gdclbm">
+                <![CDATA[gdclbm=#gdclbm#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="rq">
+                <![CDATA[rq=#rq#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="ch">
+                <![CDATA[ch=#ch#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="cx">
+                <![CDATA[cx=#cx#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="ycdw">
+                <![CDATA[ycdw=#ycdw#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="yxtb">
+                <![CDATA[yxtb=#yxtb#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="yfxj">
+                <![CDATA[yfxj=#yfxj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="bz">
+                <![CDATA[bz=#bz#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lrsj">
+                <![CDATA[lrsj=#lrsj#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lrr">
+                <![CDATA[lrr=#lrr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="zt">
+                <![CDATA[zt=#zt#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addFyglGdclyf" parameterClass="FyglGdclyf">
+        <![CDATA[
+            insert into fygl_gdclyf(
+                gdclbm,rq,ch,cx,ycdw,
+				yxtb,yfxj,bz,lrsj,lrr,
+				zt
+            ) values(
+                #gdclbm#,#rq#,#ch#,#cx#,#ycdw#,
+				#yxtb#,#yfxj#,#bz#,#lrsj#,#lrr#,
+				#zt#
+            )
+        ]]>
+    </insert>
+
+    <update id="modFyglGdclyf" parameterClass="FyglGdclyf">
+        <![CDATA[
+            update fygl_gdclyf
+            set gdclbm=#gdclbm#,rq=#rq#,ch=#ch#,
+				cx=#cx#,ycdw=#ycdw#,yxtb=#yxtb#,
+				yfxj=#yfxj#,bz=#bz#,lrsj=#lrsj#,
+				lrr=#lrr#,zt=#zt#
+            where GDCLBM=#gdclbm#
+        ]]>
+    </update>
+
+    <delete id="delFyglGdclyf" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from fygl_gdclyf
+            where GDCLBM=#gdclbm#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="FyglGdclyf">
+        <![CDATA[
+            select gdclbm as gdclbm,rq as rq,ch as ch,cx as cx,ycdw as ycdw,yxtb as yxtb,yfxj as yfxj,bz as bz,lrsj as lrsj,lrr as lrr,zt as zt from fygl_gdclyf where GDCLBM=#gdclbm#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="FyglGdclyf">
+        <![CDATA[
+            select gdclbm as gdclbm,rq as rq,ch as ch,cx as cx,ycdw as ycdw,yxtb as yxtb,yfxj as yfxj,bz as bz,lrsj as lrsj,lrr as lrr,zt as zt from fygl_gdclyf
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from fygl_gdclyf
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="getPagedList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+        select t.*  from fygl_gdclyf t where 1=1
+        ]]>
+        <!--
+          <dynamic prepend="where">
+              <isNotEmpty prepend=" and " property="customProperty">
+                  <![CDATA[customProperty=#customProperty#]]>
+              </isNotEmpty>
+          </dynamic>
+          -->
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+        select count(*) cn  from fygl_gdclyf  t  where 1=1
+        ]]>
+        <!--
+         <dynamic prepend="where">
+             <isNotEmpty prepend=" and " property="customProperty">
+                 <![CDATA[customProperty=#customProperty#]]>
+             </isNotEmpty>
+         </dynamic>
+         -->
+    </select>
+</sqlMap>

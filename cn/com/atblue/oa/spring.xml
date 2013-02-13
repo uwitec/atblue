@@ -56,4 +56,68 @@
     <bean id="fyglQzgznrDAO" class="cn.com.atblue.oa.dao.impl.FyglQzgznrImpl" autowire="byName"/>
     <bean id="fyglQzyfDAO" class="cn.com.atblue.oa.dao.impl.FyglQzyfImpl" autowire="byName"/>
 
+    <bean id="fyglGdclyfDAO" class="cn.com.atblue.oa.dao.impl.FyglGdclyfImpl" autowire="byName"/>
+    <bean id="fyglPbyfDAO" class="cn.com.atblue.oa.dao.impl.FyglPbyfImpl" autowire="byName"/>
+    <bean id="fyglScfzyfDAO" class="cn.com.atblue.oa.dao.impl.FyglScfzyfImpl" autowire="byName"/>
+    <bean id="fyglZhdlwfDAO" class="cn.com.atblue.oa.dao.impl.FyglZhdlwfImpl" autowire="byName"/>
+    <bean id="fyglZqlwyfDAO" class="cn.com.atblue.oa.dao.impl.FyglZqlwyfImpl" autowire="byName"/>
+
+    <bean id="fyglGdclyfAction" class="cn.com.atblue.oa.action.FyglGdclyfAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglPbyfAction" class="cn.com.atblue.oa.action.FyglPbyfAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglScfzyfAction" class="cn.com.atblue.oa.action.FyglScfzyfAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglZhdlwfAction" class="cn.com.atblue.oa.action.FyglZhdlwfAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglZqlwyfAction" class="cn.com.atblue.oa.action.FyglZqlwyfAction" scope="prototype" autowire="byName"/>
+
+    <bean id="fyglAjfjlwDAO" class="cn.com.atblue.oa.dao.impl.FyglAjfjlwImpl" autowire="byName"/>
+    <bean id="fyglBfwxjgxDAO" class="cn.com.atblue.oa.dao.impl.FyglBfwxjgxImpl" autowire="byName"/>
+    <bean id="fyglBgfkhDAO" class="cn.com.atblue.oa.dao.impl.FyglBgfkhImpl" autowire="byName"/>
+    <bean id="fyglBghyDAO" class="cn.com.atblue.oa.dao.impl.FyglBghyImpl" autowire="byName"/>
+    <bean id="fyglDjsrjzcDAO" class="cn.com.atblue.oa.dao.impl.FyglDjsrjzcImpl" autowire="byName"/>
+    <bean id="fyglFlfDAO" class="cn.com.atblue.oa.dao.impl.FyglFlfImpl" autowire="byName"/>
+    <bean id="fyglGhjflDAO" class="cn.com.atblue.oa.dao.impl.FyglGhjflImpl" autowire="byName"/>
+    <bean id="fyglGnfDAO" class="cn.com.atblue.oa.dao.impl.FyglGnfImpl" autowire="byName"/>
+    <bean id="fyglGyfwDAO" class="cn.com.atblue.oa.dao.impl.FyglGyfwImpl" autowire="byName"/>
+    <bean id="fyglJdwxjlwDAO" class="cn.com.atblue.oa.dao.impl.FyglJdwxjlwImpl" autowire="byName"/>
+    <bean id="fyglJjwxjhcDAO" class="cn.com.atblue.oa.dao.impl.FyglJjwxjhcImpl" autowire="byName"/>
+    <bean id="fyglKzjzqysDAO" class="cn.com.atblue.oa.dao.impl.FyglKzjzqysImpl" autowire="byName"/>
+    <bean id="fyglLhfwDAO" class="cn.com.atblue.oa.dao.impl.FyglLhfwImpl" autowire="byName"/>
+    <bean id="fyglLwscDAO" class="cn.com.atblue.oa.dao.impl.FyglLwscImpl" autowire="byName"/>
+    <bean id="fyglPsyfDAO" class="cn.com.atblue.oa.dao.impl.FyglPsyfImpl" autowire="byName"/>
+    <bean id="fyglPxfDAO" class="cn.com.atblue.oa.dao.impl.FyglPxfImpl" autowire="byName"/>
+    <bean id="fyglQtzxfyDAO" class="cn.com.atblue.oa.dao.impl.FyglQtzxfyImpl" autowire="byName"/>
+    <bean id="fyglScfzlwDAO" class="cn.com.atblue.oa.dao.impl.FyglScfzlwImpl" autowire="byName"/>
+    <bean id="fyglTwjfDAO" class="cn.com.atblue.oa.dao.impl.FyglTwjfImpl" autowire="byName"/>
+    <bean id="fyglWcfDAO" class="cn.com.atblue.oa.dao.impl.FyglWcfImpl" autowire="byName"/>
+    <bean id="fyglWgygDAO" class="cn.com.atblue.oa.dao.impl.FyglWgygImpl" autowire="byName"/>
+    <bean id="fyglWxdlwDAO" class="cn.com.atblue.oa.dao.impl.FyglWxdlwImpl" autowire="byName"/>
+    <bean id="fyglWzffmxDAO" class="cn.com.atblue.oa.dao.impl.FyglWzffmxImpl" autowire="byName"/>
+    <bean id="fyglXcjtsDAO" class="cn.com.atblue.oa.dao.impl.FyglXcjtsImpl" autowire="byName"/>
+    <bean id="fyglYljwdDAO" class="cn.com.atblue.oa.dao.impl.FyglYljwdImpl" autowire="byName"/>
+
+    <bean id="fyglAjfjlwAction" class="cn.com.atblue.oa.action.FyglAjfjlwAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglBfwxjgxAction" class="cn.com.atblue.oa.action.FyglBfwxjgxAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglBgfkhAction" class="cn.com.atblue.oa.action.FyglBgfkhAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglBghyAction" class="cn.com.atblue.oa.action.FyglBghyAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglDjsrjzcAction" class="cn.com.atblue.oa.action.FyglDjsrjzcAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglFlfAction" class="cn.com.atblue.oa.action.FyglFlfAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglGhjflAction" class="cn.com.atblue.oa.action.FyglGhjflAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglGnfAction" class="cn.com.atblue.oa.action.FyglGnfAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglGyfwAction" class="cn.com.atblue.oa.action.FyglGyfwAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglJdwxjlwAction" class="cn.com.atblue.oa.action.FyglJdwxjlwAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglJjwxjhcAction" class="cn.com.atblue.oa.action.FyglJjwxjhcAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglKzjzqysAction" class="cn.com.atblue.oa.action.FyglKzjzqysAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglLhfwAction" class="cn.com.atblue.oa.action.FyglLhfwAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglLwscAction" class="cn.com.atblue.oa.action.FyglLwscAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglPsyfAction" class="cn.com.atblue.oa.action.FyglPsyfAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglPxfAction" class="cn.com.atblue.oa.action.FyglPxfAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglQtzxfyAction" class="cn.com.atblue.oa.action.FyglQtzxfyAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglScfzlwAction" class="cn.com.atblue.oa.action.FyglScfzlwAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglTwjfAction" class="cn.com.atblue.oa.action.FyglTwjfAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglWcfAction" class="cn.com.atblue.oa.action.FyglWcfAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglWgygAction" class="cn.com.atblue.oa.action.FyglWgygAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglWxdlwAction" class="cn.com.atblue.oa.action.FyglWxdlwAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglWzffmxAction" class="cn.com.atblue.oa.action.FyglWzffmxAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglXcjtsAction" class="cn.com.atblue.oa.action.FyglXcjtsAction" scope="prototype" autowire="byName"/>
+    <bean id="fyglYljwdAction" class="cn.com.atblue.oa.action.FyglYljwdAction" scope="prototype" autowire="byName"/>
+
 </beans>

@@ -6,9 +6,9 @@
 
     <package name="atblue_oa" extends="struts-default" namespace="/oa" >
         <action name="${className}_*" class="${actionName}" method="{1}">
-            <result name="list">/oa/fygl/${className2}/list.jsp</result>
-            <result name="add">/oa/fygl/${className2}/add.jsp</result>
-            <result name="mod">/oa/fygl/${className2}/mod.jsp</result>
+            <result name="list">/oa/fygl/${className}_list.jsp</result>
+            <result name="add">/oa/fygl/${className}_add.jsp</result>
+            <result name="mod">/oa/fygl/${className}_mod.jsp</result>
             <result name="del" type="redirect">${className}_list.d</result>
             <result name="save" type="redirect">${className}_list.d</result>
         </action>

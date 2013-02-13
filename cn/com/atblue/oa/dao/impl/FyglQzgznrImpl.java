@@ -31,4 +31,12 @@ public class FyglQzgznrImpl extends SqlMapClientDaoSupport implements FyglQzgznr
     public int queryForCount(Map paramMap){
         return (Integer)this.getSqlMapClientTemplate().queryForObject("oa.fyglqzgznr.queryForCount", paramMap);
     }
+
+    public List getPagedList(Map paramMap){
+        return this.getSqlMapClientTemplate().queryForList("oa.fyglqzgznr.getPagedList", paramMap);
+    }
+
+    public int getPagedCount(Map paramMap){
+        return (Integer)this.getSqlMapClientTemplate().queryForObject("oa.fyglqzgznr.getPagedCount", paramMap);
+    }
 }

@@ -2,7 +2,7 @@
 pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Map" %>
-<%@ include file="<%=request.getContextPath()%>/import.jsp"%>
+<%@ include file="../../import.jsp"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 CUser cUser = (CUser)session.getAttribute("cUser");
@@ -53,6 +53,8 @@ cOrgnization = cOrgnization == null?new COrgnization():cOrgnization;
 <body onload="_resizeNoPage();">
 <form action="${className}_save.d" name="form1" method="post">
     <input type="hidden" name="action" value="save"/>
+    <input type="hidden" name="${pkid}" value="<s:property value="${pkid}"/>"/>
+    <input type="hidden" name="bean.${pkid}" value="<s:property value="bean.${pkid}"/>"/>
     <table width="100%" height="25" border="0" cellpadding="0"
            cellspacing="0"
            background="<%=request.getContextPath()%>/images/mhead.jpg">
@@ -62,7 +64,7 @@ cOrgnization = cOrgnization == null?new COrgnization():cOrgnization;
                      height="11">
             </td>
             <td width="15%" class="mhead">
-                新建${classComments}
+                修改${classComments}
             </td>
             <td width="74%" align="left" class="mhead">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -92,10 +94,10 @@ cOrgnization = cOrgnization == null?new COrgnization():cOrgnization;
                            cellspacing="0" class="mtabtab" id="mtabtab">
                     <#list columnList as v>
                         <tr>
-                            <td nowrap="nowrap" width="20%" class="head_left">
+                            <td nowrap="nowrap" width="120" class="head_left">
                                 ${v.comments}
                             </td>
-                            <td class="head_right" align="left" style="text-align: left" width="30%" >
+                            <td class="head_right" align="left" style="text-align: left">
                                 <#if v.type == 'Date'>
                                     <input type="text" name="bean.${v.name}" value="<s:date name="bean.${v.name}" format="yyyy-MM-dd"/>"/>" class="Wdate" onClick="WdatePicker()"/>
                                 <#else>

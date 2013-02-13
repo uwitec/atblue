@@ -13,6 +13,11 @@
 			<maxWait>1000</maxWait>
 			<minIdle>1</minIdle>
 			<initSize>5</initSize>
+            <!--<maxActive>200</maxActive>-->
+            <!--<maxIdle>50</maxIdle>-->
+            <!--<maxWait>1000</maxWait>-->
+            <!--<minIdle>10</minIdle>-->
+            <!--<initSize>50</initSize>-->
 		</dbsource>
     </datasources>
 </context>

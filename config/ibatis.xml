@@ -100,6 +100,37 @@
     <sqlMap resource="cn/com/atblue/oa/dao/impl/OfficeYsfYspImpl.xml" />
 
     <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglFwdwImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglGdclyfImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglPbyfImpl.xml" />
     <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglQzgznrImpl.xml" />
     <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglQzyfImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglScfzyfImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglZhdlwfImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglZqlwyfImpl.xml" />
+
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglAjfjlwImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglBfwxjgxImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglBgfkhImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglBghyImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglDjsrjzcImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglFlfImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglGhjflImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglGnfImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglGyfwImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglJdwxjlwImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglJjwxjhcImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglKzjzqysImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglLhfwImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglLwscImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglPsyfImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglPxfImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglQtzxfyImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglScfzlwImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglTwjfImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglWcfImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglWgygImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglWxdlwImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglWzffmxImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglXcjtsImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglYljwdImpl.xml" />
 </sqlMapConfig>
