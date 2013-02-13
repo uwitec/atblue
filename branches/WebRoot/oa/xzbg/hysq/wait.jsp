@@ -29,6 +29,7 @@
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="true"></script>
         <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=request.getContextPath()%>/css/web.css" rel="stylesheet" type="text/css">
         <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet" type="text/css">
         <link href="<%=contentPath%>/css/office.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
@@ -116,38 +117,44 @@
 
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("SQID"),"") %>')">
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td  align="left">
+							<td  align="left" class="form_th">
 								<a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("HYMC"),"") %></a>
 							</td>
 							
-							<td  align="left">
-								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
+							<td  align="left" class="form_th">
+                                <%
+                                    String sqbm = StringUtil.parseNull(map.get("SQBM"),"");
+                                    paramMap.put("orgnaId",sqbm);
+                                    COrgnization yyOrgnization = orgnizationDAO.queryForBean(paramMap);
+                                    yyOrgnization = yyOrgnization ==null?new COrgnization():yyOrgnization;
+                                %>
+                                <%=yyOrgnization.getOrgnaName()%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%if(sTime != null){ %>
                                 <%=DateUtil.format(sTime.timestampValue(),"yyyy-MM-dd HH:mm")%>
                                 <% }%>
                                     &nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
                                 <%if(eTime != null){ %>
                                 <%=DateUtil.format(eTime.timestampValue(), "yyyy-MM-dd HH:mm")%>
                                 <% }%>
 							</td>
-							<td  align="left">
+							<td  align="left" class="form_th">
 								<%=StringUtil.cutString(StringUtil.parseNull(map.get("HYNR"),""),25)%>
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
-							<td class="NormalDataColumn" align="center" nowrap="nowrap">
+							<td class="NormalDataColumn" align="center" nowrap="nowrap" class="form_th">
                                 <input type="button" class="button" style="width: 60px" name=""  value="审批" onclick="window.location='sp.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>';"/>
                                 &nbsp;
 							</td>

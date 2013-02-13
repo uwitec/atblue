@@ -212,7 +212,13 @@
 										申请部门
 									</td>
 									<td class="head_right" style="text-align: left">
-                                        <%=StringUtil.parseNull(cOrgnization.getOrgnaName(),"")%>
+                                        <%
+                                            String sqbm = StringUtil.parseNull(hysq.getSqbm(),"");
+                                            paramMap.put("orgnaId",sqbm);
+                                            COrgnization yyOrgnization = orgnizationDAO.queryForBean(paramMap);
+                                            yyOrgnization = yyOrgnization ==null?new COrgnization():yyOrgnization;
+                                        %>
+                                        <%=yyOrgnization.getOrgnaName()%>
 									</td>
 								</tr>
 								<tr>

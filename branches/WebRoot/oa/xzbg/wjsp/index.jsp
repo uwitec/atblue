@@ -143,28 +143,28 @@
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td class="NormalDataColumn" style="text-align: left"  nowrap="nowrap">
+							<td class="form_th" style="text-align: left"  nowrap="nowrap">
 								<a href="view.jsp?documentid=<%=StringUtil.parseNull(map.get("DOCUMENTID"),"") %>"><%=StringUtil.parseNull(map.get("BT"),"") %></a>
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td class="form_th" align="center">
 								<%=StringUtil.parseNull(map.get("LB"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" style="text-align: left">
+							<td class="form_th" style="text-align: left">
 								<%=StringUtil.parseNull(map.get("WJBH"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center">
+							<td class="form_th" align="center">
                                 <%=StringUtil.parseNull(map.get("MMCD"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="left">
+							<td class="form_th" align="left">
 								<%=StringUtil.parseNull(map.get("HJSX"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="left">
+							<td class="form_th" align="left">
 								<%=StringUtil.parseNull(map.get("QFRQ"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="left">
+							<td class="form_th" align="left">
 								<%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
 							</td>
-							<td class="NormalDataColumn" style="text-align: center">
+							<td class="form_th" style="text-align: center">
                                 <%String sqzt = StringUtil.parseNull(map.get("SQZT"),"");
                                     if("已完成".equals(sqzt)){ %>
                                 <font color="green"><%=sqzt%></font>
@@ -175,7 +175,7 @@
                                 <% }
                                 %>&nbsp;
 							</td>
-							<td class="NormalDataColumn" align="center" nowrap="nowrap">
+							<td class="form_th" align="center" nowrap="nowrap">
                                  <%
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
