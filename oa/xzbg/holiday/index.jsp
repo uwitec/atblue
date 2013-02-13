@@ -9,8 +9,10 @@
 <%
     CUser cUser = (CUser)session.getAttribute("cUser");
     String curRole = request.getParameter("curRole");
-    String kssj = request.getParameter("kssj")==null?DateUtil.format(DateUtil.addDate(DateUtil.getDate(),-20),"yyyy-MM-dd"):request.getParameter("kssj");
-    String jssj = request.getParameter("jssj")==null?DateUtil.format(DateUtil.addDate(DateUtil.getDate(),0),"yyyy-MM-dd"):request.getParameter("jssj");
+//    String kssj = request.getParameter("kssj")==null?DateUtil.format(DateUtil.addDate(DateUtil.getDate(),-20),"yyyy-MM-dd"):request.getParameter("kssj");
+    String kssj = request.getParameter("kssj")==null?"":request.getParameter("kssj");
+    String jssj = request.getParameter("jssj")==null?"":request.getParameter("jssj");
+//    String jssj = request.getParameter("jssj")==null?DateUtil.format(DateUtil.addDate(DateUtil.getDate(),0),"yyyy-MM-dd"):request.getParameter("jssj");
     cUser = cUser == null?new CUser():cUser;
     String orgId = cUser.getOrgnaId();
     Map paramMap = new HashMap();
@@ -31,6 +33,7 @@
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="true"></script>
         <link href="<%=contentPath%>/css/css.css" rel="stylesheet" type="text/css">
+        <link href="<%=contentPath%>/css/web.css" rel="stylesheet" type="text/css">
         <link href="<%=contentPath%>/images/css.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="true"></script>
@@ -200,29 +203,29 @@
 
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("HOLIDAYID"),"") %>')">
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td  align="center" style="text-align: left">
+							<td  align="center" style="text-align: left" class="form_th">
 								<a href="view.jsp?holidayid=<%=StringUtil.parseNull(map.get("HOLIDAYID"),"") %>"><%=StringUtil.parseNull(map.get("XM"),"") %></a>
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=StringUtil.parseNull(map.get("DW"),"")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=map.get("KSSJ")+"至"+map.get("JSSJ")%>&nbsp;
 							</td>
-							<td  align="left" style="text-align: left">
+							<td  align="left" style="text-align: left" class="form_th">
                                 <%=StringUtil.parseNull(map.get("WCDD"),"")%>&nbsp;
 							</td>
-							<td  align="left" style="text-align: left">
+							<td  align="left" style="text-align: left" class="form_th">
 								<%=StringUtil.parseNull(map.get("WCSY"),"")%>&nbsp;
 							</td>
-                            <td  align="left" style="text-align: center">
+                            <td  align="left" style="text-align: center" class="form_th">
                                 <%=StringUtil.parseNull(map.get("XJSJ"),"")%>&nbsp;
                             </td>
-                            <td  align="center" nowrap="nowrap">
+                            <td  align="center" nowrap="nowrap" class="form_th">
                                 <%String sqzt = StringUtil.parseNull(map.get("SQZT"),"");
                                     if("已完成".equals(sqzt)){ %>
                                 <font color="green"><%=sqzt%></font>
@@ -233,7 +236,7 @@
                                 <% }
                                 %>&nbsp;
                             </td>
-							<td  align="center" nowrap="nowrap">
+							<td  align="center" nowrap="nowrap" class="form_th">
                                  <%
                                     String processId = StringUtil.parseNull(map.get("PROCESS_ID"),"");
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");

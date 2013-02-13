@@ -26,6 +26,7 @@
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="true"></script>
         <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
+        <link href="<%=request.getContextPath()%>/css/web.css" rel="stylesheet"  type="text/css">
         <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
 	</head>
 	<body>
@@ -78,18 +79,18 @@
 								Map map = (Map) list.get(i);
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=i%>')">
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td  align="left" style="text-align: left">
+							<td  align="left" style="text-align: left" class="form_th">
 								<%=StringUtil.parseNull(map.get("ACTIVITY_NAME"),"") %>&nbsp;
 							</td>
 							
-							<td  align="left" style="text-align: left">
+							<td  align="left" style="text-align: left" class="form_th">
 								<%=StringUtil.parseNull(map.get("REAL_NAME"),"")%>&nbsp;
 							</td>
-							<td  align="center" style="text-align: left">
+							<td  align="center" style="text-align: left" class="form_th">
                                 <%=StringUtil.parseNull(map.get("REAL_NAME2"),"")%>
                                     &nbsp;
 							</td>
