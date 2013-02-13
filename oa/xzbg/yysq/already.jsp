@@ -29,7 +29,8 @@
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="true"></script>
         <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"  type="text/css">
-        <link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">
+        <link href="<%=request.getContextPath()%>/css/web.css" rel="stylesheet"  type="text/css">
+        <%--<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"  type="text/css">--%>
         <script type="text/javascript" charset="GB2312"
                 src="<%=request.getContextPath()%>/js/date/WdatePicker.js" defer="true"></script>
 		<script type="text/javascript">
@@ -107,31 +108,37 @@
 								Map map = (Map) list.get(i);
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=StringUtil.parseNull(map.get("SQID"),"") %>')">
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-                            <td  align="left" style="text-align: left">
+                            <td  align="left" style="text-align: left" class="form_th">
                                 <a href="view.jsp?sqid=<%=StringUtil.parseNull(map.get("SQID"),"") %>"><%=StringUtil.parseNull(map.get("YYMC"),"") %></a>
                             </td>
 
-                            <td  align="left" style="text-align: left">
-                                <%=StringUtil.parseNull(map.get("ORGNA_NAME"),"")%>&nbsp;
+                            <td  align="left" style="text-align: left" class="form_th">
+                                <%
+                                    String yybm = StringUtil.parseNull(map.get("YYBM"),"");
+                                    paramMap.put("orgnaId",yybm);
+                                    COrgnization yyOrgnization = orgnizationDAO.queryForBean(paramMap);
+                                    yyOrgnization = yyOrgnization ==null?new COrgnization():yyOrgnization;
+                                %>
+                                <%=yyOrgnization.getOrgnaName()%>&nbsp;
                             </td>
-                            <td  align="center">
+                            <td  align="center" class="form_th">
                                 <%=StringUtil.parseNull(map.get("SQSJ"),"")%>&nbsp;
                             </td>
-                            <td  align="center">
+                            <td  align="center" class="form_th">
                                 <%=StringUtil.parseNull(map.get("YYKSSJ"),"")%>
                                 &nbsp;
                             </td>
-                            <td  align="center">
+                            <td  align="center" class="form_th">
                                 <%=StringUtil.parseNull(map.get("YYJSSJ"),"")%>
                             </td>
                             <%--<td  align="left" style="text-align: left">--%>
                                 <%--<%=StringUtil.cutString(StringUtil.parseNull(map.get("YYSY"),""),25)%>--%>
                             <%--</td>--%>
-							<td  align="center" nowrap="nowrap">
+							<td  align="center" nowrap="nowrap" class="form_th">
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>
 							</td>
 						</tr>
