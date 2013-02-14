@@ -15,8 +15,10 @@
     Map paramMap = new HashMap();
     if(!StringUtil.isBlankOrEmpty(hymc))
         paramMap.put("hymc",hymc);
-	  if(!"1".equals(flag))
-	    paramMap.put("orgnaId", _user.getOrgnaId()==null?"":_user.getOrgnaId());
+    if(!"system".equals(cUser.getUserName())){
+        if(!"1".equals(flag))
+            paramMap.put("orgnaId", _user.getOrgnaId()==null?"":_user.getOrgnaId());
+    }
 	pageBean.setPageSize(pageSize);
 
 	int totalRow =oDao.getPagedHysqCount(paramMap);

@@ -18,7 +18,10 @@
     if(!StringUtil.isBlankOrEmpty(mc)){
         paramMap.put("bt",mc);
      }
-	paramMap.put("bm", _user.getOrgnaId()==null?"":_user.getOrgnaId());
+    if(!"system".equals(cUser.getUserName())){
+        paramMap.put("bm", _user.getOrgnaId()==null?"":_user.getOrgnaId());
+    }
+
 	pageBean.setPageSize(pageSize);
 	int totalRow =officePlanDAO.getPagedCount(paramMap);
 	pageBean.setTotalRows(totalRow);
