@@ -15,8 +15,10 @@
     Map paramMap = new HashMap();
     if(!StringUtil.isBlankOrEmpty(yymc))
         paramMap.put("yymc",yymc);
-    if(!"1".equals(flag))
-	    paramMap.put("orgnaId", _user.getOrgnaId()==null?"":_user.getOrgnaId());
+    if(!"system".equals(cUser.getUserName())){
+        if(!"1".equals(flag))
+            paramMap.put("orgnaId", _user.getOrgnaId()==null?"":_user.getOrgnaId());
+    }
 	pageBean.setPageSize(pageSize);
 
 	int totalRow =oDao.getPagedYysqCount(paramMap);
@@ -26,7 +28,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Insert title here</title>
+		<title>用印申请列表</title>
         <script src="<%=request.getContextPath()%>/js/common.js"
                 type="text/javascript" defer="true"></script>
         <link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet" type="text/css">

@@ -16,7 +16,10 @@
     if(!StringUtil.isBlankOrEmpty(mc))
     paramMap.put("mc",mc);
     paramMap.put("roleflag",curRole);
-    paramMap.put("sqr",cUser.getUserId());
+    if(!"system".equals(cUser.getUserName())){
+        paramMap.put("sqr",cUser.getUserId());
+    }
+
 	pageBean.setPageSize(pageSize);
 
 	int totalRow =officeSuppliesDAO.getPagedCount(paramMap); 

@@ -434,6 +434,11 @@
                                     </td>
                                 </tr>
                                 <%} %>
+                                <tr>
+                                    <td nowrap="nowrap" colspan="2" style="text-align: left">
+                                        <strong>说明：</strong>分管领导可以选择不发送给主要领导进行审批，选择待处理部门，提交后结束流程。
+                                    </td>
+                                </tr>
 							</table>
 						</div>
 					</td>
