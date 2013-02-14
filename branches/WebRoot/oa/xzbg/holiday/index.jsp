@@ -17,7 +17,10 @@
     String orgId = cUser.getOrgnaId();
     Map paramMap = new HashMap();
     paramMap.put("roleflag",curRole);
-    paramMap.put("sqr",cUser.getUserId());
+    if(!"system".equals(cUser.getUserName())){
+        paramMap.put("sqr",cUser.getUserId());
+    }
+
     paramMap.put("kssj",kssj);
     paramMap.put("jssj",jssj);
 	pageBean.setPageSize(pageSize);
