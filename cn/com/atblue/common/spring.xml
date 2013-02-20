@@ -59,7 +59,7 @@
         <property name="outputDir" value="D:\\"/>
         <property name="prefixOfPackage" value="cn.com.atblue.oa"/>
         <property name="prefixOfSqlmap" value="oa"/>
-        <property name="prefixOfTable" value="FYGL_DJSRJZC"/>
+        <property name="prefixOfTable" value="FLGL_"/>
         <property name="dataSource" ref="internalDataSource"/>
     </bean>
     <!-- ÓÊ¼þÅäÖÃ -->

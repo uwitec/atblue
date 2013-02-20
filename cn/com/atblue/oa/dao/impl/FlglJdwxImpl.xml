@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.flgljdwx">
+    <typeAlias alias="FlglJdwx" type="cn.com.atblue.oa.bean.FlglJdwx"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="lbbm">
+                <![CDATA[lbbm=#lbbm#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lbmc">
+                <![CDATA[lbmc=#lbmc#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="lbms">
+                <![CDATA[lbms=#lbms#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="px">
+                <![CDATA[px=#px#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addFlglJdwx" parameterClass="FlglJdwx">
+        <![CDATA[
+            insert into flgl_jdwx(
+                lbbm,lbmc,lbms,px
+            ) values(
+                #lbbm#,#lbmc#,#lbms#,#px#
+            )
+        ]]>
+    </insert>
+
+    <update id="modFlglJdwx" parameterClass="FlglJdwx">
+        <![CDATA[
+            update flgl_jdwx
+            set lbbm=#lbbm#,lbmc=#lbmc#,lbms=#lbms#,
+				px=#px#
+            where LBBM=#lbbm#
+        ]]>
+    </update>
+
+    <delete id="delFlglJdwx" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from flgl_jdwx
+            where LBBM=#lbbm#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="FlglJdwx">
+        <![CDATA[
+            select lbbm as lbbm,lbmc as lbmc,lbms as lbms,px as px from flgl_jdwx where LBBM=#lbbm#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="FlglJdwx">
+        <![CDATA[
+            select lbbm as lbbm,lbmc as lbmc,lbms as lbms,px as px from flgl_jdwx
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from flgl_jdwx
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="getPagedList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+        select t.*  from flgl_jdwx t where 1=1
+        ]]>
+        <!--
+          <dynamic prepend="where">
+              <isNotEmpty prepend=" and " property="customProperty">
+                  <![CDATA[customProperty=#customProperty#]]>
+              </isNotEmpty>
+          </dynamic>
+          -->
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+        select count(*) cn  from flgl_jdwx  t  where 1=1
+        ]]>
+        <!--
+         <dynamic prepend="where">
+             <isNotEmpty prepend=" and " property="customProperty">
+                 <![CDATA[customProperty=#customProperty#]]>
+             </isNotEmpty>
+         </dynamic>
+         -->
+    </select>
+</sqlMap>

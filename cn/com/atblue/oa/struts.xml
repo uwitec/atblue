@@ -266,5 +266,54 @@
             <result name="del" type="redirect">FyglYljwd_list.d</result>
             <result name="save" type="redirect">FyglYljwd_list.d</result>
         </action>
+        <action name="FlglWz_*" class="flglWzAction" method="{1}">
+            <result name="list">/oa/fygl/FlglWz_list.jsp</result>
+            <result name="add">/oa/fygl/FlglWz_add.jsp</result>
+            <result name="mod">/oa/fygl/FlglWz_mod.jsp</result>
+            <result name="del" type="redirect">FlglWz_list.d</result>
+            <result name="save" type="redirect">FlglWz_list.d</result>
+        </action>
+        <action name="FlglYlz_*" class="flglYlzAction" method="{1}">
+            <result name="list">/oa/fygl/FlglYlz_list.jsp</result>
+            <result name="add">/oa/fygl/FlglYlz_add.jsp</result>
+            <result name="mod">/oa/fygl/FlglYlz_mod.jsp</result>
+            <result name="del" type="redirect">FlglYlz_list.d</result>
+            <result name="save" type="redirect">FlglYlz_list.d</result>
+        </action>
+        <action name="FlglAq_*" class="flglAqAction" method="{1}">
+            <result name="list">/oa/fygl/FlglAq_list.jsp</result>
+            <result name="add">/oa/fygl/FlglAq_add.jsp</result>
+            <result name="mod">/oa/fygl/FlglAq_mod.jsp</result>
+            <result name="del" type="redirect">FlglAq_list.d</result>
+            <result name="save" type="redirect">FlglAq_list.d</result>
+        </action>
+        <action name="FlglCx_*" class="flglCxAction" method="{1}">
+            <result name="list">/oa/fygl/FlglCx_list.jsp</result>
+            <result name="add">/oa/fygl/FlglCx_add.jsp</result>
+            <result name="mod">/oa/fygl/FlglCx_mod.jsp</result>
+            <result name="del" type="redirect">FlglCx_list.d</result>
+            <result name="save" type="redirect">FlglCx_list.d</result>
+        </action>
+        <action name="FlglJdwx_*" class="flglJdwxAction" method="{1}">
+            <result name="list">/oa/fygl/FlglJdwx_list.jsp</result>
+            <result name="add">/oa/fygl/FlglJdwx_add.jsp</result>
+            <result name="mod">/oa/fygl/FlglJdwx_mod.jsp</result>
+            <result name="del" type="redirect">FlglJdwx_list.d</result>
+            <result name="save" type="redirect">FlglJdwx_list.d</result>
+        </action>
+        <action name="FlglJh_*" class="flglJhAction" method="{1}">
+            <result name="list">/oa/fygl/FlglJh_list.jsp</result>
+            <result name="add">/oa/fygl/FlglJh_add.jsp</result>
+            <result name="mod">/oa/fygl/FlglJh_mod.jsp</result>
+            <result name="del" type="redirect">FlglJh_list.d</result>
+            <result name="save" type="redirect">FlglJh_list.d</result>
+        </action>
+        <action name="FlglQzgznr_*" class="flglQzgznrAction" method="{1}">
+            <result name="list">/oa/fygl/FlglQzgznr_list.jsp</result>
+            <result name="add">/oa/fygl/FlglQzgznr_add.jsp</result>
+            <result name="mod">/oa/fygl/FlglQzgznr_mod.jsp</result>
+            <result name="del" type="redirect">FlglQzgznr_list.d</result>
+            <result name="save" type="redirect">FlglQzgznr_list.d</result>
+        </action>
 	</package>
 </struts>
