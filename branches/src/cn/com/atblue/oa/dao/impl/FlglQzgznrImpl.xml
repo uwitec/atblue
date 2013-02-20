@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="oa.flglqzgznr">
+    <typeAlias alias="FlglQzgznr" type="cn.com.atblue.oa.bean.FlglQzgznr"/>
+
+    <sql id="dynamicRuleSql">
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="nrbm">
+                <![CDATA[nrbm=#nrbm#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="gznr">
+                <![CDATA[gznr=#gznr#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="nrms">
+                <![CDATA[nrms=#nrms#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="px">
+                <![CDATA[px=#px#]]>
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+    <insert id="addFlglQzgznr" parameterClass="FlglQzgznr">
+        <![CDATA[
+            insert into flgl_qzgznr(
+                nrbm,gznr,nrms,px
+            ) values(
+                #nrbm#,#gznr#,#nrms#,#px#
+            )
+        ]]>
+    </insert>
+
+    <update id="modFlglQzgznr" parameterClass="FlglQzgznr">
+        <![CDATA[
+            update flgl_qzgznr
+            set nrbm=#nrbm#,gznr=#gznr#,nrms=#nrms#,
+				px=#px#
+            where NRBM=#nrbm#
+        ]]>
+    </update>
+
+    <delete id="delFlglQzgznr" parameterClass="java.util.HashMap">
+        <![CDATA[
+            delete from flgl_qzgznr
+            where NRBM=#nrbm#
+        ]]>
+    </delete>
+
+    <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="FlglQzgznr">
+        <![CDATA[
+            select nrbm as nrbm,gznr as gznr,nrms as nrms,px as px from flgl_qzgznr where NRBM=#nrbm#
+        ]]>
+    </select>
+
+    <select id="queryForList" parameterClass="java.util.HashMap" resultClass="FlglQzgznr">
+        <![CDATA[
+            select nrbm as nrbm,gznr as gznr,nrms as nrms,px as px from flgl_qzgznr
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="queryForCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+            select count(*) from flgl_qzgznr
+        ]]>
+        <!--
+        <dynamic prepend="where">
+            <isNotEmpty prepend=" and " property="customProperty">
+                <![CDATA[customProperty=#customProperty#]]>
+            </isNotEmpty>
+        </dynamic>
+        -->
+    </select>
+
+    <select id="getPagedList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+        <include refid="basic.pageStart"/>
+        <![CDATA[
+        select t.*  from flgl_qzgznr t where 1=1
+        ]]>
+        <!--
+          <dynamic prepend="where">
+              <isNotEmpty prepend=" and " property="customProperty">
+                  <![CDATA[customProperty=#customProperty#]]>
+              </isNotEmpty>
+          </dynamic>
+          -->
+        <include refid="basic.pageEnd"/>
+    </select>
+    <select id="getPagedCount" parameterClass="java.util.HashMap" resultClass="int">
+        <![CDATA[
+        select count(*) cn  from flgl_qzgznr  t  where 1=1
+        ]]>
+        <!--
+         <dynamic prepend="where">
+             <isNotEmpty prepend=" and " property="customProperty">
+                 <![CDATA[customProperty=#customProperty#]]>
+             </isNotEmpty>
+         </dynamic>
+         -->
+    </select>
+</sqlMap>

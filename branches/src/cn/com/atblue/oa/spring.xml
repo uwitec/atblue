@@ -120,4 +120,20 @@
     <bean id="fyglXcjtsAction" class="cn.com.atblue.oa.action.FyglXcjtsAction" scope="prototype" autowire="byName"/>
     <bean id="fyglYljwdAction" class="cn.com.atblue.oa.action.FyglYljwdAction" scope="prototype" autowire="byName"/>
 
+    <bean id="flglAqDAO" class="cn.com.atblue.oa.dao.impl.FlglAqImpl" autowire="byName"/>
+    <bean id="flglCxDAO" class="cn.com.atblue.oa.dao.impl.FlglCxImpl" autowire="byName"/>
+    <bean id="flglJdwxDAO" class="cn.com.atblue.oa.dao.impl.FlglJdwxImpl" autowire="byName"/>
+    <bean id="flglJhDAO" class="cn.com.atblue.oa.dao.impl.FlglJhImpl" autowire="byName"/>
+    <bean id="flglQzgznrDAO" class="cn.com.atblue.oa.dao.impl.FlglQzgznrImpl" autowire="byName"/>
+    <bean id="flglWzDAO" class="cn.com.atblue.oa.dao.impl.FlglWzImpl" autowire="byName"/>
+    <bean id="flglYlzDAO" class="cn.com.atblue.oa.dao.impl.FlglYlzImpl" autowire="byName"/>
+
+    <bean id="flglAqAction" class="cn.com.atblue.oa.action.FlglAqAction" scope="prototype" autowire="byName"/>
+    <bean id="flglCxAction" class="cn.com.atblue.oa.action.FlglCxAction" scope="prototype" autowire="byName"/>
+    <bean id="flglJdwxAction" class="cn.com.atblue.oa.action.FlglJdwxAction" scope="prototype" autowire="byName"/>
+    <bean id="flglJhAction" class="cn.com.atblue.oa.action.FlglJhAction" scope="prototype" autowire="byName"/>
+    <bean id="flglQzgznrAction" class="cn.com.atblue.oa.action.FlglQzgznrAction" scope="prototype" autowire="byName"/>
+    <bean id="flglWzAction" class="cn.com.atblue.oa.action.FlglWzAction" scope="prototype" autowire="byName"/>
+    <bean id="flglYlzAction" class="cn.com.atblue.oa.action.FlglYlzAction" scope="prototype" autowire="byName"/>
+
 </beans>

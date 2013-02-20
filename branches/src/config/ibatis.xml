@@ -133,4 +133,12 @@
     <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglWzffmxImpl.xml" />
     <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglXcjtsImpl.xml" />
     <sqlMap resource="cn/com/atblue/oa/dao/impl/FyglYljwdImpl.xml" />
+
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FlglAqImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FlglCxImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FlglJdwxImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FlglJhImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FlglQzgznrImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FlglWzImpl.xml" />
+    <sqlMap resource="cn/com/atblue/oa/dao/impl/FlglYlzImpl.xml" />
 </sqlMapConfig>
