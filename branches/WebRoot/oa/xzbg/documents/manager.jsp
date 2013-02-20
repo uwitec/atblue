@@ -28,6 +28,7 @@
 		<script src="<%=contentPath%>/js/common.js"
 			type="text/javascript" defer="true"></script>
 		<link href="<%=request.getContextPath()%>/css/css.css" rel="stylesheet"	type="text/css">
+		<link href="<%=request.getContextPath()%>/css/web.css" rel="stylesheet"	type="text/css">
 		<link href="<%=request.getContextPath()%>/images/css.css" rel="stylesheet"	type="text/css">
 		<script type="text/javascript">
 		function onDelete(url){
@@ -93,31 +94,32 @@
 								OfficeDocuments document = (OfficeDocuments) list.get(i);
 						%>
 						<tr onclick="setSelected(this,'tab_id','tr_head','<%=document.getDocumentid()%>')">
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-							<td  align="center" style="text-align: left">
-								<a href="view.jsp?pkid=<%=document.getDocumentid() %>"><%=document.getWjbh()%></a>
+							<td  align="center" style="text-align: left" class="form_th">
+								<a href="view.jsp?pkid=<%=document.getDocumentid() %>"><%=StringUtil.parseNull(document.getWjbh(),"")%></a>
+                                &nbsp;
 							</td>
 							
-							<td  align="center" style="text-align: left">
+							<td  align="center" style="text-align: left" class="form_th">
 								<%=document.getBt()%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=document.getLb()%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%=DateUtil.format(document.getQfrq(),"yyyy-MM-dd")%>&nbsp;
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%if(document.getStatus()==null || document.getStatus().intValue()==0){ %>
 									<span style="color: red">草稿</span>
 								<%}else{ %>
 									<span style="color: blue">已发放</span>
 								<%} %>
 							</td>
-							<td  align="center">
+							<td  align="center" class="form_th">
 								<%if(document.getStatus()!=null && document.getStatus().intValue()==1){ %>
 									<a href="javascript:alert('该文件已发放，不能进行修改。');">[编辑]</a>&nbsp;
 								<%}else{ %>
