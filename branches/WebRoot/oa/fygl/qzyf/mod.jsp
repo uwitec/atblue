@@ -7,6 +7,8 @@
 <%
     CUser cUser = (CUser)session.getAttribute("cUser");
     cUser = cUser == null?new CUser():cUser;
+    List list = flglQzgznrDAO.queryForList(new HashMap());
+    list = list == null?new ArrayList():list;
 %>
 <html>
 <head>
@@ -136,7 +138,18 @@
                                 工作内容
                             </td>
                             <td class="head_right" align="left" style="text-align: left">
-                                <input type="text" name="bean.nrbm" value="${bean.nrbm}"/>
+                                <select name="bean.nrbm">
+                                    <option value="">--请选择--</option>
+                                    <%
+                                        for(int i=0;i<list.size();i++){
+                                            FlglQzgznr bean = (FlglQzgznr)list.get(i);    %>
+                                    <option value="<%=bean.getNrbm()%>"><%=bean.getGznr()%></option>
+                                    <% }
+                                    %>
+                                </select>
+                                <script>
+                                    document.all["bean.nrbm"].value = "${bean.nrbm}";
+                                </script>
                             </td>
                             <td nowrap="nowrap" class="head_left">
                                 距离

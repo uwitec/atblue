@@ -89,6 +89,8 @@ public class OfficeCirculation {
     private String dxtx;
     private String processId;
     private String connectId;
+    private String mmcd;
+    private String bz;
 
     public String getZt() {
 		return zt;
@@ -376,5 +378,21 @@ public class OfficeCirculation {
 
     public void setConnectId(String connectId) {
         this.connectId = connectId;
+    }
+
+    public String getMmcd() {
+        return mmcd;
+    }
+
+    public void setMmcd(String mmcd) {
+        this.mmcd = mmcd;
+    }
+
+    public String getBz() {
+        return bz;
+    }
+
+    public void setBz(String bz) {
+        this.bz = bz;
     }
 }

@@ -57,6 +57,9 @@
     OfficePlanDAO officePlanDAO = (OfficePlanDAO)SpringFactory.instance.getBean("officePlanDAO");
     OfficeSuppliesDepartDAO officeSuppliesDepartDAO = (OfficeSuppliesDepartDAO)SpringFactory.instance.getBean("officeSuppliesDepartDAO");
     OfficePlanProcessDAO officePlanProcessDAO = (OfficePlanProcessDAO)SpringFactory.instance.getBean("officePlanProcessDAO");
+    FlglQzgznrDAO flglQzgznrDAO = (FlglQzgznrDAO)SpringFactory.instance.getBean("flglQzgznrDAO");
+    FlglYlzDAO flglYlzDAO = (FlglYlzDAO)SpringFactory.instance.getBean("flglYlzDAO");
+
     //获取流程
     Workflow workFlow = (Workflow)SpringFactory.instance.getBean("workflow");
     //传阅ID:

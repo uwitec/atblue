@@ -12,6 +12,8 @@ Map paramMap = new HashMap();
 paramMap.put("orgnaId",orgId);
 COrgnization cOrgnization = orgnizationDAO.queryForBean(paramMap);
 cOrgnization = cOrgnization == null?new COrgnization():cOrgnization;
+    List list = flglYlzDAO.queryForList(new HashMap());
+    list = list == null?new ArrayList():list;
 %>
 <html>
 <head>
@@ -122,8 +124,15 @@ cOrgnization = cOrgnization == null?new COrgnization():cOrgnization;
                                 类别
                             </td>
                             <td class="head_right" align="left" style="text-align: left">
-                                    <input type="text" name="bean.lb" value=""/>
-
+                                <select name="bean.lb">
+                                    <option value="">--请选择--</option>
+                                    <%
+                                        for(int i=0;i<list.size();i++){
+                                            FlglYlz bean = (FlglYlz)list.get(i);    %>
+                                    <option value="<%=bean.getLbbm()%>"><%=bean.getLbmc()%></option>
+                                    <% }
+                                    %>
+                                </select>
                             </td>
                         </tr>
                         <tr>

@@ -97,7 +97,7 @@ cOrgnization = cOrgnization == null?new COrgnization():cOrgnization;
                                 用车日期
                             </td>
                             <td class="head_right" align="left" style="text-align: left">
-                                    <input type="text" name="bean.ycrq" value="<s:date name="bean.ycrq" format="yyyy-MM-dd"/>"/>" class="Wdate" onClick="WdatePicker()"/>
+                                    <input type="text" name="bean.ycrq" value="<s:date name="bean.ycrq" format="yyyy-MM-dd"/>" class="Wdate" onClick="WdatePicker()"/>
 
                             </td>
                         </tr>
