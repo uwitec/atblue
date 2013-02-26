@@ -67,6 +67,22 @@
                                 + 0
                                 + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
             }
+
+            function cyd(pkid,processId,formItemId){
+                window
+                        .open(
+                        "wjcyd.jsp?pkid="+pkid+"&processId="+processId+"&formItemId="+formItemId,
+                        "mywindow",
+                        "height="
+                                + 800
+                                + ",width="
+                                + 700
+                                + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="
+                                + 0
+                                + ",left="
+                                + 0
+                                + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
+            }
             function cy(id){
                 window.location = "chuanyue2.jsp?pkid="+id;
 
@@ -139,10 +155,10 @@
 								<%=pageBean.getPageSize()
 						* (pageBean.getCurrentPage() - 1) + i + 1%>
 							</td>
-                            <td  align="center" style="text-align: left" style="text-align: left" nowrap="nowrap" class="form_th" >
+                            <td  align="center" style="text-align: left" style="text-align: left;width: 600px"  class="form_th" >
                                 <a href="view.jsp?pkid=<%=document.getCyid() %>"><%=document.getWjmc()%></a>&nbsp;
                             </td>
-							<td  align="center" style="text-align: left" class="form_th">
+							<td  align="center" style="text-align: left" class="form_th" nowrap="nowrap">
 								<%=document.getWjbh()%> &nbsp;
 							</td>
 							<td  align="center" nowrap="nowrap" class="form_th">
@@ -182,6 +198,7 @@
                                 <a href="javascript:onDelete('./delete.jsp?pkid=<%=StringUtil.parseNull(document.getCyid(),"")%>');">[删除]</a>&nbsp;
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(document.getProcessId(),"")%>">[查看流程]</a>
                                 <a href="#" onclick="qz('<%=document.getProcessId()%>','<%=document.getConnectId()%>');">[查看签字]</a>
+                                <a href="#" onclick="cyd('<%=StringUtil.parseNull(document.getCyid(),"")%>','<%=document.getProcessId()%>','a69bdce8-143c-43ba-8ba1-94ad25a8dbe6');">[文件传阅单]</a>
                                 <%  }
                                 %>
                                 <%sqzt = StringUtil.parseNull(document.getZt(),"");
@@ -198,7 +215,7 @@
 			</tr>
 			<tr align="center">
 				<td align="center">
-					<%=pageBean.getHtml(paramMap)%>
+					<%=pageBean.getHtml2(paramMap)%>
 				</td>
 			</tr>
 		</table>

@@ -238,11 +238,88 @@ public class PageBean {
                 .append("\">\n")
                 .append(
                         "<input type=\"button\" class=\"button\" name=\"go\" value=\"GO\" onclick=\"submitPage(document.all.goPage.value)\">\n")
-                .append("</span></td>\n").append("</tr>\n").append("</form>\n")
+                .append("</span></td>\n").append("</tr>\n").append("</form>")
                 .append("</table>\n").append("<script>\n").append(
                 "    function submitPage(page) {\n").append(
-                "        document.pages.currentPage.value = page;\n")
-                .append("        document.pages.submit();\n").append("    }\n")
+                "        document.all.currentPage.value = page;\n")
+                .append("        document.forms[0].submit();\n").append("    }\n")
+                .append("</script>");
+        return rtnStr.toString();
+    }
+    public String getHtml2(Map paramMap) {
+
+        StringBuffer rtnStr = new StringBuffer(
+                "<table align=\"center\" border=\"0\" >\n"
+//                        + "    <form name=\"pages\" method=\"post\" action=\"\">\n"
+                        + "    <tr>\n"
+                        + "        <td valign=\"bottom\" align=\"right\">\n<span style=\"font-size:12px;\">");
+
+        if (paramMap != null) {
+            Iterator fieldsIterator = paramMap.keySet().iterator();
+            while (fieldsIterator.hasNext()) {
+                String fieldName = (String) fieldsIterator.next();
+                if (paramMap.get(fieldName) == null
+                        || fieldName.equals("currentPage")
+                        || fieldName.equals("pageSize"))
+                    continue;
+                //System.out.println(fieldName);
+                rtnStr.append("<input type=\"hidden\" id=\"").append(fieldName)
+                        .append("\" name=\"").append(fieldName).append(
+                        "\" value=\"").append(paramMap.get(fieldName))
+                        .append("\"/>");
+                //System.out.println(rtnStr);
+            }
+        }
+        //System.out.println(getCurrentPage());
+        rtnStr
+                .append("每页")
+                .append(getPageSize())
+                .append("条/共")
+                .append(getTotalRows())
+                .append("条&nbsp;第")
+                .append(getCurrentPage())
+                .append("页/共")
+                .append(getTotalPages())
+                .append("页&nbsp;\n")
+                .append(
+                        !this.isFirstPage() ? "<a href=\"#\" onclick=\"submitPage('1');return false\">第一页</a>&nbsp;\n"
+                                : "第一页&nbsp;")
+                .append(
+                        !this.isFirstPage() ? "<a href=\"#\" onclick=\"submitPage('"
+                                + (getCurrentPage() - 1)
+                                + "');return false;\">上一页</a>&nbsp;\n"
+                                : "上一页&nbsp;")
+                .append(
+                        !this.isLastPage() ? "<a href=\"#\" onclick=\"submitPage('"
+                                + (getCurrentPage() + 1)
+                                + "');return false;\">下一页</a>&nbsp;\n"
+                                : "下一页&nbsp;")
+                .append(
+                        !this.isLastPage() ? "<a href=\"#\" onclick=\"submitPage('"
+                                + (getTotalPages())
+                                + "');return false;\">最后一页</a>&nbsp;\n"
+                                : "最后一页&nbsp;")
+//				.append(
+//						"每页<input type=\"text\" class=\"inputStyle\" name=\"pageSize\" size=\"3\" style=\"width: 20px;\" value=\"")
+//				.append(getPageSize())
+//				.append("\">条&nbsp;\n")
+                .append(
+                        "转到<input type=\"text\" class=\"inputStyle\" name=\"goPage\" size=\"3\" style=\"width: 20px;\" value=\"")
+                .append(getCurrentPage())
+                .append("\">页&nbsp;\n")
+                .append("<input type=\"hidden\" name=\"currentPage\" value=\"")
+                .append(getCurrentPage())
+                .append("\">\n")
+                .append("<input type=\"hidden\" name=\"pageSize\" value=\"")
+                .append(getPageSize())
+                .append("\">\n")
+                .append(
+                        "<input type=\"button\" class=\"button\" name=\"go\" value=\"GO\" onclick=\"submitPage(document.all.goPage.value)\">\n")
+                .append("</span></td>\n").append("</tr>\n")
+                .append("</table>\n").append("<script>\n").append(
+                "    function submitPage(page) {\n").append(
+                "        document.all.currentPage.value = page;\n")
+                .append("        document.forms[0].submit();\n").append("    }\n")
                 .append("</script>");
         return rtnStr.toString();
     }

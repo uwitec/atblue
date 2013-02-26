@@ -368,6 +368,19 @@
 											style="width: 400px;">
 									</td>
 								</tr>
+                                <tr>
+                                    <td nowrap="nowrap" width="120" class="head_left">
+                                        密级
+                                    </td>
+                                    <td class="head_right" align="left" style="text-align: left">
+                                        <select name="mmcd" style="width: 100px;">
+                                            <option value="无">无</option>
+                                            <option value="秘密">秘密</option>
+                                            <option value="机密">机密</option>
+                                            <option value="绝密">绝密</option>
+                                        </select>
+                                    </td>
+                                </tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
 										份数
@@ -386,6 +399,22 @@
 											style="width: 200px;" value="<%=nexVal %>">
 									</td>
 								</tr>
+                                <tr>
+                                <td nowrap="nowrap" width="120" class="head_left">
+                                    拟办意见
+                                </td>
+                                <td class="head_right" align="left" style="text-align: left">
+                                    <textarea rows="5" cols="40" style="width: 100%"  name="nbyj"></textarea>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td nowrap="nowrap" width="120" class="head_left">
+                                        备注
+                                    </td>
+                                    <td class="head_right" align="left" style="text-align: left">
+                                        <textarea rows="5" cols="40" style="width: 100%"  name="bz"></textarea>
+                                    </td>
+                                </tr>
                                 <%--<tr>--%>
                                     <%--<td nowrap="nowrap" width="120" class="head_left">--%>
                                         <%--传阅人<span style="color: red">&nbsp;*</span>--%>

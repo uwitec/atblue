@@ -36,6 +36,9 @@
 		String act = fileUpload.getParameter("act");
 		String fs = fileUpload.getParameter("fs");
 		String swh = fileUpload.getParameter("swh");
+		String mmcd = fileUpload.getParameter("mmcd");
+		String nbyj = fileUpload.getParameter("nbyj");
+		String bz = fileUpload.getParameter("bz");
 
 		
 		try{
@@ -49,6 +52,9 @@
         document.setZt("已保存");
 		document.setFs(fs);
 		document.setSwh(swh);
+        document.setMmcd(mmcd);
+        document.setNbyj(nbyj);
+        document.setBz(bz);
         if("startup".equals(act)){
             document.setZt("已申请");
             //创建流程代码在这里
@@ -530,6 +536,19 @@
 											style="width: 400px;">
 									</td>
 								</tr>
+                                <tr>
+                                    <td nowrap="nowrap" width="120" class="head_left">
+                                        密级
+                                    </td>
+                                    <td class="head_right" align="left" style="text-align: left">
+                                        <select name="mmcd" style="width: 100px;">
+                                            <option value="无" <%if(document.getMmcd()!=null && document.getMmcd().equals("无")){ %>selected<%} %>>无</option>
+                                            <option value="秘密" <%if(document.getMmcd()!=null && document.getMmcd().equals("秘密")){ %>selected<%} %>>秘密</option>
+                                            <option value="机密" <%if(document.getMmcd()!=null && document.getMmcd().equals("机密")){ %>selected<%} %>>机密</option>
+                                            <option value="绝密" <%if(document.getMmcd()!=null && document.getMmcd().equals("绝密")){ %>selected<%} %>>绝密</option>
+                                        </select>
+                                    </td>
+                                </tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
 										份数
@@ -548,6 +567,22 @@
 											style="width: 200px;">
 									</td>
 								</tr>
+                                <tr>
+                                    <td nowrap="nowrap" width="120" class="head_left">
+                                        拟办意见
+                                    </td>
+                                    <td class="head_right" align="left" style="text-align: left">
+                                        <textarea rows="5" cols="40" style="width: 100%"  name="nbyj"><%=StringUtil.parseNull(document.getNbyj(),"")%></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td nowrap="nowrap" width="120" class="head_left">
+                                        备注
+                                    </td>
+                                    <td class="head_right" align="left" style="text-align: left">
+                                        <textarea rows="5" cols="40" style="width: 100%"  name="bz"><%=StringUtil.parseNull(document.getBz(),"")%></textarea>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td nowrap="nowrap" width="120" class="head_left">
                                         传阅人<span style="color: red">&nbsp;*</span>

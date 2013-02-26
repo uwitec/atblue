@@ -715,6 +715,13 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
         ]]>
 </select>
 
+    <select id="getSpyjByItemIdAndProcessId" resultClass="String" parameterClass="java.util.HashMap">
+    <![CDATA[
+select  spyj from OFFICE_QPDYJ t
+where t.form_item_id=#itemId# and t.processid=#processId# and rownum = 1
+        ]]>
+</select>
+
     <select id="getWaitPagedOfficeCirculationList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
         <include refid="basic.pageStart"/>
         <![CDATA[

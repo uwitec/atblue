@@ -375,16 +375,16 @@
 										<%--<%=StringUtil.replace(StringUtil.parseNull(document.getLdps(),""),"\n","</br>&nbsp;&nbsp;") %>&nbsp;&nbsp;--%>
 									<%--</td>--%>
 								<%--</tr>--%>
-								<%--<tr>--%>
-									<%--<td nowrap="nowrap" width="120" class="head_left">--%>
-										<%--拟办意见--%>
-									<%--</td>--%>
-									<%--<td class="head_right" align="left" style="text-align: left">--%>
+								<tr>
+									<td nowrap="nowrap" width="120" class="head_left">
+										拟办意见
+									</td>
+									<td class="head_right" align="left" style="text-align: left">
 
-										<%--<%=StringUtil.replace(StringUtil.parseNull(document.getNbyj(),""),"\n","</br>&nbsp;&nbsp;") %>&nbsp;&nbsp;--%>
-									<%--</td>--%>
-								<%--</tr>--%>
-								<%--<tr>--%>
+										<%=StringUtil.replace(StringUtil.parseNull(document.getNbyj(),""),"\n","</br>&nbsp;&nbsp;") %>&nbsp;&nbsp;
+									</td>
+								</tr>
+								<tr>
 									<%--<td nowrap="nowrap" width="120" class="head_left">--%>
 										<%--处理意见--%>
 									<%--</td>--%>

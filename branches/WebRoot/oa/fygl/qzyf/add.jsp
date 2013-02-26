@@ -12,12 +12,8 @@
     paramMap.put("orgnaId",orgId);
     COrgnization cOrgnization = orgnizationDAO.queryForBean(paramMap);
     cOrgnization = cOrgnization == null?new COrgnization():cOrgnization;
-    List userList  = dao.getGsldAllUser();
-    List userList1  = dao.getJgksAllUser();
-    List userList2  = dao.getJcdwAllUser();
-    userList = userList == null?new ArrayList():userList;
-    userList1 = userList1 == null?new ArrayList():userList1;
-    userList2 = userList2 == null?new ArrayList():userList2;
+    List list = flglQzgznrDAO.queryForList(new HashMap());
+    list = list == null?new ArrayList():list;
 %>
 <html>
 <head>
@@ -150,7 +146,15 @@
                                 工作内容
                             </td>
                             <td class="head_right" align="left" style="text-align: left">
-                                <input type="text" name="bean.nrbm" value=""/>
+                                <select name="bean.nrbm">
+                                    <option value="">--请选择--</option>
+                                    <%
+                                    for(int i=0;i<list.size();i++){
+                                        FlglQzgznr bean = (FlglQzgznr)list.get(i);    %>
+                                    <option value="<%=bean.getNrbm()%>"><%=bean.getGznr()%></option>
+                                    <% }
+                                    %>
+                                </select>
                             </td>
                             <td nowrap="nowrap" class="head_left">
                                 距离

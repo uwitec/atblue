@@ -88,9 +88,7 @@ cUser = cUser == null?new CUser():cUser;
                     <tbody>
                     <tr>
                         <td align="left">
-                            名称：
-                            <input name="mc" type="text" value="" />&nbsp;
-                            <input type="submit" class="button"  style="width:40px" value='查询'> &nbsp;&nbsp;&nbsp;
+                             &nbsp;&nbsp;&nbsp;
                             <input type="button" class="button" onclick="window.location = 'FlglYlz_add.d';" style="width:40px"  value='新增'>
                         </td>
                     </tr>
