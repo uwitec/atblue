@@ -150,4 +150,6 @@ public interface ODao {
     public List getPagedQzfyList(Map paramMap);
 
     public int getPagedQzfyCount(Map paramMap);
+
+    public String getSpyjByItemIdAndProcessId(String itemId,String processId);
 }

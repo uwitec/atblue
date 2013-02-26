@@ -93,6 +93,7 @@
               </isNotEmpty>
           </dynamic>
           -->
+        order by px asc
         <include refid="basic.pageEnd"/>
     </select>
     <select id="getPagedCount" parameterClass="java.util.HashMap" resultClass="int">

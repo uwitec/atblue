@@ -27,7 +27,7 @@ private List dataList;
 public String list() {
 Map map = new HashMap();
 if (!StringUtil.isBlankOrEmpty(mc))
-map.put("mc", mc);
+map.put("lbmc", mc);
 int cn = flglAqDAO.getPagedCount(map);
 this.getPagination().setRowCount(cn);
 map.put("currentPage", this.getPagination().getPage());
