@@ -151,5 +151,5 @@ public interface ODao {
 
     public int getPagedQzfyCount(Map paramMap);
 
-    public String getSpyjByItemIdAndProcessId(String itemId,String processId);
+    public Map getSpyjByItemIdAndProcessId(String itemId,String processId);
 }

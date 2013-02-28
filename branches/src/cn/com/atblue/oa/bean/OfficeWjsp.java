@@ -23,6 +23,10 @@ private String processId;
 private String connectId;
 private String sqr;
 private String dxtx;
+private String bgshg;
+private String fa;
+private Integer gyfs;
+
 public String getDocumentid() {
 	return documentid;
 }
@@ -107,4 +111,28 @@ public String getDxtx() {
 public void setDxtx(String dxtx) {
 	this.dxtx = dxtx;
 }
+
+    public String getBgshg() {
+        return bgshg;
+    }
+
+    public void setBgshg(String bgshg) {
+        this.bgshg = bgshg;
+    }
+
+    public String getFa() {
+        return fa;
+    }
+
+    public void setFa(String fa) {
+        this.fa = fa;
+    }
+
+    public Integer getGyfs() {
+        return gyfs;
+    }
+
+    public void setGyfs(Integer gyfs) {
+        this.gyfs = gyfs;
+    }
 }

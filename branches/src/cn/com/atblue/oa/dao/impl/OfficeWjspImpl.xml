@@ -48,16 +48,25 @@
             <isNotEmpty prepend=" and " property="sqr">
                 <![CDATA[dxtx=#dxtx#]]>
             </isNotEmpty>
+            <isNotEmpty prepend=" and " property="bgshg">
+                <![CDATA[bgshg=#bgshg#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="fa">
+                <![CDATA[fa=#fa#]]>
+            </isNotEmpty>
+            <isNotEmpty prepend=" and " property="gyfs">
+                <![CDATA[gyfs=#gyfs#]]>
+            </isNotEmpty>
         </dynamic>
     </sql>
     <insert id="addOfficeWjsp" parameterClass="OfficeWjsp">
         <![CDATA[
             insert into OFFICE_WJSP(
-                documentid,bt,lb,wjbh,mmcd,hjsx,qfrq,ngbm,bz,sqzt,process_id,connect_id,sqr,dxtx
+                documentid,bt,lb,wjbh,mmcd,hjsx,qfrq,ngbm,bz,sqzt,process_id,connect_id,sqr,dxtx,bgshg,fa,gyfs
             ) values(
                 #documentid#,#bt#,#lb#,#wjbh#,#mmcd#,
 				#hjsx#,#qfrq#,#ngbm#,#bz#,#sqzt#,
-				#processId#,#connectId#,#sqr#,#dxtx#
+				#processId#,#connectId#,#sqr#,#dxtx#,#bgshg#,#fa#,#gyfs#
             )
         ]]>
     </insert>
@@ -69,7 +78,7 @@
 				wjbh=#wjbh#,mmcd=#mmcd#,hjsx=#hjsx#,
 				qfrq=#qfrq#,ngbm=#ngbm#,bz=#bz#,
 				sqzt=#sqzt#,process_id=#processId#,connect_id=#connectId#,
-				sqr=#sqr#,dxtx=#dxtx#
+				sqr=#sqr#,dxtx=#dxtx#,bgshg=#bgshg#,fa=#fa#,gyfs=#gyfs#
             where documentid=#documentid#
         ]]>
     </update>
@@ -83,7 +92,7 @@
 
     <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeWjsp">
         <![CDATA[
-            select documentid,bt,lb,wjbh,mmcd,hjsx,qfrq,ngbm,bz,sqzt,process_id as processid,connect_id as connectid,sqr,dxtx from OFFICE_WJSP where documentid=#documentid#
+            select documentid,bt,lb,wjbh,mmcd,hjsx,qfrq,ngbm,bz,sqzt,process_id as processid,connect_id as connectid,sqr,dxtx,bgshg,fa,gyfs from OFFICE_WJSP where documentid=#documentid#
         ]]>
     </select>
 
