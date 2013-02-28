@@ -9,8 +9,8 @@
     List checkList = oDao.getOfficeCirculationCheckList(pkid);
     String[] checkmans = new String[1];
     checkmans[0] = "";
-    String spyj = oDao.getSpyjByItemIdAndProcessId(formItemId,processId);
-
+    Map spyjMap = oDao.getSpyjByItemIdAndProcessId(formItemId,processId);
+    String spyj = StringUtil.parseNull(spyjMap.get("SPYJ"),"");
     OfficeCirculation document = null;
     try{
         document = officeCirculationDAO.selectByPrimaryKey(pkid);
