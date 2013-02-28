@@ -425,10 +425,10 @@ public class ODaoImpl extends SqlMapClientDaoSupport implements ODao {
         return (Integer) this.getSqlMapClientTemplate().queryForObject("oa.dao.getPagedQzfyCount", paramMap);
     }
 
-    public String getSpyjByItemIdAndProcessId(String itemId,String processId){
+    public Map getSpyjByItemIdAndProcessId(String itemId,String processId){
         Map map = new HashMap();
         map.put("itemId",itemId);
         map.put("processId",processId);
-        return  (String)this.getSqlMapClientTemplate().queryForObject("oa.dao.getSpyjByItemIdAndProcessId", map);
+        return  (Map)this.getSqlMapClientTemplate().queryForObject("oa.dao.getSpyjByItemIdAndProcessId", map);
     }
 }

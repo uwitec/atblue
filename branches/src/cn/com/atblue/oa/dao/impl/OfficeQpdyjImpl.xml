@@ -51,7 +51,7 @@
 
     <select id="queryForBean" parameterClass="java.util.HashMap" resultClass="OfficeQpdyj">
         <![CDATA[
-            select processid as processid,form_item_id as formItemId,spyj as spyj,lrr as lrr,lrsj as lrsj from office_qpdyj where PROCESSID=#processid#
+            select processid as processid,form_item_id as formItemId,spyj as spyj,lrr as lrr,lrsj as lrsj from office_qpdyj where PROCESSID=#processid#   and form_item_id = #formItemId#
         ]]>
     </select>
 

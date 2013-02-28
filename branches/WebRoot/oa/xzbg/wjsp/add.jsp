@@ -41,7 +41,8 @@
         if("startup".equals(flag)){
             officeWjsp.setSqzt("已申请");
             //创建流程代码在这里
-            Status status = workflow.startWorkflow("297abec3-fa04-4a32-b67b-3ef36368aa38",cUser.getUserId());
+//            Status status = workflow.startWorkflow("297abec3-fa04-4a32-b67b-3ef36368aa38",cUser.getUserId());
+            Status status = workflow.startWorkflow("b49fc638-5338-451c-845f-fec921eb8cb3",cUser.getUserId());   //流程调整  20130228
             officeWjsp.setProcessId(status.getProcessId());
             officeWjsp.setConnectId(status.getConnectId());
         }
@@ -312,7 +313,7 @@
 								</tr>
 								<tr>
 									<td nowrap="nowrap" width="120" class="head_left">
-										拟稿部门
+										主办单位
 									</td>
 									<td class="head_right" style="text-align: left">
 										<select name="ngbm" style="width: 200px;">

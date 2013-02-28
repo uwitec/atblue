@@ -551,9 +551,9 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
     </select>
     <select id="getAllQpdFormItemsByFormId2" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
     <![CDATA[
-    select t.*, a.spyj,a.sj
+    select t.*, a.spyj,a.lrr ry, a.lrsj sj
   from OFFICE_QPD_FORMITEM t,
-       (select p.form_item_id,p.spyj,p.lrsj sj
+       (select p.form_item_id,p.spyj,p.lrsj lrsj,p.lrr
           from OFFICE_QPDYJ p
          where p.processid = #processId#)a
  where t.form_item_id = a.form_item_id(+)
@@ -715,9 +715,9 @@ func_getSmsPersonsByTzId(t.tzid,'0') wqsry
         ]]>
 </select>
 
-    <select id="getSpyjByItemIdAndProcessId" resultClass="String" parameterClass="java.util.HashMap">
+    <select id="getSpyjByItemIdAndProcessId" resultClass="java.util.HashMap" parameterClass="java.util.HashMap">
     <![CDATA[
-select  spyj from OFFICE_QPDYJ t
+select  * from OFFICE_QPDYJ t
 where t.form_item_id=#itemId# and t.processid=#processId# and rownum = 1
         ]]>
 </select>

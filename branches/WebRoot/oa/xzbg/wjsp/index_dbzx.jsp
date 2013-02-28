@@ -51,7 +51,7 @@
         function qz(processId,connectId){
             window
                     .open(
-                    "<%=request.getContextPath()%>/oa/qpd/view.jsp?formId=75f575c1-9b50-4f88-930c-418fd3d0fbec&connectId="+connectId+"&processId="+processId,
+                    "<%=request.getContextPath()%>/oa/qpd/view.jsp?formId=20b9a84e-51ab-4af8-9a59-e11316bfc5c9&connectId="+connectId+"&processId="+processId,
                     "mywindow",
                     "height="
                             + 800
@@ -63,10 +63,25 @@
                             + 0
                             + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
         }
+        function xwd(documentid,processId){
+            window
+                    .open(
+                            "xwd.jsp?documentid="+documentid+"&processId="+processId,
+                            "mywindow",
+                            "height="
+                                    + 800
+                                    + ",width="
+                                    + 700
+                                    + ",status=0,toolbar=no,menubar=no,location=no,scrollbars=yes,top="
+                                    + 0
+                                    + ",left="
+                                    + 0
+                                    + ",resizable=yes,modal=yes,dependent=yes,dialog=yes,minimizable=no");
+        }
 		</script>
 	</head>
 	<body>
-    <form name="form1" action=""  style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px">
+    <form name="form1" action=""  style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px" method="post">
   <input type="hidden" name="qzgz" id="qzgz">
     <table width="100%" align="center" height="25" border="0"
            cellpadding="0" cellspacing="0"
@@ -94,7 +109,7 @@
             </td>
         </tr>
     </table>
-        </form>
+
 		<table width="100%" align="center" height="25" border="0"
 			cellpadding="0" cellspacing="0">
 			<tr>
@@ -181,7 +196,7 @@
                                     String connectId = StringUtil.parseNull(map.get("CONNECT_ID"),"");
                                 %>
                                 <a href="./flow.jsp?processId=<%=StringUtil.parseNull(map.get("PROCESS_ID"),"")%>">[查看流程]</a>&nbsp;
-                                <a href="#" onclick="qz('<%=processId%>','<%=connectId%>');">[打印]</a>
+                                <a href="#" onclick="xwd('<%=StringUtil.parseNull(map.get("DOCUMENTID"),"") %>','<%=processId%>');">[打印行文单]</a>
 
 							</td>
 						</tr>
@@ -194,9 +209,10 @@
 			</tr>
 			<tr align="center">
 				<td align="center">
-					<%=pageBean.getHtml(paramMap)%>
+					<%=pageBean.getHtml2(paramMap)%>
 				</td>
 			</tr>
 		</table>
 	</body>
+    </form>
 </html>

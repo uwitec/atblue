@@ -20,6 +20,8 @@
     String[] nodeName  = request.getParameterValues("nodeName");
     String[] nodeId  = request.getParameterValues("nodeId");
     String[] spyj  = request.getParameterValues("spyj");
+    String[] lrr  = request.getParameterValues("lrr");
+    String[] lrsj  = request.getParameterValues("lrsj");
     if (request.getMethod().equals("POST")) {
           if(nodeId != null && nodeId.length > 0){
               signdata  = StringUtil.parseNull(request.getParameter("signdata"),"");
@@ -40,16 +42,28 @@
                   officeQpd.setLrsj(new java.util.Date());
                   officeQpdDAO.modOfficeQpd(officeQpd);
               }
-              oDao.deleteAllQpdYjsByProcessId(processId);
+//              oDao.deleteAllQpdYjsByProcessId(processId);
               OfficeQpdyj officeQpdyj = null;
               for(int i=0; i<nodeId.length;i++){
-                  officeQpdyj = new  OfficeQpdyj();
-                  officeQpdyj.setProcessid(processId);
-                  officeQpdyj.setFormItemId(nodeId[i]);
-                  officeQpdyj.setSpyj(spyj[i]);
-                  officeQpdyj.setLrr(cUser.getUserId());
-                  officeQpdyj.setLrsj(new java.util.Date());
-                  officeQpdyjDAO.addOfficeQpdyj(officeQpdyj);
+                  if(formItemId.equals(nodeId[i])){
+                      officeQpdyj = new  OfficeQpdyj();
+                      officeQpdyj.setProcessid(processId);
+                      officeQpdyj.setFormItemId(nodeId[i]);
+                      officeQpdyj.setSpyj(spyj[i]);
+
+                      officeQpdyj.setLrr(lrr[i]);
+                      if(!StringUtil.isBlankOrEmpty(lrsj[i]))
+                          officeQpdyj.setLrsj(DateUtil.parse(lrsj[i]));
+                      Map  params = new HashMap();
+                      params.put("processId",processId);
+                      params.put("formItemId",nodeId[i]);
+                      OfficeQpdyj qpdyj =officeQpdyjDAO.queryForBean(params);
+                      if(qpdyj != null){
+                          officeQpdyjDAO.modOfficeQpdyj(officeQpdyj);
+                      }else{
+                          officeQpdyjDAO.addOfficeQpdyj(officeQpdyj);
+                      }
+                  }
               }
           }
 %>
@@ -133,6 +147,7 @@ function sumbitForm() {
 	<input type="hidden" name="processId" value="<%=processId%>">
 	<input type="hidden" name="connectId" value="<%=connectId%>">
 	<input type="hidden" name="formId" value="<%=formId%>">
+	<input type="hidden" name="formItemId" value="<%=formItemId%>">
   	<table width="580" border="0" align="center" cellspacing="1">
 	  <tr>
 	    <td >
@@ -169,6 +184,8 @@ function sumbitForm() {
                                           <span class="STYLE9"><%=StringUtil.parseNull(beanMap.get("FORM_ITEM_TITLE"),"")%>：</span><br>
                                           <input type="hidden" name="nodeName" value="<%=StringUtil.parseNull(beanMap.get("FORM_ITEM_NAME"),"")%>"/>
                                           <input type="hidden" name="nodeId" value="<%=StringUtil.parseNull(beanMap.get("FORM_ITEM_ID"),"")%>"/>
+                                          <input type="hidden" name="lrr" value="<%=StringUtil.parseNull(beanMap.get("RY"),cUser.getUserId())%>"/>
+                                          <input type="hidden" name="lrsj" value="<%=StringUtil.parseNull(beanMap.get("SJ"),DateUtil.format(new java.util.Date()))%>"/>
                                           <textarea  name="spyj" id="spyj<%=i+1%>"
                                                      <%
                                                      if(!id.equals(formItemId)){%>
